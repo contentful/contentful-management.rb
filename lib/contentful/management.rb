@@ -1,4 +1,4 @@
-require "contentful/management/version"
+require 'contentful/management/version'
 
 module Contentful
   module Management
