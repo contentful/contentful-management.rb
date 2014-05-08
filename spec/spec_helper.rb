@@ -4,6 +4,16 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+
+require 'rspec'
+require 'contentful-management'
+require 'rr'
+
+
+Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each{ |f| require f }
+
+
 RSpec.configure do |config|
   # Limit the spec run to only specs with the focus metadata. If no specs have
   # the filtering metadata and `run_all_when_everything_filtered = true` then
