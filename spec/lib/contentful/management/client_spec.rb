@@ -12,8 +12,8 @@ module Contentful
       its(:access_token) { should be token }
 
       describe '#authentication_header' do
-        its(:authentication_header) { should be_kind_of  Hash }
-        its(:authentication_header) { should eql  'Authorization' => 'Bearer such_a_long_token' }
+        its(:authentication_header) { should be_kind_of Hash }
+        its(:authentication_header) { should eql 'Authorization' => 'Bearer such_a_long_token' }
       end
 
       describe '#api_header' do
