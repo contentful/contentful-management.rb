@@ -3,3 +3,7 @@ Encoding:
 
 Documentation:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - contentful-management.gemspec

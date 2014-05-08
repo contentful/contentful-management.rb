@@ -18,23 +18,19 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
 
-task :test    => :spec
-task :default => :spec
-
 require 'rubocop/rake_task'
-
 Rubocop::RakeTask.new
 
 require 'reek/rake/task'
-
 Reek::Rake::Task.new do |t|
   t.fail_on_error = false
 end
 
-
 desc 'Run specs, rubocop and reek'
-task ci: %w[spec reek rubocop]
+task ci: %w(spec reek rubocop)
+
+task test: :spec
+task default: :spec
