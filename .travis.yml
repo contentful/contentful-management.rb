@@ -7,4 +7,4 @@ rvm:
   - jruby-19mode
 
 
-script: rake ci
+script: bundle exec rake ci
