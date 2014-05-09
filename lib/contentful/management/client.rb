@@ -1,16 +1,56 @@
 require 'contentful/management/version'
+require 'contentful/response'
+require 'contentful/request'
 require 'http'
 require 'cgi'
 
 module Contentful
   module Management
     class Client
-      attr_accessor :api_version
       attr_reader :access_token
 
+      DEFAULT_CONFIGURATION = { api_url: 'api.contentful.com',
+                                api_version: '1',
+                                secure: true
+                              }
+
       def initialize(access_token)
-        @api_version = 1
         @access_token = access_token
+      end
+
+      def api_version
+        configuration[:api_version]
+      end
+
+      def configuration
+        default_configuration
+      end
+
+      def default_configuration
+        DEFAULT_CONFIGURATION.dup
+      end
+
+      def self.get_http(url, query, headers = {})
+        HTTP[headers].get(url, params: query)
+      end
+
+      def spaces
+        Request.new(self, '').get
+      end
+
+      def get(request)
+        request_url = request.url
+        url = request.absolute? ? request_url : base_url + request_url
+        raw_response = self.class.get_http(url, {}, request_headers)
+        Response.new(raw_response, request)
+      end
+
+      def base_url
+        "#{protocol}://#{configuration[:api_url]}/spaces"
+      end
+
+      def protocol
+        configuration[:secure] ? 'https' : 'http'
       end
 
       def authentication_header

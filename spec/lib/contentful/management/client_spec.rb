@@ -32,6 +32,13 @@ module Contentful
         its(:user_agent) { should be_kind_of Hash }
         its(:user_agent) { should eql 'User-Agent' => "RubyContenfulManagementGem/#{Contentful::Management::VERSION}" }
       end
+
+      describe '.get_http' do
+        subject { Client }
+        it 'does a get_request' do
+          vcr(:get_request) { subject.get_http('http://example.com', foo: 'bar') }
+        end
+      end
     end
   end
 end
