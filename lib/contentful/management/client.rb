@@ -7,23 +7,20 @@ require 'cgi'
 module Contentful
   module Management
     class Client
-      attr_reader :access_token
+      attr_reader :access_token, :configuration
 
       DEFAULT_CONFIGURATION = { api_url: 'api.contentful.com',
                                 api_version: '1',
                                 secure: true
                               }
 
-      def initialize(access_token)
+      def initialize(access_token, configuration = {})
+        @configuration = default_configuration.merge(configuration)
         @access_token = access_token
       end
 
       def api_version
         configuration[:api_version]
-      end
-
-      def configuration
-        default_configuration
       end
 
       def default_configuration
