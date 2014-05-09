@@ -1,5 +1,7 @@
 language: ruby
-before_script: export JRUBY_OPTS="-Xcext.enabled=true"
+env:
+  global:
+    - "JRUBY_OPTS=-Xcext.enabled=true"
 rvm:
   - 2.1.1
   - 2.1
