@@ -1,4 +1,6 @@
 require 'contentful/management/version'
+require 'contentful'
+require 'contentful/resource_builder'
 require 'contentful/response'
 require 'contentful/request'
 require 'http'
@@ -32,7 +34,23 @@ module Contentful
       end
 
       def spaces
-        Request.new(self, '').get
+        # TODO: add options
+        request = Request.new(self, '')
+        response = request.get
+        result = ResourceBuilder.new(self, response, {}, {}, 'en-US')
+
+        result.run
+      end
+
+      def space(space_id)
+        request = Request.new(self, "/#{space_id}")
+        response = request.get
+        result = ResourceBuilder.new(self, response, {}, {}, 'en-US')
+
+        result.run
+      end
+
+      def create_space
       end
 
       def get(request)
