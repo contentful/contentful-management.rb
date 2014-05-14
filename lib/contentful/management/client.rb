@@ -1,5 +1,6 @@
 require 'contentful/management/version'
 require 'contentful/management/space_client'
+require 'contentful/management/http_client'
 require 'contentful'
 require 'contentful/resource_builder'
 require 'contentful/response'
@@ -12,6 +13,7 @@ module Contentful
   module Management
     class Client
       include Contentful::Management::SpaceClient
+      extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration
       attr_accessor :organization
@@ -33,18 +35,6 @@ module Contentful
 
       def default_configuration
         DEFAULT_CONFIGURATION.dup
-      end
-
-      def self.get_http(url, query, headers = {})
-        HTTP[headers].get(url, params: query)
-      end
-
-      def self.post_http(url, params, headers = {})
-        HTTP[headers].post(url, json: params)
-      end
-
-      def self.delete_http(url, params, headers = {})
-        HTTP[headers].delete(url, params: params)
       end
 
       def create_space_header(name)
