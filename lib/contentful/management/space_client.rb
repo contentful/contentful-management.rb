@@ -40,6 +40,16 @@ module Contentful
 
         result.run
       end
+
+      def update_space(space_id, name, version)
+        self.version = version
+        headers = create_space_header(name)
+        request = Request.new(self, "/#{space_id}", headers)
+        response = request.put
+        result = ResourceBuilder.new(self, response, {}, {}, default_locale)
+
+        result.run
+      end
     end
   end
 end

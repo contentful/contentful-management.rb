@@ -12,6 +12,10 @@ module Contentful
       def delete_http(url, params, headers = {})
         HTTP[headers].delete(url, params: params)
       end
+
+      def put_http(url, params, headers = {})
+        HTTP[headers].put(url, json: params)
+      end
     end
   end
 end

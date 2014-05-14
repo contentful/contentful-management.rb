@@ -16,7 +16,7 @@ module Contentful
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration
-      attr_accessor :organization
+      attr_accessor :organization, :version
 
       DEFAULT_CONFIGURATION = { api_url: 'api.contentful.com',
                                 api_version: '1',
@@ -35,10 +35,6 @@ module Contentful
 
       def default_configuration
         DEFAULT_CONFIGURATION.dup
-      end
-
-      def create_space_header(name)
-        Hash['name', name]
       end
 
       def delete(request)
@@ -62,6 +58,13 @@ module Contentful
         Response.new(raw_response, request)
       end
 
+      def put(request)
+        request_url = request.url
+        url = request.absolute? ? request_url : base_url + request_url
+        raw_response = self.class.put_http(url, request.query, request_headers)
+        Response.new(raw_response, request)
+      end
+
       def base_url
         "#{protocol}://#{configuration[:api_url]}/spaces"
       end
@@ -78,6 +81,7 @@ module Contentful
         Hash['Authorization', "Bearer #{access_token}"]
       end
 
+      # TODO: rename to api_version_header
       def api_header
         Hash['Content-Type', "application/vnd.contentful.management.v#{api_version}+json"]
       end
@@ -90,12 +94,22 @@ module Contentful
         Hash['X-Contentful-Organization', organization]
       end
 
+      def version_header(version)
+        Hash['X-Contentful-Version', version]
+      end
+
+      def create_space_header(name)
+        Hash['name', name]
+      end
+
+      # XXX: headers should be supplied differently, maybe through the request object.
       def request_headers
         headers = {}
         headers.merge! user_agent
         headers.merge! authentication_header
         headers.merge! api_header
-        headers.merge organization_header(organization) if organization
+        headers.merge! organization_header(organization) if organization
+        headers.merge! version_header(version) if version
 
         headers
       end

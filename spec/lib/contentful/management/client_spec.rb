@@ -6,6 +6,7 @@ module Contentful
   module Management
     describe Client do
       let(:token) { 'such_a_long_token' }
+      # let(:token) { '005d6f51203bcae1fa9b44d92d810f2ca32337c3559857eacfedc65cee4d7a3c' }
 
       let(:client) { Client.new(token) }
 
@@ -125,6 +126,25 @@ module Contentful
         end
 
         it 'returns an error when the organization needs to passed' do
+        end
+      end
+
+      describe '#update_space' do
+        let(:space_id) { 'uyvxw082vcxv' }
+        let(:space_version) { 1 }
+
+        it 'updates the space name' do
+          vcr(:update_space) do
+            updated_space = client.update_space(space_id, 'NewName', space_version)
+            expect(updated_space.sys[:version]).to eql space_version + 1
+          end
+        end
+
+        it 'returns an error when the wrong version is supplied' do
+          vcr(:update_space_with_wrong_version) do
+            updated_space = client.update_space(space_id, 'NewName', space_version)
+            expect(updated_space).to be_kind_of Contentful::Error
+          end
         end
       end
 
