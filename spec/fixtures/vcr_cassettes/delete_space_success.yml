@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.contentful.com/spaces/ke4xbiyjucra
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer such_a_long_token
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Wed, 14 May 2014 10:41:54 GMT
+      Connection:
+      - keep-alive
+      Status:
+      - 204 No Content
+      X-Contentful-Request-Id:
+      - 85f-1486161170
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 14 May 2014 10:41:59 GMT
+recorded_with: VCR 2.9.0

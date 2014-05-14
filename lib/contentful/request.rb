@@ -10,5 +10,9 @@ module Contentful
     def put
       client.put(self)
     end
+
+    def delete
+      client.delete(self)
+    end
   end
 end

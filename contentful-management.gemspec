@@ -20,13 +20,12 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'http', '~> 0.6'
   spec.add_dependency 'multi_json', '~> 1'
-  spec.add_dependency 'contentful', '~> 0.3.0'
+  #  spec.add_dependency 'contentful', '~> 0.3.0'
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
 
   spec.add_development_dependency 'rspec', '~> 2'
-  spec.add_development_dependency 'rr'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock', '~> 1', '>= 1.17.3'
 end

@@ -6,6 +6,7 @@ module Contentful
   module Management
     describe Client do
       let(:token) { 'such_a_long_token' }
+
       let(:client) { Client.new(token) }
 
       subject { client }
@@ -85,7 +86,46 @@ module Contentful
         end
       end
 
+      describe '#delete_space' do
+        let(:space_id) { 'ke4xbiyjucra' }
+        it 'returns true when a space was deleted' do
+          vcr(:delete_space_success) do
+            result = client.delete_space(space_id)
+
+            expect(result).to eql true
+          end
+        end
+
+        it 'returns an error when something went wrong' do
+          vcr(:delete_space_not_found) do
+            result = client.delete_space('no_space_here')
+            expect(result).to be_kind_of Contentful::NotFound
+          end
+        end
+      end
+
       describe '#create_space' do
+        let(:space_name) { 'My Space' }
+        let(:organization_id)  { '2w3epLcMkfb2RPVCLrNSwV' }
+
+        it 'creates a space within an organization' do
+          vcr(:create_space) do
+            space = client.create_space(space_name, organization_id)
+            expect(space).to be_kind_of Contentful::Space
+            expect(space.name).to eq space_name
+          end
+        end
+
+        it 'creates a space when the user only has one organization' do
+          vcr(:create_space_without_organization) do
+            space = client.create_space(space_name)
+            expect(space).to be_kind_of Contentful::Space
+            expect(space.name).to eq space_name
+          end
+        end
+
+        it 'returns an error when the organization needs to passed' do
+        end
       end
 
       describe '.post_http' do
