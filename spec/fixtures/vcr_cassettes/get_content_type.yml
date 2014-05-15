@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/xxddi16swo35/content_types/18cchFmtwGYS0uuQeG08E4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 005d6f51203bcae1fa9b44d92d810f2ca32337c3559857eacfedc65cee4d7a3c
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 15 May 2014 15:52:48 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1101'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - uyvxw082vcxv
+      Etag:
+      - '"ec50040eb6b0ebd95f73b0d39e95dfaa"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": [
+            {
+              "name": "ma_field",
+              "id": "maField",
+              "type": "Text",
+              "uiid": "406y9uv5xj4"
+            }
+          ],
+          "name": "ma_type",
+          "sys": {
+            "id": "18cchFmtwGYS0uuQeG08E4",
+            "type": "ContentType",
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "uyvxw082vcxv"
+              }
+            },
+            "createdAt": "2014-05-15T14:51:06.793Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0FM4ubBsFE2bzqlE8U6JaF"
+              }
+            },
+            "firstPublishedAt": "2014-05-15T14:52:29.255Z",
+            "publishedCounter": 1,
+            "publishedAt": "2014-05-15T14:52:29.255Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0FM4ubBsFE2bzqlE8U6JaF"
+              }
+            },
+            "publishedVersion": 41,
+            "version": 42,
+            "updatedAt": "2014-05-15T14:52:29.260Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0FM4ubBsFE2bzqlE8U6JaF"
+              }
+            }
+          },
+          "description": "yo type",
+          "displayField": "maField"
+        }
+    http_version:
+  recorded_at: Thu, 15 May 2014 15:52:51 GMT
+recorded_with: VCR 2.9.0

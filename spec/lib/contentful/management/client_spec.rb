@@ -6,8 +6,6 @@ module Contentful
   module Management
     describe Client do
       let(:token) { 'such_a_long_token' }
-      # let(:token) { '005d6f51203bcae1fa9b44d92d810f2ca32337c3559857eacfedc65cee4d7a3c' }
-
       let(:client) { Client.new(token) }
 
       subject { client }

@@ -7,6 +7,7 @@ module Contentful
     describe SpaceClient do
       let(:token) { 'such_a_long_token' }
       let(:client) { Client.new(token) }
+      let(:space_id) { 'xxddi16swo35' }
       subject { client }
 
       describe '#spaces' do
@@ -20,7 +21,6 @@ module Contentful
       end
 
       describe '#space' do
-        let(:space_id) { 'xxddi16swo35' }
         it 'returns a Contentful::Space' do
           vcr(:get_space) { expect(client.space(space_id)).to be_kind_of Contentful::Space }
         end
@@ -34,7 +34,6 @@ module Contentful
       end
 
       describe '#delete_space' do
-        let(:space_id) { 'xxddi16swo35' }
         it 'returns true when a space was deleted' do
           vcr(:delete_space_success) do
             result = client.delete_space(space_id)
@@ -76,7 +75,6 @@ module Contentful
       end
 
       describe '#update_space' do
-        let(:space_id) { 'xxddi16swo35' }
         let(:space_version) { 1 }
 
         it 'updates the space name' do
