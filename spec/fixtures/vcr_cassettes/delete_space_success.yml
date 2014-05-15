@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.contentful.com/spaces/ke4xbiyjucra
+    uri: https://api.contentful.com/spaces/xxddi16swo35
     body:
       encoding: US-ASCII
       string: ''

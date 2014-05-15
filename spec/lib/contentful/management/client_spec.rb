@@ -88,7 +88,7 @@ module Contentful
       end
 
       describe '#delete_space' do
-        let(:space_id) { 'ke4xbiyjucra' }
+        let(:space_id) { 'xxddi16swo35' }
         it 'returns true when a space was deleted' do
           vcr(:delete_space_success) do
             result = client.delete_space(space_id)
@@ -130,7 +130,7 @@ module Contentful
       end
 
       describe '#update_space' do
-        let(:space_id) { 'uyvxw082vcxv' }
+        let(:space_id) { 'xxddi16swo35' }
         let(:space_version) { 1 }
 
         it 'updates the space name' do
