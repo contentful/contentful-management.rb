@@ -13,7 +13,6 @@ module Contentful
 
       subject { client }
 
-
       describe '#content_type' do
         it 'returns a Contentful::ContentType' do
           vcr(:get_content_type) do

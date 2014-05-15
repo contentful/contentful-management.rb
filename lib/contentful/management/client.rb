@@ -8,7 +8,6 @@ require 'contentful/management/content_type_client'
 require 'contentful/management/space_client'
 require 'contentful/management/http_client'
 
-
 require_relative '../request'
 require 'http'
 require 'json'
