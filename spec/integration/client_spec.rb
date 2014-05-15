@@ -1,7 +1,6 @@
 ## Defines the client api to the users
 
 require 'spec_helper'
-
 require 'contentful/management/client'
 
 describe 'Client' do
