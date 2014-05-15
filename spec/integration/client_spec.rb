@@ -8,6 +8,7 @@ describe 'Client' do
   let(:client) { Contentful::Management::Client.new('such_a_long_token') }
   let(:space_id) { 'xxddi16swo35' }
   let(:space_version) { 1 }
+  let(:space_name) { 'My Space' }
 
   it 'gets all spaces for a user' do
     vcr(:get_spaces) { expect(client.spaces).to be_kind_of Contentful::Array }
@@ -27,6 +28,12 @@ describe 'Client' do
     vcr(:update_space) do
       updated_space = client.update_space(space_id, 'NewName', space_version)
       expect(updated_space.sys[:version]).to eql space_version + 1
+    end
+  end
+
+  it 'creates a space' do
+    vcr(:create_space_without_organization) do
+      expect(client.create_space(space_name)).to be_kind_of Contentful::Space
     end
   end
 end

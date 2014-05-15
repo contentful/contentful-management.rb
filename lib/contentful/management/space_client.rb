@@ -1,7 +1,6 @@
 module Contentful
   module Management
     module SpaceClient
-
       # Retrieves the space with space_id from the API
       # == Returns:
       # Contentful::Space Object if found, Contentful::Error otherwise
