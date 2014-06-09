@@ -7,3 +7,7 @@ rvm:
   - jruby-19mode
 
 script: bundle exec rake ci
+
+branches:
+  except:
+    - docs
