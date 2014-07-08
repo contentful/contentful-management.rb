@@ -24,6 +24,17 @@ client = Contentful::Management::Client.new('71607c586050e66bdd6b14aef4515c8ea55
 Contentful::Management::Space.all
 space = Contentful::Management::Space.find('m0zubye23c17')
 space.destroy
+
+space = Contentful::Management::Space.new
+space.name = 'GGG'
+space.save
+
+space = Contentful::Management::Space.create(name: 'GGG')
+space.update(name: 'DDD')
+
+space = Contentful::Management::Space.find('m0zubye23c17')
+space.name = 'FFF'
+space.save
 ```
 
 ## Contributing

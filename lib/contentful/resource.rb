@@ -125,8 +125,12 @@ module Contentful
         # Sub-resources are handled by the resource builder
         def property(name, property_class = nil)
           property_coercions[name.to_sym] = property_class
-          define_method Contentful::Support.snakify(name) do
+          accessor_name = Contentful::Support.snakify(name)
+          define_method accessor_name do
             properties[name.to_sym]
+          end
+          define_method "#{accessor_name}=" do |value|
+            properties[name.to_sym] = value
           end
         end
 

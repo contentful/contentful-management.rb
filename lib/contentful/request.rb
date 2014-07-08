@@ -5,8 +5,9 @@ module Contentful
   class Request
     attr_reader :client, :type, :query, :id
 
-    def initialize(endpoint, query = {}, id = nil)
+    def initialize(endpoint, query = {}, id = nil, version = nil)
       @client =  Contentful::Management::Client.new
+      @client.version = version if version
       @endpoint = endpoint
       @absolute = true if @endpoint.start_with?('http')
 

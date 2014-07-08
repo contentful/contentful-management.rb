@@ -8,13 +8,14 @@ require_relative 'array'
 require_relative 'link'
 require_relative 'deleted_entry'
 require_relative 'deleted_asset'
+require_relative 'management/space'
 
 module Contentful
   # Transforms a Contentful::Response into a Contentful::Resource or a Contentful::Error
   # See example/resource_mapping.rb for avanced usage
   class ResourceBuilder
     DEFAULT_RESOURCE_MAPPING = {
-        'Space' => nil,
+        'Space' => Contentful::Management::Space,
         'ContentType' => ContentType,
         'Entry' => :find_entry_class,
         'Asset' => Asset,

@@ -114,10 +114,6 @@ module Contentful
         Hash['X-Contentful-Version', version]
       end
 
-      def create_space_header(name)
-        Hash['name', name]
-      end
-
       # XXX: headers should be supplied differently, maybe through the request object.
       def request_headers
         headers = {}
