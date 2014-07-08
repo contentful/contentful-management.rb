@@ -1,6 +1,5 @@
-require 'contentful'
+require 'contentful/management'
 require 'contentful/response'
-require 'contentful/request'
 require 'contentful/resource_builder'
 
 require 'contentful/management/version'
@@ -15,8 +14,8 @@ require 'json'
 module Contentful
   module Management
     class Client
-      include Contentful::Management::SpaceClient
-      include Contentful::Management::ContentTypeClient
+      # include Contentful::Management::SpaceClient
+      # include Contentful::Management::ContentTypeClient
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration
@@ -28,9 +27,14 @@ module Contentful
                                 default_locale: 'en-US'
                               }
 
-      def initialize(access_token, configuration = {})
+      alias :old_configuration :configuration
+      alias :old_access_token :access_token
+
+      def initialize(access_token = nil, configuration = {})
         @configuration = default_configuration.merge(configuration)
-        @access_token = access_token
+        @access_token = access_token || Thread.current[:access_token]
+        Thread.current[:configuration] = @configuration
+        Thread.current[:access_token] = @access_token
       end
 
       def api_version
@@ -67,6 +71,14 @@ module Contentful
         url = request.absolute? ? request_url : base_url + request_url
         raw_response = self.class.put_http(url, request.query, request_headers)
         Response.new(raw_response, request)
+      end
+
+      def configuration
+        Thread.current[:configuration] || old_configuration
+      end
+
+      def access_token
+        Thread.current[:access_token] || old_access_token
       end
 
       def base_url
