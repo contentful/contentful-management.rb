@@ -18,7 +18,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+client = Contentful::Management::Client.new('71607c586050e66bdd6b14aef4515c8ea55034889336dac69c96cbd2c3916d08')
+
+Contentful::Management::Space.all
+space = Contentful::Management::Space.find('m0zubye23c17')
+space.destroy
+```
 
 ## Contributing
 
