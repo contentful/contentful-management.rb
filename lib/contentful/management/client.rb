@@ -3,8 +3,6 @@ require 'contentful/response'
 require 'contentful/resource_builder'
 
 require 'contentful/management/version'
-require 'contentful/management/content_type_client'
-require 'contentful/management/space_client'
 require 'contentful/management/http_client'
 
 require_relative '../request'
@@ -14,8 +12,6 @@ require 'json'
 module Contentful
   module Management
     class Client
-      # include Contentful::Management::SpaceClient
-      # include Contentful::Management::ContentTypeClient
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration
