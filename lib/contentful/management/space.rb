@@ -1,6 +1,7 @@
 require_relative '../resource'
 require_relative '../locale'
 require_relative '../request'
+require_relative 'content_type'
 
 module Contentful
   module Management
@@ -58,6 +59,10 @@ module Contentful
           result = ResourceBuilder.new(self, response, {}, {})
           result.run
         end
+      end
+
+      def self.ContentType
+        ContentType
       end
 
     end

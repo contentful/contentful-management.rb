@@ -14,7 +14,7 @@ module Contentful
     class Client
       extend Contentful::Management::HTTPClient
 
-      attr_reader :access_token, :configuration
+      attr_reader :access_token, :configuration, :session_id
       attr_accessor :organization, :version
 
       DEFAULT_CONFIGURATION = { api_url: 'api.contentful.com',
@@ -25,12 +25,15 @@ module Contentful
 
       alias :old_configuration :configuration
       alias :old_access_token :access_token
+      alias :old_session_id :session_id
 
-      def initialize(access_token = nil, configuration = {})
+      def initialize(access_token = nil, session_id = nil, configuration = {})
         @configuration = default_configuration.merge(configuration)
         @access_token = access_token || Thread.current[:access_token]
+        @session_id =  session_id || Thread.current[:session_id]
         Thread.current[:configuration] = @configuration
         Thread.current[:access_token] = @access_token
+        Thread.current[:session_id] = @session_id
       end
 
       def api_version
@@ -75,6 +78,10 @@ module Contentful
 
       def access_token
         Thread.current[:access_token] || old_access_token
+      end
+
+      def session_id
+        Thread.current[:session_id] || old_session_id
       end
 
       def base_url
