@@ -60,7 +60,6 @@
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.0.0, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.6.3, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coderay (v1.1.0, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="contentful (v0.3.0@5d8181, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crack (v0.4.2, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.5, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="docile (v1.1.5, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />

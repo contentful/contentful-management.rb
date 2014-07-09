@@ -30,7 +30,7 @@ module Contentful
         @fields = {}
 
         if nested_locale_fields?
-          object["fields"].each do |field_name, nested_child_object|
+          object['fields'].each do |field_name, nested_child_object|
             nested_child_object.each do |object_locale, real_child_object|
               @fields[object_locale] ||= {}
               @fields[object_locale].merge! extract_from_object(
@@ -39,7 +39,7 @@ module Contentful
             end
           end
         else
-          @fields[locale] = extract_from_object object["fields"], :fields
+          @fields[locale] = extract_from_object object['fields'], :fields
         end
       end
 

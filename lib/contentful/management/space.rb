@@ -17,28 +17,28 @@ module Contentful
       def self.all
         request = Request.new('')
         response = request.get
-        result = ResourceBuilder.new(self, response, {'Space' => Space}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def self.find(space_id)
         request = Request.new("/#{space_id}")
         response = request.get
-        result = ResourceBuilder.new(self, response, {'Space' => Space}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def self.create(attributes)
-        request = Request.new('', {'name' => attributes.fetch(:name)})
+        request = Request.new('', 'name' => attributes.fetch(:name))
         response = request.post
-        result = ResourceBuilder.new(self, response, {'Space' => Space}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def update(attributes)
         request = Request.new("/#{id}", {'name' => attributes.fetch(:name)}, nil, sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {'Space' => Space}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
@@ -46,7 +46,7 @@ module Contentful
         if id.present?
           update(name: name)
         else
-          Space.create(name: name)
+          self.class.create(name: name)
         end
       end
 
@@ -61,8 +61,8 @@ module Contentful
         end
       end
 
-      def self.ContentType
-        ContentType
+      def content_types
+        ContentType.all
       end
 
     end

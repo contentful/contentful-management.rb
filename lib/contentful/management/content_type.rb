@@ -15,7 +15,7 @@ module Contentful
       property :displayField, :string
 
       def self.all
-        request = Request.new("/#{Thread.current[:session_id]}/content_types")
+        request = Request.new("/#{Thread.current[:space_id]}/content_types")
         response = request.get
         result = ResourceBuilder.new(self, response, {}, {})
         result.run

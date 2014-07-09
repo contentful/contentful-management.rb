@@ -110,15 +110,15 @@ module Contentful
 
     # Returns the id of the related ContentType, if there is one
     def content_type_id_for_entry(object)
-      object["sys"] &&
-          object["sys"]["contentType"] &&
-          object["sys"]["contentType"]["sys"] &&
-          object["sys"]["contentType"]["sys"]["id"]
+      object['sys'] &&
+          object['sys']['contentType'] &&
+          object['sys']['contentType']['sys'] &&
+          object['sys']['contentType']['sys']['id']
     end
 
     # Detects if a resource is an Contentful::Array or a SyncPage
     def array_or_sync_page(object)
-      if object["nextPageUrl"] || object["nextSyncUrl"]
+      if object['nextPageUrl'] || object['nextSyncUrl']
         SyncPage
       else
         Array
@@ -133,7 +133,7 @@ module Contentful
     # - Proc: Will be called, expected to return the proper Class
     # - Symbol: Will be called as method of the ResourceBuilder itself
     def detect_resource_class(object)
-      type = object["sys"] && object["sys"]["type"]
+      type = object['sys'] && object['sys']['type']
 
       case res_class = resource_mapping[type]
         when Symbol

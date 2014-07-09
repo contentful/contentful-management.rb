@@ -37,8 +37,8 @@ space.name = 'FFF'
 space.save
 
 
-session_id = 'btp9v9jxpknp'
-client = Contentful::Management::Client.new('71607c586050e66bdd6b14aef4515c8ea55034889336dac69c96cbd2c3916d08', session_id)
+space_id = 'btp9v9jxpknp'
+client = Contentful::Management::Client.new('71607c586050e66bdd6b14aef4515c8ea55034889336dac69c96cbd2c3916d08', space_id)
 Contentful::Management::Space.ContentType.all
 ```
 
