@@ -72,14 +72,14 @@
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.10.0, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v2.0.0, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.3.2, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="reek (v1.3.7, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="reek (v1.3.8, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec (v2.99.0, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v2.99.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v2.99.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v2.99.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop (v0.24.0, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop (v0.24.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.5.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby2ruby (v2.0.8, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby2ruby (v2.1.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_parser (v3.6.1, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="safe_yaml (v1.0.3, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sexp_processor (v4.4.3, RVM: ruby-2.1.1 [contentful]) [gem]" level="application" />

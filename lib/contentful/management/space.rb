@@ -9,6 +9,7 @@ module Contentful
 
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
+      include Contentful::Resource::Refresher
 
       property :name, :string
       property :organization, :string
@@ -39,7 +40,7 @@ module Contentful
         request = Request.new("/#{id}", {'name' => attributes.fetch(:name)}, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {})
-        result.run
+        refresh_data(result.run)
       end
 
       def save
@@ -63,6 +64,13 @@ module Contentful
 
       def content_types
         ContentType.all
+      end
+
+      private
+
+      def copy_internals(new_instance)
+        @properties = new_instance.properties
+        @sys = new_instance.sys
       end
 
     end

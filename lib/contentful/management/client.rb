@@ -66,13 +66,13 @@ module Contentful
 
       def post(request)
         execute_request(request) do |url|
-          self.class.post_http(url, {}, request_headers)
+          self.class.post_http(url, request.query, request_headers)
         end
       end
 
       def put(request)
         execute_request(request) do |url|
-          self.class.put_http(url, {}, request_headers)
+          self.class.put_http(url, request.query, request_headers)
         end
       end
 

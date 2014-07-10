@@ -11,7 +11,7 @@ module Contentful
           revision: :integer,
           createdAt: :date,
           updatedAt: :date,
-          locale: :string,
+          locale: :string
       }
       attr_reader :sys
 

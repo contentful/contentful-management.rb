@@ -1,4 +1,5 @@
 require_relative 'resource/system_properties'
+require_relative 'resource/refresher'
 require 'date'
 
 module Contentful
