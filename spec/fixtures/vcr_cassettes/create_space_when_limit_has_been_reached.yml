@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 10 Jul 2014 10:54:28 GMT
+      - Thu, 10 Jul 2014 13:14:50 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -33,7 +33,7 @@ http_interactions:
       Status:
       - 403 Forbidden
       X-Contentful-Request-Id:
-      - 85f-1209528895
+      - 85f-1209542132
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Accept-Ranges:
@@ -58,8 +58,8 @@ http_interactions:
             "type":"Error",
             "id":"Forbidden"
           },
-          "requestId":"85f-1209528895",
+          "requestId":"85f-1209542132",
           "message":"You are not authorized to do this action or exceeded your plan limits."}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 10:54:28 GMT
+  recorded_at: Thu, 10 Jul 2014 13:14:50 GMT
 recorded_with: VCR 2.9.2

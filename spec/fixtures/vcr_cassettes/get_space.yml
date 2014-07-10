@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/l6a1rhnfkzbm
+    uri: https://api.contentful.com/spaces/n6spjc167pc2
     body:
       encoding: US-ASCII
       string: ''
@@ -23,19 +23,19 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 10 Jul 2014 10:39:57 GMT
+      - Thu, 10 Jul 2014 12:46:29 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '470'
+      - '454'
       Connection:
       - keep-alive
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209528088
+      - 85f-1209538599
       Etag:
-      - '"d20004950ad8960d396c603332b3e77a"'
+      - '"1390d9c9fb619d16782c74120198b6cb"'
       Accept-Ranges:
       - bytes
       Cache-Control:
@@ -56,8 +56,8 @@ http_interactions:
         {
           "sys":{
             "type":"Space",
-            "id":"l6a1rhnfkzbm",
-            "version":1,
+            "id":"n6spjc167pc2",
+            "version":7,
             "createdBy":{
               "sys":{
                 "type":"Link",
@@ -65,7 +65,7 @@ http_interactions:
                 "id":"1E7acJL8I5XUXAMHQt9Grs"
               }
             },
-            "createdAt":"2014-07-04T13:15:37Z",
+            "createdAt":"2014-07-09T11:04:14Z",
             "updatedBy":{
               "sys":{
                 "type":"Link",
@@ -73,10 +73,9 @@ http_interactions:
                 "id":"1E7acJL8I5XUXAMHQt9Grs"
               }
             },
-            "updatedAt":"2014-07-04T13:15:37Z"
+            "updatedAt":"2014-07-10T12:19:43Z"
           },
-          "name":"Playground",
-          "tutorial":true}
+          "name":"NewNameSpace5"}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 10:39:58 GMT
+  recorded_at: Thu, 10 Jul 2014 12:46:29 GMT
 recorded_with: VCR 2.9.2

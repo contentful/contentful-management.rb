@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.contentful.com/spaces/not_exist
+    method: post
+    uri: https://api.contentful.com/spaces
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"name":"My Test Space"}'
     headers:
       User-Agent:
       - RubyContenfulManagementGem/0.0.1
@@ -23,17 +23,17 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 10 Jul 2014 12:47:07 GMT
+      - Thu, 10 Jul 2014 13:07:00 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '137'
+      - '289'
       Connection:
       - keep-alive
       Status:
       - 404 Not Found
       X-Contentful-Request-Id:
-      - 85f-1209538661
+      - 85f-1209540846
       X-Ua-Compatible:
       - IE=Edge,chrome=1
       Accept-Ranges:
@@ -56,10 +56,10 @@ http_interactions:
         {
           "sys":{
             "type":"Error",
-            "id":"NotFound"
+            "id":"MissingOrganizationParameter"
           },
-          "requestId":"85f-1209538661",
-          "message":"The resource could not be found."}
+          "requestId":"85f-1209540846",
+          "message":"This User has multiple Organizations with permissions to create a Space. Please pass the X-Contentful-Organization header in which Organization to create the Space."}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 12:47:07 GMT
+  recorded_at: Thu, 10 Jul 2014 13:07:00 GMT
 recorded_with: VCR 2.9.2

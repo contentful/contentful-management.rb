@@ -17,25 +17,27 @@ http_interactions:
       - api.contentful.com
   response:
     status:
-      code: 403
-      message: Forbidden
+      code: 201
+      message: Created
     headers:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 10 Jul 2014 10:39:56 GMT
+      - Thu, 10 Jul 2014 13:14:13 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '176'
+      - '454'
       Connection:
       - keep-alive
       Status:
-      - 403 Forbidden
+      - 201 Created
       X-Contentful-Request-Id:
-      - 85f-1209528081
-      X-Ua-Compatible:
-      - IE=Edge,chrome=1
+      - 85f-1209542011
+      Location:
+      - https://api.contentful.com/spaces/r18pjk5uo77k
+      Etag:
+      - '"7a690c5ea0be858a4aa51c5801d7ebb6"'
       Accept-Ranges:
       - bytes
       Cache-Control:
@@ -55,11 +57,27 @@ http_interactions:
       string: |
         {
           "sys":{
-            "type":"Error",
-            "id":"Forbidden"
+            "type":"Space",
+            "id":"r18pjk5uo77k",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-07-10T13:14:11Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-07-10T13:14:11Z"
           },
-          "requestId":"85f-1209528081",
-          "message":"You are not authorized to do this action or exceeded your plan limits."}
+          "name":"My Test Space"}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 10:39:56 GMT
+  recorded_at: Thu, 10 Jul 2014 13:14:13 GMT
 recorded_with: VCR 2.9.2
