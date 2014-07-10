@@ -6,7 +6,7 @@ module Contentful
   module Management
     describe Space do
       let(:token) { '51cb89f45412ada2be4361599a96d6245e19913b6d2575eaf89dafaf99a443aa' }
-      let(:space_id) { 'l6a1rhnfkzbm' }
+      let(:space_id) { 'n6spjc167pc2' }
 
       let!(:client) { Client.new(token) }
 
@@ -81,17 +81,18 @@ module Contentful
       end
 
       describe '#update' do
-        let(:space_version) { 1 }
         it 'updates the space name' do
           vcr(:update_space) do
-            update_result = subject.find(space_id).update(name: 'NewNameSpace')
-            expect(update_result.sys[:version]).to eql space_version + 1
+            space = subject.find(space_id)
+            initial_version = space.sys[:version]
+            space.update(name: "NewNameSpace#{rand(10)}")
+            expect(space.sys[:version]).to eql initial_version + 1
           end
         end
 
         it 'returns an error when the wrong version is supplied' do
           vcr(:update_space_with_wrong_version) do
-            updated_space = subject.update(space_id, {name: 'NewName'}, nil, space_version)
+            updated_space = subject.update(space_id, {name: 'NewName'}, nil, -1)
             expect(updated_space).to be_kind_of Contentful::Error
           end
         end
