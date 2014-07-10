@@ -1,20 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: https://api.contentful.com/spaces/xxddi16swo35
+    method: get
+    uri: https://api.contentful.com/spaces/l6a1rhnfkzbm
     body:
-      encoding: UTF-8
-      string: "{\"name\":\"NewName\"}"
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - RubyContenfulManagementGem/0.0.1
       Authorization:
-      - Bearer such_a_long_token
+      - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
-      X-Contentful-Version:
-      - '1'
       Host:
       - api.contentful.com
   response:
@@ -25,19 +23,19 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Wed, 14 May 2014 16:03:27 GMT
+      - Thu, 10 Jul 2014 11:30:00 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '448'
+      - '470'
       Connection:
       - keep-alive
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1486186216
+      - 85f-1209532109
       Etag:
-      - "\"7f15e872d590853e98951904630ca7a7\""
+      - '"d20004950ad8960d396c603332b3e77a"'
       Accept-Ranges:
       - bytes
       Cache-Control:
@@ -58,26 +56,323 @@ http_interactions:
         {
           "sys":{
             "type":"Space",
-            "id":"uyvxw082vcxv",
-            "version":2,
+            "id":"l6a1rhnfkzbm",
+            "version":1,
             "createdBy":{
               "sys":{
                 "type":"Link",
                 "linkType":"User",
-                "id":"0FM4ubBsFE2bzqlE8U6JaF"
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
               }
             },
-            "createdAt":"2014-05-14T15:32:23Z",
+            "createdAt":"2014-07-04T13:15:37Z",
             "updatedBy":{
               "sys":{
                 "type":"Link",
                 "linkType":"User",
-                "id":"0FM4ubBsFE2bzqlE8U6JaF"
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
               }
             },
-            "updatedAt":"2014-05-14T16:03:27Z"
+            "updatedAt":"2014-07-04T13:15:37Z"
           },
-          "name":"NewName"}
-    http_version:
-  recorded_at: Wed, 14 May 2014 16:03:42 GMT
-recorded_with: VCR 2.9.0
+          "name":"Playground",
+          "tutorial":true}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 11:30:00 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/l6a1rhnfkzbm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 10 Jul 2014 11:30:23 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '470'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209532120
+      Etag:
+      - '"d20004950ad8960d396c603332b3e77a"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"l6a1rhnfkzbm",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-07-04T13:15:37Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-07-04T13:15:37Z"
+          },
+          "name":"Playground",
+          "tutorial":true}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 11:30:23 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/l6a1rhnfkzbm
+    body:
+      encoding: UTF-8
+      string: '{"name":"name"}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '1'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 10 Jul 2014 11:30:24 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '200'
+      Connection:
+      - keep-alive
+      Status:
+      - 400 Bad Request
+      X-Contentful-Request-Id:
+      - 85f-1209532127
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Error",
+            "id":"UnknownKey"
+          },
+          "requestId":"85f-1209532127",
+          "message":"The body you sent contains an unknown key.",
+          "details":{
+            "keys":[
+              "name"
+            ]
+          }}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 11:30:24 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/l6a1rhnfkzbm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 10 Jul 2014 11:30:43 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '470'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209532148
+      Etag:
+      - '"d20004950ad8960d396c603332b3e77a"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"l6a1rhnfkzbm",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-07-04T13:15:37Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-07-04T13:15:37Z"
+          },
+          "name":"Playground",
+          "tutorial":true}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 11:30:43 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/l6a1rhnfkzbm
+    body:
+      encoding: UTF-8
+      string: '{"name":"NewNameSpace"}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '1'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 10 Jul 2014 11:30:44 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '200'
+      Connection:
+      - keep-alive
+      Status:
+      - 400 Bad Request
+      X-Contentful-Request-Id:
+      - 85f-1209532149
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Error",
+            "id":"UnknownKey"
+          },
+          "requestId":"85f-1209532149",
+          "message":"The body you sent contains an unknown key.",
+          "details":{
+            "keys":[
+              "name"
+            ]
+          }}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 11:30:44 GMT
+recorded_with: VCR 2.9.2

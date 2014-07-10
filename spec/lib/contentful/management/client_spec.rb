@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe Client do
-      let(:token) { 'such_a_long_token' }
+      let(:token) { '51cb89f45412ada2be4361599a96d6245e19913b6d2575eaf89dafaf99a443aa' }
       let(:client) { Client.new(token) }
 
       subject { client }
@@ -15,18 +15,18 @@ module Contentful
       describe 'headers' do
         describe '#authentication_header' do
           its(:authentication_header) { should be_kind_of Hash }
-          its(:authentication_header) { should eql 'Authorization' => 'Bearer such_a_long_token' }
+          its(:authentication_header) { should eql 'Authorization' => 'Bearer 51cb89f45412ada2be4361599a96d6245e19913b6d2575eaf89dafaf99a443aa' }
         end
 
-        describe '#api_header' do
-          its(:api_header) { should be_kind_of Hash }
-          its(:api_header) { should eql 'Content-Type' => 'application/vnd.contentful.management.v1+json' }
+        describe '#api_version_header' do
+          its(:api_version_header) { should be_kind_of Hash }
+          its(:api_version_header) { should eql 'Content-Type' => 'application/vnd.contentful.management.v1+json' }
         end
 
         describe '#request_headers' do
           its(:request_headers) { should be_kind_of Hash }
           its(:request_headers) { should include client.authentication_header }
-          its(:request_headers) { should include client.api_header }
+          its(:request_headers) { should include client.api_version_header }
           its(:request_headers) { should include client.user_agent }
         end
 
@@ -42,7 +42,7 @@ module Contentful
 
           it 'returns the "X-Contentful-Organization" header' do
             expect(client.organization_header('MyOrganizationID'))
-              .to eql 'X-Contentful-Organization' => 'MyOrganizationID'
+            .to eql 'X-Contentful-Organization' => 'MyOrganizationID'
           end
         end
       end
@@ -51,12 +51,12 @@ module Contentful
         its(:protocol) { should eql 'https' }
 
         it 'is http when secure set to true' do
-          client = Client.new('token', secure: true)
+          client = Client.new('token', nil, secure: true)
           expect(client.protocol).to eql 'https'
         end
 
         it 'is http when secure set to false' do
-          client = Client.new('token', secure: false)
+          client = Client.new('token', nil, secure: false)
           expect(client.protocol).to eql 'http'
         end
       end

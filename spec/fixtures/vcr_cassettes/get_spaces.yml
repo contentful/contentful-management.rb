@@ -10,9 +10,9 @@ http_interactions:
       User-Agent:
       - RubyContenfulManagementGem/0.0.1
       Authorization:
-      - Bearer such_a_long_token
+      - Bearer <ACCESS_TOKEN>
       Content-Type:
-      - application/vnd.contentful.delivery.v1+json
+      - application/vnd.contentful.management.v1+json
       Host:
       - api.contentful.com
   response:
@@ -20,67 +20,121 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      !binary "U2VydmVy":
-      - !binary |-
-        bmdpbngvMS4xLjE5
-      !binary "RGF0ZQ==":
-      - !binary |-
-        VHVlLCAxMyBNYXkgMjAxNCAwODo1ODo0MiBHTVQ=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vdm5kLmNvbnRlbnRmdWwubWFuYWdlbWVudC52MStqc29u
-      !binary "Q29udGVudC1MZW5ndGg=":
-      - !binary |-
-        NjYz
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
-      !binary "U3RhdHVz":
-      - !binary |-
-        MjAwIE9L
-      !binary "WC1Db250ZW50ZnVsLVJlcXVlc3QtSWQ=":
-      - !binary |-
-        ODVmLTE0ODYwNjk0OTI=
-      !binary "RXRhZw==":
-      - !binary |-
-        IjBjZGRlOWEyZDE3NjFjNDU0ZjZkNDMxNmQ4ODk1ODYwIg==
-      !binary "QWNjZXB0LVJhbmdlcw==":
-      - !binary |-
-        Ynl0ZXM=
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bWF4LWFnZT0w
-      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2lu":
-      - !binary |-
-        Kg==
-      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctSGVhZGVycw==":
-      - !binary |-
-        QWNjZXB0LEFjY2VwdC1MYW5ndWFnZSxBdXRob3JpemF0aW9uLENhY2hlLUNv
-        bnRyb2wsQ29udGVudC1MZW5ndGgsQ29udGVudC1SYW5nZSxDb250ZW50LVR5
-        cGUsRE5ULERlc3RpbmF0aW9uLEV4cGlyZXMsSWYtTWF0Y2gsSWYtTW9kaWZp
-        ZWQtU2luY2UsSWYtTm9uZS1NYXRjaCxLZWVwLUFsaXZlLExhc3QtTW9kaWZp
-        ZWQsT3JpZ2luLFByYWdtYSxSYW5nZSxVc2VyLUFnZW50LFgtSHR0cC1NZXRo
-        b2QtT3ZlcnJpZGUsWC1NeC1SZXFUb2tlbixYLVJlcXVlc3RlZC1XaXRoLFgt
-        Q29udGVudGZ1bC1WZXJzaW9uLFgtQ29udGVudGZ1bC1Db250ZW50LVR5cGUs
-        WC1Db250ZW50ZnVsLU9yZ2FuaXphdGlvbg==
-      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctTWV0aG9kcw==":
-      - !binary |-
-        REVMRVRFLEdFVCxIRUFELFBPU1QsUFVULE9QVElPTlM=
-      !binary "QWNjZXNzLUNvbnRyb2wtTWF4LUFnZQ==":
-      - !binary |-
-        MTcyODAwMA==
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 10 Jul 2014 10:39:59 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1766'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209528091
+      Etag:
+      - '"e2243bd47b12981c0075db35ccde8ca3"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
     body:
-      encoding: US-ASCII
-      string: ! "{\n  \"sys\":{\n    \"type\":\"Array\"\n  },\n  \"items\":[\n    {\n
-        \     \"sys\":{\n        \"type\":\"Space\",\n        \"id\":\"xxddi16swo35\",\n
-        \       \"version\":1,\n        \"createdBy\":{\n          \"sys\":{\n            \"type\":\"Link\",\n
-        \           \"linkType\":\"User\",\n            \"id\":\"1krHML0iMQX42EGvOY4Vfw\"\n
-        \         }\n        },\n        \"createdAt\":\"2014-05-07T14:24:06Z\",\n
-        \       \"updatedBy\":{\n          \"sys\":{\n            \"type\":\"Link\",\n
-        \           \"linkType\":\"User\",\n            \"id\":\"1krHML0iMQX42EGvOY4Vfw\"\n
-        \         }\n        },\n        \"updatedAt\":\"2014-05-07T14:24:06Z\"\n
-        \     },\n      \"name\":\"Playground\",\n      \"tutorial\":true\n    }\n
-        \ ],\n  \"total\":1,\n  \"limit\":25,\n  \"skip\":0}\n"
-    http_version:
-  recorded_at: Tue, 13 May 2014 08:58:48 GMT
-recorded_with: VCR 2.9.0
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "sys":{
+                "type":"Space",
+                "id":"l6a1rhnfkzbm",
+                "version":1,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-04T13:15:37Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-04T13:15:37Z"
+              },
+              "name":"Playground",
+              "tutorial":true
+            },
+            {
+              "sys":{
+                "type":"Space",
+                "id":"n6spjc167pc2",
+                "version":1,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-09T11:04:14Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-09T11:04:14Z"
+              },
+              "name":"second_space"
+            },
+            {
+              "sys":{
+                "type":"Space",
+                "id":"3gpluolpxxzb",
+                "version":1,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-10T10:15:59Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-10T10:15:59Z"
+              },
+              "name":"My Test Space"
+            }
+          ],
+          "total":3,
+          "limit":25,
+          "skip":0}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 10:39:59 GMT
+recorded_with: VCR 2.9.2
