@@ -15,7 +15,7 @@ module Contentful
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration, :space_id
-      attr_accessor :organization, :version
+      attr_accessor :organization_id, :version
 
       DEFAULT_CONFIGURATION = {
           api_url: 'api.contentful.com',
@@ -112,8 +112,8 @@ module Contentful
         Hash['User-Agent', "RubyContenfulManagementGem/#{Contentful::Management::VERSION}"]
       end
 
-      def organization_header(organization)
-        Hash['X-Contentful-Organization', organization]
+      def organization_header(organization_id)
+        Hash['X-Contentful-Organization', organization_id]
       end
 
       def version_header(version)
@@ -126,7 +126,7 @@ module Contentful
         headers.merge! user_agent
         headers.merge! authentication_header
         headers.merge! api_version_header
-        headers.merge! organization_header(organization) if organization
+        headers.merge! organization_header(organization_id) if organization_id
         headers.merge! version_header(version) if version
         headers
       end
