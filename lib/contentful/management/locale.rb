@@ -1,23 +1,20 @@
 require_relative '../resource'
-require_relative '../field'
 
 module Contentful
 
   module Management
 
-    class ContentType
+    class Locale
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
 
+      property :code, :string
       property :name, :string
-      property :description, :string
-      property :fields, Field
-      property :displayField, :string
 
       def self.all(space_id = nil)
-        request = Request.new("/#{space_id || Thread.current[:space_id]}/content_types")
+        request = Request.new("/#{space_id || Thread.current[:space_id]}/locales")
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(self, response, {'Locale' => Locale}, {})
         result.run
       end
 

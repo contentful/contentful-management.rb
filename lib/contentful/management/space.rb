@@ -1,6 +1,5 @@
 require_relative '../resource'
-require_relative '../locale'
-require_relative '../request'
+require_relative 'locale'
 require_relative 'content_type'
 
 module Contentful
@@ -30,7 +29,7 @@ module Contentful
       end
 
       def self.create(attributes)
-        request = Request.new('', 'name' => attributes.fetch(:name))
+        request = Request.new('', {'name' => attributes.fetch(:name)}, nil, nil, attributes[:organization_id])
         response = request.post
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
@@ -63,14 +62,11 @@ module Contentful
       end
 
       def content_types
-        ContentType.all
+        ContentType.all(id)
       end
 
-      private
-
-      def copy_internals(new_instance)
-        @properties = new_instance.properties
-        @sys = new_instance.sys
+      def locales
+        Locale.all(id)
       end
 
     end
