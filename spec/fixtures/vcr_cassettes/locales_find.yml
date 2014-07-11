@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 11 Jul 2014 09:02:21 GMT
+      - Fri, 11 Jul 2014 09:13:47 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -33,7 +33,7 @@ http_interactions:
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209634866
+      - 85f-1209635922
       Etag:
       - '"ea1ce6fc0e7cb20a32cdba47d6566865"'
       Accept-Ranges:
@@ -77,7 +77,7 @@ http_interactions:
           },
           "name":"NewNameBySave"}
     http_version: 
-  recorded_at: Fri, 11 Jul 2014 09:02:21 GMT
+  recorded_at: Fri, 11 Jul 2014 09:13:47 GMT
 - request:
     method: get
     uri: https://api.contentful.com/spaces/n6spjc167pc2/locales
@@ -101,7 +101,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 11 Jul 2014 09:02:21 GMT
+      - Fri, 11 Jul 2014 09:13:48 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -111,7 +111,7 @@ http_interactions:
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209634868
+      - 85f-1209635924
       Etag:
       - '"0a24cd66e4954b2b99ceb4585aad476c"'
       Accept-Ranges:
@@ -177,5 +177,95 @@ http_interactions:
           "limit":25,
           "skip":0}
     http_version: 
-  recorded_at: Fri, 11 Jul 2014 09:02:21 GMT
+  recorded_at: Fri, 11 Jul 2014 09:13:48 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/locales/5lxE2NYGbYiaerH8dx3WNE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 11 Jul 2014 09:14:18 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '700'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209635977
+      Etag:
+      - '"d5c8acda33cf93227f13dc1e6e02dd02"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Locale",
+            "id":"5lxE2NYGbYiaerH8dx3WNE",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"n6spjc167pc2"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-07-09T11:04:14Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-07-09T11:04:14Z"
+          },
+          "name":"U.S. English",
+          "code":"en-US",
+          "default":true,
+          "contentManagementApi":true,
+          "publish":true,
+          "contentDeliveryApi":true}
+    http_version: 
+  recorded_at: Fri, 11 Jul 2014 09:14:18 GMT
 recorded_with: VCR 2.9.2

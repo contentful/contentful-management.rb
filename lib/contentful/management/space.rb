@@ -87,14 +87,18 @@ module Contentful
       def locales
         locales = Locale.all(id)
 
-        content_types.instance_exec(self) do |space|
+        locales.instance_exec(self) do |space|
 
-          content_types.define_singleton_method(:all) do
+          locales.define_singleton_method(:all) do
             Locale.all(space.id)
           end
 
           locales.define_singleton_method(:create) do |params|
             Locale.create(space.id, params)
+          end
+
+          self.define_singleton_method(:find) do |locale_id|
+            Locale.find(space.id, locale_id)
           end
 
         end

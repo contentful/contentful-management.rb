@@ -18,6 +18,13 @@ module Contentful
         result.run
       end
 
+      def self.find(space_id, locale_id)
+        request = Request.new("/#{space_id}/locales/#{locale_id}")
+        response = request.get
+        result = ResourceBuilder.new(self, response, {'Locale' => Locale}, {})
+        result.run
+      end
+
     end
   end
 end
