@@ -21,7 +21,7 @@ module Contentful
         end
       end
 
-      describe '#find' do
+      describe '.find' do
         it 'returns a Contentful::Management::Space' do
           vcr(:get_space) { expect(subject.find(space_id)).to be_kind_of Contentful::Management::Space }
         end
@@ -100,6 +100,13 @@ module Contentful
       end
 
       describe '#content_types' do
+        let(:content_type_id) { 'LE3x1rgCgU6QO0guSEm64' }
+        let(:content_type_name) { 'TestingContentType' }
+
+        it 'creates content type' do
+          skip 'add implementation'
+        end
+
         it 'lists content types to given space' do
           vcr(:get_content_types) do
             content_types = subject.find(space_id).content_types
@@ -109,19 +116,51 @@ module Contentful
         it 'builds a Contentful::Management::ContentType object' do
           vcr(:get_content_types) { expect(subject.find(space_id).content_types.first).to be_kind_of Contentful::Management::ContentType }
         end
+        it '#content_types.find' do
+          vcr(:content_types_find) do
+            content_type = subject.find(space_id).content_types.find(content_type_id)
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq content_type_name
+          end
+        end
+        it '.content_types.all' do
+          vcr(:get_content_types_all) do
+            content_types = subject.find(space_id).content_types.all
+            expect(content_types).to be_kind_of Contentful::Array
+          end
+        end
       end
 
       describe '#locales' do
+        let(:locale_id) { '5lxE2NYGbYiaerH8dx3WNE' }
         it 'lists locales to given space' do
           vcr(:get_locales) do
-            content_types = subject.find(space_id).locales
-            expect(content_types).to be_kind_of Contentful::Array
+            locales = subject.find(space_id).locales
+            expect(locales).to be_kind_of Contentful::Array
           end
         end
         it 'builds a Contentful::Management::Local object' do
           vcr(:get_locales) { expect(subject.find(space_id).locales.first).to be_kind_of Contentful::Management::Locale }
         end
+
+        it '#locales.all' do
+          vcr(:get_locales_all) do
+            locales = subject.find(space_id).locales.all
+            expect(locales).to be_kind_of Contentful::Array
+          end
+        end
+        it 'builds a Contentful::Management::Local object' do
+          vcr(:get_locales_all) { expect(subject.find(space_id).locales.all.first).to be_kind_of Contentful::Management::Locale }
+        end
+        it '#locales.find' do
+          vcr(:locales_find) do
+            locales = subject.find(space_id).locales.find(locale_id)
+            expect(locales).to be_kind_of Contentful::Management::Locale
+            expect(locales.code).to eql 'en-US'
+          end
+        end
       end
+
       describe '#save' do
         let(:new_name) { 'SaveNewName' }
         it 'successfully save an object' do
