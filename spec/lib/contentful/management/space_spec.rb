@@ -134,7 +134,8 @@ module Contentful
         end
         it 'successfully save an object' do
           vcr(:save_new_space) do
-            space = subject.new(name: new_name)
+            space = subject.new
+            space.name = new_name
             space.save
             expect(space).to be_kind_of Contentful::Management::Space
             expect(space.name).to eq new_name

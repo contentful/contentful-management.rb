@@ -14,8 +14,8 @@ module Contentful
       property :fields, Field
       property :displayField, :string
 
-      def self.all(space_id = nil)
-        request = Request.new("/#{space_id || Thread.current[:space_id]}/content_types")
+      def self.all(space_id)
+        request = Request.new("/#{space_id}/content_types")
         response = request.get
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
@@ -28,7 +28,7 @@ module Contentful
         result.run
       end
 
-      def self.create(attributes)
+      def self.create(space_id, attributes)
         #TODO add implememntation
         request = Request.new('', {'name' => attributes.fetch(:name)}, nil, nil, attributes[:organization_id])
         response = request.post

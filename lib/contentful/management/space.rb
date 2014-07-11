@@ -44,7 +44,8 @@ module Contentful
 
       def save
         if id.nil?
-          self.class.create(name: name)
+          new_instance = self.class.create(name: name)
+          refresh_data(new_instance)
         else
           update(name: name)
         end
@@ -66,12 +67,16 @@ module Contentful
 
         content_types.instance_exec(self) do |space|
 
-          content_types.define_singleton_method(:create) do |params|
-            ContentType.create(params.merge(space_id: space.id))
+          content_types.define_singleton_method(:all) do
+            ContentType.all(space.id)
           end
 
-          self.define_singleton_method(:find) do |conent_type_id|
-            ContentType.find(space.id, conent_type_id)
+          content_types.define_singleton_method(:create) do |params|
+            ContentType.create(space.id, params)
+          end
+
+          self.define_singleton_method(:find) do |content_type_id|
+            ContentType.find(space.id, content_type_id)
           end
 
         end
@@ -81,9 +86,19 @@ module Contentful
 
       def locales
         locales = Locale.all(id)
-        locales.define_singleton_method(:create) do |params|
-          Locale.create(params)
+
+        content_types.instance_exec(self) do |space|
+
+          content_types.define_singleton_method(:all) do
+            Locale.all(space.id)
+          end
+
+          locales.define_singleton_method(:create) do |params|
+            Locale.create(space.id, params)
+          end
+
         end
+
         locales
       end
 

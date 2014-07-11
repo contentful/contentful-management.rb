@@ -37,9 +37,13 @@ space.name = 'FFF'
 space.save
 
 
-space_id = 'btp9v9jxpknp'
-client = Contentful::Management::Client.new('71607c586050e66bdd6b14aef4515c8ea55034889336dac69c96cbd2c3916d08', space_id)
-Contentful::Management::Space.ContentType.all
+space.content_types
+space.content_types.all
+space.content_types.find(id)
+space.content_types.create(params)
+
+ct = space.content_types.find(id)
+ct.destroy
 ```
 
 ## Contributing
