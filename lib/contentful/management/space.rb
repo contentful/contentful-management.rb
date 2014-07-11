@@ -62,11 +62,29 @@ module Contentful
       end
 
       def content_types
-        ContentType.all(id)
+        content_types = ContentType.all(id)
+
+        content_types.instance_exec(self) do |space|
+
+          content_types.define_singleton_method(:create) do |params|
+            ContentType.create(params.merge(space_id: space.id))
+          end
+
+          self.define_singleton_method(:find) do |conent_type_id|
+            ContentType.find(space.id, conent_type_id)
+          end
+
+        end
+
+        content_types
       end
 
       def locales
-        Locale.all(id)
+        locales = Locale.all(id)
+        locales.define_singleton_method(:create) do |params|
+          Locale.create(params)
+        end
+        locales
       end
 
     end
