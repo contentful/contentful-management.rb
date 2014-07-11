@@ -23,87 +23,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 10 Jul 2014 13:24:13 GMT
-      Content-Type:
-      - application/vnd.contentful.management.v1+json
-      Content-Length:
-      - '453'
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Contentful-Request-Id:
-      - 85f-1209543724
-      Etag:
-      - '"4e1e70fd11807b4cbef9d50ba36baef3"'
-      Accept-Ranges:
-      - bytes
-      Cache-Control:
-      - max-age=0
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
-      Access-Control-Allow-Methods:
-      - DELETE,GET,HEAD,POST,PUT,OPTIONS
-      "^access-Control-Expose-Headers":
-      - Etag
-      Access-Control-Max-Age:
-      - '1728000'
-    body:
-      encoding: UTF-8
-      string: |
-        {
-          "sys":{
-            "type":"Space",
-            "id":"n6spjc167pc2",
-            "version":8,
-            "createdBy":{
-              "sys":{
-                "type":"Link",
-                "linkType":"User",
-                "id":"1E7acJL8I5XUXAMHQt9Grs"
-              }
-            },
-            "createdAt":"2014-07-09T11:04:14Z",
-            "updatedBy":{
-              "sys":{
-                "type":"Link",
-                "linkType":"User",
-                "id":"1E7acJL8I5XUXAMHQt9Grs"
-              }
-            },
-            "updatedAt":"2014-07-10T13:22:04Z"
-          },
-          "name":"NewNameSpace"}
-    http_version: 
-  recorded_at: Thu, 10 Jul 2014 13:24:13 GMT
-- request:
-    method: put
-    uri: https://api.contentful.com/spaces/n6spjc167pc2
-    body:
-      encoding: UTF-8
-      string: '{"name":"NewNameSpacee"}'
-    headers:
-      User-Agent:
-      - RubyContenfulManagementGem/0.0.1
-      Authorization:
-      - Bearer <ACCESS_TOKEN>
-      Content-Type:
-      - application/vnd.contentful.management.v1+json
-      X-Contentful-Version:
-      - '8'
-      Host:
-      - api.contentful.com
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.1.19
-      Date:
-      - Thu, 10 Jul 2014 13:24:14 GMT
+      - Thu, 10 Jul 2014 13:44:42 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -113,7 +33,7 @@ http_interactions:
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209543728
+      - 85f-1209546432
       Etag:
       - '"f1e7915df2bcd6051031cd1846176144"'
       Accept-Ranges:
@@ -157,5 +77,105 @@ http_interactions:
           },
           "name":"NewNameSpacee"}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 13:24:14 GMT
+  recorded_at: Thu, 10 Jul 2014 13:44:42 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/locales
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 10 Jul 2014 13:44:42 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '937'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209546433
+      Etag:
+      - '"0a24cd66e4954b2b99ceb4585aad476c"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"5lxE2NYGbYiaerH8dx3WNE",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-09T11:04:14Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-09T11:04:14Z"
+              },
+              "name":"U.S. English",
+              "code":"en-US",
+              "default":true,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            }
+          ],
+          "total":1,
+          "limit":25,
+          "skip":0}
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 13:44:43 GMT
 recorded_with: VCR 2.9.2

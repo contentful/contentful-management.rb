@@ -43,10 +43,10 @@ module Contentful
       end
 
       def save
-        if id.present?
-          update(name: name)
-        else
+        if id.nil?
           self.class.create(name: name)
+        else
+          update(name: name)
         end
       end
 

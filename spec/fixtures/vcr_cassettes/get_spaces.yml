@@ -23,19 +23,19 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 10 Jul 2014 10:39:59 GMT
+      - Thu, 10 Jul 2014 12:46:13 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '1766'
+      - '1767'
       Connection:
       - keep-alive
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209528091
+      - 85f-1209538582
       Etag:
-      - '"e2243bd47b12981c0075db35ccde8ca3"'
+      - '"b94eeedb86f2b01adb5b52e4aba1cdc4"'
       Accept-Ranges:
       - bytes
       Cache-Control:
@@ -87,7 +87,7 @@ http_interactions:
               "sys":{
                 "type":"Space",
                 "id":"n6spjc167pc2",
-                "version":1,
+                "version":7,
                 "createdBy":{
                   "sys":{
                     "type":"Link",
@@ -103,14 +103,14 @@ http_interactions:
                     "id":"1E7acJL8I5XUXAMHQt9Grs"
                   }
                 },
-                "updatedAt":"2014-07-09T11:04:14Z"
+                "updatedAt":"2014-07-10T12:19:43Z"
               },
-              "name":"second_space"
+              "name":"NewNameSpace5"
             },
             {
               "sys":{
                 "type":"Space",
-                "id":"3gpluolpxxzb",
+                "id":"7ey2ax4nli32",
                 "version":1,
                 "createdBy":{
                   "sys":{
@@ -119,7 +119,7 @@ http_interactions:
                     "id":"1E7acJL8I5XUXAMHQt9Grs"
                   }
                 },
-                "createdAt":"2014-07-10T10:15:59Z",
+                "createdAt":"2014-07-10T10:48:49Z",
                 "updatedBy":{
                   "sys":{
                     "type":"Link",
@@ -127,7 +127,7 @@ http_interactions:
                     "id":"1E7acJL8I5XUXAMHQt9Grs"
                   }
                 },
-                "updatedAt":"2014-07-10T10:15:59Z"
+                "updatedAt":"2014-07-10T10:48:49Z"
               },
               "name":"My Test Space"
             }
@@ -136,5 +136,5 @@ http_interactions:
           "limit":25,
           "skip":0}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 10:39:59 GMT
+  recorded_at: Thu, 10 Jul 2014 12:46:13 GMT
 recorded_with: VCR 2.9.2
