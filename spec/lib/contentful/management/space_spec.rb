@@ -104,7 +104,7 @@ module Contentful
         let(:content_type_name) { 'TestingContentType' }
 
         it 'creates content type' do
-          skip 'add implementation'
+          skip 'Not yet implemented'
         end
 
         it 'lists content types to given space' do
@@ -159,6 +159,35 @@ module Contentful
             expect(locales.code).to eql 'en-US'
           end
         end
+
+        it 'creates locales to space' do
+          vcr(:locale_create) do
+            locale = subject.find(space_id).locales.create(name: 'testlocalbycodequest', content_Management_Api: true, publish: true, content_Delivery_Api: true, code: 'br')
+            expect(locale).to be_kind_of Contentful::Management::Locale
+            expect(locale.name).to eql 'testlocalbycodequest'
+          end
+        end
+
+        it '#update when all params are given' do
+          vcr(:locale_update) do
+            locale = subject.find(space_id).locales.find('0X5xcjckv6RMrd9Trae81p')
+            initial_version = locale.sys[:version]
+            locale.update(name: 'testNewLocaleNameUpdate', content_Management_Api: true, publish: true, content_Delivery_Api: false)
+            expect(locale).to be_kind_of Contentful::Management::Locale
+            expect(locale.name).to eql 'testNewLocaleNameUpdate'
+            expect(locale.sys[:version]).to eql initial_version + 1
+          end
+        end
+
+        it '#update when all params are given' do
+          vcr(:locale_update_only_name) do
+            locale = subject.find(space_id).locales.find('0X5xcjckv6RMrd9Trae81p')
+            locale.update(name: 'testNewLocaleName')
+            expect(locale).to be_kind_of Contentful::Management::Locale
+            expect(locale.name).to eql 'testNewLocaleName'
+          end
+        end
+
       end
 
       describe '#save' do
