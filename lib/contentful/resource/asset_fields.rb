@@ -7,9 +7,9 @@ module Contentful
     # It depends on system properties being available
     module AssetFields
       FIELDS_COERCIONS = {
-          title: :string,
-          description: :string,
-          file: File,
+          title:  :string,
+          description:  :string,
+          file:  File,
       }
 
       def fields
