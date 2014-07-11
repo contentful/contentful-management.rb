@@ -5,7 +5,6 @@ require_relative 'content_type'
 module Contentful
   module Management
     class Space
-
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
       include Contentful::Resource::Refresher
@@ -29,14 +28,14 @@ module Contentful
       end
 
       def self.create(attributes)
-        request = Request.new('', {'name' => attributes.fetch(:name)}, nil, nil, attributes[:organization_id])
+        request = Request.new('', { 'name' => attributes.fetch(:name) }, nil, nil, attributes[:organization_id])
         response = request.post
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def update(attributes)
-        request = Request.new("/#{id}", {'name' => attributes.fetch(:name)}, nil, sys[:version])
+        request = Request.new("/#{ id }", { 'name' => attributes.fetch(:name) }, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {})
         refresh_data(result.run)
@@ -52,7 +51,7 @@ module Contentful
       end
 
       def destroy
-        request = Request.new("/#{id}")
+        request = Request.new("/#{ id }")
         response = request.delete
         if response.status == :no_content
           return true
@@ -75,7 +74,7 @@ module Contentful
             ContentType.create(space.id, params)
           end
 
-          self.define_singleton_method(:find) do |content_type_id|
+          define_singleton_method(:find) do |content_type_id|
             ContentType.find(space.id, content_type_id)
           end
 
@@ -88,7 +87,6 @@ module Contentful
         locales = Locale.all(id)
 
         locales.instance_exec(self) do |space|
-
           locales.define_singleton_method(:all) do
             Locale.all(space.id)
           end
@@ -97,16 +95,13 @@ module Contentful
             Locale.create(space.id, params)
           end
 
-          self.define_singleton_method(:find) do |locale_id|
+          define_singleton_method(:find) do |locale_id|
             Locale.find(space.id, locale_id)
           end
-
         end
 
         locales
       end
-
     end
-
   end
 end

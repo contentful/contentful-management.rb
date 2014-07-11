@@ -61,7 +61,7 @@ module Contentful
         end
         it 'creates a space when the user only has one organization' do
           vcr(:create_space_without_organization) do
-            space = subject.create({name: space_name})
+            space = subject.create(name: space_name)
             expect(space).to be_kind_of Contentful::Management::Space
             expect(space.name).to eq space_name
           end
@@ -74,7 +74,7 @@ module Contentful
         end
         it 'returns error when limit has been reached' do
           vcr(:create_space_when_limit_has_been_reached) do
-            space = subject.create({name: space_name})
+            space = subject.create(name: space_name)
             expect(space).to be_kind_of Contentful::AccessDenied
           end
         end
