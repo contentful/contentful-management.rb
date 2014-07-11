@@ -61,6 +61,81 @@ module Contentful
         end
       end
 
+      describe '#activate' do
+        it 'returns Contentful::Management::ContentType' do
+          vcr(:activate_content_type) do
+            result = subject.find(space_id, content_type_id).activate
+            expect(result).to be_kind_of Contentful::Management::ContentType
+          end
+        end
+        it 'increases object version' do
+          vcr(:activate_content_type) do
+            content_type = subject.find(space_id, content_type_id)
+            initial_version = content_type.sys[:version]
+            content_type.activate
+            expect(content_type.sys[:version]).to eql initial_version + 1
+          end
+        end
+        it 'returns BadRequest error when not valid version' do
+          vcr(:activate_content_type_invalid_version) do
+            content_type = subject.find(space_id, content_type_id)
+            content_type.sys[:version] = -1
+            result = content_type.activate
+            expect(result).to be_kind_of Contentful::BadRequest
+          end
+        end
+      end
+
+      describe '#deactivate' do
+        it 'returns Contentful::Management::ContentType' do
+          vcr(:deactivate_content_type) do
+            content_type = subject.find(space_id, content_type_id)
+            result = content_type.deactivate
+            expect(result).to be_kind_of Contentful::Management::ContentType
+          end
+        end
+        it 'increases object version' do
+          vcr(:deactivate_content_type_with_version_change) do
+            content_type = subject.find(space_id, content_type_id)
+            initial_version = content_type.sys[:version]
+            content_type.activate
+            expect(content_type.sys[:version]).to eql initial_version + 1
+          end
+        end
+        it 'returns BadRequest error when already unpublished' do
+          vcr(:deactivate_content_type_already_unpublished) do
+            result = subject.find(space_id, content_type_id).deactivate
+            expect(result).to be_kind_of Contentful::BadRequest
+          end
+        end
+        it 'returns error message when already unpublished' do
+          vcr(:deactivate_content_type_already_unpublished) do
+            content_type = subject.find(space_id, content_type_id)
+            content_type.sys[:version] = -1
+            result = content_type.deactivate
+            expect(result.message).to eq 'Not published'
+          end
+        end
+      end
+
+      describe '#active?' do
+        it 'returns true if content_type is active' do
+          vcr(:activate_content_type) do
+            content_type = subject.find(space_id, content_type_id)
+            content_type.activate
+            expect(content_type.active?).to be_true
+          end
+        end
+        it 'returns false if content_type is not active' do
+          vcr(:deactivate_content_type) do
+            content_type = subject.find(space_id, content_type_id)
+            content_type.deactivate
+            expect(content_type.active?).to be_false
+          end
+        end
+      end
+
+
       # describe '.create' do
       #   let(:space_name) { 'My Test Space' }
       #   let(:organization_id) { '5Ct8QHndDsi4zT3hwFwOLd' }

@@ -9,6 +9,7 @@ module Contentful
       @client =  Contentful::Management::Client.new
       @client.version = version if version
       @client.organization_id = organization_id if organization_id
+      @client.zero_length = query.empty?
       @endpoint = endpoint
       @absolute = true if @endpoint.start_with?('http')
 

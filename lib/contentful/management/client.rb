@@ -15,7 +15,7 @@ module Contentful
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration, :space_id
-      attr_accessor :organization_id, :version
+      attr_accessor :organization_id, :version, :zero_length
 
       DEFAULT_CONFIGURATION = {
           api_url: 'api.contentful.com',
@@ -120,6 +120,10 @@ module Contentful
         Hash['X-Contentful-Version', version]
       end
 
+      def zero_length_header
+        Hash['Content-Length', 0]
+      end
+
       # XXX: headers should be supplied differently, maybe through the request object.
       def request_headers
         headers = {}
@@ -128,6 +132,7 @@ module Contentful
         headers.merge! api_version_header
         headers.merge! organization_header(organization_id) if organization_id
         headers.merge! version_header(version) if version
+        headers.merge! zero_length_header if zero_length
         headers
       end
     end

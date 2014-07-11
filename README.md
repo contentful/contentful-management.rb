@@ -44,6 +44,8 @@ space.content_types.create(params)
 
 ct = space.content_types.find(id)
 ct.destroy
+ct.activate
+ct.deactivate
 ```
 
 ## Contributing
