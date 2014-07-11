@@ -11,8 +11,8 @@ module Contentful
       property :code, :string
       property :name, :string
 
-      def self.all(space_id = nil)
-        request = Request.new("/#{space_id || Thread.current[:space_id]}/locales")
+      def self.all(space_id)
+        request = Request.new("/#{space_id}/locales")
         response = request.get
         result = ResourceBuilder.new(self, response, {'Locale' => Locale}, {})
         result.run

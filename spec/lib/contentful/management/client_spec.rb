@@ -51,12 +51,12 @@ module Contentful
         its(:protocol) { should eql 'https' }
 
         it 'is http when secure set to true' do
-          client = Client.new('token', nil, secure: true)
+          client = Client.new('token', secure: true)
           expect(client.protocol).to eql 'https'
         end
 
         it 'is http when secure set to false' do
-          client = Client.new('token', nil, secure: false)
+          client = Client.new('token', secure: false)
           expect(client.protocol).to eql 'http'
         end
       end
