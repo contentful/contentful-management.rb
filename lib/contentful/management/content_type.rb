@@ -36,6 +36,17 @@ module Contentful
         result.run
       end
 
+      def destroy
+        request = Request.new("/#{space.id}/content_types/#{id}")
+        response = request.delete
+        if response.status == :no_content
+          return true
+        else
+          result = ResourceBuilder.new(self, response, {}, {})
+          result.run
+        end
+      end
+
     end
   end
 end
