@@ -28,14 +28,6 @@ module Contentful
         result.run
       end
 
-      def self.create(space_id, attributes)
-        #TODO add implememntation
-        request = Request.new('', {'name' => attributes.fetch(:name)}, nil, nil, attributes[:organization_id])
-        response = request.post
-        result = ResourceBuilder.new(self, response, {}, {})
-        result.run
-      end
-
       def destroy
         request = Request.new("/#{space.id}/content_types/#{id}")
         response = request.delete
@@ -46,6 +38,15 @@ module Contentful
           result.run
         end
       end
+
+      def self.create(space_id, attributes)
+        #TODO add implememntation
+        request = Request.new('', {'name' => attributes.fetch(:name)}, nil, nil, attributes[:organization_id])
+        response = request.post
+        result = ResourceBuilder.new(self, response, {}, {})
+        result.run
+      end
+
 
     end
   end
