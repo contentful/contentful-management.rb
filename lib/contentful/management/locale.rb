@@ -16,7 +16,7 @@ module Contentful
       property :publish, :boolean
 
       def self.all(space_id = nil)
-        request = Request.new("/#{space_id || Thread.current[:space_id]}/locales",)
+        request = Request.new("/#{space_id || Thread.current[:space_id]}/locales")
         response = request.get
         result = ResourceBuilder.new(self, response, {'Locale' => Locale}, {})
         result.run

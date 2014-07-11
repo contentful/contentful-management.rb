@@ -123,14 +123,14 @@ module Contentful
           vcr(:activate_content_type) do
             content_type = subject.find(space_id, content_type_id)
             content_type.activate
-            expect(content_type.active?).to be_true
+            expect(content_type.active?).to be_truthy
           end
         end
         it 'returns false if content_type is not active' do
           vcr(:deactivate_content_type) do
             content_type = subject.find(space_id, content_type_id)
             content_type.deactivate
-            expect(content_type.active?).to be_false
+            expect(content_type.active?).to be_falsey
           end
         end
       end
