@@ -67,17 +67,27 @@ module Contentful
 
       def self.create(space_id, attributes)
         fields = (attributes[:fields] || []).map(&:properties)
-        request = Request.new("/#{space_id}/content_types/#{attributes[:id] || ''}", {'name' => attributes.fetch(:name), fields: fields})
+        request = Request.new("/#{space_id}/content_types/#{attributes[:id] || ''}", {name: attributes.fetch(:name),
+                                                                                      description: attributes[:description],
+                                                                                      fields: fields})
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def update(attributes)
-        request = Request.new("/#{space.id}/content_types/#{id}", {'name' => attributes[:name]})
+        parameters = {}
+        parameters.merge!(name: (attributes[:name] || name))
+        parameters.merge!(description: (attributes[:description] || description))
+        parameters.merge!(fields: (attributes[:fields] || fields).map(&:update_properties))
+        request = Request.new("/#{space.id}/content_types/#{id}", parameters, nil, sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {})
-        refresh_data(result.run)
+        result = ResourceBuilder.new(self, response, {}, {}).run
+        if result.is_a? self.class
+          refresh_data(result)
+        else
+          result
+        end
       end
 
     end

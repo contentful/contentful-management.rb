@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.contentful.com/spaces/btp9v9jxpknp/content_types/
     body:
       encoding: UTF-8
-      string: '{"name":"My Content Type"}'
+      string: '{"name":"My Content Type","description":"My Description","fields":[]}'
     headers:
       User-Agent:
       - RubyContenfulManagementGem/0.0.1
@@ -23,11 +23,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 11 Jul 2014 13:35:11 GMT
+      - Mon, 14 Jul 2014 10:25:52 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '625'
+      - '676'
       Connection:
       - keep-alive
       X-Powered-By:
@@ -35,7 +35,7 @@ http_interactions:
       Cf-Space-Id:
       - btp9v9jxpknp
       Etag:
-      - '"afaae8f86c22ef41cc84fa8b7e04c16d"'
+      - '"9678880374c91581101f1838d2de05c4"'
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Headers:
@@ -51,11 +51,13 @@ http_interactions:
       string: |
         {
           "name": "My Content Type",
+          "description": "My Description",
+          "fields": [],
           "sys": {
-            "id": "4GItoFpeakWYy4aYUGAOQS",
+            "id": "4oUR867pTqOImqKyYCqOiY",
             "type": "ContentType",
             "version": 1,
-            "createdAt": "2014-07-11T13:35:11.490Z",
+            "createdAt": "2014-07-14T10:25:52.254Z",
             "createdBy": {
               "sys": {
                 "type": "Link",
@@ -70,7 +72,7 @@ http_interactions:
                 "id": "btp9v9jxpknp"
               }
             },
-            "updatedAt": "2014-07-11T13:35:11.490Z",
+            "updatedAt": "2014-07-14T10:25:52.254Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -81,5 +83,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Fri, 11 Jul 2014 13:35:11 GMT
+  recorded_at: Mon, 14 Jul 2014 10:25:52 GMT
 recorded_with: VCR 2.9.2

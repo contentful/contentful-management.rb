@@ -135,15 +135,16 @@ module Contentful
         end
       end
 
-
       describe '.create' do
         let(:content_type_name) { 'My Content Type' }
+        let(:content_type_description) { 'My Description' }
 
         it 'creates a content_type within a space without id and without fields' do
           vcr(:create_content_type) do
-            content_type = Contentful::Management::ContentType.create(space_id, name: content_type_name)
+            content_type = Contentful::Management::ContentType.create(space_id, name: content_type_name, description: content_type_description)
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq content_type_name
+            expect(content_type.description).to eq content_type_description
           end
         end
 
@@ -158,7 +159,6 @@ module Contentful
         end
 
         [:symbol, :text, :integer, :float, :date, :boolean, :link, :array, :object].each do |field_type|
-
           it "creates a content_type within a space with #{field_type} field" do
             vcr("create_content_type_with_#{field_type}_field") do
               field = Contentful::Management::Field.new
@@ -174,6 +174,43 @@ module Contentful
               expect(result_field.name).to eq field.name
               expect(result_field.type).to eq field.type
             end
+          end
+        end
+      end
+
+      describe '.update' do
+        let(:content_type_name) { 'My New Content Type' }
+        let(:content_type_description) { 'My New Description' }
+        it 'updates content_type name and description' do
+          vcr(:update_content_type) do
+            content_type_id = '4WbIShZ6dW68UGqi8sCyMA'
+            content_type = subject.find(space_id, content_type_id)
+            content_type.update(name: content_type_name, description: content_type_description)
+            expect(content_type.name).to eq content_type_name
+            expect(content_type.description).to eq content_type_description
+          end
+        end
+
+        it 'updates content_type with fields (leave fields untouched)' do
+          vcr(:update_content_type_with_fields) do
+            content_type_id = '4WbIShZ6dW68UGqi8sCyMA'
+            content_type = subject.find(space_id, content_type_id)
+            content_type.update(name: content_type_name)
+            expect(content_type.name).to eq content_type_name
+            expect(content_type.fields.size).to eq 1
+          end
+        end
+
+        it 'updates content_type adding one field' do
+          vcr(:update_content_type_with_one_new_field) do
+            field = Contentful::Management::Field.new
+            field.id = 'second_text_field'
+            field.name = 'My Second Text Field'
+            field.type = 'Text'
+            content_type_id = '1J3i0rr6huqKc8yGMq22QI'
+            content_type = subject.find(space_id, content_type_id)
+            content_type.update(fields: content_type.fields + [field])
+            expect(content_type.fields.size).to eq 2
           end
         end
       end
