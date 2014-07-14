@@ -1,6 +1,7 @@
 require_relative '../resource'
 require_relative 'locale'
 require_relative 'content_type'
+require_relative 'asset'
 
 module Contentful
   module Management
@@ -12,6 +13,8 @@ module Contentful
       property :name, :string
       property :organization, :string
       property :locales, Locale
+      property :assets, Asset
+
 
       def self.all
         request = Request.new('')
@@ -91,10 +94,6 @@ module Contentful
             Locale.all(space.id)
           end
 
-          locales.define_singleton_method(:update) do |params|
-            Locale.update(space.id, params)
-          end
-
           locales.define_singleton_method(:create) do |params|
             Locale.create(space.id, params)
           end
@@ -105,6 +104,21 @@ module Contentful
         end
 
         locales
+      end
+
+      def assets
+        assets = Asset.all(id)
+
+        assets.instance_exec(self) do |space|
+          assets.define_singleton_method(:all) do
+            Asset.all(space.id)
+          end
+
+          define_singleton_method(:find) do |asset_id|
+            Asset.find(space.id, asset_id)
+          end
+        end
+        assets
       end
     end
   end

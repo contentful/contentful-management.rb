@@ -46,14 +46,26 @@ ct = space.content_types.find(id)
 ct.destroy
 ct.activate
 ct.deactivate
+ct.active?
 
 
-space = Contentful::Management::Space.find(m0zubye23c17)
+space = Contentful::Management::Space.find('m0zubye23c17')
 space.locales
 space.locales.all
 space.locales.find(id)
 space.locales.create(params)
 space.locales.update(params)
+
+
+space.assets
+space.assets.all
+space.assets.find(id)
+
+asset = space.assets.find(id)
+asset.destroy
+asset.unpublish
+asset.publish
+asset.published?
 ```
 
 ## Contributing

@@ -227,6 +227,33 @@ module Contentful
           end
         end
       end
+
+      describe '#assets' do
+        it 'returns a Contentful::Array' do
+          vcr(:get_assets) { expect(subject.find(space_id).assets).to be_kind_of Contentful::Array }
+        end
+        it 'builds a Contentful::Management::Asset object' do
+          vcr(:get_assets) { expect(subject.find(space_id).assets.first).to be_kind_of Contentful::Management::Asset }
+        end
+        it '#assets.all' do
+          vcr(:get_assets_all) do
+            assets = subject.find(space_id).assets.all
+            expect(assets).to be_kind_of Contentful::Array
+          end
+        end
+        it 'builds a Contentful::Management::Asset object' do
+          vcr(:get_assets_all) { expect(subject.find(space_id).assets.all.first).to be_kind_of Contentful::Management::Asset }
+        end
+
+        it 'return asset for a given key' do
+          vcr(:asset_find) do
+            result = subject.find(space_id).assets.find('d42EjBLxdYiuSOyOkUyo6')
+            expect(result).to be_kind_of Contentful::Management::Asset
+            expect(result.id).to eql 'd42EjBLxdYiuSOyOkUyo6'
+          end
+        end
+      end
+
     end
   end
 end

@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/assets/d42EjBLxdYiuSOyOkUyo6
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 14 Jul 2014 13:00:12 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1486'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - n6spjc167pc2
+      Etag:
+      - '"ea8ddfabb2871cf96d4ddb07e73be904"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "SomeTitleAsset"
+            },
+            "description": {
+              "en-US": "SomeDesc"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "where_the_fuck_are_my_cookies_2560__1931418444.1680x0.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 1680,
+                    "height": 945
+                  },
+                  "size": 38168
+                },
+                "url": "//images.contentful.com/n6spjc167pc2/d42EjBLxdYiuSOyOkUyo6/2c52e0aa5b0ff66f8d4e03f28df5d184/where_the_fuck_are_my_cookies_2560__1931418444.1680x0.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "d42EjBLxdYiuSOyOkUyo6",
+            "type": "Asset",
+            "createdAt": "2014-07-14T07:58:06.164Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "n6spjc167pc2"
+              }
+            },
+            "firstPublishedAt": "2014-07-14T08:16:46.784Z",
+            "publishedCounter": 6,
+            "publishedAt": "2014-07-14T13:00:07.072Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 41,
+            "version": 42,
+            "updatedAt": "2014-07-14T13:00:07.078Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 14 Jul 2014 13:00:12 GMT
+- request:
+    method: delete
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/assets/d42EjBLxdYiuSOyOkUyo6/published
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '42'
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 14 Jul 2014 13:00:12 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1269'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - n6spjc167pc2
+      Etag:
+      - '"84f90c32f36301e5e8d028a261ef3ee6"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "SomeTitleAsset"
+            },
+            "description": {
+              "en-US": "SomeDesc"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "where_the_fuck_are_my_cookies_2560__1931418444.1680x0.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 1680,
+                    "height": 945
+                  },
+                  "size": 38168
+                },
+                "url": "//images.contentful.com/n6spjc167pc2/d42EjBLxdYiuSOyOkUyo6/2c52e0aa5b0ff66f8d4e03f28df5d184/where_the_fuck_are_my_cookies_2560__1931418444.1680x0.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "d42EjBLxdYiuSOyOkUyo6",
+            "type": "Asset",
+            "createdAt": "2014-07-14T07:58:06.164Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "n6spjc167pc2"
+              }
+            },
+            "firstPublishedAt": "2014-07-14T08:16:46.784Z",
+            "publishedCounter": 6,
+            "version": 43,
+            "updatedAt": "2014-07-14T13:00:12.872Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 14 Jul 2014 13:00:12 GMT
+recorded_with: VCR 2.9.2

@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/assets/1730O0aAdyg66u604MyEWC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 14 Jul 2014 12:45:31 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1414'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - n6spjc167pc2
+      Etag:
+      - '"9f6d894bc5797e32e547b2f7c745bad5"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "AssetToDestroy"
+            },
+            "description": {
+              "en-US": "AssetToDestroy"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "385-image[32].jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 732,
+                    "height": 154
+                  },
+                  "size": 20834
+                },
+                "url": "//images.contentful.com/n6spjc167pc2/1730O0aAdyg66u604MyEWC/1ebdb8cdc45e04774735e08ff823f78e/385-image_32_.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "1730O0aAdyg66u604MyEWC",
+            "type": "Asset",
+            "createdAt": "2014-07-14T08:45:02.068Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "n6spjc167pc2"
+              }
+            },
+            "firstPublishedAt": "2014-07-14T08:45:47.548Z",
+            "publishedCounter": 31,
+            "publishedAt": "2014-07-14T12:41:46.512Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 79,
+            "version": 80,
+            "updatedAt": "2014-07-14T12:41:46.516Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 14 Jul 2014 12:45:31 GMT
+- request:
+    method: delete
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/assets/1730O0aAdyg66u604MyEWC/published
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '80'
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 14 Jul 2014 12:45:31 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1197'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - n6spjc167pc2
+      Etag:
+      - '"5381947de3ffe948fe0b9defb6b30e90"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "AssetToDestroy"
+            },
+            "description": {
+              "en-US": "AssetToDestroy"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "385-image[32].jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 732,
+                    "height": 154
+                  },
+                  "size": 20834
+                },
+                "url": "//images.contentful.com/n6spjc167pc2/1730O0aAdyg66u604MyEWC/1ebdb8cdc45e04774735e08ff823f78e/385-image_32_.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "1730O0aAdyg66u604MyEWC",
+            "type": "Asset",
+            "createdAt": "2014-07-14T08:45:02.068Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "n6spjc167pc2"
+              }
+            },
+            "firstPublishedAt": "2014-07-14T08:45:47.548Z",
+            "publishedCounter": 31,
+            "version": 81,
+            "updatedAt": "2014-07-14T12:45:31.785Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 14 Jul 2014 12:45:31 GMT
+recorded_with: VCR 2.9.2
