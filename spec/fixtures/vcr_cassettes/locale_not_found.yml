@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 14 Jul 2014 07:30:06 GMT
+      - Mon, 14 Jul 2014 07:52:32 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -35,7 +35,7 @@ http_interactions:
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209863808
+      - 85f-1209864547
       Etag:
       - '"ea1ce6fc0e7cb20a32cdba47d6566865"'
       Accept-Ranges:
@@ -79,7 +79,7 @@ http_interactions:
           },
           "name":"NewNameBySave"}
     http_version: 
-  recorded_at: Mon, 14 Jul 2014 07:30:07 GMT
+  recorded_at: Mon, 14 Jul 2014 07:52:32 GMT
 - request:
     method: get
     uri: https://api.contentful.com/spaces/n6spjc167pc2/locales
@@ -105,19 +105,19 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 14 Jul 2014 07:30:07 GMT
+      - Mon, 14 Jul 2014 07:52:32 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '5207'
+      - '6905'
       Connection:
       - keep-alive
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209863809
+      - 85f-1209864550
       Etag:
-      - '"aba50c3ebacaadc55cf41f3ef34a5a16"'
+      - '"3c54ce38dacee623238de9c6dc2d0db4"'
       Accept-Ranges:
       - bytes
       Cache-Control:
@@ -355,19 +355,91 @@ http_interactions:
               "contentManagementApi":true,
               "publish":true,
               "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"4IMeJdAb5B6VZSMmPsOkpo",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-14T07:30:08Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-14T07:30:08Z"
+              },
+              "name":"testLocaleBelgiumNl",
+              "code":"nl",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"3Gg9sXSSADt1aXzdDt4MD4",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-14T07:50:39Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-14T07:50:39Z"
+              },
+              "name":"testLocalCreate",
+              "code":"bg",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
             }
           ],
-          "total":6,
+          "total":8,
           "limit":25,
           "skip":0}
     http_version: 
-  recorded_at: Mon, 14 Jul 2014 07:30:07 GMT
+  recorded_at: Mon, 14 Jul 2014 07:52:33 GMT
 - request:
-    method: post
-    uri: https://api.contentful.com/spaces/n6spjc167pc2/locales
+    method: get
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/locales/invalid_id
     body:
-      encoding: UTF-8
-      string: '{"name":"testLocaleBelgiumNl","code":"nl"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - RubyContenfulManagementGem/0.0.1
@@ -375,31 +447,31 @@ http_interactions:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
       Host:
       - api.contentful.com
   response:
     status:
-      code: 201
-      message: Created
+      code: 404
+      message: Not Found
     headers:
       Server:
       - nginx
       Date:
-      - Mon, 14 Jul 2014 07:30:09 GMT
+      - Mon, 14 Jul 2014 07:52:33 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '705'
+      - '137'
       Connection:
       - keep-alive
       Status:
-      - 201 Created
+      - 404 Not Found
       X-Contentful-Request-Id:
-      - 85f-1209863810
-      Location:
-      - https://api.contentful.com/spaces/n6spjc167pc2/locales/4IMeJdAb5B6VZSMmPsOkpo
-      Etag:
-      - '"c46da7463a1f501d6be3e63c3eea72cf"'
+      - 85f-1209864551
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
       Accept-Ranges:
       - bytes
       Cache-Control:
@@ -419,39 +491,11 @@ http_interactions:
       string: |
         {
           "sys":{
-            "type":"Locale",
-            "id":"4IMeJdAb5B6VZSMmPsOkpo",
-            "version":0,
-            "space":{
-              "sys":{
-                "type":"Link",
-                "linkType":"Space",
-                "id":"n6spjc167pc2"
-              }
-            },
-            "createdBy":{
-              "sys":{
-                "type":"Link",
-                "linkType":"User",
-                "id":"1E7acJL8I5XUXAMHQt9Grs"
-              }
-            },
-            "createdAt":"2014-07-14T07:30:08Z",
-            "updatedBy":{
-              "sys":{
-                "type":"Link",
-                "linkType":"User",
-                "id":"1E7acJL8I5XUXAMHQt9Grs"
-              }
-            },
-            "updatedAt":"2014-07-14T07:30:08Z"
+            "type":"Error",
+            "id":"NotFound"
           },
-          "name":"testLocaleBelgiumNl",
-          "code":"nl",
-          "default":false,
-          "contentManagementApi":true,
-          "publish":true,
-          "contentDeliveryApi":true}
+          "requestId":"85f-1209864551",
+          "message":"The resource could not be found."}
     http_version: 
-  recorded_at: Mon, 14 Jul 2014 07:30:09 GMT
+  recorded_at: Mon, 14 Jul 2014 07:52:33 GMT
 recorded_with: VCR 2.9.2

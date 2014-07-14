@@ -160,11 +160,25 @@ module Contentful
           end
         end
 
+        it 'when locale not found' do
+          vcr(:locale_not_found) do
+            locale = subject.find(space_id).locales.find('invalid_id')
+            expect(locale).to be_kind_of Contentful::NotFound
+          end
+        end
+
         it 'creates locales to space' do
           vcr(:locale_create) do
-            locale = subject.find(space_id).locales.create(name: 'testlocalbycodequest', content_Management_Api: true, publish: true, content_Delivery_Api: true, code: 'br')
+            locale = subject.find(space_id).locales.create(name: 'testLocaleBelgiumNl', contentManagementApi: true, publish: true, contentDeliveryApi: true, code: 'nl')
             expect(locale).to be_kind_of Contentful::Management::Locale
-            expect(locale.name).to eql 'testlocalbycodequest'
+            expect(locale.name).to eql 'testLocaleBelgiumNl'
+          end
+        end
+
+        it 'returns error when locale already exists' do
+          vcr(:locale_create_with_same_code) do
+            locale = subject.find(space_id).locales.create(name: 'testLocaleBelgiumNl', contentManagementApi: true, publish: true, contentDeliveryApi: true, code: 'nl')
+            expect(locale).to be_kind_of Contentful::Error
           end
         end
 
@@ -172,14 +186,14 @@ module Contentful
           vcr(:locale_update) do
             locale = subject.find(space_id).locales.find('0X5xcjckv6RMrd9Trae81p')
             initial_version = locale.sys[:version]
-            locale.update(name: 'testNewLocaleNameUpdate', content_Management_Api: true, publish: true, content_Delivery_Api: false)
+            locale.update(name: 'testNewLocaleNameUpdate', contentManagementApi: true, publish: true, contentDeliveryApi: false)
             expect(locale).to be_kind_of Contentful::Management::Locale
             expect(locale.name).to eql 'testNewLocaleNameUpdate'
             expect(locale.sys[:version]).to eql initial_version + 1
           end
         end
 
-        it '#update when all params are given' do
+        it '#update name' do
           vcr(:locale_update_only_name) do
             locale = subject.find(space_id).locales.find('0X5xcjckv6RMrd9Trae81p')
             locale.update(name: 'testNewLocaleName')
@@ -187,7 +201,6 @@ module Contentful
             expect(locale.name).to eql 'testNewLocaleName'
           end
         end
-
       end
 
       describe '#save' do

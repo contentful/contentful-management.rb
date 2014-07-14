@@ -12,7 +12,7 @@ module Contentful
       property :code, :string
       property :name, :string
       property :contentManagementApi, :boolean
-      property :content_delivery_Api, :boolean
+      property :contentDeliveryApi, :boolean
       property :publish, :boolean
 
       def self.all(space_id = nil)
@@ -23,7 +23,7 @@ module Contentful
       end
 
       def self.create(space_id, attributes)
-        request = Request.new("/#{ space_id || Thread.current[:space_id]}/locales", {'name' => attributes.fetch(:name), 'code' => attributes.fetch(:code)}, nil, nil)
+        request = Request.new("/#{ space_id || Thread.current[:space_id]}/locales", {'name' => attributes.fetch(:name), 'code' => attributes.fetch(:code)})
         response = request.post
         result = ResourceBuilder.new(self, response, {'Locale' => Locale}, {})
         result.run
