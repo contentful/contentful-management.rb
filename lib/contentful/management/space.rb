@@ -28,14 +28,14 @@ module Contentful
       end
 
       def self.create(attributes)
-        request = Request.new('', { 'name' => attributes.fetch(:name) }, nil, nil, attributes[:organization_id])
+        request = Request.new('', {'name' => attributes.fetch(:name)}, nil, nil, attributes[:organization_id])
         response = request.post
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def update(attributes)
-        request = Request.new("/#{ id }", { 'name' => attributes.fetch(:name) }, nil, sys[:version])
+        request = Request.new("/#{ id }", {'name' => attributes.fetch(:name)}, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {})
         refresh_data(result.run)
@@ -89,6 +89,10 @@ module Contentful
         locales.instance_exec(self) do |space|
           locales.define_singleton_method(:all) do
             Locale.all(space.id)
+          end
+
+          locales.define_singleton_method(:update) do |params|
+            Locale.update(space.id, params)
           end
 
           locales.define_singleton_method(:create) do |params|
