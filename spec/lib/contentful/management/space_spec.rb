@@ -104,7 +104,11 @@ module Contentful
         let(:content_type_name) { 'TestingContentType' }
 
         it 'creates content type' do
-          skip 'add implementation'
+          vcr(:space_content_types_create) do
+            content_type = subject.find(space_id).content_types.create(name: content_type_name)
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq content_type_name
+          end
         end
 
         it 'lists content types to given space' do

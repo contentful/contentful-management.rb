@@ -1,5 +1,5 @@
 require_relative '../resource'
-require_relative '../field'
+require_relative 'field'
 
 module Contentful
   module Management
@@ -66,12 +66,20 @@ module Contentful
       end
 
       def self.create(space_id, attributes)
-        # TODO add implememntation
-        request = Request.new('', { 'name' => attributes.fetch(:name) }, nil, nil, attributes[:organization_id])
-        response = request.post
+        fields = (attributes[:fields] || []).map(&:properties)
+        request = Request.new("/#{space_id}/content_types/#{attributes[:id] || ''}", {'name' => attributes.fetch(:name), fields: fields})
+        response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
+
+      def update(attributes)
+        request = Request.new("/#{space.id}/content_types/#{id}", {'name' => attributes[:name]})
+        response = request.put
+        result = ResourceBuilder.new(self, response, {}, {})
+        refresh_data(result.run)
+      end
+
     end
   end
 end

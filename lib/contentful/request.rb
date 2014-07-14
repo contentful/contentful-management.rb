@@ -68,7 +68,8 @@ module Contentful
         query.map do |key, value|
           [
             key.to_sym,
-            value.is_a?(::Array) ? value.join(',') : value
+            value
+            # TODO why there was this line? value.is_a?(::Array) ? value.join(',') : value
           ]
         end
       ]

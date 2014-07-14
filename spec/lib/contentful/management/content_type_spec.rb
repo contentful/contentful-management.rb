@@ -136,78 +136,47 @@ module Contentful
       end
 
 
-      # describe '.create' do
-      #   let(:space_name) { 'My Test Space' }
-      #   let(:organization_id) { '5Ct8QHndDsi4zT3hwFwOLd' }
-      #
-      #   it 'creates a space within an organization' do
-      #     vcr(:create_space) do
-      #       space = subject.create(name: space_name, organization_id: organization_id)
-      #       expect(space).to be_kind_of Contentful::Management::Space
-      #       expect(space.name).to eq space_name
-      #     end
-      #   end
-      #   it 'creates a space when the user only has one organization' do
-      #     vcr(:create_space_without_organization) do
-      #       space = subject.create({name: space_name})
-      #       expect(space).to be_kind_of Contentful::Management::Space
-      #       expect(space.name).to eq space_name
-      #     end
-      #   end
-      #   it 'returns error when user have multiple organizations and not pass organization_id' do
-      #     vcr(:create_space_to_unknown_organization) do
-      #       space = subject.create(name: space_name)
-      #       expect(space).to be_kind_of Contentful::NotFound
-      #     end
-      #   end
-      #   it 'returns error when limit has been reached' do
-      #     vcr(:create_space_when_limit_has_been_reached) do
-      #       space = subject.create({name: space_name})
-      #       expect(space).to be_kind_of Contentful::AccessDenied
-      #     end
-      #   end
-      # end
-      #
-      # describe '#update' do
-      #   it 'updates the space name and increase version by +1' do
-      #     vcr(:update_space) do
-      #       space = subject.find(space_id)
-      #       initial_version = space.sys[:version]
-      #       space.update(name: 'NewNameSpace')
-      #       expect(space.sys[:version]).to eql initial_version + 1
-      #     end
-      #   end
-      #   it 'update name to the same name not increase version' do
-      #     vcr(:update_space_with_the_same_data) do
-      #       space = subject.find(space_id)
-      #       initial_version = space.sys[:version]
-      #       space.update(name: 'NewNameSpacee')
-      #       expect(space.sys[:version]).to eql initial_version
-      #     end
-      #   end
-      # end
-      #
-      # describe '#save' do
-      #   let(:new_name) { 'SaveNewName' }
-      #   it 'successfully save an object' do
-      #     vcr(:save_update_space) do
-      #       content_types = subject.find(space_id)
-      #       content_types.name = 'UpdateNameBySave'
-      #       content_types.save
-      #       expect(content_types).to be_kind_of Contentful::Management::Space
-      #     end
-      #   end
-      #   it 'successfully save an object' do
-      #     vcr(:save_new_space) do
-      #       space = subject.new
-      #       space.name = new_name
-      #       space.save
-      #       expect(space).to be_kind_of Contentful::Management::Space
-      #       expect(space.name).to eq new_name
-      #     end
-      #   end
-      # end
+      describe '.create' do
+        let(:content_type_name) { 'My Content Type' }
 
+        it 'creates a content_type within a space without id and without fields' do
+          vcr(:create_content_type) do
+            content_type = Contentful::Management::ContentType.create(space_id, name: content_type_name)
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq content_type_name
+          end
+        end
+
+        it 'creates a content_type within a space with custom id and without fields' do
+          vcr(:create_content_type_with_id) do
+            content_type_id = 'custom_id'
+            content_type = Contentful::Management::ContentType.create(space_id, {name: content_type_name, id: content_type_id})
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq content_type_name
+            expect(content_type.id).to eq content_type_id
+          end
+        end
+
+        [:symbol, :text, :integer, :float, :date, :boolean, :link, :array, :object].each do |field_type|
+
+          it "creates a content_type within a space with #{field_type} field" do
+            vcr("create_content_type_with_#{field_type}_field") do
+              field = Contentful::Management::Field.new
+              field.id = "my_#{field_type}_field"
+              field.name = "My #{field_type} Field"
+              field.type = field_type.to_s
+              content_type = Contentful::Management::ContentType.create(space_id, name: content_type_name, fields: [field])
+              expect(content_type).to be_kind_of Contentful::Management::ContentType
+              expect(content_type.name).to eq content_type_name
+              expect(content_type.fields.size).to eq 1
+              result_field = content_type.fields.first
+              expect(result_field.id).to eq field.id
+              expect(result_field.name).to eq field.name
+              expect(result_field.type).to eq field.type
+            end
+          end
+        end
+      end
     end
   end
 end
