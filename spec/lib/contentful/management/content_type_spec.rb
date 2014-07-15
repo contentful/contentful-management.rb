@@ -178,7 +178,7 @@ module Contentful
         end
       end
 
-      describe '.update' do
+      describe '#update' do
         let(:content_type_name) { 'My New Content Type' }
         let(:content_type_description) { 'My New Description' }
         it 'updates content_type name and description' do
@@ -211,6 +211,42 @@ module Contentful
             content_type = subject.find(space_id, content_type_id)
             content_type.update(fields: content_type.fields + [field])
             expect(content_type.fields.size).to eq 2
+          end
+        end
+
+        it 'updates content_type updating existing field' do
+          vcr(:update_content_type_change_field_name) do
+            new_field_name = 'New field name'
+            content_type_id = '1J3i0rr6huqKc8yGMq22QI'
+            content_type = subject.find(space_id, content_type_id)
+            field = content_type.fields.first
+            field.name = new_field_name
+            content_type.update(fields: [field])
+            expect(content_type.fields.size).to eq 1
+            expect(content_type.fields.first.name).to eq new_field_name
+          end
+        end
+
+        it 'updates content_type deleting existing field' do
+          vcr(:update_content_type_remove_field) do
+            content_type_id = '1J3i0rr6huqKc8yGMq22QI'
+            content_type = subject.find(space_id, content_type_id)
+            field = content_type.fields.first
+            content_type.update(fields: [field])
+            expect(content_type.fields.size).to eq 1
+          end
+        end
+      end
+
+      describe '#save' do
+        let(:new_name) { 'NewName' }
+        it 'successfully saves existing object' do
+          vcr(:save_existing_content_type) do
+            content_type = subject.find(space_id, content_type_id)
+            content_type.name = new_name
+            content_type.save
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq new_name
           end
         end
       end

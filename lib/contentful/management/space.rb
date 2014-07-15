@@ -82,7 +82,6 @@ module Contentful
           end
 
         end
-
         content_types
       end
 

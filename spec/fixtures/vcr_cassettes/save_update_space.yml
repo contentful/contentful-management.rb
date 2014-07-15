@@ -13,86 +13,8 @@ http_interactions:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
-      Host:
-      - api.contentful.com
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.1.19
-      Date:
-      - Thu, 10 Jul 2014 14:17:04 GMT
-      Content-Type:
-      - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '454'
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Contentful-Request-Id:
-      - 85f-1209551277
-      Etag:
-      - '"f1e7915df2bcd6051031cd1846176144"'
-      Accept-Ranges:
-      - bytes
-      Cache-Control:
-      - max-age=0
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
-      Access-Control-Allow-Methods:
-      - DELETE,GET,HEAD,POST,PUT,OPTIONS
-      "^access-Control-Expose-Headers":
-      - Etag
-      Access-Control-Max-Age:
-      - '1728000'
-    body:
-      encoding: UTF-8
-      string: |
-        {
-          "sys":{
-            "type":"Space",
-            "id":"n6spjc167pc2",
-            "version":9,
-            "createdBy":{
-              "sys":{
-                "type":"Link",
-                "linkType":"User",
-                "id":"1E7acJL8I5XUXAMHQt9Grs"
-              }
-            },
-            "createdAt":"2014-07-09T11:04:14Z",
-            "updatedBy":{
-              "sys":{
-                "type":"Link",
-                "linkType":"User",
-                "id":"1E7acJL8I5XUXAMHQt9Grs"
-              }
-            },
-            "updatedAt":"2014-07-10T13:24:13Z"
-          },
-          "name":"NewNameSpacee"}
-    http_version: 
-  recorded_at: Thu, 10 Jul 2014 14:17:04 GMT
-- request:
-    method: put
-    uri: https://api.contentful.com/spaces/n6spjc167pc2
-    body:
-      encoding: UTF-8
-      string: '{"name":"NewNameBySave"}'
-    headers:
-      User-Agent:
-      - RubyContenfulManagementGem/0.0.1
-      Authorization:
-      - Bearer <ACCESS_TOKEN>
-      Content-Type:
-      - application/vnd.contentful.management.v1+json
-      X-Contentful-Version:
-      - '9'
+      - '0'
       Host:
       - api.contentful.com
   response:
@@ -101,9 +23,9 @@ http_interactions:
       message: OK
     headers:
       Server:
-      - nginx/1.1.19
+      - nginx
       Date:
-      - Thu, 10 Jul 2014 14:17:05 GMT
+      - Tue, 15 Jul 2014 07:25:53 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -113,7 +35,7 @@ http_interactions:
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1209551281
+      - 85f-1209984950
       Etag:
       - '"ea1ce6fc0e7cb20a32cdba47d6566865"'
       Accept-Ranges:
@@ -157,5 +79,85 @@ http_interactions:
           },
           "name":"NewNameBySave"}
     http_version: 
-  recorded_at: Thu, 10 Jul 2014 14:17:05 GMT
+  recorded_at: Tue, 15 Jul 2014 07:25:53 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/n6spjc167pc2
+    body:
+      encoding: UTF-8
+      string: '{"name":"SaveNewName"}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '10'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Jul 2014 07:25:54 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '453'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209984954
+      Etag:
+      - '"e0ddf316bc0be50eaa7d672087e07997"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"n6spjc167pc2",
+            "version":11,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-07-09T11:04:14Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-07-15T07:25:54Z"
+          },
+          "name":"SaveNewName"}
+    http_version: 
+  recorded_at: Tue, 15 Jul 2014 07:25:54 GMT
 recorded_with: VCR 2.9.2

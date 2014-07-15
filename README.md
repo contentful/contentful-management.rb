@@ -36,20 +36,24 @@ space = Contentful::Management::Space.find('m0zubye23c17')
 space.name = 'FFF'
 space.save
 
-
 space.content_types
 space.content_types.all
 space.content_types.find(id)
 space.content_types.create(params)
 
-ct = space.content_types.find(id)
-ct.destroy
-ct.activate
-ct.deactivate
-ct.active?
+content_type = space.content_types.find(id)
+content_type.destroy
+content_type.activate
+content_type.deactivate
+content_type.active?
 
+field = Contentful::Management::Field.new
+field.id = "field_id"
+field.name = Field Name"
+field.type = 'Text'
 
-space = Contentful::Management::Space.find('m0zubye23c17')
+content_type.update(name: 'Name', description: 'Description', fields: [field])
+
 space.locales
 space.locales.all
 space.locales.find(id)

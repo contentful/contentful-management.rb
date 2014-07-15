@@ -90,6 +90,9 @@ module Contentful
         end
       end
 
+      def save
+        update(@properties)
+      end
     end
   end
 end

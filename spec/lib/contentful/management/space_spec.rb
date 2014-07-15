@@ -209,17 +209,18 @@ module Contentful
 
       describe '#save' do
         let(:new_name) { 'SaveNewName' }
-        it 'successfully save an object' do
-          vcr(:save_update_space) do
-            content_types = subject.find(space_id)
-            content_types.name = 'UpdateNameBySave'
-            content_types.save
-            expect(content_types).to be_kind_of Contentful::Management::Space
-          end
-        end
-        it 'successfully save an object' do
+        it 'successfully saves new object' do
           vcr(:save_new_space) do
             space = subject.new
+            space.name = new_name
+            space.save
+            expect(space).to be_kind_of Contentful::Management::Space
+            expect(space.name).to eq new_name
+          end
+        end
+        it 'successfully saves existing object' do
+          vcr(:save_update_space) do
+            space = subject.find(space_id)
             space.name = new_name
             space.save
             expect(space).to be_kind_of Contentful::Management::Space
