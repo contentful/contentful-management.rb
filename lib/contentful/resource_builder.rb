@@ -2,13 +2,13 @@ require_relative 'error'
 require_relative 'resource'
 require_relative 'entry'
 require_relative 'dynamic_entry'
-require_relative 'asset'
 require_relative 'array'
 require_relative 'link'
 require_relative 'deleted_entry'
 require_relative 'deleted_asset'
 require_relative 'management/space'
 require_relative 'management/content_type'
+require_relative 'management/asset'
 
 module Contentful
   # Transforms a Contentful::Response into a Contentful::Resource or a Contentful::Error
@@ -18,7 +18,7 @@ module Contentful
         'Space' => Contentful::Management::Space,
         'ContentType' => Contentful::Management::ContentType,
         'Entry' => :find_entry_class,
-        'Asset' => Asset,
+        'Asset' => Contentful::Management::Asset,
         'Array' => :array_or_sync_page,
         'Link' => Link,
         'DeletedEntry' => DeletedEntry,

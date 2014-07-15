@@ -13,8 +13,6 @@ module Contentful
       property :name, :string
       property :organization, :string
       property :locales, Locale
-      property :assets, Asset
-
 
       def self.all
         request = Request.new('')
