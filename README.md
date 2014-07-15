@@ -49,8 +49,8 @@ content_type.active?
 
 field = Contentful::Management::Field.new
 field.id = "field_id"
-field.name = Field Name"
-field.type = 'Text'
+field.name = "Field Name"
+field.type = "Text"
 
 content_type.update(name: 'Name', description: 'Description', fields: [field])
 
