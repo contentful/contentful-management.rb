@@ -116,6 +116,11 @@ module Contentful
           define_singleton_method(:find) do |asset_id|
             Asset.find(space.id, asset_id)
           end
+
+          define_singleton_method(:create) do |params|
+            Asset.find(space.id, params)
+          end
+
         end
         assets
       end

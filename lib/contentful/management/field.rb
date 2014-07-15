@@ -12,6 +12,10 @@ module Contentful
       property :required, :boolean
       property :localized, :boolean
 
+      property :file, AssetFields
+      property :description, AssetFields
+      property :title, AssetFields
+
       def update_properties
         @properties.delete(:items)
         @properties

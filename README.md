@@ -58,7 +58,9 @@ space.locales
 space.locales.all
 space.locales.find(id)
 space.locales.create(params)
-space.locales.update(params)
+
+locale = space.locales.find(id)
+locale.update(params)
 
 
 space.assets
@@ -67,9 +69,13 @@ space.assets.find(id)
 
 asset = space.assets.find(id)
 asset.destroy
+asset.archive
+asset.unarchive
+asset.archived?
 asset.unpublish
 asset.publish
 asset.published?
+
 ```
 
 ## Contributing

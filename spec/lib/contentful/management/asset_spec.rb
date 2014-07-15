@@ -114,6 +114,99 @@ module Contentful
           end
         end
       end
+
+      describe '#unarchive' do
+        it 'unarchive the asset' do
+          vcr(:asset_unarchive) do
+            asset = subject.find(space_id, asset_id_2)
+            initial_version = asset.sys[:version]
+            asset.unarchive
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            expect(asset.sys[:version]).to eql initial_version + 1
+          end
+        end
+
+        it 'returns BadRequest error when already unpublished' do
+          vcr(:unarchive_asset_already_unarchived) do
+            result = subject.find(space_id, asset_id_2).unarchive
+            expect(result).to be_kind_of Contentful::BadRequest
+          end
+        end
+      end
+
+      describe '#archive' do
+        it 'returns error when archive published asset' do
+          vcr(:asset_archive_published) do
+            asset = subject.find(space_id, asset_id_2).archive
+            expect(asset).to be_kind_of Contentful::BadRequest
+          end
+        end
+
+        it ' archive unpublished asset' do
+          vcr(:asset_archive) do
+            asset = subject.find(space_id, asset_id_2)
+            initial_version = asset.sys[:version]
+            asset.archive
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            expect(asset.sys[:version]).to eql initial_version + 1
+          end
+        end
+
+        it 'returns BadRequest error when already unpublished' do
+          vcr(:unarchive_asset_already_unarchive) do
+            result = subject.find(space_id, asset_id_2).unarchive
+            expect(result).to be_kind_of Contentful::BadRequest
+          end
+        end
+      end
+
+      describe '#archived?' do
+        it 'returns true if asset is archive' do
+          vcr(:asset_archived_true) do
+            asset = subject.find(space_id, asset_id_2)
+            asset.archive
+            expect(asset.archived?).to be_truthy
+          end
+        end
+        it 'returns false if asset is not archive' do
+          vcr(:asset_archived_false) do
+            asset = subject.find(space_id, asset_id_2)
+            asset.unarchive
+            expect(asset.archived?).to be_falsey
+          end
+        end
+      end
+
+      describe '.create' do
+        let(:asset_title) { ' My Asset title' }
+        let(:asset_description) { 'Asset Description' }
+
+        it 'creates asset' do
+          skip 'not implemented yet'
+          vcr(:asset_create) do
+            field = Contentful::Management::Field.new
+            field.title = "MyFieldTitle"
+            field.description = 'description'
+            asset = Contentful::Management::Asset.create(space_id, fields: [field])
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            expect(asset.name).to eq asset_title
+            expect(asset.description).to eq asset_description
+            expect(asset.fields.size).to eq 1
+            result_field = asset.fields.first
+            expect(result_field.fileName).to eq field.title
+            expect(result_field.contentType).to eq field.type
+          end
+        end
+      end
+
+      describe '#update' do
+        it 'updates asset' do
+          vcr(:asset_update) do
+            skip 'Not implemented yet'
+          end
+        end
+      end
+
     end
   end
 end
