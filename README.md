@@ -39,7 +39,7 @@ space.save
 space.content_types
 space.content_types.all
 space.content_types.find(id)
-space.content_types.create(params)
+space.content_types.create(name: 'Test')
 
 content_type = space.content_types.find(id)
 content_type.destroy

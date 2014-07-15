@@ -79,7 +79,7 @@ module Contentful
         parameters = {}
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
-        parameters.merge!(fields: (attributes[:fields] || fields).map(&:update_properties))
+        parameters.merge!(fields: (attributes[:fields] || fields).map(&:properties))
         request = Request.new("/#{space.id}/content_types/#{id}", parameters, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
@@ -92,6 +92,15 @@ module Contentful
 
       def save
         update(@properties)
+      end
+
+      def save
+        if id.nil?
+          new_instance = self.class.create(space.id, @properties)
+          refresh_data(new_instance)
+        else
+          update(@properties)
+        end
       end
     end
   end

@@ -77,8 +77,14 @@ module Contentful
             ContentType.create(space.id, params)
           end
 
-          define_singleton_method(:find) do |content_type_id|
+          content_types.define_singleton_method(:find) do |content_type_id|
             ContentType.find(space.id, content_type_id)
+          end
+
+          content_types.define_singleton_method(:new) do
+            ct = ContentType.new
+            ct.sys[:space] = space
+            ct
           end
 
         end
