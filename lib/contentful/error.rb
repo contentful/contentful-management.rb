@@ -29,6 +29,8 @@ module Contentful
     end
   end
 
+  class Validation < Error; end
+
   # 404
   class NotFound < Error; end
 
