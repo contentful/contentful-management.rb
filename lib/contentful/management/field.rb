@@ -16,6 +16,7 @@ module Contentful
         @properties.delete(:items)
         @properties
       end
+
     end
   end
 end

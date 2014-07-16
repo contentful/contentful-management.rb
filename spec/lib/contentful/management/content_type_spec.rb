@@ -285,10 +285,11 @@ module Contentful
 
       describe '#fields.create' do
         let(:field_id) { 'my_text_field_1' }
+        let(:field_type) { 'Text' }
         it 'creates new field' do
           vcr(:content_type_fields_create) do
             content_type = subject.find(space_id, '41cG5MFEb6e4wQy0sg8Mww')
-            content_type.fields.create(id: field_id, name: 'My Text Field', type: 'Text')
+            content_type.fields.create(id: field_id, name: 'My Text Field', type: field_type)
             expect(content_type.fields.size).to eq 2
           end
         end
@@ -296,9 +297,10 @@ module Contentful
           vcr(:content_type_fields_create) do
             content_type = subject.find(space_id, '41cG5MFEb6e4wQy0sg8Mww')
             updated_name = 'My Text Field 2'
-            content_type.fields.create(id: field_id, name: updated_name, type: 'Text 2')
+            content_type.fields.create(id: field_id, name: updated_name, type: field_type)
             expect(content_type.fields.size).to eq 2
             expect(content_type.fields[1].name).to eq updated_name
+            expect(content_type.fields[1].type).to eq field_type
           end
         end
       end

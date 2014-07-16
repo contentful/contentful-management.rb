@@ -5,6 +5,18 @@ module Contentful
   module Management
     class ContentType
 
+      FIELD_TYPES = [
+          SYMBOL = 'Symbol',
+          TEXT = 'Text',
+          INTEGER = 'Integer',
+          FLOAT = 'Float',
+          DATE = 'Date',
+          BOOLEAN = 'Boolean',
+          LINK = 'Link',
+          ARRAY = 'Array',
+          OBJECT = 'Object'
+      ]
+
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
       include Contentful::Resource::Refresher
@@ -99,6 +111,17 @@ module Contentful
         end
       end
 
+      def merged_fields(new_field)
+        field_ids = []
+        merged_fields = fields.each_with_object([]) do |field, fields|
+          field.properties.merge!(new_field.properties) if field.id == new_field.id
+          fields << field
+          field_ids << field.id
+        end
+        merged_fields << new_field unless field_ids.include?(new_field.id)
+        merged_fields
+      end
+
       alias_method :orig_fields, :fields
 
       def fields
@@ -107,15 +130,15 @@ module Contentful
         fields.instance_exec(self) do |content_type|
 
           fields.define_singleton_method(:add) do |field|
-            content_type.update(fields: content_type.fields + [field])
+            content_type.update(fields: content_type.merged_fields(field))
           end
 
           fields.define_singleton_method(:create) do |params|
             field = Contentful::Management::Field.new
             field.id = params.fetch(:id)
-            field.name = params.fetch(:name)
-            field.type = params.fetch(:type)
-            content_type.update(fields: content_type.fields + [field])
+            field.name = params[:name]
+            field.type = params[:type]
+            content_type.update(fields: content_type.merged_fields(field))
           end
 
         end

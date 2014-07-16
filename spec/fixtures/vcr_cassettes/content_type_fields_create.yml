@@ -172,7 +172,7 @@ http_interactions:
             {
               "id": "my_text_field_1",
               "name": "My Text Field 2",
-              "type": "Text 2"
+              "type": "Text"
             }
           ],
           "sys": {
