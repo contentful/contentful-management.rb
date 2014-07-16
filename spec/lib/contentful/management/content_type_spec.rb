@@ -240,7 +240,7 @@ module Contentful
 
       describe '#save' do
         let(:new_name) { 'NewName' }
-        it 'successfully saves existing object' do
+        it 'saves existing object' do
           vcr(:save_existing_content_type) do
             content_type = subject.find(space_id, content_type_id)
             content_type.name = new_name
@@ -250,20 +250,69 @@ module Contentful
           end
         end
 
+        it 'saves object with new field' do
+          vcr(:save_existing_content_type_adding_field) do
+            content_type = subject.find(space_id, content_type_id)
+            field = Contentful::Management::Field.new
+            field.id = 'my_text_field'
+            field.name = 'My Text Field'
+            field.type = 'Text'
+            content_type.fields = content_type.fields + [field]
+            content_type.save
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq new_name
+            expect(content_type.fields.size).to eq 2
+          end
+        end
+
         it 'successfully saves new object' do
           vcr(:save_new_content_type) do
             space = Contentful::Management::Space.find(space_id)
             content_type = space.content_types.new
             content_type.name = new_name
             field = Contentful::Management::Field.new
-            field.id = "my_text_field"
-            field.name = "My Text Field"
+            field.id = 'my_text_field'
+            field.name = 'My Text Field'
             field.type = 'Text'
             content_type.fields = [field]
             content_type.save
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq new_name
             expect(content_type.fields.size).to eq 1
+          end
+        end
+      end
+
+      describe '#fields.create' do
+        let(:field_id) { 'my_text_field_1' }
+        it 'creates new field' do
+          vcr(:content_type_fields_create) do
+            content_type = subject.find(space_id, '41cG5MFEb6e4wQy0sg8Mww')
+            content_type.fields.create(id: field_id, name: 'My Text Field', type: 'Text')
+            expect(content_type.fields.size).to eq 2
+          end
+        end
+        it 'updates existing field if matched id' do
+          vcr(:content_type_fields_create) do
+            content_type = subject.find(space_id, '41cG5MFEb6e4wQy0sg8Mww')
+            updated_name = 'My Text Field 2'
+            content_type.fields.create(id: field_id, name: updated_name, type: 'Text 2')
+            expect(content_type.fields.size).to eq 2
+            expect(content_type.fields[1].name).to eq updated_name
+          end
+        end
+      end
+
+      describe '#fields.add' do
+        it 'creates new field' do
+          vcr(:content_type_fields_add) do
+            content_type = subject.find(space_id, '41cG5MFEb6e4wQy0sg8Mww')
+            field = Contentful::Management::Field.new
+            field.id = 'my_text_field_2'
+            field.name = 'My Text Field'
+            field.type = 'Text'
+            content_type.fields.add(field)
+            expect(content_type.fields.size).to eq 3
           end
         end
       end

@@ -57,6 +57,8 @@ field.name = 'Field Name'
 field.type = 'Text'
 
 content_type.update(name: 'Name', description: 'Description', fields: [field])
+content_type.fields.create(id: 'field_id', name: 'Field Name', type: 'Text') #if field_id exists related field is updated
+content_type.fields.add(field)
 
 space.locales
 space.locales.all

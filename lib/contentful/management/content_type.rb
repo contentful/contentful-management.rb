@@ -66,7 +66,7 @@ module Contentful
       end
 
       def self.create(space_id, attributes)
-        fields = (attributes[:fields] || []).map(&:properties)
+        fields = (attributes[:fields] || []).map(&:update_properties)
         request = Request.new("/#{space_id}/content_types/#{attributes[:id] || ''}", {name: attributes.fetch(:name),
                                                                                       description: attributes[:description],
                                                                                       fields: fields})
@@ -79,7 +79,7 @@ module Contentful
         parameters = {}
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
-        parameters.merge!(fields: (attributes[:fields] || fields).map(&:properties))
+        parameters.merge!(fields: (attributes[:fields] || fields).map(&:update_properties))
         request = Request.new("/#{space.id}/content_types/#{id}", parameters, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
@@ -91,10 +91,6 @@ module Contentful
       end
 
       def save
-        update(@properties)
-      end
-
-      def save
         if id.nil?
           new_instance = self.class.create(space.id, @properties)
           refresh_data(new_instance)
@@ -103,9 +99,30 @@ module Contentful
         end
       end
 
-      # def fields
-      #   super
-      # end
+      alias_method :orig_fields, :fields
+
+      def fields
+        fields = orig_fields
+
+        fields.instance_exec(self) do |content_type|
+
+          fields.define_singleton_method(:add) do |field|
+            content_type.update(fields: content_type.fields + [field])
+          end
+
+          fields.define_singleton_method(:create) do |params|
+            field = Contentful::Management::Field.new
+            field.id = params.fetch(:id)
+            field.name = params.fetch(:name)
+            field.type = params.fetch(:type)
+            content_type.update(fields: content_type.fields + [field])
+          end
+
+        end
+
+        fields
+      end
+
     end
   end
 end
