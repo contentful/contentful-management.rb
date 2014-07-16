@@ -249,6 +249,18 @@ module Contentful
             expect(content_type.name).to eq new_name
           end
         end
+
+        it 'successfully saves new object' do
+          pending
+          vcr(:save_new_content_type) do
+            space = Contentful::Management::Space.find(space_id)
+            content_type = space.content_types.new
+            content_type.name = new_name
+            content_type.save
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq new_name
+          end
+        end
       end
     end
   end

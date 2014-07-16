@@ -1,0 +1,278 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/btp9v9jxpknp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Jul 2014 14:52:47 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '447'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1332587294
+      Etag:
+      - '"55b6304ed364595925c0c5e23810de26"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"btp9v9jxpknp",
+            "version":12,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "createdAt":"2014-07-08T12:32:52Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "updatedAt":"2014-07-10T12:15:39Z"
+          },
+          "name":"TEST2"}
+    http_version: 
+  recorded_at: Tue, 15 Jul 2014 14:52:47 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/btp9v9jxpknp/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Jul 2014 14:52:49 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '3237'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - btp9v9jxpknp
+      Etag:
+      - '"85a05ab330bbd3404a77274980644848"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 3,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "NewName",
+              "description": "",
+              "fields": [
+                {
+                  "id": "tf1",
+                  "name": "tf1",
+                  "type": "Text",
+                  "required": false,
+                  "localized": false
+                }
+              ],
+              "sys": {
+                "id": "41cG5MFEb6e4wQy0sg8Mww",
+                "type": "ContentType",
+                "createdAt": "2014-07-10T13:08:06.424Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "btp9v9jxpknp"
+                  }
+                },
+                "firstPublishedAt": "2014-07-10T13:08:18.825Z",
+                "publishedCounter": 9,
+                "publishedAt": "2014-07-11T12:06:42.470Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "publishedVersion": 23,
+                "version": 25,
+                "updatedAt": "2014-07-15T07:32:32.810Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            },
+            {
+              "name": "test",
+              "description": "",
+              "fields": [
+                {
+                  "id": "fff",
+                  "name": "New field name",
+                  "type": "Text",
+                  "required": false,
+                  "localized": false
+                }
+              ],
+              "sys": {
+                "id": "1J3i0rr6huqKc8yGMq22QI",
+                "type": "ContentType",
+                "createdAt": "2014-07-14T13:53:35.140Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "btp9v9jxpknp"
+                  }
+                },
+                "version": 34,
+                "updatedAt": "2014-07-15T07:04:05.417Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            },
+            {
+              "name": "Test",
+              "description": "",
+              "fields": [
+                {
+                  "id": "field_id",
+                  "name": "Field Name",
+                  "type": "Text"
+                }
+              ],
+              "sys": {
+                "id": "7koJWoEMqAm8OwswsYC2oe",
+                "type": "ContentType",
+                "createdAt": "2014-07-15T10:43:54.233Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "btp9v9jxpknp"
+                  }
+                },
+                "version": 3,
+                "updatedAt": "2014-07-15T10:44:35.315Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 15 Jul 2014 14:52:49 GMT
+recorded_with: VCR 2.9.2

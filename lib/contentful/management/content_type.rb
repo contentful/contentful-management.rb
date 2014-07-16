@@ -102,6 +102,10 @@ module Contentful
           update(@properties)
         end
       end
+
+      # def fields
+      #   super
+      # end
     end
   end
 end
