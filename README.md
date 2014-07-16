@@ -40,6 +40,10 @@ space.content_types
 space.content_types.all
 space.content_types.find(id)
 space.content_types.create(name: 'Test')
+content_type = space.content_types.new
+content_type.name = 'Name'
+content_type.fields = [field_1, field_2]
+content_type.save
 
 content_type = space.content_types.find(id)
 content_type.destroy

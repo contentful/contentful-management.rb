@@ -251,14 +251,19 @@ module Contentful
         end
 
         it 'successfully saves new object' do
-          pending
           vcr(:save_new_content_type) do
             space = Contentful::Management::Space.find(space_id)
             content_type = space.content_types.new
             content_type.name = new_name
+            field = Contentful::Management::Field.new
+            field.id = "my_text_field"
+            field.name = "My Text Field"
+            field.type = 'Text'
+            content_type.fields = [field]
             content_type.save
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq new_name
+            expect(content_type.fields.size).to eq 1
           end
         end
       end

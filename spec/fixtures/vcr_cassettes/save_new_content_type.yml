@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 15 Jul 2014 14:52:47 GMT
+      - Wed, 16 Jul 2014 07:48:12 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -35,7 +35,7 @@ http_interactions:
       Status:
       - 200 OK
       X-Contentful-Request-Id:
-      - 85f-1332587294
+      - 85f-1332667045
       Etag:
       - '"55b6304ed364595925c0c5e23810de26"'
       Accept-Ranges:
@@ -79,7 +79,7 @@ http_interactions:
           },
           "name":"TEST2"}
     http_version: 
-  recorded_at: Tue, 15 Jul 2014 14:52:47 GMT
+  recorded_at: Wed, 16 Jul 2014 07:48:13 GMT
 - request:
     method: get
     uri: https://api.contentful.com/spaces/btp9v9jxpknp/content_types
@@ -105,7 +105,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 15 Jul 2014 14:52:49 GMT
+      - Wed, 16 Jul 2014 07:48:14 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -274,5 +274,96 @@ http_interactions:
           ]
         }
     http_version: 
-  recorded_at: Tue, 15 Jul 2014 14:52:49 GMT
+  recorded_at: Wed, 16 Jul 2014 07:48:15 GMT
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/btp9v9jxpknp/content_types/
+    body:
+      encoding: UTF-8
+      string: '{"name":"NewName","description":"","fields":[{"id":"my_text_field","name":"My
+        Text Field","type":"Text"}]}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 16 Jul 2014 07:48:15 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '750'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - btp9v9jxpknp
+      Etag:
+      - '"ce4192602fc06b31a970cffa6d4c7d39"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "NewName",
+          "description": "",
+          "fields": [
+            {
+              "id": "my_text_field",
+              "name": "My Text Field",
+              "type": "Text"
+            }
+          ],
+          "sys": {
+            "id": "3YsQyGbe1GaQSYq6IKiq6C",
+            "type": "ContentType",
+            "version": 1,
+            "createdAt": "2014-07-16T07:48:15.411Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "btp9v9jxpknp"
+              }
+            },
+            "updatedAt": "2014-07-16T07:48:15.411Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Wed, 16 Jul 2014 07:48:16 GMT
 recorded_with: VCR 2.9.2
