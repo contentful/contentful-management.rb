@@ -34,7 +34,7 @@ module Contentful
       @client = client
       @included_resources = {}
       @known_resources = Hash.new { |h, k| h[k] = {} }
-      @nested_locales = false
+      @nested_locales = true
       @default_locale = (Thread.current[:configuration] || Contentful::Client::DEFAULT_CONFIGURATION)[:default_locale]
       @resource_mapping = default_resource_mapping.merge(resource_mapping)
       @entry_mapping = default_entry_mapping.merge(entry_mapping)

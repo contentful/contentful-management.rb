@@ -185,7 +185,7 @@ module Contentful
         let(:asset_description) { 'Asset Description' }
 
         it 'creates asset' do
-          # skip 'not implemented yet'
+          skip 'not implemented yet'
           vcr(:asset_create) do
 
             asset = Contentful::Management::Asset.create(space_id, fields: [])

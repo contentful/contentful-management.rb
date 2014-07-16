@@ -39,7 +39,7 @@ module Contentful
             end
           end
         else
-          @fields[locale] = extract_from_object object['fields'], :fields
+          @fields[locale || default_locale] = extract_from_object object['fields'], :fields
         end
       end
 
