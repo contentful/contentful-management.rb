@@ -182,19 +182,13 @@ module Contentful
         let(:asset_description) { 'Asset Description' }
 
         it 'creates asset' do
-          skip 'not implemented yet'
+          # skip 'not implemented yet'
           vcr(:asset_create) do
-            field = Contentful::Management::Field.new
-            field.title = "MyFieldTitle"
-            field.description = 'description'
-            asset = Contentful::Management::Asset.create(space_id, fields: [field])
+
+            asset = Contentful::Management::Asset.create(space_id, fields: fields)
             expect(asset).to be_kind_of Contentful::Management::Asset
-            expect(asset.name).to eq asset_title
+            expect(asset.title).to eq asset_title
             expect(asset.description).to eq asset_description
-            expect(asset.fields.size).to eq 1
-            result_field = asset.fields.first
-            expect(result_field.fileName).to eq field.title
-            expect(result_field.contentType).to eq field.type
           end
         end
       end
@@ -202,7 +196,19 @@ module Contentful
       describe '#update' do
         it 'updates asset' do
           vcr(:asset_update) do
-            skip 'Not implemented yet'
+            skip 'not implemented yet'
+            fields = Contentful::Management::AssetFields.new(space_id)
+            fields.title = asset_title
+            fields.description = asset_description
+
+            asset = Contentful::Management::Asset.update(space_id, fields: fields)
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            expect(asset.name).to eq asset_title
+            expect(asset.description).to eq asset_description
+            expect(asset.fields.size).to eq 1
+            result_field = asset.fields.first
+            expect(result_field.fileName).to eq field.title
+            expect(result_field.contentType).to eq field.type
           end
         end
       end

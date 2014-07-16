@@ -6,8 +6,9 @@ module Contentful
     class Asset
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
-      include Contentful::Resource::AssetFields
       include Contentful::Resource::Refresher
+
+      property :fields, AssetFields
 
       def self.all(space_id = nil)
         request = Request.new("/#{space_id || Thread.current[:space_id]}/assets")
@@ -103,10 +104,10 @@ module Contentful
       # See https://www.contentful.com/developers/documentation/content-delivery-api/#image-asset-resizing
       def image_url(options = {})
         query = {
-            w:  options[:w]  || options[:width],
-            h:  options[:h]  || options[:height],
+            w: options[:w] || options[:width],
+            h: options[:h] || options[:height],
             fm: options[:fm] || options[:format],
-            q:  options[:q]  || options[:quality]
+            q: options[:q] || options[:quality]
         }.reject { |_k, v| v.nil? }
 
         if query.empty?

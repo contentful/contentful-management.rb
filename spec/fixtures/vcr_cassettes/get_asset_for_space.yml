@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Mon, 14 Jul 2014 08:42:37 GMT
+      - Wed, 16 Jul 2014 08:43:20 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       Cf-Space-Id:
       - n6spjc167pc2
       Etag:
-      - '"7cc66c84e22d04df705dc3d7fa2623be"'
+      - '"c4efbaa0d66ffa6e133ce0a05b48642c"'
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Headers:
@@ -93,8 +93,8 @@ http_interactions:
               }
             },
             "firstPublishedAt": "2014-07-14T08:16:46.784Z",
-            "publishedCounter": 1,
-            "publishedAt": "2014-07-14T08:16:46.784Z",
+            "publishedCounter": 7,
+            "publishedAt": "2014-07-14T13:37:13.802Z",
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -102,9 +102,9 @@ http_interactions:
                 "id": "1E7acJL8I5XUXAMHQt9Grs"
               }
             },
-            "publishedVersion": 33,
-            "version": 34,
-            "updatedAt": "2014-07-14T08:16:46.790Z",
+            "publishedVersion": 43,
+            "version": 44,
+            "updatedAt": "2014-07-14T13:37:13.806Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -115,5 +115,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 14 Jul 2014 08:42:37 GMT
+  recorded_at: Wed, 16 Jul 2014 08:43:20 GMT
 recorded_with: VCR 2.9.2

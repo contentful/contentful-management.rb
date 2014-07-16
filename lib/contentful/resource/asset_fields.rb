@@ -1,4 +1,4 @@
-require_relative '../file'
+require_relative '../management/file'
 
 module Contentful
   module Resource
@@ -7,9 +7,9 @@ module Contentful
     # It depends on system properties being available
     module AssetFields
       FIELDS_COERCIONS = {
-          title:  :string,
-          description:  :string,
-          file:  File,
+          title: :string,
+          description: :string,
+          file: File,
       }
 
       def fields
