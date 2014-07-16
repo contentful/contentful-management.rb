@@ -1,5 +1,5 @@
 require_relative '../resource'
-require_relative '../resource/fields'
+require_relative '../resource/asset_fields'
 
 module Contentful
   module Management
@@ -7,7 +7,7 @@ module Contentful
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
       include Contentful::Resource::Refresher
-      include Contentful::Resource::Fields
+      include Contentful::Resource::AssetFields
 
       def self.all(space_id)
         request = Request.new("/#{space_id}/assets")

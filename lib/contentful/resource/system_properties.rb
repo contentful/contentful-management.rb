@@ -42,6 +42,9 @@ module Contentful
           base.send :define_method, Contentful::Support.snakify(name) do
             sys[name.to_sym]
           end
+          base.send :define_method, "#{Contentful::Support.snakify(name)}=" do |value|
+            sys[name.to_sym] = value
+          end
         }
       end
     end
