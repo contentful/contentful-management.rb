@@ -8,6 +8,9 @@ module Contentful
     describe Asset do
       let(:token) { '51cb89f45412ada2be4361599a96d6245e19913b6d2575eaf89dafaf99a443aa' }
       let(:space_id) { 'n6spjc167pc2' }
+      # let(:token) { '91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185' }
+      # let(:space_id) { 'btp9v9jxpknp' }
+
       let(:asset_id) { 'd42EjBLxdYiuSOyOkUyo6' }
       let(:asset_id_2) { '1730O0aAdyg66u604MyEWC' }
 
@@ -182,10 +185,10 @@ module Contentful
         let(:asset_description) { 'Asset Description' }
 
         it 'creates asset' do
-          skip 'not implemented yet'
+          # skip 'not implemented yet'
           vcr(:asset_create) do
 
-            asset = Contentful::Management::Asset.create(space_id, fields: fields)
+            asset = Contentful::Management::Asset.create(space_id, fields: [])
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq asset_title
             expect(asset.description).to eq asset_description

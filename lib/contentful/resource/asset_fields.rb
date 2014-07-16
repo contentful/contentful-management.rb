@@ -7,13 +7,13 @@ module Contentful
     # It depends on system properties being available
     module AssetFields
       FIELDS_COERCIONS = {
-          title: :string,
-          description: :string,
-          file: File,
+          title: :hash,
+          description: :hash,
+          file: Contentful::Management::File,
       }
 
-      def fields
-        @fields[locale]
+      def fields #(wanted_locale = default_locale)
+        @fields[locale] # || wanted_locale]
       end
 
       def initialize(object, *)

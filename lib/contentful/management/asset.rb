@@ -7,20 +7,19 @@ module Contentful
       include Contentful::Resource
       include Contentful::Resource::SystemProperties
       include Contentful::Resource::Refresher
+      include Contentful::Resource::AssetFields
 
-      property :fields, AssetFields
-
-      def self.all(space_id = nil)
-        request = Request.new("/#{space_id || Thread.current[:space_id]}/assets")
+      def self.all(space_id)
+        request = Request.new("/#{space_id}/assets")
         response = request.get
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
       def self.find(space_id, asset_id)
         request = Request.new("/#{space_id}/assets/#{asset_id}")
         response = request.get
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
@@ -28,7 +27,7 @@ module Contentful
         fields = (attributes[:fields] || []).map(&:properties)
         request = Request.new("/#{space_id}/assets/#{attributes[:id] || ''}", {fields: fields})
         response = attributes[:id].nil? ? request.post : request.put
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {})
+        result = ResourceBuilder.new(self, response, {}, {})
         result.run
       end
 
@@ -46,7 +45,7 @@ module Contentful
       def publish
         request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, nil, sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {}).run
+        result = ResourceBuilder.new(self, response, {}, {}).run
         if result.is_a? self.class
           refresh_data(result)
         else
@@ -57,7 +56,7 @@ module Contentful
       def unpublish
         request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, nil, sys[:version])
         response = request.delete
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {}).run
+        result = ResourceBuilder.new(self, response, {}, {}).run
         if result.is_a? self.class
           refresh_data(result)
         else
@@ -68,7 +67,7 @@ module Contentful
       def archive
         request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, nil, sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {}).run
+        result = ResourceBuilder.new(self, response, {}, {}).run
         if result.is_a? self.class
           refresh_data(result)
         else
@@ -79,7 +78,7 @@ module Contentful
       def unarchive
         request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, nil, sys[:version])
         response = request.delete
-        result = ResourceBuilder.new(self, response, {'Asset' => Asset}, {}).run
+        result = ResourceBuilder.new(self, response, {}, {}).run
         if result.is_a? self.class
           refresh_data(result)
         else
