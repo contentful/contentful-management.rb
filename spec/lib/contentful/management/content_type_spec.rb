@@ -318,6 +318,16 @@ module Contentful
           end
         end
       end
+
+      describe '#fields.destroy' do
+        it 'deletes field by id' do
+          vcr(:content_type_fields_destroy) do
+            content_type = subject.find(space_id, '41cG5MFEb6e4wQy0sg8Mww')
+            content_type.fields.destroy('tf1')
+            expect(content_type.fields.size).to eq 0
+          end
+        end
+      end
     end
   end
 end

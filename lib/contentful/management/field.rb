@@ -12,9 +12,8 @@ module Contentful
       property :required, :boolean
       property :localized, :boolean
 
-      def update_properties
-        @properties.delete(:items)
-        @properties
+      def properties_for_update
+        @properties.select {|k, _v| k != :items}
       end
 
     end

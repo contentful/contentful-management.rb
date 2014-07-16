@@ -78,7 +78,7 @@ module Contentful
       end
 
       def self.create(space_id, attributes)
-        fields = (attributes[:fields] || []).map(&:update_properties)
+        fields = (attributes[:fields] || []).map(&:properties_for_update)
         request = Request.new("/#{space_id}/content_types/#{attributes[:id] || ''}", {name: attributes.fetch(:name),
                                                                                       description: attributes[:description],
                                                                                       fields: fields})
@@ -91,7 +91,7 @@ module Contentful
         parameters = {}
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
-        parameters.merge!(fields: (attributes[:fields] || fields).map(&:update_properties))
+        parameters.merge!(fields: (attributes[:fields] || fields).map(&:properties_for_update))
         request = Request.new("/#{space.id}/content_types/#{id}", parameters, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
@@ -139,6 +139,11 @@ module Contentful
             field.name = params[:name]
             field.type = params[:type]
             content_type.update(fields: content_type.merged_fields(field))
+          end
+
+          fields.define_singleton_method(:destroy) do |id|
+            fields = content_type.fields.select {|field| field.id != id}
+            content_type.update(fields: fields)
           end
 
         end
