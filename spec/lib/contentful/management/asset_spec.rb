@@ -178,6 +178,25 @@ module Contentful
         end
       end
 
+      describe '#locale' do
+        it 'returns default locale' do
+          vcr(:asset_locale) do
+            asset = subject.find(space_id, asset_id_2)
+            expect(asset.locale).to eq asset.default_locale
+            expect(asset.title).to eq 'AssetToDestroy'
+             expect(asset.description).to eq 'AssetToDestroy'
+          end
+        end
+
+        it 'set locale to given asset' do
+          vcr(:asset_set_locale) do
+            asset = subject.find(space_id, asset_id_2)
+            asset.locale = 'nl'
+            expect(asset.sys[:locale]).to eq 'nl'
+          end
+        end
+      end
+
       describe '.create' do
         let(:asset_title) { ' My Asset title' }
         let(:asset_description) { 'Asset Description' }

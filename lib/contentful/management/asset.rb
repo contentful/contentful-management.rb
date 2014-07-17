@@ -115,6 +115,10 @@ module Contentful
         !sys[:archivedAt].nil?
       end
 
+      def locale
+        sys[:locale] || default_locale
+      end
+
       # Returns the image url of an asset
       # Allows you to pass in the following options for image resizing:
       #   :width
