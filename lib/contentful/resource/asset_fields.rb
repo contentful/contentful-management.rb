@@ -39,8 +39,12 @@ module Contentful
         base.extend(ClassMethods)
 
         base.fields_coercions.keys.each { |name|
-          base.send :define_method, Contentful::Support.snakify(name) do
+          accessor_name = Contentful::Support.snakify(name)
+          base.send :define_method, accessor_name do
             fields[name.to_sym] #[locale || default_locale]
+          end
+          base.send :define_method, "#{accessor_name}=" do |value|
+            fields[name.to_sym] = value
           end
         }
       end

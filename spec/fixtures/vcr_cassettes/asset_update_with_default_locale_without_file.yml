@@ -1,0 +1,318 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/prxtx491dzrl/assets/6oL0rPJ4HeCqI6y2q2MiGo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Jul 2014 07:58:42 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1101'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - prxtx491dzrl
+      Etag:
+      - '"d9e51ff0bd96f3a12e3d98aa99f213da"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "title"
+            },
+            "description": {
+              "en-US": "description"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "oauth2-flow.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 600,
+                    "height": 450
+                  },
+                  "size": 37722
+                },
+                "url": "//images.contentful.com/prxtx491dzrl/6oL0rPJ4HeCqI6y2q2MiGo/d26e91a063b50d81b0b5d8012b428f80/oauth2-flow.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "6oL0rPJ4HeCqI6y2q2MiGo",
+            "type": "Asset",
+            "createdAt": "2014-07-16T12:39:07.747Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "prxtx491dzrl"
+              }
+            },
+            "version": 28,
+            "updatedAt": "2014-07-17T07:50:02.747Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 17 Jul 2014 07:58:42 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/prxtx491dzrl/assets/6oL0rPJ4HeCqI6y2q2MiGo
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"title":{"en-US":"title 2"},"description":{"en-US":"description"},"file":{"en-US":{"fileName":"oauth2-flow.jpg","contentType":"image/jpeg","details":{"image":{"width":600,"height":450},"size":37722},"url":"//images.contentful.com/prxtx491dzrl/6oL0rPJ4HeCqI6y2q2MiGo/d26e91a063b50d81b0b5d8012b428f80/oauth2-flow.jpg"}}}}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '28'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Jul 2014 07:58:43 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1103'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - prxtx491dzrl
+      Etag:
+      - '"b14bb3b051b4950583e8ffca2ab2c73b"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "title 2"
+            },
+            "description": {
+              "en-US": "description"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "oauth2-flow.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 600,
+                    "height": 450
+                  },
+                  "size": 37722
+                },
+                "url": "//images.contentful.com/prxtx491dzrl/6oL0rPJ4HeCqI6y2q2MiGo/d26e91a063b50d81b0b5d8012b428f80/oauth2-flow.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "6oL0rPJ4HeCqI6y2q2MiGo",
+            "type": "Asset",
+            "createdAt": "2014-07-16T12:39:07.747Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "prxtx491dzrl"
+              }
+            },
+            "version": 29,
+            "updatedAt": "2014-07-17T07:58:43.354Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 17 Jul 2014 07:58:43 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/prxtx491dzrl/assets/6oL0rPJ4HeCqI6y2q2MiGo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer 91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 17 Jul 2014 07:58:44 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1103'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - prxtx491dzrl
+      Etag:
+      - '"bcbaac3f727068be96b8ca3fb231ebd9"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "title 2"
+            },
+            "description": {
+              "en-US": "description"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "oauth2-flow.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 600,
+                    "height": 450
+                  },
+                  "size": 37722
+                },
+                "url": "//images.contentful.com/prxtx491dzrl/6oL0rPJ4HeCqI6y2q2MiGo/d26e91a063b50d81b0b5d8012b428f80/oauth2-flow.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "6oL0rPJ4HeCqI6y2q2MiGo",
+            "type": "Asset",
+            "createdAt": "2014-07-16T12:39:07.747Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "prxtx491dzrl"
+              }
+            },
+            "version": 29,
+            "updatedAt": "2014-07-17T07:58:43.358Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 17 Jul 2014 07:58:44 GMT
+recorded_with: VCR 2.9.2

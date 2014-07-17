@@ -8,8 +8,6 @@ module Contentful
     describe Asset do
       let(:token) { '51cb89f45412ada2be4361599a96d6245e19913b6d2575eaf89dafaf99a443aa' }
       let(:space_id) { 'n6spjc167pc2' }
-      # let(:token) { '91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185' }
-      # let(:space_id) { 'btp9v9jxpknp' }
 
       let(:asset_id) { 'd42EjBLxdYiuSOyOkUyo6' }
       let(:asset_id_2) { '1730O0aAdyg66u604MyEWC' }
@@ -197,21 +195,24 @@ module Contentful
       end
 
       describe '#update' do
-        it 'updates asset' do
-          vcr(:asset_update) do
-            skip 'not implemented yet'
-            fields = Contentful::Management::AssetFields.new(space_id)
-            fields.title = asset_title
-            fields.description = asset_description
+        let(:token) { '91c6eeeca517239cd4b374a9ad2d62c1455def4551bf77e76cfd359a81aa6185' }
+        let(:space_id) { 'btp9v9jxpknp' }
 
-            asset = Contentful::Management::Asset.update(space_id, fields: fields)
+        it 'updates asset with default locales without file' do
+          vcr(:asset_update_with_default_locale_without_file) do
+            space_id = 'prxtx491dzrl'
+            asset_id = '6oL0rPJ4HeCqI6y2q2MiGo'
+
+            asset = subject.find(space_id, asset_id)
+
             expect(asset).to be_kind_of Contentful::Management::Asset
-            expect(asset.name).to eq asset_title
-            expect(asset.description).to eq asset_description
-            expect(asset.fields.size).to eq 1
-            result_field = asset.fields.first
-            expect(result_field.fileName).to eq field.title
-            expect(result_field.contentType).to eq field.type
+            expect(asset.title).to eq 'title'
+            expect(asset.description).to eq 'description'
+
+            asset.update(title: 'title 2')
+            expect(asset.title).to eq 'title 2'
+            asset = subject.find(space_id, asset_id)
+            expect(asset.title).to eq 'title 2'
           end
         end
       end

@@ -31,6 +31,27 @@ module Contentful
         result.run
       end
 
+      def update(attributes)
+        self.file = attributes[:file] if attributes[:file]
+        self.title = attributes[:title] if attributes[:title]
+        self.description = attributes[:description] if attributes[:description]
+
+        results = FIELDS_COERCIONS.keys.each_with_object({}) do |field_name, results|
+          results[field_name] = @fields.each_with_object({}) do |(locale, fields), field_results|
+            field_results[locale] = field_name == :file ? fields[field_name].properties : fields[field_name]
+          end
+        end
+        request = Request.new("/#{space.id}/assets/#{id}", {fields: results}, nil, sys[:version])
+
+        response = request.put
+        result = ResourceBuilder.new(self, response, {}, {}).run
+        if result.is_a? self.class
+          refresh_data(result)
+        else
+          result
+        end
+      end
+
       def destroy
         request = Request.new("/#{space.id}/assets/#{id}")
         response = request.delete
