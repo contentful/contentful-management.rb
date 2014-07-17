@@ -45,11 +45,7 @@ module Contentful
 
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
-        if result.is_a? self.class
-          refresh_data(result)
-        else
-          result
-        end
+        refresh_data(result)
       end
 
       def destroy
@@ -67,44 +63,28 @@ module Contentful
         request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
-        if result.is_a? self.class
-          refresh_data(result)
-        else
-          result
-        end
+        refresh_data(result)
       end
 
       def unpublish
         request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, nil, sys[:version])
         response = request.delete
         result = ResourceBuilder.new(self, response, {}, {}).run
-        if result.is_a? self.class
-          refresh_data(result)
-        else
-          result
-        end
+        refresh_data(result)
       end
 
       def archive
         request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, nil, sys[:version])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
-        if result.is_a? self.class
-          refresh_data(result)
-        else
-          result
-        end
+        refresh_data(result)
       end
 
       def unarchive
         request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, nil, sys[:version])
         response = request.delete
         result = ResourceBuilder.new(self, response, {}, {}).run
-        if result.is_a? self.class
-          refresh_data(result)
-        else
-          result
-        end
+        refresh_data(result)
       end
 
       def published?

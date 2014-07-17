@@ -4,9 +4,13 @@ module Contentful
     module Refresher
 
       def refresh_data(resource)
-        @properties = resource.properties
-        @sys = resource.sys
-        self
+        if resource.is_a? Error
+          resource
+        else
+          @properties = resource.properties
+          @sys = resource.sys
+          self
+        end
       end
     end
   end
