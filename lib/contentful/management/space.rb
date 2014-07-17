@@ -36,7 +36,7 @@ module Contentful
       end
 
       def update(attributes)
-        request = Request.new("/#{ id }", {'name' => attributes.fetch(:name)}, nil, sys[:version])
+        request = Request.new("/#{ id }", {'name' => attributes.fetch(:name)}, nil, sys[:version], attributes[:organization_id])
         response = request.put
         result = ResourceBuilder.new(self, response, {}, {})
         refresh_data(result.run)
@@ -44,10 +44,10 @@ module Contentful
 
       def save
         if id.nil?
-          new_instance = self.class.create(name: name)
+          new_instance = self.class.create(name: name, organization_id: organization)
           refresh_data(new_instance)
         else
-          update(name: name)
+          update(name: name, organization_id: organization)
         end
       end
 
