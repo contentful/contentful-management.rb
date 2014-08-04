@@ -180,7 +180,7 @@ or
 blog_post_locales = blog_space.locales.all
 ```
 
-Retrieving one locale by the locale-code from the space:
+Retrieving one locale by the locale-id from the space:
 
 ```ruby
 blog_post_locale = blog_space.locales.find(locale_id)
