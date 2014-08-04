@@ -1,4 +1,6 @@
+
 # Contentful::Management
+[![Gem Version](https://badge.fury.io/rb/contentful-management.svg)](http://badge.fury.io/rb/contentful-management) [![Build Status](https://travis-ci.org/contentful/contentful-management.rb.svg)](https://travis-ci.org/contentful/contentful-management.rb)
 
 Ruby client for the Contentful Content Management API.
 
