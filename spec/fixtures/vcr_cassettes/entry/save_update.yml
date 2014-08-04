@@ -1,0 +1,211 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/664EPJ6zHqAeMO6O0mGggU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 01 Aug 2014 12:04:45 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '968'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"34ca2dea7db28939949a31454be5e096"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "carMark": {
+              "en-US": "Mercedes Benz",
+              "pl": "Mercedes"
+            },
+            "carCityPlate": {
+              "en-US": "en",
+              "pl": "bia"
+            },
+            "carCapacity": {
+              "en-US": 2.5,
+              "pl": 2.5
+            }
+          },
+          "sys": {
+            "id": "664EPJ6zHqAeMO6O0mGggU",
+            "type": "Entry",
+            "createdAt": "2014-08-01T11:25:33.437Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "4esHTHIVgc0uWkiwGwOsa6"
+              }
+            },
+            "version": 1,
+            "updatedAt": "2014-08-01T11:25:33.442Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 01 Aug 2014 12:04:45 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/664EPJ6zHqAeMO6O0mGggU
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"carMark":{"en-US":"Merc","pl":"Mercedes"},"carCityPlate":{"en-US":"en","pl":"bia"},"carCapacity":{"en-US":2.5,"pl":2.5}}}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '1'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 01 Aug 2014 12:04:45 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '959'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"f20160958dadcb28ec056e41bb752726"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "carMark": {
+              "en-US": "Merc",
+              "pl": "Mercedes"
+            },
+            "carCityPlate": {
+              "en-US": "en",
+              "pl": "bia"
+            },
+            "carCapacity": {
+              "en-US": 2.5,
+              "pl": 2.5
+            }
+          },
+          "sys": {
+            "id": "664EPJ6zHqAeMO6O0mGggU",
+            "type": "Entry",
+            "createdAt": "2014-08-01T11:25:33.437Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "4esHTHIVgc0uWkiwGwOsa6"
+              }
+            },
+            "version": 2,
+            "updatedAt": "2014-08-01T12:04:45.943Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 01 Aug 2014 12:04:46 GMT
+recorded_with: VCR 2.9.2

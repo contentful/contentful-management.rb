@@ -1,0 +1,16 @@
+Encoding:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - contentful-management.gemspec
+    - bin/cma-console
+
+LineLength:
+  Max: 120

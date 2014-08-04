@@ -1,0 +1,475 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 30 Jul 2014 12:17:36 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '452'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1334319466
+      Etag:
+      - '"a964cca95dae35954c57c99f517f39e7"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"yr5m0jky5hsh",
+            "version":6,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "createdAt":"2014-07-30T07:46:19Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-07-30T11:56:51Z"
+          },
+          "name":"SaveNewName"}
+    http_version: 
+  recorded_at: Wed, 30 Jul 2014 12:17:36 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 30 Jul 2014 12:17:37 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '2501'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"b189a94a2f94b2ad197d2a5eddc83e38"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 3,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "ContentTypeForSpace",
+              "description": null,
+              "fields": [],
+              "sys": {
+                "id": "1AZQOWKr2I8W2ugY0KiGEU",
+                "type": "ContentType",
+                "createdAt": "2014-07-30T11:17:14.857Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "yr5m0jky5hsh"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-07-30T11:17:14.861Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "name": "ContentTypeForSpace",
+              "description": null,
+              "fields": [],
+              "sys": {
+                "id": "2sdtNnLWwoIgowCM0wsW2G",
+                "type": "ContentType",
+                "createdAt": "2014-07-30T11:12:15.070Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "yr5m0jky5hsh"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-07-30T11:12:15.073Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "name": "TestingContentType",
+              "description": null,
+              "fields": [],
+              "sys": {
+                "id": "3Pv6UOQy9ikic4qOmmiU8i",
+                "type": "ContentType",
+                "createdAt": "2014-07-30T11:08:57.603Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "yr5m0jky5hsh"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-07-30T11:08:57.606Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 30 Jul 2014 12:17:37 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 30 Jul 2014 12:17:37 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1436'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"6a36522012e7b20e2f0b69e4b8f42da4"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "fields": {
+                "title": {
+                  "en-US": "Dog photo"
+                },
+                "description": {
+                  "en-US": "Photo of Dog"
+                },
+                "file": {
+                  "en-US": {
+                    "fileName": "piesel_tTWRRK8aCP,q250.jpg",
+                    "contentType": "image/jpeg",
+                    "details": {
+                      "image": {
+                        "width": 250,
+                        "height": 250
+                      },
+                      "size": 22083
+                    },
+                    "url": "//images.contentful.com/yr5m0jky5hsh/6zEogZjpO8cq6YOOQigiAw/09037706e5c5e6c2b910f9a4160eb697/piesel_tTWRRK8aCP_q250.jpg"
+                  }
+                }
+              },
+              "sys": {
+                "id": "6zEogZjpO8cq6YOOQigiAw",
+                "type": "Asset",
+                "createdAt": "2014-07-30T12:14:49.380Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "yr5m0jky5hsh"
+                  }
+                },
+                "version": 58,
+                "updatedAt": "2014-07-30T12:16:37.270Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 30 Jul 2014 12:17:38 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 30 Jul 2014 12:17:38 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1436'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"6a36522012e7b20e2f0b69e4b8f42da4"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "fields": {
+                "title": {
+                  "en-US": "Dog photo"
+                },
+                "description": {
+                  "en-US": "Photo of Dog"
+                },
+                "file": {
+                  "en-US": {
+                    "fileName": "piesel_tTWRRK8aCP,q250.jpg",
+                    "contentType": "image/jpeg",
+                    "details": {
+                      "image": {
+                        "width": 250,
+                        "height": 250
+                      },
+                      "size": 22083
+                    },
+                    "url": "//images.contentful.com/yr5m0jky5hsh/6zEogZjpO8cq6YOOQigiAw/09037706e5c5e6c2b910f9a4160eb697/piesel_tTWRRK8aCP_q250.jpg"
+                  }
+                }
+              },
+              "sys": {
+                "id": "6zEogZjpO8cq6YOOQigiAw",
+                "type": "Asset",
+                "createdAt": "2014-07-30T12:14:49.380Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "yr5m0jky5hsh"
+                  }
+                },
+                "version": 58,
+                "updatedAt": "2014-07-30T12:16:37.270Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 30 Jul 2014 12:17:38 GMT
+recorded_with: VCR 2.9.2

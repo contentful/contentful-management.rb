@@ -1,0 +1,321 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/locales
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 14 Jul 2014 07:44:57 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '6058'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1209864305
+      Etag:
+      - '"fb70d3baf5e2a213262514747fc48b4e"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"5lxE2NYGbYiaerH8dx3WNE",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-09T11:04:14Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-09T11:04:14Z"
+              },
+              "name":"U.S. English",
+              "code":"en-US",
+              "default":true,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"0X5xcjckv6RMrd9Trae81p",
+                "version":6,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-11T10:43:30Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-11T13:29:23Z"
+              },
+              "name":"testNewLocaleName",
+              "code":"pl",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"4dW7BCZSEipTBMfPE7zPdY",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-11T13:52:37Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-11T13:52:37Z"
+              },
+              "name":"testlocalbycodequest",
+              "code":"br",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"2r4I1IsjALE1DS9ckWXFCC",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-14T07:20:53Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-14T07:20:53Z"
+              },
+              "name":"testlocalbycodequestru",
+              "code":"ru",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"3BVVXjOHC0PmkQkbv9dsKG",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-14T07:21:57Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-14T07:21:57Z"
+              },
+              "name":"testlocalbycodequestInvalid",
+              "code":"en-USx",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"3dbOxaSsDLY0yI90Nj1k7Y",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-14T07:28:45Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-14T07:28:45Z"
+              },
+              "name":"testLocaleBelgium",
+              "code":"nl-BE",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            },
+            {
+              "sys":{
+                "type":"Locale",
+                "id":"4IMeJdAb5B6VZSMmPsOkpo",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"n6spjc167pc2"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-07-14T07:30:08Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-07-14T07:30:08Z"
+              },
+              "name":"testLocaleBelgiumNl",
+              "code":"nl",
+              "default":false,
+              "contentManagementApi":true,
+              "publish":true,
+              "contentDeliveryApi":true
+            }
+          ],
+          "total":7,
+          "limit":25,
+          "skip":0}
+    http_version: 
+  recorded_at: Mon, 14 Jul 2014 07:44:57 GMT
+recorded_with: VCR 2.9.2

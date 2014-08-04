@@ -1,0 +1,353 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/5DSpuKrl04eMAGQoQckeIq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 31 Jul 2014 10:28:11 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '2259'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"aed325e03d6eae8d4406d8c80b6d04d1"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Author",
+          "description": "Author content",
+          "fields": [
+            {
+              "id": "name",
+              "name": "name",
+              "type": "Text",
+              "localized": true
+            },
+            {
+              "id": "age",
+              "name": "age",
+              "type": "Integer",
+              "localized": true
+            },
+            {
+              "id": "city",
+              "name": "city",
+              "type": "Location"
+            },
+            {
+              "id": "assets",
+              "name": "assets",
+              "type": "Array",
+              "items": {
+                "type": "Link",
+                "linkType": "Asset"
+              },
+              "localized": true
+            },
+            {
+              "id": "entries",
+              "name": "entries",
+              "type": "Array",
+              "items": {
+                "type": "Link",
+                "linkType": "Entry"
+              }
+            },
+            {
+              "id": "entry",
+              "name": "entry",
+              "type": "Link",
+              "linkType": "Entry"
+            },
+            {
+              "id": "asset",
+              "name": "asset",
+              "type": "Link",
+              "linkType": "Asset"
+            },
+            {
+              "id": "bool",
+              "name": "bool",
+              "type": "Boolean",
+              "localized": true
+            },
+            {
+              "id": "symbols",
+              "name": "symbols",
+              "type": "Array",
+              "items": {
+                "type": "Symbol"
+              }
+            },
+            {
+              "id": "birthday",
+              "name": "birthday",
+              "type": "Date"
+            },
+            {
+              "id": "symbol",
+              "name": "Symbol",
+              "type": "Symbol",
+              "required": true,
+              "localized": true
+            }
+          ],
+          "sys": {
+            "id": "5DSpuKrl04eMAGQoQckeIq",
+            "type": "ContentType",
+            "createdAt": "2014-07-30T12:35:01.110Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "firstPublishedAt": "2014-07-30T12:37:42.035Z",
+            "publishedCounter": 9,
+            "publishedAt": "2014-07-31T10:21:36.870Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 206,
+            "version": 210,
+            "updatedAt": "2014-07-31T10:25:59.302Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 31 Jul 2014 10:28:11 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/5DSpuKrl04eMAGQoQckeIq
+    body:
+      encoding: UTF-8
+      string: '{"name":"Author","description":"Author content","fields":[{"id":"name","name":"name","type":"Text","localized":true},{"id":"age","name":"age","type":"Integer","localized":true},{"id":"city","name":"city","type":"Location"},{"id":"assets","name":"assets","type":"Array","items":{"type":"Link","linkType":"Asset"},"localized":true},{"id":"entries","name":"entries","type":"Array","items":{"type":"Link","linkType":"Entry"}},{"id":"entry","name":"entry","type":"Link","linkType":"Entry"},{"id":"asset","name":"asset","type":"Link","linkType":"Asset"},{"id":"bool","name":"bool","type":"Boolean","localized":true},{"id":"symbols","name":"symbols","type":"Array","items":{"type":"Symbol"}},{"id":"birthday","name":"birthday","type":"Date"},{"id":"symbol","name":"Symbol","type":"Symbol","required":true,"localized":true},{"id":"eye_color","name":"Eye
+        color","type":"Text"}]}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '210'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 31 Jul 2014 10:28:11 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '2345'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"9a2b7f4b99a087a5b4ca62725bae7097"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Author",
+          "description": "Author content",
+          "fields": [
+            {
+              "id": "name",
+              "name": "name",
+              "type": "Text",
+              "localized": true
+            },
+            {
+              "id": "age",
+              "name": "age",
+              "type": "Integer",
+              "localized": true
+            },
+            {
+              "id": "city",
+              "name": "city",
+              "type": "Location"
+            },
+            {
+              "id": "assets",
+              "name": "assets",
+              "type": "Array",
+              "items": {
+                "type": "Link",
+                "linkType": "Asset"
+              },
+              "localized": true
+            },
+            {
+              "id": "entries",
+              "name": "entries",
+              "type": "Array",
+              "items": {
+                "type": "Link",
+                "linkType": "Entry"
+              }
+            },
+            {
+              "id": "entry",
+              "name": "entry",
+              "type": "Link",
+              "linkType": "Entry"
+            },
+            {
+              "id": "asset",
+              "name": "asset",
+              "type": "Link",
+              "linkType": "Asset"
+            },
+            {
+              "id": "bool",
+              "name": "bool",
+              "type": "Boolean",
+              "localized": true
+            },
+            {
+              "id": "symbols",
+              "name": "symbols",
+              "type": "Array",
+              "items": {
+                "type": "Symbol"
+              }
+            },
+            {
+              "id": "birthday",
+              "name": "birthday",
+              "type": "Date"
+            },
+            {
+              "id": "symbol",
+              "name": "Symbol",
+              "type": "Symbol",
+              "required": true,
+              "localized": true
+            },
+            {
+              "id": "eye_color",
+              "name": "Eye color",
+              "type": "Text"
+            }
+          ],
+          "sys": {
+            "id": "5DSpuKrl04eMAGQoQckeIq",
+            "type": "ContentType",
+            "createdAt": "2014-07-30T12:35:01.110Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "firstPublishedAt": "2014-07-30T12:37:42.035Z",
+            "publishedCounter": 9,
+            "publishedAt": "2014-07-31T10:21:36.870Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 206,
+            "version": 211,
+            "updatedAt": "2014-07-31T10:28:11.902Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 31 Jul 2014 10:28:12 GMT
+recorded_with: VCR 2.9.2

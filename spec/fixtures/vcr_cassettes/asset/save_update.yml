@@ -1,0 +1,242 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/35Kt2tInIsoauo8sC82q04
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 01 Aug 2014 12:09:20 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1535'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"ab3669512da9946595f925ab881bc6af"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "Company logo",
+              "pl": "Firmowe logo"
+            },
+            "description": {
+              "en-US": "Company logo codequest",
+              "pl": "Logo firmy Codequest"
+            },
+            "file": {
+              "en-US": {
+                "contentType": "image/jpeg",
+                "fileName": "codequest.jpg",
+                "details": {
+                  "image": {
+                    "width": 90,
+                    "height": 90
+                  },
+                  "size": 7094
+                },
+                "url": "//images.contentful.com/yr5m0jky5hsh/35Kt2tInIsoauo8sC82q04/3c84f80a23e1f3ac7717a7a9be59e8d0/codequest.jpg"
+              },
+              "pl": {
+                "contentType": "image/jpeg",
+                "fileName": "codequest.jpg",
+                "details": {
+                  "image": {
+                    "width": 90,
+                    "height": 90
+                  },
+                  "size": 7094
+                },
+                "url": "//images.contentful.com/yr5m0jky5hsh/35Kt2tInIsoauo8sC82q04/96228bd042f66a29b071c047350d0f4e/codequest.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "35Kt2tInIsoauo8sC82q04",
+            "type": "Asset",
+            "createdAt": "2014-07-31T12:57:45.481Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "version": 3,
+            "updatedAt": "2014-07-31T12:57:47.041Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 01 Aug 2014 12:09:20 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/35Kt2tInIsoauo8sC82q04
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"title":{"en-US":"Company logo","pl":"Firmowe logo"},"description":{"en-US":"Firmowe
+        logo.","pl":"Logo firmy Codequest"},"file":{"en-US":{"fileName":"codequest.jpg","contentType":"image/jpeg","details":{"image":{"width":90,"height":90},"size":7094},"url":"//images.contentful.com/yr5m0jky5hsh/35Kt2tInIsoauo8sC82q04/3c84f80a23e1f3ac7717a7a9be59e8d0/codequest.jpg"},"pl":{"fileName":"codequest.jpg","contentType":"image/jpeg","details":{"image":{"width":90,"height":90},"size":7094},"url":"//images.contentful.com/yr5m0jky5hsh/35Kt2tInIsoauo8sC82q04/96228bd042f66a29b071c047350d0f4e/codequest.jpg"}}}}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '3'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 01 Aug 2014 12:09:21 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1526'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"8d3ae2444136a5287517c091146a9185"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "en-US": "Company logo",
+              "pl": "Firmowe logo"
+            },
+            "description": {
+              "en-US": "Firmowe logo.",
+              "pl": "Logo firmy Codequest"
+            },
+            "file": {
+              "en-US": {
+                "fileName": "codequest.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 90,
+                    "height": 90
+                  },
+                  "size": 7094
+                },
+                "url": "//images.contentful.com/yr5m0jky5hsh/35Kt2tInIsoauo8sC82q04/3c84f80a23e1f3ac7717a7a9be59e8d0/codequest.jpg"
+              },
+              "pl": {
+                "fileName": "codequest.jpg",
+                "contentType": "image/jpeg",
+                "details": {
+                  "image": {
+                    "width": 90,
+                    "height": 90
+                  },
+                  "size": 7094
+                },
+                "url": "//images.contentful.com/yr5m0jky5hsh/35Kt2tInIsoauo8sC82q04/96228bd042f66a29b071c047350d0f4e/codequest.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "35Kt2tInIsoauo8sC82q04",
+            "type": "Asset",
+            "createdAt": "2014-07-31T12:57:45.481Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "version": 4,
+            "updatedAt": "2014-08-01T12:09:21.351Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Fri, 01 Aug 2014 12:09:21 GMT
+recorded_with: VCR 2.9.2

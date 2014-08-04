@@ -1,0 +1,251 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/qw3F2rn3FeoOiceqAiCSC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 31 Jul 2014 10:05:28 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1440'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"64febea32cedbc38911dfd8c105de4a9"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Blog Content",
+          "description": "Blogs content type",
+          "fields": [
+            {
+              "id": "blog_author",
+              "name": "blog_author",
+              "type": "Text",
+              "localized": true
+            },
+            {
+              "name": "xxxx",
+              "id": "xxx",
+              "type": "Text",
+              "uiid": "2zsolw01o1s"
+            },
+            {
+              "name": "sdfdsf",
+              "id": "sdfdsf",
+              "type": "Integer",
+              "uiid": "3gpfdgtgs8w"
+            },
+            {
+              "name": "ssss",
+              "id": "ssss",
+              "type": "Boolean",
+              "uiid": "3gkmkxcq2o0"
+            }
+          ],
+          "sys": {
+            "id": "qw3F2rn3FeoOiceqAiCSC",
+            "type": "ContentType",
+            "createdAt": "2014-07-31T09:12:04.064Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "firstPublishedAt": "2014-07-31T09:42:50.228Z",
+            "publishedCounter": 5,
+            "publishedAt": "2014-07-31T09:59:30.185Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 176,
+            "version": 177,
+            "updatedAt": "2014-07-31T09:59:30.190Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          },
+          "displayField": "xx"
+        }
+    http_version: 
+  recorded_at: Thu, 31 Jul 2014 10:05:28 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/qw3F2rn3FeoOiceqAiCSC
+    body:
+      encoding: UTF-8
+      string: '{"name":"Blog Content","description":"Blogs content type","fields":[{"id":"blog_author","name":"blog_author","type":"Text","localized":true},{"id":"xxx","name":"xxxx","type":"Text"},{"id":"sdfdsf","name":"sdfdsf","type":"Integer"},{"id":"ssss","name":"ssss","type":"Boolean"},{"id":"blog_author","name":"Author
+        of blog","type":"Text"}]}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '177'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 31 Jul 2014 10:05:29 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1422'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - yr5m0jky5hsh
+      Etag:
+      - '"6883197dd8c54e1b01c5feecec043d70"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Blog Content",
+          "description": "Blogs content type",
+          "fields": [
+            {
+              "id": "blog_author",
+              "name": "blog_author",
+              "type": "Text",
+              "localized": true
+            },
+            {
+              "id": "xxx",
+              "name": "xxxx",
+              "type": "Text"
+            },
+            {
+              "id": "sdfdsf",
+              "name": "sdfdsf",
+              "type": "Integer"
+            },
+            {
+              "id": "ssss",
+              "name": "ssss",
+              "type": "Boolean"
+            },
+            {
+              "id": "blog_author",
+              "name": "Author of blog",
+              "type": "Text"
+            }
+          ],
+          "sys": {
+            "id": "qw3F2rn3FeoOiceqAiCSC",
+            "type": "ContentType",
+            "createdAt": "2014-07-31T09:12:04.064Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "yr5m0jky5hsh"
+              }
+            },
+            "firstPublishedAt": "2014-07-31T09:42:50.228Z",
+            "publishedCounter": 5,
+            "publishedAt": "2014-07-31T09:59:30.185Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 176,
+            "version": 178,
+            "updatedAt": "2014-07-31T10:05:29.543Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0fn5fOWn4WsKFyYla1gI5h"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 31 Jul 2014 10:05:29 GMT
+recorded_with: VCR 2.9.2
