@@ -233,6 +233,13 @@ module Contentful
             expect(entry.name).to eq 'SymbolTest'
           end
         end
+        let(:token) { 'a36504c8b5e0ef7172c313961a2359bf06bb8485a0253beeb6fa389cc781d468' }
+        it 'with custom id' do
+          vcr('entry/create_with_custom_id') do
+            entry = subject.create(content_type, id: 'custom_id', name: 'Custom Id')
+            expect(entry.id).to eq 'custom_id'
+          end
+        end
       end
 
       describe '#update' do
