@@ -32,6 +32,7 @@ module Contentful
       end
 
       def self.create(content_type, attributes)
+        custom_id = attributes[:id] || ''
         fields_for_create = if attributes[:fields] #create from initialized dynamic entry via save
                               tmp_entry = self.new
                               tmp_entry.instance_variable_set(:@fields, attributes.delete(:fields) || {})
@@ -40,9 +41,9 @@ module Contentful
                               fields_with_locale content_type, attributes
                             end
 
-        request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ attributes[:id] || ''}", { fields: fields_for_create }, nil, content_type_id: content_type.id)
+        request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ custom_id }", { fields: fields_for_create }, nil, content_type_id: content_type.id)
 
-        response = attributes[:id].nil? ? request.post : request.put
+        response = custom_id.empty? ? request.post : request.put
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
         result.run
       end

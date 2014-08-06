@@ -233,6 +233,12 @@ module Contentful
             expect(entry.name).to eq 'SymbolTest'
           end
         end
+        it 'with custom id' do
+          vcr('entry/create_with_custom_id') do
+            entry = subject.create(content_type, id: 'custom_id', name: 'Custom Id')
+            expect(entry.id).to eq 'custom_id'
+          end
+        end
       end
 
       describe '#update' do
