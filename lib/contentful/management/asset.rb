@@ -55,6 +55,8 @@ module Contentful
           request = Request.new("/#{ space.id }/assets/#{ id }/files/#{ locale }/process", {}, id = nil, version: sys[:version])
           request.put
         end
+        sys[:version] += 1
+        self
       end
 
       def update(attributes)

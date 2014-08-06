@@ -81,6 +81,21 @@ module Contentful
       end
 
       describe '#publish' do
+        it ' after create' do
+          vcr('asset/publish_after_create') do
+            file1 = Contentful::Management::File.new
+            file1.properties[:contentType] = 'image/jpeg'
+            file1.properties[:fileName] = 'pic1.jpg'
+            file1.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
+            asset = Contentful::Management::Asset.create(space_id,
+                                                         title: 'titlebyCreateAPI',
+                                                         description: 'descByAPI',
+                                                         file: file1)
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            asset.publish
+            expect(asset.published?).to be_truthy
+          end
+        end
         it 'returns Contentful::Management::Asset' do
           vcr('asset/publish') do
             asset = subject.find(space_id, asset_id_2)
