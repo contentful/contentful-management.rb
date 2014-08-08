@@ -72,7 +72,14 @@ module Contentful
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
         raw_response = yield(url)
+        clear_headers
         Response.new(raw_response, request)
+      end
+
+      def clear_headers
+        self.content_type_id = nil
+        self.version = nil
+        self.organization_id = nil
       end
 
       def delete(request)

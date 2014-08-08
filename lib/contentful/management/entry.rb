@@ -139,7 +139,7 @@ module Contentful
       def self.parse_attribute_with_field(attribute, field)
         case field.type
           when ContentType::LINK then
-            { sys: { type: field.type, linkType: field.link_type, id: attribute.id }}
+            { sys: { type: field.type, linkType: field.link_type, id: attribute.id }} if attribute
           when ContentType::ARRAY then
             parse_fields_array(attribute)
           when ContentType::LOCATION then
