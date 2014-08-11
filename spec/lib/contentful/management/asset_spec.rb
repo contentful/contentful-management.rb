@@ -9,7 +9,6 @@ module Contentful
     describe Asset do
       let(:token) { '<ACCESS_TOKEN>' }
       let(:space_id) { 'yr5m0jky5hsh' }
-
       let(:asset_id) { '3PYa73pXXiAmKqm8eu4qOS' }
       let(:asset_id_2) { '5FDqplZoruAUGmiSa02asE' }
 
@@ -81,6 +80,24 @@ module Contentful
       end
 
       describe '#publish' do
+        it 'returns Contentful::Management::Asset' do
+          vcr('asset/publish_after_create') do
+            file1 = Contentful::Management::File.new
+            file1.properties[:contentType] = 'image/jpeg'
+            file1.properties[:fileName] = 'pic1.jpg'
+            file1.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
+
+            asset = Contentful::Management::Asset.create(space_id,
+                                                         title: 'titlebyCreateAPI',
+                                                         description: 'descByAPI',
+                                                         file: file1)
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            asset.publish
+            expect(asset.published?).to be_truthy
+          end
+        end
+
+
         it 'returns Contentful::Management::Asset' do
           vcr('asset/publish') do
             asset = subject.find(space_id, asset_id_2)
@@ -201,13 +218,15 @@ module Contentful
       describe '.create' do
         it 'creates asset ' do
           vcr('asset/create') do
-
             file1 = Contentful::Management::File.new
             file1.properties[:contentType] = 'image/jpeg'
             file1.properties[:fileName] = 'pic1.jpg'
             file1.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id, title: 'titlebyCreateAPI', description: 'descByAPI', file: file1)
+            asset = Contentful::Management::Asset.create(space_id,
+                                                         title: 'titlebyCreateAPI',
+                                                         description: 'descByAPI',
+                                                         file: file1)
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'titlebyCreateAPI'
             expect(asset.description).to eq 'descByAPI'
@@ -217,12 +236,15 @@ module Contentful
         it 'creates asset with custom ID' do
           vcr('asset/create_with_custom_id') do
             file = Contentful::Management::File.new
-
             file.properties[:contentType] = 'image/jpeg'
             file.properties[:fileName] = 'codequest.jpg'
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id, id: 'codequest_id_test_custom', title: 'titlebyCreateAPI_custom_id', description: 'descByAPI_custom_id', file: file)
+            asset = Contentful::Management::Asset.create(space_id,
+                                                         id: 'codequest_id_test_custom',
+                                                         title: 'titlebyCreateAPI_custom_id',
+                                                         description: 'descByAPI_custom_id',
+                                                         file: file)
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.id).to eq 'codequest_id_test_custom'
             expect(asset.title).to eq 'titlebyCreateAPI_custom_id'
@@ -237,7 +259,11 @@ module Contentful
             file.properties[:fileName] = 'codequest.jpg'
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id, id: 'codequest_id_test_custom_id', title: 'titlebyCreateAPI_custom_id', description: 'descByAPI_custom_id', file: file)
+            asset = Contentful::Management::Asset.create(space_id,
+                                                         id: 'codequest_id_test_custom_id',
+                                                         title: 'titlebyCreateAPI_custom_id',
+                                                         description: 'descByAPI_custom_id',
+                                                         file: file)
             expect(asset).to be_kind_of Contentful::Management::BadRequest
           end
         end
@@ -299,23 +325,6 @@ module Contentful
           end
         end
       end
-      describe '#image_url' do
-        it 'empty_query' do
-          vcr('asset/image_url') do
-            asset = Contentful::Management::Asset.find(space_id, '35Kt2tInIsoauo8sC82q04')
-            asset.image_url
-            expect(asset).to be_kind_of Contentful::Management::Asset
-          end
-        end
-        it 'with_params' do
-          vcr('asset/image_url') do
-            asset = Contentful::Management::Asset.find(space_id, '35Kt2tInIsoauo8sC82q04')
-            asset.image_url(w: 111, h: 11)
-            expect(asset).to be_kind_of Contentful::Management::Asset
-          end
-        end
-      end
-
     end
   end
 end

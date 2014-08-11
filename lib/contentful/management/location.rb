@@ -4,7 +4,7 @@ require_relative 'resource'
 module Contentful
   module Management
     # Location Field Type
-    # You can directly query for them: https://www.contentful.com/developers/documentation/content-delivery-api/#search-filter-geo
+    # You can directly query for them: https://www.contentful.com/developers/documentation/content-management-api/#search-filter-geo
     class Location
       include Contentful::Management::Resource
 

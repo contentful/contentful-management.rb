@@ -149,7 +149,8 @@ module Contentful
         it 'creates a content_type within a space with custom id and without fields' do
           vcr('content_type/create_content_type_with_id') do
             content_type_id = 'custom_id'
-            content_type = Contentful::Management::ContentType.create(space_id, { name: content_type_name, id: content_type_id })
+            content_type = Contentful::Management::ContentType.create(space_id, { name: content_type_name,
+                                                                                  id: content_type_id })
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq content_type_name
             expect(content_type.id).to eq content_type_id
@@ -164,7 +165,9 @@ module Contentful
               field.name = "My #{ field_type } Field"
               field.type = field_type
               field.link_type = 'Entry' if field_type == 'Link'
-              content_type = Contentful::Management::ContentType.create(space_id, name: "#{ field_type }", description: "Content type with #{ field_type } field", fields: [field])
+              content_type = Contentful::Management::ContentType.create(space_id, name: "#{ field_type }",
+                                                                        description: "Content type with #{ field_type } field",
+                                                                        fields: [field])
               expect(content_type).to be_kind_of Contentful::Management::ContentType
               expect(content_type.name).to eq "#{ field_type }"
               expect(content_type.description).to eq "Content type with #{ field_type } field"
@@ -291,7 +294,11 @@ module Contentful
         it 'creates new Link field with additional parameters' do
           vcr('content_type/fields/create_with_params') do
             content_type = subject.find(space_id, 'qw3F2rn3FeoOiceqAiCSC')
-            content_type.fields.create(id: 'blog_avatar', name: 'Blog avatar', type: 'Link', link_type: 'Asset', localized: true, required: true)
+            content_type.fields.create(id: 'blog_avatar', name: 'Blog avatar',
+                                       type: 'Link',
+                                       link_type: 'Asset',
+                                       localized: true,
+                                       required: true)
             expect(content_type.fields.size).to eq 2
             field = content_type.fields.last
             expect(field.name).to eq 'Blog avatar'
@@ -367,7 +374,9 @@ module Contentful
           vcr('content_type/entry/create_with_entries') do
             entry_en = Entry.find(space_id, 'Qa8TW5nPWgiU4MA6AGYgq')
             content_type = subject.find(space_id, '6xzrdCr33OMAeIYUgs6UKi')
-            entry = content_type.entries.create(blog_name: 'Piotrek', blog_entry: entry_en, blog_entries: [entry_en, entry_en, entry_en])
+            entry = content_type.entries.create(blog_name: 'Piotrek',
+                                                blog_entry: entry_en,
+                                                blog_entries: [entry_en, entry_en, entry_en])
             expect(entry).to be_kind_of Contentful::Management::Entry
             expect(entry.blog_name).to eq 'Piotrek'
             expect(entry.fields[:blog_entry]['sys']['id']).to eq 'Qa8TW5nPWgiU4MA6AGYgq'
@@ -416,7 +425,7 @@ module Contentful
           it 'with entries' do
             vcr('content_type/entry/create_with_entries_for_multiple_locales') do
               space = Contentful::Management::Space.find(space_id)
-              space.content_types #filling cache
+              space.content_types # filling cache
 
               entry_en = space.entries.find('664EPJ6zHqAeMO6O0mGggU')
               entry_pl = space.entries.find('664EPJ6zHqAeMO6O0mGggU')
@@ -434,7 +443,7 @@ module Contentful
           it 'with assets' do
             vcr('content_type/entry/create_with_entries_for_multiple_locales') do
               space = Contentful::Management::Space.find(space_id)
-              space.content_types #filling cache
+              space.content_types # filling cache
 
               entry_en = space.entries.find('664EPJ6zHqAeMO6O0mGggU')
               entry_pl = space.entries.find('664EPJ6zHqAeMO6O0mGggU')

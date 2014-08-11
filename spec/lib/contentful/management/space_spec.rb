@@ -6,7 +6,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe Space do
-     let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { '<ACCESS_TOKEN>' }
       let(:space_id) { 'yr5m0jky5hsh' }
 
       let!(:client) { Client.new(token) }
@@ -174,7 +174,11 @@ module Contentful
 
         it 'creates locales to space' do
           vcr('space/locale/create') do
-            locale = subject.find(space_id).locales.create(name: 'ru-RU', contentManagementApi: true, publish: true, contentDeliveryApi: true, code: 'ru-RU')
+            locale = subject.find(space_id).locales.create(name: 'ru-RU',
+                                                           contentManagementApi: true,
+                                                           publish: true,
+                                                           contentDeliveryApi: true,
+                                                           code: 'ru-RU')
             expect(locale).to be_kind_of Contentful::Management::Locale
             expect(locale.name).to eql 'ru-RU'
           end
@@ -182,7 +186,12 @@ module Contentful
 
         it 'returns error when locale already exists' do
           vcr('space/locale/create_with_the_same_code') do
-            locale = subject.find(space_id).locales.create(name: 'ru-RU', contentManagementApi: true, publish: true, contentDeliveryApi: true, code: 'ru-RU')
+            space = subject.find(space_id)
+            locale = space.locales.create(name: 'ru-RU',
+                                          contentManagementApi: true,
+                                          publish: true,
+                                          contentDeliveryApi: true,
+                                          code: 'ru-RU')
             expect(locale).to be_kind_of Contentful::Management::Error
           end
         end

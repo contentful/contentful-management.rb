@@ -27,11 +27,13 @@ blog_space.locales.create(name: 'German', code: 'de-DE')
 category_type = blog_space.content_types.create(name: 'Category')
 category_type.fields.create(id: 'category_name', name: 'Category Name', type: 'Text', localized: true)
 category_type.fields.create(id: 'category_description', name: 'Category Description', type: 'Text', localized: true)
+category_type.update(displayField: 'category_name')
 
 post_type = blog_space.content_types.create(name: 'Post')
 post_type.fields.create(id: 'post_title', name: 'Post Title', type: 'Text', localized: true)
 post_type.fields.create(id: 'post_author', name: 'Post Author', type: 'Text', localized: true)
 post_type.fields.create(id: 'post_body', name: 'Post Body', type: 'Text', localized: true)
+post_type.update(displayField: 'post_title')
 
 categories = Contentful::Management::Field.new
 categories.id = 'post_category'

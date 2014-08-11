@@ -3,6 +3,7 @@ require_relative 'resource'
 
 module Contentful
   module Management
+    # A ContentType's field schema
     class Field
       include Contentful::Management::Resource
 
@@ -28,7 +29,6 @@ module Contentful
           end
         end
       end
-
     end
   end
 end
