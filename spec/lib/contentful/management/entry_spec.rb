@@ -21,6 +21,14 @@ module Contentful
         it 'builds a Contentful::Management::Entry object' do
           vcr('entry/all') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Entry }
         end
+        it 'returns entries in context of specified content type' do
+          vcr('entry/content_type_entires') do
+            entries = Contentful::Management::Entry.all('9lxkhjnp8gyx', content_type_id: 'category_content_type')
+            expect(entries).to be_kind_of Contentful::Management::Array
+            expect(entries.first).to be_kind_of Contentful::Management::Entry
+            expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
+          end
+        end
       end
 
       describe '#find' do

@@ -45,7 +45,7 @@ module Contentful
       # Takes a hash of attributes with optional organization id if client has more than one organization.
       # Returns a Contentful::Management::Space.
       def self.create(attributes)
-        request = Request.new('', { 'name' => attributes.fetch(:name) }, id = nil, organization_id: attributes[:organization_id])
+        request = Request.new('', {'name' => attributes.fetch(:name)}, id = nil, organization_id: attributes[:organization_id])
         response = request.post
         result = ResourceBuilder.new(self, response, {}, {})
         result.run
@@ -88,7 +88,7 @@ module Contentful
       # Allows listing all content types of space, creating new and finding one by id.
       # See README for details.
       def content_types
-        content_types = ContentType.all(id)
+        content_types = nil
 
         content_types.instance_exec(self) do |space|
 
@@ -118,7 +118,7 @@ module Contentful
       # Allows listing all locales of space, creating new and finding one by id.
       # See README for details.
       def locales
-        locales = Locale.all(id)
+        locales = nil
 
         locales.instance_exec(self) do |space|
           define_singleton_method(:all) do
@@ -141,7 +141,7 @@ module Contentful
       # Allows listing all assets of space, creating new and finding one by id.
       # See README for details.
       def assets
-        assets = Asset.all(id)
+        assets = nil
 
         assets.instance_exec(self) do |space|
           define_singleton_method(:all) do
@@ -169,11 +169,11 @@ module Contentful
       # Allows listing all entries of space and finding one by id.
       # See README for details.
       def entries
-        entries = Entry.all(id)
+        entries = nil
 
         entries.instance_exec(self) do |space|
-          define_singleton_method(:all) do
-            Entry.all(space.id)
+          define_singleton_method(:all) do |attributes = {}|
+            Entry.all(space.id, attributes)
           end
 
           define_singleton_method(:find) do |entry_id|

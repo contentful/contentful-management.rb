@@ -18,10 +18,12 @@ module Contentful
       attr_accessor :content_type
 
       # Gets a collection of entries.
-      # Takes an id of space.
+      # Takes an id of space and hash of parameters with optional content_type_id.
       # Returns a Contentful::Management::Array of Contentful::Management::Entry.
-      def self.all(space_id)
-        request = Request.new("/#{ space_id }/entries")
+      def self.all(space_id, parameters = {})
+        path = "/#{ space_id }/entries"
+        path += "?content_type=#{parameters[:content_type_id]}" if parameters[:content_type_id]
+        request = Request.new(path)
         response = request.get
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
         result.run
@@ -50,7 +52,7 @@ module Contentful
                               fields_with_locale content_type, attributes
                             end
 
-        request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ custom_id }", { fields: fields_for_create }, nil, content_type_id: content_type.id)
+        request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ custom_id }", {fields: fields_for_create}, nil, content_type_id: content_type.id)
 
         response = custom_id.empty? ? request.post : request.put
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
@@ -73,7 +75,7 @@ module Contentful
       # See README for details.
       def save
         if id.nil?
-          new_instance = Contentful::Management::Entry.create(content_type, { fields: instance_variable_get(:@fields) })
+          new_instance = Contentful::Management::Entry.create(content_type, {fields: instance_variable_get(:@fields)})
           refresh_data(new_instance)
         else
           update({})
@@ -161,7 +163,7 @@ module Contentful
 
       def fields_from_attributes(attributes)
         attributes.each do |id, value|
-          attributes[id] = { locale => parse_update_attribute(value) }
+          attributes[id] = {locale => parse_update_attribute(value)}
         end
       end
 
@@ -183,11 +185,11 @@ module Contentful
       # TODO refactor
       def parse_update_attribute(attribute)
         if attribute.is_a? Asset
-          { sys: { type: 'Link', linkType: 'Asset', id: attribute.id } }
+          {sys: {type: 'Link', linkType: 'Asset', id: attribute.id}}
         elsif attribute.is_a? Entry
-          { sys: { type: 'Link', linkType: 'Entry', id: attribute.id } }
+          {sys: {type: 'Link', linkType: 'Entry', id: attribute.id}}
         elsif attribute.is_a? Location
-          { lat: attribute.properties[:lat], lon: attribute.properties[:lon] }
+          {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
         elsif attribute.is_a? ::Array
           parse_update_fields_array(attribute)
         else
@@ -203,9 +205,9 @@ module Contentful
            attributes.each_with_object([]) do |attr, arr|
             arr << case type
                      when /Entry/ then
-                       { sys: { type: 'Link', linkType: 'Entry', id: attr.id } }
+                       {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
                      when /Asset/ then
-                       { sys: { type: 'Link', linkType: 'Asset', id: attr.id } }
+                       {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
                    end
           end
         end
@@ -217,9 +219,9 @@ module Contentful
           attributes.each_with_object([]) do |attr, arr|
             arr << case type.to_s
                      when /Entry/ then
-                       { sys: { type: 'Link', linkType: 'Entry', id: attr.id } }
+                       {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
                      when /Asset/ then
-                       { sys: { type: 'Link', linkType: 'Asset', id: attr.id } }
+                       {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
                    end
           end
         else
@@ -235,7 +237,7 @@ module Contentful
 
         attributes.each do |id, value|
           field = fields.select { |f| f.id.to_sym == id.to_sym }.first
-          attributes[id] = { locale => parse_attribute_with_field(value, field) }
+          attributes[id] = {locale => parse_attribute_with_field(value, field)}
         end
       end
     end

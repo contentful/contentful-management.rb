@@ -184,13 +184,20 @@ module Contentful
       # Returns a Contentful::Management::Entry.
       # See README for details.
       def entries
-        entries = []
+        entries = nil
+
         entries.instance_exec(self) do |content_type|
+
+          define_singleton_method(:all) do
+            Contentful::Management::Entry.all(content_type.space.id, content_type_id: content_type.id)
+          end
+
           define_singleton_method(:create) do |params|
             Entry.create(content_type, params)
           end
+
           define_singleton_method(:new) do
-            dynamic_entry_class =   Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
+            dynamic_entry_class = Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
             dynamic_entry = dynamic_entry_class.new
             dynamic_entry.content_type = content_type
             dynamic_entry

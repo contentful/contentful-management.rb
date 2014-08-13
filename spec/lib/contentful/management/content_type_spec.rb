@@ -459,6 +459,22 @@ module Contentful
           end
         end
       end
+
+      describe '#entries.all' do
+        let(:space_id) { '9lxkhjnp8gyx' }
+
+         it 'returns entries' do
+           vcr('content_type/entry/all') do
+             space = Contentful::Management::Space.find(space_id)
+             content_type = space.content_types.find('category_content_type')
+             entries = content_type.entries.all
+             expect(entries).to be_kind_of Contentful::Management::Array
+             expect(entries.size).to eq 2
+             expect(entries.first).to be_kind_of Contentful::Management::Entry
+             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
+           end
+         end
+      end
     end
   end
 end

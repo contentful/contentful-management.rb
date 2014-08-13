@@ -42,7 +42,7 @@ module Contentful
       # Use this method together with the client's :dynamic_entries configuration.
       # See README for details.
       def update_dynamic_entry_cache_for_space!(space)
-        update_dynamic_entry_cache!(space.content_types)
+        update_dynamic_entry_cache!(space.content_types.all)
       end
 
       def update_dynamic_entry_cache!(content_types)
