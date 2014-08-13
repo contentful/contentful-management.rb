@@ -1,22 +1,25 @@
 # -*- encoding: utf-8 -*-
 require_relative 'resource'
+require_relative 'resource/entry_fields'
 require_relative 'resource/fields'
 
 module Contentful
   module Management
+    # Resource class for Entry.
+    # https://www.contentful.com/developers/documentation/content-management-api/#resources-entries
     class Entry
-
-      def self.fields_coercions
-        {}
-      end
 
       include Contentful::Management::Resource
       include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      extend Contentful::Management::Resource::EntryFields
       include Contentful::Management::Resource::Fields
 
       attr_accessor :content_type
 
+      # Gets a collection of entries.
+      # Takes an id of space.
+      # Returns a Contentful::Management::Array of Contentful::Management::Entry.
       def self.all(space_id)
         request = Request.new("/#{ space_id }/entries")
         response = request.get
@@ -24,6 +27,9 @@ module Contentful
         result.run
       end
 
+      # Gets a specific entry.
+      # Takes an id of space and entry.
+      # Returns a Contentful::Management::Entry.
       def self.find(space_id, entry_id)
         request = Request.new("/#{ space_id }/entries/#{ entry_id }")
         response = request.get
@@ -31,10 +37,13 @@ module Contentful
         result.run
       end
 
+      # Creates an entry.
+      # Takes a content type object and hash with attributes of content type.
+      # Returns a Contentful::Management::Entry.
       def self.create(content_type, attributes)
         custom_id = attributes[:id] || ''
         fields_for_create = if attributes[:fields] #create from initialized dynamic entry via save
-                              tmp_entry = self.new
+                              tmp_entry = new
                               tmp_entry.instance_variable_set(:@fields, attributes.delete(:fields) || {})
                               Contentful::Management::Support.deep_hash_merge(tmp_entry.fields_for_query, tmp_entry.fields_from_attributes(attributes))
                             else
@@ -48,15 +57,20 @@ module Contentful
         result.run
       end
 
+      # Updates an entry.
+      # Takes an optional hash with attributes of content type.
+      # Returns a Contentful::Management::Entry.
       def update(attributes)
         fields_for_update = Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes))
 
-        request = Request.new("/#{ space.id }/entries/#{ id }", { fields: fields_for_update }, id = nil, version: sys[:version])
+        request = Request.new("/#{ space.id }/entries/#{ self.id }", { fields: fields_for_update }, id = nil, version: sys[:version])
         response = request.put
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
         refresh_data(result)
       end
 
+      # If an entry is a new object gets created in the Contentful, otherwise the existing entry gets updated.
+      # See README for details.
       def save
         if id.nil?
           new_instance = Contentful::Management::Entry.create(content_type, { fields: instance_variable_get(:@fields) })
@@ -66,6 +80,8 @@ module Contentful
         end
       end
 
+      # Publishes an entry.
+      # Returns a Contentful::Management::Entry.
       def publish
         request = Request.new("/#{ space.id }/entries/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.put
@@ -73,6 +89,8 @@ module Contentful
         refresh_data(result)
       end
 
+      # Unpublishes an entry.
+      # Returns a Contentful::Management::Entry.
       def unpublish
         request = Request.new("/#{ space.id }/entries/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.delete
@@ -80,6 +98,8 @@ module Contentful
         refresh_data(result)
       end
 
+      # Archives an entry.
+      # Returns a Contentful::Management::Entry.
       def archive
         request = Request.new("/#{ space.id }/entries/#{ id }/archived", {}, id = nil, version: sys[:version])
         response = request.put
@@ -87,6 +107,8 @@ module Contentful
         refresh_data(result)
       end
 
+      # Unarchives an entry.
+      # Returns a Contentful::Management::Entry.
       def unarchive
         request = Request.new("/#{ space.id }/entries/#{ id }/archived", {}, id = nil, version: sys[:version])
         response = request.delete
@@ -94,6 +116,8 @@ module Contentful
         refresh_data(result)
       end
 
+      # Destroys an entry.
+      # Returns true if succeed.
       def destroy
         request = Request.new("/#{ space.id }/entries/#{ id }")
         response = request.delete
@@ -105,18 +129,25 @@ module Contentful
         end
       end
 
+      # Checks if an entry is published.
+      # Returns true if published.
       def published?
         !sys[:publishedAt].nil?
       end
 
+      # Checks if an entry is archived.
+      # Returns true if published.
       def archived?
         !sys[:archivedAt].nil?
       end
 
+      # Returns the currently supported local.
       def locale
         sys[:locale] || default_locale
       end
 
+      # Parser for assets attributes from query.
+      # Returns a hash of existing fields.
       def fields_for_query
         raw_fields = self.instance_variable_get(:@fields)
         fields_names = raw_fields.first[1].keys
@@ -139,17 +170,17 @@ module Contentful
       def self.parse_attribute_with_field(attribute, field)
         case field.type
           when ContentType::LINK then
-            { sys: { type: field.type, linkType: field.link_type, id: attribute.id }} if attribute
+            { sys: { type: field.type, linkType: field.link_type, id: attribute.id } } if attribute
           when ContentType::ARRAY then
             parse_fields_array(attribute)
           when ContentType::LOCATION then
-            { lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
+            { lat: attribute.properties[:lat], lon: attribute.properties[:lon] }
           else
             attribute
         end
       end
 
-      #TODO refactor
+      # TODO refactor
       def parse_update_attribute(attribute)
         if attribute.is_a? Asset
           { sys: { type: 'Link', linkType: 'Asset', id: attribute.id } }
@@ -164,11 +195,12 @@ module Contentful
         end
       end
 
-      #TODO refactor
       def parse_update_fields_array(attributes)
         type = attributes.first.class.to_s
-        unless type == 'String'
-          attributes.each_with_object([]) do |attr, arr|
+        if type == 'String'
+          attributes
+        else
+           attributes.each_with_object([]) do |attr, arr|
             arr << case type
                      when /Entry/ then
                        { sys: { type: 'Link', linkType: 'Entry', id: attr.id } }
@@ -176,8 +208,6 @@ module Contentful
                        { sys: { type: 'Link', linkType: 'Asset', id: attr.id } }
                    end
           end
-        else
-          attributes
         end
       end
 
@@ -208,7 +238,6 @@ module Contentful
           attributes[id] = { locale => parse_attribute_with_field(value, field) }
         end
       end
-
     end
   end
 end

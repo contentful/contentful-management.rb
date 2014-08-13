@@ -26,6 +26,7 @@ module Contentful
           end
         end
 
+        # Create accessors for content type, asset, entry objects.
         def self.included(base)
           base.fields_coercions.keys.each { |name|
             accessor_name = Contentful::Management::Support.snakify(name)

@@ -207,7 +207,10 @@ module Contentful
         it 'with entries' do
           vcr('entry/create_with_entries') do
             entry_att = Entry.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
-            entry2 = subject.create(content_type, name: 'EntryWithEntries', age: 20, entries: [entry_att, entry_att, entry_att])
+            entry2 = subject.create(content_type,
+                                    name: 'EntryWithEntries',
+                                    age: 20,
+                                    entries: [entry_att, entry_att, entry_att])
             expect(entry2.name).to eq 'EntryWithEntries'
             expect(entry2.age).to eq 20
           end
@@ -253,7 +256,9 @@ module Contentful
             location.lat = 22.44
             location.lon = 33.33
 
-            result = entry.update(name: 'Tom Handy', age: 20, birthday: '2000-07-12T11:11:00+02:00', city: location, bool: false,
+            result = entry.update(name: 'Tom Handy', age: 20, birthday: '2000-07-12T11:11:00+02:00',
+                                  city: location,
+                                  bool: false,
                                   asset: asset, assets: [asset, asset, asset],
                                   entry: entry_att, entries: [entry_att, entry_att, entry_att],
                                   symbols: ['PL', 'USD', 'XX'])
@@ -308,7 +313,6 @@ module Contentful
           end
         end
       end
-
     end
   end
 end

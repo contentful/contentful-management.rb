@@ -4,8 +4,9 @@ require_relative 'field'
 
 module Contentful
   module Management
+    # Resource class for ContentType.
+    # https://www.contentful.com/developers/documentation/content-management-api/#resources-content-types
     class ContentType
-
       FIELD_TYPES = [
           SYMBOL = 'Symbol',
           TEXT = 'Text',
@@ -26,8 +27,10 @@ module Contentful
       property :name, :string
       property :description, :string
       property :fields, Field
-      property :displayField, :string
 
+      # Gets a collection of content types.
+      # Takes an id of space.
+      # Returns a Contentful::Management::Array of Contentful::Management::ContentType.
       def self.all(space_id)
         request = Request.new("/#{ space_id }/content_types")
         response = request.get
@@ -37,6 +40,9 @@ module Contentful
         content_types
       end
 
+      # Gets a specific entry.
+      # Takes an id of space and content type.
+      # Returns a Contentful::Management::ContentType.
       def self.find(space_id, content_type_id)
         request = Request.new("/#{ space_id }/content_types/#{ content_type_id }")
         response = request.get
@@ -46,6 +52,8 @@ module Contentful
         content_type
       end
 
+      # Destroys a content type.
+      # Returns true if succeed.
       def destroy
         request = Request.new("/#{ space.id }/content_types/#{ id }")
         response = request.delete
@@ -57,6 +65,8 @@ module Contentful
         end
       end
 
+      # Activates a content type.
+      # Returns a Contentful::Management::ContentType.
       def activate
         request = Request.new("/#{ space.id }/content_types/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.put
@@ -64,6 +74,9 @@ module Contentful
         refresh_data(result)
       end
 
+      # Deactivates a content type.
+      # Only content type that has no entries can be deactivated.
+      # Returns a Contentful::Management::ContentType.
       def deactivate
         request = Request.new("/#{ space.id }/content_types/#{ id }/published")
         response = request.delete
@@ -71,10 +84,15 @@ module Contentful
         refresh_data(result)
       end
 
+      # Checks if a content type is active.
+      # Returns true if active.
       def active?
         !sys[:publishedAt].nil?
       end
 
+      # Creates a content type.
+      # Takes an id of space and hash with attributes.
+      # Returns a Contentful::Management::ContentType.
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
         request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", { name: attributes.fetch(:name),
@@ -86,8 +104,12 @@ module Contentful
         result
       end
 
+      # Updates a content type.
+      # Takes a hash with attributes.
+      # Returns a Contentful::Management::ContentType.
       def update(attributes)
         parameters = {}
+        parameters.merge!(displayField: attributes[:displayField]) if  attributes[:displayField]
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
@@ -97,6 +119,8 @@ module Contentful
         refresh_data(result)
       end
 
+      # If a content type is a new object gets created in the Contentful, otherwise the existing entry gets updated.
+      # See README for details.
       def save
         if id.nil?
           new_instance = self.class.create(space.id, @properties)
@@ -106,6 +130,7 @@ module Contentful
         end
       end
 
+      # This method merges existing fields with new one, when adding, creating or updating new fields.
       def merged_fields(new_field)
         field_ids = []
         merged_fields = fields.each_with_object([]) do |field, fields|
@@ -119,6 +144,10 @@ module Contentful
 
       alias_method :orig_fields, :fields
 
+      # Use this method only in the context of content type.
+      # Allows you to add and create a field with specified attributes or destroy by pass field id.
+      # Returns a Contentful::Management::ContentType.
+      # See README for details.
       def fields
         fields = orig_fields
 
@@ -150,7 +179,10 @@ module Contentful
         fields
       end
 
-      #TODO refactor and move
+      # Use this method only in the context of content type.
+      # Allows you to create an entry.
+      # Returns a Contentful::Management::Entry.
+      # See README for details.
       def entries
         entries = []
         entries.instance_exec(self) do |content_type|
@@ -174,7 +206,6 @@ module Contentful
           field.properties.replace(field.properties_to_hash)
         end
       end
-
     end
   end
 end

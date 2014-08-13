@@ -26,7 +26,6 @@ module Contentful
 
       attr_reader :client, :response, :resource_mapping, :entry_mapping, :resource
 
-
       def initialize(client, response, resource_mapping = {}, entry_mapping = {})
         @response = response
         @client = client
