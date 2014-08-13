@@ -56,6 +56,7 @@ module Contentful
 
         response = custom_id.empty? ? request.post : request.put
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
+        Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
         result.run
       end
 
