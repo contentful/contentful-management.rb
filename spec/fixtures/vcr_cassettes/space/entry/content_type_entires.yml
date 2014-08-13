@@ -1,0 +1,828 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/9lxkhjnp8gyx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1.pre
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 13 Aug 2014 08:54:18 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '459'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1336095002
+      Etag:
+      - '"3335d4851d21bcde70cfc6d843291e65"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"9lxkhjnp8gyx",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-08-13T07:08:06Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-08-13T07:08:06Z"
+          },
+          "name":"CMA_demo_rails_app"}
+    http_version: 
+  recorded_at: Wed, 13 Aug 2014 08:54:19 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/9lxkhjnp8gyx/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1.pre
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 13 Aug 2014 08:54:18 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '3870'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - 9lxkhjnp8gyx
+      Etag:
+      - '"31999bb67dbf27f847e801b118cc0f65"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 2,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "Post",
+              "description": "",
+              "fields": [
+                {
+                  "id": "post_title",
+                  "name": "Title",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "3xm829r2znk"
+                },
+                {
+                  "id": "post_author",
+                  "name": "Author",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "33wd7up1xc0"
+                },
+                {
+                  "id": "post_body",
+                  "name": "Body",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "350kwutvny8"
+                },
+                {
+                  "id": "post_title_image",
+                  "name": "Title Image",
+                  "type": "Link",
+                  "linkType": "Asset",
+                  "required": true,
+                  "localized": true,
+                  "uiid": "2zd0n27rx8g"
+                },
+                {
+                  "id": "post_second_image",
+                  "name": "Second Image",
+                  "type": "Link",
+                  "linkType": "Asset",
+                  "localized": true,
+                  "uiid": "368ajwiokjk"
+                },
+                {
+                  "id": "post_category_id",
+                  "name": "Category",
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "uiid": "3w4whcs9bsw"
+                }
+              ],
+              "sys": {
+                "id": "post_content_type",
+                "type": "ContentType",
+                "createdAt": "2014-08-13T07:08:18.812Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "firstPublishedAt": "2014-08-13T07:08:25.593Z",
+                "publishedCounter": 2,
+                "publishedAt": "2014-08-13T07:19:20.404Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 11,
+                "version": 12,
+                "updatedAt": "2014-08-13T07:19:20.410Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "displayField": "post_title"
+            },
+            {
+              "name": "Category",
+              "description": "",
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "4mzgm0nbgn4"
+                },
+                {
+                  "id": "description",
+                  "name": "Description",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "482w81hlb0g"
+                }
+              ],
+              "sys": {
+                "id": "category_content_type",
+                "type": "ContentType",
+                "createdAt": "2014-08-13T07:08:14.318Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "firstPublishedAt": "2014-08-13T07:08:17.219Z",
+                "publishedCounter": 2,
+                "publishedAt": "2014-08-13T07:19:25.771Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 7,
+                "version": 8,
+                "updatedAt": "2014-08-13T07:19:25.778Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "displayField": "name"
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 13 Aug 2014 08:54:20 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/9lxkhjnp8gyx/entries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1.pre
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 13 Aug 2014 08:54:19 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '7498'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - 9lxkhjnp8gyx
+      Etag:
+      - '"87ae6d5c9041f530b97de174ab31ad59"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 5,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "fields": {
+                "name": {
+                  "en-US": "Sport"
+                },
+                "description": {
+                  "en-US": "Sport category"
+                }
+              },
+              "sys": {
+                "id": "1CpB2YkA5q0aMywe0wmCCQ",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:08:52.842Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:08:52.850Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "post_title": {
+                  "en-US": "post title"
+                },
+                "post_author": {
+                  "en-US": "autorek"
+                },
+                "post_body": {
+                  "en-US": "jakeis body"
+                },
+                "post_title_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "744H01gJqM8gIECmimayk2"
+                    }
+                  }
+                },
+                "post_second_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "70Wy1nAI3SkIim6esyI2YS"
+                    }
+                  }
+                },
+                "post_category_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "1CpB2YkA5q0aMywe0wmCCQ"
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "35IvG8CVSMKA26kyAqgYU8",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:18:58.745Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "post_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:18:58.749Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "post_title": {
+                  "en-US": "Jakis tytul"
+                },
+                "post_author": {
+                  "en-US": "autor444"
+                },
+                "post_body": {
+                  "en-US": "zawartosc postaa...."
+                },
+                "post_title_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "744H01gJqM8gIECmimayk2"
+                    }
+                  }
+                },
+                "post_second_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "70Wy1nAI3SkIim6esyI2YS"
+                    }
+                  }
+                },
+                "post_category_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "1CpB2YkA5q0aMywe0wmCCQ"
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "5e5shqEhza8QaEIsOAasqM",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:27:45.279Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "post_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:27:45.283Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "name": {
+                  "en-US": "Categoru"
+                },
+                "description": {
+                  "en-US": "asdasd"
+                }
+              },
+              "sys": {
+                "id": "3B7dW2mpO8SqOGaUs8kGCq",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:34:34.456Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:34:34.459Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "post_title": {
+                  "en-US": "Jakis tytulsss"
+                },
+                "post_author": {
+                  "en-US": "autorek"
+                },
+                "post_body": {
+                  "en-US": "zawartosc postaa...."
+                },
+                "post_title_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "70Wy1nAI3SkIim6esyI2YS"
+                    }
+                  }
+                },
+                "post_second_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "70Wy1nAI3SkIim6esyI2YS"
+                    }
+                  }
+                },
+                "post_category_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "35IvG8CVSMKA26kyAqgYU8"
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "1ja0cmUA6SQygoaUWkU2kO",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:38:25.508Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "post_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:38:25.511Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 13 Aug 2014 08:54:20 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/9lxkhjnp8gyx/entries?content_type=category_content_type
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.1.pre
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 13 Aug 2014 08:54:20 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '2176'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - 9lxkhjnp8gyx
+      Etag:
+      - '"971ee4a299e08e65093824445f32ad78"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 2,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "fields": {
+                "name": {
+                  "en-US": "Sport"
+                },
+                "description": {
+                  "en-US": "Sport category"
+                }
+              },
+              "sys": {
+                "id": "1CpB2YkA5q0aMywe0wmCCQ",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:08:52.842Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:08:52.850Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "name": {
+                  "en-US": "Categoru"
+                },
+                "description": {
+                  "en-US": "asdasd"
+                }
+              },
+              "sys": {
+                "id": "3B7dW2mpO8SqOGaUs8kGCq",
+                "type": "Entry",
+                "createdAt": "2014-08-13T07:34:34.456Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "9lxkhjnp8gyx"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "version": 1,
+                "updatedAt": "2014-08-13T07:34:34.459Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 13 Aug 2014 08:54:21 GMT
+recorded_with: VCR 2.9.2

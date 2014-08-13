@@ -82,12 +82,6 @@ blog_space.save
 Retrieving all content types from a space:
 
 ```ruby
-blog_post_content_types = blog_space.content_types
-```
-
-or
-
-```ruby
 blog_post_content_types = blog_space.content_types.all
 ```
 
@@ -173,12 +167,6 @@ blog_post_content_type.update(name: 'Post', description: 'Post Description', fie
 Retrieving all locales from the space:
 
 ```ruby
-blog_post_locales = blog_space.locales
-```
-
-or
-
-```ruby
 blog_post_locales = blog_space.locales.all
 ```
 
@@ -202,11 +190,6 @@ blog_post_locale.update(name: 'German', code: 'de-DE')
 
 Retrieving all assets from the space:
 
-```ruby
-blog_post_assets = blog_space.assets
-```
-
-or
 
 ```ruby
 blog_post_assets = blog_space.assets.all
@@ -310,13 +293,19 @@ my_image_asset.published?
 Retrieving all entries from the space:
 
 ```ruby
-entries = blog_space.entries
+entries = blog_space.entries.all
+```
+
+Retrieving all entries from the space with given content type:
+
+```ruby
+entries = blog_space.entries.all(content_type_id: content_type.id)
 ```
 
 or
 
 ```ruby
-entries = blog_space.entries.all
+entries = content_type.entries.all
 ```
 
 Retrieving an entry by id:

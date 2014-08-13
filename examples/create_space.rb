@@ -18,7 +18,7 @@ dat_space = Contentful::Management::Space.find(my_space.id)
 
 dat_space.locales.create(name: 'English', code: 'en-US')
 
-locales = dat_space.locales
+locales = dat_space.locales.all
 # locales.map(&:destroy) # not implemented yet?
 
 dat_space.destroy

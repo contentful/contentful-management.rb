@@ -111,16 +111,6 @@ module Contentful
             expect(content_type.name).to eq content_type_name
           end
         end
-
-        it 'lists content types to given space' do
-          vcr('space/content_type/content_types') do
-            content_types = subject.find(space_id).content_types
-            expect(content_types).to be_kind_of Contentful::Management::Array
-          end
-        end
-        it 'builds a Contentful::Management::ContentType object' do
-          vcr('space/content_type/content_types') { expect(subject.find(space_id).content_types.first).to be_kind_of Contentful::Management::ContentType }
-        end
         it '#content_types.find' do
           vcr('space/content_type/find') do
             content_type = subject.find(space_id).content_types.find('1AZQOWKr2I8W2ugY0KiGEU')
@@ -138,15 +128,6 @@ module Contentful
 
       describe '#locales' do
         let(:locale_id) { '42irhRZ5uMrRc9SZ1PyDRk' }
-        it 'lists locales to given space' do
-          vcr('space/locale/locales') do
-            locales = subject.find(space_id).locales
-            expect(locales).to be_kind_of Contentful::Management::Array
-          end
-        end
-        it 'builds a Contentful::Management::Local object' do
-          vcr('space/locale/locales') { expect(subject.find(space_id).locales.first).to be_kind_of Contentful::Management::Locale }
-        end
 
         it '#locales.all' do
           vcr('space/locale/all') do
@@ -231,12 +212,6 @@ module Contentful
       end
 
       describe '#assets' do
-        it 'returns a Contentful::Array' do
-          vcr('space/asset/assets') { expect(subject.find(space_id).assets).to be_kind_of Contentful::Management::Array }
-        end
-        it 'builds a Contentful::Management::Asset object' do
-          vcr('space/asset/assets') { expect(subject.find(space_id).assets.first).to be_kind_of Contentful::Management::Asset }
-        end
         it '#assets.all' do
           vcr('space/asset/all') do
             assets = subject.find(space_id).assets.all
@@ -278,10 +253,10 @@ module Contentful
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
             space = subject.find(space_id)
             asset = space.assets.new
-            asset.title_with_locales = { 'en-US' => 'Company logo', 'pl' => 'Firmowe logo' }
+            asset.title_with_locales = {'en-US' => 'Company logo', 'pl' => 'Firmowe logo'}
             asset.title = 'Logo of Codequest comapny'
-            asset.description_with_locales = { 'en-US' => 'Company logo codequest', 'pl' => 'Logo firmy Codequest' }
-            asset.file_with_locales = { 'en-US' => file, 'pl' => file }
+            asset.description_with_locales = {'en-US' => 'Company logo codequest', 'pl' => 'Logo firmy Codequest'}
+            asset.file_with_locales = {'en-US' => file, 'pl' => file}
             asset.save
 
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -295,12 +270,6 @@ module Contentful
       end
 
       describe '#entries' do
-        it 'returns a Contentful::Entry' do
-          vcr('space/entry/entries') { expect(subject.find(space_id).entries).to be_kind_of Contentful::Management::Array }
-        end
-        it 'builds a Contentful::Management::Entry object' do
-          vcr('space/entry/entries') { expect(subject.find(space_id).entries.first).to be_kind_of Contentful::Management::Entry }
-        end
         it '#entries.all' do
           vcr('space/entry/all') do
             entries = subject.find(space_id).entries.all
@@ -318,6 +287,17 @@ module Contentful
             expect(result.name_with_locales['en-US']).to eq 'Tom Handy'
             expect(result.class.to_s).to eq "Contentful::Management::DynamicEntry[#{ result.class.content_type.id }]"
             expect(result.class.inspect).to eq "Contentful::Management::DynamicEntry[#{ result.class.content_type.id }]"
+          end
+        end
+      end
+      describe '#entries(content_type: content_type_id)' do
+        it 'returns entries to specified content type' do
+          vcr('space/entry/content_type_entires') do
+            space = subject.find('9lxkhjnp8gyx')
+            entries = space.entries.all(content_type_id: 'category_content_type')
+            expect(entries).to be_kind_of Contentful::Management::Array
+            expect(entries.first).to be_kind_of Contentful::Management::Entry
+            expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
           end
         end
       end
