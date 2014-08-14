@@ -16,6 +16,9 @@ Add this line to your application's Gemfile:
 
 ## Usage
 
+### Examples
+Some examples can be found in the ```examples/``` directory or you take a look at this [extended example script](https://github.com/contentful/cma_import_script).
+
 ### Client
 
 At the beginning the API client instance should be created for each thread that is going to be used in your application:
