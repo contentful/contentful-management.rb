@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"title":{"pl-PL":"Title PL"},"description":{"pl-PL":"Description
+        PL"},"file":{"pl-PL":{"contentType":"image/jpeg","fileName":"pic1.jpg","upload":"https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg"}}}}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer c531558e6b4de74dfda82a955a3674237ca2d456ccb1f4c6de603d66dd2261d4
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 09:33:18 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '945'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Etag:
+      - '"172bc1b440a6d45f2d26c5c4b7d640d8"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "fields": {
+            "title": {
+              "pl-PL": "Title PL"
+            },
+            "description": {
+              "pl-PL": "Description PL"
+            },
+            "file": {
+              "pl-PL": {
+                "contentType": "image/jpeg",
+                "fileName": "pic1.jpg",
+                "upload": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg"
+              }
+            }
+          },
+          "sys": {
+            "id": "6HW6OmvN3UMgysEIicCmCC",
+            "type": "Asset",
+            "version": 1,
+            "createdAt": "2014-08-19T09:33:18.308Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "bfsvtul0c41g"
+              }
+            },
+            "updatedAt": "2014-08-19T09:33:18.308Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 09:33:15 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/6HW6OmvN3UMgysEIicCmCC/files/pl-PL/process
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer c531558e6b4de74dfda82a955a3674237ca2d456ccb1f4c6de603d66dd2261d4
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '1'
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 09:33:18 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 09:33:15 GMT
+recorded_with: VCR 2.9.2

@@ -242,6 +242,24 @@ module Contentful
           end
         end
 
+        let(:token){'c531558e6b4de74dfda82a955a3674237ca2d456ccb1f4c6de603d66dd2261d4'}
+        it 'creates asset with specified locale ' do
+          vcr('asset/create_with_locale') do
+            file1 = Contentful::Management::File.new
+            file1.properties[:contentType] = 'image/jpeg'
+            file1.properties[:fileName] = 'pic1.jpg'
+            file1.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
+
+            asset = Contentful::Management::Asset.create('bfsvtul0c41g',
+                                                         title: 'Title PL',
+                                                         description: 'Description PL',
+                                                         file: file1, locale: 'pl-PL' )
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            expect(asset.title).to eq 'Title PL'
+            expect(asset.description).to eq 'Description PL'
+          end
+        end
+
         it 'creates asset with custom ID' do
           vcr('asset/create_with_custom_id') do
             file = Contentful::Management::File.new
@@ -313,10 +331,8 @@ module Contentful
 
             asset = subject.find(space_id, 'codequest_id_test_custom_id')
             asset.locale = 'pl'
-
             asset.update(title: 'updateTitlePl', description: 'updateDescPl', file: file)
             expect(asset).to be_kind_of Contentful::Management::Asset
-            asset.locale = 'pl'
             expect(asset.title).to eq 'updateTitlePl'
             expect(asset.description).to eq 'updateDescPl'
             expect(asset.file.properties[:fileName]).to eq 'codequest.jpg'
