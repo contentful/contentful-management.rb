@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - RubyContenfulManagementGem/0.0.1
+      - RubyContenfulManagementGem/0.0.2
       Authorization:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
@@ -25,19 +25,19 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 30 Jul 2014 12:43:09 GMT
+      - Mon, 18 Aug 2014 09:54:31 GMT
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Content-Length:
-      - '1841'
+      - '7181'
       Connection:
       - keep-alive
       X-Powered-By:
       - Express
       Cf-Space-Id:
-      - yr5m0jky5hsh
+      - bfsvtul0c41g
       Etag:
-      - '"529f9332be4d7910137275d2963c7a15"'
+      - '"503824fb8a9e484c62bdfe7c3e43434c"'
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Headers:
@@ -55,15 +55,67 @@ http_interactions:
           "sys": {
             "type": "Array"
           },
-          "total": 1,
+          "total": 4,
           "skip": 0,
           "limit": 100,
           "items": [
             {
+              "fields": {
+                "post_title": {
+                  "en-US": "Some title of post"
+                },
+                "post_author": {
+                  "en-US": "Tom Dom"
+                },
+                "post_body": {
+                  "en-US": "Letterpress sustainable authentic, disrupt semiotics actually kitsch. Direct trade Cosby sweater Austin, Pitchfork flexitarian small batch authentic roof party 8-bit YOLO literally Neutra pour-over American Apparel dreamcatcher. High Life distillery cliche YOLO, flexitarian four loko put a bird on it plaid Marfa Shoreditch seitan Echo Park bicycle rights Pinterest PBR. Drinking vinegar Banksy gastropub, stumptown occupy farm-to-table Blue Bottle tattooed Truffaut single-origin coffee iPhone locavore pug"
+                },
+                "post_title_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  },
+                  "de-DE": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  },
+                  "pl-PL": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  }
+                },
+                "post_second_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  }
+                },
+                "post_category_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "5zZ8SnlKNiy2yEMOaecegy"
+                    }
+                  }
+                }
+              },
               "sys": {
-                "id": "4Rouux8SoUCKwkyCq2I0E0",
+                "id": "2arjcjtY7ucC4AGeIOIkok",
                 "type": "Entry",
-                "createdAt": "2014-07-30T12:37:49.078Z",
+                "createdAt": "2014-08-18T06:54:57.974Z",
                 "createdBy": {
                   "sys": {
                     "type": "Link",
@@ -75,19 +127,19 @@ http_interactions:
                   "sys": {
                     "type": "Link",
                     "linkType": "Space",
-                    "id": "yr5m0jky5hsh"
+                    "id": "bfsvtul0c41g"
                   }
                 },
                 "contentType": {
                   "sys": {
                     "type": "Link",
                     "linkType": "ContentType",
-                    "id": "5DSpuKrl04eMAGQoQckeIq"
+                    "id": "post_content_type"
                   }
                 },
-                "firstPublishedAt": "2014-07-30T12:39:05.868Z",
-                "publishedCounter": 1,
-                "publishedAt": "2014-07-30T12:39:05.868Z",
+                "firstPublishedAt": "2014-08-18T07:06:32.551Z",
+                "publishedCounter": 3,
+                "publishedAt": "2014-08-18T07:14:47.935Z",
                 "publishedBy": {
                   "sys": {
                     "type": "Link",
@@ -95,9 +147,113 @@ http_interactions:
                     "id": "1E7acJL8I5XUXAMHQt9Grs"
                   }
                 },
-                "publishedVersion": 26,
-                "version": 27,
-                "updatedAt": "2014-07-30T12:39:05.874Z",
+                "publishedVersion": 9,
+                "version": 10,
+                "updatedAt": "2014-08-18T07:14:47.944Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "name": {
+                  "en-US": "Sport"
+                },
+                "description": {
+                  "en-US": "Sport category"
+                }
+              },
+              "sys": {
+                "id": "5zZ8SnlKNiy2yEMOaecegy",
+                "type": "Entry",
+                "createdAt": "2014-08-18T07:14:23.057Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-18T08:17:36.632Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-18T08:17:36.632Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 1,
+                "version": 2,
+                "updatedAt": "2014-08-18T08:17:36.636Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "id": "3BERBnawlySqMgMqW6MgKw",
+                "type": "Entry",
+                "createdAt": "2014-08-18T08:16:40.050Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-18T08:16:50.130Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-18T08:16:50.130Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 7,
+                "version": 8,
+                "updatedAt": "2014-08-18T08:16:50.134Z",
                 "updatedBy": {
                   "sys": {
                     "type": "Link",
@@ -108,32 +264,71 @@ http_interactions:
               },
               "fields": {
                 "name": {
-                  "en-US": "Tom Handy"
+                  "en-US": "SF"
                 },
-                "age": {
-                  "en-US": 39
-                },
-                "city": {
-                  "en-US": {
-                    "lat": 52.1464575,
-                    "lon": 21.05050319999998
+                "description": {
+                  "en-US": "sf"
+                }
+              }
+            },
+            {
+              "sys": {
+                "id": "6lClwnQgX6UEESuIqUkc4E",
+                "type": "Entry",
+                "createdAt": "2014-08-18T09:11:00.234Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
                   }
                 },
-                "assets": {
-                  "en-US": [
-                    {
-                      "sys": {
-                        "type": "Link",
-                        "linkType": "Asset",
-                        "id": "4k8mYw2MzS6kYG0eGq0Yi0"
-                      }
-                    }
-                  ]
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-18T09:11:04.986Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-18T09:11:04.986Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 8,
+                "version": 9,
+                "updatedAt": "2014-08-18T09:11:04.989Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "sss"
+                },
+                "description": {
+                  "en-US": "ssss"
                 }
               }
             }
           ]
         }
     http_version: 
-  recorded_at: Wed, 30 Jul 2014 12:43:09 GMT
+  recorded_at: Mon, 18 Aug 2014 09:54:35 GMT
 recorded_with: VCR 2.9.2

@@ -5,8 +5,8 @@ require_relative 'resource/fields'
 
 module Contentful
   module Management
-     # Resource class for Asset.
-     # https://www.contentful.com/developers/documentation/content-management-api/#resources-assets
+    # Resource class for Asset.
+    # https://www.contentful.com/developers/documentation/content-management-api/#resources-assets
     class Asset
 
       include Contentful::Management::Resource
@@ -16,10 +16,10 @@ module Contentful
       include Contentful::Management::Resource::Refresher
 
       # Gets a collection of assets.
-      # Takes an id of space.
+      # Takes an id of space and an optional hash of query options
       # Returns a Contentful::Management::Array of Contentful::Management::Asset.
-      def self.all(space_id)
-        request = Request.new("/#{ space_id }/assets")
+      def self.all(space_id, query = {})
+        request = Request.new("/#{ space_id }/assets", query)
         response = request.get
         result = ResourceBuilder.new(self, response, {}, {})
         result.run

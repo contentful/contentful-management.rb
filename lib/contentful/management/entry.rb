@@ -23,7 +23,11 @@ module Contentful
       def self.all(space_id, parameters = {})
         path = "/#{ space_id }/entries"
         path += "?content_type=#{parameters[:content_type_id]}" if parameters[:content_type_id]
-        request = Request.new(path)
+        if parameters[:limit] || parameters[:skip]
+          request = Request.new(path, parameters)
+        else
+          request = Request.new(path)
+        end
         response = request.get
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
         result.run
@@ -66,7 +70,7 @@ module Contentful
       def update(attributes)
         fields_for_update = Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes))
 
-        request = Request.new("/#{ space.id }/entries/#{ self.id }", { fields: fields_for_update }, id = nil, version: sys[:version])
+        request = Request.new("/#{ space.id }/entries/#{ self.id }", {fields: fields_for_update}, id = nil, version: sys[:version])
         response = request.put
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
         refresh_data(result)
@@ -173,11 +177,11 @@ module Contentful
       def self.parse_attribute_with_field(attribute, field)
         case field.type
           when ContentType::LINK then
-            { sys: { type: field.type, linkType: field.link_type, id: attribute.id } } if attribute
+            {sys: {type: field.type, linkType: field.link_type, id: attribute.id}} if attribute
           when ContentType::ARRAY then
             parse_fields_array(attribute)
           when ContentType::LOCATION then
-            { lat: attribute.properties[:lat], lon: attribute.properties[:lon] }
+            {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
           else
             attribute
         end
@@ -203,7 +207,7 @@ module Contentful
         if type == 'String'
           attributes
         else
-           attributes.each_with_object([]) do |attr, arr|
+          attributes.each_with_object([]) do |attr, arr|
             arr << case type
                      when /Entry/ then
                        {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}

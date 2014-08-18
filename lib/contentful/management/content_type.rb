@@ -29,10 +29,10 @@ module Contentful
       property :fields, Field
 
       # Gets a collection of content types.
-      # Takes an id of space.
+      # Takes an id of space and an optional hash of query options
       # Returns a Contentful::Management::Array of Contentful::Management::ContentType.
-      def self.all(space_id)
-        request = Request.new("/#{ space_id }/content_types")
+      def self.all(space_id, query = {})
+        request = Request.new("/#{ space_id }/content_types", query)
         response = request.get
         result = ResourceBuilder.new(self, response, {}, {})
         content_types = result.run
@@ -95,9 +95,9 @@ module Contentful
       # Returns a Contentful::Management::ContentType.
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
-        request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", { name: attributes.fetch(:name),
-                                                                                      description: attributes[:description],
-                                                                                      fields: fields })
+        request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", {name: attributes.fetch(:name),
+                                                                                         description: attributes[:description],
+                                                                                         fields: fields})
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
         Contentful::Management::Client.shared_instance.register_dynamic_entry(result.id, DynamicEntry.create(result)) if result.is_a?(self.class)

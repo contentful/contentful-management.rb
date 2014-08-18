@@ -16,19 +16,29 @@ module Contentful
 
       describe '.all' do
         it 'returns a Contentful::Array' do
-          vcr('entry/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('entry/all') { expect(subject.all('bfsvtul0c41g')).to be_kind_of Contentful::Management::Array }
         end
         it 'builds a Contentful::Management::Entry object' do
-          vcr('entry/all') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Entry }
+          vcr('entry/all') { expect(subject.all('bfsvtul0c41g').first).to be_kind_of Contentful::Management::Entry }
         end
         it 'returns entries in context of specified content type' do
           vcr('entry/content_type_entires') do
-            entries = Contentful::Management::Entry.all('9lxkhjnp8gyx', content_type_id: 'category_content_type')
+            entries = Contentful::Management::Entry.all('bfsvtul0c41g', content_type_id: 'category_content_type')
             expect(entries).to be_kind_of Contentful::Management::Array
             expect(entries.first).to be_kind_of Contentful::Management::Entry
             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
           end
         end
+        it 'return limited number of entries with next_page' do
+          vcr('entry/limited_entries') do
+            entries = Contentful::Management::Entry.all('bfsvtul0c41g', limit: 20, skip: 2)
+            expect(entries).to be_kind_of Contentful::Management::Array
+            expect(entries.limit).to eq 20
+            expect(entries.skip).to eq 2
+            entries.next_page
+          end
+        end
+
       end
 
       describe '#find' do

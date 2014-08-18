@@ -113,6 +113,11 @@ blog_post_content_type.fields.create(id: 'title_field_id', name: 'Post Title', t
 ```
 - if the field_id exists, the related field will be updated.
 
+or the field of link type:
+```ruby
+blog_post_content_type.fields.create(id: 'my_entry_link_field', name: 'My Entry Link Field', type: 'Link', link_type: 'Entry')
+```
+
 or the field of an array type:
 ```ruby
 items = Contentful::Management::Field.new
@@ -394,6 +399,13 @@ Checking if the entry is published:
 my_entry.published?
 ```
 
+### Pagination
+
+```ruby
+blog_space.entries.all(limit: 5).next_page
+blog_space.assets.all(limit: 5).next_page
+blog_space.entries.all(limit: 5).next_page
+``` 
 
 ## Contributing
 

@@ -90,7 +90,7 @@ module Contentful
 
       def get(request)
         execute_request(request) do |url|
-          self.class.get_http(url, {}, request_headers)
+          self.class.get_http(url, request.query, request_headers)
         end
       end
 
