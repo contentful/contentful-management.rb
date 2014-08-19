@@ -5,6 +5,13 @@ module Contentful
       # Adds the feature to have properties and system data reload for Resource.
       module Refresher
 
+        # Reload an object
+        # Updates the current version of the object to the version on the system
+        def reload
+          resource = self.is_a?(Space) ? self.class.find(id) : self.class.find(space.id, id)
+          refresh_data(resource) if resource.is_a? self.class
+        end
+
         def refresh_data(resource)
           if resource.is_a? Error
             resource

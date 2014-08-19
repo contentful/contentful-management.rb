@@ -21,15 +21,9 @@ module Contentful
       # Takes an id of space and hash of parameters with optional content_type_id.
       # Returns a Contentful::Management::Array of Contentful::Management::Entry.
       def self.all(space_id, parameters = {})
-        path = "/#{ space_id }/entries"
-        path += "?content_type=#{parameters[:content_type_id]}" if parameters[:content_type_id]
-        if parameters[:limit] || parameters[:skip]
-          request = Request.new(path, parameters)
-        else
-          request = Request.new(path)
-        end
+        request = Request.new("/#{ space_id }/entries", parameters)
         response = request.get
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         result.run
       end
 
@@ -39,7 +33,7 @@ module Contentful
       def self.find(space_id, entry_id)
         request = Request.new("/#{ space_id }/entries/#{ entry_id }")
         response = request.get
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         result.run
       end
 
@@ -60,8 +54,8 @@ module Contentful
         request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ custom_id }", {fields: fields_for_create}, nil, content_type_id: content_type.id)
 
         response = custom_id.empty? ? request.post : request.put
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
-        Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
+        result = ResourceBuilder.new(response, {}, {})
+        client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
         entry = result.run
         entry.locale = locale if locale
         entry
@@ -75,7 +69,7 @@ module Contentful
 
         request = Request.new("/#{ space.id }/entries/#{ self.id }", {fields: fields_for_update}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -95,7 +89,7 @@ module Contentful
       def publish
         request = Request.new("/#{ space.id }/entries/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -104,7 +98,7 @@ module Contentful
       def unpublish
         request = Request.new("/#{ space.id }/entries/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.delete
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -113,7 +107,7 @@ module Contentful
       def archive
         request = Request.new("/#{ space.id }/entries/#{ id }/archived", {}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -122,7 +116,7 @@ module Contentful
       def unarchive
         request = Request.new("/#{ space.id }/entries/#{ id }/archived", {}, id = nil, version: sys[:version])
         response = request.delete
-        result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -134,7 +128,7 @@ module Contentful
         if response.status == :no_content
           return true
         else
-          result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
+          result = ResourceBuilder.new(response, {}, {})
           result.run
         end
       end

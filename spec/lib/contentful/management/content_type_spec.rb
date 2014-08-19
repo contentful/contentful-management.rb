@@ -462,7 +462,6 @@ module Contentful
 
       describe '#entries.all' do
         let(:space_id) { '9lxkhjnp8gyx' }
-
          it 'returns entries' do
            vcr('content_type/entry/all') do
              space = Contentful::Management::Space.find(space_id)
@@ -474,6 +473,22 @@ module Contentful
              expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
            end
          end
+      end
+
+      describe '#reload' do
+        let(:space_id) { 'bfsvtul0c41g' }
+        it 'update the current version of the object to the version on the system' do
+          vcr('content_type/reload') do
+            content_type = Contentful::Management::ContentType.find(space_id, 'category_content_type')
+            content_type.sys[:version] = 999
+            update_ct = content_type.update(name: 'Updated content type name')
+            expect(update_ct).to be_kind_of Contentful::Management::BadRequest
+            content_type.reload
+            update_ct = content_type.update(name: 'Updated content type name')
+            expect(update_ct).to be_kind_of Contentful::Management::ContentType
+            expect(update_ct.name).to eq 'Updated content type name'
+          end
+        end
       end
     end
   end

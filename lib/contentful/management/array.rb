@@ -26,7 +26,7 @@ module Contentful
           new_request = request.copy
           new_request.query[:skip] = new_skip
           response = new_request.get
-          result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
+          result = ResourceBuilder.new(response, {}, {})
           result.run
         else
           false

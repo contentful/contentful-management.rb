@@ -23,7 +23,7 @@ module Contentful
         end
         it 'returns entries in context of specified content type' do
           vcr('entry/content_type_entires') do
-            entries = Contentful::Management::Entry.all('bfsvtul0c41g', content_type_id: 'category_content_type')
+            entries = Contentful::Management::Entry.all('bfsvtul0c41g', content_type: 'category_content_type')
             expect(entries).to be_kind_of Contentful::Management::Array
             expect(entries.first).to be_kind_of Contentful::Management::Entry
             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
@@ -334,6 +334,23 @@ module Contentful
             entry.save
             expect(entry).to be_kind_of Contentful::Management::Entry
             expect(entry.fields[:carMark]).to eq 'Merc'
+          end
+        end
+      end
+
+      describe '#reload' do
+        let(:space_id){'bfsvtul0c41g'}
+        it 'update the current version of the object to the version on the system' do
+          vcr('entry/reload') do
+            space = Contentful::Management::Space.find(space_id)
+            entry = space.entries.find('2arjcjtY7ucC4AGeIOIkok')
+            entry.sys[:version] = 999
+            update_entry = entry.update(post_title: 'Updated title')
+            expect(update_entry).to be_kind_of Contentful::Management::BadRequest
+            entry.reload
+            update_entry = entry.update(post_title: 'Updated title')
+            expect(update_entry).to be_kind_of Contentful::Management::Entry
+            expect(update_entry.post_title).to eq 'Updated title'
           end
         end
       end

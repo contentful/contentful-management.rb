@@ -59,14 +59,9 @@ module Contentful
         nil
       end
 
-      # Issues the request that was made to fetch this response again.
-      # Only works for top-level resources
-      def reload
-        if request
-          request.get
-        else
-          false
-        end
+      # Shared instance of the API client
+      def client
+        Contentful::Management::Client.shared_instance
       end
 
       private
@@ -113,6 +108,11 @@ module Contentful
 
         def property_coercions
           @property_coercions ||= {}
+        end
+
+        # Shared instance of the API client
+        def client
+          Contentful::Management::Client.shared_instance
         end
 
         # Defines which properties of a resource your class expects

@@ -23,9 +23,9 @@ module Contentful
       def self.all
         request = Request.new('')
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         spaces = result.run
-        Contentful::Management::Client.shared_instance.update_dynamic_entry_cache_for_spaces!(spaces)
+        client.update_dynamic_entry_cache_for_spaces!(spaces)
         spaces
       end
 
@@ -35,9 +35,9 @@ module Contentful
       def self.find(space_id)
         request = Request.new("/#{ space_id }")
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         space = result.run
-        Contentful::Management::Client.shared_instance.update_dynamic_entry_cache_for_space!(space) if space.is_a? Space
+        client.update_dynamic_entry_cache_for_space!(space) if space.is_a? Space
         space
       end
 
@@ -47,7 +47,7 @@ module Contentful
       def self.create(attributes)
         request = Request.new('', {'name' => attributes.fetch(:name)}, id = nil, organization_id: attributes[:organization_id])
         response = request.post
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         result.run
       end
 
@@ -57,7 +57,7 @@ module Contentful
       def update(attributes)
         request = Request.new("/#{ id }", { 'name' => attributes.fetch(:name) }, id = nil, version: sys[:version], organization_id: attributes[:organization_id])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         refresh_data(result.run)
       end
 
@@ -80,7 +80,7 @@ module Contentful
         if response.status == :no_content
           return true
         else
-          ResourceBuilder.new(self, response, {}, {}).run
+          ResourceBuilder.new(response, {}, {}).run
         end
       end
 

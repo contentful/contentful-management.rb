@@ -313,22 +313,10 @@ module Contentful
         it 'returns entries to specified content type' do
           vcr('space/entry/content_type_entires') do
             space = subject.find('9lxkhjnp8gyx')
-            entries = space.entries.all(content_type_id: 'category_content_type')
+            entries = space.entries.all(content_type: 'category_content_type')
             expect(entries).to be_kind_of Contentful::Management::Array
             expect(entries.first).to be_kind_of Contentful::Management::Entry
             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
-          end
-        end
-      end
-      describe '#entries.all(limit: 2, skip: 1)' do
-        it 'returns entries to limited number of entries' do
-          vcr('space/entry/with_skipped_andlimited_entires') do
-            space = subject.find('bfsvtul0c41g')
-            entries = space.entries.all(limit: 2, skip: 1)
-            expect(entries).to be_kind_of Contentful::Management::Array
-            expect(entries.first).to be_kind_of Contentful::Management::Entry
-            expect(entries.limit).to eq 2
-            expect(entries.skip).to eq 1
           end
         end
       end
@@ -341,6 +329,19 @@ module Contentful
             expect(entries.first).to be_kind_of Contentful::Management::Entry
             expect(entries.limit).to eq 2
             expect(entries.skip).to eq 3
+          end
+        end
+      end
+      describe '#reload' do
+        let(:space_id){'bfsvtul0c41g'}
+        it 'update the current version of the object to the version on the system' do
+          vcr('space/reload') do
+            space = subject.find(space_id)
+            space.sys[:version] = 99
+            space.reload
+            update_space = space.update(name: 'Reload Space Name')
+            expect(update_space).to be_kind_of Contentful::Management::Space
+            expect(space.name).to eql 'Reload Space Name'
           end
         end
       end
