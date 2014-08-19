@@ -1,3 +1,11 @@
+### 0.0.3
+ * Fix: next_page feature
+ * Fix: create entry with specific locale
+ * Fix: service unavailable error (503)
+ * Fix: reload method on objects
+ * Code cleanup
+ * More documentation
+
 ### 0.0.2
  * Fix: Convert an Entry to a DynamicEntry after being created.
 
