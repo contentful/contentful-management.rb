@@ -23,6 +23,15 @@ module Contentful
         it 'builds a Contentful::Management::Asset object' do
           vcr('asset/all') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Asset }
         end
+        it 'return limited number of assets with next_page' do
+          vcr('asset/limited_assets_next_page') do
+            assets = Contentful::Management::Asset.all('bfsvtul0c41g', limit: 20, skip: 2)
+            expect(assets).to be_kind_of Contentful::Management::Array
+            expect(assets.limit).to eq 20
+            expect(assets.skip).to eq 2
+            assets.next_page
+          end
+        end
       end
 
       describe '#find' do

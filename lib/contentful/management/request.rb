@@ -8,6 +8,8 @@ module Contentful
       attr_reader :client, :type, :query, :id
 
       def initialize(endpoint, query = {}, id = nil, header = {})
+        @header = header
+        @initial_id = id
         @client = Contentful::Management::Client.shared_instance
         @client.version = header[:version] if  header[:version]
         @client.organization_id = header[:organization_id] if  header[:organization_id]
@@ -60,7 +62,7 @@ module Contentful
 
       # Returns a new Request object with the same data
       def copy
-        Marshal.load(Marshal.dump(self))
+        self.class.new(@endpoint, @query, @initial_id, @header)
       end
 
 
@@ -71,8 +73,7 @@ module Contentful
             query.map do |key, value|
               [
                   key.to_sym,
-                  value
-              # TODO why there was this line? value.is_a?(::Array) ? value.join(',') : value
+                  value.is_a?(::Array) ? value.join(',') : value
               ]
             end
         ]

@@ -1,0 +1,648 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/sueu9bzev6qn
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 07:14:04 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '468'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1337085311
+      Etag:
+      - '"20e726b10eb80dbe0f28772a8c710034"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"sueu9bzev6qn",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "createdAt":"2014-08-08T12:51:20Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"0fn5fOWn4WsKFyYla1gI5h"
+              }
+            },
+            "updatedAt":"2014-08-08T12:51:20Z"
+          },
+          "name":"Breweries and Beers - debug"}
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 07:14:05 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/sueu9bzev6qn/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 07:14:05 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '4277'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - sueu9bzev6qn
+      Etag:
+      - '"17f8148530cf6ae499a94f6cedf8e43a"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 2,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "Brewery - debug",
+              "description": "",
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Text",
+                  "required": true
+                },
+                {
+                  "id": "description",
+                  "name": "Description",
+                  "type": "Text"
+                },
+                {
+                  "id": "phone",
+                  "name": "Phone",
+                  "type": "Text"
+                },
+                {
+                  "id": "city",
+                  "name": "City",
+                  "type": "Text"
+                },
+                {
+                  "id": "code",
+                  "name": "Code",
+                  "type": "Symbol"
+                },
+                {
+                  "id": "website",
+                  "name": "Website",
+                  "type": "Text"
+                },
+                {
+                  "id": "location",
+                  "name": "Location",
+                  "type": "Location"
+                },
+                {
+                  "id": "beers",
+                  "name": "Beers",
+                  "type": "Array",
+                  "items": {
+                    "type": "Link",
+                    "linkType": "Entry"
+                  }
+                }
+              ],
+              "sys": {
+                "id": "6xCQB0wQ1Oaqc46eaSoY4g",
+                "type": "ContentType",
+                "createdAt": "2014-08-08T12:51:24.297Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "sueu9bzev6qn"
+                  }
+                },
+                "firstPublishedAt": "2014-08-08T12:51:36.096Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-08T12:51:36.096Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "publishedVersion": 9,
+                "version": 10,
+                "updatedAt": "2014-08-08T12:51:36.110Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            },
+            {
+              "name": "Beer",
+              "description": "",
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Text",
+                  "uiid": "2w8ne7qygw0"
+                },
+                {
+                  "id": "description",
+                  "name": "Description",
+                  "type": "Text",
+                  "uiid": "2kf3qlx1zpc"
+                },
+                {
+                  "id": "abv",
+                  "name": "Alcohol by Volume",
+                  "type": "Number",
+                  "uiid": "4cna2xcdlvk"
+                },
+                {
+                  "id": "brewery_id",
+                  "name": "Brewery",
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "required": true,
+                  "uiid": "47kv3nrmyo0"
+                },
+                {
+                  "id": "category_id",
+                  "name": "Category",
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "uiid": "4ww5boi8xz4"
+                },
+                {
+                  "id": "style_id",
+                  "name": "Style",
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "uiid": "3ea4w05qhhc"
+                }
+              ],
+              "sys": {
+                "id": "CnHpfo8pEc4AyOsuAo0Oa",
+                "type": "ContentType",
+                "createdAt": "2014-08-08T12:51:38.536Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "sueu9bzev6qn"
+                  }
+                },
+                "firstPublishedAt": "2014-08-08T12:51:47.312Z",
+                "publishedCounter": 2,
+                "publishedAt": "2014-08-11T07:26:46.237Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "publishedVersion": 10,
+                "version": 11,
+                "updatedAt": "2014-08-11T07:26:46.243Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              },
+              "displayField": "name"
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 07:14:06 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/sueu9bzev6qn/entries?limit=2&skip=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 07:14:06 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '3367'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - sueu9bzev6qn
+      Etag:
+      - '"242dbc94158aec93e75eba7be65201cb"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 4,
+          "skip": 1,
+          "limit": 2,
+          "items": [
+            {
+              "fields": {
+                "name": {
+                  "en-US": "beer12"
+                },
+                "description": {
+                  "en-US": "beer1"
+                },
+                "abv": {
+                  "en-US": 72
+                },
+                "brewery_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "3ualVj4mVa6a8ioSymky8O"
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "55avWNaDtSMGmm6I8ci0m0",
+                "type": "Entry",
+                "createdAt": "2014-08-08T12:51:52.323Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "sueu9bzev6qn"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "CnHpfo8pEc4AyOsuAo0Oa"
+                  }
+                },
+                "firstPublishedAt": "2014-08-08T12:51:57.642Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-08T12:51:57.642Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "publishedVersion": 1,
+                "version": 2,
+                "updatedAt": "2014-08-08T12:51:57.647Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            },
+            {
+              "fields": {
+                "name": {
+                  "en-US": "beer13"
+                },
+                "description": {
+                  "en-US": "beer1"
+                },
+                "abv": {
+                  "en-US": 73
+                },
+                "brewery_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "3ualVj4mVa6a8ioSymky8O"
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "4ueRXRp5hKcyEsoSK2cqQ8",
+                "type": "Entry",
+                "createdAt": "2014-08-08T12:51:53.582Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "sueu9bzev6qn"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "CnHpfo8pEc4AyOsuAo0Oa"
+                  }
+                },
+                "firstPublishedAt": "2014-08-08T12:51:58.711Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-08T12:51:58.711Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "publishedVersion": 1,
+                "version": 2,
+                "updatedAt": "2014-08-08T12:51:58.715Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 07:14:07 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/sueu9bzev6qn/entries?limit=2&skip=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 07:14:07 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1730'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - sueu9bzev6qn
+      Etag:
+      - '"ef2def1223c82802be43c4bf040ea2b0"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 4,
+          "skip": 3,
+          "limit": 2,
+          "items": [
+            {
+              "fields": {
+                "name": {
+                  "en-US": "beer1"
+                },
+                "description": {
+                  "en-US": "beer1"
+                },
+                "abv": {
+                  "en-US": 7
+                },
+                "brewery_id": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "3ualVj4mVa6a8ioSymky8O"
+                    }
+                  }
+                }
+              },
+              "sys": {
+                "id": "5Pjv3QaEtaSGQIYiyYq4Ig",
+                "type": "Entry",
+                "createdAt": "2014-08-08T12:51:51.101Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "sueu9bzev6qn"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "CnHpfo8pEc4AyOsuAo0Oa"
+                  }
+                },
+                "firstPublishedAt": "2014-08-08T12:51:56.592Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-08T12:51:56.592Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                },
+                "publishedVersion": 1,
+                "version": 2,
+                "updatedAt": "2014-08-08T12:51:56.596Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "0fn5fOWn4WsKFyYla1gI5h"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 07:14:08 GMT
+recorded_with: VCR 2.9.2

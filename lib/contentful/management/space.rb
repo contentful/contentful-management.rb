@@ -92,8 +92,8 @@ module Contentful
 
         content_types.instance_exec(self) do |space|
 
-          define_singleton_method(:all) do
-            ContentType.all(space.id)
+          define_singleton_method(:all) do |attributes = {}|
+            ContentType.all(space.id, attributes)
           end
 
           define_singleton_method(:create) do |params|
@@ -144,8 +144,8 @@ module Contentful
         assets = nil
 
         assets.instance_exec(self) do |space|
-          define_singleton_method(:all) do
-            Asset.all(space.id)
+          define_singleton_method(:all) do |attributes = {}|
+            Asset.all(space.id,attributes)
           end
 
           define_singleton_method(:find) do |asset_id|
