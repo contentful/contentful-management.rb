@@ -260,6 +260,14 @@ module Contentful
             expect(entry.id).to eq 'custom_id'
           end
         end
+        it 'to specified locale' do
+          vcr('entry/create_with_specified_locale') do
+            space = Contentful::Management::Space.find('s37a4pe35l1x')
+            ct = space.content_types.find('category_content_type')
+            entry = ct.entries.create(name: 'Create test', description: 'Test - create entry with specified locale.', locale: 'pl-PL')
+            expect(entry.name).to eq 'Create test'
+          end
+        end
       end
 
       describe '#update' do
@@ -296,9 +304,7 @@ module Contentful
           vcr('entry/update_with_custom_locale') do
             entry = Contentful::Management::Entry.find(space_id, '3U7JqGuVzOWIimU40mKeem')
             entry.locale = 'pl'
-
             result = entry.update(name: 'testName', bool: true)
-            result.locale = 'pl'
             expect(result).to be_kind_of Contentful::Management::Entry
             expect(result.fields[:name]).to eq 'testName'
             expect(result.fields[:bool]).to eq true
