@@ -48,6 +48,20 @@ module Contentful
           end
         end
       end
+
+      describe '#reload' do
+        let(:space_id){'bfsvtul0c41g'}
+        it 'update the current version of the object to the version on the system' do
+          vcr('locale/reload') do
+            locale = subject.find(space_id, '0ywTmGkjR0YhmbYaSmV1CS')
+            locale.sys[:version] = 99
+            locale.reload
+            update_locale = locale.update(name: 'Polish PL')
+            expect(update_locale).to be_kind_of Contentful::Management::Locale
+            expect(locale.name).to eql 'Polish PL'
+          end
+        end
+      end
     end
   end
 end

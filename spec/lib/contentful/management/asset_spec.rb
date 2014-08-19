@@ -349,6 +349,22 @@ module Contentful
           end
         end
       end
+
+      describe '#reload' do
+        let(:space_id){'bfsvtul0c41g'}
+        it 'update the current version of the object to the version on the system' do
+          vcr('asset/reload') do
+            asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
+            asset.sys[:version] = 999
+            update_asset = asset.update(title: 'Updated name')
+            expect(update_asset).to be_kind_of Contentful::Management::BadRequest
+            asset.reload
+            update_asset = asset.update(title: 'Updated name')
+            expect(update_asset).to be_kind_of Contentful::Management::Asset
+            expect(update_asset.title).to eq 'Updated name'
+          end
+        end
+      end
     end
   end
 end

@@ -56,7 +56,7 @@ module Contentful
       def update(attributes)
         request = Request.new("/#{ space.id }/locales/#{ id }", { 'name' => attributes.fetch(:name) }, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         refresh_data(result.run)
       end
     end

@@ -1,0 +1,394 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 12:15:28 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1253'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Etag:
+      - '"6503c652dd5c87030249bd0c151aba3a"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Category",
+          "description": "",
+          "fields": [
+            {
+              "id": "name",
+              "name": "Name",
+              "type": "Text",
+              "localized": true,
+              "uiid": "4vp0pcgc7b4"
+            },
+            {
+              "id": "description",
+              "name": "Description",
+              "type": "Text",
+              "localized": true,
+              "uiid": "40jqtxghjb4"
+            }
+          ],
+          "sys": {
+            "id": "category_content_type",
+            "type": "ContentType",
+            "createdAt": "2014-08-18T06:51:59.560Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "bfsvtul0c41g"
+              }
+            },
+            "firstPublishedAt": "2014-08-18T06:52:02.517Z",
+            "publishedCounter": 6,
+            "publishedAt": "2014-08-19T11:42:07.711Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 33,
+            "version": 34,
+            "updatedAt": "2014-08-19T11:42:07.719Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          },
+          "displayField": "name"
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 12:15:22 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    body:
+      encoding: UTF-8
+      string: '{"name":"Updated content type name","description":"","fields":[{"id":"name","name":"Name","type":"Text","localized":true},{"id":"description","name":"Description","type":"Text","localized":true}]}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '999'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 12:15:28 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Error",
+            "id": "VersionMismatch"
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 12:15:22 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 12:15:29 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1253'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Etag:
+      - '"6503c652dd5c87030249bd0c151aba3a"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Category",
+          "description": "",
+          "fields": [
+            {
+              "id": "name",
+              "name": "Name",
+              "type": "Text",
+              "localized": true,
+              "uiid": "4vp0pcgc7b4"
+            },
+            {
+              "id": "description",
+              "name": "Description",
+              "type": "Text",
+              "localized": true,
+              "uiid": "40jqtxghjb4"
+            }
+          ],
+          "sys": {
+            "id": "category_content_type",
+            "type": "ContentType",
+            "createdAt": "2014-08-18T06:51:59.560Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "bfsvtul0c41g"
+              }
+            },
+            "firstPublishedAt": "2014-08-18T06:52:02.517Z",
+            "publishedCounter": 6,
+            "publishedAt": "2014-08-19T11:42:07.711Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 33,
+            "version": 34,
+            "updatedAt": "2014-08-19T11:42:07.719Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          },
+          "displayField": "name"
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 12:15:23 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    body:
+      encoding: UTF-8
+      string: '{"name":"Updated content type name","description":"","fields":[{"id":"name","name":"Name","type":"Text","localized":true},{"id":"description","name":"Description","type":"Text","localized":true}]}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.2
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '34'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 19 Aug 2014 12:15:30 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1186'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Etag:
+      - '"2f44f1819cb906af3f2dfb4254a05243"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "Updated content type name",
+          "description": "",
+          "fields": [
+            {
+              "id": "name",
+              "name": "Name",
+              "type": "Text",
+              "localized": true
+            },
+            {
+              "id": "description",
+              "name": "Description",
+              "type": "Text",
+              "localized": true
+            }
+          ],
+          "sys": {
+            "id": "category_content_type",
+            "type": "ContentType",
+            "createdAt": "2014-08-18T06:51:59.560Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "bfsvtul0c41g"
+              }
+            },
+            "firstPublishedAt": "2014-08-18T06:52:02.517Z",
+            "publishedCounter": 6,
+            "publishedAt": "2014-08-19T11:42:07.711Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "publishedVersion": 33,
+            "version": 35,
+            "updatedAt": "2014-08-19T12:15:30.175Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "1E7acJL8I5XUXAMHQt9Grs"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 19 Aug 2014 12:15:24 GMT
+recorded_with: VCR 2.9.2

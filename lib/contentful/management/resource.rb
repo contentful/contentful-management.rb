@@ -59,16 +59,6 @@ module Contentful
         nil
       end
 
-      # Issues the request that was made to fetch this response again.
-      # Only works for top-level resources
-      def reload
-        if request
-          request.get
-        else
-          false
-        end
-      end
-
       private
 
       def extract_from_object(object, namespace, keys = nil)

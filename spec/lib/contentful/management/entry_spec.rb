@@ -337,6 +337,23 @@ module Contentful
           end
         end
       end
+
+      describe '#reload' do
+        let(:space_id){'bfsvtul0c41g'}
+        it 'update the current version of the object to the version on the system' do
+          vcr('entry/reload') do
+            space = Contentful::Management::Space.find(space_id)
+            entry = space.entries.find('2arjcjtY7ucC4AGeIOIkok')
+            entry.sys[:version] = 999
+            update_entry = entry.update(post_title: 'Updated title')
+            expect(update_entry).to be_kind_of Contentful::Management::BadRequest
+            entry.reload
+            update_entry = entry.update(post_title: 'Updated title')
+            expect(update_entry).to be_kind_of Contentful::Management::Entry
+            expect(update_entry.post_title).to eq 'Updated title'
+          end
+        end
+      end
     end
   end
 end
