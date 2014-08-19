@@ -21,13 +21,7 @@ module Contentful
       # Takes an id of space and hash of parameters with optional content_type_id.
       # Returns a Contentful::Management::Array of Contentful::Management::Entry.
       def self.all(space_id, parameters = {})
-        path = "/#{ space_id }/entries"
-        path += "?content_type=#{parameters[:content_type_id]}" if parameters[:content_type_id]
-        if parameters[:limit] || parameters[:skip]
-          request = Request.new(path, parameters)
-        else
-          request = Request.new(path)
-        end
+        request = Request.new("/#{ space_id }/entries", parameters)
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         result.run

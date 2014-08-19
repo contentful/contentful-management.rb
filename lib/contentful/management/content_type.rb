@@ -189,7 +189,7 @@ module Contentful
         entries.instance_exec(self) do |content_type|
 
           define_singleton_method(:all) do
-            Contentful::Management::Entry.all(content_type.space.id, content_type_id: content_type.id)
+            Contentful::Management::Entry.all(content_type.space.id, content_type: content_type.id)
           end
 
           define_singleton_method(:create) do |params|

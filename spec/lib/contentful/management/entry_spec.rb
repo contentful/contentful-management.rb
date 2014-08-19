@@ -23,7 +23,7 @@ module Contentful
         end
         it 'returns entries in context of specified content type' do
           vcr('entry/content_type_entires') do
-            entries = Contentful::Management::Entry.all('bfsvtul0c41g', content_type_id: 'category_content_type')
+            entries = Contentful::Management::Entry.all('bfsvtul0c41g', content_type: 'category_content_type')
             expect(entries).to be_kind_of Contentful::Management::Array
             expect(entries.first).to be_kind_of Contentful::Management::Entry
             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
