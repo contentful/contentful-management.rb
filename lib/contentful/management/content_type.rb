@@ -34,9 +34,9 @@ module Contentful
       def self.all(space_id, query = {})
         request = Request.new("/#{ space_id }/content_types", query)
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         content_types = result.run
-        Contentful::Management::Client.shared_instance.update_dynamic_entry_cache!(content_types)
+        client.update_dynamic_entry_cache!(content_types)
         content_types
       end
 
@@ -46,9 +46,9 @@ module Contentful
       def self.find(space_id, content_type_id)
         request = Request.new("/#{ space_id }/content_types/#{ content_type_id }")
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         content_type = result.run
-        Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type)) if content_type.is_a?(self)
+        client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type)) if content_type.is_a?(self)
         content_type
       end
 
@@ -60,7 +60,7 @@ module Contentful
         if response.status == :no_content
           return true
         else
-          result = ResourceBuilder.new(self, response, {}, {})
+          result = ResourceBuilder.new(response, {}, {})
           result.run
         end
       end
@@ -70,7 +70,7 @@ module Contentful
       def activate
         request = Request.new("/#{ space.id }/content_types/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -80,7 +80,7 @@ module Contentful
       def deactivate
         request = Request.new("/#{ space.id }/content_types/#{ id }/published")
         response = request.delete
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -99,8 +99,8 @@ module Contentful
                                                                                          description: attributes[:description],
                                                                                          fields: fields})
         response = attributes[:id].nil? ? request.post : request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
-        Contentful::Management::Client.shared_instance.register_dynamic_entry(result.id, DynamicEntry.create(result)) if result.is_a?(self.class)
+        result = ResourceBuilder.new(response, {}, {}).run
+        client.register_dynamic_entry(result.id, DynamicEntry.create(result)) if result.is_a?(self.class)
         result
       end
 
@@ -115,7 +115,7 @@ module Contentful
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
         request = Request.new("/#{ space.id }/content_types/#{ id }", parameters, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -197,7 +197,7 @@ module Contentful
           end
 
           define_singleton_method(:new) do
-            dynamic_entry_class = Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
+            dynamic_entry_class = content_type.client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
             dynamic_entry = dynamic_entry_class.new
             dynamic_entry.content_type = content_type
             dynamic_entry

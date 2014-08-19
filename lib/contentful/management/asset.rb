@@ -21,7 +21,7 @@ module Contentful
       def self.all(space_id, query = {})
         request = Request.new("/#{ space_id }/assets", query)
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         result.run
       end
 
@@ -31,7 +31,7 @@ module Contentful
       def self.find(space_id, asset_id)
         request = Request.new("/#{ space_id }/assets/#{ asset_id }")
         response = request.get
-        result = ResourceBuilder.new(self, response, {}, {})
+        result = ResourceBuilder.new(response, {}, {})
         result.run
       end
 
@@ -49,7 +49,7 @@ module Contentful
 
         request = Request.new("/#{ space_id }/assets/#{ attributes[:id] || ''}", {fields: asset.fields_for_query})
         response = attributes[:id].nil? ? request.post : request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         result.process_files if result.is_a? self
         result.locale = locale if locale
         result
@@ -74,7 +74,7 @@ module Contentful
         self.file = attributes[:file] if attributes[:file]
         request = Request.new("/#{ space.id }/assets/#{ id }", {fields: fields_for_query}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -97,7 +97,7 @@ module Contentful
         if response.status == :no_content
           return true
         else
-          result = ResourceBuilder.new(self, response, {}, {})
+          result = ResourceBuilder.new(response, {}, {})
           result.run
         end
       end
@@ -107,7 +107,7 @@ module Contentful
       def publish
         request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -116,7 +116,7 @@ module Contentful
       def unpublish
         request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, id = nil, version: sys[:version])
         response = request.delete
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -125,7 +125,7 @@ module Contentful
       def archive
         request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
@@ -134,7 +134,7 @@ module Contentful
       def unarchive
         request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, id = nil, version: sys[:version])
         response = request.delete
-        result = ResourceBuilder.new(self, response, {}, {}).run
+        result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 

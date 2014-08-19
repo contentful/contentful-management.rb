@@ -21,7 +21,7 @@ module Contentful
       def self.all(space_id = nil)
         request = Request.new("/#{ space_id }/locales")
         response = request.get
-        result = ResourceBuilder.new(self, response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         result.run
       end
 
@@ -31,7 +31,7 @@ module Contentful
       def self.find(space_id, locale_id)
         request = Request.new("/#{ space_id }/locales/#{ locale_id }")
         response = request.get
-        result = ResourceBuilder.new(self, response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         result.run
       end
 
@@ -46,7 +46,7 @@ module Contentful
       def self.create(space_id, attributes)
         request = Request.new("/#{ space_id }/locales", { 'name' => attributes.fetch(:name), 'code' => attributes.fetch(:code) })
         response = request.post
-        result = ResourceBuilder.new(self, response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         result.run
       end
 

@@ -26,13 +26,13 @@ module Contentful
 
       attr_reader :client, :response, :resource_mapping, :entry_mapping, :resource
 
-      def initialize(client, response, resource_mapping = {}, entry_mapping = {})
+      def initialize(response, resource_mapping = {}, entry_mapping = {})
         @response = response
-        @client = client
+        @client = Contentful::Management::Client.shared_instance
         @included_resources = {}
         @known_resources = Hash.new { |h, k| h[k] = {} }
         @nested_locales = true
-        @default_locale = (Contentful::Management::Client.shared_instance.configuration || Contentful::Client::DEFAULT_CONFIGURATION)[:default_locale]
+        @default_locale = (client.configuration || Contentful::Client::DEFAULT_CONFIGURATION)[:default_locale]
         @resource_mapping = default_resource_mapping.merge(resource_mapping)
         @entry_mapping = default_entry_mapping.merge(entry_mapping)
       end

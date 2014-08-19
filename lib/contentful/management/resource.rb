@@ -59,6 +59,11 @@ module Contentful
         nil
       end
 
+      # Shared instance of the API client
+      def client
+        Contentful::Management::Client.shared_instance
+      end
+
       private
 
       def extract_from_object(object, namespace, keys = nil)
@@ -103,6 +108,11 @@ module Contentful
 
         def property_coercions
           @property_coercions ||= {}
+        end
+
+        # Shared instance of the API client
+        def client
+          Contentful::Management::Client.shared_instance
         end
 
         # Defines which properties of a resource your class expects
