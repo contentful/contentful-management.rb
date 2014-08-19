@@ -39,6 +39,7 @@ module Contentful
       # Takes a space id and hash with attributes (title, description, file)
       # Returns a Contentful::Management::Asset.
       def self.create(space_id, attributes)
+        locale = attributes[:locale]
         asset = new
         asset.instance_variable_set(:@fields, attributes[:fields] || {})
         asset.locale = attributes[:locale] if attributes[:locale]
@@ -50,6 +51,7 @@ module Contentful
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(self, response, {}, {}).run
         result.process_files if result.is_a? self
+        result.locale = locale if locale
         result
       end
 

@@ -48,6 +48,7 @@ module Contentful
       # Returns a Contentful::Management::Entry.
       def self.create(content_type, attributes)
         custom_id = attributes[:id] || ''
+        locale = attributes[:locale]
         fields_for_create = if attributes[:fields] #create from initialized dynamic entry via save
                               tmp_entry = new
                               tmp_entry.instance_variable_set(:@fields, attributes.delete(:fields) || {})
@@ -61,7 +62,9 @@ module Contentful
         response = custom_id.empty? ? request.post : request.put
         result = ResourceBuilder.new(Contentful::Management::Client.shared_instance, response, {}, {})
         Contentful::Management::Client.shared_instance.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
-        result.run
+        entry = result.run
+        entry.locale = locale if locale
+        entry
       end
 
       # Updates an entry.
@@ -235,7 +238,7 @@ module Contentful
       end
 
       def self.fields_with_locale(content_type, attributes)
-        locale = content_type.sys[:space].default_locale
+        locale = attributes[:locale] || content_type.sys[:space].default_locale
         fields = content_type.properties[:fields]
         field_names = fields.map { |f| f.id.to_sym }
         attributes.keep_if { |key| field_names.include?(key) }
