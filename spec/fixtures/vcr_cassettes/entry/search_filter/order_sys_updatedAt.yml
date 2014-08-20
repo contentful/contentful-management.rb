@@ -1,0 +1,724 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 20 Aug 2014 08:35:11 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '456'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-1214872451
+      Etag:
+      - '"0a8b14491b1aa9ac8390d809c9834ebb"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Space",
+            "id":"bfsvtul0c41g",
+            "version":3,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "createdAt":"2014-08-18T06:51:53Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"1E7acJL8I5XUXAMHQt9Grs"
+              }
+            },
+            "updatedAt":"2014-08-20T06:30:04Z"
+          },
+          "name":"Testing CMA GEM"}
+    http_version: 
+  recorded_at: Wed, 20 Aug 2014 08:35:09 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 20 Aug 2014 08:35:12 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '4843'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Etag:
+      - '"f9db0e4e7abeb59ca6abb8f9987b04e9"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 2,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "Category",
+              "description": "",
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "33d3j29pgcg"
+                },
+                {
+                  "id": "description",
+                  "name": "Description",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "48cpv1qazgg"
+                },
+                {
+                  "name": "number",
+                  "id": "number",
+                  "type": "Integer",
+                  "uiid": "2hc809i1a80"
+                }
+              ],
+              "sys": {
+                "id": "category_content_type",
+                "type": "ContentType",
+                "createdAt": "2014-08-18T06:51:59.560Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "firstPublishedAt": "2014-08-18T06:52:02.517Z",
+                "publishedCounter": 9,
+                "publishedAt": "2014-08-20T06:56:05.888Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 68,
+                "version": 69,
+                "updatedAt": "2014-08-20T06:56:05.894Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "displayField": "name"
+            },
+            {
+              "name": "Post",
+              "description": "",
+              "fields": [
+                {
+                  "id": "post_title",
+                  "name": "Title",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "4e20dxdupz4"
+                },
+                {
+                  "id": "post_author",
+                  "name": "Author",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "2s5prxyzvgg"
+                },
+                {
+                  "id": "post_body",
+                  "name": "Body",
+                  "type": "Text",
+                  "localized": true,
+                  "uiid": "32vqnqsdreo"
+                },
+                {
+                  "id": "post_title_image",
+                  "name": "Title Image",
+                  "type": "Link",
+                  "linkType": "Asset",
+                  "required": true,
+                  "localized": true,
+                  "uiid": "3m8cw01d5vk"
+                },
+                {
+                  "id": "post_second_image",
+                  "name": "Second Image",
+                  "type": "Link",
+                  "linkType": "Asset",
+                  "localized": true,
+                  "uiid": "3gjxnofhkao"
+                },
+                {
+                  "id": "post_category_id",
+                  "name": "Category",
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "uiid": "3qu5za5cnpc"
+                },
+                {
+                  "id": "post_assets",
+                  "name": "Post Assets",
+                  "type": "Array",
+                  "items": {
+                    "type": "Link",
+                    "linkType": "Asset"
+                  },
+                  "uiid": "35ykvfj4x6o"
+                },
+                {
+                  "id": "xxx",
+                  "name": "xxx",
+                  "type": "Symbol",
+                  "uiid": "4onqde99wxs"
+                },
+                {
+                  "id": "xxx123",
+                  "name": "xxx123",
+                  "type": "Symbol",
+                  "uiid": "4o64i125l34"
+                },
+                {
+                  "id": "ssss",
+                  "name": "Post ssss",
+                  "type": "Array",
+                  "items": {
+                    "type": "Link",
+                    "linkType": "Asset"
+                  },
+                  "uiid": "2skdkwqvta8"
+                },
+                {
+                  "name": "xxasdasd",
+                  "id": "xxasdasd",
+                  "type": "Boolean",
+                  "uiid": "387exwqopa8"
+                }
+              ],
+              "sys": {
+                "id": "post_content_type",
+                "type": "ContentType",
+                "createdAt": "2014-08-18T06:52:03.545Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "firstPublishedAt": "2014-08-18T06:52:10.462Z",
+                "publishedCounter": 5,
+                "publishedAt": "2014-08-20T06:59:08.109Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 35,
+                "version": 36,
+                "updatedAt": "2014-08-20T06:59:08.119Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 20 Aug 2014 08:35:10 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries?order=sys.updatedAt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 20 Aug 2014 08:35:13 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '8439'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      Cf-Space-Id:
+      - bfsvtul0c41g
+      Etag:
+      - '"625ef7c3ec69f27c7e78ca004f6adb06"'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 5,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "sys": {
+                "id": "2X3X7RHVzqsKGAgIEewgaS",
+                "type": "Entry",
+                "createdAt": "2014-08-20T06:30:11.792Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-20T06:30:15.969Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-20T06:30:15.969Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 7,
+                "version": 8,
+                "updatedAt": "2014-08-20T06:30:15.972Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "xxx"
+                },
+                "description": {
+                  "en-US": "xxx"
+                }
+              }
+            },
+            {
+              "sys": {
+                "id": "5i17uWfW6s2YuImo8GuQu0",
+                "type": "Entry",
+                "createdAt": "2014-08-20T06:30:20.308Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "version": 9,
+                "updatedAt": "2014-08-20T06:30:23.705Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "cccc"
+                },
+                "description": {
+                  "en-US": "cccc"
+                }
+              }
+            },
+            {
+              "sys": {
+                "id": "2M17YNVfjqKuSOM8wuYAwM",
+                "type": "Entry",
+                "createdAt": "2014-08-20T06:39:46.977Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-20T06:40:03.523Z",
+                "publishedCounter": 1,
+                "publishedAt": "2014-08-20T06:40:03.523Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 27,
+                "version": 28,
+                "updatedAt": "2014-08-20T06:40:03.527Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "category nejmmm"
+                },
+                "description": {
+                  "en-US": "category desskk"
+                }
+              }
+            },
+            {
+              "sys": {
+                "id": "2Hs5BaU56oUmUIySMQQMUS",
+                "type": "Entry",
+                "createdAt": "2014-08-20T06:44:24.127Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "category_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-20T06:45:04.204Z",
+                "publishedCounter": 2,
+                "publishedAt": "2014-08-20T06:55:54.367Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 19,
+                "version": 20,
+                "updatedAt": "2014-08-20T06:55:54.372Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              },
+              "fields": {
+                "number": {
+                  "en-US": 55
+                },
+                "description": {
+                  "en-US": "number"
+                },
+                "name": {
+                  "en-US": "number 55"
+                }
+              }
+            },
+            {
+              "fields": {
+                "post_title": {
+                  "en-US": "Updated title",
+                  "de-DE": null,
+                  "pl-PL": null
+                },
+                "post_author": {
+                  "en-US": "Tom Dom",
+                  "de-DE": null,
+                  "pl-PL": null
+                },
+                "post_body": {
+                  "en-US": "Letterpress sustainable authentic, disrupt semiotics actually kitsch. Direct trade Cosby sweater Austin, Pitchfork flexitarian small batch authentic roof party 8-bit YOLO literally Neutra pour-over American Apparel dreamcatcher. High Life distillery cliche YOLO, flexitarian four loko put a bird on it plaid Marfa Shoreditch seitan Echo Park bicycle rights Pinterest PBR. Drinking vinegar Banksy gastropub, stumptown occupy farm-to-table Blue Bottle tattooed Truffaut single-origin coffee iPhone locavore pug",
+                  "de-DE": null,
+                  "pl-PL": null
+                },
+                "post_title_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  },
+                  "de-DE": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  },
+                  "pl-PL": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  }
+                },
+                "post_second_image": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "5LCvaD9lfycy02uqkwyE8S"
+                    }
+                  },
+                  "de-DE": null,
+                  "pl-PL": null
+                },
+                "post_category_id": {
+                  "en-US": null,
+                  "de-DE": null,
+                  "pl-PL": null
+                },
+                "xxasdasd": {
+                  "en-US": false
+                }
+              },
+              "sys": {
+                "id": "2arjcjtY7ucC4AGeIOIkok",
+                "type": "Entry",
+                "createdAt": "2014-08-18T06:54:57.974Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "bfsvtul0c41g"
+                  }
+                },
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "post_content_type"
+                  }
+                },
+                "firstPublishedAt": "2014-08-18T07:06:32.551Z",
+                "publishedCounter": 4,
+                "publishedAt": "2014-08-20T06:59:00.415Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "publishedVersion": 13,
+                "version": 14,
+                "updatedAt": "2014-08-20T06:59:00.421Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Wed, 20 Aug 2014 08:35:11 GMT
+recorded_with: VCR 2.9.2
