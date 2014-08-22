@@ -244,6 +244,11 @@ asset.file_with_locales= {'en-US' => en_file, 'pl' => pl_file}
 asset.save
 ```
 
+Process an Asset file after create:
+```ruby
+asset.process
+```
+
 Updating an asset:
 
 - default locale

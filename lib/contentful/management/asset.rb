@@ -50,13 +50,12 @@ module Contentful
         request = Request.new("/#{ space_id }/assets/#{ attributes[:id] || ''}", {fields: asset.fields_for_query})
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
-        result.process_files if result.is_a? self
         result.locale = locale if locale
         result
       end
 
-      # This method is used only when an asset is created. Processes the uploaded file.
-      def process_files
+      # Processing an Asset file
+      def process
         instance_variable_get(:@fields).keys.each do |locale|
           request = Request.new("/#{ space.id }/assets/#{ id }/files/#{ locale }/process", {}, id = nil, version: sys[:version])
           request.put

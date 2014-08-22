@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/webhook_definitions/taken_webhook
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://www.example3.com"}'
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Aug 2014 11:32:16 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '302'
+      Connection:
+      - keep-alive
+      Status:
+      - 422 Unprocessable Entity
+      X-Contentful-Request-Id:
+      - 85f-929382323
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Error",
+            "id":"ValidationFailed"
+          },
+          "requestId":"85f-929382323",
+          "message":"The resource you sent in the body is invalid.",
+          "details":{
+            "errors":[
+              {
+                "name":"taken",
+                "path":"url",
+                "value":"https://www.example3.com"
+              }
+            ]
+          }}
+    http_version: 
+  recorded_at: Thu, 21 Aug 2014 11:32:11 GMT
+recorded_with: VCR 2.9.2

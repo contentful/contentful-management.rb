@@ -309,6 +309,26 @@ module Contentful
           end
         end
       end
+
+      describe '#webhooks' do
+        let(:space_id) { 'bfsvtul0c41g' }
+        it 'return all webhooks' do
+          vcr('space/webhook/all') do
+            space = subject.find(space_id)
+            webhooks = space.webhooks.all
+            expect(webhooks).to be_kind_of Contentful::Management::Array
+            expect(webhooks.first).to be_kind_of Contentful::Management::Webhook
+          end
+        end
+        it 'return webhook for a given key' do
+          vcr('space/webhook/find') do
+            space = subject.find(space_id)
+            webhook = space.webhooks.find('16X4KNhhfJti6Uq7x7EFQa')
+            expect(webhook).to be_kind_of Contentful::Management::Webhook
+            expect(webhook.url).to eql 'https://www.example2.com'
+          end
+        end
+      end
       describe '#entries.all(content_type: content_type_id)' do
         it 'returns entries to specified content type' do
           vcr('space/entry/content_type_entires') do
@@ -333,7 +353,7 @@ module Contentful
         end
       end
       describe '#reload' do
-        let(:space_id){'bfsvtul0c41g'}
+        let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('space/reload') do
             space = subject.find(space_id)

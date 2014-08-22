@@ -365,6 +365,24 @@ module Contentful
           end
         end
       end
+
+      describe '#process' do
+        let(:space_id){'bfsvtul0c41g'}
+        it 'process file after create an asset' do
+          vcr('asset/process') do
+            file = Contentful::Management::File.new
+            file.properties[:contentType] = 'image/jpeg'
+            file.properties[:fileName] = 'pic1.jpg'
+            file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
+
+            asset = subject.create(space_id, title: 'Asset title', description: 'Description', file: file)
+            asset.process
+            expect(asset).to be_kind_of Contentful::Management::Asset
+            expect(asset.title).to eq 'Asset title'
+          end
+        end
+      end
+
     end
   end
 end
