@@ -339,7 +339,7 @@ module Contentful
       end
 
       describe '#reload' do
-        let(:space_id){'bfsvtul0c41g'}
+        let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('entry/reload') do
             space = Contentful::Management::Space.find(space_id)
@@ -351,6 +351,166 @@ module Contentful
             update_entry = entry.update(post_title: 'Updated title')
             expect(update_entry).to be_kind_of Contentful::Management::Entry
             expect(update_entry.post_title).to eq 'Updated title'
+          end
+        end
+      end
+
+      describe 'search filters' do
+        let(:space) { Contentful::Management::Space.find('bfsvtul0c41g')
+        }
+        context 'order' do
+          it 'returns ordered entries by createdAt' do
+            vcr('entry/search_filter/order_sys.createdAt') do
+              ordered_entries = space.entries.all(order: 'sys.createdAt')
+              expect(ordered_entries).to be_kind_of Contentful::Management::Array
+              expect(ordered_entries.first).to be_kind_of Contentful::Management::Entry
+              expect(ordered_entries.first.sys[:createdAt] < ordered_entries.to_a[4].sys[:createdAt]).to be_truthy
+            end
+          end
+
+          it 'returns ordered entries by updatedAt' do
+            vcr('entry/search_filter/order_sys.updatedAt') do
+              ordered_entries = space.entries.all(order: 'sys.updatedAt')
+              expect(ordered_entries).to be_kind_of Contentful::Management::Array
+              expect(ordered_entries.first).to be_kind_of Contentful::Management::Entry
+              expect(ordered_entries.first.sys[:updatedAt] < ordered_entries.to_a[4].sys[:updatedAt]).to be_truthy
+            end
+          end
+          context 'reverse the sort-order' do
+            it 'returns reverse sort of ordered entries by updatedAt' do
+              vcr('entry/search_filter/reverse_order_sys.updatedAt') do
+                reverse_ordered_entries = space.entries.all(order: '-sys.updatedAt')
+                expect(reverse_ordered_entries).to be_kind_of Contentful::Management::Array
+                expect(reverse_ordered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(reverse_ordered_entries.first.sys[:updatedAt] > reverse_ordered_entries.to_a[4].sys[:updatedAt]).to be_truthy
+              end
+            end
+          end
+        end
+
+        #TODO TO CLARIFY
+        context 'Including linked Entries in search results' do
+          it 'returns content_type Entry and include 1 level of linked Entries' do
+            vcr('entry/search_filter/including_linked_entries') do
+              filtered_entries = space.entries.all('sys.id' => '2Hs5BaU56oUmUIySMQQMUS', include: 2)
+              expect(filtered_entries).to be_kind_of Contentful::Management::Array
+              expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+            end
+          end
+        end
+
+        context 'Equality and Inequality' do
+          context 'equality operator' do
+            it 'returns all Entries with specified ID(IDs are unique and there can only be one)' do
+              vcr('entry/search_filter/equality_operator') do
+                filtered_entries = space.entries.all('sys.id' => '2Hs5BaU56oUmUIySMQQMUS')
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.first.sys[:id]).to eq '2Hs5BaU56oUmUIySMQQMUS'
+              end
+            end
+            it 'returns all entries by matching fields.number equal 33' do
+              vcr('entry/search_filter/matching_array_fields') do
+                filtered_entries = space.entries.all(content_type: 'category_content_type', 'fields.number' => 33)
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.size).to eq 2
+              end
+            end
+          end
+          context 'inequality operator' do
+            it 'returns all entries except entry with id = 2Hs5BaU56oUmUIySMQQMUS' do
+              vcr('entry/search_filter/inequality_operator') do
+                filtered_entries = space.entries.all('sys.id[ne]' => '2Hs5BaU56oUmUIySMQQMUS')
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.map(&:id).include?('2Hs5BaU56oUmUIySMQQMUS')).to be_falsey
+              end
+            end
+          end
+        end
+        context 'Inclusion and Exclusion' do
+          context 'inclusion operator' do
+            it 'returns entries with specified IDs' do
+              vcr('entry/search_filter/inclusion_operator') do
+                filtered_entries = space.entries.all('sys.id[in]' => '2Hs5BaU56oUmUIySMQQMUS,2X3X7RHVzqsKGAgIEewgaS')
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.map(&:id).include?('2Hs5BaU56oUmUIySMQQMUS')).to be_truthy
+                expect(filtered_entries.map(&:id).include?('2X3X7RHVzqsKGAgIEewgaS')).to be_truthy
+                expect(filtered_entries.size).to eq 2
+              end
+            end
+          end
+          context 'exclusion operator' do
+            it 'returns all entries except with specified IDs' do
+              vcr('entry/search_filter/exclusion_operator') do
+                filtered_entries = space.entries.all(content_type: 'category_content_type', 'sys.id[nin]' => '2Hs5BaU56oUmUIySMQQMUS,2X3X7RHVzqsKGAgIEewgaS')
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.map(&:id).include?('2Hs5BaU56oUmUIySMQQMUS')).to be_falsy
+                expect(filtered_entries.map(&:id).include?('2X3X7RHVzqsKGAgIEewgaS')).to be_falsy
+                expect(filtered_entries.size).to eq 3
+              end
+            end
+          end
+        end
+        context 'Full-text Search' do
+          it 'returns all entries except with specified IDs' do
+            vcr('entry/search_filter/full_search') do
+              filtered_entries = space.entries.all(query: 'find me')
+              expect(filtered_entries).to be_kind_of Contentful::Management::Array
+              expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+              expect(filtered_entries.size).to eq 2
+            end
+          end
+          it 'returns all entries except with specified IDs' do
+            vcr('entry/search_filter/full_search_match_operator') do
+              filtered_entries = space.entries.all(content_type: 'category_content_type', 'fields.description[match]' => 'find')
+              expect(filtered_entries).to be_kind_of Contentful::Management::Array
+              expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+              expect(filtered_entries.size).to eq 2
+            end
+          end
+        end
+        context 'Location-based search' do
+          it 'returns entries closest to a specific map location and order the results by distance' do
+            vcr('entry/search_filter/location_search_near_operator') do
+              filtered_entries = space.entries.all('fields.location[near]' => '23.15758,53.1297098', content_type: '37TpyB8DcQkq0wkY8c4g2g')
+              expect(filtered_entries).to be_kind_of Contentful::Management::Array
+              expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+            end
+          end
+
+          it 'returns entries with fields.location is inside of the circle' do
+            vcr('entry/search_filter/location_search_within_operator') do
+              filtered_entries = space.entries.all('fields.location[within]' => '52,23,300', content_type: '37TpyB8DcQkq0wkY8c4g2g')
+              expect(filtered_entries).to be_kind_of Contentful::Management::Array
+              expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+            end
+          end
+        end
+
+        context 'Number & Date Ranges' do
+          context 'number' do
+            it 'returns entries with fields.number less then 20' do
+              vcr('entry/search_filter/range_operators_less') do
+                filtered_entries = space.entries.all('fields.number[lte]' => '20', content_type: 'category_content_type')
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.size).to eq 1
+              end
+            end
+          end
+          context 'date ranges' do
+            it 'returns entries have been updated since midnight August 19th 2013' do
+              vcr('entry/search_filter/range_operators_greater_than_or_equal') do
+                filtered_entries = space.entries.all('sys.updatedAt[gte]' => '2014-08-19T00:00:00Z')
+                expect(filtered_entries).to be_kind_of Contentful::Management::Array
+                expect(filtered_entries.first).to be_kind_of Contentful::Management::Entry
+                expect(filtered_entries.size).to eq 11
+              end
+            end
           end
         end
       end
