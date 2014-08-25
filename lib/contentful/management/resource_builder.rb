@@ -8,6 +8,7 @@ require_relative 'link'
 require_relative 'space'
 require_relative 'content_type'
 require_relative 'asset'
+require_relative 'webhook'
 
 module Contentful
   module Management
@@ -20,7 +21,8 @@ module Contentful
           'Entry' => :find_entry_class,
           'Asset' => Contentful::Management::Asset,
           'Array' => :array_or_sync_page,
-          'Link' => Contentful::Management::Link
+          'Link' => Contentful::Management::Link,
+          'WebhookDefinition' => Contentful::Management::Webhook
       }
       DEFAULT_ENTRY_MAPPING = {}
 

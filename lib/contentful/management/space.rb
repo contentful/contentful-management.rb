@@ -4,6 +4,7 @@ require_relative 'locale'
 require_relative 'content_type'
 require_relative 'asset'
 require_relative 'entry'
+require_relative 'webhook'
 
 module Contentful
   module Management
@@ -181,6 +182,21 @@ module Contentful
           end
         end
         entries
+      end
+
+      def webhooks
+        webhooks = nil
+
+        webhooks.instance_exec(self) do |space|
+          define_singleton_method(:all) do |attributes = {}|
+            Webhook.all(space.id, attributes)
+          end
+
+          define_singleton_method(:find) do |webhook_id|
+            Webhook.find(space.id, webhook_id)
+          end
+        end
+        webhooks
       end
     end
   end

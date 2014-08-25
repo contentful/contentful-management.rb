@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/webhook_definitions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContenfulManagementGem/0.0.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Aug 2014 10:32:30 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '1637'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Contentful-Request-Id:
+      - 85f-929364637
+      Etag:
+      - '"2b309977c80d1d852d92d11e7edfb899"'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      "^access-Control-Expose-Headers":
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "sys":{
+                "type":"WebhookDefinition",
+                "id":"0rK8ZNEOWLgYnO5gaah2pp",
+                "version":1,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"bfsvtul0c41g"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-08-20T12:40:14Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-08-21T10:01:33Z"
+              },
+              "url":"https://www.example.com",
+              "httpBasicUsername":"some_username"
+            },
+            {
+              "sys":{
+                "type":"WebhookDefinition",
+                "id":"16X4KNhhfJti6Uq7x7EFQa",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"bfsvtul0c41g"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "createdAt":"2014-08-20T12:40:51Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"1E7acJL8I5XUXAMHQt9Grs"
+                  }
+                },
+                "updatedAt":"2014-08-20T12:40:51Z"
+              },
+              "url":"https://www.example2.com",
+              "httpBasicUsername":"asdasd"
+            }
+          ],
+          "total":2,
+          "limit":25,
+          "skip":0}
+    http_version: 
+  recorded_at: Thu, 21 Aug 2014 10:32:30 GMT
+recorded_with: VCR 2.9.2

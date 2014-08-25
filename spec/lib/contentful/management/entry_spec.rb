@@ -38,7 +38,6 @@ module Contentful
             entries.next_page
           end
         end
-
       end
 
       describe '#find' do
