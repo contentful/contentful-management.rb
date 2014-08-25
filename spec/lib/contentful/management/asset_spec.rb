@@ -252,7 +252,7 @@ module Contentful
             asset = Contentful::Management::Asset.create('bfsvtul0c41g',
                                                          title: 'Title PL',
                                                          description: 'Description PL',
-                                                         file: file1, locale: 'pl-PL' )
+                                                         file: file1, locale: 'pl-PL')
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'Title PL'
             expect(asset.description).to eq 'Description PL'
@@ -351,7 +351,7 @@ module Contentful
       end
 
       describe '#reload' do
-        let(:space_id){'bfsvtul0c41g'}
+        let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('asset/reload') do
             asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
@@ -363,6 +363,19 @@ module Contentful
             expect(update_asset).to be_kind_of Contentful::Management::Asset
             expect(update_asset.title).to eq 'Updated name'
           end
+        end
+      end
+
+      describe '#image_url' do
+        it 'empty_query' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url).to eq 'http://assets.com/asset.jpg'
+        end
+        it 'with_params' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
         end
       end
 
@@ -383,6 +396,18 @@ module Contentful
         end
       end
 
+      describe '#image_url' do
+        it 'empty_query' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url).to eq 'http://assets.com/asset.jpg'
+        end
+        it 'with_params' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
+        end
+      end
     end
   end
 end
