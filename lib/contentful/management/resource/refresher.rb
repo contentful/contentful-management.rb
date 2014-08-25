@@ -4,7 +4,6 @@ module Contentful
     module Resource
       # Adds the feature to have properties and system data reload for Resource.
       module Refresher
-
         # Reload an object
         # Updates the current version of the object to the version on the system
         def reload

@@ -22,7 +22,7 @@ module Contentful
           api_url: 'api.contentful.com',
           api_version: '1',
           secure: true,
-          default_locale: 'en-US',
+          default_locale: 'en-US'
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -31,7 +31,6 @@ module Contentful
         @dynamic_entry_cache = {}
         Thread.current[:client] = self
       end
-
 
       def update_dynamic_entry_cache_for_spaces!(spaces)
         spaces.each do |space|

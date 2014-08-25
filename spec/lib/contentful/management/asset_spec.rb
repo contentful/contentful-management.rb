@@ -106,7 +106,6 @@ module Contentful
           end
         end
 
-
         it 'returns Contentful::Management::Asset' do
           vcr('asset/publish') do
             asset = subject.find(space_id, asset_id_2)
@@ -252,7 +251,7 @@ module Contentful
             asset = Contentful::Management::Asset.create('bfsvtul0c41g',
                                                          title: 'Title PL',
                                                          description: 'Description PL',
-                                                         file: file1, locale: 'pl-PL' )
+                                                         file: file1, locale: 'pl-PL')
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'Title PL'
             expect(asset.description).to eq 'Description PL'
@@ -351,7 +350,7 @@ module Contentful
       end
 
       describe '#reload' do
-        let(:space_id){'bfsvtul0c41g'}
+        let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('asset/reload') do
             asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
@@ -367,7 +366,7 @@ module Contentful
       end
 
       describe '#process' do
-        let(:space_id){'bfsvtul0c41g'}
+        let(:space_id) { 'bfsvtul0c41g' }
         it 'process file after create an asset' do
           vcr('asset/process') do
             file = Contentful::Management::File.new

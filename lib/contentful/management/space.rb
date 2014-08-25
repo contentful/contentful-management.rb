@@ -56,7 +56,7 @@ module Contentful
       # Takes a hash of attributes with optional organization id if client has more than one organization.
       # Returns a Contentful::Management::Space.
       def update(attributes)
-        request = Request.new("/#{ id }", { 'name' => attributes.fetch(:name) }, id = nil, version: sys[:version], organization_id: attributes[:organization_id])
+        request = Request.new("/#{ id }", {'name' => attributes.fetch(:name)}, id = nil, version: sys[:version], organization_id: attributes[:organization_id])
         response = request.put
         result = ResourceBuilder.new(response, {}, {})
         refresh_data(result.run)
@@ -146,7 +146,7 @@ module Contentful
 
         assets.instance_exec(self) do |space|
           define_singleton_method(:all) do |attributes = {}|
-            Asset.all(space.id,attributes)
+            Asset.all(space.id, attributes)
           end
 
           define_singleton_method(:find) do |asset_id|

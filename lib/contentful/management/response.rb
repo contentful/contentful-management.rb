@@ -25,9 +25,9 @@ module Contentful
       attr_reader :raw, :object, :status, :error_message, :request
 
       def initialize(raw, request = nil)
-        @raw     = raw
+        @raw = raw
         @request = request
-        @status  = :ok
+        @status = :ok
 
         if service_unavailable_response?
           @status = :service_unavailable
@@ -53,10 +53,10 @@ module Contentful
       def parse_json!
         @object = MultiJson.load(raw.to_s)
         true
-      rescue MultiJson::LoadError => e
+      rescue MultiJson::LoadError => error
         @status = :unparsable_json
-        @error_message = e.message
-        @object = e
+        @error_message = error.message
+        @object = error
         false
       end
 

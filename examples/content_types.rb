@@ -5,7 +5,6 @@ organization = 'organization id'
 
 require 'contentful/management'
 
-
 client = Contentful::Management::Client.new(access_token)
 space = Contentful::Management::Space.create(name: 'MySpace', organization_id: organization)
 
@@ -30,7 +29,6 @@ field2.id = 'wow_content'
 field2.name = 'Wow Content'
 field2.type = 'Location' #content types maybe as symbol?
 
-
 type2.update(name: 'whoat', fields: [field, field2])
 
 type2.fields.add(field2)
@@ -41,5 +39,5 @@ type2.deactivate
 
 type1.destroy
 
-#clean up afterwards!
+# clean up afterwards!
 space.destroy

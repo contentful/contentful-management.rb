@@ -32,31 +32,31 @@ module Contentful
     end
 
     # 404
-    class NotFound < Error;
+    class NotFound < Error
     end
 
     # 400
-    class BadRequest < Error;
+    class BadRequest < Error
     end
 
     # 403
-    class AccessDenied < Error;
+    class AccessDenied < Error
     end
 
     # 401
-    class Unauthorized < Error;
+    class Unauthorized < Error
     end
 
     # 500
-    class ServerError < Error;
+    class ServerError < Error
     end
 
     # Raised when response is no valid json
-    class UnparsableJson < Error;
+    class UnparsableJson < Error
     end
 
     # Raised when response is not parsable as a Contentful::Resource
-    class UnparsableResource < Error;
+    class UnparsableResource < Error
     end
   end
 end

@@ -8,7 +8,6 @@ module Contentful
     # Resource class for Entry.
     # https://www.contentful.com/developers/documentation/content-management-api/#resources-entries
     class Entry
-
       include Contentful::Management::Resource
       include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
@@ -43,7 +42,7 @@ module Contentful
       def self.create(content_type, attributes)
         custom_id = attributes[:id] || ''
         locale = attributes[:locale]
-        fields_for_create = if attributes[:fields] #create from initialized dynamic entry via save
+        fields_for_create = if attributes[:fields] # create from initialized dynamic entry via save
                               tmp_entry = new
                               tmp_entry.instance_variable_set(:@fields, attributes.delete(:fields) || {})
                               Contentful::Management::Support.deep_hash_merge(tmp_entry.fields_for_query, tmp_entry.fields_from_attributes(attributes))
@@ -52,7 +51,6 @@ module Contentful
                             end
 
         request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ custom_id }", {fields: fields_for_create}, nil, content_type_id: content_type.id)
-
         response = custom_id.empty? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {})
         client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))

@@ -81,7 +81,7 @@ module Contentful
       # See README for details.
       def save
         if id.nil?
-          new_instance = self.class.create(self.sys[:space].id, {fields: instance_variable_get(:@fields)})
+          new_instance = self.class.create(sys[:space].id, {fields: instance_variable_get(:@fields)})
           refresh_data(new_instance)
         else
           update(title: title, description: description, file: file)

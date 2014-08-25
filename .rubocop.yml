@@ -13,4 +13,28 @@ AllCops:
     - bin/cma-console
 
 LineLength:
-  Max: 120
+  Max: 135
+Style/MethodLength:
+  Max: 15
+
+Style/SpaceInsideBrackets:
+  Enabled: false
+
+Style/CyclomaticComplexity:
+  Max: 8
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
+Style/CaseIndentation:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/IndentationWidth:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false

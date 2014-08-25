@@ -15,11 +15,11 @@ module Contentful
     # by the client by default
     module Resource
       COERCIONS = {
-          string: ->(v) { v.to_s },
-          integer: ->(v) { v.to_i },
-          float: ->(v) { v.to_f },
-          boolean: ->(v) { !!v },
-          date: ->(v) { !v.nil? ? DateTime.parse(v) : nil }
+          string: ->(value) { value.to_s },
+          integer: ->(value) { value.to_i },
+          float: ->(value) { value.to_f },
+          boolean: ->(value) { !!value },
+          date: ->(value) { !value.nil? ? DateTime.parse(value) : nil }
       }
 
       attr_reader :properties, :request, :client, :default_locale
@@ -160,7 +160,6 @@ module Contentful
       def self.included(base)
         base.extend(ClassMethods)
       end
-
     end
   end
 end

@@ -387,7 +387,6 @@ module Contentful
           end
         end
 
-        #TODO TO CLARIFY
         context 'Including linked Entries in search results' do
           it 'returns content_type Entry and include 1 level of linked Entries' do
             vcr('entry/search_filter/including_linked_entries') do
