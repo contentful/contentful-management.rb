@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'field'
-require_relative 'content_type_entries'
+require_relative 'content_type_entry_methods_factory'
 
 module Contentful
   module Management
@@ -185,7 +185,7 @@ module Contentful
       # Returns a Contentful::Management::Entry.
       # See README for details.
       def entries
-        Contentful::Management::ContentTypeEntries.new(self)
+        Contentful::Management::ContentTypeEntryMethodsFactory.new(self)
       end
 
       private

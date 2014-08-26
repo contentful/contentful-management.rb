@@ -1,6 +1,6 @@
 module Contentful
   module Management
-    class ContentTypeEntries
+    class ContentTypeEntryMethodsFactory
 
       attr_reader :content_type
 
@@ -8,8 +8,8 @@ module Contentful
         @content_type = content_type
       end
 
-      def all
-        Contentful::Management::Entry.all(content_type.space.id, content_type: content_type.id)
+      def all(params = {})
+        Entry.all(content_type.space.id, params.merge(content_type: content_type.id))
       end
 
       def create(attributes)

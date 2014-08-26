@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'locale'
-require_relative 'space_locales'
+require_relative 'space_locale_methods_factory'
 require_relative 'content_type'
-require_relative 'space_content_types'
+require_relative 'space_content_type_methods_factory'
 require_relative 'asset'
-require_relative 'space_assets'
+require_relative 'space_asset_methods_factory'
 require_relative 'entry'
-require_relative 'space_entries'
+require_relative 'space_entry_methods_factory'
 require_relative 'webhook'
-require_relative 'space_webhooks'
+require_relative 'space_webhook_methods_factory'
 
 module Contentful
   module Management
@@ -94,35 +94,35 @@ module Contentful
       # Allows listing all content types of space, creating new and finding one by id.
       # See README for details.
       def content_types
-        SpaceContentTypes.new(self)
+        SpaceContentTypeMethodsFactory.new(self)
       end
 
       # Allows manipulation of locales in context of the current space
       # Allows listing all locales of space, creating new and finding one by id.
       # See README for details.
       def locales
-        SpaceLocales.new(self)
+        SpaceLocaleMethodsFactory.new(self)
       end
 
       # Allows manipulation of assets in context of the current space
       # Allows listing all assets of space, creating new and finding one by id.
       # See README for details.
       def assets
-        SpaceAssets.new(self)
+        SpaceAssetMethodsFactory.new(self)
       end
 
       # Allows manipulation of entries in context of the current space
       # Allows listing all entries for space and finding one by id.
       # See README for details.
       def entries
-        SpaceEntries.new(self)
+        SpaceEntryMethodsFactory.new(self)
       end
 
       # Allows manipulation of webhooks in context of the current space
       # Allows listing all webhooks for space and finding one by id.
       # See README for details.
       def webhooks
-        SpaceWebhooks.new(self)
+        SpaceWebhookMethodsFactory.new(self)
       end
     end
   end
