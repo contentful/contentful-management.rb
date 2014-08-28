@@ -1,3 +1,12 @@
+### 0.1.0
+ * Support for webhooks
+ * add image url to asset
+ * Cleaning code
+ * Fix: remove implicit processing of assets.
+ * Fix: Gem is modifying nil #17
+ * Fix: rename asset.process_files to asset.process
+
+
 ### 0.0.3
  * Fix: next_page feature
  * Fix: create entry with specific locale
