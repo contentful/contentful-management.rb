@@ -18,7 +18,7 @@ module Contentful
       # Gets a collection of locales.
       # Takes an id of a space.
       # Returns a Contentful::Management::Array of Contentful::Management::Locale.
-      def self.all(space_id = nil)
+      def self.all(space_id = nil, parameters = {})
         request = Request.new("/#{ space_id }/locales")
         response = request.get
         result = ResourceBuilder.new(response, {'Locale' => Locale}, {})

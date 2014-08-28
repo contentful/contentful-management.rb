@@ -8,8 +8,6 @@ TooManyStatements:
   - assets
   - content_types
   max_statements: 11
-DuplicateMethodCall:
-  enabled: false
 NestedIterators:
   enabled: false
 PrimaDonnaMethod:

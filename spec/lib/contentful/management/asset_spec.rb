@@ -365,6 +365,19 @@ module Contentful
         end
       end
 
+      describe '#image_url' do
+        it 'empty_query' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url).to eq 'http://assets.com/asset.jpg'
+        end
+        it 'with_params' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
+        end
+      end
+
       describe '#process' do
         let(:space_id) { 'bfsvtul0c41g' }
         it 'process file after create an asset' do
@@ -382,6 +395,18 @@ module Contentful
         end
       end
 
+      describe '#image_url' do
+        it 'empty_query' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url).to eq 'http://assets.com/asset.jpg'
+        end
+        it 'with_params' do
+          asset = Contentful::Management::Asset.new
+          asset.file = double('file', url: 'http://assets.com/asset.jpg')
+          expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
+        end
+      end
     end
   end
 end
