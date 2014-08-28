@@ -1,10 +1,15 @@
 # -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'locale'
+require_relative 'space_locale_methods_factory'
 require_relative 'content_type'
+require_relative 'space_content_type_methods_factory'
 require_relative 'asset'
+require_relative 'space_asset_methods_factory'
 require_relative 'entry'
+require_relative 'space_entry_methods_factory'
 require_relative 'webhook'
+require_relative 'space_webhook_methods_factory'
 
 module Contentful
   module Management
@@ -89,114 +94,35 @@ module Contentful
       # Allows listing all content types of space, creating new and finding one by id.
       # See README for details.
       def content_types
-        content_types = nil
-
-        content_types.instance_exec(self) do |space|
-
-          define_singleton_method(:all) do |attributes = {}|
-            ContentType.all(space.id, attributes)
-          end
-
-          define_singleton_method(:create) do |params|
-            ContentType.create(space.id, params)
-          end
-
-          define_singleton_method(:find) do |content_type_id|
-            ContentType.find(space.id, content_type_id)
-          end
-
-          define_singleton_method(:new) do
-            ct = ContentType.new
-            ct.sys[:space] = space
-            ct
-          end
-
-        end
-        content_types
+        SpaceContentTypeMethodsFactory.new(self)
       end
 
       # Allows manipulation of locales in context of the current space
       # Allows listing all locales of space, creating new and finding one by id.
       # See README for details.
       def locales
-        locales = nil
-
-        locales.instance_exec(self) do |space|
-          define_singleton_method(:all) do
-            Locale.all(space.id)
-          end
-
-          define_singleton_method(:create) do |params|
-            Locale.create(space.id, params)
-          end
-
-          define_singleton_method(:find) do |locale_id|
-            Locale.find(space.id, locale_id)
-          end
-        end
-
-        locales
+        SpaceLocaleMethodsFactory.new(self)
       end
 
       # Allows manipulation of assets in context of the current space
       # Allows listing all assets of space, creating new and finding one by id.
       # See README for details.
       def assets
-        assets = nil
-
-        assets.instance_exec(self) do |space|
-          define_singleton_method(:all) do |attributes = {}|
-            Asset.all(space.id,attributes)
-          end
-
-          define_singleton_method(:find) do |asset_id|
-            Asset.find(space.id, asset_id)
-          end
-
-          define_singleton_method(:create) do |params|
-            Asset.create(space.id, params)
-          end
-
-          define_singleton_method(:new) do
-            asset = Asset.new
-            asset.sys[:space] = space
-            asset
-          end
-        end
-        assets
+        SpaceAssetMethodsFactory.new(self)
       end
 
       # Allows manipulation of entries in context of the current space
-      # Allows listing all entries of space and finding one by id.
+      # Allows listing all entries for space and finding one by id.
       # See README for details.
       def entries
-        entries = nil
-
-        entries.instance_exec(self) do |space|
-          define_singleton_method(:all) do |attributes = {}|
-            Entry.all(space.id, attributes)
-          end
-
-          define_singleton_method(:find) do |entry_id|
-            Entry.find(space.id, entry_id)
-          end
-        end
-        entries
+        SpaceEntryMethodsFactory.new(self)
       end
 
+      # Allows manipulation of webhooks in context of the current space
+      # Allows listing all webhooks for space and finding one by id.
+      # See README for details.
       def webhooks
-        webhooks = nil
-
-        webhooks.instance_exec(self) do |space|
-          define_singleton_method(:all) do |attributes = {}|
-            Webhook.all(space.id, attributes)
-          end
-
-          define_singleton_method(:find) do |webhook_id|
-            Webhook.find(space.id, webhook_id)
-          end
-        end
-        webhooks
+        SpaceWebhookMethodsFactory.new(self)
       end
     end
   end
