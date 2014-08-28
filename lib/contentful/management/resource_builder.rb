@@ -133,7 +133,6 @@ module Contentful
       # - Symbol: Will be called as method of the ResourceBuilder itself
       def detect_resource_class(object)
         type = object['sys'] && object['sys']['type']
-
         case res_class = resource_mapping[type]
           when Symbol
             public_send(res_class, object)
@@ -156,12 +155,11 @@ module Contentful
         DEFAULT_ENTRY_MAPPING.dup
       end
 
-
       private
 
       def detect_child_objects(object)
         if object.is_a? Hash
-          object.select { |_, v| v.is_a?(Hash) && v.key?('sys') }
+          object.select { |_, value| value.is_a?(Hash) && value.key?('sys') }
         else
           {}
         end
@@ -169,11 +167,11 @@ module Contentful
 
       def detect_child_arrays(object)
         if object.is_a? Hash
-          object.select do |_, v|
-            v.is_a?(::Array) &&
-                v.first &&
-                v.first.is_a?(Hash) &&
-                v.first.key?('sys')
+          object.select do |_, value|
+            value.is_a?(::Array) &&
+                value.first &&
+                value.first.is_a?(Hash) &&
+                value.first.key?('sys')
           end
         else
           {}

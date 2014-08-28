@@ -30,7 +30,6 @@ module Contentful
         end
 
         alias length size
-
       end
     end
   end

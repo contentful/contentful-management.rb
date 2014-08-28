@@ -2,7 +2,7 @@ module Contentful
   module Management
     module Resource
       module AssetFields
-
+        # Special fields for Asset.
         def fields_coercions
           {
               title: :hash,
@@ -10,7 +10,6 @@ module Contentful
               file: Contentful::Management::File
           }
         end
-
       end
     end
   end

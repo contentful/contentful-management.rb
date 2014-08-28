@@ -1,3 +1,23 @@
 ---
 IrresponsibleModule:
   enabled: false
+TooManyStatements:
+  exclude:
+  - initialize
+  - entries
+  - assets
+  - content_types
+  max_statements: 11
+NestedIterators:
+  enabled: false
+PrimaDonnaMethod:
+  enabled: false
+FeatureEnvy:
+  enabled: true
+  exclude:
+  - initialize
+NilCheck:
+  enabled: true
+  exclude:
+  - save
+  - create

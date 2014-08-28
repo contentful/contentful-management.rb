@@ -106,7 +106,6 @@ module Contentful
           end
         end
 
-
         it 'returns Contentful::Management::Asset' do
           vcr('asset/publish') do
             asset = subject.find(space_id, asset_id_2)
@@ -380,7 +379,7 @@ module Contentful
       end
 
       describe '#process' do
-        let(:space_id){'bfsvtul0c41g'}
+        let(:space_id) { 'bfsvtul0c41g' }
         it 'process file after create an asset' do
           vcr('asset/process') do
             file = Contentful::Management::File.new

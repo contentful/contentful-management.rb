@@ -23,13 +23,11 @@ locales = dat_space.locales.all
 
 dat_space.destroy
 
-
 # XXX: This does not set the organization_id when a space should be created
 #
 your_space = Contentful::Management::Space.new
 your_space.organization = organization
 your_space.name = 'YourSpace'
 your_space.save
-
 
 your_space.destroy

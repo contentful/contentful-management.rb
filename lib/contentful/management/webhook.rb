@@ -6,7 +6,6 @@ module Contentful
     # Resource class for Webhook.
     # https://www.contentful.com/developers/documentation/content-management-api/http/#resources-webhooks
     class Webhook
-
       include Contentful::Management::Resource
       include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
@@ -65,8 +64,6 @@ module Contentful
           result.run
         end
       end
-
-      private
 
       def self.endpoint_parameters(attributes)
         parameters = {}

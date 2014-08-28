@@ -65,7 +65,6 @@ module Contentful
         self.class.new(@endpoint, @query, @initial_id, @header)
       end
 
-
       private
 
       def normalize_query(query)
@@ -74,7 +73,7 @@ module Contentful
               [
                   key.to_sym,
                   value
-                  # value.is_a?(::Array) ? value.join(',') : value
+              # value.is_a?(::Array) ? value.join(',') : value
               ]
             end
         ]

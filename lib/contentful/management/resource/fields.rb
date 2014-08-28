@@ -56,7 +56,7 @@ module Contentful
               nested_child_object.each do |object_locale, real_child_object|
                 @fields[object_locale] ||= {}
                 @fields[object_locale].merge! extract_from_object(
-                                                  { field_name => real_child_object }, :fields
+                                                  {field_name => real_child_object}, :fields
                                               )
               end
             end

@@ -3,7 +3,7 @@ require_relative 'resource'
 
 module Contentful
   module Management
-   # An Asset's file schema
+    # An Asset's file schema
     class File
       include Contentful::Management::Resource
 

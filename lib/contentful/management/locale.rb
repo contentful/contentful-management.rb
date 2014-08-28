@@ -21,7 +21,7 @@ module Contentful
       def self.all(space_id = nil, parameters = {})
         request = Request.new("/#{ space_id }/locales")
         response = request.get
-        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
         result.run
       end
 
@@ -31,7 +31,7 @@ module Contentful
       def self.find(space_id, locale_id)
         request = Request.new("/#{ space_id }/locales/#{ locale_id }")
         response = request.get
-        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
         result.run
       end
 
@@ -44,9 +44,9 @@ module Contentful
       #   :publish
       # Returns a Contentful::Management::Locale.
       def self.create(space_id, attributes)
-        request = Request.new("/#{ space_id }/locales", { 'name' => attributes.fetch(:name), 'code' => attributes.fetch(:code) })
+        request = Request.new("/#{ space_id }/locales", {'name' => attributes.fetch(:name), 'code' => attributes.fetch(:code)})
         response = request.post
-        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
         result.run
       end
 
@@ -54,9 +54,9 @@ module Contentful
       # Takes a hash with attributes.
       # Returns a Contentful::Management::Locale.
       def update(attributes)
-        request = Request.new("/#{ space.id }/locales/#{ id }", { 'name' => attributes.fetch(:name) }, id = nil, version: sys[:version])
+        request = Request.new("/#{ space.id }/locales/#{ id }", {'name' => attributes.fetch(:name)}, id = nil, version: sys[:version])
         response = request.put
-        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
+        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
         refresh_data(result.run)
       end
     end

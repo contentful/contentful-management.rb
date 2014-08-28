@@ -139,7 +139,9 @@ module Contentful
 
         it 'creates a content_type within a space without id and without fields' do
           vcr('content_type/create') do
-            content_type = Contentful::Management::ContentType.create(space_id, name: content_type_name, description: content_type_description)
+            content_type = Contentful::Management::ContentType.create(space_id,
+                                                                      name: content_type_name,
+                                                                      description: content_type_description)
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq content_type_name
             expect(content_type.description).to eq content_type_description
@@ -149,8 +151,9 @@ module Contentful
         it 'creates a content_type within a space with custom id and without fields' do
           vcr('content_type/create_content_type_with_id') do
             content_type_id = 'custom_id'
-            content_type = Contentful::Management::ContentType.create(space_id, { name: content_type_name,
-                                                                                  id: content_type_id })
+            content_type = Contentful::Management::ContentType.create(space_id,
+                                                                      name: content_type_name,
+                                                                      id: content_type_id)
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq content_type_name
             expect(content_type.id).to eq content_type_id
@@ -165,7 +168,8 @@ module Contentful
               field.name = "My #{ field_type } Field"
               field.type = field_type
               field.link_type = 'Entry' if field_type == 'Link'
-              content_type = Contentful::Management::ContentType.create(space_id, name: "#{ field_type }",
+              content_type = Contentful::Management::ContentType.create(space_id,
+                                                                        name: "#{ field_type }",
                                                                         description: "Content type with #{ field_type } field",
                                                                         fields: [field])
               expect(content_type).to be_kind_of Contentful::Management::ContentType
@@ -391,8 +395,8 @@ module Contentful
             vcr('content_type/entry/create_with_multiple_locales') do
               content_type = subject.find(space_id, '4EnwylPOikyMGUIy8uQgQY')
               entry = content_type.entries.new
-              entry.post_title_with_locales = { 'en-US' => 'Company logo', 'pl' => 'Firmowe logo' }
-              entry.post_body_with_locales = { 'en-US' => 'Story about Contentful...', 'pl' => 'Historia o Contentful...' }
+              entry.post_title_with_locales = {'en-US' => 'Company logo', 'pl' => 'Firmowe logo'}
+              entry.post_body_with_locales = {'en-US' => 'Story about Contentful...', 'pl' => 'Historia o Contentful...'}
               entry.save
 
               expect(entry).to be_kind_of Contentful::Management::Entry
@@ -407,9 +411,9 @@ module Contentful
             vcr('content_type/entry/create_with_camel_case_id_to_multiple_locales') do
               content_type = subject.find(space_id, '4esHTHIVgc0uWkiwGwOsa6')
               entry = content_type.entries.new
-              entry.car_mark_with_locales = { 'en-US' => 'Mercedes Benz', 'pl' => 'Mercedes' }
-              entry.car_city_plate_with_locales = { 'en-US' => 'en', 'pl' => 'bia' }
-              entry.car_capacity_with_locales = { 'en-US' => 2.5, 'pl' => 2.5 }
+              entry.car_mark_with_locales = {'en-US' => 'Mercedes Benz', 'pl' => 'Mercedes'}
+              entry.car_city_plate_with_locales = {'en-US' => 'en', 'pl' => 'bia'}
+              entry.car_capacity_with_locales = {'en-US' => 2.5, 'pl' => 2.5}
               entry.save
 
               expect(entry).to be_kind_of Contentful::Management::Entry
@@ -432,9 +436,9 @@ module Contentful
 
               content_type = space.content_types.find('6xzrdCr33OMAeIYUgs6UKi')
               entry = content_type.entries.new
-              entry.blog_name_with_locales = { 'en-US' => 'Contentful en', 'pl' => 'Contentful pl' }
-              entry.blog_entries_with_locales = { 'en-US' => [entry_en, entry_en], 'pl' => [entry_pl, entry_pl] }
-              entry.blog_entry_with_locales = { 'en-US' => entry_en, 'pl' => entry_pl }
+              entry.blog_name_with_locales = {'en-US' => 'Contentful en', 'pl' => 'Contentful pl'}
+              entry.blog_entries_with_locales = {'en-US' => [entry_en, entry_en], 'pl' => [entry_pl, entry_pl]}
+              entry.blog_entry_with_locales = {'en-US' => entry_en, 'pl' => entry_pl}
               entry.save
               expect(entry.blog_name).to eq 'Contentful en'
             end
@@ -450,9 +454,9 @@ module Contentful
 
               content_type = space.content_types.find('6xzrdCr33OMAeIYUgs6UKi')
               entry = content_type.entries.new
-              entry.blog_name_with_locales = { 'en-US' => 'Contentful en', 'pl' => 'Contentful pl' }
-              entry.blog_entries_with_locales = { 'en-US' => [entry_en, entry_en], 'pl' => [entry_pl, entry_pl] }
-              entry.blog_entry_with_locales = { 'en-US' => entry_en, 'pl' => entry_pl }
+              entry.blog_name_with_locales = {'en-US' => 'Contentful en', 'pl' => 'Contentful pl'}
+              entry.blog_entries_with_locales = {'en-US' => [entry_en, entry_en], 'pl' => [entry_pl, entry_pl]}
+              entry.blog_entry_with_locales = {'en-US' => entry_en, 'pl' => entry_pl}
               entry.save
               expect(entry.blog_name).to eq 'Contentful en'
             end
@@ -462,17 +466,17 @@ module Contentful
 
       describe '#entries.all' do
         let(:space_id) { '9lxkhjnp8gyx' }
-         it 'returns entries' do
-           vcr('content_type/entry/all') do
-             space = Contentful::Management::Space.find(space_id)
-             content_type = space.content_types.find('category_content_type')
-             entries = content_type.entries.all
-             expect(entries).to be_kind_of Contentful::Management::Array
-             expect(entries.size).to eq 2
-             expect(entries.first).to be_kind_of Contentful::Management::Entry
-             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
-           end
-         end
+        it 'returns entries' do
+          vcr('content_type/entry/all') do
+            space = Contentful::Management::Space.find(space_id)
+            content_type = space.content_types.find('category_content_type')
+            entries = content_type.entries.all
+            expect(entries).to be_kind_of Contentful::Management::Array
+            expect(entries.size).to eq 2
+            expect(entries.first).to be_kind_of Contentful::Management::Entry
+            expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
+          end
+        end
       end
 
       describe '#reload' do

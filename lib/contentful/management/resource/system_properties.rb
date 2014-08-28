@@ -17,9 +17,9 @@ module Contentful
         }
         attr_reader :sys
 
-        def initialize(object = { 'sys' => nil }, *)
+        def initialize(object = {'sys' => nil}, *)
           super
-          object ||= { 'sys' => nil }
+          object ||= {'sys' => nil}
           @sys = extract_from_object object['sys'], :sys
         end
 
