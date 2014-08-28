@@ -55,7 +55,7 @@ module Contentful
       end
 
       # Processing an Asset file
-      def process
+      def process_file
         instance_variable_get(:@fields).keys.each do |locale|
           request = Request.new("/#{ space.id }/assets/#{ id }/files/#{ locale }/process", {}, id = nil, version: sys[:version])
           request.put

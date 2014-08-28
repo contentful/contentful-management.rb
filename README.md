@@ -246,7 +246,7 @@ asset.save
 
 Process an Asset file after create:
 ```ruby
-asset.process
+asset.process_file
 ```
 
 Updating an asset:
