@@ -156,7 +156,7 @@ module Contentful
         fields_names.each_with_object({}) do |field_name, results|
           results[field_name] = raw_fields.each_with_object({}) do |(locale, fields), field_results|
             # field_results[locale] = fields[field_name]
-            field_results[locale] = parse_update_attribute(fields[field_name])
+            field_results[locale] = parse_update_attribute(fields[field_name]) unless fields[field_name].nil?
           end
         end
       end

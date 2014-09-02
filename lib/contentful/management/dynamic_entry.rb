@@ -39,12 +39,16 @@ module Contentful
               fields_for_query[field.id.to_sym]
             end
             define_method "#{ accessor_name }=" do |value|
-              fields[field.id.to_sym] = value
+              if field.localized || default_locale == locale
+                fields[field.id.to_sym] = value
+              end
             end
             define_method "#{ accessor_name }_with_locales=" do |values|
               values.each do |locale, value|
-                @fields[locale] = {} if @fields[locale].nil?
-                @fields[locale][field.id.to_sym] = value
+                if field.localized || default_locale == locale
+                  @fields[locale] = {} if @fields[locale].nil?
+                  @fields[locale][field.id.to_sym] = value
+                end
               end
             end
           end

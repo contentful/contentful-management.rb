@@ -239,6 +239,18 @@ module Contentful
             expect(content_type.fields.size).to eq 1
           end
         end
+
+        it 'update with multiple locales' do
+          vcr('content_type/entry/update_only_with_localized_fields') do
+            space = Contentful::Management::Space.find('v2umtz8ths9v')
+            entry = space.entries.find('2dEkgsQRnSW2QuW4AMaa86')
+            entry.name_with_locales = {'en-US' => 'Contentful EN up', 'de-DE' => 'Contentful DE up', 'pl-PL' => 'Contentful PL up'}
+            entry.description_with_locales = {'en-US' => 'Description EN up', 'de-DE' => 'Description DE up', 'pl-PL' => 'Description PL up'}
+            entry.save
+            expect(entry).to be_kind_of Contentful::Management::Entry
+          end
+        end
+
       end
 
       describe '#save' do
@@ -459,6 +471,36 @@ module Contentful
               entry.blog_entry_with_locales = {'en-US' => entry_en, 'pl' => entry_pl}
               entry.save
               expect(entry.blog_name).to eq 'Contentful en'
+            end
+          end
+
+          context 'only to unlocalized fields' do
+            it 'return entry with valid parameters' do
+              vcr('content_type/entry/create_only_with_localized_fields') do
+                content_type = subject.find('v2umtz8ths9v', 'category_content_type')
+                entry = content_type.entries.new
+                entry.name_with_locales = {'en-US' => 'Contentful EN', 'de-DE' => 'Contentful DE', 'pl-PL' => 'Contentful PL'}
+                entry.description_with_locales = {'en-US' => 'Description EN', 'de-DE' => 'Description DE', 'pl-PL' => 'Description PL'}
+                entry.save
+                expect(entry).to be_kind_of Contentful::Management::Entry
+              end
+            end
+          end
+        end
+        context 'to single locale' do
+          context 'only to unlocalized fields' do
+            it 'return entry with valid parameters' do
+              vcr('content_type/entry/create_to_single_locale_only_with_localized_fields') do
+                content_type = subject.find('v2umtz8ths9v', 'category_content_type')
+                entry = content_type.entries.new
+                entry.name = 'Some testing EN name'
+                entry.description= ' some testing EN description '
+                entry.locale = 'de-DE'
+                entry.name = 'Some testing DE name'
+                entry.description= ' some testing DE description'
+                entry.save
+                expect(entry).to be_kind_of Contentful::Management::Entry
+              end
             end
           end
         end
