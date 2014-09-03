@@ -23,7 +23,7 @@ module Contentful
           api_version: '1',
           secure: true,
           default_locale: 'en-US',
-          encoded: true
+          gzip_encoded: true
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -60,8 +60,8 @@ module Contentful
         configuration[:api_version]
       end
 
-      def encoded
-        configuration[:encoded]
+      def gzip_encoded
+        configuration[:gzip_encoded]
       end
 
       def default_configuration
@@ -164,7 +164,7 @@ module Contentful
         headers.merge! version_header(version) if version
         headers.merge! zero_length_header if zero_length
         headers.merge! content_type_header(content_type_id) if content_type_id
-        headers.merge! accept_encoding_header('gzip') if encoded
+        headers.merge! accept_encoding_header('gzip') if gzip_encoded
         headers
       end
 
