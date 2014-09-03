@@ -51,7 +51,8 @@ module Contentful
       end
 
       def parse_json!
-        @object = MultiJson.load(raw.to_s)
+        body =  unzip_response(raw)
+        @object = MultiJson.load(body)
         true
       rescue MultiJson::LoadError => error
         @status = :unparsable_json
@@ -72,6 +73,16 @@ module Contentful
         else
           @status = :not_contentful
           @error_message = 'No contentful system properties found in object'
+        end
+      end
+
+      def unzip_response(response)
+        if response.headers['Content-Encoding'].eql?('gzip') then
+          sio = StringIO.new(response.to_s)
+          gz = Zlib::GzipReader.new(sio)
+          gz.read()
+        else
+          response.to_s
         end
       end
     end

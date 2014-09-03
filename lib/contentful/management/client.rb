@@ -22,7 +22,8 @@ module Contentful
           api_url: 'api.contentful.com',
           api_version: '1',
           secure: true,
-          default_locale: 'en-US'
+          default_locale: 'en-US',
+          gzip_encoded: true
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -57,6 +58,10 @@ module Contentful
 
       def api_version
         configuration[:api_version]
+      end
+
+      def gzip_encoded
+        configuration[:gzip_encoded]
       end
 
       def default_configuration
@@ -145,6 +150,10 @@ module Contentful
         Hash['Content-Length', 0]
       end
 
+      def accept_encoding_header(encoding)
+        Hash['Accept-Encoding', encoding]
+      end
+
       # XXX: headers should be supplied differently, maybe through the request object.
       def request_headers
         headers = {}
@@ -155,6 +164,7 @@ module Contentful
         headers.merge! version_header(version) if version
         headers.merge! zero_length_header if zero_length
         headers.merge! content_type_header(content_type_id) if content_type_id
+        headers.merge! accept_encoding_header('gzip') if gzip_encoded
         headers
       end
 
