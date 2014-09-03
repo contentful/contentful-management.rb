@@ -23,7 +23,7 @@ module Contentful
           api_version: '1',
           secure: true,
           default_locale: 'en-US',
-          gzip_encoded: true
+          gzip_encoded: false
       }
 
       def initialize(access_token = nil, configuration = {})
