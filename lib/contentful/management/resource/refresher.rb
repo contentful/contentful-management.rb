@@ -16,7 +16,7 @@ module Contentful
             resource
           else
             @properties = resource.instance_variable_get(:@properties)
-            @fields = resource.instance_variable_get(:@fields) if self.is_a?(Contentful::Management::Entry)
+            @fields = resource.instance_variable_get(:@fields)
             @sys = resource.instance_variable_get(:@sys).merge(locale: locale)
             self
           end
