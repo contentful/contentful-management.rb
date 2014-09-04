@@ -361,6 +361,20 @@ module Contentful
             update_asset = asset.update(title: 'Updated name')
             expect(update_asset).to be_kind_of Contentful::Management::Asset
             expect(update_asset.title).to eq 'Updated name'
+
+          end
+        end
+
+        it 'updates fields collection when reloaded' do
+          vcr('asset/reload_with_fields') do
+            asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
+            valid_fields = asset.instance_variable_get(:@fields)
+            asset.instance_variable_set(:@fields, 'changed')
+            asset.reload
+            reloaded_fields = asset.instance_variable_get(:@fields)
+            expect(reloaded_fields['en-US']['description']).to eq valid_fields['en-US']['description']
+            expect(reloaded_fields['en-US']['title']).to eq valid_fields['en-US']['title']
+            expect(reloaded_fields['en-US']['file']).to eq valid_fields['en-US']['file']
           end
         end
       end
