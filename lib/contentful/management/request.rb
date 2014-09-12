@@ -71,9 +71,9 @@ module Contentful
         Hash[
             query.map do |key, value|
               [
-                  key.to_sym,
-                  value
-              # value.is_a?(::Array) ? value.join(',') : value
+                key.to_sym,
+                value
+                # value.is_a?(::Array) ? value.join(',') : value
               ]
             end
         ]

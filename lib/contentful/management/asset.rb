@@ -8,7 +8,6 @@ module Contentful
     # Resource class for Asset.
     # https://www.contentful.com/developers/documentation/content-management-api/#resources-assets
     class Asset
-
       include Contentful::Management::Resource
       extend Contentful::Management::Resource::AssetFields
       include Contentful::Management::Resource::Fields
@@ -47,7 +46,7 @@ module Contentful
         asset.description = attributes[:description] if attributes[:description]
         asset.file = attributes[:file] if attributes[:file]
 
-        request = Request.new("/#{ space_id }/assets/#{ attributes[:id] || ''}", {fields: asset.fields_for_query})
+        request = Request.new("/#{ space_id }/assets/#{ attributes[:id] || ''}", fields: asset.fields_for_query)
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
         result.locale = locale if locale
@@ -81,7 +80,7 @@ module Contentful
       # See README for details.
       def save
         if id.nil?
-          new_instance = self.class.create(sys[:space].id, {fields: instance_variable_get(:@fields)})
+          new_instance = self.class.create(sys[:space].id, fields: instance_variable_get(:@fields))
           refresh_data(new_instance)
         else
           update(title: title, description: description, file: file)
@@ -172,11 +171,11 @@ module Contentful
       # See https://www.contentful.com/developers/documentation/content-delivery-api/#image-asset-resizing
       def image_url(options = {})
         query = {
-            w:  options[:w]  || options[:width],
-            h:  options[:h]  || options[:height],
-            fm: options[:fm] || options[:format],
-            q:  options[:q]  || options[:quality]
-        }.reject { |k, v| v.nil? }
+          w:  options[:w]  || options[:width],
+          h:  options[:h]  || options[:height],
+          fm: options[:fm] || options[:format],
+          q:  options[:q]  || options[:quality]
+        }.reject { |_k, v| v.nil? }
 
         if query.empty?
           file.url

@@ -1,7 +1,6 @@
 module Contentful
   module Management
     module SpaceAssociationMethodsFactory
-
       attr_reader :space
 
       def initialize(space)
@@ -28,11 +27,10 @@ module Contentful
 
       def associated_class
         class_name = /\A(.+)Space(.+)MethodsFactory\z/.match(self.class.name).captures.join
-        class_name.split('::').inject(Object) do |mod, class_name|
+        class_name.split('::').reduce(Object) do |mod, class_name|
           mod.const_get(class_name)
         end
       end
-
     end
   end
 end

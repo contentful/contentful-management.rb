@@ -7,14 +7,14 @@ module Contentful
   module Management
     class DynamicEntry < Contentful::Management::Entry
       KNOWN_TYPES = {
-          'String' => :string,
-          'Text' => :string,
-          'Symbol' => :string,
-          'Integer' => :integer,
-          'Float' => :float,
-          'Boolean' => :boolean,
-          'Date' => :date,
-          'Location' => Location
+        'String' => :string,
+        'Text' => :string,
+        'Symbol' => :string,
+        'Integer' => :integer,
+        'Float' => :float,
+        'Boolean' => :boolean,
+        'Date' => :date,
+        'Location' => Location
       }
 
       def self.create(content_type)

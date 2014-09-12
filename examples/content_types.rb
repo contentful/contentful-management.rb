@@ -17,7 +17,7 @@ p space.content_types.all
 field = Contentful::Management::Field.new
 field.id = 'such_content'
 field.name = 'Such Content'
-field.type = 'Text' #content types maybe as symbol?
+field.type = 'Text' # content types maybe as symbol?
 
 type2 = space.content_types.new
 type2.name = 'ContentType 2'
@@ -27,7 +27,7 @@ type2.save
 field2 = Contentful::Management::Field.new
 field2.id = 'wow_content'
 field2.name = 'Wow Content'
-field2.type = 'Location' #content types maybe as symbol?
+field2.type = 'Location' # content types maybe as symbol?
 
 type2.update(name: 'whoat', fields: [field, field2])
 

@@ -49,7 +49,7 @@ category_type.activate
 
 sleep 10 # prevent race conditions
 
-puts "creating categories"
+puts 'creating categories'
 entries = []
 entries << category_type.entries.create(category_name: 'Misc', category_description: 'Misc stuff')
 entries << category_type.entries.create(category_name: 'Serious', category_description: 'Serious stuff')
@@ -78,7 +78,7 @@ asset.save
 
 entries.map(&:publish)
 
-puts "Press any key to destroy space"
+puts 'Press any key to destroy space'
 gets
 
 blog_space.destroy
