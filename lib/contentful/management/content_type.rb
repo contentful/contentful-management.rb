@@ -9,16 +9,16 @@ module Contentful
     # https://www.contentful.com/developers/documentation/content-management-api/#resources-content-types
     class ContentType
       FIELD_TYPES = [
-          SYMBOL = 'Symbol',
-          TEXT = 'Text',
-          INTEGER = 'Integer',
-          FLOAT = 'Number',
-          DATE = 'Date',
-          BOOLEAN = 'Boolean',
-          LINK = 'Link',
-          ARRAY = 'Array',
-          OBJECT = 'Object',
-          LOCATION = 'Location'
+        SYMBOL = 'Symbol',
+        TEXT = 'Text',
+        INTEGER = 'Integer',
+        FLOAT = 'Number',
+        DATE = 'Date',
+        BOOLEAN = 'Boolean',
+        LINK = 'Link',
+        ARRAY = 'Array',
+        OBJECT = 'Object',
+        LOCATION = 'Location'
       ]
 
       include Contentful::Management::Resource
@@ -96,9 +96,9 @@ module Contentful
       # Returns a Contentful::Management::ContentType.
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
-        request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", {name: attributes.fetch(:name),
-                                                                                         description: attributes[:description],
-                                                                                         fields: fields})
+        request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", name: attributes.fetch(:name),
+                                                                                        description: attributes[:description],
+                                                                                        fields: fields)
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
         client.register_dynamic_entry(result.id, DynamicEntry.create(result)) if result.is_a?(self.class)

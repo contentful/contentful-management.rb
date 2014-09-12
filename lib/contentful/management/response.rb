@@ -80,7 +80,7 @@ module Contentful
         if response.headers['Content-Encoding'].eql?('gzip') then
           sio = StringIO.new(response.to_s)
           gz = Zlib::GzipReader.new(sio)
-          gz.read()
+          gz.read
         else
           response.to_s
         end

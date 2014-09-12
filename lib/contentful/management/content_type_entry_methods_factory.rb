@@ -1,7 +1,6 @@
 module Contentful
   module Management
     class ContentTypeEntryMethodsFactory
-
       attr_reader :content_type
 
       def initialize(content_type)
@@ -22,7 +21,6 @@ module Contentful
         dynamic_entry.content_type = content_type
         dynamic_entry
       end
-
     end
   end
 end
