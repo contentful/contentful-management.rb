@@ -249,7 +249,7 @@ module Contentful
         end
         it 'with symbols' do
           vcr('entry/create_with_symbols') do
-            entry = subject.create(content_type, name: 'SymbolTest', symbols: 'USD, PL, XX')
+            entry = subject.create(content_type, name: 'SymbolTest', symbols: ['USD', 'PL', 'XX'])
             expect(entry.name).to eq 'SymbolTest'
           end
         end
