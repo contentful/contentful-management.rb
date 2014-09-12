@@ -176,13 +176,12 @@ module Contentful
           when ContentType::ARRAY then
             parse_fields_array(attribute)
           when ContentType::LOCATION then
-            {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
+            {lat: attribute.properties[:lat], lon: attribute.properties[:lon]} if attribute
           else
             attribute
         end
       end
 
-      # TODO refactor
       def parse_update_attribute(attribute)
         if attribute.is_a? Asset
           {sys: {type: 'Link', linkType: 'Asset', id: attribute.id}}
@@ -191,41 +190,29 @@ module Contentful
         elsif attribute.is_a? Location
           {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
         elsif attribute.is_a? ::Array
-          parse_update_fields_array(attribute)
+          self.class.parse_fields_array(attribute)
         else
           attribute
         end
       end
 
-      def parse_update_fields_array(attributes)
+      def self.parse_fields_array(attributes)
         type = attributes.first.class.to_s
         if type == 'String'
           attributes
         else
-          attributes.each_with_object([]) do |attr, arr|
-            arr << case type
-                     when /Entry/ then
-                       {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
-                     when /Asset/ then
-                       {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
-                   end
-          end
+          parse_objects_array(attributes, type)
         end
       end
 
-      def self.parse_fields_array(attributes)
-        if attributes.is_a? ::Array
-          type = attributes.first.class
-          attributes.each_with_object([]) do |attr, arr|
-            arr << case type.to_s
-                     when /Entry/ then
-                       {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
-                     when /Asset/ then
-                       {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
-                   end
-          end
-        else
-          [attributes]
+      def self.parse_objects_array(attributes, type)
+        attributes.each_with_object([]) do |attr, arr|
+          arr << case type
+                   when /Entry/ then
+                     {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
+                   when /Asset/ then
+                     {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
+                 end
         end
       end
 
