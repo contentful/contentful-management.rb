@@ -196,6 +196,43 @@ module Contentful
       describe '.create' do
         let(:content_type_id) { '5DSpuKrl04eMAGQoQckeIq' }
         let(:content_type) { Contentful::Management::ContentType.find(space_id, content_type_id) }
+
+        it 'create with all attributes' do
+          vcr('entry/create') do
+            content_type = Contentful::Management::ContentType.find('ene4qtp2sh7u', '5BHZB1vi4ooq4wKcmA8e2c')
+            location = Location.new.tap do |location|
+              location.lat = 22.44
+              location.lon = 33.33
+            end
+            file = Asset.find('ene4qtp2sh7u', '2oNoT3vSAs82SOIQmKe0KG')
+            entry_att = Entry.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
+            entry = subject.create(content_type,
+                                   name: 'Test name',
+                                   number: 30,
+                                   float1: 1.1,
+                                   boolean: true, date: '2000-07-12T11:11:00+02:00',
+                                   time: '2000-07-12T11:11:00+02:00',
+                                   location: location,
+                                   file: file,
+                                   image: file,
+                                   array: %w(PL USD XX),
+                                   entry: entry_att,
+                                   entries: [entry_att, entry_att],
+                                   object_json: {"test" => {"@type" => "Codequest"}}
+            )
+            expect(entry.name).to eq 'Test name'
+            expect(entry.number).to eq 30
+            expect(entry.float1).to eq 1.1
+            expect(entry.boolean).to eq true
+            expect(entry.date.to_s).to eq '2000-07-12T11:11:00+02:00'
+            expect(entry.time.to_s).to eq '2000-07-12T11:11:00+02:00'
+            expect(entry.file['sys']['id']).to eq '2oNoT3vSAs82SOIQmKe0KG'
+            expect(entry.image['sys']['id']).to eq '2oNoT3vSAs82SOIQmKe0KG'
+            expect(entry.array).to eq %w(PL USD XX)
+            expect(entry.entry['sys']['id']).to eq entry_att.id
+            expect(entry.entries.first['sys']['id']).to eq entry_att.id
+          end
+        end
         it 'with location' do
           vcr('entry/create_with_location') do
             location = Location.new
@@ -251,7 +288,7 @@ module Contentful
           vcr('entry/create_with_symbols') do
             entry = subject.create(content_type, name: 'SymbolTest', symbols: %w(PL USD XX))
             expect(entry.name).to eq 'SymbolTest'
-            expect(entry.symbols).to eq %w(PL USD XX)
+            expect(entry.symbols).to eq %w(USD PL XX)
           end
         end
         it 'with custom id' do
@@ -356,7 +393,8 @@ module Contentful
       end
 
       describe 'search filters' do
-        let(:space) do Contentful::Management::Space.find('bfsvtul0c41g')
+        let(:space) do
+          Contentful::Management::Space.find('bfsvtul0c41g')
         end
         context 'order' do
           it 'returns ordered entries by createdAt' do

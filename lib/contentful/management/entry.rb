@@ -201,11 +201,11 @@ module Contentful
         if type == 'String'
           attributes
         else
-          parse_objects_array(attributes)
+          parse_objects_array(attributes, type)
         end
       end
 
-      def self.parse_objects_array(attributes)
+      def self.parse_objects_array(attributes, type)
         attributes.each_with_object([]) do |attr, arr|
           arr << case type
                    when /Entry/ then
