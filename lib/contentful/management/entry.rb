@@ -65,7 +65,7 @@ module Contentful
       def update(attributes)
         fields_for_update = Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes))
 
-        request = Request.new("/#{ space.id }/entries/#{ self.id }", {fields: fields_for_update}, id = nil, version: sys[:version])
+        request = Request.new("/#{ space.id }/entries/#{ id }", {fields: fields_for_update}, id = nil, version: sys[:version])
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -75,7 +75,7 @@ module Contentful
       # See README for details.
       def save
         if id.nil?
-          new_instance = Contentful::Management::Entry.create(content_type, {fields: instance_variable_get(:@fields)})
+          new_instance = Contentful::Management::Entry.create(content_type, fields: instance_variable_get(:@fields))
           refresh_data(new_instance)
         else
           update({})
@@ -151,7 +151,7 @@ module Contentful
       # Parser for assets attributes from query.
       # Returns a hash of existing fields.
       def fields_for_query
-        raw_fields = self.instance_variable_get(:@fields)
+        raw_fields = instance_variable_get(:@fields)
         fields_names = raw_fields.first[1].keys
         fields_names.each_with_object({}) do |field_name, results|
           results[field_name] = raw_fields.each_with_object({}) do |(locale, fields), field_results|

@@ -5,7 +5,6 @@ module Contentful
   module Management
     module Resource
       module Fields
-
         def fields(wanted_locale = default_locale)
           requested_locale = locale || wanted_locale
           @fields[requested_locale] = {} unless @fields[requested_locale]

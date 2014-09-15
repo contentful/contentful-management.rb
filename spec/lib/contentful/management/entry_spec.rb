@@ -286,7 +286,7 @@ module Contentful
                                   bool: false,
                                   asset: asset, assets: [asset, asset, asset],
                                   entry: entry_att, entries: [entry_att, entry_att, entry_att],
-                                  symbols: ['PL', 'USD', 'XX'])
+                                  symbols: %w(PL USD XX))
 
             expect(result).to be_kind_of Contentful::Management::Entry
 
@@ -355,8 +355,8 @@ module Contentful
       end
 
       describe 'search filters' do
-        let(:space) { Contentful::Management::Space.find('bfsvtul0c41g')
-        }
+        let(:space) do Contentful::Management::Space.find('bfsvtul0c41g')
+        end
         context 'order' do
           it 'returns ordered entries by createdAt' do
             vcr('entry/search_filter/order_sys.createdAt') do

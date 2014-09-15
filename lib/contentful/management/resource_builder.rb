@@ -16,13 +16,13 @@ module Contentful
     # See example/resource_mapping.rb for avanced usage
     class ResourceBuilder
       DEFAULT_RESOURCE_MAPPING = {
-          'Space' => Contentful::Management::Space,
-          'ContentType' => Contentful::Management::ContentType,
-          'Entry' => :find_entry_class,
-          'Asset' => Contentful::Management::Asset,
-          'Array' => :array_or_sync_page,
-          'Link' => Contentful::Management::Link,
-          'WebhookDefinition' => Contentful::Management::Webhook
+        'Space' => Contentful::Management::Space,
+        'ContentType' => Contentful::Management::ContentType,
+        'Entry' => :find_entry_class,
+        'Asset' => Contentful::Management::Asset,
+        'Array' => :array_or_sync_page,
+        'Link' => Contentful::Management::Link,
+        'WebhookDefinition' => Contentful::Management::Webhook
       }
       DEFAULT_ENTRY_MAPPING = {}
 
@@ -139,7 +139,7 @@ module Contentful
           when Proc
             res_class[object]
           when nil
-            raise UnparsableResource.new(response)
+            fail UnparsableResource.new(response)
           else
             res_class
         end

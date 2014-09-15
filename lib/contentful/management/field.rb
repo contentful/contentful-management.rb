@@ -17,7 +17,7 @@ module Contentful
 
       def deep_merge!(field)
         properties.merge!(field.properties.select { |name, _type| name != :items })
-        items.properties.merge!(field.items.properties) if (items.respond_to?(:properties) && field.items.respond_to?(:properties))
+        items.properties.merge!(field.items.properties) if items.respond_to?(:properties) && field.items.respond_to?(:properties)
       end
 
       def properties_to_hash
