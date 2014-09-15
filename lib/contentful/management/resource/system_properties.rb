@@ -5,15 +5,15 @@ module Contentful
       # Adds the feature to have system properties to a Resource.
       module SystemProperties
         SYS_COERCIONS = {
-            type: :string,
-            id: :string,
-            space: nil,
-            contentType: nil,
-            linkType: :string,
-            revision: :integer,
-            createdAt: :date,
-            updatedAt: :date,
-            locale: :string
+          type: :string,
+          id: :string,
+          space: nil,
+          contentType: nil,
+          linkType: :string,
+          revision: :integer,
+          createdAt: :date,
+          updatedAt: :date,
+          locale: :string
         }
         attr_reader :sys
 

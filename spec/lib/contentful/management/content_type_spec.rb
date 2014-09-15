@@ -494,10 +494,10 @@ module Contentful
                 content_type = subject.find('v2umtz8ths9v', 'category_content_type')
                 entry = content_type.entries.new
                 entry.name = 'Some testing EN name'
-                entry.description= ' some testing EN description '
+                entry.description = ' some testing EN description '
                 entry.locale = 'de-DE'
                 entry.name = 'Some testing DE name'
-                entry.description= ' some testing DE description'
+                entry.description = ' some testing DE description'
                 entry.save
                 expect(entry).to be_kind_of Contentful::Management::Entry
               end

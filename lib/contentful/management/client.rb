@@ -19,11 +19,11 @@ module Contentful
       attr_accessor :organization_id, :version, :zero_length, :content_type_id, :dynamic_entry_cache
 
       DEFAULT_CONFIGURATION = {
-          api_url: 'api.contentful.com',
-          api_version: '1',
-          secure: true,
-          default_locale: 'en-US',
-          gzip_encoded: false
+        api_url: 'api.contentful.com',
+        api_version: '1',
+        secure: true,
+        default_locale: 'en-US',
+        gzip_encoded: false
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -49,8 +49,8 @@ module Contentful
         @dynamic_entry_cache = Hash[
             content_types.map do |ct|
               [
-                  ct.id.to_sym,
-                  DynamicEntry.create(ct)
+                ct.id.to_sym,
+                DynamicEntry.create(ct)
               ]
             end
         ]
