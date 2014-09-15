@@ -172,8 +172,7 @@ http_interactions:
     uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
     body:
       encoding: UTF-8
-      string: '{"fields":{"name":{"en-US":"SymbolTest"},"symbols":{"en-US":["USD,
-        PL, XX"]}}}'
+      string: '{"fields":{"name":{"en-US":"SymbolTest"},"symbols":{"en-US":["USD","PL","XX"]}}}'
     headers:
       User-Agent:
       - RubyContenfulManagementGem/0.0.1
@@ -226,7 +225,7 @@ http_interactions:
             },
             "symbols": {
               "en-US": [
-                "USD, PL, XX"
+                "USD","PL","XX"
               ]
             }
           },

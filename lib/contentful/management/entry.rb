@@ -176,13 +176,12 @@ module Contentful
           when ContentType::ARRAY then
             parse_fields_array(attribute)
           when ContentType::LOCATION then
-            {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
+            {lat: attribute.properties[:lat], lon: attribute.properties[:lon]} if attribute
           else
             attribute
         end
       end
 
-      # TODO refactor
       def parse_update_attribute(attribute)
         if attribute.is_a? Asset
           {sys: {type: 'Link', linkType: 'Asset', id: attribute.id}}
@@ -202,14 +201,18 @@ module Contentful
         if type == 'String'
           attributes
         else
-          attributes.each_with_object([]) do |attr, arr|
-            arr << case type
-                     when /Entry/ then
-                       {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
-                     when /Asset/ then
-                       {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
-                   end
-          end
+          parse_objects_array(attributes)
+        end
+      end
+
+      def self.parse_objects_array(attributes)
+        attributes.each_with_object([]) do |attr, arr|
+          arr << case type
+                   when /Entry/ then
+                     {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
+                   when /Asset/ then
+                     {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
+                 end
         end
       end
 
