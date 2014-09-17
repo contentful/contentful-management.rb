@@ -218,7 +218,7 @@ module Contentful
                                    array: %w(PL USD XX),
                                    entry: entry_att,
                                    entries: [entry_att, entry_att],
-                                   object_json: {"test" => {"@type" => "Codequest"}}
+                                   object_json: {'test' => {'@type' => 'Codequest'}}
             )
             expect(entry.name).to eq 'Test name'
             expect(entry.number).to eq 30
