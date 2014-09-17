@@ -1,9 +1,14 @@
-### 0.2.0
+# Change Log
+
+## 0.2.1
+* Fix: Use array for symbols in entry fields
+
+## 0.2.0
 * Fix: create entry with multiple locales, skip attributes for not localized fields in content types
 * Fix: reload Assets
 * add optional gzip envoding
 
-### 0.1.0
+## 0.1.0
 * Support for webhooks
 * add image url to asset
 * Cleaning code
@@ -12,7 +17,7 @@
 * Fix: rename asset.process_files to asset.process
 
 
-### 0.0.3
+## 0.0.3
 * Fix: next_page feature
 * Fix: create entry with specific locale
 * Fix: service unavailable error (503)
@@ -20,10 +25,10 @@
 * Code cleanup
 * More documentation
 
-### 0.0.2
+## 0.0.2
 * Fix: Convert an Entry to a DynamicEntry after being created.
 
-### 0.0.1
+## 0.0.1
 * Fix: Headers not properly cleared between requests
 * Fix: Create entries with custom identifier
 * Code cleanup
@@ -31,5 +36,5 @@
 * Adding filter by content_type id
 
 
-### 0.0.1-pre
+## 0.0.1-pre
 * alpha pre-release
