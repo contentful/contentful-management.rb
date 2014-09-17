@@ -322,8 +322,10 @@ module Contentful
             result = entry.update(name: 'Tom Handy', age: 20, birthday: '2000-07-12T11:11:00+02:00',
                                   city: location,
                                   bool: false,
-                                  asset: asset, assets: [asset, asset, asset],
-                                  entry: entry_att, entries: [entry_att, entry_att, entry_att],
+                                  asset: asset,
+                                  assets: [asset, asset, asset],
+                                  entry: entry_att,
+                                  entries: [entry_att, entry_att, entry_att],
                                   symbols: %w(PL USD XX))
 
             expect(result).to be_kind_of Contentful::Management::Entry
@@ -551,6 +553,53 @@ module Contentful
           end
         end
       end
+
+      describe '#fields_from_attributes' do
+
+        it 'parses all kind of fields' do
+
+          location = Location.new.tap do |location|
+            location.lat = 22.44
+            location.lon = 33.33
+          end
+          # file = Asset.find('ene4qtp2sh7u', '2oNoT3vSAs82SOIQmKe0KG')
+          # entry_att = Entry.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
+
+          attributes = {
+            name: 'Test name',
+            number: 30,
+            float1: 1.1,
+            boolean: true, date: '2000-07-12T11:11:00+02:00',
+            time: '2000-07-12T11:11:00+02:00',
+            location: location,
+            image: Asset.new,
+            images: [Asset.new, Asset.new],
+            array: %w(PL USD XX),
+            entry: Entry.new,
+            entries: [Entry.new, Entry.new],
+            object_json: {'test' => {'@type' => 'Codequest'}}
+          }
+
+          parsed_attributes = Entry.new.fields_from_attributes(attributes)
+
+          expect(parsed_attributes[:name]).to match('en-US' => 'Test name')
+          expect(parsed_attributes[:number]).to match('en-US' => 30)
+          expect(parsed_attributes[:float1]).to match('en-US' => 1.1)
+          expect(parsed_attributes[:boolean]).to match('en-US' => true)
+          expect(parsed_attributes[:date]).to match('en-US' => '2000-07-12T11:11:00+02:00')
+          expect(parsed_attributes[:time]).to match('en-US' => '2000-07-12T11:11:00+02:00')
+          expect(parsed_attributes[:location]).to match('en-US' => {lat: 22.44, lon: 33.33})
+          expect(parsed_attributes[:array]).to match('en-US' => %w(PL USD XX))
+          expect(parsed_attributes[:object_json]).to match('en-US' => {'test' => {'@type' => 'Codequest'}})
+          expect(parsed_attributes[:image]).to match('en-US' => {sys: {type: 'Link', linkType: 'Asset', id: nil}})
+          expect(parsed_attributes[:images]).to match('en-US' => [{sys: {type: 'Link', linkType: 'Asset', id: nil}}, {sys: {type: 'Link', linkType: 'Asset', id: nil}}])
+          expect(parsed_attributes[:entry]).to match('en-US' => {sys: {type: 'Link', linkType: 'Entry', id: nil}})
+          expect(parsed_attributes[:entries]).to match('en-US' => [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}])
+
+        end
+
+      end
+
     end
   end
 end
