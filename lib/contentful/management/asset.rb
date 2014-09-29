@@ -79,11 +79,11 @@ module Contentful
       # If an asset is a new object gets created in the Contentful, otherwise the existing asset gets updated.
       # See README for details.
       def save
-        if id.nil?
+        if id
+          update(title: title, description: description, file: file)
+        else
           new_instance = self.class.create(sys[:space].id, fields: instance_variable_get(:@fields))
           refresh_data(new_instance)
-        else
-          update(title: title, description: description, file: file)
         end
       end
 
@@ -139,13 +139,13 @@ module Contentful
       # Checks if an asset is published.
       # Returns true if published.
       def published?
-        !sys[:publishedAt].nil?
+        sys[:publishedAt] ? true : false
       end
 
       # Checks if an asset is archvied.
       # Returns true if archived.
       def archived?
-        !sys[:archivedAt].nil?
+        sys[:archivedAt] ? true : false
       end
 
       # Returns currently supported local or default locale.
@@ -157,8 +157,16 @@ module Contentful
       def fields_for_query
         self.class.fields_coercions.keys.each_with_object({}) do |field_name, results|
           results[field_name] = @fields.each_with_object({}) do |(locale, fields), field_results|
-            field_results[locale] = field_name == :file ? (fields[field_name] ? fields[field_name].properties : nil) : fields[field_name]
+            field_results[locale] = get_value_from(fields, field_name)
           end
+        end
+      end
+
+      def get_value_from(fields, field_name)
+        if field_name == :file
+          fields[field_name].properties if fields[field_name]
+        else
+          fields[field_name]
         end
       end
 
@@ -171,17 +179,13 @@ module Contentful
       # See https://www.contentful.com/developers/documentation/content-delivery-api/#image-asset-resizing
       def image_url(options = {})
         query = {
-          w:  options[:w]  || options[:width],
-          h:  options[:h]  || options[:height],
-          fm: options[:fm] || options[:format],
-          q:  options[:q]  || options[:quality]
-        }.reject { |_k, v| v.nil? }
+            w: options[:w] || options[:width],
+            h: options[:h] || options[:height],
+            fm: options[:fm] || options[:format],
+            q: options[:q] || options[:quality]
+        }.select { |_k, value| value }
 
-        if query.empty?
-          file.url
-        else
-          "#{file.url}?#{URI.encode_www_form(query)}"
-        end
+        query.empty? ? file.url : "#{file.url}?#{URI.encode_www_form(query)}"
       end
     end
   end

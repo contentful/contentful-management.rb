@@ -261,12 +261,12 @@ module Contentful
         it 'with entries' do
           vcr('entry/create_with_entries') do
             entry_att = Entry.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
-            entry2 = subject.create(content_type,
+            new_entry = subject.create(content_type,
                                     name: 'EntryWithEntries',
                                     age: 20,
                                     entries: [entry_att, entry_att, entry_att])
-            expect(entry2.name).to eq 'EntryWithEntries'
-            expect(entry2.age).to eq 20
+            expect(new_entry.name).to eq 'EntryWithEntries'
+            expect(new_entry.age).to eq 20
           end
         end
 

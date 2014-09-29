@@ -16,7 +16,7 @@ organization = 'organization id'
 
 require 'contentful/management'
 
-client = Contentful::Management::Client.new(access_token)
+Contentful::Management::Client.new(access_token)
 
 blog_space = Contentful::Management::Space.create(name: 'Blog', organization_id: organization)
 # blog_space = Contentful::Management::Space.find('zlso53r1zad6')

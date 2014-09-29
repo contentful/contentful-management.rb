@@ -7,14 +7,14 @@ module Contentful
   module Management
     class DynamicEntry < Contentful::Management::Entry
       KNOWN_TYPES = {
-        'String' => :string,
-        'Text' => :string,
-        'Symbol' => :string,
-        'Integer' => :integer,
-        'Float' => :float,
-        'Boolean' => :boolean,
-        'Date' => :date,
-        'Location' => Location
+          'String' => :string,
+          'Text' => :string,
+          'Symbol' => :string,
+          'Integer' => :integer,
+          'Float' => :float,
+          'Boolean' => :boolean,
+          'Date' => :date,
+          'Location' => Location
       }
 
       def self.create(content_type)
@@ -22,7 +22,6 @@ module Contentful
           content_type = ContentType.new(content_type)
         end
 
-        # TODO no support for an empty content type (undefined method map for Field)
         fields_coercions = Hash[
             content_type.fields.map do |field|
               [field.id.to_sym, KNOWN_TYPES[field.type]]
@@ -39,14 +38,12 @@ module Contentful
               fields_for_query[field.id.to_sym]
             end
             define_method "#{ accessor_name }=" do |value|
-              if field.localized || default_locale == locale
-                fields[field.id.to_sym] = value
-              end
+              fields[field.id.to_sym] = value if localized_or_default_locale(field, locale)
             end
             define_method "#{ accessor_name }_with_locales=" do |values|
               values.each do |locale, value|
-                if field.localized || default_locale == locale
-                  @fields[locale] = {} if @fields[locale].nil?
+                if localized_or_default_locale(field, locale)
+                  @fields[locale] = {} unless @fields[locale]
                   @fields[locale][field.id.to_sym] = value
                 end
               end
@@ -69,6 +66,10 @@ module Contentful
             "Contentful::Management::DynamicEntry[#{ content_type.id }]"
           end
         end
+      end
+
+      def localized_or_default_locale(field, locale)
+        field.localized || default_locale == locale
       end
     end
   end

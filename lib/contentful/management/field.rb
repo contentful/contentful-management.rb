@@ -25,9 +25,13 @@ module Contentful
           if key == :items
             results[key] = value.properties_to_hash if type == 'Array' && value.is_a?(Field)
           else
-            results[key] = value if !value.nil? && (value.respond_to?(:empty?) && !value.empty? || !value.respond_to?(:empty?) && value)
+            results[key] = value if value_exists?(value)
           end
         end
+      end
+
+      def value_exists?(value)
+        value.respond_to?(:empty?) && !value.empty? || !value.respond_to?(:empty?) && value
       end
     end
   end

@@ -82,7 +82,7 @@ module Contentful
 
       def coerce_value_or_array(value, what = nil)
         if value.is_a? ::Array
-          value.map { |v| coerce_or_create_class(v, what) }
+          value.map { |row| coerce_or_create_class(row, what) }
         else
           coerce_or_create_class(value, what)
         end

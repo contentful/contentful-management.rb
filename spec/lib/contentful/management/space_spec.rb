@@ -328,6 +328,15 @@ module Contentful
             expect(webhook.url).to eql 'https://www.example2.com'
           end
         end
+        it 'create' do
+          vcr('space/webhook/create') do
+            space = subject.find('v2umtz8ths9v')
+            webhook = space.webhooks.create(url: 'https://www.example2.com', httpBasicUsername: 'username', httpBasicPassword: 'password')
+            expect(webhook).to be_kind_of Contentful::Management::Webhook
+            expect(webhook.url).to eql 'https://www.example2.com'
+            expect(webhook.http_basic_username).to eql 'username'
+          end
+        end
       end
       describe '#entries.all(content_type: content_type_id)' do
         it 'returns entries to specified content type' do

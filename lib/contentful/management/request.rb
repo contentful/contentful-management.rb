@@ -11,9 +11,9 @@ module Contentful
         @header = header
         @initial_id = id
         @client = Contentful::Management::Client.shared_instance
-        @client.version = header[:version] if  header[:version]
-        @client.organization_id = header[:organization_id] if  header[:organization_id]
-        @client.content_type_id = header[:content_type_id] if  header[:content_type_id]
+        @client.version = header[:version] if header[:version]
+        @client.organization_id = header[:organization_id] if header[:organization_id]
+        @client.content_type_id = header[:content_type_id] if header[:content_type_id]
         @client.zero_length = query.empty?
         @endpoint = endpoint
         @absolute = true if @endpoint.start_with?('http')
@@ -71,9 +71,8 @@ module Contentful
         Hash[
             query.map do |key, value|
               [
-                key.to_sym,
-                value
-                # value.is_a?(::Array) ? value.join(',') : value
+                  key.to_sym,
+                  value
               ]
             end
         ]

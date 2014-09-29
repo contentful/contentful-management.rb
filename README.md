@@ -404,6 +404,37 @@ Checking if the entry is published:
 my_entry.published?
 ```
 
+### Webhooks
+
+Retrieving all webhooks from the space:
+
+```ruby
+webhooks = blog_space.webhooks.all
+```
+Retrieving one webhook by the webhook-id from the space:
+
+```ruby
+blog_post_webhook = blog_space.webhooks.find(webhook_id)
+```
+
+Creating a webhook
+
+```ruby
+blog_space.webhooks.create(url: 'https://www.example.com', httpBasicUsername: 'username', httpBasicPassword: 'password')
+```
+
+Updating a webhook
+
+```ruby
+blog_post_webhook.update(url: 'https://www.newlink.com')
+```
+
+Destroying webhook:
+
+```ruby
+blog_post_webhook.destroy
+```
+
 ### Pagination
 
 ```ruby

@@ -5,10 +5,6 @@ module Contentful
     class SpaceWebhookMethodsFactory
       include Contentful::Management::SpaceAssociationMethodsFactory
 
-      def create(_attributes)
-        fail 'Not supported'
-      end
-
       def new
         fail 'Not supported'
       end

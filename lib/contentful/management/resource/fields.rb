@@ -40,7 +40,7 @@ module Contentful
             end
             base.send :define_method, "#{ accessor_name }_with_locales=" do |values|
               values.each do |locale, value|
-                @fields[locale] = {} if @fields[locale].nil?
+                @fields[locale] = {} unless @fields[locale]
                 @fields[locale][name.to_sym] = value
               end
             end

@@ -134,13 +134,13 @@ module Contentful
       # Checks if an entry is published.
       # Returns true if published.
       def published?
-        !sys[:publishedAt].nil?
+        sys[:publishedAt] ? true : false
       end
 
       # Checks if an entry is archived.
       # Returns true if published.
       def archived?
-        !sys[:archivedAt].nil?
+        sys[:archivedAt] ? true : false
       end
 
       # Returns the currently supported local.
@@ -155,7 +155,7 @@ module Contentful
         fields_names = raw_fields.first[1].keys
         fields_names.each_with_object({}) do |field_name, results|
           results[field_name] = raw_fields.each_with_object({}) do |(locale, fields), field_results|
-            field_results[locale] = parse_update_attribute(fields[field_name]) unless fields[field_name].nil?
+            field_results[locale] = parse_update_attribute(fields[field_name]) if fields[field_name]
           end
         end
       end
@@ -182,35 +182,36 @@ module Contentful
       end
 
       def parse_update_attribute(attribute)
-        if attribute.is_a? Asset
-          {sys: {type: 'Link', linkType: 'Asset', id: attribute.id}}
-        elsif attribute.is_a? Entry
-          {sys: {type: 'Link', linkType: 'Entry', id: attribute.id}}
-        elsif attribute.is_a? Location
-          {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
-        elsif attribute.is_a? ::Array
-          self.class.parse_fields_array(attribute)
-        else
-          attribute
+        case attribute.class.to_s
+          when /Asset/
+            self.class.hash_with_link_object('Asset', attribute)
+          when /Entry/
+            self.class.hash_with_link_object('Entry', attribute)
+          when /Location/
+            {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
+          when /Array/
+            self.class.parse_fields_array(attribute)
+          else
+            attribute
         end
+      end
+
+      def self.hash_with_link_object(type, attribute)
+        {sys: {type: 'Link', linkType: type, id: attribute.id}}
       end
 
       def self.parse_fields_array(attributes)
         type = attributes.first.class.to_s
-        if type == 'String'
-          attributes
-        else
-          parse_objects_array(attributes, type)
-        end
+        type == 'String' ? attributes : parse_objects_array(attributes, type)
       end
 
       def self.parse_objects_array(attributes, type)
         attributes.each_with_object([]) do |attr, arr|
           arr << case type
                    when /Entry/ then
-                     {sys: {type: 'Link', linkType: 'Entry', id: attr.id}}
+                     hash_with_link_object('Entry', attr)
                    when /Asset/ then
-                     {sys: {type: 'Link', linkType: 'Asset', id: attr.id}}
+                     hash_with_link_object('Asset', attr)
                  end
         end
       end
@@ -218,11 +219,11 @@ module Contentful
       def self.fields_with_locale(content_type, attributes)
         locale = attributes[:locale] || content_type.sys[:space].default_locale
         fields = content_type.properties[:fields]
-        field_names = fields.map { |f| f.id.to_sym }
+        field_names = fields.map { |field| field.id.to_sym }
         attributes.keep_if { |key| field_names.include?(key) }
 
         attributes.each do |id, value|
-          field = fields.select { |f| f.id.to_sym == id.to_sym }.first
+          field = fields.select { |field| field.id.to_sym == id.to_sym }.first
           attributes[id] = {locale => parse_attribute_with_field(value, field)}
         end
       end

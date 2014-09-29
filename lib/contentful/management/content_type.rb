@@ -2,6 +2,7 @@
 require_relative 'resource'
 require_relative 'field'
 require_relative 'content_type_entry_methods_factory'
+require_relative 'support'
 
 module Contentful
   module Management
@@ -9,16 +10,16 @@ module Contentful
     # https://www.contentful.com/developers/documentation/content-management-api/#resources-content-types
     class ContentType
       FIELD_TYPES = [
-        SYMBOL = 'Symbol',
-        TEXT = 'Text',
-        INTEGER = 'Integer',
-        FLOAT = 'Number',
-        DATE = 'Date',
-        BOOLEAN = 'Boolean',
-        LINK = 'Link',
-        ARRAY = 'Array',
-        OBJECT = 'Object',
-        LOCATION = 'Location'
+          SYMBOL = 'Symbol',
+          TEXT = 'Text',
+          INTEGER = 'Integer',
+          FLOAT = 'Number',
+          DATE = 'Date',
+          BOOLEAN = 'Boolean',
+          LINK = 'Link',
+          ARRAY = 'Array',
+          OBJECT = 'Object',
+          LOCATION = 'Location'
       ]
 
       include Contentful::Management::Resource
@@ -88,7 +89,7 @@ module Contentful
       # Checks if a content type is active.
       # Returns true if active.
       def active?
-        !sys[:publishedAt].nil?
+        sys[:publishedAt] ? true : false
       end
 
       # Creates a content type.
@@ -97,8 +98,8 @@ module Contentful
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
         request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", name: attributes.fetch(:name),
-                                                                                        description: attributes[:description],
-                                                                                        fields: fields)
+                              description: attributes[:description],
+                              fields: fields)
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
         client.register_dynamic_entry(result.id, DynamicEntry.create(result)) if result.is_a?(self.class)
@@ -123,11 +124,11 @@ module Contentful
       # If a content type is a new object gets created in the Contentful, otherwise the existing entry gets updated.
       # See README for details.
       def save
-        if id.nil?
+        if id
+          update(@properties)
+        else
           new_instance = self.class.create(space.id, @properties)
           refresh_data(new_instance)
-        else
-          update(@properties)
         end
       end
 
@@ -160,13 +161,11 @@ module Contentful
 
           fields.define_singleton_method(:create) do |params|
             field = Contentful::Management::Field.new
-            field.id = params.fetch(:id)
-            field.name = params[:name] if params[:name]
-            field.type = params[:type] if params[:type]
-            field.link_type = params[:link_type] if params[:link_type]
-            field.required = params[:required] if params[:required]
-            field.localized = params[:localized] if params[:localized]
-            field.items = params[:items] if params[:items]
+            Field.property_coercions.each do |key, _value|
+              snakify_key = Support.snakify(key.to_s)
+              param = params[:"#{snakify_key}"]
+              field.send("#{snakify_key}=", param) if param
+            end
             content_type.update(fields: content_type.merged_fields(field))
           end
 

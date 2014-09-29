@@ -37,8 +37,9 @@ module Contentful
       # Takes a space id and hash with attributes (url, httpBasicUsername, httpBasicPassword)
       # Returns a Contentful::Management::Webhook.
       def self.create(space_id, attributes)
-        request = Request.new("/#{ space_id }/webhook_definitions/#{ attributes[:id] || ''}", endpoint_parameters(attributes))
-        response = attributes[:id].nil? ? request.post : request.put
+        id = attributes[:id]
+        request = Request.new("/#{ space_id }/webhook_definitions/#{ id || ''}", endpoint_parameters(attributes))
+        response = id.nil? ? request.post : request.put
         ResourceBuilder.new(response, {}, {}).run
       end
 
@@ -66,11 +67,7 @@ module Contentful
       end
 
       def self.endpoint_parameters(attributes)
-        parameters = {}
-        parameters.merge!(url: attributes[:url]) if attributes[:url]
-        parameters.merge!(httpBasicUsername: attributes[:httpBasicUsername]) if  attributes[:httpBasicUsername]
-        parameters.merge!(httpBasicPassword: attributes[:httpBasicPassword]) if attributes[:httpBasicPassword]
-        parameters
+        attributes.select { |key, _value| [:httpBasicUsername, :httpBasicPassword, :url].include? key }
       end
     end
   end
