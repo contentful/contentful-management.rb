@@ -22,7 +22,7 @@ module Contentful
         date: ->(value) { !value.nil? ? DateTime.parse(value) : nil }
       }
 
-      attr_reader :properties, :request, :client, :default_locale
+      attr_reader :properties, :request, :client, :default_locale, :orginal_object
 
       def initialize(object = nil, request = nil, client = nil, nested_locale_fields = false, default_locale = Contentful::Management::Client::DEFAULT_CONFIGURATION[:default_locale])
         self.class.update_coercions!
@@ -32,6 +32,7 @@ module Contentful
         @properties = extract_from_object object, :property, self.class.property_coercions.keys
         @request = request
         @client = client
+        @orginal_object = object
       end
 
       def inspect(info = nil)

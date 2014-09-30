@@ -25,6 +25,8 @@ module Contentful
             Unauthorized
           when 500
             ServerError
+          when 503
+            ServiceUnavailable
           else
             Error
         end
@@ -49,6 +51,10 @@ module Contentful
 
     # 500
     class ServerError < Error
+    end
+
+    # 503
+    class ServiceUnavailable < Error
     end
 
     # Raised when response is no valid json

@@ -56,6 +56,13 @@ module Contentful
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end
+
+        it 'returns an error when service is unavailable' do
+          vcr('entry/service_unavailable') do
+            result = subject.find(space_id, 'not_exist')
+            expect(result).to be_kind_of Contentful::Management::ServiceUnavailable
+          end
+        end
       end
 
       describe '#destroy' do

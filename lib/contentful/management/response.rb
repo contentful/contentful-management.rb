@@ -29,68 +29,60 @@ module Contentful
         @request = request
         @status = :ok
 
-        if service_unavailable_response?
-          @status = :service_unavailable
-          @error_message = 'Service Unavailable, contenful.com API seems to be down'
+        if valid_http_response?
+          parse_json!
         elsif no_content_response?
           @status = :no_content
-          @object = true
-        elsif parse_json!
-          parse_contentful_error!
+        elsif bad_request?
+          parse_contentful_error
+        else
+          parse_http_error
         end
       end
 
       private
 
-      def service_unavailable_response?
-        @raw.status == 503
+      def error_object?
+        object['sys']['type'] == 'Error'
+      end
+
+      def parse_contentful_error
+        @object = load_json
+        @error_message = object['message'] if error_object?
+        parse_http_error
+      end
+
+      def valid_http_response?
+        [200, 201].include?(raw.status)
+      end
+
+      def parse_http_error
+        @status = :error
+        @object = Error[raw.status].new(self)
+      end
+
+      def bad_request?
+        raw.status == 400
       end
 
       def no_content_response?
-        @raw.to_s == '' && @raw.status == 204
+        raw.to_s == '' && raw.status == 204
       end
 
       def parse_json!
-        body = unzip_response(raw)
-        @object = MultiJson.load(body)
-        true
+        @object = load_json
       rescue MultiJson::LoadError => error
-        @status = :unparsable_json
         @error_message = error.message
-        @object = error
-        false
+        UnparsableJson.new(self)
       end
 
-      def parse_contentful_error!
-        if contentful_object?
-          invalid_object? ? contentful_object_error : false
-        else
-          not_contentful_object_error
-        end
-      end
-
-      def invalid_object?
-        @object['sys']['type'] == 'Error'
-      end
-
-      def contentful_object_error
-        @status = :contentful_error
-        @error_message = object['message']
-        true
-      end
-
-      def not_contentful_object_error
-        @status = :not_contentful
-        @error_message = 'No contentful system properties found in object'
-      end
-
-      def contentful_object?
-        @object && @object['sys']
+      def load_json
+        MultiJson.load(unzip_response(raw))
       end
 
       def unzip_response(response)
         parsed_response = response.to_s
-        if response.headers['Content-Encoding'].eql?('gzip') then
+        if response.headers['Content-Encoding'].eql?('gzip')
           sio = StringIO.new(parsed_response)
           gz = Zlib::GzipReader.new(sio)
           gz.read
