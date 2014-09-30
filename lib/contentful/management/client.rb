@@ -9,28 +9,37 @@ require 'contentful/management/http_client'
 require_relative 'request'
 require 'http'
 require 'json'
+require 'logger'
 
 module Contentful
   module Management
     class Client
       extend Contentful::Management::HTTPClient
 
-      attr_reader :access_token, :configuration
+      attr_reader :access_token, :configuration, :logger
       attr_accessor :organization_id, :version, :zero_length, :content_type_id, :dynamic_entry_cache
 
       DEFAULT_CONFIGURATION = {
-        api_url: 'api.contentful.com',
-        api_version: '1',
-        secure: true,
-        default_locale: 'en-US',
-        gzip_encoded: false
+          api_url: 'api.contentful.com',
+          api_version: '1',
+          secure: true,
+          default_locale: 'en-US',
+          gzip_encoded: false,
+          logger: false,
+          log_level: Logger::INFO
       }
 
       def initialize(access_token = nil, configuration = {})
         @configuration = default_configuration.merge(configuration)
+        setup_logger
         @access_token = access_token
         @dynamic_entry_cache = {}
         Thread.current[:client] = self
+      end
+
+      def setup_logger
+        @logger = configuration[:logger]
+        logger.level = configuration[:log_level] if logger
       end
 
       def update_dynamic_entry_cache_for_spaces!(spaces)
@@ -49,8 +58,8 @@ module Contentful
         @dynamic_entry_cache = Hash[
             content_types.map do |ct|
               [
-                ct.id.to_sym,
-                DynamicEntry.create(ct)
+                  ct.id.to_sym,
+                  DynamicEntry.create(ct)
               ]
             end
         ]
@@ -75,7 +84,9 @@ module Contentful
       def execute_request(request)
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
+        logger.info(request: {url: url, header: request_headers}) if logger
         raw_response = yield(url)
+        logger.debug(response: raw_response) if logger
         clear_headers
         Response.new(raw_response, request)
       end

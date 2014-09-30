@@ -443,6 +443,23 @@ blog_space.assets.all(limit: 5).next_page
 blog_space.entries.all(limit: 5).next_page
 ``` 
 
+## Logging
+
+Logging is off by default. You can enable it by setting into the configuration: 
+
+```ruby
+client = Contentful::Management::Client.new('access_token', logger: logger_instance, log_level: Logger::DEBUG)
+```
+
+Example loggers:
+
+```ruby
+Rails.logger
+Logger.new('logfile.log')
+```
+
+Default log level is Logger::INFO, which logs only request attributes. Log level Logger::DEBUG logs also raw json responses.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/contentful-management/fork )
