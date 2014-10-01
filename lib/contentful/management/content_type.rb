@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'field'
 require_relative 'content_type_entry_methods_factory'
@@ -34,7 +33,10 @@ module Contentful
       # Takes an id of space and an optional hash of query options
       # Returns a Contentful::Management::Array of Contentful::Management::ContentType.
       def self.all(space_id, query = {})
-        request = Request.new("/#{ space_id }/content_types", query)
+        request = Request.new(
+            "/#{ space_id }/content_types",
+            query
+        )
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         content_types = result.run
@@ -70,7 +72,12 @@ module Contentful
       # Activates a content type.
       # Returns a Contentful::Management::ContentType.
       def activate
-        request = Request.new("/#{ space.id }/content_types/#{ id }/published", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/content_types/#{ id }/published",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -97,9 +104,12 @@ module Contentful
       # Returns a Contentful::Management::ContentType.
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
-        request = Request.new("/#{ space_id }/content_types/#{ attributes[:id] || ''}", name: attributes.fetch(:name),
-                              description: attributes[:description],
-                              fields: fields)
+        request = Request.new(
+            "/#{ space_id }/content_types/#{ attributes[:id] || ''}",
+            name: attributes.fetch(:name),
+            description: attributes[:description],
+            fields: fields
+        )
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
         client.register_dynamic_entry(result.id, DynamicEntry.create(result)) if result.is_a?(self.class)
@@ -115,7 +125,12 @@ module Contentful
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
-        request = Request.new("/#{ space.id }/content_types/#{ id }", parameters, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/content_types/#{ id }",
+            parameters,
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -162,8 +177,8 @@ module Contentful
           fields.define_singleton_method(:create) do |params|
             field = Contentful::Management::Field.new
             Field.property_coercions.each do |key, _value|
-              snakify_key = Support.snakify(key.to_s)
-              param = params[:"#{snakify_key}"]
+              snakify_key = Support.snakify(key)
+              param = params[snakify_key.to_sym]
               field.send("#{snakify_key}=", param) if param
             end
             content_type.update(fields: content_type.merged_fields(field))

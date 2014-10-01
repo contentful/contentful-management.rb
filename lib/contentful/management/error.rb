@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 module Contentful
   module Management
     # All errors raised by the contentful gem are either instances of Contentful::Error

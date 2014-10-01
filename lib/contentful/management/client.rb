@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require 'contentful/management'
 require 'contentful/management/response'
 require 'contentful/management/resource_builder'

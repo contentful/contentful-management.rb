@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'resource/asset_fields'
 require_relative 'resource/fields'
@@ -18,7 +17,10 @@ module Contentful
       # Takes an id of space and an optional hash of query options
       # Returns a Contentful::Management::Array of Contentful::Management::Asset.
       def self.all(space_id, query = {})
-        request = Request.new("/#{ space_id }/assets", query)
+        request = Request.new(
+            "/#{ space_id }/assets",
+            query
+        )
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         result.run
@@ -46,7 +48,10 @@ module Contentful
         asset.description = attributes[:description] if attributes[:description]
         asset.file = attributes[:file] if attributes[:file]
 
-        request = Request.new("/#{ space_id }/assets/#{ attributes[:id] || ''}", fields: asset.fields_for_query)
+        request = Request.new(
+            "/#{ space_id }/assets/#{ attributes[:id] || ''}",
+            fields: asset.fields_for_query
+        )
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
         result.locale = locale if locale
@@ -56,7 +61,12 @@ module Contentful
       # Processing an Asset file
       def process_file
         instance_variable_get(:@fields).keys.each do |locale|
-          request = Request.new("/#{ space.id }/assets/#{ id }/files/#{ locale }/process", {}, id = nil, version: sys[:version])
+          request = Request.new(
+              "/#{ space.id }/assets/#{ id }/files/#{ locale }/process",
+              {},
+              id = nil,
+              version: sys[:version]
+          )
           request.put
         end
         sys[:version] += 1
@@ -70,7 +80,12 @@ module Contentful
         self.title = attributes[:title] if attributes[:title]
         self.description = attributes[:description] if attributes[:description]
         self.file = attributes[:file] if attributes[:file]
-        request = Request.new("/#{ space.id }/assets/#{ id }", {fields: fields_for_query}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/assets/#{ id }",
+            {fields: fields_for_query},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -103,7 +118,12 @@ module Contentful
       # Publishes an asset.
       # Returns a Contentful::Management::Asset.
       def publish
-        request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/assets/#{ id }/published",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -112,7 +132,12 @@ module Contentful
       # Unpublishes an asset.
       # Returns a Contentful::Management::Asset.
       def unpublish
-        request = Request.new("/#{ space.id }/assets/#{ id }/published", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/assets/#{ id }/published",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.delete
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -121,7 +146,12 @@ module Contentful
       # Archive an asset.
       # Returns a Contentful::Management::Asset.
       def archive
-        request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/assets/#{ id }/archived",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -130,7 +160,12 @@ module Contentful
       # Unarchvie an asset.
       # Returns a Contentful::Management::Asset.
       def unarchive
-        request = Request.new("/#{ space.id }/assets/#{ id }/archived", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/assets/#{ id }/archived",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.delete
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)

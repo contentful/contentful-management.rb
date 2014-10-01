@@ -445,7 +445,7 @@ blog_space.entries.all(limit: 5).next_page
 
 ## Logging
 
-Logging is off by default. You can enable it by setting into the configuration: 
+Logging is disabled by default, it can be enabled by setting a logger instance and a logging severity.
 
 ```ruby
 client = Contentful::Management::Client.new('access_token', logger: logger_instance, log_level: Logger::DEBUG)
@@ -458,7 +458,7 @@ Rails.logger
 Logger.new('logfile.log')
 ```
 
-Default log level is Logger::INFO, which logs only request attributes. Log level Logger::DEBUG logs also raw json responses.
+The default severity is set to INFO and logs only the request attributes (headers, parameters and url). Setting it to DEBUG will also log the raw JSON response.
 
 ## Contributing
 

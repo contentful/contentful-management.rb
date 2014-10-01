@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 module Contentful
   module Management
     # This object represents a request that is to be made. It gets initialized by the client
@@ -11,9 +10,9 @@ module Contentful
         @header = header
         @initial_id = id
         @client = Contentful::Management::Client.shared_instance
-        @client.version = header[:version] if header[:version]
-        @client.organization_id = header[:organization_id] if header[:organization_id]
-        @client.content_type_id = header[:content_type_id] if header[:content_type_id]
+        @client.version = header[:version]
+        @client.organization_id = header[:organization_id]
+        @client.content_type_id = header[:content_type_id]
         @client.zero_length = query.empty?
         @endpoint = endpoint
         @absolute = true if @endpoint.start_with?('http')

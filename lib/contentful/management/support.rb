@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 module Contentful
   module Management
     # Utility methods used by the contentful management gem

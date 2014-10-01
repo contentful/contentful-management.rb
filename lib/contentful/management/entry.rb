@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'resource/entry_fields'
 require_relative 'resource/fields'
@@ -20,7 +19,10 @@ module Contentful
       # Takes an id of space and hash of parameters with optional content_type_id.
       # Returns a Contentful::Management::Array of Contentful::Management::Entry.
       def self.all(space_id, parameters = {})
-        request = Request.new("/#{ space_id }/entries", parameters)
+        request = Request.new(
+            "/#{ space_id }/entries",
+            parameters
+        )
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         result.run
@@ -50,7 +52,12 @@ module Contentful
                               fields_with_locale content_type, attributes
                             end
 
-        request = Request.new("/#{ content_type.sys[:space].id  }/entries/#{ custom_id }", {fields: fields_for_create}, nil, content_type_id: content_type.id)
+        request = Request.new(
+            "/#{ content_type.sys[:space].id  }/entries/#{ custom_id }",
+            {fields: fields_for_create},
+            nil,
+            content_type_id: content_type.id
+        )
         response = custom_id.empty? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {})
         client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
@@ -65,7 +72,12 @@ module Contentful
       def update(attributes)
         fields_for_update = Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes))
 
-        request = Request.new("/#{ space.id }/entries/#{ id }", {fields: fields_for_update}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/entries/#{ id }",
+            {fields: fields_for_update},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -74,18 +86,23 @@ module Contentful
       # If an entry is a new object gets created in the Contentful, otherwise the existing entry gets updated.
       # See README for details.
       def save
-        if id.nil?
+        if id
+          update({})
+        else
           new_instance = Contentful::Management::Entry.create(content_type, fields: instance_variable_get(:@fields))
           refresh_data(new_instance)
-        else
-          update({})
         end
       end
 
       # Publishes an entry.
       # Returns a Contentful::Management::Entry.
       def publish
-        request = Request.new("/#{ space.id }/entries/#{ id }/published", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/entries/#{ id }/published",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -94,7 +111,12 @@ module Contentful
       # Unpublishes an entry.
       # Returns a Contentful::Management::Entry.
       def unpublish
-        request = Request.new("/#{ space.id }/entries/#{ id }/published", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/entries/#{ id }/published",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.delete
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -103,7 +125,12 @@ module Contentful
       # Archives an entry.
       # Returns a Contentful::Management::Entry.
       def archive
-        request = Request.new("/#{ space.id }/entries/#{ id }/archived", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/entries/#{ id }/archived",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -112,7 +139,12 @@ module Contentful
       # Unarchives an entry.
       # Returns a Contentful::Management::Entry.
       def unarchive
-        request = Request.new("/#{ space.id }/entries/#{ id }/archived", {}, id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/entries/#{ id }/archived",
+            {},
+            id = nil,
+            version: sys[:version]
+        )
         response = request.delete
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
@@ -182,14 +214,14 @@ module Contentful
       end
 
       def parse_update_attribute(attribute)
-        case attribute.class.to_s
-          when /Asset/
+        case attribute
+          when Asset
             self.class.hash_with_link_object('Asset', attribute)
-          when /Entry/
+          when Entry
             self.class.hash_with_link_object('Entry', attribute)
-          when /Location/
+          when Location
             {lat: attribute.properties[:lat], lon: attribute.properties[:lon]}
-          when /Array/
+          when ::Array
             self.class.parse_fields_array(attribute)
           else
             attribute
@@ -201,16 +233,16 @@ module Contentful
       end
 
       def self.parse_fields_array(attributes)
-        type = attributes.first.class.to_s
-        type == 'String' ? attributes : parse_objects_array(attributes, type)
+        type = attributes.first.class
+        type == String ? attributes : parse_objects_array(attributes)
       end
 
-      def self.parse_objects_array(attributes, type)
+      def self.parse_objects_array(attributes)
         attributes.each_with_object([]) do |attr, arr|
-          arr << case type
-                   when /Entry/ then
+          arr << case attr
+                   when Entry then
                      hash_with_link_object('Entry', attr)
-                   when /Asset/ then
+                   when Asset then
                      hash_with_link_object('Asset', attr)
                  end
         end

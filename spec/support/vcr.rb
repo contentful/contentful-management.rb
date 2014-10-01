@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require 'vcr'
 
 VCR.configure do |c|

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'resource/fields'
 require_relative 'location'

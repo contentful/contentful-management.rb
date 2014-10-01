@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'error'
 require_relative 'resource'
 require_relative 'entry'

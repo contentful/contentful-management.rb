@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'resource'
 require_relative 'locale'
 require_relative 'space_locale_methods_factory'
@@ -51,7 +50,12 @@ module Contentful
       # Takes a hash of attributes with optional organization id if client has more than one organization.
       # Returns a Contentful::Management::Space.
       def self.create(attributes)
-        request = Request.new('', {'name' => attributes.fetch(:name)}, id = nil, organization_id: attributes[:organization_id])
+        request = Request.new(
+            '',
+            {'name' => attributes.fetch(:name)},
+            id = nil,
+            organization_id: attributes[:organization_id]
+        )
         response = request.post
         result = ResourceBuilder.new(response, {}, {})
         result.run
@@ -61,7 +65,13 @@ module Contentful
       # Takes a hash of attributes with optional organization id if client has more than one organization.
       # Returns a Contentful::Management::Space.
       def update(attributes)
-        request = Request.new("/#{ id }", {'name' => attributes.fetch(:name)}, id = nil, version: sys[:version], organization_id: attributes[:organization_id])
+        request = Request.new(
+            "/#{ id }",
+            {'name' => attributes.fetch(:name)},
+            id = nil,
+            version: sys[:version],
+            organization_id: attributes[:organization_id]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {})
         refresh_data(result.run)
@@ -70,11 +80,11 @@ module Contentful
       # If a space is new, an object gets created in the Contentful, otherwise the existing space gets updated.
       # See README for details.
       def save
-        if id.nil?
+        if id
+          update(name: name, organization_id: organization)
+        else
           new_instance = self.class.create(name: name, organization_id: organization)
           refresh_data(new_instance)
-        else
-          update(name: name, organization_id: organization)
         end
       end
 

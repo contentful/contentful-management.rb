@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 require_relative 'resource'
 
 module Contentful
@@ -17,7 +16,10 @@ module Contentful
       # Takes an id of space and hash of parameters.
       # Returns a Contentful::Management::Array of Contentful::Management::Webhook.
       def self.all(space_id, parameters = {})
-        request = Request.new("/#{ space_id }/webhook_definitions", parameters)
+        request = Request.new(
+            "/#{ space_id }/webhook_definitions",
+            parameters
+        )
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         result.run
@@ -38,7 +40,10 @@ module Contentful
       # Returns a Contentful::Management::Webhook.
       def self.create(space_id, attributes)
         id = attributes[:id]
-        request = Request.new("/#{ space_id }/webhook_definitions/#{ id || ''}", endpoint_parameters(attributes))
+        request = Request.new(
+            "/#{ space_id }/webhook_definitions/#{ id || ''}",
+            endpoint_parameters(attributes)
+        )
         response = id.nil? ? request.post : request.put
         ResourceBuilder.new(response, {}, {}).run
       end
@@ -47,7 +52,12 @@ module Contentful
       # Takes a hash with attributes.
       # Returns a Contentful::Management::Webhook.
       def update(attributes)
-        request = Request.new("/#{ space.id }/webhook_definitions/#{ id }", self.class.endpoint_parameters(attributes), id = nil, version: sys[:version])
+        request = Request.new(
+            "/#{ space.id }/webhook_definitions/#{ id }",
+            self.class.endpoint_parameters(attributes),
+            id = nil,
+            version: sys[:version]
+        )
         response = request.put
         result = ResourceBuilder.new(response, {}, {})
         refresh_data(result.run)
