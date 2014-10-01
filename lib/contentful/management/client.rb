@@ -83,7 +83,7 @@ module Contentful
       def execute_request(request)
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
-        logger.info(request: {url: url, header: request_headers}) if logger
+        logger.info(request: {url: url, query: request.query ,header: request_headers}) if logger
         raw_response = yield(url)
         logger.debug(response: raw_response) if logger
         clear_headers
