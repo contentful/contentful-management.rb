@@ -105,7 +105,7 @@ module Contentful
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
         request = Request.new(
-            "/#{ space_id }/content_types/#{ attributes[:id] || ''}",
+            "/#{ space_id }/content_types/#{ attributes[:id]}",
             name: attributes.fetch(:name),
             description: attributes[:description],
             fields: fields

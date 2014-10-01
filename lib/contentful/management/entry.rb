@@ -42,7 +42,7 @@ module Contentful
       # Takes a content type object and hash with attributes of content type.
       # Returns a Contentful::Management::Entry.
       def self.create(content_type, attributes)
-        custom_id = attributes[:id] || ''
+        custom_id = attributes[:id]
         locale = attributes[:locale]
         fields_for_create = if attributes[:fields] # create from initialized dynamic entry via save
                               tmp_entry = new
@@ -58,7 +58,7 @@ module Contentful
             nil,
             content_type_id: content_type.id
         )
-        response = custom_id.empty? ? request.post : request.put
+        response = custom_id.nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {})
         client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
         entry = result.run

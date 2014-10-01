@@ -41,7 +41,7 @@ module Contentful
       def self.create(space_id, attributes)
         id = attributes[:id]
         request = Request.new(
-            "/#{ space_id }/webhook_definitions/#{ id || ''}",
+            "/#{ space_id }/webhook_definitions/#{ id }",
             endpoint_parameters(attributes)
         )
         response = id.nil? ? request.post : request.put

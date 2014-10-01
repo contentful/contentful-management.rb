@@ -47,6 +47,7 @@ module Contentful
           vcr('asset/find_not_found') do
             result = subject.find(space_id, 'not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
+            expect(result.message).to eq 'The resource could not be found.'
           end
         end
       end

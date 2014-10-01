@@ -49,7 +49,7 @@ module Contentful
         asset.file = attributes[:file] if attributes[:file]
 
         request = Request.new(
-            "/#{ space_id }/assets/#{ attributes[:id] || ''}",
+            "/#{ space_id }/assets/#{ attributes[:id]}",
             fields: asset.fields_for_query
         )
         response = attributes[:id].nil? ? request.post : request.put
