@@ -535,6 +535,149 @@ module Contentful
           end
         end
       end
+
+
+      describe '#validations' do
+        let(:space) { Contentful::Management::Space.find('v2umtz8ths9v') }
+        let(:content_type) { space.content_types.find('category_content_type') }
+
+        it "adds 'in validation' to a new field" do
+          vcr('content_type/validation/in') do
+            validation_in = Contentful::Management::Validation.new
+            validation_in.in = ['foo', 'bar', 'baz']
+            content_type.fields.create(id: 'valid', name: 'Valid', type: 'Text', validations: [validation_in])
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.fields.last.validations.first.properties[:in]).to eq %w( foo bar baz)
+          end
+        end
+        it "changes 'in validation' on an existing field" do
+          vcr('content_type/validation/in_update') do
+            validation_in = Contentful::Management::Validation.new
+            validation_in.in = ['foo', 'bar']
+            content_type.fields.create(id: 'valid', name: 'Valid', type: 'Text', validations: [validation_in])
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.fields[2].validations.first.properties[:in]).to eq %w( foo bar )
+          end
+        end
+        it 'adds new validation on an existing field' do
+          vcr('content_type/validation/in_add') do
+            validation_size = Contentful::Management::Validation.new
+            validation_size.size = {min: 2, max: 10}
+
+            content_type.fields.create(id: 'valid', name: 'Valid', type: 'Text', validations: [validation_size])
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.fields.last.validations.first.properties[:in]).to eq %w( foo bar baz)
+            expect(content_type.fields.last.validations.last.properties[:size]['min']).to eq 2
+          end
+        end
+        context 'size' do
+          it 'adds `size` validation to field' do
+            vcr('content_type/validation/size') do
+              validation_size = Contentful::Management::Validation.new
+              validation_size.size = {min: 10, max: 15}
+              content_type.fields.create(id: 'valid', name: 'Valid', type: 'Text', validations: [validation_size])
+              expect(content_type.fields[2].validations.last.properties[:size]['min']).to eq 10
+              expect(content_type.fields[2].validations.last.properties[:size]['max']).to eq 15
+            end
+          end
+        end
+        context 'range' do
+          it 'adds `range` validation to field' do
+            vcr('content_type/validation/range') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+
+              validation_range = Contentful::Management::Validation.new
+              validation_range.range = {min: 30, max: 100}
+              content_type.fields.create(id: 'number', name: 'Number', type: 'Number', validations: [validation_range])
+              expect(content_type.fields.first.validations.first.properties[:range]['min']).to eq 30
+              expect(content_type.fields.first.validations.first.properties[:range]['max']).to eq 100
+            end
+          end
+          it 'change `range` validation to existing field' do
+            vcr('content_type/validation/range_update') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+
+              validation_range = Contentful::Management::Validation.new
+              validation_range.range = {min: 50, max: 200}
+              content_type.fields.create(id: 'number', name: 'Number', type: 'Number', validations: [validation_range])
+              expect(content_type.fields.first.validations.first.properties[:range]['min']).to eq 50
+              expect(content_type.fields.first.validations.first.properties[:range]['max']).to eq 200
+            end
+          end
+        end
+        context 'present' do
+          it 'adds `present` validation to field' do
+            vcr('content_type/validation/present') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_present = Contentful::Management::Validation.new
+              validation_present.present = true
+              content_type.fields.create(id: 'present', name: 'Present', type: 'Text', validations: [validation_present])
+              expect(content_type.fields.last.validations.last.properties[:present]).to be_truthy
+            end
+          end
+        end
+        context 'regexp' do
+          it 'adds `regexp` validation to field' do
+            vcr('content_type/validation/regexp') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_regexp = Contentful::Management::Validation.new
+              validation_regexp.regexp = {pattern: '^such', flags: 'im'}
+              content_type.fields.create(id: 'text', name: 'Text', type: 'Text', validations: [validation_regexp])
+              expect(content_type.fields.last.validations.first.properties[:regexp]['pattern']).to eq '^such'
+              expect(content_type.fields.last.validations.first.properties[:regexp]['flags']).to eq 'im'
+            end
+          end
+        end
+        context 'linkContentType' do
+          it 'adds `linkContentType` validation to field' do
+            vcr('content_type/validation/link_content_type') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_link_content_type = Contentful::Management::Validation.new
+              validation_link_content_type.link_content_type = ['post_content_type']
+              content_type.fields.create(id: 'entries', validations: [validation_link_content_type])
+              expect(content_type.fields[1].validations.first.properties[:linkContentType]).to eq %w( post_content_type )
+            end
+          end
+        end
+        context 'linkMimetypeGroup' do
+          it 'adds `linkMimetypeGroup` validation to field' do
+            vcr('content_type/validation/link_mimetype_group') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_link_mimetype_group = Contentful::Management::Validation.new
+              validation_link_mimetype_group.link_mimetype_group = 'image'
+              content_type.fields.create(id: 'entries', validations: [validation_link_mimetype_group])
+              expect(content_type.fields[1].validations.first.properties[:linkMimetypeGroup]).to eq 'image'
+            end
+          end
+        end
+        context 'linkField' do
+          it 'adds `linkField` validation to field' do
+            vcr('content_type/validation/link_field') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_link_mimetype_group = Contentful::Management::Validation.new
+              validation_link_mimetype_group.link_field = true
+              content_type.fields.create(id: 'link_field', validations: [validation_link_mimetype_group])
+              expect(content_type.fields.last.validations.first.properties[:linkField]).to be_truthy
+            end
+          end
+        end
+
+        context 'add multiple validations' do
+          it 'create field with multiple validations' do
+            vcr('content_type/validation/multiple_add') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_in = Contentful::Management::Validation.new
+              validation_in.in = %w( foo bar baz)
+              validation_regexp = Contentful::Management::Validation.new
+              validation_regexp.regexp = {pattern: '^such', flags: 'im'}
+
+              content_type.fields.create(id: 'multi', name: 'Multi Validation', type: 'Text', validations: [validation_in, validation_regexp])
+              expect(content_type.fields.last.validations.first.properties[:in]).to eq %w( foo bar baz)
+              expect(content_type.fields.last.validations.last.properties[:regexp]['pattern']).to eq '^such'
+            end
+          end
+        end
+      end
     end
   end
 end

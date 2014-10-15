@@ -1,5 +1,6 @@
 require_relative 'resource'
 require_relative 'field'
+require_relative 'validation'
 require_relative 'content_type_entry_methods_factory'
 require_relative 'support'
 
