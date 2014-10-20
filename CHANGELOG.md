@@ -1,8 +1,10 @@
 # Change Log
-## Unreleased
+## 0.3.1
 
 ### Added
 * Logging of requests
+* Access to validations in responses
+* Create validations through the API
 
 ### Fixed
 * Cleaner and better error handling
