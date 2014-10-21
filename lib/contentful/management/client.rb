@@ -25,7 +25,11 @@ module Contentful
           default_locale: 'en-US',
           gzip_encoded: false,
           logger: false,
-          log_level: Logger::INFO
+          log_level: Logger::INFO,
+          proxy_host: nil,
+          proxy_username: nil,
+          proxy_password: nil,
+          proxy_port: nil
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -83,7 +87,7 @@ module Contentful
       def execute_request(request)
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
-        logger.info(request: {url: url, query: request.query ,header: request_headers}) if logger
+        logger.info(request: {url: url, query: request.query, header: request_headers}) if logger
         raw_response = yield(url)
         logger.debug(response: raw_response) if logger
         clear_headers
@@ -98,25 +102,25 @@ module Contentful
 
       def delete(request)
         execute_request(request) do |url|
-          self.class.delete_http(url, {}, request_headers)
+          self.class.delete_http(url, {}, request_headers, proxy_params)
         end
       end
 
       def get(request)
         execute_request(request) do |url|
-          self.class.get_http(url, request.query, request_headers)
+          self.class.get_http(url, request.query, request_headers, proxy_params)
         end
       end
 
       def post(request)
         execute_request(request) do |url|
-          self.class.post_http(url, request.query, request_headers)
+          self.class.post_http(url, request.query, request_headers, proxy_params)
         end
       end
 
       def put(request)
         execute_request(request) do |url|
-          self.class.put_http(url, request.query, request_headers)
+          self.class.put_http(url, request.query, request_headers, proxy_params)
         end
       end
 
@@ -162,6 +166,15 @@ module Contentful
 
       def accept_encoding_header(encoding)
         Hash['Accept-Encoding', encoding]
+      end
+
+      def proxy_params
+        {
+            host: configuration[:proxy_host],
+            port: configuration[:proxy_port],
+            username: configuration[:proxy_username],
+            password: configuration[:proxy_password]
+        }
       end
 
       # XXX: headers should be supplied differently, maybe through the request object.

@@ -72,8 +72,21 @@ module Contentful
         it 'does a GET request' do
           vcr(:get_request) { subject.get_http('http://example.com', foo: 'bar') }
         end
-      end
 
+        let!(:client) { Client.new('<ACCESS_TOKEN>',
+                                   proxy_host: '59.46.72.245',
+                                   proxy_port: 8080,
+                                   secure: false)
+        }
+        it 'does a GET request via Proxy' do
+          vcr(:request_via_proxy) do
+            request = Request.new('')
+            client.class.get_http(client.base_url + request.url, request.query, client.request_headers, client.proxy_params)
+            expect(client.proxy_params[:host]).to eq '59.46.72.245'
+            expect(client.proxy_params[:port]).to eq 8080
+          end
+        end
+      end
     end
   end
 end

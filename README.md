@@ -542,6 +542,32 @@ Logger.new('logfile.log')
 
 The default severity is set to INFO and logs only the request attributes (headers, parameters and url). Setting it to DEBUG will also log the raw JSON response.
 
+## Proxy
+
+To make request behind proxy, you need to specify ```:post_host``` it might be domain or IP address of your proxy server and port number that is used by the proxy server for client connections.
+
+```ruby
+client = Contentful::Client.new(
+  'access_token',
+   proxy_host: 'proxy-domain',
+   proxy_port: 8080,
+)
+```
+
+### Proxy with authentication
+
+To use proxy with authentication, you need to specify ```proxy_username``` and ```proxy_password``` parameters.
+
+```ruby
+client = Contentful::Client.new(
+  'access_token',
+  proxy_host: 'proxy-domain',
+  proxy_port: 8080,
+  proxy_username: 'username',
+  proxy_password: 'secret_password',
+)
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/contentful-management/fork )
