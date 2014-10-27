@@ -244,6 +244,8 @@ module Contentful
                      hash_with_link_object('Entry', attr)
                    when Asset then
                      hash_with_link_object('Asset', attr)
+                   when Hash then
+                     attr
                  end
         end
       end

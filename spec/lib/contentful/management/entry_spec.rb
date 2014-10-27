@@ -604,6 +604,15 @@ module Contentful
 
         end
 
+        it 'keepd hashes in attributes' do
+          attributes = {
+            entries: [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}]
+          }
+
+          parsed_attributes = Entry.new.fields_from_attributes(attributes)
+
+          expect(parsed_attributes[:entries]).to match('en-US' => [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}])
+        end
       end
 
     end
