@@ -1,6 +1,10 @@
 # Change Log
-## 0.3.1
+## Unreleased
+### Fixed
+* Return Keep attribute if it's already a hash [#33](https://github.com/contentful/contentful-management.rb/pull/33)
 
+
+## 0.3.1
 ### Added
 * Logging of requests
 * Access to validations in responses
@@ -12,6 +16,7 @@
 ### Other
 * Cleaned the code
 * Remove encoding strings from the source code files
+
 ## 0.2.1
 ### Fixed
 * Fix: Use array for symbols in entry fields
