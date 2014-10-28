@@ -141,7 +141,7 @@ module Contentful
       end
 
       def user_agent
-        Hash['User-Agent', "RubyContenfulManagementGem/#{ Contentful::Management::VERSION }"]
+        Hash['User-Agent', "RubyContentfulManagementGem/#{ Contentful::Management::VERSION }"]
       end
 
       def organization_header(organization_id)
