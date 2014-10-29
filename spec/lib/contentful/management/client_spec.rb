@@ -31,7 +31,7 @@ module Contentful
 
         describe '#user_agent' do
           its(:user_agent) { should be_kind_of Hash }
-          its(:user_agent) { should eq 'User-Agent' => "RubyContenfulManagementGem/#{ Contentful::Management::VERSION }" }
+          its(:user_agent) { should eq 'User-Agent' => "RubyContentfulManagementGem/#{ Contentful::Management::VERSION }" }
         end
 
         describe '#organization_header' do
