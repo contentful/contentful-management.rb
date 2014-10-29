@@ -2,6 +2,7 @@
 ## Unreleased
 ### Fixed
 * Return Keep attribute if it's already a hash [#33](https://github.com/contentful/contentful-management.rb/pull/33)
+* Typo in header [#34](https://github.com/contentful/contentful-management.rb/pull/34)
 
 
 ## 0.3.1
