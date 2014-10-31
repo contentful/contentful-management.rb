@@ -34,7 +34,7 @@ module Contentful
       def parse_value(key, value)
         case key
           when :items
-            value.properties_to_hash if type == 'Array' && type.is_a?(Field)
+            value.properties_to_hash if type == 'Array' && value.is_a?(Field)
           when :validations
             validations_to_hash(value) if value.is_a?(::Array)
           else

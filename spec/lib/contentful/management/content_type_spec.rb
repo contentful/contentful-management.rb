@@ -678,6 +678,41 @@ module Contentful
           end
         end
       end
+
+      describe 'create fields with array type' do
+        it 'creates new content type with fields' do
+          vcr('content_type/fields/create_array_types') do
+
+            space = Contentful::Management::Space.find('2jtuu7nex6e6')
+
+            items = Contentful::Management::Field.new
+            items.type = 'Link'
+            items.link_type = 'Entry'
+
+            field = Contentful::Management::Field.new
+            field.id = 'entries'
+            field.name = 'Entries'
+            field.type = 'Array'
+            field.items = items
+
+            content_type = space.content_types.new
+            content_type.name = 'Testing Content Types'
+            content_type.fields = [field]
+            content_type.save
+
+            content_type.fields.create(id: 'Entries_two', name: 'Entries Two', type: 'Array', items: items)
+            first_field = content_type.fields.first
+            second_field = content_type.fields.last
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(first_field).to be_kind_of Contentful::Management::Field
+            expect(second_field).to be_kind_of Contentful::Management::Field
+            expect(first_field.type).to eq 'Array'
+            expect(first_field.items.link_type).to eq 'Entry'
+            expect(second_field.type).to eq 'Array'
+            expect(second_field.items.link_type).to eq 'Entry'
+          end
+        end
+      end
     end
   end
 end
