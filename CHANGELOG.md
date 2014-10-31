@@ -3,7 +3,7 @@
 ### Fixed
 * Return Keep attribute if it's already a hash [#33](https://github.com/contentful/contentful-management.rb/pull/33)
 * Typo in header [#34](https://github.com/contentful/contentful-management.rb/pull/34)
-
+* Items are nil when creating an array field for a content type [#35](https://github.com/contentful/contentful-management.rb/issues/35)
 
 ## 0.3.1
 ### Added
