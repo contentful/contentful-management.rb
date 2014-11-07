@@ -74,6 +74,15 @@ module Contentful
         end
       end
 
+      describe '.raise_error' do
+        it 'raise error set to true' do
+          expect(subject.configuration[:raise_errors]).to be_falsey
+        end
+        it 'raise error set to false' do
+          client = Client.new('token', raise_errors: true)
+          expect(client.configuration[:raise_errors]).to be_truthy
+        end
+      end
     end
   end
 end

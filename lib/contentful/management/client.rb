@@ -25,7 +25,8 @@ module Contentful
           default_locale: 'en-US',
           gzip_encoded: false,
           logger: false,
-          log_level: Logger::INFO
+          log_level: Logger::INFO,
+          raise_errors: false
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -83,11 +84,13 @@ module Contentful
       def execute_request(request)
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
-        logger.info(request: {url: url, query: request.query ,header: request_headers}) if logger
+        logger.info(request: {url: url, query: request.query, header: request_headers}) if logger
         raw_response = yield(url)
         logger.debug(response: raw_response) if logger
         clear_headers
-        Response.new(raw_response, request)
+        result = Response.new(raw_response, request)
+        fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
+        result
       end
 
       def clear_headers

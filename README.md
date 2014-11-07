@@ -542,6 +542,14 @@ Logger.new('logfile.log')
 
 The default severity is set to INFO and logs only the request attributes (headers, parameters and url). Setting it to DEBUG will also log the raw JSON response.
 
+## Raise Errors
+
+If ```:raise_errors``` is set to true, an Exception will be raised in case of an error. The default is false, in this case a ```Contentful::Management::Error``` object will be returned.
+
+```ruby
+client = Contentful::Management::Client.new('access_token', raise_errors: true)
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/contentful-management/fork )

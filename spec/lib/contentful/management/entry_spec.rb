@@ -55,6 +55,14 @@ module Contentful
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end
+        context 'raise_error when space not found' do
+          let!(:client) { Client.new(token, raise_errors: true) }
+          it 'returns an error when entry does not exists' do
+            expect_vcr('entry/find_not_found') do
+              subject.find(space_id, 'not_exist')
+            end.to raise_error Contentful::Management::NotFound
+          end
+        end
 
         it 'returns an error when service is unavailable' do
           vcr('entry/service_unavailable') do
@@ -268,9 +276,9 @@ module Contentful
           vcr('entry/create_with_entries') do
             entry_att = Entry.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
             new_entry = subject.create(content_type,
-                                    name: 'EntryWithEntries',
-                                    age: 20,
-                                    entries: [entry_att, entry_att, entry_att])
+                                       name: 'EntryWithEntries',
+                                       age: 20,
+                                       entries: [entry_att, entry_att, entry_att])
             expect(new_entry.name).to eq 'EntryWithEntries'
             expect(new_entry.age).to eq 20
           end
@@ -572,18 +580,18 @@ module Contentful
           # entry_att = Entry.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
 
           attributes = {
-            name: 'Test name',
-            number: 30,
-            float1: 1.1,
-            boolean: true, date: '2000-07-12T11:11:00+02:00',
-            time: '2000-07-12T11:11:00+02:00',
-            location: location,
-            image: Asset.new,
-            images: [Asset.new, Asset.new],
-            array: %w(PL USD XX),
-            entry: Entry.new,
-            entries: [Entry.new, Entry.new],
-            object_json: {'test' => {'@type' => 'Codequest'}}
+              name: 'Test name',
+              number: 30,
+              float1: 1.1,
+              boolean: true, date: '2000-07-12T11:11:00+02:00',
+              time: '2000-07-12T11:11:00+02:00',
+              location: location,
+              image: Asset.new,
+              images: [Asset.new, Asset.new],
+              array: %w(PL USD XX),
+              entry: Entry.new,
+              entries: [Entry.new, Entry.new],
+              object_json: {'test' => {'@type' => 'Codequest'}}
           }
 
           parsed_attributes = Entry.new.fields_from_attributes(attributes)
@@ -606,7 +614,7 @@ module Contentful
 
         it 'keepd hashes in attributes' do
           attributes = {
-            entries: [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}]
+              entries: [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}]
           }
 
           parsed_attributes = Entry.new.fields_from_attributes(attributes)
