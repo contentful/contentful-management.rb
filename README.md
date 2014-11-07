@@ -544,7 +544,7 @@ The default severity is set to INFO and logs only the request attributes (header
 
 ## Raise Errors
 
-If set ```:raise_errors``` to true, error responses will be raised. If set to false (default), the error objects will simply be returned.
+If ```:raise_errors``` is set to true, an Exception will be raised in case of an error. The default is false, in this case a ```Contentful::Management::Error``` object will be returned.
 
 ```ruby
 client = Contentful::Management::Client.new('access_token', raise_errors: true)
