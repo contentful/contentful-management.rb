@@ -17,8 +17,8 @@ http_interactions:
       - api.contentful.com
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 409
+      message: Conflict
     headers:
       Server:
       - nginx

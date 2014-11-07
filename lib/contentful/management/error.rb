@@ -20,6 +20,8 @@ module Contentful
             BadRequest
           when 403
             AccessDenied
+          when 409
+            Conflict
           when 401
             Unauthorized
           when 500
@@ -46,6 +48,10 @@ module Contentful
 
     # 401
     class Unauthorized < Error
+    end
+    
+    # 409
+    class Conflict < Error
     end
 
     # 500

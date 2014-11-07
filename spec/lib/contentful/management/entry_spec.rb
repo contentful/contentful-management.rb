@@ -123,7 +123,7 @@ module Contentful
             entry = subject.find(space_id, entry_id)
             entry.sys[:version] = -1
             result = entry.publish
-            expect(result).to be_kind_of Contentful::Management::BadRequest
+            expect(result).to be_kind_of Contentful::Management::Conflict
           end
         end
       end
@@ -399,7 +399,7 @@ module Contentful
             entry = space.entries.find('2arjcjtY7ucC4AGeIOIkok')
             entry.sys[:version] = 999
             update_entry = entry.update(post_title: 'Updated title')
-            expect(update_entry).to be_kind_of Contentful::Management::BadRequest
+            expect(update_entry).to be_kind_of Contentful::Management::Conflict
             entry.reload
             update_entry = entry.update(post_title: 'Updated title')
             expect(update_entry).to be_kind_of Contentful::Management::Entry
