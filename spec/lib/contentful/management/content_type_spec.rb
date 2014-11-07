@@ -77,7 +77,7 @@ module Contentful
             content_type = subject.find(space_id, active_content)
             content_type.sys[:version] = -1
             result = content_type.activate
-            expect(result).to be_kind_of Contentful::Management::BadRequest
+            expect(result).to be_kind_of Contentful::Management::Conflict
           end
         end
       end
@@ -527,7 +527,7 @@ module Contentful
             content_type = Contentful::Management::ContentType.find(space_id, 'category_content_type')
             content_type.sys[:version] = 999
             update_ct = content_type.update(name: 'Updated content type name')
-            expect(update_ct).to be_kind_of Contentful::Management::BadRequest
+            expect(update_ct).to be_kind_of Contentful::Management::Conflict
             content_type.reload
             update_ct = content_type.update(name: 'Updated content type name')
             expect(update_ct).to be_kind_of Contentful::Management::ContentType

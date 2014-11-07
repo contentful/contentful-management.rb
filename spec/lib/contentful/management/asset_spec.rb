@@ -120,7 +120,7 @@ module Contentful
             asset = subject.find(space_id, asset_id_2)
             asset.sys[:version] = -1
             result = asset.publish
-            expect(result).to be_kind_of Contentful::Management::BadRequest
+            expect(result).to be_kind_of Contentful::Management::Conflict
           end
         end
       end
@@ -289,7 +289,7 @@ module Contentful
                                                          title: 'titlebyCreateAPI_custom_id',
                                                          description: 'descByAPI_custom_id',
                                                          file: file)
-            expect(asset).to be_kind_of Contentful::Management::BadRequest
+            expect(asset).to be_kind_of Contentful::Management::Conflict
           end
         end
       end
@@ -356,7 +356,7 @@ module Contentful
             asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
             asset.sys[:version] = 999
             update_asset = asset.update(title: 'Updated name')
-            expect(update_asset).to be_kind_of Contentful::Management::BadRequest
+            expect(update_asset).to be_kind_of Contentful::Management::Conflict
             asset.reload
             update_asset = asset.update(title: 'Updated name')
             expect(update_asset).to be_kind_of Contentful::Management::Asset
