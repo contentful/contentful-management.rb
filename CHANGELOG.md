@@ -1,4 +1,9 @@
 # Change Log
+
+## 0.4.1
+### Fixed
+* Handle 409 responses as errors [#39](https://github.com/contentful/contentful-management.rb/pull/39)
+
 ## 0.4.0
 ### Fixed
 * Return Keep attribute if it's already a hash [#33](https://github.com/contentful/contentful-management.rb/pull/33)
