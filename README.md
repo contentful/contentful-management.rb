@@ -459,7 +459,7 @@ blog_post_content_type.fields.create(id: 'valid', name: 'Test In', type: 'Text',
 
 #### range
 
-Takes a string that reflects a JS regex and flags, validates against a string. See JS Reference for the parameters.
+Takes optional min and max parameters and validates the range of a value.
 
 ```ruby
 validation_range = Contentful::Management::Validation.new
