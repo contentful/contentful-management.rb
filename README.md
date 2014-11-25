@@ -69,6 +69,12 @@ or in the context of the organization (if you have multiple organizations within
 blog_space = Contentful::Management::Space.create(name: 'Blog Space', organization_id: 'organization_id')
 ```
 
+or create with specified default locale, you need to pass the addition parameter with locale code:
+
+```ruby
+blog_space = Contentful::Management::Space.create(name: 'Blog Space', default_locale: 'de-DE')
+```
+
 Updating a space:
 
 ```ruby
@@ -314,7 +320,7 @@ entries = blog_space.entries.all
 Retrieving all entries from the space with given content type:
 
 ```ruby
-entries = blog_space.entries.all(content_type_id: content_type.id)
+entries = blog_space.entries.all(content_type: content_type.id)
 ```
 
 or
@@ -454,7 +460,7 @@ Takes optional min and max parameters and validates the size of the array (numbe
 ```ruby
 validation_size = Contentful::Management::Validation.new
 validation_size.size = { min: 10, max: 15 }
-blog_post_content_type.fields.create(id: 'valid', name: 'Test In', type: 'Text', validations: [validation_size])
+blog_post_content_type.fields.create(id: 'valid', name: 'Test SIZE', type: 'Text', validations: [validation_size])
 ```
 
 #### range
@@ -484,7 +490,7 @@ Takes an array of content type ids and validates that the link points to an entr
 ```ruby
 validation_link_content_type = Contentful::Management::Validation.new
 validation_link_content_type.link_content_type =  ['post_content_type_id']
-blog_post_content_type.fields.create(id: 'entry', name: 'Regex', type: 'Entry', validations: [validation_link_content_type])
+blog_post_content_type.fields.create(id: 'entry', name: 'Test linkContentType', type: 'Entry', validations: [validation_link_content_type])
 ```
 
 #### linkMimetypeGroup

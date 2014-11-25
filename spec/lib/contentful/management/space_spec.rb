@@ -37,6 +37,12 @@ module Contentful
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end
+        it 'returns space for a given key' do
+          vcr('space/find') do
+            space = subject.find(space_id)
+            expect(space.id).to eql space_id
+          end
+        end
       end
 
       describe '#destroy' do
@@ -76,6 +82,25 @@ module Contentful
           vcr('space/create_when_limit_has_been_reached') do
             space = subject.create(name: space_name, organization_id: organization_id)
             expect(space).to be_kind_of Contentful::Management::AccessDenied
+          end
+        end
+        context 'create with locale' do
+          it 'creates a space within a specified default locale' do
+            vcr('space/create_with_locale') do
+              space = subject.create(name: 'pl space', organization_id: '1EQPR5IHrPx94UY4AViTYO', default_locale: 'pl-pl')
+              expect(space).to be_kind_of Contentful::Management::Space
+              expect(space.name).to eq 'pl space'
+              expect(space.locales.all.first.code).to eql 'pl-pl'
+            end
+          end
+          it 'creates a space within a client default locale' do
+            vcr('space/create_with_client_default_locale') do
+              Client.new('<ACCESS_TOKEN>', default_locale: 'pl-PL')
+              space = subject.create(name: 'new space', organization_id: '1EQPR5IHrPx94UY4AViTYO')
+              expect(space).to be_kind_of Contentful::Management::Space
+              expect(space.name).to eq 'new space'
+              expect(space.locales.all.first.code).to eql 'pl-PL'
+            end
           end
         end
       end
