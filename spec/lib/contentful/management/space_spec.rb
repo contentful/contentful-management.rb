@@ -172,7 +172,8 @@ module Contentful
                                           publish: true,
                                           contentDeliveryApi: true,
                                           code: 'ru-RU')
-            expect(locale).to be_kind_of Contentful::Management::Error
+            expect(locale).to be_kind_of Contentful::Management::UnprocessableEntity
+            expect(locale.response.error_message).to eql 'The resource you sent in the body is invalid.'
           end
         end
 
