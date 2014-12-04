@@ -43,7 +43,7 @@ module Contentful
         locale = attributes[:locale]
         asset = new
         asset.instance_variable_set(:@fields, attributes[:fields] || {})
-        asset.locale = attributes[:locale] if attributes[:locale]
+        asset.locale = attributes[:locale] || client.default_locale
         asset.title = attributes[:title] if attributes[:title]
         asset.description = attributes[:description] if attributes[:description]
         asset.file = attributes[:file] if attributes[:file]
