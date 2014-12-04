@@ -21,6 +21,7 @@ module Contentful
 
       property :name, :string
       property :organization, :string
+      property :default_locale, :string
       property :locales, Locale
 
       # Gets a collection of spaces.
@@ -50,9 +51,10 @@ module Contentful
       # Takes a hash of attributes with optional organization id if client has more than one organization.
       # Returns a Contentful::Management::Space.
       def self.create(attributes)
+        default_locale = attributes[:default_locale] || client.default_locale
         request = Request.new(
             '',
-            {'name' => attributes.fetch(:name)},
+            {'name' => attributes.fetch(:name), defaultLocale: default_locale},
             id = nil,
             organization_id: attributes[:organization_id]
         )
