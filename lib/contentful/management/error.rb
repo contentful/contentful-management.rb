@@ -55,7 +55,8 @@ module Contentful
     # 409
     class Conflict < Error
     end
-
+    
+    # 422
     class UnprocessableEntity < Error
     end
 
