@@ -32,7 +32,7 @@ module Contentful
           parse_json!
         elsif no_content_response?
           @status = :no_content
-        elsif no_resource_or_bad_request?
+        elsif resource_error?
           parse_contentful_error
         else
           parse_http_error
@@ -60,8 +60,8 @@ module Contentful
         @object = Error[raw.status].new(self)
       end
 
-      def no_resource_or_bad_request?
-        [400, 404].include?(raw.status)
+      def resource_error?
+        [400, 404, 422].include?(raw.status)
       end
 
       def no_content_response?

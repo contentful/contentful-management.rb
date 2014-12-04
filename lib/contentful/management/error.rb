@@ -24,6 +24,8 @@ module Contentful
             Conflict
           when 401
             Unauthorized
+          when 422
+            UnprocessableEntity
           when 500
             ServerError
           when 503
@@ -49,9 +51,13 @@ module Contentful
     # 401
     class Unauthorized < Error
     end
-    
+
     # 409
     class Conflict < Error
+    end
+    
+    # 422
+    class UnprocessableEntity < Error
     end
 
     # 500
