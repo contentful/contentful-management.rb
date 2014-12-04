@@ -69,8 +69,7 @@ or in the context of the organization (if you have multiple organizations within
 blog_space = Contentful::Management::Space.create(name: 'Blog Space', organization_id: 'organization_id')
 ```
 
-or create with specified default locale, you need to pass the addition parameter with locale code:
-
+If you want to create a default locale different from `en-US`:
 ```ruby
 blog_space = Contentful::Management::Space.create(name: 'Blog Space', default_locale: 'de-DE')
 ```
