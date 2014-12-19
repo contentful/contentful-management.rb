@@ -104,6 +104,9 @@ module Contentful
             result = subject.find(space_id, entry_id).unpublish
             expect(result).to be_kind_of Contentful::Management::BadRequest
             expect(result.message).to eq 'Not published'
+            expect(result.error[:message]).to eq 'Not published'
+            expect(result.error[:url]).to eq '/yr5m0jky5hsh/entries/4Rouux8SoUCKwkyCq2I0E0/published'
+            expect(result.error[:details]).to eq "{\n  \"sys\": {\n    \"type\": \"Error\",\n    \"id\": \"BadRequest\"\n  },\n  \"message\": \"Not published\"\n}\n"
           end
         end
       end
@@ -317,6 +320,18 @@ module Contentful
             ct = space.content_types.find('category_content_type')
             entry = ct.entries.create(name: 'Create test', description: 'Test - create entry with specified locale.', locale: 'pl-PL')
             expect(entry.name).to eq 'Create test'
+          end
+        end
+
+        it 'too many requests' do
+          vcr('entry/too_many_requests') do
+            space = Contentful::Management::Space.find('286arvy86ry9')
+            invalid_entry = space.entries.find('1YNepnMpXGiMWikaKC4GG0')
+            ct = space.content_types.find('5lIEiXrCIoKoIKaSW2C8aa')
+            entry = ct.entries.create(name: 'Create test', entry: invalid_entry)
+            publish = entry.publish
+            expect(publish).to be_a RateLimitExceeded
+            expect(publish.error[:message]).to eq 'You have exceeded the rate limit of the Organization this Space belongs to by making too many API requests within a short timespan. Please wait a moment before trying the request again.'
           end
         end
       end
@@ -576,8 +591,6 @@ module Contentful
             location.lat = 22.44
             location.lon = 33.33
           end
-          # file = Asset.find('ene4qtp2sh7u', '2oNoT3vSAs82SOIQmKe0KG')
-          # entry_att = Entry.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
 
           attributes = {
               name: 'Test name',
