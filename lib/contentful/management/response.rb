@@ -61,7 +61,7 @@ module Contentful
       end
 
       def resource_error?
-        [400, 404, 422].include?(raw.status)
+        [400, 404, 422, 429].include?(raw.status)
       end
 
       def no_content_response?
