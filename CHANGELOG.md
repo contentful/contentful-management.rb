@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.6.0
+### Added
+* Access request and response from Contentful::Management:Error [#46](https://github.com/contentful/contentful-management.rb/pull/46)
+### Fixed
+* Handle 429 responses as errors [#46](https://github.com/contentful/contentful-management.rb/pull/46)
+
 ## 0.5.0
 ### Added
 * Allow setting a default locale when creating a space [#43](https://github.com/contentful/contentful-management.rb/pull/43)
