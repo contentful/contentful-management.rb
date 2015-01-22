@@ -21,7 +21,6 @@ module Contentful
 
       property :name, :string
       property :organization, :string
-      property :default_locale, :string
       property :locales, Locale
 
       # Gets a collection of spaces.
