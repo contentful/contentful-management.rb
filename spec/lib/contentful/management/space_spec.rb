@@ -41,6 +41,7 @@ module Contentful
           vcr('space/find') do
             space = subject.find(space_id)
             expect(space.id).to eql space_id
+            expect(space.default_locale).to eql 'en-US'
           end
         end
       end
@@ -100,6 +101,7 @@ module Contentful
               expect(space).to be_kind_of Contentful::Management::Space
               expect(space.name).to eq 'new space'
               expect(space.locales.all.first.code).to eql 'pl-PL'
+              expect(space.default_locale).to eql 'pl-PL'
             end
           end
         end

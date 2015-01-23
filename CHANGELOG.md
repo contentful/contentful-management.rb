@@ -1,10 +1,18 @@
 # Change Log
+=======
+
+
+## Unreleased
+### Fixed
+* Fix access to space default_locale instance variable [#47](https://github.com/contentful/contentful-management.rb/pull/47)
+
 
 ## 0.6.0
 ### Added
 * Access request and response from Contentful::Management:Error [#46](https://github.com/contentful/contentful-management.rb/pull/46)
 ### Fixed
 * Handle 429 responses as errors [#46](https://github.com/contentful/contentful-management.rb/pull/46)
+
 
 ## 0.5.0
 ### Added
