@@ -68,6 +68,7 @@ module Contentful
           vcr('entry/service_unavailable') do
             result = subject.find(space_id, 'not_exist')
             expect(result).to be_kind_of Contentful::Management::ServiceUnavailable
+            expect(result.message).to eq 'Service Unavailable, contenful.com API seems to be down'
           end
         end
       end
