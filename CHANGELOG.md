@@ -5,6 +5,7 @@
 ## Unreleased
 ### Fixed
 * Fix access to space default_locale instance variable [#47](https://github.com/contentful/contentful-management.rb/pull/47)
+* Better handling of 503 responses from the API [#48](https://github.com/contentful/contentful-management.rb/pull/48)
 
 
 ## 0.6.0

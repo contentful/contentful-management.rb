@@ -34,6 +34,8 @@ module Contentful
           @status = :no_content
         elsif resource_error?
           parse_contentful_error
+        elsif service_unavailable_response?
+          service_unavailable_error
         else
           parse_http_error
         end
@@ -53,6 +55,16 @@ module Contentful
 
       def valid_http_response?
         [200, 201].include?(raw.status)
+      end
+
+      def service_unavailable_response?
+        @raw.status == 503
+      end
+
+      def service_unavailable_error
+        @status = :error
+        @error_message = 'Service Unavailable, contenful.com API seems to be down'
+        @object = Error[@raw.status].new(self)
       end
 
       def parse_http_error
