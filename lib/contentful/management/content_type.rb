@@ -29,6 +29,7 @@ module Contentful
       property :name, :string
       property :description, :string
       property :fields, Field
+      property :displayField, :string
 
       # Gets a collection of content types.
       # Takes an id of space and an optional hash of query options
@@ -122,7 +123,7 @@ module Contentful
       # Returns a Contentful::Management::ContentType.
       def update(attributes)
         parameters = {}
-        parameters.merge!(displayField: attributes[:displayField]) if  attributes[:displayField]
+        parameters.merge!(displayField: attributes[:displayField] || display_field)
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
