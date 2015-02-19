@@ -1,12 +1,11 @@
 # Change Log
 =======
 
-
-## Unreleased
+## 0.6.1
 ### Fixed
 * Fix access to space default_locale instance variable [#47](https://github.com/contentful/contentful-management.rb/pull/47)
 * Better handling of 503 responses from the API [#48](https://github.com/contentful/contentful-management.rb/pull/48)
-* Do Not lose displayField on update when not set [#52](https://github.com/contentful/contentful-management.rb/pull/52)
+* Do Not loose displayField on update when it is not set [#52](https://github.com/contentful/contentful-management.rb/pull/52)
 
 
 ## 0.6.0
