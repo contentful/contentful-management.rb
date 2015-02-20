@@ -1,6 +1,11 @@
 # Change Log
 =======
 
+## Unreleased
+### Added
+* Add disable property to fields [#50](https://github.com/contentful/contentful-management.rb/pull/50), [#55](https://github.com/contentful/contentful-management.rb/pull/55)
+
+
 ## 0.6.1
 ### Fixed
 * Fix access to space default_locale instance variable [#47](https://github.com/contentful/contentful-management.rb/pull/47)
