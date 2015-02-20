@@ -14,6 +14,7 @@ module Contentful
       property :required, :boolean
       property :localized, :boolean
       property :validations, Validation
+      property :disabled, :boolean
 
       # Takes a field object of content type
       # Merges existing properties, items and validations of field with new one
