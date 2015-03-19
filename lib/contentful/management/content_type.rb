@@ -118,12 +118,20 @@ module Contentful
         result
       end
 
+      def display_field_value(attributes)
+        if attributes[:displayField].nil? && display_field.empty?
+          nil
+        else
+          attributes[:displayField] || display_field
+        end
+      end
+
       # Updates a content type.
       # Takes a hash with attributes.
       # Returns a Contentful::Management::ContentType.
       def update(attributes)
         parameters = {}
-        parameters.merge!(displayField: attributes[:displayField] || display_field)
+        parameters.merge!(displayField: display_field_value(attributes))
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))

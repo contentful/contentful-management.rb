@@ -5,6 +5,10 @@
 ### Added
 * Add disable property to fields [#50](https://github.com/contentful/contentful-management.rb/pull/50), [#55](https://github.com/contentful/contentful-management.rb/pull/55)
 
+### Fixed
+* Explicitly set displayField to nil when it is not existing [#53](https://github.com/contentful/contentful-management.rb/pull/53), [#54](https://github.com/contentful/contentful-management.rb/pull/54)
+
+
 
 ## 0.6.1
 ### Fixed
@@ -16,6 +20,7 @@
 ## 0.6.0
 ### Added
 * Access request and response from Contentful::Management:Error [#46](https://github.com/contentful/contentful-management.rb/pull/46)
+
 ### Fixed
 * Handle 429 responses as errors [#46](https://github.com/contentful/contentful-management.rb/pull/46)
 
