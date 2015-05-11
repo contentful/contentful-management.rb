@@ -1,7 +1,7 @@
 # Change Log
 =======
 
-## Unreleased
+## 0.7.0
 ### Added
 * Add disable property to fields [#50](https://github.com/contentful/contentful-management.rb/pull/50), [#55](https://github.com/contentful/contentful-management.rb/pull/55)
 
