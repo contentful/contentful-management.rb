@@ -584,6 +584,30 @@ module Contentful
         end
       end
 
+      describe 'handling of localized values' do
+        it 'retrieves localized value if it exists' do
+          vcr('entry/locales/retrieve_localized') do
+            space = Contentful::Management::Space.find('0agypmo1waov')
+            entry = space.entries.find('5cMXsmSd5So6iggWi268eG')
+            entry.locale = 'de-DE'
+
+            expect(entry.fields.count).to eq 2
+            expect(entry.fields[:yolo]).to eq 'etwas Text'
+          end
+        end
+
+        it 'retrieves value of default locale if it has not been localized' do
+          vcr('entry/locales/fallback_to_default_locale') do
+            space = Contentful::Management::Space.find('0agypmo1waov')
+            entry = space.entries.find('4epXENbO8wsaOukgqquYcI')
+            entry.locale = 'de-DE'
+
+            expect(entry.fields.count).to eq 2
+            expect(entry.fields[:yolo]).to eq 'YOLO'
+          end
+        end
+      end
+
       describe '#fields_from_attributes' do
 
         it 'parses all kind of fields' do
