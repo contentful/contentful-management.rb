@@ -7,6 +7,7 @@
 
 ### Fixed
 * Explicitly set displayField to nil when it is not existing [#53](https://github.com/contentful/contentful-management.rb/pull/53), [#54](https://github.com/contentful/contentful-management.rb/pull/54)
+* Merge values for default locale and current locale [#58](https://github.com/contentful/contentful-management.rb/pull/58)
 
 
 

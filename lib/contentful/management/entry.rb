@@ -66,6 +66,14 @@ module Contentful
         entry
       end
 
+      def fields(wanted_locale = default_locale)
+        requested_locale = locale || wanted_locale
+        @fields[requested_locale] = {} unless @fields[requested_locale]
+
+        default_fields = @fields[default_locale] || {}
+        default_fields.merge(@fields[requested_locale])
+      end
+
       # Updates an entry.
       # Takes an optional hash with attributes of content type.
       # Returns a Contentful::Management::Entry.
