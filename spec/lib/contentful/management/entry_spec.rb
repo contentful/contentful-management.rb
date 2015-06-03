@@ -622,6 +622,29 @@ module Contentful
             expect(entry.fields[:yolo]).to eq 'YOLO'
           end
         end
+
+        it 'sets value for the default locale when using simple assignments' do
+          vcr('entry/locales/simple_assignments_use_default_locale') do
+            space = Contentful::Management::Space.find('0agypmo1waov')
+            entry = space.entries.find('4epXENbO8wsaOukgqquYcI')
+
+            entry.yolo = 'changed'
+
+            expect(entry.fields).to match({:name => 'test2', :yolo => 'changed'})
+          end
+        end
+
+        it 'sets value for the specified locales when using *_with_locales' do
+          vcr('entry/locales/simple_assignments_use_specified_locale') do
+            space = Contentful::Management::Space.find('0agypmo1waov')
+            entry = space.entries.find('4epXENbO8wsaOukgqquYcI')
+
+            entry.yolo_with_locales = {'de-DE' => 'changed'}
+            entry.locale = 'de-DE'
+
+            expect(entry.fields).to match({:name => 'test2', :yolo => 'changed'})
+          end
+        end
       end
 
       describe '#fields_from_attributes' do
