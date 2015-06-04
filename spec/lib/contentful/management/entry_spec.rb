@@ -393,6 +393,22 @@ module Contentful
             expect(result).to be_kind_of Contentful::Management::Error
           end
         end
+
+        it 'can update boolean fields to `false`' do
+          vcr('entry/update_bool_field') do
+            space = Contentful::Management::Space.find('fujuvqn6zcl1')
+            content_type = space.content_types.find('1kUEViTN4EmGiEaaeC6ouY')
+
+            q = content_type.entries.new
+            q.name_with_locales = {'en-US' => 'Hello World'}
+            q.yolo_with_locales = {'en-US' => false}
+            expected = q.fields
+            q.save
+
+            p = space.entries.find(q.id)
+            expect(p.fields).to match(expected)
+          end
+        end
       end
 
       describe '#save' do

@@ -1,6 +1,11 @@
 # Change Log
 =======
 
+## Master
+### Fixed
+* `fields_for_query` should only skip `nil` values [#63](https://github.com/contentful/contentful-management.rb/issues/63), [#64](https://github.com/contentful/contentful-management.rb/pull/64)
+
+
 ## 0.7.0
 ### Added
 * Add disable property to fields [#50](https://github.com/contentful/contentful-management.rb/pull/50), [#55](https://github.com/contentful/contentful-management.rb/pull/55)
