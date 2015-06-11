@@ -119,7 +119,7 @@ module Contentful
       end
 
       def display_field_value(attributes)
-        if attributes[:displayField].nil? && display_field.empty?
+        if attributes[:displayField].nil? && (display_field.nil? || display_field.empty?)
           nil
         else
           attributes[:displayField] || display_field

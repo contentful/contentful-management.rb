@@ -14,7 +14,7 @@ module Contentful
     # by the client by default
     module Resource
       COERCIONS = {
-        string: ->(value) { value.to_s },
+        string: ->(value) { !value.nil? ? value.to_s : nil },
         integer: ->(value) { value.to_i },
         float: ->(value) { value.to_f },
         boolean: ->(value) { !!value },
