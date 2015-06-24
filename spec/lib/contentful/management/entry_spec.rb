@@ -40,9 +40,19 @@ module Contentful
       end
 
       describe '#find' do
+        it 'returns null as nil on empty Symbols' do
+          vcr('entry/find-with-null-symbols') do
+            space = Contentful::Management::Space.find space_id
+            entry = space.entries.find(entry_id)
+            expect(entry.fields[:videoid]).to_not be_kind_of(String)
+            expect(entry.fields[:videoid]).to be_nil
+          end
+        end
+
         it 'returns a Contentful::Management::Entry' do
           vcr('entry/find') { expect(subject.find(space_id, entry_id)).to be_kind_of Contentful::Management::Entry }
         end
+
         it 'returns the entry for a given key' do
           vcr('entry/find') do
             entry = subject.find(space_id, entry_id)
