@@ -1,7 +1,7 @@
 # Change Log
 =======
 
-## Master
+## 0.7.1
 ### Fixed
 * `fields_for_query` should only skip `nil` values [#63](https://github.com/contentful/contentful-management.rb/issues/63), [#64](https://github.com/contentful/contentful-management.rb/pull/64)
 * Reinstate support for simple assignments to fields [#61](https://github.com/contentful/contentful-management.rb/issues/61), [#62](https://github.com/contentful/contentful-management.rb/pull/62)
