@@ -1,6 +1,11 @@
 # Change Log
 =======
 
+## Master
+### Fixed
+* Ensure that `Validation.type` returns correct value [#59](https://github.com/contentful/contentful-management.rb/issues/59), [#66](https://github.com/contentful/contentful-management.rb/issues/66)
+
+
 ## 0.7.1
 ### Fixed
 * `fields_for_query` should only skip `nil` values [#63](https://github.com/contentful/contentful-management.rb/issues/63), [#64](https://github.com/contentful/contentful-management.rb/pull/64)
