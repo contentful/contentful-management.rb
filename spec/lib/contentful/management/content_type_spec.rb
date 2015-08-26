@@ -578,6 +578,7 @@ module Contentful
               content_type.fields.create(id: 'valid', name: 'Valid', type: 'Text', validations: [validation_size])
               expect(content_type.fields[2].validations.last.properties[:size]['min']).to eq 10
               expect(content_type.fields[2].validations.last.properties[:size]['max']).to eq 15
+              expect(content_type.fields[2].validations.last.type).to be :size
             end
           end
         end
@@ -591,6 +592,7 @@ module Contentful
               content_type.fields.create(id: 'number', name: 'Number', type: 'Number', validations: [validation_range])
               expect(content_type.fields.first.validations.first.properties[:range]['min']).to eq 30
               expect(content_type.fields.first.validations.first.properties[:range]['max']).to eq 100
+              expect(content_type.fields.first.validations.first.type).to be :range
             end
           end
           it 'change `range` validation to existing field' do
@@ -613,6 +615,7 @@ module Contentful
               validation_present.present = true
               content_type.fields.create(id: 'present', name: 'Present', type: 'Text', validations: [validation_present])
               expect(content_type.fields.last.validations.last.properties[:present]).to be_truthy
+              expect(content_type.fields.last.validations.last.type).to be :present
             end
           end
         end
@@ -625,6 +628,7 @@ module Contentful
               content_type.fields.create(id: 'text', name: 'Text', type: 'Text', validations: [validation_regexp])
               expect(content_type.fields.last.validations.first.properties[:regexp]['pattern']).to eq '^such'
               expect(content_type.fields.last.validations.first.properties[:regexp]['flags']).to eq 'im'
+              expect(content_type.fields.last.validations.first.type).to eq :regexp
             end
           end
         end
@@ -636,6 +640,7 @@ module Contentful
               validation_link_content_type.link_content_type = ['post_content_type']
               content_type.fields.create(id: 'entries', validations: [validation_link_content_type])
               expect(content_type.fields[1].validations.first.properties[:linkContentType]).to eq %w( post_content_type )
+              expect(content_type.fields[1].validations.first.type).to be :linkContentType
             end
           end
         end
@@ -647,6 +652,7 @@ module Contentful
               validation_link_mimetype_group.link_mimetype_group = 'image'
               content_type.fields.create(id: 'entries', validations: [validation_link_mimetype_group])
               expect(content_type.fields[1].validations.first.properties[:linkMimetypeGroup]).to eq 'image'
+              expect(content_type.fields[1].validations.first.type).to be :linkMimetypeGroup
             end
           end
         end
@@ -658,6 +664,7 @@ module Contentful
               validation_link_mimetype_group.link_field = true
               content_type.fields.create(id: 'link_field', validations: [validation_link_mimetype_group])
               expect(content_type.fields.last.validations.first.properties[:linkField]).to be_truthy
+              expect(content_type.fields.last.validations.first.type).to be :linkField
             end
           end
         end

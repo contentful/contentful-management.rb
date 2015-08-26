@@ -24,8 +24,9 @@ module Contentful
 
       # Returns type of validation
       def type
-        properties.keys.each do |type|
-          return type if !self.send(Support.snakify(type)).nil?
+        properties.keys.reject { |key| key == :validations }.each do |type|
+          value = self.send(Support.snakify(type))
+          return type if !value.nil? && value
         end
       end
 
