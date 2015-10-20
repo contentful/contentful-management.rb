@@ -4,6 +4,7 @@
 ## Master
 ### Fixed
 * Ensure that `Validation.type` returns correct value [#59](https://github.com/contentful/contentful-management.rb/issues/59), [#66](https://github.com/contentful/contentful-management.rb/issues/66)
+* Ensure that already existing `Space` returns correct `Locale` for `#default_locale` [#60](https://github.com/contentful/contentful-management.rb/issues/60)
 
 
 ## 0.7.1
