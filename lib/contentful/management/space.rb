@@ -23,6 +23,8 @@ module Contentful
       property :organization, :string
       property :locales, Locale
 
+      attr_accessor :found_locale
+
       # Gets a collection of spaces.
       # Returns a Contentful::Management::Array of Contentful::Management::Space.
       def self.all
@@ -59,7 +61,9 @@ module Contentful
         )
         response = request.post
         result = ResourceBuilder.new(response, {}, {})
-        result.run
+        space = result.run
+        space.found_locale = default_locale if space.is_a? Space
+        space
       end
 
       # Updates a space.
@@ -134,6 +138,19 @@ module Contentful
       # See README for details.
       def webhooks
         SpaceWebhookMethodsFactory.new(self)
+      end
+
+      # Retrieves Default Locale for current Space and leaves it cached
+      def default_locale
+        self.found_locale ||= find_locale
+      end
+
+      # Finds Default Locale Code for current Space
+      # This request makes an API call to the Locale endpoint
+      def find_locale
+        locale = ::Contentful::Management::Locale.all(self.id).detect { |l| l.default }
+        return locale.code unless locale.nil?
+        @default_locale
       end
     end
   end

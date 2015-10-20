@@ -61,6 +61,21 @@ module Contentful
           end
         end
       end
+
+      describe '#default' do
+        it 'is false for non default' do
+          vcr('locale/find_not_default') do
+            locale = subject.find(space_id, locale_id)
+            expect(locale.default).to be_falsey
+          end
+        end
+        it 'is true for default' do
+          vcr('locale/find_default') do
+            locale = subject.find(space_id, locale_id)
+            expect(locale.default).to be_truthy
+          end
+        end
+      end
     end
   end
 end
