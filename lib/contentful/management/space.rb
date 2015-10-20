@@ -150,7 +150,9 @@ module Contentful
       # Finds Default Locale Code for current Space
       # This request makes an API call to the Locale endpoint
       def find_locale
-        ::Contentful::Management::Locale.all(self.id).first.code
+        locale = ::Contentful::Management::Locale.all(self.id).detect { |l| l.default }
+        return locale.code unless locale.nil?
+        @default_locale
       end
     end
   end

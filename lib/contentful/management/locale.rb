@@ -13,6 +13,7 @@ module Contentful
       property :contentManagementApi, :boolean
       property :contentDeliveryApi, :boolean
       property :publish, :boolean
+      property :default, :boolean
 
       # Gets a collection of locales.
       # Takes an id of a space.
