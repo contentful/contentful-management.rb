@@ -9,7 +9,6 @@ module Contentful
       property :in, :array
       property :size, :hash
       property :present, :boolean
-      property :validations, Validation
       property :regexp, :hash
       property :linkContentType, :array
       property :range, :hash
