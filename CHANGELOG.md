@@ -4,6 +4,7 @@
 ## Master
 ### Fixed
 * Ensure that `Validation.type` returns correct value [#59](https://github.com/contentful/contentful-management.rb/issues/59), [#66](https://github.com/contentful/contentful-management.rb/issues/66)
+* Remove unintended nested `Validation` [#49](https://github.com/contentful/contentful-management.rb/issues/49)
 
 
 ## 0.7.1
