@@ -38,7 +38,7 @@ module Contentful
           end
         end
         it 'returns space for a given key' do
-          vcr('space/find') do
+          vcr('space/locale/find') do
             space = subject.find(space_id)
             expect(space.id).to eql space_id
             expect(space.default_locale).to eql 'en-US'
@@ -148,6 +148,15 @@ module Contentful
           vcr('space/content_type/all') do
             content_types = subject.find(space_id).content_types.all
             expect(content_types).to be_kind_of Contentful::Management::Array
+          end
+        end
+      end
+
+      describe '#default_locale' do
+        it 'can set default locales from space locales on already existing spaces' do
+          vcr('space/locale/find_other_locale') do
+            space = subject.find(space_id)
+            expect(space.default_locale).to eql 'de-DE'
           end
         end
       end
