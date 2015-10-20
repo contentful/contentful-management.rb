@@ -23,7 +23,7 @@ module Contentful
       property :organization, :string
       property :locales, Locale
 
-      attr_accessor :found, :found_locale
+      attr_accessor :found_locale
 
       # Gets a collection of spaces.
       # Returns a Contentful::Management::Array of Contentful::Management::Space.
@@ -32,9 +32,6 @@ module Contentful
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         spaces = result.run
-        spaces.each do |space|
-          space.found = true
-        end
         client.update_dynamic_entry_cache_for_spaces!(spaces)
         spaces
       end
@@ -47,7 +44,6 @@ module Contentful
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         space = result.run
-        space.found = true if space.is_a? Space
         client.update_dynamic_entry_cache_for_space!(space) if space.is_a? Space
         space
       end
@@ -65,7 +61,9 @@ module Contentful
         )
         response = request.post
         result = ResourceBuilder.new(response, {}, {})
-        result.run
+        space = result.run
+        space.found_locale = default_locale if space.is_a? Space
+        space
       end
 
       # Updates a space.
@@ -144,7 +142,7 @@ module Contentful
 
       # Retrieves Default Locale for current Space and leaves it cached
       def default_locale
-        self.found_locale ||= self.found ? find_locale : @default_locale
+        self.found_locale ||= find_locale
       end
 
       # Finds Default Locale Code for current Space
