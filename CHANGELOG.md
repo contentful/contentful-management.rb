@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Fixed
+* Field names are no longer dependent on being present on `default_locale` [#70](https://github.com/contentful/contentful-management.rb/issues/70)
 
 ## 0.7.2
 ### Fixed

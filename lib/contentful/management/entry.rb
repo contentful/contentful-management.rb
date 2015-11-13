@@ -192,12 +192,17 @@ module Contentful
       # Returns a hash of existing fields.
       def fields_for_query
         raw_fields = instance_variable_get(:@fields)
-        fields_names = raw_fields.first[1].keys
+        fields_names = flatten_field_names(raw_fields)
         fields_names.each_with_object({}) do |field_name, results|
           results[field_name] = raw_fields.each_with_object({}) do |(locale, fields), field_results|
             field_results[locale] = parse_update_attribute(fields[field_name])
           end
         end
+      end
+
+      def flatten_field_names(fields)
+        without_locales = fields.map { |k,v| v }
+        without_locales.map(&:keys).flatten.uniq
       end
 
       def fields_from_attributes(attributes)
