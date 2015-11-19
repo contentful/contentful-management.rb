@@ -345,6 +345,15 @@ module Contentful
             expect(publish.error[:message]).to eq 'You have exceeded the rate limit of the Organization this Space belongs to by making too many API requests within a short timespan. Please wait a moment before trying the request again.'
           end
         end
+
+        it 'with just an id' do
+          vcr('entry/create_with_just_id') do
+            space = Contentful::Management::Space.find('bbukbffokvih')
+            entry = space.content_types.all.first.entries.create({'id' => 'yol'})
+            entry.save
+            expect(entry).to be_a Contentful::Management::Entry
+          end
+        end
       end
 
       describe '#update' do
