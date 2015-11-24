@@ -710,6 +710,25 @@ module Contentful
         end
       end
 
+      describe 'issues' do
+        describe 'handles multiple locales even when they are not all defined for the default locale - #70' do
+          it 'merges all present locales' do
+            vcr('entry/issue_70') {
+              space = Contentful::Management::Space.find('9sh5dtmfyzhj')
+
+              entry_non_default_locale = space.entries.find('1PdCkb5maYgqsSUCOweseM')
+
+              expect(entry_non_default_locale.name_with_locales).to match({"de-DE" => nil, "es" => "Futbolista"})
+              expect(entry_non_default_locale.non_localized_with_locales).to match({"de-DE" => "baz", "es" => nil})
+
+              entry_with_all_locales = space.entries.find('1QKkNRf9AEW2wqwWowgscs')
+
+              expect(entry_with_all_locales.name_with_locales).to match({"de-DE" => "Junge", "en-US" => "Boy", "es" => "Chico"})
+              expect(entry_with_all_locales.non_localized_with_locales).to match({"de-DE" => "foobar", "en-US" => nil, "es" => nil})
+            }
+          end
+        end
+      end
     end
   end
 end
