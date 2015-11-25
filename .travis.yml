@@ -7,3 +7,6 @@ rvm:
   - jruby-19mode
 
 script: bundle exec rake spec
+notifications:
+  slack:
+    secure: P+BWOt+sKPUlIwxUMaD7o4bVG19nIsedyv9D1MCBJELKxTYkXOyJECSNw1f5SDf9z0n4lKhfp8SY0dVigvxdUBd9/wsGqRZMMI2sykDJ8E85cYsUb8corEnIgQtwwzkAzWzhCbmWrZe39ai1Sr5ET/7bdEJ7SXIKbFS350SOn9s=
