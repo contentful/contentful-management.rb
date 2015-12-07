@@ -24,6 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
 
   spec.add_development_dependency 'rspec', '~> 3'
+  spec.add_development_dependency 'guard'
+  spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'rspec-its'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'reek', '~> 2', '>= 2.0.4'

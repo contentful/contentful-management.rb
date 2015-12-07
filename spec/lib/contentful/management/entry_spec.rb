@@ -736,6 +736,28 @@ module Contentful
               expect(entry_with_all_locales.non_localized_with_locales).to match({"de-DE" => "foobar", "en-US" => nil, "es" => nil})
             }
           end
+
+          it 'can save with multiple locales assigned - Issues/#73' do
+            vcr('entry/issue_73') {
+              begin
+                client.configuration[:default_locale] = 'en-GB'
+                content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                new_entry = content_type.entries.create(id: 'hello-world')
+
+                new_entry.name = 'Hello World!'
+                new_entry.locale = 'en-GB'
+                new_entry.value_with_locales = {'en-GB'=>'hello world', 'es-ES'=>'hola mundo'}
+
+                res = new_entry.save
+
+                expect(res.respond_to?(:error)).to be_falsey
+                expect(res.is_a?(Contentful::Management::DynamicEntry)).to be_truthy
+                expect(res.value_with_locales).to match('en-GB' => 'hello world', 'es-ES' => 'hola mundo')
+              ensure
+                new_entry.destroy
+              end
+            }
+          end
         end
       end
     end
