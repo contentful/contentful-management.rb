@@ -758,6 +758,54 @@ module Contentful
               end
             }
           end
+
+          describe 'it can properly assign, save and publish - #61' do
+            it 'on a previously empty field' do
+              vcr('entry/issue_61.1') {
+                begin
+                  client.configuration[:default_locale] = 'en-GB'
+                  content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                  new_entry = content_type.entries.create(id: 'hello-world', value: 'hello')
+
+                  expect(new_entry.value).to eq 'hello'
+
+                  new_entry.value = 'goodbye'
+
+                  new_entry.save
+                  new_entry.publish
+
+                  expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+
+                  expect(expected_entry.value).to eq 'goodbye'
+                ensure
+                  expected_entry.destroy
+                end
+              }
+            end
+
+            it 'on an already populated field' do
+              vcr('entry/issue_61.2') {
+                begin
+                  client.configuration[:default_locale] = 'en-GB'
+                  content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                  new_entry = content_type.entries.create(id: 'hello-world')
+
+                  new_entry.value = 'goodbye'
+
+                  new_entry.save
+                  new_entry.publish
+
+                  expect(new_entry.value).to eq 'goodbye'
+
+                  expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+
+                  expect(expected_entry.value).to eq 'goodbye'
+                ensure
+                  new_entry.destroy
+                end
+              }
+            end
+          end
         end
       end
     end
