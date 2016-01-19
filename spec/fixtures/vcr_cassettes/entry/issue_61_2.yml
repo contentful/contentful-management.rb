@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Mon, 18 Jan 2016 23:21:50 GMT
+      - Tue, 19 Jan 2016 13:48:56 GMT
       Etag:
       - '"720d932d152cc930127c0ca782759540"'
       Server:
@@ -49,7 +49,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:43KRiyOXpeEEs4aMCcOqIw
+      - content-api:5g04m3nGJ2kuQg86coQMa0
       X-Powered-By:
       - Express
       Content-Length:
@@ -118,10 +118,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 18 Jan 2016 23:21:50 GMT
+  recorded_at: Tue, 19 Jan 2016 13:48:52 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
     body:
       encoding: UTF-8
       string: '{"fields":{}}'
@@ -158,9 +158,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Mon, 18 Jan 2016 23:21:51 GMT
+      - Tue, 19 Jan 2016 13:48:57 GMT
       Etag:
-      - '"3e309f9fc77e070af5f266c1e13f1e47"'
+      - '"ba73976f643f0e88d731b574a5a7b2dd"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -168,11 +168,11 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:5ZHDeDSv60iEiosi2USEcs
+      - content-api:4xOxu9q6Yw0A8mKI6M0KMU
       X-Powered-By:
       - Express
       Content-Length:
-      - '730'
+      - '728'
       Connection:
       - Close
     body:
@@ -181,10 +181,10 @@ http_interactions:
         {
           "fields": {},
           "sys": {
-            "id": "hello-world",
+            "id": "issue61_2",
             "type": "Entry",
             "version": 1,
-            "createdAt": "2016-01-18T23:21:51.348Z",
+            "createdAt": "2016-01-19T13:48:57.157Z",
             "createdBy": {
               "sys": {
                 "type": "Link",
@@ -206,7 +206,7 @@ http_interactions:
                 "id": "someType"
               }
             },
-            "updatedAt": "2016-01-18T23:21:51.348Z",
+            "updatedAt": "2016-01-19T13:48:57.157Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -217,10 +217,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 18 Jan 2016 23:21:51 GMT
+  recorded_at: Tue, 19 Jan 2016 13:48:53 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
     body:
       encoding: UTF-8
       string: '{"fields":{"value":{"en-GB":"goodbye"}}}'
@@ -257,9 +257,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Mon, 18 Jan 2016 23:21:52 GMT
+      - Tue, 19 Jan 2016 13:48:58 GMT
       Etag:
-      - '"ffc9604c4e563a10b42f2f2827dbc61e"'
+      - '"8d8329463f1534720d14fe451ca319cc"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -267,11 +267,11 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:4ZBpGqvATKO4Mwq84CWKkI
+      - content-api:2lM2dipWsAocskKicuksgw
       X-Powered-By:
       - Express
       Content-Length:
-      - '779'
+      - '777'
       Connection:
       - Close
     body:
@@ -284,9 +284,9 @@ http_interactions:
             }
           },
           "sys": {
-            "id": "hello-world",
+            "id": "issue61_2",
             "type": "Entry",
-            "createdAt": "2016-01-18T23:21:51.348Z",
+            "createdAt": "2016-01-19T13:48:57.157Z",
             "createdBy": {
               "sys": {
                 "type": "Link",
@@ -309,7 +309,7 @@ http_interactions:
               }
             },
             "version": 2,
-            "updatedAt": "2016-01-18T23:21:52.310Z",
+            "updatedAt": "2016-01-19T13:48:58.113Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -320,10 +320,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 18 Jan 2016 23:21:52 GMT
+  recorded_at: Tue, 19 Jan 2016 13:48:54 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2/published
     body:
       encoding: US-ASCII
       string: ''
@@ -362,9 +362,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Mon, 18 Jan 2016 23:21:53 GMT
+      - Tue, 19 Jan 2016 13:48:59 GMT
       Etag:
-      - '"a9b224d34ac6a5d112e2ee427a65492b"'
+      - '"da3eeb59cf859b45220ed5a4c1487f70"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -372,11 +372,11 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:4KPy58SUCs6g8iYiyKsA0u
+      - content-api:3dJqJVg60MGcoGSKgyoiio
       X-Powered-By:
       - Express
       Content-Length:
-      - '1074'
+      - '1072'
       Connection:
       - Close
     body:
@@ -389,9 +389,9 @@ http_interactions:
             }
           },
           "sys": {
-            "id": "hello-world",
+            "id": "issue61_2",
             "type": "Entry",
-            "createdAt": "2016-01-18T23:21:51.348Z",
+            "createdAt": "2016-01-19T13:48:57.157Z",
             "createdBy": {
               "sys": {
                 "type": "Link",
@@ -414,7 +414,7 @@ http_interactions:
               }
             },
             "version": 3,
-            "updatedAt": "2016-01-18T23:21:53.044Z",
+            "updatedAt": "2016-01-19T13:48:58.834Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -422,9 +422,9 @@ http_interactions:
                 "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "firstPublishedAt": "2016-01-18T23:21:53.044Z",
+            "firstPublishedAt": "2016-01-19T13:48:58.834Z",
             "publishedCounter": 1,
-            "publishedAt": "2016-01-18T23:21:53.044Z",
+            "publishedAt": "2016-01-19T13:48:58.834Z",
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -436,10 +436,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 18 Jan 2016 23:21:53 GMT
+  recorded_at: Tue, 19 Jan 2016 13:48:55 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
     body:
       encoding: US-ASCII
       string: ''
@@ -476,9 +476,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Mon, 18 Jan 2016 23:21:54 GMT
+      - Tue, 19 Jan 2016 13:48:59 GMT
       Etag:
-      - '"a511fa6f429a2afaff84ce7c07ccbaad"'
+      - '"cb94cdb57667fe822a9bde0c28d12afd"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -486,11 +486,11 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:15vj6S2eXkaGmUSIEe2CeO
+      - content-api:658wf6Hvvaym08aOiGCyWo
       X-Powered-By:
       - Express
       Content-Length:
-      - '1074'
+      - '1072'
       Connection:
       - Close
     body:
@@ -503,9 +503,9 @@ http_interactions:
             }
           },
           "sys": {
-            "id": "hello-world",
+            "id": "issue61_2",
             "type": "Entry",
-            "createdAt": "2016-01-18T23:21:51.348Z",
+            "createdAt": "2016-01-19T13:48:57.157Z",
             "createdBy": {
               "sys": {
                 "type": "Link",
@@ -527,9 +527,9 @@ http_interactions:
                 "id": "someType"
               }
             },
-            "firstPublishedAt": "2016-01-18T23:21:53.044Z",
+            "firstPublishedAt": "2016-01-19T13:48:58.834Z",
             "publishedCounter": 1,
-            "publishedAt": "2016-01-18T23:21:53.044Z",
+            "publishedAt": "2016-01-19T13:48:58.834Z",
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -539,7 +539,7 @@ http_interactions:
             },
             "publishedVersion": 2,
             "version": 3,
-            "updatedAt": "2016-01-18T23:21:53.051Z",
+            "updatedAt": "2016-01-19T13:48:58.853Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -550,10 +550,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 18 Jan 2016 23:21:54 GMT
+  recorded_at: Tue, 19 Jan 2016 13:48:55 GMT
 - request:
     method: delete
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
     body:
       encoding: US-ASCII
       string: ''
@@ -588,7 +588,7 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Mon, 18 Jan 2016 23:21:54 GMT
+      - Tue, 19 Jan 2016 13:49:00 GMT
       Server:
       - nginx
       X-Powered-By:
@@ -606,8 +606,8 @@ http_interactions:
             "id": "BadRequest"
           },
           "message": "Cannot delete published",
-          "requestId": "content-api:5DCoOyayf6Wkc2YQ2SSCWQ"
+          "requestId": "content-api:2w3I0aMNrO2oo8sAmiUAcK"
         }
     http_version: 
-  recorded_at: Mon, 18 Jan 2016 23:21:55 GMT
+  recorded_at: Tue, 19 Jan 2016 13:48:56 GMT
 recorded_with: VCR 2.9.3

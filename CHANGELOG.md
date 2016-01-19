@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Added
+* Added `:dynamic_entries` parameter on Client initialization
 
 ## 0.7.3
 ### Fixed

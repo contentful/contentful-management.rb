@@ -407,6 +407,11 @@ Checking if the entry is published:
 my_entry.published?
 ```
 
+> Entries created with *empty fields*, will not return those fields in the response, therefore making those fields non-modifiable for that particular entry.
+> To allow for modification of those fields:
+>   * Enable [Content Type Cache](#content-type-cache) at Client Instantiation time
+>   * Query Entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
+
 ### Webhooks
 
 Retrieving all webhooks from the space:
@@ -526,7 +531,7 @@ content_type.fields.create(id: 'entry', validations: [validation_link_field])
 blog_space.entries.all(limit: 5).next_page
 blog_space.assets.all(limit: 5).next_page
 blog_space.entries.all(limit: 5).next_page
-``` 
+```
 
 ## Logging
 
@@ -536,6 +541,7 @@ Logging is disabled by default, it can be enabled by setting a logger instance a
 client = Contentful::Management::Client.new('access_token', logger: logger_instance, log_level: Logger::DEBUG)
 ```
 
+
 Example loggers:
 
 ```ruby
@@ -543,15 +549,29 @@ Rails.logger
 Logger.new('logfile.log')
 ```
 
+
 The default severity is set to INFO and logs only the request attributes (headers, parameters and url). Setting it to DEBUG will also log the raw JSON response.
 
 ## Raise Errors
 
-If ```:raise_errors``` is set to true, an Exception will be raised in case of an error. The default is false, in this case a ```Contentful::Management::Error``` object will be returned.
+If `:raise_errors` is set to true, an Exception will be raised in case of an error. The default is false, in this case a ```Contentful::Management::Error``` object will be returned.
 
 ```ruby
 client = Contentful::Management::Client.new('access_token', raise_errors: true)
 ```
+
+## Content Type Cache
+
+If you want to modify Entries created on the UI via the Client, you might want to have the Content Type Cache enabled for your spaces to modify.
+This enables the Client to know all fields of an Entry regardless of them being unpopulated.
+
+To enable this, in your Client instantiation do:
+
+```ruby
+Contentful::Management::Client.new(token, dynamic_entries: ['my_space_id'])
+```
+
+You can enable the Cache for as many Spaces as you want.
 
 ## Contributing
 

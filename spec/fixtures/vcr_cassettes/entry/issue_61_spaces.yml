@@ -1,0 +1,349 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/0.7.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 19 Jan 2016 14:18:07 GMT
+      Etag:
+      - '"49419e44c9c95cc7f3fa23aa372f164f"'
+      Server:
+      - nginx
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - b89-1515987497
+      Content-Length:
+      - '462'
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: |+
+        {
+          "sys":{
+            "type":"Space",
+            "id":"u2viwgfeal0o",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2015-12-07T13:29:36Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2015-12-07T13:29:36Z"
+          },
+          "name":"management.rb - #73"
+        }
+
+    http_version: 
+  recorded_at: Tue, 19 Jan 2016 14:18:03 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/0.7.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - u2viwgfeal0o
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 19 Jan 2016 14:18:08 GMT
+      Etag:
+      - '"c95db41ce3f41bfc50ff08c04e13a4e2"'
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - content-api:4Er60Lpo8g8IAI06UEe4Ag
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '1504'
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "SomeType",
+              "fields": [
+                {
+                  "name": "name",
+                  "id": "name",
+                  "type": "Symbol"
+                },
+                {
+                  "name": "value",
+                  "id": "value",
+                  "type": "Symbol",
+                  "localized": true,
+                  "validations": []
+                }
+              ],
+              "description": "",
+              "displayField": "name",
+              "sys": {
+                "id": "someType",
+                "type": "ContentType",
+                "createdAt": "2015-12-07T13:32:02.610Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "u2viwgfeal0o"
+                  }
+                },
+                "firstPublishedAt": "2015-12-07T13:32:03.012Z",
+                "publishedCounter": 2,
+                "publishedAt": "2015-12-07T13:36:35.994Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 4,
+                "version": 5,
+                "updatedAt": "2015-12-07T13:36:36.026Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 19 Jan 2016 14:18:04 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/0.7.3
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - u2viwgfeal0o
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 19 Jan 2016 14:18:09 GMT
+      Etag:
+      - '"c95db41ce3f41bfc50ff08c04e13a4e2"'
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - content-api:1SXnQwLCBCS8OC2EmCsQuS
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '1504'
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "name": "SomeType",
+              "fields": [
+                {
+                  "name": "name",
+                  "id": "name",
+                  "type": "Symbol"
+                },
+                {
+                  "name": "value",
+                  "id": "value",
+                  "type": "Symbol",
+                  "localized": true,
+                  "validations": []
+                }
+              ],
+              "description": "",
+              "displayField": "name",
+              "sys": {
+                "id": "someType",
+                "type": "ContentType",
+                "createdAt": "2015-12-07T13:32:02.610Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "u2viwgfeal0o"
+                  }
+                },
+                "firstPublishedAt": "2015-12-07T13:32:03.012Z",
+                "publishedCounter": 2,
+                "publishedAt": "2015-12-07T13:36:35.994Z",
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 4,
+                "version": 5,
+                "updatedAt": "2015-12-07T13:36:36.026Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 19 Jan 2016 14:18:05 GMT
+recorded_with: VCR 2.9.3
