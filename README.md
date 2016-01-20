@@ -407,8 +407,9 @@ Checking if the entry is published:
 my_entry.published?
 ```
 
-> Entries created with *empty fields*, will not return those fields in the response, therefore making those fields non-modifiable for that particular entry.
-> To allow for modification of those fields:
+> Entries created with *empty fields*, will not return those fields in the response. Therefore, Entries that don't have Cache enabled, will need to
+> make an extra request to fetch the Content Type and fill the missing fields.
+> To allow for Content Type Caching:
 >   * Enable [Content Type Cache](#content-type-cache) at Client Instantiation time
 >   * Query Entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
 
@@ -562,9 +563,7 @@ client = Contentful::Management::Client.new('access_token', raise_errors: true)
 
 ## Content Type Cache
 
-If you want to modify Entries created on the UI via the Client, you might want to have the Content Type Cache enabled for your spaces to modify.
-This enables the Client to know all fields of an Entry regardless of them being unpopulated.
-
+This allows for fetching Content Types for your Space at Client instantiation time, which prevents extra requests per Entry.
 To enable this, in your Client instantiation do:
 
 ```ruby

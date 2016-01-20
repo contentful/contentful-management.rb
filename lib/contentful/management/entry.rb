@@ -1,6 +1,7 @@
 require_relative 'resource'
 require_relative 'resource/entry_fields'
 require_relative 'resource/fields'
+require_relative 'resource/field_aware'
 
 module Contentful
   module Management
@@ -239,6 +240,24 @@ module Contentful
           else
             attribute
         end
+      end
+
+      def method_missing(name, *args, &block)
+        if content_type.nil?
+          fetch_content_type
+
+          Contentful::Management::Resource::FieldAware.create_fields_for_content_type(self)
+
+          if self.respond_to? name
+            return self.send(name, *args, &block)
+          end
+        end
+
+        raise NameError.new("undefined local variable or method `#{name}' for #{self.class}:#{self.sys[:id]}", name)
+      end
+
+      def fetch_content_type
+        @content_type ||= ::Contentful::Management::ContentType.find(space.id, sys[:contentType].id)
       end
 
       def self.hash_with_link_object(type, attribute)
