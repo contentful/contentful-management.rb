@@ -38,14 +38,14 @@ module Contentful
             end
             define_method "#{ accessor_name }=" do |value|
               if localized_or_default_locale(field, locale)
-                  @fields[locale] = {} unless @fields[locale]
+                  @fields[locale] ||= {}
                   @fields[locale][field.id.to_sym] = value
               end
             end
             define_method "#{ accessor_name }_with_locales=" do |values|
               values.each do |locale, value|
                 if localized_or_default_locale(field, locale)
-                  @fields[locale] = {} unless @fields[locale]
+                  @fields[locale] ||= {}
                   @fields[locale][field.id.to_sym] = value
                 end
               end

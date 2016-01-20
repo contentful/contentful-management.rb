@@ -1,6 +1,9 @@
 # Change Log
 
 ## Master
+### Added
+* Added `:dynamic_entries` parameter on Client initialization
+* Added `FieldAware` for Entries that don't have complete fields
 
 ## 0.7.3
 ### Fixed

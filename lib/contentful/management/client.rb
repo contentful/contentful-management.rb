@@ -26,7 +26,8 @@ module Contentful
           gzip_encoded: false,
           logger: false,
           log_level: Logger::INFO,
-          raise_errors: false
+          raise_errors: false,
+          dynamic_entries: []
       }
 
       def initialize(access_token = nil, configuration = {})
@@ -35,11 +36,19 @@ module Contentful
         @access_token = access_token
         @dynamic_entry_cache = {}
         Thread.current[:client] = self
+        update_all_dynamic_entry_cache!
       end
 
       def setup_logger
         @logger = configuration[:logger]
         logger.level = configuration[:log_level] if logger
+      end
+
+      def update_all_dynamic_entry_cache!
+        if !configuration[:dynamic_entries].empty?
+          spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(space_id) }
+          update_dynamic_entry_cache_for_spaces!(spaces)
+        end
       end
 
       def update_dynamic_entry_cache_for_spaces!(spaces)
@@ -55,14 +64,9 @@ module Contentful
       end
 
       def update_dynamic_entry_cache!(content_types)
-        @dynamic_entry_cache = Hash[
-            content_types.map do |ct|
-              [
-                  ct.id.to_sym,
-                  DynamicEntry.create(ct)
-              ]
-            end
-        ]
+        content_types.each do |ct|
+          @dynamic_entry_cache[ct.id.to_sym] = DynamicEntry.create(ct)
+        end
       end
 
       def api_version

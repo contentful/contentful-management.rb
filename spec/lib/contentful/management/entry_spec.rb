@@ -758,6 +758,207 @@ module Contentful
               end
             }
           end
+
+          describe 'it can properly assign, save and publish - #61' do
+            describe 'on an entry created through the api' do
+              describe 'before refetch' do
+                it 'on an already populated field' do
+                  vcr('entry/issue_61.1') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      new_entry = content_type.entries.create(id: 'issue61_1', value: 'hello')
+
+                      expect(new_entry.value).to eq 'hello'
+
+                      new_entry.value = 'goodbye'
+
+                      new_entry.save
+                      new_entry.publish
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      new_entry.destroy
+                    end
+                  }
+                end
+
+                it 'on a previously empty field' do
+                  vcr('entry/issue_61.2') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      new_entry = content_type.entries.create(id: 'issue61_2')
+
+                      new_entry.value = 'goodbye'
+
+                      new_entry.save
+                      new_entry.publish
+
+                      expect(new_entry.value).to eq 'goodbye'
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      new_entry.destroy
+                    end
+                  }
+                end
+              end
+
+              describe 'after refetch' do
+                it 'on an already populated field' do
+                  vcr('entry/issue_61.3') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      new_entry = content_type.entries.create(id: 'issue61_3', value: 'hello')
+
+                      expect(new_entry.value).to eq 'hello'
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+
+                      expected_entry.value = 'goodbye'
+
+                      expected_entry.save
+                      expected_entry.publish
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      new_entry.destroy
+                    end
+                  }
+                end
+
+                it 'on a previously empty field' do
+                  vcr('entry/issue_61.4') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      new_entry = content_type.entries.create(id: 'issue61_4')
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+
+                      expected_entry.value = 'goodbye'
+
+                      expected_entry.save
+                      expected_entry.publish
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      new_entry.destroy
+                    end
+                  }
+                end
+              end
+            end
+
+            describe 'on an entry created through the ui' do
+              describe 'with dynamic_entries' do
+                let!(:client) { vcr('entry/issue_61_spaces') { Client.new(token, dynamic_entries: ['u2viwgfeal0o']) } }
+                it 'on an already populated field' do
+                  vcr('entry/issue_61.5') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
+
+                      expect(expected_entry.value).to eq 'hello'
+
+                      expected_entry.value = 'goodbye'
+
+                      expected_entry.save
+                      expected_entry.publish
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      expected_entry.value = 'hello'
+
+                      expected_entry.save
+                      expected_entry.publish
+                    end
+                  }
+                end
+
+                it 'on a previously empty field' do
+                  vcr('entry/issue_61.6') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
+
+                      expect(expected_entry.value).to eq nil
+
+                      expected_entry.value = 'goodbye'
+
+                      expected_entry.save
+                      expected_entry.publish
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      expected_entry.value = nil
+
+                      expected_entry.save
+                      expected_entry.publish
+                    end
+                  }
+                end
+              end
+            end
+
+            describe 'without dynamic entries' do
+                it 'on an already populated field' do
+                  vcr('entry/issue_61.7') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
+
+                      expect(expected_entry.value).to eq 'hello'
+
+                      expected_entry.value = 'goodbye'
+
+                      expected_entry.save
+                      expected_entry.publish
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      expected_entry.value = 'hello'
+
+                      expected_entry.save
+                      expected_entry.publish
+                    end
+                  }
+                end
+
+                it 'on a previously empty field' do
+                  vcr('entry/issue_61.8') {
+                    begin
+                      client.configuration[:default_locale] = 'en-GB'
+
+                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
+
+                      expect(expected_entry.value).to eq nil
+
+                      expected_entry.value = 'goodbye'
+
+                      expected_entry.save
+                      expected_entry.publish
+
+                      expect(expected_entry.value).to eq 'goodbye'
+                    ensure
+                      expected_entry.value = nil
+
+                      expected_entry.save
+                      expected_entry.publish
+                    end
+                  }
+                end
+            end
+          end
         end
       end
     end
