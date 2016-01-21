@@ -106,11 +106,15 @@ module Contentful
       # Returns a Contentful::Management::ContentType.
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
+
+        params = attributes.clone
+        params[:fields] = fields
+        params.delete(:id)
+        params = params.delete_if { |k, v| v.nil? }
+
         request = Request.new(
             "/#{ space_id }/content_types/#{ attributes[:id]}",
-            name: attributes.fetch(:name),
-            description: attributes[:description],
-            fields: fields
+            params
         )
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
@@ -135,6 +139,8 @@ module Contentful
         parameters.merge!(name: (attributes[:name] || name))
         parameters.merge!(description: (attributes[:description] || description))
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
+
+        parameters = parameters.delete_if { |k, v| v.nil? }
         request = Request.new(
             "/#{ space.id }/content_types/#{ id }",
             parameters,
