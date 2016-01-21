@@ -720,6 +720,30 @@ module Contentful
           end
         end
       end
+
+      describe 'issues' do
+        it 'content types should be valid on creation - #79' do
+          vcr('content_type/issue_79') {
+            space = Contentful::Management::Space.find('ngtgiva4wofg')
+
+            field = Contentful::Management::Field.new
+            field.id = 'name'
+            field.name = 'name'
+            field.type = 'Symbol'
+
+            content_type = space.content_types.new
+            content_type.id = 'isssue_79_ct'
+            content_type.name = 'Issue 79 CT'
+            content_type.fields = [field]
+            content_type.display_field = 'name'
+
+            content_type.save
+            content_type.activate
+
+            expect(content_type.sys[:version] > 0).to be_truthy
+          }
+        end
+      end
     end
   end
 end

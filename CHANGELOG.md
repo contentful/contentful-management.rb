@@ -5,6 +5,9 @@
 * Added `:dynamic_entries` parameter on Client initialization
 * Added `FieldAware` for Entries that don't have complete fields
 
+### Fixed
+* Fixed `nil` fields on Content Types no longer sent to API [#79](https://github.com/contentful/contentful-management.rb/issues/79)
+
 ## 0.7.3
 ### Fixed
 * Field names are no longer dependent on being present on `default_locale` [#70](https://github.com/contentful/contentful-management.rb/issues/70)
