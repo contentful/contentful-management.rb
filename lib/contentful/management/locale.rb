@@ -71,6 +71,19 @@ module Contentful
         result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
         refresh_data(result.run)
       end
+
+      # Deletes a locale.
+      # Returns true if succeed.
+      def destroy
+        request = Request.new("/#{ space.id }/locales/#{ id }")
+        response = request.delete
+        if response.status == :no_content
+          return true
+        else
+          result = ResourceBuilder.new(response, {}, {})
+          result.run
+        end
+      end
     end
   end
 end

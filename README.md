@@ -199,6 +199,11 @@ Updating a locale
 blog_post_locale.update(name: 'German', code: 'de-DE')
 ```
 
+Destroying a locale
+```ruby
+blog_post_locale.destroy
+```
+
 ### Assets
 
 Retrieving all assets from the space:

@@ -115,6 +115,24 @@ module Contentful
             expect(locale.code).to eq 'es'
           end
         end
+
+        describe '#destroy' do
+          let!(:space_id) { 'bjwq7b86vgmm' }
+          let!(:locale_id) { '63274yOrU0s4XiJlAp1ZMQ' }
+          it 'can destroy locales' do
+            vcr('locale/destroy') do
+              locale = subject.create(space_id, name: 'Spanish (Argentina)', code: 'es-AR')
+
+              expect(subject.find(space_id, locale.id).code).to eq 'es-AR'
+
+              locale.destroy
+
+              error = subject.find(space_id, locale.id)
+
+              expect(error).to be_a Contentful::Management::NotFound
+            end
+          end
+        end
       end
     end
   end
