@@ -76,6 +76,46 @@ module Contentful
           end
         end
       end
+
+      describe '#update' do
+        let!(:space_id) { 'bjwq7b86vgmm' }
+        let!(:locale_id) { '63274yOrU0s4XiJlAp1ZMQ' }
+        it 'can update the locale name' do
+          vcr('locale/update_name') do
+            locale = subject.find(space_id, locale_id)
+            locale.update(name: 'Something')
+
+            locale.reload
+
+            expect(locale.name).to eq 'Something'
+            expect(locale.code).to eq 'en-US'
+          end
+        end
+
+        it 'can update the locale code' do
+          vcr('locale/update_code') do
+            locale = subject.find(space_id, locale_id)
+            locale.update(code: 'es')
+
+            locale.reload
+
+            expect(locale.name).to eq 'U. S. English'
+            expect(locale.code).to eq 'es'
+          end
+        end
+
+        it 'can update both' do
+          vcr('locale/update_both') do
+            locale = subject.find(space_id, locale_id)
+            locale.update(name: 'Spanish', code: 'es')
+
+            locale.reload
+
+            expect(locale.name).to eq 'Spanish'
+            expect(locale.code).to eq 'es'
+          end
+        end
+      end
     end
   end
 end

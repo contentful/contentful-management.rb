@@ -58,9 +58,12 @@ module Contentful
       # Takes a hash with attributes.
       # Returns a Contentful::Management::Locale.
       def update(attributes)
+        parameters = {}
+        attributes.each { |k, v| parameters[k.to_s] = v }
+
         request = Request.new(
             "/#{ space.id }/locales/#{ id }",
-            {'name' => attributes.fetch(:name)},
+            parameters,
             id = nil,
             version: sys[:version]
         )

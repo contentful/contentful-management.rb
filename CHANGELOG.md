@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Fixed
+* Locales can now update `:code` value
 
 ## 0.8.0
 ### Added
