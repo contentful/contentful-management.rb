@@ -7,6 +7,7 @@
 ### Added
 * Added `#destroy` method to Locales
 * Added `ApiKey` class, methods and `Space` associations
+* Added `.all_published` methods for `ContentType`, `Asset` and `Entry`
 
 ## 0.8.0
 ### Added

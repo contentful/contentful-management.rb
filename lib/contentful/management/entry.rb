@@ -29,6 +29,19 @@ module Contentful
         result.run
       end
 
+      # Gets a collection of published entries.
+      # Takes an id of space and hash of parameters with optional content_type_id.
+      # Returns a Contentful::Management::Array of Contentful::Management::Entry.
+      def self.all_published(space_id, parameters = {})
+        request = Request.new(
+            "/#{ space_id }/public/entries",
+            parameters
+        )
+        response = request.get
+        result = ResourceBuilder.new(response, {}, {})
+        result.run
+      end
+
       # Gets a specific entry.
       # Takes an id of space and entry.
       # Returns a Contentful::Management::Entry.

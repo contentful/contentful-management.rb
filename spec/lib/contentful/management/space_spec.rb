@@ -150,6 +150,14 @@ module Contentful
             expect(content_types).to be_kind_of Contentful::Management::Array
           end
         end
+
+        it '.content_types.all_published' do
+          space_id = 'bjwq7b86vgmm'
+          vcr('space/content_type/all_public') do
+            content_types = subject.find(space_id).content_types.all_published
+            expect(content_types).to be_kind_of Contentful::Management::Array
+          end
+        end
       end
 
       describe '#api_keys' do
@@ -301,6 +309,14 @@ module Contentful
           end
         end
 
+        it '#assets.all_published' do
+          space_id = 'bjwq7b86vgmm'
+          vcr('space/asset/all_public') do
+            assets = subject.find(space_id).assets.all_published
+            expect(assets).to be_kind_of Contentful::Management::Array
+          end
+        end
+
         it 'create asset for space' do
           vcr('space/asset/create') do
             file = Contentful::Management::File.new
@@ -362,6 +378,15 @@ module Contentful
         it 'builds a Contentful::Management::Entry object' do
           vcr('space/entry/all') { expect(subject.find(space_id).entries.all.first).to be_kind_of Contentful::Management::Entry }
         end
+
+        it '#entries.all_published' do
+          space_id = 'bjwq7b86vgmm'
+          vcr('space/entry/all_public') do
+            entries = subject.find(space_id).entries.all_published
+            expect(entries).to be_kind_of Contentful::Management::Array
+          end
+        end
+
         it 'return entry for a given key' do
           vcr('space/entry/find') do
             result = subject.find(space_id).entries.find('4Rouux8SoUCKwkyCq2I0E0')

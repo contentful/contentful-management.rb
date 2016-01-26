@@ -46,6 +46,21 @@ module Contentful
         content_types
       end
 
+      # Gets a collection of published content types.
+      # Takes an id of space and an optional hash of query options
+      # Returns a Contentful::Management::Array of Contentful::Management::ContentType.
+      def self.all_published(space_id, query = {})
+        request = Request.new(
+            "/#{ space_id }/public/content_types",
+            query
+        )
+        response = request.get
+        result = ResourceBuilder.new(response, {}, {})
+        content_types = result.run
+        client.update_dynamic_entry_cache!(content_types)
+        content_types
+      end
+
       # Gets a specific entry.
       # Takes an id of space and content type.
       # Returns a Contentful::Management::ContentType.
