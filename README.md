@@ -449,6 +449,25 @@ Destroying webhook:
 blog_post_webhook.destroy
 ```
 
+### Api Keys
+
+Retrieving all api keys from the space:
+
+```ruby
+blog_post_api_keys = blog_space.api_keys.all
+```
+
+Retrieving one api key by the api-key-id from the space:
+
+```ruby
+blog_post_api_key = blog_space.api_keys.find(api_key_id)
+```
+
+Creating an api key
+```ruby
+blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
+```
+
 ## Validations
 
 #### in

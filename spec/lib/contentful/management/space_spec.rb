@@ -152,6 +152,34 @@ module Contentful
         end
       end
 
+      describe '#api_keys' do
+        let!(:space_id) { 'bjwq7b86vgmm' }
+        let(:api_key_id) { '6vbW35TjBTc8FyRTAuXZZe' }
+        let(:api_key_name) { 'ApiKeyForSpace' }
+
+        it '#api_keys.create' do
+          vcr('space/api_key/create') do
+            api_key = subject.find(space_id).api_keys.create(name: api_key_name)
+            expect(api_key).to be_kind_of Contentful::Management::ApiKey
+            expect(api_key.name).to eq api_key_name
+          end
+        end
+        it '#api_keys.find' do
+          vcr('space/api_key/find') do
+            api_key = subject.find(space_id).api_keys.find(api_key_id)
+            expect(api_key).to be_kind_of Contentful::Management::ApiKey
+            expect(api_key.name).to eq 'testKey'
+            expect(api_key.access_token).to eq '833ea085204398499ea424c8ad832f1ae1cac4d64e2cc56db774aff87ef20b33'
+          end
+        end
+        it '#api_keys.all' do
+          vcr('space/api_key/all') do
+            api_keys = subject.find(space_id).api_keys.all
+            expect(api_keys).to be_kind_of Contentful::Management::Array
+          end
+        end
+      end
+
       describe '#default_locale' do
         it 'can set default locales from space locales on already existing spaces' do
           vcr('space/locale/find_other_locale') do
