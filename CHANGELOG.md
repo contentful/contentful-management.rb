@@ -6,6 +6,7 @@
 
 ### Added
 * Added `#destroy` method to Locales
+* Added `ApiKey` class, methods and `Space` associations
 
 ## 0.8.0
 ### Added

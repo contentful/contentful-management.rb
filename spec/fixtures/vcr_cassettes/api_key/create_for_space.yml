@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/bjwq7b86vgmm/api_keys
+    body:
+      encoding: UTF-8
+      string: '{"name":"testLocalCreate","description":"bg"}'
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/0.8.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 26 Jan 2016 13:11:04 GMT
+      Etag:
+      - '"b6d05819f9e0fe1e9b62da6f27ef43df"'
+      Location:
+      - https://api.contentful.com/spaces/bjwq7b86vgmm/api_keys/1nlVhF1rbb6iLWCdm72QVi
+      Server:
+      - nginx
+      Status:
+      - 201 Created
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 0b5-177692491
+      Content-Length:
+      - '911'
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: |+
+        {
+          "sys":{
+            "type":"ApiKey",
+            "id":"1nlVhF1rbb6iLWCdm72QVi",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"bjwq7b86vgmm"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2016-01-26T13:11:03Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2016-01-26T13:11:03Z"
+          },
+          "name":"testLocalCreate",
+          "description":"bg",
+          "accessToken":"b8d6f1bfac699f3eeceb9ee61711d9e1011e7fcbaf6836961e706c3cd49d7751",
+          "policies":[
+            {
+              "effect":"allow",
+              "actions":"all"
+            }
+          ],
+          "preview_api_key":{
+            "sys":{
+              "type":"Link",
+              "linkType":"PreviewApiKey",
+              "id":"1nnt6zK7H3ePdUZkO3NRII"
+            }
+          }
+        }
+
+    http_version: 
+  recorded_at: Tue, 26 Jan 2016 13:11:04 GMT
+recorded_with: VCR 2.9.3

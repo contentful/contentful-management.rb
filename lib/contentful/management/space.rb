@@ -9,6 +9,8 @@ require_relative 'entry'
 require_relative 'space_entry_methods_factory'
 require_relative 'webhook'
 require_relative 'space_webhook_methods_factory'
+require_relative 'api_key'
+require_relative 'space_api_key_methods_factory'
 
 module Contentful
   module Management
@@ -110,6 +112,13 @@ module Contentful
       # See README for details.
       def content_types
         SpaceContentTypeMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of api keys in context of the current space
+      # Allows listing all api keys of space, creating new and finding one by id.
+      # See README for details.
+      def api_keys
+        SpaceApiKeyMethodsFactory.new(self)
       end
 
       # Allows manipulation of locales in context of the current space
