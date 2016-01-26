@@ -1,6 +1,11 @@
 # Change Log
 
 ## Master
+### Fixed
+* Locales can now update `:code` value
+
+### Added
+* Added `#destroy` method to Locales
 
 ## 0.8.0
 ### Added

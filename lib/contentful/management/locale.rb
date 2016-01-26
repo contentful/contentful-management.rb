@@ -58,15 +58,31 @@ module Contentful
       # Takes a hash with attributes.
       # Returns a Contentful::Management::Locale.
       def update(attributes)
+        parameters = {}
+        attributes.each { |k, v| parameters[k.to_s] = v }
+
         request = Request.new(
             "/#{ space.id }/locales/#{ id }",
-            {'name' => attributes.fetch(:name)},
+            parameters,
             id = nil,
             version: sys[:version]
         )
         response = request.put
         result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
         refresh_data(result.run)
+      end
+
+      # Deletes a locale.
+      # Returns true if succeed.
+      def destroy
+        request = Request.new("/#{ space.id }/locales/#{ id }")
+        response = request.delete
+        if response.status == :no_content
+          return true
+        else
+          result = ResourceBuilder.new(response, {}, {})
+          result.run
+        end
       end
     end
   end
