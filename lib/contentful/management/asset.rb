@@ -26,6 +26,19 @@ module Contentful
         result.run
       end
 
+      # Gets a collection of published assets.
+      # Takes an id of space and an optional hash of query options
+      # Returns a Contentful::Management::Array of Contentful::Management::Asset.
+      def self.all_published(space_id, query = {})
+        request = Request.new(
+            "/#{ space_id }/public/assets",
+            query
+        )
+        response = request.get
+        result = ResourceBuilder.new(response, {}, {})
+        result.run
+      end
+
       # Gets a specific asset.
       # Takes an id of space and asset.
       # Returns a Contentful::Management::Asset.

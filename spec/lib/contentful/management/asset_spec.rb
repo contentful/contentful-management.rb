@@ -33,6 +33,16 @@ module Contentful
         end
       end
 
+      describe '.all_published' do
+        let!(:space_id) { 'bjwq7b86vgmm' }
+        it 'returns a Contentful::Array' do
+          vcr('asset/all_public') { expect(subject.all_published(space_id)).to be_kind_of Contentful::Management::Array }
+        end
+        it 'builds a Contentful::Management::Asset object' do
+          vcr('asset/all_public') { expect(subject.all_published(space_id).first).to be_kind_of Contentful::Management::Asset }
+        end
+      end
+
       describe '#find' do
         it 'returns a Contentful::Management::Asset' do
           vcr('asset/find') { expect(subject.find(space_id, asset_id)).to be_kind_of Contentful::Management::Asset }

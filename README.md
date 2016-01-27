@@ -93,6 +93,12 @@ Retrieving all content types from a space:
 blog_post_content_types = blog_space.content_types.all
 ```
 
+Retrieving all published content types from a space:
+
+```ruby
+blog_post_content_types = blog_space.content_types.all_published
+```
+
 Retrieving one content type by id from a space:
 
 ```ruby
@@ -208,9 +214,14 @@ blog_post_locale.destroy
 
 Retrieving all assets from the space:
 
-
 ```ruby
 blog_post_assets = blog_space.assets.all
+```
+
+Retrieving all published assets from the space:
+
+```ruby
+blog_post_assets = blog_space.assets.all_published
 ```
 
 Retrieving an asset by id:
@@ -317,6 +328,12 @@ Retrieving all entries from the space:
 
 ```ruby
 entries = blog_space.entries.all
+```
+
+Retrieving all published entries from the space:
+
+```ruby
+entries = blog_space.entries.all_published
 ```
 
 Retrieving all entries from the space with given content type:
