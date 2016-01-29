@@ -15,7 +15,7 @@ require_relative 'space_api_key_methods_factory'
 module Contentful
   module Management
     # Resource class for Space.
-    # https://www.contentful.com/developers/documentation/content-management-api/#resources-spaces
+    # @see _ https://www.contentful.com/developers/documentation/content-management-api/#resources-spaces
     class Space
       include Contentful::Management::Resource
       include Contentful::Management::Resource::SystemProperties
@@ -28,7 +28,7 @@ module Contentful
       attr_accessor :found_locale
 
       # Gets a collection of spaces.
-      # Returns a Contentful::Management::Array of Contentful::Management::Space.
+      # @return [Contentful::Management::Array<Contentful::Management::Space>]
       def self.all
         request = Request.new('')
         response = request.get
@@ -39,10 +39,12 @@ module Contentful
       end
 
       # Gets a specific space.
-      # Takes an id of space.
-      # Returns a Contentful::Management::Space.
+      #
+      # @param [String] space_id
+      #
+      # @return [Contentful::Management::Space]
       def self.find(space_id)
-        request = Request.new("/#{ space_id }")
+        request = Request.new("/#{space_id}")
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         space = result.run
@@ -51,15 +53,20 @@ module Contentful
       end
 
       # Create a space.
-      # Takes a hash of attributes with optional organization id if client has more than one organization.
-      # Returns a Contentful::Management::Space.
+      #
+      # @param [Hash] attributes
+      # @option attributes [String] :name
+      # @option attributes [String] :default_locale
+      # @option attributes [String] :organization_id Required if user has more than one organization
+      #
+      # @return [Contentful::Management::Space]
       def self.create(attributes)
         default_locale = attributes[:default_locale] || client.default_locale
         request = Request.new(
-            '',
-            {'name' => attributes.fetch(:name), defaultLocale: default_locale},
-            id = nil,
-            organization_id: attributes[:organization_id]
+          '',
+          { 'name' => attributes.fetch(:name), defaultLocale: default_locale },
+          nil,
+          organization_id: attributes[:organization_id]
         )
         response = request.post
         result = ResourceBuilder.new(response, {}, {})
@@ -69,15 +76,19 @@ module Contentful
       end
 
       # Updates a space.
-      # Takes a hash of attributes with optional organization id if client has more than one organization.
-      # Returns a Contentful::Management::Space.
+      #
+      # @param [Hash] attributes
+      # @option attributes [String] :name
+      # @option attributes [String] :organization_id Required if user has more than one organization
+      #
+      # @return [Contentful::Management::Space]
       def update(attributes)
         request = Request.new(
-            "/#{ id }",
-            {'name' => attributes.fetch(:name)},
-            id = nil,
-            version: sys[:version],
-            organization_id: attributes[:organization_id]
+          "/#{id}",
+          { 'name' => attributes.fetch(:name) },
+          nil,
+          version: sys[:version],
+          organization_id: attributes[:organization_id]
         )
         response = request.put
         result = ResourceBuilder.new(response, {}, {})
@@ -85,7 +96,9 @@ module Contentful
       end
 
       # If a space is new, an object gets created in the Contentful, otherwise the existing space gets updated.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::Space]
       def save
         if id
           update(name: name, organization_id: organization)
@@ -96,12 +109,13 @@ module Contentful
       end
 
       # Destroys a space.
-      # Returns true if succeed.
+      #
+      # @return [true, Contentful::Management::Error] success
       def destroy
-        request = Request.new("/#{ id }")
+        request = Request.new("/#{id}")
         response = request.delete
         if response.status == :no_content
-          return true
+          true
         else
           ResourceBuilder.new(response, {}, {}).run
         end
@@ -109,55 +123,71 @@ module Contentful
 
       # Allows manipulation of content types in context of the current space
       # Allows listing all content types of space, creating new and finding one by id.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceContentTypeMethodsFactory]
       def content_types
         SpaceContentTypeMethodsFactory.new(self)
       end
 
       # Allows manipulation of api keys in context of the current space
       # Allows listing all api keys of space, creating new and finding one by id.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceApiKeyMethodsFactory]
       def api_keys
         SpaceApiKeyMethodsFactory.new(self)
       end
 
       # Allows manipulation of locales in context of the current space
       # Allows listing all locales of space, creating new and finding one by id.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceLocaleMethodsFactory]
       def locales
         SpaceLocaleMethodsFactory.new(self)
       end
 
       # Allows manipulation of assets in context of the current space
       # Allows listing all assets of space, creating new and finding one by id.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceAssetMethodsFactory]
       def assets
         SpaceAssetMethodsFactory.new(self)
       end
 
       # Allows manipulation of entries in context of the current space
       # Allows listing all entries for space and finding one by id.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceEntryMethodsFactory]
       def entries
         SpaceEntryMethodsFactory.new(self)
       end
 
       # Allows manipulation of webhooks in context of the current space
       # Allows listing all webhooks for space and finding one by id.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceWebhookMethodsFactory]
       def webhooks
         SpaceWebhookMethodsFactory.new(self)
       end
 
       # Retrieves Default Locale for current Space and leaves it cached
+      #
+      # @return [String]
       def default_locale
         self.found_locale ||= find_locale
       end
 
       # Finds Default Locale Code for current Space
       # This request makes an API call to the Locale endpoint
+      #
+      # @return [String]
       def find_locale
-        locale = ::Contentful::Management::Locale.all(self.id).detect { |l| l.default }
+        locale = ::Contentful::Management::Locale.all(id).detect(&:default)
         return locale.code unless locale.nil?
         @default_locale
       end

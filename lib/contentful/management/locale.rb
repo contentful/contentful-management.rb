@@ -16,66 +16,79 @@ module Contentful
       property :default, :boolean
 
       # Gets a collection of locales.
-      # Takes an id of a space.
-      # Returns a Contentful::Management::Array of Contentful::Management::Locale.
+      #
+      # @param [String] space_id
+      # @param [Hash] _parameters Search Parameters
+      # @option _parameters [String] :name
+      # @option _parameters [String] :code
+      #
+      # @return [Contentful::Management::Array<Contentful::Management::Locale>]
       def self.all(space_id = nil, _parameters = {})
-        request = Request.new("/#{ space_id }/locales")
+        request = Request.new("/#{space_id}/locales")
         response = request.get
-        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         result.run
       end
 
       # Gets a specific locale.
-      # Takes an id of a space and locale id.
-      # Returns a Contentful::Management::Locale.
+      #
+      # @param [String] space_id
+      # @param [String] locale_id
+      #
+      # @return [Contentful::Management::Locale]
       def self.find(space_id, locale_id)
-        request = Request.new("/#{ space_id }/locales/#{ locale_id }")
+        request = Request.new("/#{space_id}/locales/#{locale_id}")
         response = request.get
-        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         result.run
       end
 
       # Creates a locale.
-      # Takes a space id and hash with attributes:
-      #   :name
-      #   :code
-      #   :contentManagementApi
-      #   :contentDeliveryApi
-      #   :publish
-      # Returns a Contentful::Management::Locale.
+      #
+      # @param [String] space_id
+      # @param [Hash] attributes
+      # @option attributes [String] :name
+      # @option attributes [String] :code
+      #
+      # @return [Contentful::Management::Locale]
       def self.create(space_id, attributes)
         request = Request.new(
-            "/#{ space_id }/locales",
-            'name' => attributes.fetch(:name),
-            'code' => attributes.fetch(:code)
+          "/#{space_id}/locales",
+          'name' => attributes.fetch(:name),
+          'code' => attributes.fetch(:code)
         )
         response = request.post
-        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         result.run
       end
 
       # Updates a locale.
-      # Takes a hash with attributes.
-      # Returns a Contentful::Management::Locale.
+      #
+      # @param [Hash] attributes
+      # @option attributes [String] :name
+      # @option attributes [String] :code
+      #
+      # @return [Contentful::Management::Locale]
       def update(attributes)
         parameters = {}
         attributes.each { |k, v| parameters[k.to_s] = v }
 
         request = Request.new(
-            "/#{ space.id }/locales/#{ id }",
-            parameters,
-            id = nil,
-            version: sys[:version]
+          "/#{space.id}/locales/#{id}",
+          parameters,
+          nil,
+          version: sys[:version]
         )
         response = request.put
-        result = ResourceBuilder.new(response, {'Locale' => Locale}, {})
+        result = ResourceBuilder.new(response, { 'Locale' => Locale }, {})
         refresh_data(result.run)
       end
 
       # Deletes a locale.
-      # Returns true if succeed.
+      #
+      # @return [true, Contentful::Management::Error] success
       def destroy
-        request = Request.new("/#{ space.id }/locales/#{ id }")
+        request = Request.new("/#{space.id}/locales/#{id}")
         response = request.delete
         if response.status == :no_content
           return true

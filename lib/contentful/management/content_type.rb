@@ -7,19 +7,20 @@ require_relative 'support'
 module Contentful
   module Management
     # Resource class for ContentType.
-    # https://www.contentful.com/developers/documentation/content-management-api/#resources-content-types
+    # @see _ https://www.contentful.com/developers/documentation/content-management-api/#resources-content-types
     class ContentType
+      # Shortcuts for Contentful Field Types
       FIELD_TYPES = [
-          SYMBOL = 'Symbol',
-          TEXT = 'Text',
-          INTEGER = 'Integer',
-          FLOAT = 'Number',
-          DATE = 'Date',
-          BOOLEAN = 'Boolean',
-          LINK = 'Link',
-          ARRAY = 'Array',
-          OBJECT = 'Object',
-          LOCATION = 'Location'
+        SYMBOL = 'Symbol',
+        TEXT = 'Text',
+        INTEGER = 'Integer',
+        FLOAT = 'Number',
+        DATE = 'Date',
+        BOOLEAN = 'Boolean',
+        LINK = 'Link',
+        ARRAY = 'Array',
+        OBJECT = 'Object',
+        LOCATION = 'Location'
       ]
 
       include Contentful::Management::Resource
@@ -32,12 +33,20 @@ module Contentful
       property :displayField, :string
 
       # Gets a collection of content types.
-      # Takes an id of space and an optional hash of query options
-      # Returns a Contentful::Management::Array of Contentful::Management::ContentType.
+      #
+      # @param [String] space_id
+      # @param [Hash] query Search Options
+      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+      # @option query [String] 'sys.id' Content Type ID
+      # @option query [String] :name Kind of Content Type
+      # @option query [Integer] :limit
+      # @option query [Integer] :skip
+      #
+      # @return [Contentful::Management::Array<Contentful::Management::ContentType>]
       def self.all(space_id, query = {})
         request = Request.new(
-            "/#{ space_id }/content_types",
-            query
+          "/#{space_id}/content_types",
+          query
         )
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
@@ -47,12 +56,20 @@ module Contentful
       end
 
       # Gets a collection of published content types.
-      # Takes an id of space and an optional hash of query options
-      # Returns a Contentful::Management::Array of Contentful::Management::ContentType.
+      #
+      # @param [String] space_id
+      # @param [Hash] query Search Options
+      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+      # @option query [String] 'sys.id' Content Type ID
+      # @option query [String] :name Kind of Content Type
+      # @option query [Integer] :limit
+      # @option query [Integer] :skip
+      #
+      # @return [Contentful::Management::Array<Contentful::Management::ContentType>]
       def self.all_published(space_id, query = {})
         request = Request.new(
-            "/#{ space_id }/public/content_types",
-            query
+          "/#{space_id}/public/content_types",
+          query
         )
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
@@ -61,11 +78,14 @@ module Contentful
         content_types
       end
 
-      # Gets a specific entry.
-      # Takes an id of space and content type.
-      # Returns a Contentful::Management::ContentType.
+      # Gets a specific content type.
+      #
+      # @param [String] space_id
+      # @param [String] content_type_id
+      #
+      # @return [Contentful::Management::ContentType]
       def self.find(space_id, content_type_id)
-        request = Request.new("/#{ space_id }/content_types/#{ content_type_id }")
+        request = Request.new("/#{space_id}/content_types/#{content_type_id}")
         response = request.get
         result = ResourceBuilder.new(response, {}, {})
         content_type = result.run
@@ -74,9 +94,10 @@ module Contentful
       end
 
       # Destroys a content type.
-      # Returns true if succeed.
+      #
+      # @return [true, Contentful::Management::Error] success
       def destroy
-        request = Request.new("/#{ space.id }/content_types/#{ id }")
+        request = Request.new("/#{space.id}/content_types/#{id}")
         response = request.delete
         if response.status == :no_content
           return true
@@ -90,10 +111,10 @@ module Contentful
       # Returns a Contentful::Management::ContentType.
       def activate
         request = Request.new(
-            "/#{ space.id }/content_types/#{ id }/published",
-            {},
-            id = nil,
-            version: sys[:version]
+          "/#{space.id}/content_types/#{id}/published",
+          {},
+          nil,
+          version: sys[:version]
         )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
@@ -102,34 +123,42 @@ module Contentful
 
       # Deactivates a content type.
       # Only content type that has no entries can be deactivated.
-      # Returns a Contentful::Management::ContentType.
+      #
+      # @return [Contentful::Management::ContentType]
       def deactivate
-        request = Request.new("/#{ space.id }/content_types/#{ id }/published")
+        request = Request.new("/#{space.id}/content_types/#{id}/published")
         response = request.delete
         result = ResourceBuilder.new(response, {}, {}).run
         refresh_data(result)
       end
 
       # Checks if a content type is active.
-      # Returns true if active.
+      #
+      # @return [Boolean]
       def active?
         sys[:publishedAt] ? true : false
       end
 
       # Creates a content type.
-      # Takes an id of space and hash with attributes.
-      # Returns a Contentful::Management::ContentType.
+      #
+      # @param [String] space_id
+      # @param [Hash] attributes
+      # @option attributes [String] :id
+      # @option attributes [String] :name
+      # @option attributes [::Array<Contentful::Management::Field>] :fields
+      #
+      # @return [Contentful::Management::ContentType]
       def self.create(space_id, attributes)
         fields = fields_to_nested_properties_hash(attributes[:fields] || [])
 
         params = attributes.clone
         params[:fields] = fields
         params.delete(:id)
-        params = params.delete_if { |k, v| v.nil? }
+        params = params.delete_if { |_, v| v.nil? }
 
         request = Request.new(
-            "/#{ space_id }/content_types/#{ attributes[:id]}",
-            params
+          "/#{space_id}/content_types/#{attributes[:id]}",
+          params
         )
         response = attributes[:id].nil? ? request.post : request.put
         result = ResourceBuilder.new(response, {}, {}).run
@@ -137,6 +166,7 @@ module Contentful
         result
       end
 
+      # @private
       def display_field_value(attributes)
         if attributes[:displayField].nil? && (display_field.nil? || display_field.empty?)
           nil
@@ -146,8 +176,13 @@ module Contentful
       end
 
       # Updates a content type.
-      # Takes a hash with attributes.
-      # Returns a Contentful::Management::ContentType.
+      #
+      # @param [Hash] attributes
+      # @option attributes [String] :id
+      # @option attributes [String] :name
+      # @option attributes [::Array<Contentful::Management::Field>] :fields
+      #
+      # @return [Contentful::Management::ContentType]
       def update(attributes)
         parameters = {}
         parameters.merge!(displayField: display_field_value(attributes))
@@ -155,12 +190,12 @@ module Contentful
         parameters.merge!(description: (attributes[:description] || description))
         parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
 
-        parameters = parameters.delete_if { |k, v| v.nil? }
+        parameters = parameters.delete_if { |_, v| v.nil? }
         request = Request.new(
-            "/#{ space.id }/content_types/#{ id }",
-            parameters,
-            id = nil,
-            version: sys[:version]
+          "/#{space.id}/content_types/#{id}",
+          parameters,
+          nil,
+          version: sys[:version]
         )
         response = request.put
         result = ResourceBuilder.new(response, {}, {}).run
@@ -168,7 +203,9 @@ module Contentful
       end
 
       # If a content type is a new object gets created in the Contentful, otherwise the existing entry gets updated.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ContentType]
       def save
         if id
           update(@properties)
@@ -179,6 +216,7 @@ module Contentful
       end
 
       # This method merges existing fields with new one, when adding, creating or updating new fields.
+      # @private
       def merged_fields(new_field)
         field_ids = []
         merged_fields = fields.each_with_object([]) do |field, fields|
@@ -190,17 +228,18 @@ module Contentful
         merged_fields
       end
 
+      # @private
       alias_method :orig_fields, :fields
 
       # Use this method only in the context of content type.
       # Allows you to add and create a field with specified attributes or destroy by pass field id.
-      # Returns a Contentful::Management::ContentType.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ContentType]
       def fields
         fields = orig_fields
 
         fields.instance_exec(self) do |content_type|
-
           fields.define_singleton_method(:add) do |field|
             content_type.update(fields: content_type.merged_fields(field))
           end
@@ -219,7 +258,6 @@ module Contentful
             fields = content_type.fields.select { |field| field.id != id }
             content_type.update(fields: fields)
           end
-
         end
 
         fields
@@ -227,14 +265,16 @@ module Contentful
 
       # Use this method only in the context of content type.
       # Allows you to create an entry.
-      # Returns a Contentful::Management::Entry.
-      # See README for details.
+      # @see _ README for details.
+      #
+      # @private
+      #
+      # @return [Contentful::Management::ContentTypeEntryMethodsFactory]
       def entries
         Contentful::Management::ContentTypeEntryMethodsFactory.new(self)
       end
 
-      private
-
+      # @private
       def self.fields_to_nested_properties_hash(fields)
         fields.map do |field|
           field.properties.replace(field.properties_to_hash)
