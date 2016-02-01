@@ -12,24 +12,37 @@ require 'logger'
 
 module Contentful
   module Management
+    # Client for interacting with the Contentful Management API
+    # @see _ https://www.contentful.com/developers/docs/references/content-management-api/
     class Client
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration, :logger
       attr_accessor :organization_id, :version, :zero_length, :content_type_id, :dynamic_entry_cache
 
+      # Default configuration for Contentful::Management::Client
       DEFAULT_CONFIGURATION = {
-          api_url: 'api.contentful.com',
-          api_version: '1',
-          secure: true,
-          default_locale: 'en-US',
-          gzip_encoded: false,
-          logger: false,
-          log_level: Logger::INFO,
-          raise_errors: false,
-          dynamic_entries: []
+        api_url: 'api.contentful.com',
+        api_version: '1',
+        secure: true,
+        default_locale: 'en-US',
+        gzip_encoded: false,
+        logger: false,
+        log_level: Logger::INFO,
+        raise_errors: false,
+        dynamic_entries: []
       }
 
+      # @param [String] access_token
+      # @param [Hash] configuration
+      # @option configuration [String] :api_url
+      # @option configuration [String] :api_version
+      # @option configuration [String] :default_locale
+      # @option configuration [Boolean] :gzip_encoded
+      # @option configuration [false, ::Logger] :logger
+      # @option configuration [::Logger::DEBUG, ::Logger::INFO, ::Logger::WARN, ::Logger::ERROR] :log_level
+      # @option configuration [Boolean] :raise_errors
+      # @option configuration [::Array<String>] :dynamic_entries
       def initialize(access_token = nil, configuration = {})
         @configuration = default_configuration.merge(configuration)
         setup_logger
@@ -39,18 +52,21 @@ module Contentful
         update_all_dynamic_entry_cache!
       end
 
+      # @private
       def setup_logger
         @logger = configuration[:logger]
         logger.level = configuration[:log_level] if logger
       end
 
+      # @private
       def update_all_dynamic_entry_cache!
-        if !configuration[:dynamic_entries].empty?
-          spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(space_id) }
-          update_dynamic_entry_cache_for_spaces!(spaces)
-        end
+        return if configuration[:dynamic_entries].empty?
+
+        spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(space_id) }
+        update_dynamic_entry_cache_for_spaces!(spaces)
       end
 
+      # @private
       def update_dynamic_entry_cache_for_spaces!(spaces)
         spaces.each do |space|
           update_dynamic_entry_cache_for_space!(space)
@@ -59,36 +75,43 @@ module Contentful
 
       # Use this method together with the client's :dynamic_entries configuration.
       # See README for details.
+      # @private
       def update_dynamic_entry_cache_for_space!(space)
         update_dynamic_entry_cache!(space.content_types.all)
       end
 
+      # @private
       def update_dynamic_entry_cache!(content_types)
         content_types.each do |ct|
           @dynamic_entry_cache[ct.id.to_sym] = DynamicEntry.create(ct)
         end
       end
 
+      # @private
       def api_version
         configuration[:api_version]
       end
 
+      # @private
       def gzip_encoded
         configuration[:gzip_encoded]
       end
 
+      # @private
       def default_configuration
         DEFAULT_CONFIGURATION.dup
       end
 
+      # @private
       def register_dynamic_entry(key, klass)
         @dynamic_entry_cache[key.to_sym] = klass
       end
 
+      # @private
       def execute_request(request)
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
-        logger.info(request: {url: url, query: request.query, header: request_headers}) if logger
+        logger.info(request: { url: url, query: request.query, header: request_headers }) if logger
         raw_response = yield(url)
         logger.debug(response: raw_response) if logger
         clear_headers
@@ -97,81 +120,98 @@ module Contentful
         result
       end
 
+      # @private
       def clear_headers
         self.content_type_id = nil
         self.version = nil
         self.organization_id = nil
       end
 
+      # @private
       def delete(request)
         execute_request(request) do |url|
           self.class.delete_http(url, {}, request_headers)
         end
       end
 
+      # @private
       def get(request)
         execute_request(request) do |url|
           self.class.get_http(url, request.query, request_headers)
         end
       end
 
+      # @private
       def post(request)
         execute_request(request) do |url|
           self.class.post_http(url, request.query, request_headers)
         end
       end
 
+      # @private
       def put(request)
         execute_request(request) do |url|
           self.class.put_http(url, request.query, request_headers)
         end
       end
 
+      # @private
       def base_url
-        "#{ protocol }://#{ configuration[:api_url]}/spaces"
+        "#{protocol}://#{configuration[:api_url]}/spaces"
       end
 
+      # @private
       def default_locale
         configuration[:default_locale]
       end
 
+      # @private
       def protocol
         configuration[:secure] ? 'https' : 'http'
       end
 
+      # @private
       def authentication_header
-        Hash['Authorization', "Bearer #{ access_token }"]
+        Hash['Authorization', "Bearer #{access_token}"]
       end
 
+      # @private
       def api_version_header
-        Hash['Content-Type', "application/vnd.contentful.management.v#{ api_version }+json"]
+        Hash['Content-Type', "application/vnd.contentful.management.v#{api_version}+json"]
       end
 
+      # @private
       def user_agent
-        Hash['User-Agent', "RubyContentfulManagementGem/#{ Contentful::Management::VERSION }"]
+        Hash['User-Agent', "RubyContentfulManagementGem/#{Contentful::Management::VERSION}"]
       end
 
+      # @private
       def organization_header(organization_id)
         Hash['X-Contentful-Organization', organization_id]
       end
 
+      # @private
       def version_header(version)
         Hash['X-Contentful-Version', version]
       end
 
+      # @private
       def content_type_header(content_type_id)
         Hash['X-Contentful-Content-Type', content_type_id]
       end
 
+      # @private
       def zero_length_header
         Hash['Content-Length', 0]
       end
 
+      # @private
       def accept_encoding_header(encoding)
         Hash['Accept-Encoding', encoding]
       end
 
-      # XXX: headers should be supplied differently, maybe through the request object.
+      # @todo headers should be supplied differently, maybe through the request object.
+      # @private
       def request_headers
         headers = {}
         headers.merge! user_agent
@@ -185,6 +225,7 @@ module Contentful
         headers
       end
 
+      # @private
       def self.shared_instance
         Thread.current[:client]
       end

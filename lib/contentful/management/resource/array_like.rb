@@ -2,7 +2,7 @@ module Contentful
   module Management
     module Resource
       # Useful methods for array-like resources that can be included if an
-      # :items property exists
+      # [#items] property exists
       module ArrayLike
         include Enumerable
 

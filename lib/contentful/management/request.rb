@@ -15,11 +15,8 @@ module Contentful
         @client.content_type_id = header[:content_type_id]
         @client.zero_length = query.empty?
         @endpoint = endpoint
-        @absolute = true if @endpoint.start_with?('http')
 
-        @query = if query && !query.empty?
-                   normalize_query(query)
-                 end
+        @query = normalize_query(query) if query && !query.empty?
 
         if id
           @type = :single
@@ -32,7 +29,7 @@ module Contentful
 
       # Returns the final URL, relative to a contentful space
       def url
-        "#{@endpoint }#{ @type == :single ? "/#{ id }" : '' }"
+        "#{@endpoint}#{@type == :single ? "/#{id}" : ''}"
       end
 
       # Delegates the actual HTTP work to the client
@@ -50,13 +47,15 @@ module Contentful
         client.put(self)
       end
 
+      # Delegates the actual HTTP DELETE request to the client
       def delete
         client.delete(self)
       end
 
       # Returns true if endpoint is an absolute url
+      # @return [Boolean]
       def absolute?
-        !!@absolute
+        @endpoint.start_with?('http')
       end
 
       # Returns a new Request object with the same data
@@ -68,12 +67,12 @@ module Contentful
 
       def normalize_query(query)
         Hash[
-            query.map do |key, value|
-              [
-                  key.to_sym,
-                  value
-              ]
-            end
+          query.map do |key, value|
+            [
+              key.to_sym,
+              value
+            ]
+          end
         ]
       end
     end

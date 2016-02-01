@@ -18,6 +18,7 @@ module Contentful
 
       # Takes a field object of content type
       # Merges existing properties, items and validations of field with new one
+      # @private
       def deep_merge!(field)
         merge_properties(field.properties)
         merge_items(field.items)
@@ -25,6 +26,7 @@ module Contentful
       end
 
       # Extract values of field to hash
+      # @private
       def properties_to_hash
         properties.each_with_object({}) do |(key, value), results|
           results[key] = parse_value(key, value)
@@ -32,17 +34,19 @@ module Contentful
       end
 
       # Return parsed value of field object
+      # @private
       def parse_value(key, value)
         case key
-          when :items
-            value.properties_to_hash if type == 'Array' && value.is_a?(Field)
-          when :validations
-            validations_to_hash(value) if value.is_a?(::Array)
-          else
-            value if self.class.value_exists?(value)
+        when :items
+          value.properties_to_hash if type == 'Array' && value.is_a?(Field)
+        when :validations
+          validations_to_hash(value) if value.is_a?(::Array)
+        else
+          value if self.class.value_exists?(value)
         end
       end
 
+      # @private
       def self.value_exists?(value)
         value.respond_to?(:empty?) && !value.empty? || !value.respond_to?(:empty?) && value
       end
@@ -62,12 +66,12 @@ module Contentful
       # Takes an array with new validations
       # Returns merged existing and new validations
       def merge_validations(new_validations)
-        if new_validations
-          validations_by_type = validations_by_type(validations)
-          new_validations_by_type = validations_by_type(new_validations)
-          validations_by_type.delete_if { |type, _v| new_validations_by_type[type] }
-          self.validations = validations_by_type.values + new_validations_by_type.values
-        end
+        return unless new_validations
+
+        validations_by_type = validations_by_type(validations)
+        new_validations_by_type = validations_by_type(new_validations)
+        validations_by_type.delete_if { |type, _v| new_validations_by_type[type] }
+        self.validations = validations_by_type.values + new_validations_by_type.values
       end
 
       def validations_by_type(validations)
@@ -84,7 +88,6 @@ module Contentful
           results << validation.properties_to_hash
         end
       end
-
     end
   end
 end

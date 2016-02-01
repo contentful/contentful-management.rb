@@ -4,9 +4,10 @@ require_relative 'resource/array_like'
 module Contentful
   module Management
     # Resource Class for Arrays (e.g. search results)
-    # https://www.contentful.com/developers/documentation/content-delivery-api/#arrays
-    # It also provides an #each method and includes Ruby's Enumerable module (gives you methods like #min, #first, etc)
+    # @see _ https://www.contentful.com/developers/documentation/content-delivery-api/#arrays
+    # @note It also provides an #each method and includes Ruby's Enumerable module (gives you methods like #min, #first, etc)
     class Array
+      # @private
       DEFAULT_LIMIT = 100
 
       include Contentful::Management::Resource

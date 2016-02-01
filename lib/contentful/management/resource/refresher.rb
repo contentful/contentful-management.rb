@@ -11,6 +11,7 @@ module Contentful
           refresh_data(resource) if resource.is_a? self_class
         end
 
+        # @private
         def refresh_data(resource)
           if resource.is_a? Error
             resource

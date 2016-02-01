@@ -9,12 +9,12 @@ module Contentful
       include Contentful::Management::Resource::SystemProperties
 
       # Queries contentful for the Resource the Link is referring to
-      # Takes an optional query hash
+      # @param [Hash] query
       def resolve(query = {})
         id_and_query = [(id unless link_type == 'Space')].compact + [query]
         client.public_send(
-            Contentful::Management::Support.snakify(link_type).to_sym,
-            *id_and_query
+          Contentful::Management::Support.snakify(link_type).to_sym,
+          *id_and_query
         )
       end
     end

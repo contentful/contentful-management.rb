@@ -15,6 +15,7 @@ module Contentful
       property :linkMimetypeGroup, :string
       property :linkField, :boolean
 
+      # @private
       def properties_to_hash
         properties.each_with_object({}) do |(key, value), results|
           results[key] = value if Field.value_exists?(value)
@@ -22,13 +23,13 @@ module Contentful
       end
 
       # Returns type of validation
+      # @return [Symbol]
       def type
         properties.keys.reject { |key| key == :validations }.each do |type|
-          value = self.send(Support.snakify(type))
+          value = send(Support.snakify(type))
           return type if !value.nil? && value
         end
       end
-
     end
   end
 end

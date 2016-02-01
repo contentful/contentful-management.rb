@@ -1,40 +1,23 @@
+inherit_from: .rubocop_todo.yml
+
 Encoding:
   Enabled: false
 
-Documentation:
-  Enabled: false
-
-ClassLength:
-  Enabled: false
+Metrics/ClassLength:
+  CountComments: false
 
 AllCops:
   Exclude:
     - contentful-management.gemspec
     - bin/cma-console
+    - spec/**/*
+    - examples/**/*
+    - Guardfile
+    - Gemfile
+    - Rakefile
 
-LineLength:
+Metrics/LineLength:
   Max: 135
-Style/MethodLength:
-  Max: 15
 
-Style/SpaceInsideBrackets:
-  Enabled: false
-
-Style/CyclomaticComplexity:
-  Max: 8
-
-Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
-  EnforcedStyleForEmptyBraces: no_space
-
-Style/CaseIndentation:
-  Enabled: false
-
-Lint/UselessAssignment:
-  Enabled: false
-
-Style/IndentationWidth:
-  Enabled: false
-
-Style/GuardClause:
-  Enabled: false
+Metrics/ClassLength:
+  Max: 230

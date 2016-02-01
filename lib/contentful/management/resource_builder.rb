@@ -14,15 +14,19 @@ module Contentful
     # Transforms a Contentful::Response into a Contentful::Resource or a Contentful::Error
     # See example/resource_mapping.rb for avanced usage
     class ResourceBuilder
+      # Default Resource Mapping
+      # @see _ README for more information on Resource Mapping
       DEFAULT_RESOURCE_MAPPING = {
-          'Space' => Contentful::Management::Space,
-          'ContentType' => Contentful::Management::ContentType,
-          'Entry' => :find_entry_class,
-          'Asset' => Contentful::Management::Asset,
-          'Array' => :array_or_sync_page,
-          'Link' => Contentful::Management::Link,
-          'WebhookDefinition' => Contentful::Management::Webhook
+        'Space' => Contentful::Management::Space,
+        'ContentType' => Contentful::Management::ContentType,
+        'Entry' => :find_entry_class,
+        'Asset' => Contentful::Management::Asset,
+        'Array' => :array_or_sync_page,
+        'Link' => Contentful::Management::Link,
+        'WebhookDefinition' => Contentful::Management::Webhook
       }
+      # Default Entry Mapping
+      # @see _ README for more information on Entry Mapping
       DEFAULT_ENTRY_MAPPING = {}
 
       attr_reader :client, :response, :resource_mapping, :entry_mapping, :resource
@@ -39,7 +43,7 @@ module Contentful
       end
 
       # Starts the parsing process.
-      # Either returns an Error, or the parsed Resource
+      # @return [Contentful::Management::Resource, Contentful::Management::Error]
       def run
         if response.status == :ok
           create_all_resources!
@@ -94,9 +98,8 @@ module Contentful
 
       # Finds the proper DynamicEntry class for an entry
       def get_dynamic_entry(object)
-        if content_id = content_type_id_for_entry(object)
-          client.dynamic_entry_cache[content_id.to_sym]
-        end
+        content_id = content_type_id_for_entry(object)
+        client.dynamic_entry_cache[content_id.to_sym] if content_id
       end
 
       # Returns the id of the related ContentType, if there is one
@@ -123,14 +126,14 @@ module Contentful
       def detect_resource_class(object)
         type = object['sys'] && object['sys']['type']
         case res_class = resource_mapping[type]
-          when Symbol
-            public_send(res_class, object)
-          when Proc
-            res_class[object]
-          when nil
-            fail UnparsableResource.new(response)
-          else
-            res_class
+        when Symbol
+          public_send(res_class, object)
+        when Proc
+          res_class[object]
+        when nil
+          fail UnparsableResource, response
+        else
+          res_class
         end
       end
 
@@ -158,9 +161,9 @@ module Contentful
         if object.is_a? Hash
           object.select do |_, value|
             value.is_a?(::Array) &&
-                value.first &&
-                value.first.is_a?(Hash) &&
-                value.first.key?('sys')
+              value.first &&
+              value.first.is_a?(Hash) &&
+              value.first.key?('sys')
           end
         else
           {}
@@ -188,30 +191,30 @@ module Contentful
       end
 
       def create_included_resources!(included_objects)
-        if included_objects
-          included_objects.each do |type, objects|
-            @included_resources[type] = Hash[
-                objects.map do |object|
-                  res = create_resource(object)
-                  [res.id, res]
-                end
-            ]
-          end
+        return unless included_objects
+
+        included_objects.each do |type, objects|
+          @included_resources[type] = Hash[
+            objects.map do |object|
+              res = create_resource(object)
+              [res.id, res]
+            end
+          ]
         end
       end
 
       def replace_links_with_known_resources(res, seen_resource_ids = [])
         seen_resource_ids << res.id
 
-        [:properties, :sys, :fields].map do |property_container_name|
+        property_containers = [:properties, :sys, :fields].map do |property_container_name|
           res.public_send(property_container_name)
-        end.compact.each do |property_container|
+        end.compact
+
+        property_containers.each do |property_container|
           replace_links_in_properties(property_container, seen_resource_ids)
         end
 
-        if res.array?
-          replace_links_in_array res.items, seen_resource_ids
-        end
+        replace_links_in_array res.items, seen_resource_ids if res.array?
       end
 
       def replace_links_in_properties(property_container, seen_resource_ids)
@@ -239,10 +242,10 @@ module Contentful
       end
 
       def maybe_replace_link(link, parent, key)
-        if  @known_resources[link.link_type] &&
-            @known_resources[link.link_type].key?(link.id)
-          parent[key] = @known_resources[link.link_type][link.id]
-        end
+        return unless @known_resources[link.link_type] &&
+                      @known_resources[link.link_type].key?(link.id)
+
+        parent[key] = @known_resources[link.link_type][link.id]
       end
 
       def replace_links_in_included_resources_with_known_resources

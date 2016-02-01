@@ -32,5 +32,7 @@ end
 desc 'Run specs, rubocop and reek'
 task ci: %w(spec reek rubocop)
 
+task rspec_rubocop: %w(spec rubocop)
+
 task test: :spec
 task default: :spec

@@ -12,7 +12,12 @@ module Contentful
     #
     # Take a look at examples/resource_mapping.rb on how to register them to be returned
     # by the client by default
+    #
+    # @see _ examples/custom_classes.rb Custom Class as Resource
+    # @see _ examples/resource_mapping.rb Mapping a Custom Class
     module Resource
+      # @private
+      # rubocop:disable Style/DoubleNegation
       COERCIONS = {
         string: ->(value) { !value.nil? ? value.to_s : nil },
         integer: ->(value) { value.to_i },
@@ -20,10 +25,16 @@ module Contentful
         boolean: ->(value) { !!value },
         date: ->(value) { !value.nil? ? DateTime.parse(value) : nil }
       }
+      # rubocop:enable Style/DoubleNegation
 
       attr_reader :properties, :request, :client, :default_locale, :raw_object
 
-      def initialize(object = nil, request = nil, client = nil, nested_locale_fields = false, default_locale = Contentful::Management::Client::DEFAULT_CONFIGURATION[:default_locale])
+      # @private
+      def initialize(object = nil,
+                     request = nil,
+                     client = nil,
+                     nested_locale_fields = false,
+                     default_locale = Contentful::Management::Client::DEFAULT_CONFIGURATION[:default_locale])
         self.class.update_coercions!
         @nested_locale_fields = nested_locale_fields
         @default_locale = default_locale
@@ -34,9 +45,10 @@ module Contentful
         @raw_object = object
       end
 
+      # @private
       def inspect(info = nil)
-        properties_info = properties.empty? ? '' : " @properties=#{ properties.inspect }"
-        "#<#{ self.class }:#{ properties_info }#{ info }>"
+        properties_info = properties.empty? ? '' : " @properties=#{properties.inspect}"
+        "#<#{self.class}:#{properties_info}#{info}>"
       end
 
       # Returns true for resources that behave like an array
@@ -46,7 +58,9 @@ module Contentful
 
       # By default, fields come flattened in the current locale. This is different for syncs
       def nested_locale_fields?
+        # rubocop:disable Style/DoubleNegation
         !!@nested_locale_fields
+        # rubocop:enable Style/DoubleNegation
       end
 
       # Resources that don't include SystemProperties return nil for #sys
@@ -71,8 +85,8 @@ module Contentful
           keys ||= object.keys
           keys.each.with_object({}) do |name, res|
             res[name.to_sym] = coerce_value_or_array(
-                object.is_a?(::Array) ? object : object[name.to_s],
-                self.class.public_send(:"#{ namespace }_coercions")[name.to_sym]
+              object.is_a?(::Array) ? object : object[name.to_s],
+              self.class.public_send(:"#{namespace}_coercions")[name.to_sym]
             )
           end
         else
@@ -90,16 +104,17 @@ module Contentful
 
       def coerce_or_create_class(value, what)
         case what
-          when Symbol
-            COERCIONS[what] ? COERCIONS[what][value] : value
-          when Class
-            what.new(value, client)
-          else
-            value
+        when Symbol
+          COERCIONS[what] ? COERCIONS[what][value] : value
+        when Class
+          what.new(value, client)
+        else
+          value
         end
       end
 
       # Register the resources properties on class level by using the #property method
+      # @private
       module ClassMethods
         # By default, fields come flattened in the current locale. This is different for sync
         def nested_locale_fields?
@@ -132,7 +147,7 @@ module Contentful
           define_method accessor_name do
             properties[name.to_sym]
           end
-          define_method "#{ accessor_name }=" do |value|
+          define_method "#{accessor_name}=" do |value|
             properties[name.to_sym] = value
           end
         end

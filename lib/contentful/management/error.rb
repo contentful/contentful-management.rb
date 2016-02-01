@@ -8,9 +8,9 @@ module Contentful
       def initialize(response)
         @response = response
         @error = {
-            url: response.request.endpoint,
-            message: response.error_message,
-            details: response.raw.body.instance_variable_get(:@contents)
+          url: response.request.endpoint,
+          message: response.error_message,
+          details: response.raw.body.instance_variable_get(:@contents)
         }
         super @response.error_message
       end
@@ -19,26 +19,26 @@ module Contentful
       # USAGE rescue Contentful::Management::Error[404]
       def self.[](error_status_code)
         case error_status_code
-          when 404
-            NotFound
-          when 400
-            BadRequest
-          when 403
-            AccessDenied
-          when 409
-            Conflict
-          when 401
-            Unauthorized
-          when 422
-            UnprocessableEntity
-          when 429
-            RateLimitExceeded
-          when 500
-            ServerError
-          when 503
-            ServiceUnavailable
-          else
-            Error
+        when 404
+          NotFound
+        when 400
+          BadRequest
+        when 403
+          AccessDenied
+        when 409
+          Conflict
+        when 401
+          Unauthorized
+        when 422
+          UnprocessableEntity
+        when 429
+          RateLimitExceeded
+        when 500
+          ServerError
+        when 503
+          ServiceUnavailable
+        else
+          Error
         end
       end
     end
