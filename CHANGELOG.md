@@ -1,13 +1,18 @@
 # Change Log
 
 ## Master
-### Fixed
+
+## Master
+### 0.9.0
 * Locales can now update `:code` value
 
 ### Added
 * Added `#destroy` method to Locales
 * Added `ApiKey` class, methods and `Space` associations
 * Added `.all_published` methods for `ContentType`, `Asset` and `Entry`
+
+### Changed
+* Changed documentation format to YARD
 
 ## 0.8.0
 ### Added
