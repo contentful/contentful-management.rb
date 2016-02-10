@@ -340,7 +340,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 11:17:14 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types
     body:
       encoding: UTF-8
       string: '{"name":"ContentTypeForSpace","description":null,"fields":[]}'

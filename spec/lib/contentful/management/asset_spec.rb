@@ -13,9 +13,12 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { Contentful::Management::Asset }
+      subject { client.assets }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('asset/all') { expect(Contentful::Management::Asset.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('asset/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -24,7 +27,7 @@ module Contentful
         end
         it 'return limited number of assets with next_page' do
           vcr('asset/limited_assets_next_page') do
-            assets = Contentful::Management::Asset.all('bfsvtul0c41g', limit: 20, skip: 2)
+            assets = subject.all('bfsvtul0c41g', limit: 20, skip: 2)
             expect(assets).to be_kind_of Contentful::Management::Array
             expect(assets.limit).to eq 20
             expect(assets.skip).to eq 2
@@ -35,6 +38,9 @@ module Contentful
 
       describe '.all_published' do
         let!(:space_id) { 'bjwq7b86vgmm' }
+        it 'class method also works' do
+          vcr('asset/all_public') { expect(Contentful::Management::Asset.all_published(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('asset/all_public') { expect(subject.all_published(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -43,7 +49,10 @@ module Contentful
         end
       end
 
-      describe '#find' do
+      describe '.find' do
+        it 'class method also works' do
+          vcr('asset/find') { expect(Contentful::Management::Asset.find(client, space_id, asset_id)).to be_kind_of Contentful::Management::Asset }
+        end
         it 'returns a Contentful::Management::Asset' do
           vcr('asset/find') { expect(subject.find(space_id, asset_id)).to be_kind_of Contentful::Management::Asset }
         end
@@ -106,10 +115,12 @@ module Contentful
             file.properties[:fileName] = 'pic1.jpg'
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id,
-                                                         title: 'titlebyCreateAPI',
-                                                         description: 'descByAPI',
-                                                         file: file)
+            asset = subject.create(
+              space_id,
+              title: 'titlebyCreateAPI',
+              description: 'descByAPI',
+              file: file
+            )
             expect(asset).to be_kind_of Contentful::Management::Asset
             asset.publish
             expect(asset.published?).to be_truthy
@@ -241,10 +252,12 @@ module Contentful
             file.properties[:fileName] = 'pic1.jpg'
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id,
-                                                         title: 'titlebyCreateAPI',
-                                                         description: 'descByAPI',
-                                                         file: file)
+            asset = subject.create(
+              space_id,
+              title: 'titlebyCreateAPI',
+              description: 'descByAPI',
+              file: file
+            )
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'titlebyCreateAPI'
             expect(asset.description).to eq 'descByAPI'
@@ -258,10 +271,13 @@ module Contentful
             file.properties[:fileName] = 'pic1.jpg'
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
-            asset = Contentful::Management::Asset.create('bfsvtul0c41g',
-                                                         title: 'Title PL',
-                                                         description: 'Description PL',
-                                                         file: file, locale: 'pl-PL')
+            asset = subject.create(
+              'bfsvtul0c41g',
+              title: 'Title PL',
+              description: 'Description PL',
+              file: file,
+              locale: 'pl-PL'
+            )
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'Title PL'
             expect(asset.description).to eq 'Description PL'
@@ -275,11 +291,13 @@ module Contentful
             file.properties[:fileName] = 'codequest.jpg'
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id,
-                                                         id: 'codequest_id_test_custom',
-                                                         title: 'titlebyCreateAPI_custom_id',
-                                                         description: 'descByAPI_custom_id',
-                                                         file: file)
+            asset = subject.create(
+              space_id,
+              id: 'codequest_id_test_custom',
+              title: 'titlebyCreateAPI_custom_id',
+              description: 'descByAPI_custom_id',
+              file: file
+            )
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.id).to eq 'codequest_id_test_custom'
             expect(asset.title).to eq 'titlebyCreateAPI_custom_id'
@@ -294,11 +312,13 @@ module Contentful
             file.properties[:fileName] = 'codequest.jpg'
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
-            asset = Contentful::Management::Asset.create(space_id,
-                                                         id: 'codequest_id_test_custom_id',
-                                                         title: 'titlebyCreateAPI_custom_id',
-                                                         description: 'descByAPI_custom_id',
-                                                         file: file)
+            asset = subject.create(
+              space_id,
+              id: 'codequest_id_test_custom_id',
+              title: 'titlebyCreateAPI_custom_id',
+              description: 'descByAPI_custom_id',
+              file: file
+            )
             expect(asset).to be_kind_of Contentful::Management::Conflict
           end
         end
@@ -350,7 +370,7 @@ module Contentful
       describe '#save' do
         it 'updated' do
           vcr('asset/save_update') do
-            asset = Contentful::Management::Asset.find(space_id, '35Kt2tInIsoauo8sC82q04')
+            asset = subject.find(space_id, '35Kt2tInIsoauo8sC82q04')
             asset.fields[:description] = 'Firmowe logo.'
             asset.save
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -363,7 +383,7 @@ module Contentful
         let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('asset/reload') do
-            asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
+            asset = subject.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
             asset.sys[:version] = 999
             update_asset = asset.update(title: 'Updated name')
             expect(update_asset).to be_kind_of Contentful::Management::Conflict
@@ -377,7 +397,7 @@ module Contentful
 
         it 'updates fields collection when reloaded' do
           vcr('asset/reload_with_fields') do
-            asset = Contentful::Management::Asset.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
+            asset = subject.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
             valid_fields = asset.instance_variable_get(:@fields)
             asset.instance_variable_set(:@fields, 'changed')
             asset.reload
@@ -391,12 +411,12 @@ module Contentful
 
       describe '#image_url' do
         it 'empty_query' do
-          asset = Contentful::Management::Asset.new
+          asset = subject.new
           asset.file = double('file', url: 'http://assets.com/asset.jpg')
           expect(asset.image_url).to eq 'http://assets.com/asset.jpg'
         end
         it 'with_params' do
-          asset = Contentful::Management::Asset.new
+          asset = subject.new
           asset.file = double('file', url: 'http://assets.com/asset.jpg')
           expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
         end
@@ -421,12 +441,12 @@ module Contentful
 
       describe '#image_url' do
         it 'empty_query' do
-          asset = Contentful::Management::Asset.new
+          asset = subject.new
           asset.file = double('file', url: 'http://assets.com/asset.jpg')
           expect(asset.image_url).to eq 'http://assets.com/asset.jpg'
         end
         it 'with_params' do
-          asset = Contentful::Management::Asset.new
+          asset = subject.new
           asset.file = double('file', url: 'http://assets.com/asset.jpg')
           expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
         end

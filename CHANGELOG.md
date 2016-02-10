@@ -2,14 +2,28 @@
 
 ## Master
 
-## Master
-### 0.9.0
-* Locales can now update `:code` value
+### Breaking Changes
+* `Client` is no longer a singleton. Therefore all `Resource` class calls (`Entry`, `Space`, `ContentType`, etc...) require an instance of a client.
+  The Client needs to be the first parameter of the call. As sending the client in every call is not a great solution, a shorthand for every resource
+  class is present on the client. Calls can be done now like: `client.entries.all`. This works for every resource class, and all of the calls existing previously
+  (`all`, `find`, `create`, `all_published`). **Note: `all_published` is specific to `Entry`, `Asset` and `ContentType`**.
+* You can have as many instances of client, for as many users as you want.
 
+Complete List of resource links on `Client`:
+* `#entries`
+* `#assets`
+* `#spaces`
+* `#content_types`
+* `#locales`
+* `#webhooks`
+* `#api_keys`
+
+## 0.9.0
 ### Added
 * Added `#destroy` method to Locales
 * Added `ApiKey` class, methods and `Space` associations
 * Added `.all_published` methods for `ContentType`, `Asset` and `Entry`
+* Locales can now update `:code` value
 
 ### Changed
 * Changed documentation format to YARD

@@ -10,9 +10,12 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { Contentful::Management::Space }
+      subject { client.spaces }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('space/all') { expect(Contentful::Management::Space.all(client)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('space/all') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
@@ -22,6 +25,9 @@ module Contentful
       end
 
       describe '.find' do
+        it 'class method also works' do
+          vcr('space/find') { expect(Contentful::Management::Space.find(client, space_id)).to be_kind_of Contentful::Management::Space }
+        end
         it 'returns a Contentful::Management::Space' do
           vcr('space/find') { expect(subject.find(space_id)).to be_kind_of Contentful::Management::Space }
         end
@@ -96,8 +102,8 @@ module Contentful
           end
           it 'creates a space within a client default locale' do
             vcr('space/create_with_client_default_locale') do
-              Client.new('<ACCESS_TOKEN>', default_locale: 'pl-PL')
-              space = subject.create(name: 'new space', organization_id: '1EQPR5IHrPx94UY4AViTYO')
+              client = Client.new('<ACCESS_TOKEN>', default_locale: 'pl-PL')
+              space = client.spaces.create(name: 'new space', organization_id: '4SsuxQCaMaemfIms52Jr8s')
               expect(space).to be_kind_of Contentful::Management::Space
               expect(space.name).to eq 'new space'
               expect(space.locales.all.first.code).to eql 'pl-PL'

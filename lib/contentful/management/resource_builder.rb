@@ -8,6 +8,8 @@ require_relative 'space'
 require_relative 'content_type'
 require_relative 'asset'
 require_relative 'webhook'
+require_relative 'api_key'
+require_relative 'locale'
 
 module Contentful
   module Management
@@ -23,7 +25,9 @@ module Contentful
         'Asset' => Contentful::Management::Asset,
         'Array' => :array_or_sync_page,
         'Link' => Contentful::Management::Link,
-        'WebhookDefinition' => Contentful::Management::Webhook
+        'WebhookDefinition' => Contentful::Management::Webhook,
+        'ApiKey' => Contentful::Management::ApiKey,
+        'Locale' => Contentful::Management::Locale
       }
       # Default Entry Mapping
       # @see _ README for more information on Entry Mapping
@@ -31,13 +35,13 @@ module Contentful
 
       attr_reader :client, :response, :resource_mapping, :entry_mapping, :resource
 
-      def initialize(response, resource_mapping = {}, entry_mapping = {})
+      def initialize(response, client, resource_mapping = {}, entry_mapping = {})
         @response = response
-        @client = Contentful::Management::Client.shared_instance
+        @client = client
         @included_resources = {}
         @known_resources = Hash.new { |hash, key| hash[key] = {} }
         @nested_locales = true
-        @default_locale = (client.configuration || Contentful::Client::DEFAULT_CONFIGURATION)[:default_locale]
+        @default_locale = (client.configuration || Contentful::Management::Client::DEFAULT_CONFIGURATION)[:default_locale]
         @resource_mapping = default_resource_mapping.merge(resource_mapping)
         @entry_mapping = default_entry_mapping.merge(entry_mapping)
       end

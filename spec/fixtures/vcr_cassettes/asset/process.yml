@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"Asset title"},"description":{"en-US":"Description"},"file":{"en-US":{"contentType":"image/jpeg","fileName":"pic1.jpg","upload":"https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg"}}}}'

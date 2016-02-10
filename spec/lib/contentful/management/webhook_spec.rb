@@ -10,9 +10,12 @@ module Contentful
       let(:webhook_id) { '0rK8ZNEOWLgYnO5gaah2pp' }
       let!(:client) { Client.new(token) }
 
-      subject { Contentful::Management::Webhook }
+      subject { client.webhooks }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('webhook/all') { expect(Contentful::Management::Webhook.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('webhook/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -22,6 +25,9 @@ module Contentful
       end
 
       describe '.find' do
+        it 'class method also works' do
+          vcr('webhook/find') { expect(Contentful::Management::Webhook.find(client, space_id, webhook_id)).to be_kind_of Contentful::Management::Webhook }
+        end
         it 'returns a Contentful::Management::Webhook' do
           vcr('webhook/find') { expect(subject.find(space_id, webhook_id)).to be_kind_of Contentful::Management::Webhook }
         end
@@ -42,14 +48,14 @@ module Contentful
       describe '.create' do
         it 'builds Contentful::Management::Webhook object' do
           vcr('webhook/create') do
-            webhook = Contentful::Management::Webhook.create(space_id, id: 'test_webhook', url: 'https://www.example3.com')
+            webhook = subject.create(space_id, id: 'test_webhook', url: 'https://www.example3.com')
             expect(webhook).to be_kind_of Contentful::Management::Webhook
             expect(webhook.url).to eq 'https://www.example3.com'
           end
         end
         it 'return error if url is already taken' do
           vcr('webhook/create_with_taken_url') do
-            webhook = Contentful::Management::Webhook.create(space_id, id: 'taken_webhook', url: 'https://www.example3.com')
+            webhook = subject.create(space_id, id: 'taken_webhook', url: 'https://www.example3.com')
             expect(webhook).to be_kind_of Contentful::Management::Error
           end
         end
@@ -58,7 +64,7 @@ module Contentful
       describe '#update' do
         it 'all parameters' do
           vcr('webhook/update') do
-            webhook = Contentful::Management::Webhook.find(space_id, 'test_webhook')
+            webhook = subject.find(space_id, 'test_webhook')
             updated_webhook = webhook.update(url: 'https://www.example5.com',
                                              httpBasicUsername: 'test_username',
                                              httpBasicPassword: 'test_password')
@@ -72,7 +78,7 @@ module Contentful
       describe '#destroy' do
         it 'returns true' do
           vcr('webhook/destroy') do
-            webhook = Contentful::Management::Webhook.find(space_id, 'test_webhook')
+            webhook = subject.find(space_id, 'test_webhook')
             result = webhook.destroy
             expect(result).to eq true
           end

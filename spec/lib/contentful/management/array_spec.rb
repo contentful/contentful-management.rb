@@ -6,7 +6,7 @@ describe Contentful::Management::Array do
   let(:token) { '<ACCESS_TOKEN>' }
   let(:space_id) { 'yr5m0jky5hsh' }
   let!(:client) { Contentful::Management::Client.new(token) }
-  let(:array) { vcr('space/all') { Contentful::Management::Space.all } }
+  let(:array) { vcr('space/all') { client.spaces.all } }
 
   describe 'SystemProperties' do
     it 'has a #sys getter returning a hash with symbol keys' do

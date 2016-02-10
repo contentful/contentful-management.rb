@@ -352,7 +352,7 @@ http_interactions:
   recorded_at: Thu, 19 Nov 2015 14:13:47 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/bbukbffokvih/entries/
+    uri: https://api.contentful.com/spaces/bbukbffokvih/entries
     body:
       encoding: UTF-8
       string: '{"fields":{}}'

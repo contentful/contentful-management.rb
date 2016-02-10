@@ -3,7 +3,7 @@ require_relative 'space_association_all_published_method_factory'
 
 module Contentful
   module Management
-    # Wrapper for ContentType API for usage from within Space
+    # Wrapper for Entry API for usage from within Space
     # @private
     class SpaceEntryMethodsFactory
       include Contentful::Management::SpaceAssociationMethodsFactory

@@ -1,7 +1,12 @@
 require_relative 'resource'
+require_relative 'resource_requester'
+require_relative 'client_entry_methods_factory'
 require_relative 'resource/entry_fields'
 require_relative 'resource/fields'
 require_relative 'resource/field_aware'
+require_relative 'resource/all_published'
+require_relative 'resource/archiver'
+require_relative 'resource/publisher'
 
 module Contentful
   module Management
@@ -12,74 +17,26 @@ module Contentful
       include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
       extend Contentful::Management::Resource::EntryFields
+      extend Contentful::Management::Resource::AllPublished
       include Contentful::Management::Resource::Fields
+      include Contentful::Management::Resource::Archiver
+      include Contentful::Management::Resource::Publisher
 
       attr_accessor :content_type
 
-      # Gets a collection of entries.
-      #
-      # @param [String] space_id
-      # @param [Hash] parameters
-      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
-      # @option parameters [String] 'sys.id' Entry ID
-      # @option parameters [String] :content_type
-      # @option parameters [Integer] :limit
-      # @option parameters [Integer] :skip
-      #
-      # @return [Contentful::Management::Array<Contentful::Management::Entry>]
-      def self.all(space_id, parameters = {})
-        request = Request.new(
-          "/#{space_id}/entries",
-          parameters
-        )
-        response = request.get
-        result = ResourceBuilder.new(response, {}, {})
-        result.run
+      # @private
+      def self.endpoint
+        'entries'
       end
 
-      # Gets a collection of published entries.
-      #
-      # @param [String] space_id
-      # @param [Hash] parameters
-      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
-      # @option parameters [String] 'sys.id' Entry ID
-      # @option parameters [String] :content_type
-      # @option parameters [Integer] :limit
-      # @option parameters [Integer] :skip
-      #
-      # @return [Contentful::Management::Array<Contentful::Management::Entry>]
-      def self.all_published(space_id, parameters = {})
-        request = Request.new(
-          "/#{space_id}/public/entries",
-          parameters
-        )
-        response = request.get
-        result = ResourceBuilder.new(response, {}, {})
-        result.run
+      # @private
+      def self.client_association_class
+        ClientEntryMethodsFactory
       end
 
-      # Gets a specific entry.
-      #
-      # @param [String] space_id
-      # @param [String] entry_id
-      #
-      # @return [Contentful::Management::Entry]
-      def self.find(space_id, entry_id)
-        request = Request.new("/#{space_id}/entries/#{entry_id}")
-        response = request.get
-        result = ResourceBuilder.new(response, {}, {})
-        result.run
-      end
-
-      # Creates an entry.
-      #
-      # @param [Contentful::Management::ContentType] content_type
-      # @param [Hash] attributes extracted from Content Type fields
-      #
-      # @return [Contentful::Management::Entry]
-      def self.create(content_type, attributes)
-        custom_id = attributes[:id]
-        locale = attributes[:locale]
+      # @private
+      def self.create_attributes(client, attributes)
+        content_type = attributes[:content_type]
         fields_for_create = if attributes[:fields] # create from initialized dynamic entry via save
                               tmp_entry = new
                               tmp_entry.instance_variable_set(:@fields, attributes.delete(:fields) || {})
@@ -88,21 +45,29 @@ module Contentful
                                 tmp_entry.fields_from_attributes(attributes)
                               )
                             else
-                              fields_with_locale content_type, attributes
+                              fields_with_locale content_type, attributes.clone
                             end
 
-        request = Request.new(
-          "/#{content_type.sys[:space].id}/entries/#{custom_id}",
-          { fields: fields_for_create },
-          nil,
-          content_type_id: content_type.id
-        )
-        response = custom_id.nil? ? request.post : request.put
-        result = ResourceBuilder.new(response, {}, {})
-        client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type))
-        entry = result.run
-        entry.locale = locale if locale
-        entry
+        client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type, client))
+
+        { fields: fields_for_create }
+      end
+
+      # @private
+      def self.create_headers(_client, attributes)
+        content_type = attributes[:content_type]
+        content_type_id = begin
+                            content_type.id
+                          rescue
+                            content_type[:id]
+                          end
+
+        { content_type_id: content_type_id }
+      end
+
+      # @private
+      def after_create(attributes)
+        self.locale = attributes[:locale] || client.default_locale
       end
 
       # Gets Hash of fields for the current locale
@@ -118,25 +83,6 @@ module Contentful
         default_fields.merge(@fields[requested_locale])
       end
 
-      # Updates an entry.
-      #
-      # @param [Hash] attributes extracted from Content Type fields
-      #
-      # @return [Contentful::Management::Entry]
-      def update(attributes)
-        fields_for_update = Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes))
-
-        request = Request.new(
-          "/#{space.id}/entries/#{id}",
-          { fields: fields_for_update },
-          nil,
-          version: sys[:version]
-        )
-        response = request.put
-        result = ResourceBuilder.new(response, {}, {}).run
-        refresh_data(result)
-      end
-
       # If an entry is a new object gets created in the Contentful, otherwise the existing entry gets updated.
       # @see _ README for details.
       #
@@ -145,97 +91,14 @@ module Contentful
         if id
           update({})
         else
-          new_instance = Contentful::Management::Entry.create(content_type, fields: instance_variable_get(:@fields))
+          new_instance = Contentful::Management::Entry.create(
+            client,
+            content_type.space.id,
+            content_type: content_type,
+            fields: instance_variable_get(:@fields)
+          )
           refresh_data(new_instance)
         end
-      end
-
-      # Publishes an entry.
-      #
-      # @return [Contentful::Management::Entry]
-      def publish
-        request = Request.new(
-          "/#{space.id}/entries/#{id}/published",
-          {},
-          nil,
-          version: sys[:version]
-        )
-        response = request.put
-        result = ResourceBuilder.new(response, {}, {}).run
-        refresh_data(result)
-      end
-
-      # Unpublishes an entry.
-      #
-      # @return [Contentful::Management::Entry]
-      def unpublish
-        request = Request.new(
-          "/#{space.id}/entries/#{id}/published",
-          {},
-          nil,
-          version: sys[:version]
-        )
-        response = request.delete
-        result = ResourceBuilder.new(response, {}, {}).run
-        refresh_data(result)
-      end
-
-      # Archives an entry.
-      #
-      # @return [Contentful::Management::Entry]
-      def archive
-        request = Request.new(
-          "/#{space.id}/entries/#{id}/archived",
-          {},
-          nil,
-          version: sys[:version]
-        )
-        response = request.put
-        result = ResourceBuilder.new(response, {}, {}).run
-        refresh_data(result)
-      end
-
-      # Unarchives an entry.
-      #
-      # @return [Contentful::Management::Entry]
-      def unarchive
-        request = Request.new(
-          "/#{space.id}/entries/#{id}/archived",
-          {},
-          nil,
-          version: sys[:version]
-        )
-        response = request.delete
-        result = ResourceBuilder.new(response, {}, {}).run
-        refresh_data(result)
-      end
-
-      # Destroys an entry.
-      #
-      # @return [true, Contentful::Management::Error] success
-      def destroy
-        request = Request.new("/#{space.id}/entries/#{id}")
-        response = request.delete
-        if response.status == :no_content
-          return true
-        else
-          result = ResourceBuilder.new(response, {}, {})
-          result.run
-        end
-      end
-
-      # Checks if an entry is published.
-      #
-      # @return [Boolean]
-      def published?
-        sys[:publishedAt] ? true : false
-      end
-
-      # Checks if an entry is archived.
-      #
-      # @return [Boolean]
-      def archived?
-        sys[:archivedAt] ? true : false
       end
 
       # Returns the currently supported local.
@@ -270,6 +133,12 @@ module Contentful
         attributes.each do |id, value|
           attributes[id] = { locale => parse_update_attribute(value) }
         end
+      end
+
+      protected
+
+      def query_attributes(attributes)
+        { fields: Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes)) }
       end
 
       private
@@ -315,7 +184,7 @@ module Contentful
       end
 
       def fetch_content_type
-        @content_type ||= ::Contentful::Management::ContentType.find(space.id, sys[:contentType].id)
+        @content_type ||= ::Contentful::Management::ContentType.find(client, space.id, sys[:contentType].id)
       end
 
       def self.hash_with_link_object(type, attribute)

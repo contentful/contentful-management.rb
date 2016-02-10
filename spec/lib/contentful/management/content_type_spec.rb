@@ -10,9 +10,12 @@ module Contentful
       let!(:client) { Client.new(token) }
       let(:content_type_id) { '5DSpuKrl04eMAGQoQckeIq' }
 
-      subject { Contentful::Management::ContentType }
+      subject { client.content_types }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('content_type/all') { expect(Contentful::Management::ContentType.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('content_type/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -23,6 +26,9 @@ module Contentful
 
       describe '.all_published' do
         let!(:space_id) { 'bjwq7b86vgmm' }
+        it 'class method also works' do
+          vcr('content_type/all_public') { expect(Contentful::Management::ContentType.all_published(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('content_type/all_public') { expect(subject.all_published(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -31,7 +37,10 @@ module Contentful
         end
       end
 
-      describe '#find' do
+      describe '.find' do
+        it 'class method also works' do
+          vcr('content_type/find') { expect(Contentful::Management::ContentType.find(client, space_id, content_type_id)).to be_kind_of Contentful::Management::ContentType }
+        end
         it 'returns a Contentful::Management::ContentType' do
           vcr('content_type/find') { expect(subject.find(space_id, content_type_id)).to be_kind_of Contentful::Management::ContentType }
         end
@@ -148,9 +157,11 @@ module Contentful
 
         it 'creates a content_type within a space without id and without fields' do
           vcr('content_type/create') do
-            content_type = Contentful::Management::ContentType.create(space_id,
-                                                                      name: content_type_name,
-                                                                      description: content_type_description)
+            content_type = subject.create(
+              space_id,
+              name: content_type_name,
+              description: content_type_description
+            )
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq content_type_name
             expect(content_type.description).to eq content_type_description
@@ -160,9 +171,11 @@ module Contentful
         it 'creates a content_type within a space with custom id and without fields' do
           vcr('content_type/create_content_type_with_id') do
             content_type_id = 'custom_id'
-            content_type = Contentful::Management::ContentType.create(space_id,
-                                                                      name: content_type_name,
-                                                                      id: content_type_id)
+            content_type = subject.create(
+              space_id,
+              name: content_type_name,
+              id: content_type_id
+            )
             expect(content_type).to be_kind_of Contentful::Management::ContentType
             expect(content_type.name).to eq content_type_name
             expect(content_type.id).to eq content_type_id
@@ -177,10 +190,12 @@ module Contentful
               field.name = "My #{ field_type } Field"
               field.type = field_type
               field.link_type = 'Entry' if field_type == 'Link'
-              content_type = Contentful::Management::ContentType.create(space_id,
-                                                                        name: "#{ field_type }",
-                                                                        description: "Content type with #{ field_type } field",
-                                                                        fields: [field])
+              content_type = subject.create(
+                space_id,
+                name: "#{ field_type }",
+                description: "Content type with #{ field_type } field",
+                fields: [field]
+              )
               expect(content_type).to be_kind_of Contentful::Management::ContentType
               expect(content_type.name).to eq "#{ field_type }"
               expect(content_type.description).to eq "Content type with #{ field_type } field"
@@ -251,7 +266,7 @@ module Contentful
 
         it 'update with multiple locales' do
           vcr('content_type/entry/update_only_with_localized_fields') do
-            space = Contentful::Management::Space.find('v2umtz8ths9v')
+            space = client.spaces.find('v2umtz8ths9v')
             entry = space.entries.find('2dEkgsQRnSW2QuW4AMaa86')
             entry.name_with_locales = {'en-US' => 'Contentful EN up', 'de-DE' => 'Contentful DE up', 'pl-PL' => 'Contentful PL up'}
             entry.description_with_locales = {'en-US' => 'Description EN up', 'de-DE' => 'Description DE up', 'pl-PL' => 'Description PL up'}
@@ -290,7 +305,7 @@ module Contentful
 
         it 'saves new object' do
           vcr('content_type/save_new') do
-            space = Contentful::Management::Space.find(space_id)
+            space = client.spaces.find(space_id)
             content_type = space.content_types.new
             content_type.name = 'Post title'
             field = Contentful::Management::Field.new
@@ -397,7 +412,7 @@ module Contentful
 
         it 'with entry' do
           vcr('content_type/entry/create_with_entries') do
-            entry_en = Entry.find(space_id, 'Qa8TW5nPWgiU4MA6AGYgq')
+            entry_en = client.entries.find(space_id, 'Qa8TW5nPWgiU4MA6AGYgq')
             content_type = subject.find(space_id, '6xzrdCr33OMAeIYUgs6UKi')
             entry = content_type.entries.create(blog_name: 'Piotrek',
                                                 blog_entry: entry_en,
@@ -449,7 +464,7 @@ module Contentful
           end
           it 'with entries' do
             vcr('content_type/entry/create_with_entries_for_multiple_locales') do
-              space = Contentful::Management::Space.find(space_id)
+              space = client.spaces.find(space_id)
               space.content_types # filling cache
 
               entry_en = space.entries.find('664EPJ6zHqAeMO6O0mGggU')
@@ -467,7 +482,7 @@ module Contentful
 
           it 'with assets' do
             vcr('content_type/entry/create_with_entries_for_multiple_locales') do
-              space = Contentful::Management::Space.find(space_id)
+              space = client.spaces.find(space_id)
               space.content_types # filling cache
 
               entry_en = space.entries.find('664EPJ6zHqAeMO6O0mGggU')
@@ -519,7 +534,7 @@ module Contentful
         let(:space_id) { '9lxkhjnp8gyx' }
         it 'returns entries' do
           vcr('content_type/entry/all') do
-            space = Contentful::Management::Space.find(space_id)
+            space = client.spaces.find(space_id)
             content_type = space.content_types.find('category_content_type')
             entries = content_type.entries.all
             expect(entries).to be_kind_of Contentful::Management::Array
@@ -534,7 +549,7 @@ module Contentful
         let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('content_type/reload') do
-            content_type = Contentful::Management::ContentType.find(space_id, 'category_content_type')
+            content_type = subject.find(space_id, 'category_content_type')
             content_type.sys[:version] = 999
             update_ct = content_type.update(name: 'Updated content type name')
             expect(update_ct).to be_kind_of Contentful::Management::Conflict
@@ -548,7 +563,7 @@ module Contentful
 
 
       describe '#validations' do
-        let(:space) { Contentful::Management::Space.find('v2umtz8ths9v') }
+        let(:space) { client.spaces.find('v2umtz8ths9v') }
         let(:content_type) { space.content_types.find('category_content_type') }
 
         it "adds 'in validation' to a new field" do
@@ -700,7 +715,7 @@ module Contentful
         it 'creates new content type with fields' do
           vcr('content_type/fields/create_array_types') do
 
-            space = Contentful::Management::Space.find('2jtuu7nex6e6')
+            space = client.spaces.find('2jtuu7nex6e6')
 
             items = Contentful::Management::Field.new
             items.type = 'Link'
@@ -734,7 +749,7 @@ module Contentful
       describe 'issues' do
         it 'content types should be valid on creation - #79' do
           vcr('content_type/issue_79') {
-            space = Contentful::Management::Space.find('ngtgiva4wofg')
+            space = client.spaces.find('ngtgiva4wofg')
 
             field = Contentful::Management::Field.new
             field.id = 'name'

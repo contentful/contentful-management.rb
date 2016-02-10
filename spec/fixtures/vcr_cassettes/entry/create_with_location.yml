@@ -154,7 +154,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 13:18:00 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Tom Handy"},"age":{"en-US":30},"city":{"en-US":{"lat":22.44,"lon":33.33}}}}'

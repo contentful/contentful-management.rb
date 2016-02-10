@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types
     body:
       encoding: UTF-8
       string: '{"name":"Date","description":"Content type with Date field","fields":[{"id":"my_Date_field","name":"My

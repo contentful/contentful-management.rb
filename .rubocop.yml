@@ -20,4 +20,4 @@ Metrics/LineLength:
   Max: 135
 
 Metrics/ClassLength:
-  Max: 230
+  Max: 250

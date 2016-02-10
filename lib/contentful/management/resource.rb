@@ -27,7 +27,8 @@ module Contentful
       }
       # rubocop:enable Style/DoubleNegation
 
-      attr_reader :properties, :request, :client, :default_locale, :raw_object
+      attr_reader :properties, :request, :default_locale, :raw_object
+      attr_accessor :client
 
       # @private
       def initialize(object = nil,
@@ -43,6 +44,33 @@ module Contentful
         @request = request
         @client = client
         @raw_object = object
+      end
+
+      # @private
+      def after_create(_attributes)
+      end
+
+      # Updates a resource.
+      #
+      # @param [Hash] attributes
+      #
+      # @see _ README for more information on how to create each resource
+      #
+      # @return [Contentful::Management::Resource]
+      def update(attributes)
+        ResourceRequester.new(client, self.class).update(
+          self,
+          { space_id: space.id, resource_id: id },
+          query_attributes(attributes),
+          version: sys[:version]
+        )
+      end
+
+      # Destroys a resource.
+      #
+      # @return [true, Contentful::Management::Error] success
+      def destroy
+        ResourceRequester.new(client, self.class).destroy(space_id: space.id, resource_id: id)
       end
 
       # @private
@@ -76,6 +104,17 @@ module Contentful
       # Shared instance of the API client
       def client
         Contentful::Management::Client.shared_instance
+      end
+
+      # @return [true]
+      def resource?
+        true
+      end
+
+      protected
+
+      def query_attributes(attributes)
+        attributes
       end
 
       private
@@ -114,20 +153,78 @@ module Contentful
       end
 
       # Register the resources properties on class level by using the #property method
-      # @private
       module ClassMethods
+        # @private
+        def endpoint
+          "#{Support.snakify(name.split('::')[-1])}s"
+        end
+
+        # @private
+        def build_endpoint(endpoint_options)
+          return "/#{endpoint_options[:space_id]}/public/#{endpoint}" if endpoint_options.key?(:public)
+          base = "/#{endpoint_options[:space_id]}/#{endpoint}"
+          return "#{base}/#{endpoint_options[:resource_id]}#{endpoint_options[:suffix]}" if endpoint_options.key?(:resource_id)
+          base
+        end
+
+        # Gets a collection of resources.
+        #
+        # @param [Contentful::Management::Client] client
+        # @param [String] space_id
+        # @param [Hash] parameters Search Options
+        # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+        #
+        # @return [Contentful::Management::Array<Contentful::Management::Resource>]
+        def all(client, space_id, parameters = {})
+          ResourceRequester.new(client, self).all({ space_id: space_id }, parameters)
+        end
+
+        # Gets a specific resource.
+        #
+        # @param [Contentful::Management::Client] client
+        # @param [String] space_id
+        # @param [String] resource_id
+        #
+        # @return [Contentful::Management::Resource]
+        def find(client, space_id, resource_id)
+          ResourceRequester.new(client, self).find(space_id: space_id, resource_id: resource_id)
+        end
+
+        # Creates a resource.
+        #
+        # @param [Contentful::Management::Client] client
+        # @param [String] space_id
+        # @param [Hash] attributes
+        # @see _ README for full attribute list for each resource.
+        #
+        # @return [Contentful::Management::Resource]
+        def create(client, space_id, attributes)
+          endpoint_options = { space_id: space_id }
+          endpoint_options[:resource_id] = attributes[:id] if attributes.key?(:id)
+          ResourceRequester.new(client, self).create(
+            endpoint_options,
+            attributes
+          )
+        end
+
+        # @private
+        def create_attributes(_client, _attributes)
+          {}
+        end
+
+        # @private
+        def create_headers(_client, _attributes)
+          {}
+        end
+
         # By default, fields come flattened in the current locale. This is different for sync
         def nested_locale_fields?
           false
         end
 
+        # Default property coercions
         def property_coercions
           @property_coercions ||= {}
-        end
-
-        # Shared instance of the API client
-        def client
-          Contentful::Management::Client.shared_instance
         end
 
         # Defines which properties of a resource your class expects
@@ -172,6 +269,7 @@ module Contentful
         end
       end
 
+      # @private
       def self.included(base)
         base.extend(ClassMethods)
       end

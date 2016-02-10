@@ -268,7 +268,7 @@ http_interactions:
   recorded_at: Mon, 04 Aug 2014 07:49:44 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"blog_name":{"en-US":"Piotrek"},"blog_entry":{"en-US":{"sys":{"type":"Link","linkType":"Entry","id":"Qa8TW5nPWgiU4MA6AGYgq"}}},"blog_entries":{"en-US":[{"sys":{"type":"Link","linkType":"Entry","id":"Qa8TW5nPWgiU4MA6AGYgq"}},{"sys":{"type":"Link","linkType":"Entry","id":"Qa8TW5nPWgiU4MA6AGYgq"}},{"sys":{"type":"Link","linkType":"Entry","id":"Qa8TW5nPWgiU4MA6AGYgq"}}]}}}'

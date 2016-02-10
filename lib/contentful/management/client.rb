@@ -5,6 +5,14 @@ require 'contentful/management/resource_builder'
 require 'contentful/management/version'
 require 'contentful/management/http_client'
 
+require 'contentful/management/client_space_methods_factory'
+require 'contentful/management/client_api_key_methods_factory'
+require 'contentful/management/client_asset_methods_factory'
+require 'contentful/management/client_content_type_methods_factory'
+require 'contentful/management/client_entry_methods_factory'
+require 'contentful/management/client_locale_methods_factory'
+require 'contentful/management/client_webhook_methods_factory'
+
 require_relative 'request'
 require 'http'
 require 'json'
@@ -52,6 +60,69 @@ module Contentful
         update_all_dynamic_entry_cache!
       end
 
+      # Allows manipulation of spaces in context of the current client
+      # Allows listing all spaces for client and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientSpaceMethodsFactory]
+      def spaces
+        ClientSpaceMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of api keys in context of the current client
+      # Allows listing all api keys for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientApiKeyMethodsFactory]
+      def api_keys
+        ClientApiKeyMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of assets in context of the current client
+      # Allows listing all assets for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientAssetMethodsFactory]
+      def assets
+        ClientAssetMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of content types in context of the current client
+      # Allows listing all content types for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientContentTypeMethodsFactory]
+      def content_types
+        ClientContentTypeMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of entries in context of the current client
+      # Allows listing all entries for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientEntryMethodsFactory]
+      def entries
+        ClientEntryMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of locales in context of the current client
+      # Allows listing all locales for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientLocaleMethodsFactory]
+      def locales
+        ClientLocaleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of webhooks in context of the current client
+      # Allows listing all webhooks for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientWebhookMethodsFactory]
+      def webhooks
+        ClientWebhookMethodsFactory.new(self)
+      end
+
       # @private
       def setup_logger
         @logger = configuration[:logger]
@@ -62,7 +133,7 @@ module Contentful
       def update_all_dynamic_entry_cache!
         return if configuration[:dynamic_entries].empty?
 
-        spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(space_id) }
+        spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(self, space_id) }
         update_dynamic_entry_cache_for_spaces!(spaces)
       end
 
@@ -83,7 +154,7 @@ module Contentful
       # @private
       def update_dynamic_entry_cache!(content_types)
         content_types.each do |ct|
-          @dynamic_entry_cache[ct.id.to_sym] = DynamicEntry.create(ct)
+          @dynamic_entry_cache[ct.id.to_sym] = DynamicEntry.create(ct, self)
         end
       end
 

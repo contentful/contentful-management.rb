@@ -128,7 +128,7 @@ http_interactions:
   recorded_at: Fri, 01 Aug 2014 09:48:27 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"post_title":{"en-US":"Company logo","pl":"Firmowe logo"},"post_body":{"en-US":"Story

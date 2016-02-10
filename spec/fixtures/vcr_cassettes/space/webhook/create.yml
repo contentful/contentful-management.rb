@@ -350,7 +350,7 @@ http_interactions:
   recorded_at: Tue, 30 Sep 2014 07:17:05 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/webhook_definitions/
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/webhook_definitions
     body:
       encoding: UTF-8
       string: '{"url":"https://www.example2.com","httpBasicUsername":"username","httpBasicPassword":"password"}'

@@ -523,7 +523,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 09:48:42 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/entries/
+    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Hello World"},"yolo":{"en-US":false}}}'

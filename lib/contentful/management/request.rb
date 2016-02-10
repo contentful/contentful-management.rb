@@ -6,10 +6,10 @@ module Contentful
     class Request
       attr_reader :client, :type, :query, :id, :endpoint
 
-      def initialize(endpoint, query = {}, id = nil, header = {})
+      def initialize(client, endpoint, query = {}, id = nil, header = {})
         @header = header
         @initial_id = id
-        @client = Contentful::Management::Client.shared_instance
+        @client = client
         @client.version = header[:version]
         @client.organization_id = header[:organization_id]
         @client.content_type_id = header[:content_type_id]
@@ -60,7 +60,7 @@ module Contentful
 
       # Returns a new Request object with the same data
       def copy
-        self.class.new(@endpoint, @query, @initial_id, @header)
+        self.class.new(@client, @endpoint, @query, @initial_id, @header)
       end
 
       private

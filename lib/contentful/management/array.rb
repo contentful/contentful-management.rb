@@ -26,8 +26,7 @@ module Contentful
           new_request = request.copy
           new_request.query[:skip] = new_skip
           response = new_request.get
-          result = ResourceBuilder.new(response, {}, {})
-          result.run
+          ResourceBuilder.new(response, client).run
         else
           false
         end

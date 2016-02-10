@@ -19,7 +19,7 @@ module Contentful
       }
 
       # @private
-      def self.create(content_type)
+      def self.create(content_type, client)
         unless content_type.is_a? ContentType
           content_type = ContentType.new(content_type)
         end
@@ -32,6 +32,10 @@ module Contentful
 
         Class.new DynamicEntry do
           content_type.fields.each do |field|
+            define_method :client do
+              client
+            end
+
             accessor_name = Support.snakify(field.id)
             define_method accessor_name do
               fields[field.id.to_sym]

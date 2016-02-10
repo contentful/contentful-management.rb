@@ -130,7 +130,7 @@ http_interactions:
   recorded_at: Fri, 01 Aug 2014 11:25:32 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"carMark":{"en-US":"Mercedes Benz","pl":"Mercedes"},"carCityPlate":{"en-US":"en","pl":"bia"},"carCapacity":{"en-US":2.5,"pl":2.5}}}'
