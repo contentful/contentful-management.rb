@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"pl-PL":"Title PL"},"description":{"pl-PL":"Description

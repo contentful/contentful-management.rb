@@ -32,13 +32,13 @@ The access token can easily be created through the [management api documentation
 Retrieving all spaces:
 
 ```ruby
-spaces = Contentful::Management::Space.all
+spaces = client.spaces.all
 ```
 
 Retrieving one space by id:
 
 ```ruby
-blog_space = Contentful::Management::Space.find('blog_space_id')
+blog_space = client.spaces.find('blog_space_id')
 ```
 
 Destroying a space:
@@ -50,7 +50,7 @@ blog_space.destroy
 Creating a space:
 
 ```ruby
-blog_space = Contentful::Management::Space.new
+blog_space = client.spaces.new
 blog_space.name = 'Blog Space'
 blog_space.save
 ```
@@ -58,18 +58,18 @@ blog_space.save
 or
 
 ```ruby
-blog_space = Contentful::Management::Space.create(name: 'Blog Space')
+blog_space = client.spaces.create(name: 'Blog Space')
 ```
 
 or in the context of the organization (if you have multiple organizations within your account):
 
 ```ruby
-blog_space = Contentful::Management::Space.create(name: 'Blog Space', organization_id: 'organization_id')
+blog_space = client.spaces.create(name: 'Blog Space', organization_id: 'organization_id')
 ```
 
 If you want to create a default locale different from `en-US`:
 ```ruby
-blog_space = Contentful::Management::Space.create(name: 'Blog Space', default_locale: 'de-DE')
+blog_space = client.spaces.create(name: 'Blog Space', default_locale: 'de-DE')
 ```
 
 Updating a space:
@@ -608,7 +608,7 @@ This allows for fetching Content Types for your Space at Client instantiation ti
 To enable this, in your Client instantiation do:
 
 ```ruby
-Contentful::Management::Client.new(token, dynamic_entries: ['my_space_id'])
+client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_id'])
 ```
 
 You can enable the Cache for as many Spaces as you want.

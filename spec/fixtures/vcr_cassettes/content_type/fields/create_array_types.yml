@@ -144,7 +144,7 @@ http_interactions:
   recorded_at: Fri, 31 Oct 2014 09:27:37 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/2jtuu7nex6e6/content_types/
+    uri: https://api.contentful.com/spaces/2jtuu7nex6e6/content_types
     body:
       encoding: UTF-8
       string: '{"name":"Testing Content Types","description":"","fields":[{"id":"entries","name":"Entries","type":"Array","items":{"type":"Link","linkType":"Entry"}}]}'

@@ -409,7 +409,7 @@ http_interactions:
   recorded_at: Sun, 17 Aug 2014 13:17:14 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/s37a4pe35l1x/entries/
+    uri: https://api.contentful.com/spaces/s37a4pe35l1x/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"pl-PL":"Create test"},"description":{"pl-PL":"Test

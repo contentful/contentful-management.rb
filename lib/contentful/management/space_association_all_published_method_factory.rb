@@ -4,7 +4,7 @@ module Contentful
     # @private
     module SpaceAssociationAllPublishedMethodsFactory
       def all_published(params = {})
-        associated_class.all_published(space.id, params)
+        associated_class.all_published(space.client, space.id, params)
       end
     end
   end

@@ -27,52 +27,58 @@ module Contentful
 
       attr_accessor :found_locale
 
-      # Gets a collection of spaces.
+      # @private
+      def self.build_endpoint(endpoint_options)
+        return "/#{endpoint_options[:space_id]}" if endpoint_options.key?(:space_id)
+        ''
+      end
+
+      # Gets all Spaces
+      #
+      # @param [Contentful::Management::Client] client
+      #
       # @return [Contentful::Management::Array<Contentful::Management::Space>]
-      def self.all
-        request = Request.new('')
-        response = request.get
-        result = ResourceBuilder.new(response, {}, {})
-        spaces = result.run
-        client.update_dynamic_entry_cache_for_spaces!(spaces)
-        spaces
+      def self.all(client)
+        ClientSpaceMethodsFactory.new(client).all
       end
 
       # Gets a specific space.
       #
+      # @param [Contentful::Management::Client] client
       # @param [String] space_id
       #
       # @return [Contentful::Management::Space]
-      def self.find(space_id)
-        request = Request.new("/#{space_id}")
-        response = request.get
-        result = ResourceBuilder.new(response, {}, {})
-        space = result.run
-        client.update_dynamic_entry_cache_for_space!(space) if space.is_a? Space
-        space
+      def self.find(client, space_id)
+        ClientSpaceMethodsFactory.new(client).find(space_id)
+      end
+
+      # @private
+      def self.create_attributes(client, attributes)
+        default_locale = attributes[:default_locale] || client.default_locale
+        { 'name' => attributes.fetch(:name), defaultLocale: default_locale }
+      end
+
+      # @private
+      def self.create_headers(_client, attributes)
+        { organization_id: attributes[:organization_id] }
+      end
+
+      # @private
+      def after_create(attributes)
+        self.found_locale = attributes[:default_locale] || client.default_locale
       end
 
       # Create a space.
       #
+      # @param [Contentful::Management::Client] client
       # @param [Hash] attributes
       # @option attributes [String] :name
       # @option attributes [String] :default_locale
       # @option attributes [String] :organization_id Required if user has more than one organization
       #
       # @return [Contentful::Management::Space]
-      def self.create(attributes)
-        default_locale = attributes[:default_locale] || client.default_locale
-        request = Request.new(
-          '',
-          { 'name' => attributes.fetch(:name), defaultLocale: default_locale },
-          nil,
-          organization_id: attributes[:organization_id]
-        )
-        response = request.post
-        result = ResourceBuilder.new(response, {}, {})
-        space = result.run
-        space.found_locale = default_locale if space.is_a? Space
-        space
+      def self.create(client, attributes)
+        ResourceRequester.new(client, self).create({}, attributes)
       end
 
       # Updates a space.
@@ -83,16 +89,13 @@ module Contentful
       #
       # @return [Contentful::Management::Space]
       def update(attributes)
-        request = Request.new(
-          "/#{id}",
+        ResourceRequester.new(client, self.class).update(
+          self,
+          { space_id: id },
           { 'name' => attributes.fetch(:name) },
-          nil,
           version: sys[:version],
           organization_id: attributes[:organization_id]
         )
-        response = request.put
-        result = ResourceBuilder.new(response, {}, {})
-        refresh_data(result.run)
       end
 
       # If a space is new, an object gets created in the Contentful, otherwise the existing space gets updated.
@@ -103,7 +106,7 @@ module Contentful
         if id
           update(name: name, organization_id: organization)
         else
-          new_instance = self.class.create(name: name, organization_id: organization)
+          new_instance = self.class.create(client, name: name, organization_id: organization)
           refresh_data(new_instance)
         end
       end
@@ -112,13 +115,7 @@ module Contentful
       #
       # @return [true, Contentful::Management::Error] success
       def destroy
-        request = Request.new("/#{id}")
-        response = request.delete
-        if response.status == :no_content
-          true
-        else
-          ResourceBuilder.new(response, {}, {}).run
-        end
+        ResourceRequester.new(client, self.class).destroy(space_id: id)
       end
 
       # Allows manipulation of content types in context of the current space
@@ -187,7 +184,7 @@ module Contentful
       #
       # @return [String]
       def find_locale
-        locale = ::Contentful::Management::Locale.all(id).detect(&:default)
+        locale = locales.all.detect(&:default)
         return locale.code unless locale.nil?
         @default_locale
       end

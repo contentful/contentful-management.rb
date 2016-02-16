@@ -11,9 +11,12 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { Contentful::Management::Entry }
+      subject { client.entries }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('entry/all') { expect(Contentful::Management::Entry.all(client, 'bfsvtul0c41g')).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('entry/all') { expect(subject.all('bfsvtul0c41g')).to be_kind_of Contentful::Management::Array }
         end
@@ -22,7 +25,7 @@ module Contentful
         end
         it 'returns entries in context of specified content type' do
           vcr('entry/content_type_entires') do
-            entries = Contentful::Management::Entry.all('bfsvtul0c41g', content_type: 'category_content_type')
+            entries = subject.all('bfsvtul0c41g', content_type: 'category_content_type')
             expect(entries).to be_kind_of Contentful::Management::Array
             expect(entries.first).to be_kind_of Contentful::Management::Entry
             expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
@@ -30,7 +33,7 @@ module Contentful
         end
         it 'return limited number of entries with next_page' do
           vcr('entry/limited_entries') do
-            entries = Contentful::Management::Entry.all('bfsvtul0c41g', limit: 20, skip: 2)
+            entries = subject.all('bfsvtul0c41g', limit: 20, skip: 2)
             expect(entries).to be_kind_of Contentful::Management::Array
             expect(entries.limit).to eq 20
             expect(entries.skip).to eq 2
@@ -41,6 +44,9 @@ module Contentful
 
       describe '.all_published' do
         let!(:space_id) { 'bjwq7b86vgmm' }
+        it 'class method also works' do
+          vcr('entry/all_public') { expect(Contentful::Management::Entry.all_published(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('entry/all_public') { expect(subject.all_published(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -49,10 +55,14 @@ module Contentful
         end
       end
 
-      describe '#find' do
+      describe '.find' do
+        it 'class method also works' do
+          vcr('entry/find') { expect(Contentful::Management::Entry.find(client, space_id, entry_id)).to be_kind_of Contentful::Management::Entry }
+        end
+
         it 'returns null as nil on empty Symbols' do
           vcr('entry/find-with-null-symbols') do
-            space = Contentful::Management::Space.find space_id
+            space = client.spaces.find(space_id)
             entry = space.entries.find(entry_id)
             expect(entry.fields[:videoid]).to_not be_kind_of(String)
             expect(entry.fields[:videoid]).to be_nil
@@ -233,30 +243,31 @@ module Contentful
 
       describe '.create' do
         let(:content_type_id) { '5DSpuKrl04eMAGQoQckeIq' }
-        let(:content_type) { Contentful::Management::ContentType.find(space_id, content_type_id) }
+        let(:content_type) { client.content_types.find(space_id, content_type_id) }
 
         it 'create with all attributes' do
           vcr('entry/create') do
-            content_type = Contentful::Management::ContentType.find('ene4qtp2sh7u', '5BHZB1vi4ooq4wKcmA8e2c')
+            content_type = client.content_types.find('ene4qtp2sh7u', '5BHZB1vi4ooq4wKcmA8e2c')
             location = Location.new.tap do |location|
               location.lat = 22.44
               location.lon = 33.33
             end
-            file = Asset.find('ene4qtp2sh7u', '2oNoT3vSAs82SOIQmKe0KG')
-            entry_att = Entry.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
-            entry = subject.create(content_type,
-                                   name: 'Test name',
-                                   number: 30,
-                                   float1: 1.1,
-                                   boolean: true, date: '2000-07-12T11:11:00+02:00',
-                                   time: '2000-07-12T11:11:00+02:00',
-                                   location: location,
-                                   file: file,
-                                   image: file,
-                                   array: %w(PL USD XX),
-                                   entry: entry_att,
-                                   entries: [entry_att, entry_att],
-                                   object_json: {'test' => {'@type' => 'Codequest'}}
+            file = client.assets.find('ene4qtp2sh7u', '2oNoT3vSAs82SOIQmKe0KG')
+            entry_att = subject.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
+            entry = subject.create(
+              content_type,
+              name: 'Test name',
+              number: 30,
+              float1: 1.1,
+              boolean: true, date: '2000-07-12T11:11:00+02:00',
+              time: '2000-07-12T11:11:00+02:00',
+              location: location,
+              file: file,
+              image: file,
+              array: %w(PL USD XX),
+              entry: entry_att,
+              entries: [entry_att, entry_att],
+              object_json: {'test' => {'@type' => 'Codequest'}}
             )
             expect(entry.name).to eq 'Test name'
             expect(entry.number).to eq 30
@@ -288,7 +299,7 @@ module Contentful
 
         it 'with entry' do
           vcr('entry/create_with_entry') do
-            entry_att = Entry.find(space_id, '4o6ghKSmSko4i828YCYaEo')
+            entry_att = client.entries.find(space_id, '4o6ghKSmSko4i828YCYaEo')
             entry = subject.create(content_type, name: 'EntryWithEntry', age: 20, entry: entry_att)
             expect(entry.name).to eq 'EntryWithEntry'
             expect(entry.age).to eq 20
@@ -298,7 +309,7 @@ module Contentful
 
         it 'with entries' do
           vcr('entry/create_with_entries') do
-            entry_att = Entry.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
+            entry_att = subject.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
             new_entry = subject.create(content_type,
                                        name: 'EntryWithEntries',
                                        age: 20,
@@ -310,14 +321,14 @@ module Contentful
 
         it 'with asset' do
           vcr('entry/create_with_asset') do
-            asset = Asset.find(space_id, 'codequest_id_test_custom')
+            asset = client.assets.find(space_id, 'codequest_id_test_custom')
             entry = subject.create(content_type, name: 'OneAsset', asset: asset)
             expect(entry.name).to eq 'OneAsset'
           end
         end
         it 'with assets' do
           vcr('entry/create_with_assets') do
-            asset = Asset.find(space_id, 'codequest_id_test_custom')
+            asset = client.assets.find(space_id, 'codequest_id_test_custom')
             entry = subject.create(content_type, name: 'multiAssets', assets: [asset, asset, asset])
             expect(entry.name).to eq 'multiAssets'
           end
@@ -337,7 +348,7 @@ module Contentful
         end
         it 'to specified locale' do
           vcr('entry/create_with_specified_locale') do
-            space = Contentful::Management::Space.find('s37a4pe35l1x')
+            space = client.spaces.find('s37a4pe35l1x')
             ct = space.content_types.find('category_content_type')
             entry = ct.entries.create(name: 'Create test', description: 'Test - create entry with specified locale.', locale: 'pl-PL')
             expect(entry.name).to eq 'Create test'
@@ -346,7 +357,7 @@ module Contentful
 
         it 'too many requests' do
           vcr('entry/too_many_requests') do
-            space = Contentful::Management::Space.find('286arvy86ry9')
+            space = client.spaces.find('286arvy86ry9')
             invalid_entry = space.entries.find('1YNepnMpXGiMWikaKC4GG0')
             ct = space.content_types.find('5lIEiXrCIoKoIKaSW2C8aa')
             entry = ct.entries.create(name: 'Create test', entry: invalid_entry)
@@ -358,7 +369,7 @@ module Contentful
 
         it 'with just an id' do
           vcr('entry/create_with_just_id') do
-            space = Contentful::Management::Space.find('bbukbffokvih')
+            space = client.spaces.find('bbukbffokvih')
             entry = space.content_types.all.first.entries.create({'id' => 'yol'})
             entry.save
             expect(entry).to be_a Contentful::Management::Entry
@@ -370,9 +381,9 @@ module Contentful
         let(:entry_id) { '1I3qWOiP8k2WWYCogKy88S' }
         it 'update entry' do
           vcr('entry/update') do
-            asset = Asset.find(space_id, 'codequest_id_test_custom_id')
-            entry_att = Entry.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
-            entry = Contentful::Management::Entry.find(space_id, '4o6ghKSmSko4i828YCYaEo')
+            asset = client.assets.find(space_id, 'codequest_id_test_custom_id')
+            entry_att = subject.find(space_id, '1d1QDYzeiyWmgqQYysae8u')
+            entry = subject.find(space_id, '4o6ghKSmSko4i828YCYaEo')
 
             location = Location.new
             location.lat = 22.44
@@ -400,7 +411,7 @@ module Contentful
 
         it 'update entry for custom locale' do
           vcr('entry/update_with_custom_locale') do
-            entry = Contentful::Management::Entry.find(space_id, '3U7JqGuVzOWIimU40mKeem')
+            entry = subject.find(space_id, '3U7JqGuVzOWIimU40mKeem')
             entry.locale = 'pl'
             result = entry.update(name: 'testName', bool: true)
             expect(result).to be_kind_of Contentful::Management::Entry
@@ -411,12 +422,12 @@ module Contentful
 
         it 'return Error when update not localized field' do
           vcr('entry/update_unlocalized_field') do
-            asset = Asset.find(space_id, 'codequest_id_test_custom_id')
+            asset = client.assets.find(space_id, 'codequest_id_test_custom_id')
 
             location = Location.new
             location.lat = 22.44
             location.lon = 33.33
-            entry = Contentful::Management::Entry.find(space_id, '3U7JqGuVzOWIimU40mKeem')
+            entry = subject.find(space_id, '3U7JqGuVzOWIimU40mKeem')
             entry.locale = 'pl'
             result = entry.update(name: 'DoestMatter', bool: false, city: location, asset: asset)
             expect(result).to be_kind_of Contentful::Management::Error
@@ -425,7 +436,7 @@ module Contentful
 
         it 'can update boolean fields to `false`' do
           vcr('entry/update_bool_field') do
-            space = Contentful::Management::Space.find('fujuvqn6zcl1')
+            space = client.spaces.find('fujuvqn6zcl1')
             content_type = space.content_types.find('1kUEViTN4EmGiEaaeC6ouY')
 
             q = content_type.entries.new
@@ -443,7 +454,7 @@ module Contentful
       describe '#save' do
         it 'save updated' do
           vcr('entry/save_update') do
-            entry = Contentful::Management::Entry.find(space_id, '664EPJ6zHqAeMO6O0mGggU')
+            entry = subject.find(space_id, '664EPJ6zHqAeMO6O0mGggU')
             entry.fields[:carMark] = 'Merc'
             entry.save
             expect(entry).to be_kind_of Contentful::Management::Entry
@@ -456,7 +467,7 @@ module Contentful
         let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('entry/reload') do
-            space = Contentful::Management::Space.find(space_id)
+            space = client.spaces.find(space_id)
             entry = space.entries.find('2arjcjtY7ucC4AGeIOIkok')
             entry.sys[:version] = 999
             update_entry = entry.update(post_title: 'Updated title')
@@ -471,7 +482,7 @@ module Contentful
 
       describe 'search filters' do
         let(:space) do
-          Contentful::Management::Space.find('bfsvtul0c41g')
+          client.spaces.find('bfsvtul0c41g')
         end
         context 'order' do
           it 'returns ordered entries by createdAt' do
@@ -632,7 +643,7 @@ module Contentful
       describe 'handling of localized values' do
         it 'retrieves localized value if it exists' do
           vcr('entry/locales/retrieve_localized') do
-            space = Contentful::Management::Space.find('0agypmo1waov')
+            space = client.spaces.find('0agypmo1waov')
             entry = space.entries.find('5cMXsmSd5So6iggWi268eG')
             entry.locale = 'de-DE'
 
@@ -643,7 +654,7 @@ module Contentful
 
         it 'retrieves value of default locale if it has not been localized' do
           vcr('entry/locales/fallback_to_default_locale') do
-            space = Contentful::Management::Space.find('0agypmo1waov')
+            space = client.spaces.find('0agypmo1waov')
             entry = space.entries.find('4epXENbO8wsaOukgqquYcI')
             entry.locale = 'de-DE'
 
@@ -654,7 +665,7 @@ module Contentful
 
         it 'sets value for the default locale when using simple assignments' do
           vcr('entry/locales/simple_assignments_use_default_locale') do
-            space = Contentful::Management::Space.find('0agypmo1waov')
+            space = client.spaces.find('0agypmo1waov')
             entry = space.entries.find('4epXENbO8wsaOukgqquYcI')
 
             entry.yolo = 'changed'
@@ -665,7 +676,7 @@ module Contentful
 
         it 'sets value for the specified locales when using *_with_locales' do
           vcr('entry/locales/simple_assignments_use_specified_locale') do
-            space = Contentful::Management::Space.find('0agypmo1waov')
+            space = client.spaces.find('0agypmo1waov')
             entry = space.entries.find('4epXENbO8wsaOukgqquYcI')
 
             entry.yolo_with_locales = {'de-DE' => 'changed'}
@@ -733,7 +744,7 @@ module Contentful
         describe 'handles multiple locales even when they are not all defined for the default locale - #70' do
           it 'merges all present locales' do
             vcr('entry/issue_70') {
-              space = Contentful::Management::Space.find('9sh5dtmfyzhj')
+              space = client.spaces.find('9sh5dtmfyzhj')
 
               entry_non_default_locale = space.entries.find('1PdCkb5maYgqsSUCOweseM')
 
@@ -751,7 +762,7 @@ module Contentful
             vcr('entry/issue_73') {
               begin
                 client.configuration[:default_locale] = 'en-GB'
-                content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                content_type = client.content_types.find('u2viwgfeal0o', 'someType')
                 new_entry = content_type.entries.create(id: 'hello-world')
 
                 new_entry.name = 'Hello World!'
@@ -776,7 +787,7 @@ module Contentful
                   vcr('entry/issue_61.1') {
                     begin
                       client.configuration[:default_locale] = 'en-GB'
-                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      content_type = client.content_types.find('u2viwgfeal0o', 'someType')
                       new_entry = content_type.entries.create(id: 'issue61_1', value: 'hello')
 
                       expect(new_entry.value).to eq 'hello'
@@ -786,7 +797,7 @@ module Contentful
                       new_entry.save
                       new_entry.publish
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+                      expected_entry = subject.find('u2viwgfeal0o', new_entry.id)
 
                       expect(expected_entry.value).to eq 'goodbye'
                     ensure
@@ -799,7 +810,7 @@ module Contentful
                   vcr('entry/issue_61.2') {
                     begin
                       client.configuration[:default_locale] = 'en-GB'
-                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      content_type = client.content_types.find('u2viwgfeal0o', 'someType')
                       new_entry = content_type.entries.create(id: 'issue61_2')
 
                       new_entry.value = 'goodbye'
@@ -809,7 +820,7 @@ module Contentful
 
                       expect(new_entry.value).to eq 'goodbye'
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+                      expected_entry = subject.find('u2viwgfeal0o', new_entry.id)
 
                       expect(expected_entry.value).to eq 'goodbye'
                     ensure
@@ -824,12 +835,12 @@ module Contentful
                   vcr('entry/issue_61.3') {
                     begin
                       client.configuration[:default_locale] = 'en-GB'
-                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      content_type = client.content_types.find('u2viwgfeal0o', 'someType')
                       new_entry = content_type.entries.create(id: 'issue61_3', value: 'hello')
 
                       expect(new_entry.value).to eq 'hello'
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+                      expected_entry = subject.find('u2viwgfeal0o', new_entry.id)
 
                       expected_entry.value = 'goodbye'
 
@@ -847,10 +858,10 @@ module Contentful
                   vcr('entry/issue_61.4') {
                     begin
                       client.configuration[:default_locale] = 'en-GB'
-                      content_type = Contentful::Management::ContentType.find('u2viwgfeal0o', 'someType')
+                      content_type = client.content_types.find('u2viwgfeal0o', 'someType')
                       new_entry = content_type.entries.create(id: 'issue61_4')
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', new_entry.id)
+                      expected_entry = subject.find('u2viwgfeal0o', new_entry.id)
 
                       expected_entry.value = 'goodbye'
 
@@ -874,7 +885,7 @@ module Contentful
                     begin
                       client.configuration[:default_locale] = 'en-GB'
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
+                      expected_entry = subject.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
 
                       expect(expected_entry.value).to eq 'hello'
 
@@ -898,7 +909,7 @@ module Contentful
                     begin
                       client.configuration[:default_locale] = 'en-GB'
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
+                      expected_entry = subject.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
 
                       expect(expected_entry.value).to eq nil
 
@@ -925,7 +936,7 @@ module Contentful
                     begin
                       client.configuration[:default_locale] = 'en-GB'
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
+                      expected_entry = subject.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
 
                       expect(expected_entry.value).to eq 'hello'
 
@@ -949,7 +960,7 @@ module Contentful
                     begin
                       client.configuration[:default_locale] = 'en-GB'
 
-                      expected_entry = Contentful::Management::Entry.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
+                      expected_entry = subject.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
 
                       expect(expected_entry.value).to eq nil
 

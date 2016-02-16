@@ -359,7 +359,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 12:20:17 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"CodeQuest"},"description":{"en-US":"Logo

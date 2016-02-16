@@ -7,7 +7,7 @@ module Contentful
         # Updates the current version of the object to the version on the system
         def reload
           self_class = self.class
-          resource = self.is_a?(Space) ? self_class.find(id) : self_class.find(space.id, id)
+          resource = self.is_a?(Space) ? self_class.find(client, id) : self_class.find(client, space.id, id)
           refresh_data(resource) if resource.is_a? self_class
         end
 

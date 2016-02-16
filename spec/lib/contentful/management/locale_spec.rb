@@ -11,9 +11,12 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { Contentful::Management::Locale }
+      subject { client.locales }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('locale/all_for_space') { expect(Contentful::Management::Locale.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('locale/all_for_space') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -23,6 +26,9 @@ module Contentful
       end
 
       describe '.find' do
+        it 'class method also works' do
+          vcr('locale/find') { expect(Contentful::Management::Locale.find(client, space_id, locale_id)).to be_kind_of Contentful::Management::Locale }
+        end
         it 'returns a Contentful::Management::Locale' do
           vcr('locale/find') { expect(subject.find(space_id, locale_id)).to be_kind_of Contentful::Management::Locale }
         end

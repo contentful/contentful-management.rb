@@ -298,7 +298,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 13:48:32 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"OneAsset"},"asset":{"en-US":{"sys":{"type":"Link","linkType":"Asset","id":"codequest_id_test_custom"}}}}}'

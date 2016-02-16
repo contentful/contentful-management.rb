@@ -1,3 +1,5 @@
+require_relative 'resource_requester'
+
 module Contentful
   module Management
     # Wrapper for Space Association Methods
@@ -10,20 +12,21 @@ module Contentful
       end
 
       def all(params = {})
-        associated_class.all(space.id, params)
+        associated_class.all(space.client, space.id, params)
       end
 
       def find(id)
-        associated_class.find(space.id, id)
+        associated_class.find(space.client, space.id, id)
       end
 
       def create(attributes)
-        associated_class.create(space.id, attributes)
+        associated_class.create(space.client, space.id, attributes)
       end
 
       def new
         object = associated_class.new
         object.sys[:space] = space
+        object.client = space.client
         object
       end
 

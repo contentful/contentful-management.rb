@@ -562,7 +562,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:25 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/286arvy86ry9/entries/
+    uri: https://api.contentful.com/spaces/286arvy86ry9/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Create test"},"entry":{"en-US":{"sys":{"type":"Link","linkType":"Entry","id":"1YNepnMpXGiMWikaKC4GG0"}}}}}'

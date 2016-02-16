@@ -11,9 +11,12 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { Contentful::Management::ApiKey }
+      subject { client.api_keys }
 
       describe '.all' do
+        it 'class method also works' do
+          vcr('api_key/all_for_space') { expect(Contentful::Management::ApiKey.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+        end
         it 'returns a Contentful::Array' do
           vcr('api_key/all_for_space') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
         end
@@ -23,6 +26,9 @@ module Contentful
       end
 
       describe '.find' do
+        it 'class method also works' do
+          vcr('api_key/find') { expect(Contentful::Management::ApiKey.find(client, space_id, api_key_id)).to be_kind_of Contentful::Management::ApiKey }
+        end
         it 'returns a Contentful::Management::ApiKey' do
           vcr('api_key/find') { expect(subject.find(space_id, api_key_id)).to be_kind_of Contentful::Management::ApiKey }
         end

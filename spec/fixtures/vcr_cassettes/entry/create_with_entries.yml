@@ -294,7 +294,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 06:39:11 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"EntryWithEntries"},"age":{"en-US":20},"entries":{"en-US":[{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}},{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}},{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}}]}}}'

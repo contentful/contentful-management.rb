@@ -855,7 +855,7 @@ http_interactions:
   recorded_at: Fri, 01 Aug 2014 13:17:01 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"Logo of Codequest comapny","pl":"Firmowe
