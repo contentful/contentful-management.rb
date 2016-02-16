@@ -56,11 +56,7 @@ module Contentful
       # @private
       def self.create_headers(_client, attributes)
         content_type = attributes[:content_type]
-        content_type_id = begin
-                            content_type.id
-                          rescue
-                            content_type[:id]
-                          end
+        content_type_id = content_type.respond_to?(:id) ? content_type.id : content_type[:id]
 
         { content_type_id: content_type_id }
       end
