@@ -18,6 +18,11 @@ Complete List of resource links on `Client`:
 * `#webhooks`
 * `#api_keys`
 
+### Fixed
+
+* Removed code duplication between FieldAware and DynamicEntry [#78](https://github.com/contentful/contentful-management.rb/issues/78)
+* Refactored FieldAware code to be simplified
+
 ## 0.9.0
 ### Added
 * Added `#destroy` method to Locales

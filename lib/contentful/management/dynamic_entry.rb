@@ -19,52 +19,22 @@ module Contentful
       }
 
       # @private
-      def self.create(content_type, client)
-        unless content_type.is_a? ContentType
-          content_type = ContentType.new(content_type)
-        end
-
-        fields_coercions = Hash[
-          content_type.fields.map do |field|
-            [field.id.to_sym, KNOWN_TYPES[field.type]]
+      def self.define_singleton_properties(entry_class, content_type, client)
+        entry_class.class_eval do
+          define_singleton_method :content_type do
+            content_type
           end
-        ]
 
-        Class.new DynamicEntry do
-          content_type.fields.each do |field|
-            define_method :client do
-              client
-            end
-
-            accessor_name = Support.snakify(field.id)
-            define_method accessor_name do
-              fields[field.id.to_sym]
-            end
-            define_method "#{accessor_name}_with_locales" do
-              fields_for_query[field.id.to_sym]
-            end
-            define_method "#{accessor_name}=" do |value|
-              if localized_or_default_locale(field, locale)
-                @fields[locale] ||= {}
-                @fields[locale][field.id.to_sym] = value
-              end
-            end
-            define_method "#{accessor_name}_with_locales=" do |values|
-              values.each do |locale, value|
-                if localized_or_default_locale(field, locale)
-                  @fields[locale] ||= {}
-                  @fields[locale][field.id.to_sym] = value
-                end
-              end
-            end
+          define_singleton_method :client do
+            client
           end
 
           define_singleton_method :fields_coercions do
-            fields_coercions
-          end
-
-          define_singleton_method :content_type do
-            content_type
+            Hash[
+              content_type.fields.map do |field|
+                [field.id.to_sym, KNOWN_TYPES[field.type]]
+              end
+            ]
           end
 
           define_singleton_method :to_s do
@@ -78,8 +48,15 @@ module Contentful
       end
 
       # @private
-      def localized_or_default_locale(field, locale)
-        field.localized || default_locale == locale
+      def self.create(content_type, client)
+        unless content_type.is_a? ContentType
+          content_type = ContentType.new(content_type)
+        end
+
+        Class.new DynamicEntry do
+          DynamicEntry.define_singleton_properties(self, content_type, client)
+          FieldAware.create_fields_for_content_type(self, :class)
+        end
       end
     end
   end
