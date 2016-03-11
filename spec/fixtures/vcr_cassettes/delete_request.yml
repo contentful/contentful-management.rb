@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://example.com/?foo=bar
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - example.com
+      User-Agent:
+      - http.rb/0.9.8
+  response:
+    status:
+      code: 405
+      message: Method Not Allowed
+    headers:
+      Cache-Control:
+      - max-age=604800
+      Date:
+      - Fri, 11 Mar 2016 10:16:02 GMT
+      Expires:
+      - Fri, 18 Mar 2016 10:16:02 GMT
+      Server:
+      - EOS (lax004/45C0)
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 11 Mar 2016 10:16:01 GMT
+recorded_with: VCR 2.9.3

@@ -613,6 +613,33 @@ client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_i
 
 You can enable the Cache for as many Spaces as you want.
 
+## Proxy Support
+
+This allows for using the CMA SDK through a proxy, for this, your proxy must support HTTPS and your server must have a valid signed certificate.
+
+To enable this, in your Client instantiation do:
+
+```ruby
+PROXY_HOST = 'localhost'
+PROXY_PORT = 8888
+
+# Just Host/Port
+client = Contributing::Management::Client.new(
+  token,
+  proxy_host: PROXY_HOST,
+  proxy_port: PROXY_PORT
+)
+
+# With Username/Password
+client = Contributing::Management::Client.new(
+  token,
+  proxy_host: PROXY_HOST,
+  proxy_port: PROXY_PORT,
+  proxy_username: 'YOUR_USERNAME',
+  proxy_password: 'YOUR_PASSWORD'
+)
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/contentful-management/fork )

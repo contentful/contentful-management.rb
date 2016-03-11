@@ -23,6 +23,10 @@ Complete List of resource links on `Client`:
 * Removed code duplication between FieldAware and DynamicEntry [#78](https://github.com/contentful/contentful-management.rb/issues/78)
 * Refactored FieldAware code to be simplified
 
+### Added
+
+* Proxy Support [#88](https://github.com/contentful/contentful-management.rb/issues/88)
+
 ## 0.9.0
 ### Added
 * Added `#destroy` method to Locales
