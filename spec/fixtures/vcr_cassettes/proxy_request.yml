@@ -1,0 +1,562 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/zh42n1tmsaiq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/0.9.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 11 Mar 2016 10:19:17 GMT
+      Etag:
+      - '"a1b95f8ce7ecfa1e9ea68e91314f3d64"'
+      Server:
+      - nginx
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 9e1-1083866496
+      Content-Length:
+      - '454'
+      Set-Cookie:
+      - "___utmvaaBuVKoi=Kul\x01xFOI; path=/; Max-Age=900"
+      - '___utmvbaBuVKoi=VZl    XiAONalY: TtT; path=/; Max-Age=900'
+      - ___utmvmaBuVKoi=CXfYuXPRiny; path=/; Max-Age=900
+      - incap_ses_47_673446=Km4XE64jbF6fgZyjwvqmAKSb4lYAAAAA3dIh2277tVIDB94+TTPsMw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=76Y4POh8OmNISfm1lMJDTwAAAADPYYAk+kme2PfXppi5nkfm; path=/; Domain=.contentful.com
+      - visid_incap_673446=oDXW1PG4Ro+q7gciqSHHQKSb4lYAAAAAQUIPAAAAAAB3yklF1qouTCfIj5K/Hp3R;
+        expires=Fri, 10 Mar 2017 17:04:23 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-6030105-6030121 NNNY CT(76 159 0) RT(1457691555868 92) q(0 0 2 -1) r(4 4)
+        U5
+      X-Cdn:
+      - Incapsula
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: |+
+        {
+          "name":"MinecraftVR",
+          "sys":{
+            "type":"Space",
+            "id":"zh42n1tmsaiq",
+            "version":1,
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2016-03-09T09:19:37Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2016-03-09T09:19:37Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Fri, 11 Mar 2016 10:19:17 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/zh42n1tmsaiq/content_types
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/0.9.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - zh42n1tmsaiq
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 11 Mar 2016 10:19:19 GMT
+      Etag:
+      - '"de4b4e14eb9bd1df5aac007985566f62"'
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - content-api:4OoOTq6r0sEamecCyWSSUU
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '9270'
+      Set-Cookie:
+      - "___utmvaaBuVKoi=ftf\x01DKRm; path=/; Max-Age=900"
+      - '___utmvbaBuVKoi=eZr    XerOSalt: XtW; path=/; Max-Age=900'
+      - ___utmvmaBuVKoi=DEeDgdjhuZs; path=/; Max-Age=900
+      - incap_ses_47_673446=RpivINXH+xoUg5yjwvqmAKab4lYAAAAAnQF7rFJ721z75yTr8DdDBw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=iPwjVw7B/VuWPacMlMJDTwAAAAC02HLhMzF0Pp/X6G6oZOMi; path=/; Domain=.contentful.com
+      - visid_incap_673446=5esdq38CRuGYq+jLeNnekKab4lYAAAAAQUIPAAAAAADDTrCaQZdFMpq2uomf0WuQ;
+        expires=Fri, 10 Mar 2017 17:04:23 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 10-8052876-8052904 NNNY CT(72 73 0) RT(1457691557361 90) q(0 0 1 -1) r(10
+        10) U5
+      X-Cdn:
+      - Incapsula
+      Connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 4,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "zh42n1tmsaiq"
+                  }
+                },
+                "id": "block",
+                "type": "ContentType",
+                "createdAt": "2016-03-09T09:19:40.799Z",
+                "updatedAt": "2016-03-09T09:39:09.209Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 2,
+                "version": 4,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 3,
+                "firstPublishedAt": "2016-03-09T09:19:42.102Z",
+                "publishedAt": "2016-03-09T09:39:09.185Z"
+              },
+              "displayField": "name",
+              "name": "Block",
+              "description": null,
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Symbol",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "x",
+                  "name": "X",
+                  "type": "Number",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "y",
+                  "name": "Y",
+                  "type": "Number",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "z",
+                  "name": "Z",
+                  "type": "Number",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "texture",
+                  "name": "Texture",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Entry"
+                }
+              ]
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "zh42n1tmsaiq"
+                  }
+                },
+                "id": "map",
+                "type": "ContentType",
+                "createdAt": "2016-03-09T09:19:43.221Z",
+                "updatedAt": "2016-03-09T09:39:49.307Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 3,
+                "version": 6,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 5,
+                "firstPublishedAt": "2016-03-09T09:19:43.787Z",
+                "publishedAt": "2016-03-09T09:39:49.289Z"
+              },
+              "displayField": "name",
+              "name": "Map",
+              "description": null,
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Symbol",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "mesh",
+                  "name": "Mesh",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "blocks",
+                  "name": "blocks",
+                  "type": "Array",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "items": {
+                    "type": "Link",
+                    "validations": [],
+                    "linkType": "Entry"
+                  }
+                },
+                {
+                  "id": "blockMesh",
+                  "name": "Block Mesh",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "mapTexture",
+                  "name": "Map Texture",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "waypoints",
+                  "name": "Waypoints",
+                  "type": "Array",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "items": {
+                    "type": "Link",
+                    "validations": [],
+                    "linkType": "Entry"
+                  }
+                }
+              ]
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "zh42n1tmsaiq"
+                  }
+                },
+                "id": "waypoint",
+                "type": "ContentType",
+                "createdAt": "2016-03-09T09:19:47.330Z",
+                "updatedAt": "2016-03-09T09:40:17.544Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 2,
+                "version": 4,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 3,
+                "firstPublishedAt": "2016-03-09T09:19:47.871Z",
+                "publishedAt": "2016-03-09T09:40:17.521Z"
+              },
+              "displayField": "name",
+              "name": "Waypoint",
+              "description": null,
+              "fields": [
+                {
+                  "id": "x",
+                  "name": "X",
+                  "type": "Number",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "y",
+                  "name": "Y",
+                  "type": "Number",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "z",
+                  "name": "Z",
+                  "type": "Number",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Symbol",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                }
+              ]
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "zh42n1tmsaiq"
+                  }
+                },
+                "id": "texture",
+                "type": "ContentType",
+                "createdAt": "2016-03-09T09:19:45.549Z",
+                "updatedAt": "2016-03-09T09:40:01.512Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 2,
+                "version": 4,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 3,
+                "firstPublishedAt": "2016-03-09T09:19:46.028Z",
+                "publishedAt": "2016-03-09T09:40:01.480Z"
+              },
+              "displayField": "name",
+              "name": "Texture",
+              "description": null,
+              "fields": [
+                {
+                  "id": "name",
+                  "name": "Name",
+                  "type": "Symbol",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false
+                },
+                {
+                  "id": "textureImage",
+                  "name": "Texture Image",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "metaMesh",
+                  "name": "Meta Mesh",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Asset"
+                },
+                {
+                  "id": "metaTexture",
+                  "name": "Meta Texture",
+                  "type": "Link",
+                  "localized": false,
+                  "required": false,
+                  "validations": [],
+                  "disabled": false,
+                  "linkType": "Asset"
+                }
+              ]
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Fri, 11 Mar 2016 10:19:18 GMT
+recorded_with: VCR 2.9.3

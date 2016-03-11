@@ -74,6 +74,44 @@ module Contentful
         end
       end
 
+      describe '.post_http' do
+        subject { Client }
+        it 'does a POST request' do
+          vcr(:post_request) { subject.post_http('http://example.com', foo: 'bar') }
+        end
+      end
+
+      describe '.put_http' do
+        subject { Client }
+        it 'does a PUT request' do
+          vcr(:put_request) { subject.put_http('http://example.com', foo: 'bar') }
+        end
+      end
+
+      describe '.delete_http' do
+        subject { Client }
+        it 'does a DELETE request' do
+          vcr(:delete_request) { subject.delete_http('http://example.com', foo: 'bar') }
+        end
+      end
+
+      describe 'running with a proxy' do
+        subject { Client.new("<ACCESS_TOKEN>", proxy_host: 'localhost', proxy_port: 8888) }
+        it 'can run through a proxy' do
+          vcr(:proxy_request) {
+            space = subject.spaces.find('zh42n1tmsaiq')
+            expect(space.name).to eq 'MinecraftVR'
+          }
+        end
+
+        it 'effectively requests via proxy' do
+          vcr(:proxy_request) {
+            expect(subject.class).to receive(:proxy_send).twice.and_call_original
+            subject.spaces.find('zh42n1tmsaiq')
+          }
+        end
+      end
+
       describe '.raise_error' do
         it 'raise error set to true' do
           expect(subject.configuration[:raise_errors]).to be_falsey

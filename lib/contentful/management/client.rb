@@ -38,7 +38,11 @@ module Contentful
         logger: false,
         log_level: Logger::INFO,
         raise_errors: false,
-        dynamic_entries: []
+        dynamic_entries: [],
+        proxy_host: nil,
+        proxy_port: nil,
+        proxy_username: nil,
+        proxy_password: nil
       }
 
       # @param [String] access_token
@@ -51,6 +55,10 @@ module Contentful
       # @option configuration [::Logger::DEBUG, ::Logger::INFO, ::Logger::WARN, ::Logger::ERROR] :log_level
       # @option configuration [Boolean] :raise_errors
       # @option configuration [::Array<String>] :dynamic_entries
+      # @option configuration [String] :proxy_host
+      # @option configuration [Fixnum] :proxy_port
+      # @option configuration [String] :proxy_username
+      # @option configuration [String] :proxy_username
       def initialize(access_token = nil, configuration = {})
         @configuration = default_configuration.merge(configuration)
         setup_logger
@@ -201,28 +209,28 @@ module Contentful
       # @private
       def delete(request)
         execute_request(request) do |url|
-          self.class.delete_http(url, {}, request_headers)
+          self.class.delete_http(url, {}, request_headers, proxy_parameters)
         end
       end
 
       # @private
       def get(request)
         execute_request(request) do |url|
-          self.class.get_http(url, request.query, request_headers)
+          self.class.get_http(url, request.query, request_headers, proxy_parameters)
         end
       end
 
       # @private
       def post(request)
         execute_request(request) do |url|
-          self.class.post_http(url, request.query, request_headers)
+          self.class.post_http(url, request.query, request_headers, proxy_parameters)
         end
       end
 
       # @private
       def put(request)
         execute_request(request) do |url|
-          self.class.put_http(url, request.query, request_headers)
+          self.class.put_http(url, request.query, request_headers, proxy_parameters)
         end
       end
 
@@ -299,6 +307,16 @@ module Contentful
       # @private
       def self.shared_instance
         Thread.current[:client]
+      end
+
+      # @private
+      def proxy_parameters
+        {
+          host: configuration[:proxy_host],
+          port: configuration[:proxy_port],
+          username: configuration[:proxy_username],
+          password: configuration[:proxy_password]
+        }
       end
     end
   end
