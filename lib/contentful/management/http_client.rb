@@ -10,8 +10,7 @@ module Contentful
       #
       # @return [HTTP::Response]
       def get_http(url, query, headers = {}, proxy = {})
-        return proxy_send(:get, url, { params: query }, headers, proxy) unless proxy[:host].nil?
-        HTTP[headers].get(url, params: query)
+        http_send(:get, url, { params: query }, headers, proxy)
       end
 
       # Post Request
@@ -22,8 +21,7 @@ module Contentful
       #
       # @return [HTTP::Response]
       def post_http(url, params, headers = {}, proxy = {})
-        return proxy_send(:post, url, { json: params }, headers, proxy) unless proxy[:host].nil?
-        HTTP[headers].post(url, json: params)
+        http_send(:post, url, { json: params }, headers, proxy)
       end
 
       # Delete Request
@@ -34,8 +32,7 @@ module Contentful
       #
       # @return [HTTP::Response]
       def delete_http(url, params, headers = {}, proxy = {})
-        return proxy_send(:delete, url, { params: params }, headers, proxy) unless proxy[:host].nil?
-        HTTP[headers].delete(url, params: params)
+        http_send(:delete, url, { params: params }, headers, proxy)
       end
 
       # Put Request
@@ -46,8 +43,7 @@ module Contentful
       #
       # @return [HTTP::Response]
       def put_http(url, params, headers = {}, proxy = {})
-        return proxy_send(:delete, url, { json: params }, headers, proxy) unless proxy[:host].nil?
-        HTTP[headers].put(url, json: params)
+        http_send(:put, url, { json: params }, headers, proxy)
       end
 
       # Proxy Helper
@@ -65,7 +61,22 @@ module Contentful
           proxy[:port],
           proxy[:username],
           proxy[:password]
-        ).send(type, url, params)
+        ).public_send(type, url, params)
+      end
+
+      # HTTP Helper
+      # Abtracts the Proxy/No-Proxy logic
+      #
+      # @param [Symbol] type
+      # @param [String] url
+      # @param [Hash] params
+      # @param [Hash] headers
+      # @param [Hash] proxy
+      #
+      # @return [HTTP::Response]
+      def http_send(type, url, params, headers, proxy)
+        return proxy_send(type, url, params, headers, proxy) unless proxy[:host].nil?
+        HTTP[headers].public_send(type, url, params)
       end
     end
   end
