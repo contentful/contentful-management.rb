@@ -2,6 +2,7 @@
 
 ## Master
 
+## 1.0.0
 ### Breaking Changes
 * `Client` is no longer a singleton. Therefore all `Resource` class calls (`Entry`, `Space`, `ContentType`, etc...) require an instance of a client.
   The Client needs to be the first parameter of the call. As sending the client in every call is not a great solution, a shorthand for every resource
