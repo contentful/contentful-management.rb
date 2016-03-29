@@ -780,6 +780,19 @@ module Contentful
             }
           end
 
+          it 'fields_for_query get properly updated when setting a field using _with_locales - #91' do
+            vcr('entry/issue_91') {
+              entry = client.entries.find('iv4sic0eru9h', '5GrMLWzfyMs0eKoi4sg2ug')
+
+              expect(entry.test_with_locales).to eq('en-US' => 'foo', 'es' => 'bar')
+
+              entry.test_with_locales = {'en-US' => 'baz', 'es' => 'foobar'}
+
+              expect(entry.test_with_locales).to eq('en-US' => 'baz', 'es' => 'foobar')
+              expect(entry.fields_for_query).to eq(test: { 'en-US' => 'baz', 'es' => 'foobar' })
+            }
+          end
+
           describe 'it can properly assign, save and publish - #61' do
             describe 'on an entry created through the api' do
               describe 'before refetch' do

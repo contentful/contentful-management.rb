@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Changed
+* Changed locale selection priority when requesting fields [#91](https://github.com/contentful/contentful-management.rb/issues/91)
 
 ## 1.0.0
 ### Breaking Changes

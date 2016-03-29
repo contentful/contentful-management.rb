@@ -1,0 +1,256 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/iv4sic0eru9h/entries/5GrMLWzfyMs0eKoi4sg2ug
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/1.0.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - iv4sic0eru9h
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 29 Mar 2016 14:44:50 GMT
+      Etag:
+      - '"713c1a621dc27a6680086a0b7095a50a"'
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - content-api:5rY7VFgKiseaqGmoIkemKk
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '1101'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_298_673446=mwF2XL/LHQwHYwYtJrYiBOKU+lYAAAAA9krrCagofL8MiLJ5sMlDYA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=UpBdbmCArwwN0HWPaoBaJgAAAADmzA/SEcWb9AhSVHk0UwGu; path=/; Domain=.contentful.com
+      - visid_incap_673446=lUndMoT/Sg2k89hEPcQuKuKU+lYAAAAAQUIPAAAAAAC5JEUUCubFQpBRGmE0ZymW;
+        expires=Tue, 28 Mar 2017 23:23:00 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 0-49836165-49836186 NNNN CT(142 141 0) RT(1459262688720 114) q(0 0 3 -1) r(12
+        12) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "sys": {
+            "id": "5GrMLWzfyMs0eKoi4sg2ug",
+            "type": "Entry",
+            "createdAt": "2016-03-29T14:43:21.462Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "iv4sic0eru9h"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "localeTest"
+              }
+            },
+            "firstPublishedAt": "2016-03-29T14:43:38.029Z",
+            "publishedCounter": 1,
+            "publishedAt": "2016-03-29T14:43:38.029Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedVersion": 8,
+            "version": 9,
+            "updatedAt": "2016-03-29T14:43:38.036Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            }
+          },
+          "fields": {
+            "test": {
+              "en-US": "foo",
+              "es": "bar"
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 14:44:50 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/iv4sic0eru9h/content_types/localeTest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/1.0.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - iv4sic0eru9h
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 29 Mar 2016 14:44:52 GMT
+      Etag:
+      - '"ca61fa30dee92a108318d69e9755340d"'
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - content-api:1yyOlhYoI4U8cAos06Ee2y
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '1146'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_298_673446=Okc9Vzd1z0mtZQYtJrYiBOOU+lYAAAAAbIDRY0WivDZALbvilASlag==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=l8eTKu2a0Gda1EdUaoBaJgAAAABkAEu5aWbUIOVMVgkyz7J3; path=/; Domain=.contentful.com
+      - visid_incap_673446=bTnpq/PaTGWA7Z6KC2Mg/OOU+lYAAAAAQUIPAAAAAACdCN48/foqfFg6cCCRX408;
+        expires=Tue, 28 Mar 2017 23:23:00 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 1-71448780-71448803 NNNN CT(156 138 0) RT(1459262690162 102) q(0 0 3 -1) r(13
+        13) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "name": "LocaleTest",
+          "fields": [
+            {
+              "name": "test",
+              "id": "test",
+              "type": "Symbol",
+              "localized": true,
+              "validations": [],
+              "required": false,
+              "disabled": false
+            }
+          ],
+          "displayField": "test",
+          "description": "",
+          "sys": {
+            "id": "localeTest",
+            "type": "ContentType",
+            "createdAt": "2016-03-29T14:43:00.128Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "iv4sic0eru9h"
+              }
+            },
+            "firstPublishedAt": "2016-03-29T14:43:00.564Z",
+            "publishedCounter": 1,
+            "publishedAt": "2016-03-29T14:43:00.564Z",
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedVersion": 1,
+            "version": 2,
+            "updatedAt": "2016-03-29T14:43:00.580Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 14:44:52 GMT
+recorded_with: VCR 2.9.3
