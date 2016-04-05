@@ -44,6 +44,11 @@ module Contentful
 
       describe '.all_published' do
         let!(:space_id) { 'bjwq7b86vgmm' }
+
+        before :each do
+          expect_any_instance_of(Contentful::Management::Entry.client_association_class).to receive(:warn)
+        end
+
         it 'class method also works' do
           vcr('entry/all_public') { expect(Contentful::Management::Entry.all_published(client, space_id)).to be_kind_of Contentful::Management::Array }
         end

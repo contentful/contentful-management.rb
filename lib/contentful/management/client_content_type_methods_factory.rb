@@ -8,6 +8,10 @@ module Contentful
     class ClientContentTypeMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
       include Contentful::Management::ClientAssociationAllPublishedMethodsFactory
+
+      def all_published(space_id, params = {})
+        super(space_id, { suppress_warning: true }.merge(params))
+      end
     end
   end
 end
