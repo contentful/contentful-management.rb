@@ -13,6 +13,7 @@ module Contentful
         # @option parameters [String] :content_type
         # @option parameters [Integer] :limit
         # @option parameters [Integer] :skip
+        # @deprecated This call will be soon removed from the API except for Content Types
         #
         # @return [Contentful::Management::Array<Contentful::Management::Resource>]
         def all_published(client, space_id, parameters = {})

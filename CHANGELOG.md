@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Changed
+* Added Deprecation warning for `assets.all_published` and `entries.all_published`. This methods will be completely removed soon.
 
 ## 1.0.1
 ### Changed

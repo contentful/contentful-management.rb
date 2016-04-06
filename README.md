@@ -218,7 +218,7 @@ Retrieving all assets from the space:
 blog_post_assets = blog_space.assets.all
 ```
 
-Retrieving all published assets from the space:
+Retrieving all published assets from the space: **DEPRECATED**
 
 ```ruby
 blog_post_assets = blog_space.assets.all_published
@@ -330,7 +330,7 @@ Retrieving all entries from the space:
 entries = blog_space.entries.all
 ```
 
-Retrieving all published entries from the space:
+Retrieving all published entries from the space: **DEPRECATED**
 
 ```ruby
 entries = blog_space.entries.all_published
