@@ -11,6 +11,9 @@ module Contentful
 
       property :url, :string
       property :httpBasicUsername, :string
+      property :name, :string
+      property :headers, :array
+      property :topics, :array
 
       # @private
       def self.endpoint
@@ -19,7 +22,7 @@ module Contentful
 
       # @private
       def self.create_attributes(_client, attributes)
-        attributes.select { |key, _value| [:httpBasicUsername, :httpBasicPassword, :url].include? key }
+        attributes.select { |key, _value| [:httpBasicUsername, :httpBasicPassword, :url, :name, :headers, :topics].include? key }
       end
 
       protected

@@ -511,7 +511,12 @@ blog_post_webhook = blog_space.webhooks.find(webhook_id)
 Creating a webhook
 
 ```ruby
-blog_space.webhooks.create(url: 'https://www.example.com', httpBasicUsername: 'username', httpBasicPassword: 'password')
+blog_space.webhooks.create(
+  name: 'My Webhook',
+  url: 'https://www.example.com',
+  httpBasicUsername: 'username',
+  httpBasicPassword: 'password'
+)
 ```
 
 Updating a webhook
@@ -524,6 +529,22 @@ Destroying webhook:
 
 ```ruby
 blog_post_webhook.destroy
+```
+
+Creating a Webhook with Custom Headers and Custom Topics:
+
+```ruby
+blog_space.webhooks.create(
+  name: 'Entry Save Only',
+  url: 'https://www.example.com',
+  topics: [ 'Entry.save' ],
+  headers: [
+    {
+      key: 'X-My-Custom-Header',
+      value: 'Some Value'
+    }
+  ]
+)
 ```
 
 ### Api Keys

@@ -1,0 +1,119 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/zjvxmotjud5s/webhook_definitions/some_id
+    body:
+      encoding: UTF-8
+      string: '{"name":"some_webhook","url":"https://www.example2.com","headers":[{"key":"MyHeader","value":"foobar"}]}'
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/1.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Mon, 11 Apr 2016 12:02:42 GMT
+      Etag:
+      - '"01be3e0e10cb470efae890f743919134"'
+      Server:
+      - nginx
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - b89-586923734
+      Content-Length:
+      - '779'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_298_673446=smiVONW/3z4SYfTFKrYiBGKSC1cAAAAAWFRx31EjUEYkINQqH3WjVA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=vrUaNl0JVwteQduiaoBaJgAAAAC8NTjiFbae4xBPiFqTka40; path=/; Domain=.contentful.com
+      - visid_incap_673446=gUN9MJSOQeC2jpXLGMK41mKSC1cAAAAAQUIPAAAAAAAW7GMqfuKypNg7FVuYvw1a;
+        expires=Tue, 11 Apr 2017 09:48:50 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 6-47862086-47862138 NNNN CT(135 136 0) RT(1460376161233 384) q(0 0 2 -1) r(5
+        5) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: |+
+        {
+          "url":"https://www.example2.com",
+          "httpBasicUsername":null,
+          "name":"some_webhook",
+          "headers":[
+            {
+              "key":"MyHeader",
+              "value":"foobar"
+            }
+          ],
+          "topics":[
+            "*.publish",
+            "*.unpublish"
+          ],
+          "sys":{
+            "type":"WebhookDefinition",
+            "id":"some_id",
+            "version":1,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"zjvxmotjud5s"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2016-04-11T12:01:38Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2016-04-11T12:02:42Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Mon, 11 Apr 2016 12:02:42 GMT
+recorded_with: VCR 2.9.3
