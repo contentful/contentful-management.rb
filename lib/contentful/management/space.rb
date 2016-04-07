@@ -9,6 +9,8 @@ require_relative 'entry'
 require_relative 'space_entry_methods_factory'
 require_relative 'webhook'
 require_relative 'space_webhook_methods_factory'
+require_relative 'role'
+require_relative 'space_role_methods_factory'
 require_relative 'api_key'
 require_relative 'space_api_key_methods_factory'
 
@@ -143,6 +145,15 @@ module Contentful
       # @return [Contentful::Management::SpaceLocaleMethodsFactory]
       def locales
         SpaceLocaleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of roles in context of the current space
+      # Allows listing all roles of space, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceRoleMethodsFactory]
+      def roles
+        SpaceRoleMethodsFactory.new(self)
       end
 
       # Allows manipulation of assets in context of the current space

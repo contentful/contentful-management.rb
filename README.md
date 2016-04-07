@@ -210,6 +210,66 @@ Destroying a locale
 blog_post_locale.destroy
 ```
 
+### Roles
+
+Retrieving all roles from the space:
+
+```ruby
+blog_post_roles = blog_space.roles.all
+```
+
+Retrieving one role by the locale-id from the space:
+
+```ruby
+blog_post_role = blog_space.role.find(role_id)
+```
+
+Creating a role
+```ruby
+role_attributes = {
+  name: 'My Role',
+  description: 'foobar role',
+  permissions: {
+    'ContentDelivery': 'all',
+    'ContentModel': ['read'],
+    'Settings': []
+  },
+  policies: [
+    {
+      effect: 'allow',
+      actions: 'all',
+      constraint: {
+        and: [
+          {
+            equals: [
+              { doc: 'sys.type' },
+              'Entry'
+            ]
+          },
+          {
+            equals: [
+              { doc: 'sys.type' },
+              'Asset'
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+blog_space.roles.create(role_attributes)
+```
+
+Updating a role
+```ruby
+blog_post_role.update(name: 'Some Other Role') # Can change any attribute here
+```
+
+Destroying a role
+```ruby
+blog_post_role.destroy
+```
+
 ### Assets
 
 Retrieving all assets from the space:

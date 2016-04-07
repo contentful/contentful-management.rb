@@ -1,0 +1,143 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/03vrieuz7eun/roles
+    body:
+      encoding: UTF-8
+      string: '{"name":"testRoleCreate","description":"test role","permissions":{"ContentDelivery":"all","ContentModel":["read"],"Settings":[]},"policies":[{"effect":"allow","actions":"all","constraint":{"and":[{"equals":[{"doc":"sys.type"},"Entry"]},{"equals":[{"doc":"sys.type"},"Asset"]}]}}]}'
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/1.0.1
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Thu, 07 Apr 2016 20:46:45 GMT
+      Etag:
+      - '"a11450a142c9a5ffb5c0051df2b66418"'
+      Location:
+      - https://api.contentful.com/spaces/03vrieuz7eun/roles/5Xa7djFog5vBBeAOkp1z20
+      Server:
+      - nginx
+      Status:
+      - 201 Created
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 0b5-375596131
+      Content-Length:
+      - '1161'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_298_673446=bq85TqrgW0oZPdO9KrYiBDTHBlcAAAAA3JTTULqMfoaW45mL/QaMzw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=xH5pdQv/dQRxhR82aoBaJgAAAAA/iG+U1kXsE68KYs+SrUmW; path=/; Domain=.contentful.com
+      - visid_incap_673446=pizGtGm7Q3SbDG3mUinjzzTHBlcAAAAAQUIPAAAAAACqs4/MeF0nZnlhZOy2wJPd;
+        expires=Fri, 07 Apr 2017 09:48:45 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 5-24696761-24696791 NNNN CT(139 140 0) RT(1460062003983 101) q(0 0 3 -1) r(6
+        6) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: |+
+        {
+          "name":"testRoleCreate",
+          "description":"test role",
+          "policies":[
+            {
+              "effect":"allow",
+              "actions":"all",
+              "constraint":{
+                "and":[
+                  {
+                    "equals":[
+                      {
+                        "doc":"sys.type"
+                      },
+                      "Entry"
+                    ]
+                  },
+                  {
+                    "equals":[
+                      {
+                        "doc":"sys.type"
+                      },
+                      "Asset"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "permissions":{
+            "ContentModel":[
+              "read"
+            ],
+            "Settings":[],
+            "ContentDelivery":"all"
+          },
+          "sys":{
+            "type":"Role",
+            "id":"5Xa7djFog5vBBeAOkp1z20",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"03vrieuz7eun"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2016-04-07T20:46:45Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2016-04-07T20:46:45Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 20:46:45 GMT
+recorded_with: VCR 2.9.3

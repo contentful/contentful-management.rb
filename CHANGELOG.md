@@ -1,6 +1,9 @@
 # Change Log
 
 ## Master
+### Added
+* Add Roles and Permissions Support
+
 ### Changed
 * Added Deprecation warning for `assets.all_published` and `entries.all_published`. This methods will be completely removed soon.
 

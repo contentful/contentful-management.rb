@@ -11,6 +11,7 @@ require 'contentful/management/client_asset_methods_factory'
 require 'contentful/management/client_content_type_methods_factory'
 require 'contentful/management/client_entry_methods_factory'
 require 'contentful/management/client_locale_methods_factory'
+require 'contentful/management/client_role_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
 
 require_relative 'request'
@@ -120,6 +121,15 @@ module Contentful
       # @return [Contentful::Management::ClientLocaleMethodsFactory]
       def locales
         ClientLocaleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of roles in context of the current client
+      # Allows listing all roles for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientRoleMethodsFactory]
+      def roles
+        ClientRoleMethodsFactory.new(self)
       end
 
       # Allows manipulation of webhooks in context of the current client
