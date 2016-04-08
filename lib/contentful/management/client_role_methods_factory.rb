@@ -2,9 +2,9 @@ require_relative 'client_association_methods_factory'
 
 module Contentful
   module Management
-    # Wrapper for Webhook API for usage from within Client
+    # Wrapper for Role API for usage from within Client
     # @private
-    class ClientWebhookMethodsFactory
+    class ClientRoleMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
 
       def new(*)

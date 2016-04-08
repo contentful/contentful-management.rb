@@ -10,6 +10,7 @@ require_relative 'asset'
 require_relative 'webhook'
 require_relative 'api_key'
 require_relative 'locale'
+require_relative 'role'
 
 module Contentful
   module Management
@@ -27,7 +28,8 @@ module Contentful
         'Link' => Contentful::Management::Link,
         'WebhookDefinition' => Contentful::Management::Webhook,
         'ApiKey' => Contentful::Management::ApiKey,
-        'Locale' => Contentful::Management::Locale
+        'Locale' => Contentful::Management::Locale,
+        'Role' => Contentful::Management::Role
       }
       # Default Entry Mapping
       # @see _ README for more information on Entry Mapping
