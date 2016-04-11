@@ -59,6 +59,43 @@ module Contentful
             expect(webhook).to be_kind_of Contentful::Management::Error
           end
         end
+        it 'can create webhooks with name and custom headers' do
+          vcr('webhook/create_with_name_and_headers') do
+            webhook = subject.create(
+              'zjvxmotjud5s',
+              name: 'some_webhook',
+              id: 'some_id',
+              url: 'https://www.example2.com',
+              headers: [
+                {
+                  key: 'MyHeader',
+                  value: 'foobar'
+                }
+              ]
+            )
+
+            expect(webhook.name).to eq('some_webhook')
+            expect(webhook.id).to eq('some_id')
+            expect(webhook.headers.first).to eq({'key' => 'MyHeader', 'value' => 'foobar'})
+          end
+        end
+        it 'can create webhooks with specific topics' do
+          vcr('webhook/topics') do
+            webhook = subject.create(
+              'zjvxmotjud5s',
+              name: 'test_topics',
+              url: 'https://www.example3.com',
+              topics: [
+                'Entry.save',
+                'Entry.publish',
+                'ContentType.*'
+              ]
+            )
+
+            expect(webhook.topics.size).to eq 3
+            expect(webhook.topics).to eq ['Entry.save', 'Entry.publish', 'ContentType.*']
+          end
+        end
       end
 
       describe '#update' do
