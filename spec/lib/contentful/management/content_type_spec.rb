@@ -372,6 +372,22 @@ module Contentful
             expect(content_type.fields[11].type).to eq field_type
           end
         end
+
+        it 'create a scalar field after an array field' do
+          #remove the following three lines when moving to vcr
+          c = client.content_types.find(space_id, 'post')
+          c.destroy if c.class != Contentful::Management::NotFound
+          client.content_types.create(space_id, {id: 'post', name: 'Post'})
+
+          content_type = subject.find(space_id, 'post')
+
+          [
+            {:name=>"Tags", :id=>"tags", :type=>"Array", :items=>{:type=>"Symbol"}},
+            {:name=>"Author", :id=>"author", :type=>"Symbol"}
+          ].each{|f| content_type.fields.create(f)}
+
+          expect(content_type.fields.size).to eq 2
+        end
       end
 
       describe '#fields.add' do
