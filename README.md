@@ -181,95 +181,6 @@ Updating a content type:
 blog_post_content_type.update(name: 'Post', description: 'Post Description', fields: [title_field])
 ```
 
-### Locales
-
-Retrieving all locales from the space:
-
-```ruby
-blog_post_locales = blog_space.locales.all
-```
-
-Retrieving one locale by the locale-id from the space:
-
-```ruby
-blog_post_locale = blog_space.locales.find(locale_id)
-```
-
-Creating a locale
-```ruby
-blog_space.locales.create(name: 'German', code: 'de-DE')
-```
-
-Updating a locale
-```ruby
-blog_post_locale.update(name: 'German', code: 'de-DE')
-```
-
-Destroying a locale
-```ruby
-blog_post_locale.destroy
-```
-
-### Roles
-
-Retrieving all roles from the space:
-
-```ruby
-blog_post_roles = blog_space.roles.all
-```
-
-Retrieving one role by the locale-id from the space:
-
-```ruby
-blog_post_role = blog_space.role.find(role_id)
-```
-
-Creating a role
-```ruby
-role_attributes = {
-  name: 'My Role',
-  description: 'foobar role',
-  permissions: {
-    'ContentDelivery': 'all',
-    'ContentModel': ['read'],
-    'Settings': []
-  },
-  policies: [
-    {
-      effect: 'allow',
-      actions: 'all',
-      constraint: {
-        and: [
-          {
-            equals: [
-              { doc: 'sys.type' },
-              'Entry'
-            ]
-          },
-          {
-            equals: [
-              { doc: 'sys.type' },
-              'Asset'
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-blog_space.roles.create(role_attributes)
-```
-
-Updating a role
-```ruby
-blog_post_role.update(name: 'Some Other Role') # Can change any attribute here
-```
-
-Destroying a role
-```ruby
-blog_post_role.destroy
-```
-
 ### Assets
 
 Retrieving all assets from the space:
@@ -495,6 +406,95 @@ my_entry.published?
 >   * Enable [Content Type Cache](#content-type-cache) at Client Instantiation time
 >   * Query Entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
 
+### Locales
+
+Retrieving all locales from the space:
+
+```ruby
+blog_post_locales = blog_space.locales.all
+```
+
+Retrieving one locale by the locale-id from the space:
+
+```ruby
+blog_post_locale = blog_space.locales.find(locale_id)
+```
+
+Creating a locale
+```ruby
+blog_space.locales.create(name: 'German', code: 'de-DE')
+```
+
+Updating a locale
+```ruby
+blog_post_locale.update(name: 'German', code: 'de-DE')
+```
+
+Destroying a locale
+```ruby
+blog_post_locale.destroy
+```
+
+### Roles
+
+Retrieving all roles from the space:
+
+```ruby
+blog_post_roles = blog_space.roles.all
+```
+
+Retrieving one role by the locale-id from the space:
+
+```ruby
+blog_post_role = blog_space.role.find(role_id)
+```
+
+Creating a role
+```ruby
+role_attributes = {
+  name: 'My Role',
+  description: 'foobar role',
+  permissions: {
+    'ContentDelivery': 'all',
+    'ContentModel': ['read'],
+    'Settings': []
+  },
+  policies: [
+    {
+      effect: 'allow',
+      actions: 'all',
+      constraint: {
+        and: [
+          {
+            equals: [
+              { doc: 'sys.type' },
+              'Entry'
+            ]
+          },
+          {
+            equals: [
+              { doc: 'sys.type' },
+              'Asset'
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+blog_space.roles.create(role_attributes)
+```
+
+Updating a role
+```ruby
+blog_post_role.update(name: 'Some Other Role') # Can change any attribute here
+```
+
+Destroying a role
+```ruby
+blog_post_role.destroy
+```
+
 ### Webhooks
 
 Retrieving all webhooks from the space:
@@ -566,7 +566,45 @@ Creating an api key
 blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
 ```
 
-## Validations
+### Editor Interfaces
+
+Retrieving `default` editor interface for a content type:
+
+```ruby
+blog_post_editor_interface = blog_post_content_type.editor_interfaces.default
+```
+
+Retrieving one editor interface by id from a space:
+
+```ruby
+blog_post_editor_interface = blog_space.editor_interfaces.find(blog_post_content_type.id, editor_interface_id)
+```
+
+Creating one editor interface for a space and content type:
+
+```
+editor_interface_attributes = {
+  controls: [
+    {
+      fieldId: 'title',
+      widgetId: 'singleLine'
+    },
+    {
+      fieldId: 'body',
+      widgetId: 'markdown'
+    }
+  ]
+}
+blog_post_editor_interface = client.editor_interfaces.create(blog_space.id, blog_post_content_type.id, 'myCustomInterface', editor_interface_attributes)
+```
+
+As you can see, you can call the EditorInterface API from any level within the Content Model Hierarchy, take into account that you'll need to
+pass the ids of the levels below it.
+
+> Hierarchy is as follows:
+> `No Object -> Space -> ContentType -> EditorInterface`
+
+### Validations
 
 #### in
 
@@ -656,7 +694,7 @@ blog_space.assets.all(limit: 5).next_page
 blog_space.entries.all(limit: 5).next_page
 ```
 
-## Logging
+### Logging
 
 Logging is disabled by default, it can be enabled by setting a logger instance and a logging severity.
 
@@ -675,7 +713,7 @@ Logger.new('logfile.log')
 
 The default severity is set to INFO and logs only the request attributes (headers, parameters and url). Setting it to DEBUG will also log the raw JSON response.
 
-## Raise Errors
+### Raise Errors
 
 If `:raise_errors` is set to true, an Exception will be raised in case of an error. The default is false, in this case a ```Contentful::Management::Error``` object will be returned.
 
@@ -683,7 +721,7 @@ If `:raise_errors` is set to true, an Exception will be raised in case of an err
 client = Contentful::Management::Client.new('access_token', raise_errors: true)
 ```
 
-## Content Type Cache
+### Content Type Cache
 
 This allows for fetching Content Types for your Space at Client instantiation time, which prevents extra requests per Entry.
 To enable this, in your Client instantiation do:
@@ -694,7 +732,7 @@ client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_i
 
 You can enable the Cache for as many Spaces as you want.
 
-## Proxy Support
+### Proxy Support
 
 This allows for using the CMA SDK through a proxy, for this, your proxy must support HTTPS and your server must have a valid signed certificate.
 

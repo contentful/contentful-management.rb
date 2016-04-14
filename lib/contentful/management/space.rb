@@ -11,6 +11,8 @@ require_relative 'webhook'
 require_relative 'space_webhook_methods_factory'
 require_relative 'role'
 require_relative 'space_role_methods_factory'
+require_relative 'editor_interface'
+require_relative 'space_editor_interface_methods_factory'
 require_relative 'api_key'
 require_relative 'space_api_key_methods_factory'
 
@@ -156,6 +158,15 @@ module Contentful
         SpaceRoleMethodsFactory.new(self)
       end
 
+      # Allows manipulation of editor interfaces in context of the current space
+      # Allows listing all editor interfaces of space, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceEditorInterfaceMethodsFactory]
+      def editor_interfaces
+        SpaceEditorInterfaceMethodsFactory.new(self)
+      end
+
       # Allows manipulation of assets in context of the current space
       # Allows listing all assets of space, creating new and finding one by id.
       # @see _ README for details.
@@ -198,6 +209,12 @@ module Contentful
         locale = locales.all.detect(&:default)
         return locale.code unless locale.nil?
         @default_locale
+      end
+
+      protected
+
+      def refresh_find
+        self.class.find(client, id)
       end
     end
   end

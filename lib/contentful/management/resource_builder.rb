@@ -11,6 +11,7 @@ require_relative 'webhook'
 require_relative 'api_key'
 require_relative 'locale'
 require_relative 'role'
+require_relative 'editor_interface'
 
 module Contentful
   module Management
@@ -29,7 +30,8 @@ module Contentful
         'WebhookDefinition' => Contentful::Management::Webhook,
         'ApiKey' => Contentful::Management::ApiKey,
         'Locale' => Contentful::Management::Locale,
-        'Role' => Contentful::Management::Role
+        'Role' => Contentful::Management::Role,
+        'EditorInterface' => Contentful::Management::EditorInterface
       }
       # Default Entry Mapping
       # @see _ README for more information on Entry Mapping
