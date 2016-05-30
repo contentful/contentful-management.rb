@@ -25,31 +25,6 @@ module Contentful
         @resource_requester.all(space_id: space_id, content_type_id: content_type_id, editor_id: 'default')
       end
 
-      # Gets a specific Editor Interface.
-      #
-      # @param [String] space_id
-      # @param [String] content_type_id
-      # @param [String] editor_interface_id
-      #
-      # @return [Contentful::Management::EditorInterface]
-      def find(space_id, content_type_id, editor_interface_id)
-        @resource_requester.all(space_id: space_id, content_type_id: content_type_id, editor_id: editor_interface_id)
-      end
-
-      # Creates an Editor Interface
-      #
-      # @param [String] space_id
-      # @param [String] content_type_id
-      # @param [String] id
-      # @param [Hash] attributes
-      # @option attributes [Array<Hash>] controls
-      #
-      # @return [Contentful::Management::EditorInterface]
-      def create(space_id, content_type_id, id, attributes)
-        attributes[:id] = id
-        @resource_requester.create({ space_id: space_id, content_type_id: content_type_id, editor_id: id }, attributes)
-      end
-
       private
 
       def associated_class

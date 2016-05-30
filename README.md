@@ -1,4 +1,3 @@
-
 # Contentful::Management
 [![Gem Version](https://badge.fury.io/rb/contentful-management.svg)](http://badge.fury.io/rb/contentful-management) [![Build Status](https://travis-ci.org/contentful/contentful-management.rb.svg)](https://travis-ci.org/contentful/contentful-management.rb)
 
@@ -83,102 +82,6 @@ or
 ```ruby
 blog_space.name = 'New Blog Space'
 blog_space.save
-```
-
-### Content Types
-
-Retrieving all content types from a space:
-
-```ruby
-blog_post_content_types = blog_space.content_types.all
-```
-
-Retrieving all published content types from a space:
-
-```ruby
-blog_post_content_types = blog_space.content_types.all_published
-```
-
-Retrieving one content type by id from a space:
-
-```ruby
-blog_post_content_type = blog_space.content_types.find(id)
-```
-
-Creating a field for a content type:
-
-```ruby
-title_field = Contentful::Management::Field.new
-title_field.id = 'blog_post_title'
-title_field.name = 'Post Title'
-title_field.type = 'Text'
-blog_post_content_type.fields.add(field)
-```
-
-or
-
-```ruby
-blog_post_content_type.fields.create(id: 'title_field_id', name: 'Post Title', type: 'Text')
-```
-- if the field_id exists, the related field will be updated.
-
-or the field of link type:
-```ruby
-blog_post_content_type.fields.create(id: 'my_entry_link_field', name: 'My Entry Link Field', type: 'Link', link_type: 'Entry')
-```
-
-or the field of an array type:
-```ruby
-items = Contentful::Management::Field.new
-items.type = 'Link'
-items.link_type = 'Entry'
-blog_post_content_type.fields.create(id: 'my_array_field', name: 'My Array Field', type: 'Array', items: items)
-```
-
-Deleting a field from the content type:
-
-```ruby
-blog_post_content_type.fields.destroy(title_field_id)
-```
-
-Creating a content type:
-
-```ruby
-blog_space.content_types.create(name: 'Post', fields: [title_field, body_field])
-```
-
-or
-
-```ruby
-blog_post_content_type = blog_space.content_types.new
-blog_post_content_type.name = 'Post'
-blog_post_content_type.fields = [title_field, body_field]
-blog_post_content_type.save
-```
-
-Destroying a content type:
-
-```ruby
-blog_post_content_type.destroy
-```
-
-Activating or deactivating a content type:
-
-```ruby
-blog_post_content_type.activate
-blog_post_content_type.deactivate
-```
-
-Checking if a content type is active:
-
-```ruby
-blog_post_content_type.active?
-```
-
-Updating a content type:
-
-```ruby
-blog_post_content_type.update(name: 'Post', description: 'Post Description', fields: [title_field])
 ```
 
 ### Assets
@@ -406,6 +309,184 @@ my_entry.published?
 >   * Enable [Content Type Cache](#content-type-cache) at Client Instantiation time
 >   * Query Entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
 
+### Content Types
+
+Retrieving all content types from a space:
+
+```ruby
+blog_post_content_types = blog_space.content_types.all
+```
+
+Retrieving all published content types from a space:
+
+```ruby
+blog_post_content_types = blog_space.content_types.all_published
+```
+
+Retrieving one content type by id from a space:
+
+```ruby
+blog_post_content_type = blog_space.content_types.find(id)
+```
+
+Creating a field for a content type:
+
+```ruby
+title_field = Contentful::Management::Field.new
+title_field.id = 'blog_post_title'
+title_field.name = 'Post Title'
+title_field.type = 'Text'
+blog_post_content_type.fields.add(field)
+```
+
+or
+
+```ruby
+blog_post_content_type.fields.create(id: 'title_field_id', name: 'Post Title', type: 'Text')
+```
+- if the field_id exists, the related field will be updated.
+
+or the field of link type:
+```ruby
+blog_post_content_type.fields.create(id: 'my_entry_link_field', name: 'My Entry Link Field', type: 'Link', link_type: 'Entry')
+```
+
+or the field of an array type:
+```ruby
+items = Contentful::Management::Field.new
+items.type = 'Link'
+items.link_type = 'Entry'
+blog_post_content_type.fields.create(id: 'my_array_field', name: 'My Array Field', type: 'Array', items: items)
+```
+
+Deleting a field from the content type:
+
+```ruby
+blog_post_content_type.fields.destroy(title_field_id)
+```
+
+Creating a content type:
+
+```ruby
+blog_space.content_types.create(name: 'Post', fields: [title_field, body_field])
+```
+
+or
+
+```ruby
+blog_post_content_type = blog_space.content_types.new
+blog_post_content_type.name = 'Post'
+blog_post_content_type.fields = [title_field, body_field]
+blog_post_content_type.save
+```
+
+Destroying a content type:
+
+```ruby
+blog_post_content_type.destroy
+```
+
+Activating or deactivating a content type:
+
+```ruby
+blog_post_content_type.activate
+blog_post_content_type.deactivate
+```
+
+Checking if a content type is active:
+
+```ruby
+blog_post_content_type.active?
+```
+
+Updating a content type:
+
+```ruby
+blog_post_content_type.update(name: 'Post', description: 'Post Description', fields: [title_field])
+```
+
+### Validations
+
+#### in
+
+Takes an array of values and validates that the field value is in this array.
+
+```ruby
+validation_in = Contentful::Management::Validation.new
+validation_in.in = ['foo', 'bar', 'baz']
+blog_post_content_type.fields.create(id: 'valid', name: 'Testing IN', type: 'Text', validations: [validation_in])
+```
+
+#### size
+
+Takes optional min and max parameters and validates the size of the array (number of objects in it).
+
+```ruby
+validation_size = Contentful::Management::Validation.new
+validation_size.size = { min: 10, max: 15 }
+blog_post_content_type.fields.create(id: 'valid', name: 'Test SIZE', type: 'Text', validations: [validation_size])
+```
+
+#### range
+
+Takes optional min and max parameters and validates the range of a value.
+
+```ruby
+validation_range = Contentful::Management::Validation.new
+validation_range.range = { min: 100, max: 150 }
+blog_post_content_type.fields.create(id: 'valid', name: 'Range', type: 'Text', validations: [validation_range])
+```
+
+#### regex
+
+Takes a string that reflects a JS regex and flags, validates against a string. See [JS Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.
+
+```ruby
+validation_regexp = Contentful::Management::Validation.new
+validation_regexp.regexp = {pattern: '^such', flags: 'im'}
+blog_post_content_type.fields.create(id: 'valid', name: 'Regex', type: 'Text', validations: [validation_regexp])
+```
+
+#### linkContentType
+
+Takes an array of content type ids and validates that the link points to an entry of that content type.
+
+```ruby
+validation_link_content_type = Contentful::Management::Validation.new
+validation_link_content_type.link_content_type =  ['post_content_type_id']
+blog_post_content_type.fields.create(id: 'entry', name: 'Test linkContentType', type: 'Entry', validations: [validation_link_content_type])
+```
+
+#### linkMimetypeGroup
+
+Takes a MimeType group name and validates that the link points to an asset of this group.
+
+```ruby
+validation_link_mimetype_group = Contentful::Management::Validation.new
+validation_link_mimetype_group.link_mimetype_group = 'image'
+content_type.fields.create(id: 'asset', validations: [validation_link_mimetype_group])
+```
+
+#### present
+
+Validates that a value is present.
+
+```ruby
+validation_present = Contentful::Management::Validation.new
+validation_present.present = true
+content_type.fields.create(id: 'number', validations: [validation_present])
+```
+
+#### linkField
+
+Validates that the property is a link (must not be a valid link, just that it looks like one).
+
+```ruby
+validation_link_field = Contentful::Management::Validation.new
+validation_link_field.link_field  = true
+content_type.fields.create(id: 'entry', validations: [validation_link_field])
+```
+
 ### Locales
 
 Retrieving all locales from the space:
@@ -566,125 +647,19 @@ Creating an api key
 blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
 ```
 
-### Editor Interfaces
+### Editor Interface
 
-Retrieving `default` editor interface for a content type:
-
-```ruby
-blog_post_editor_interface = blog_post_content_type.editor_interfaces.default
-```
-
-Retrieving one editor interface by id from a space:
+Retrieving editor interface for a content type:
 
 ```ruby
-blog_post_editor_interface = blog_space.editor_interfaces.find(blog_post_content_type.id, editor_interface_id)
+blog_post_editor_interface = blog_post_content_type.editor_interface.default
 ```
 
-Creating one editor interface for a space and content type:
-
-```
-editor_interface_attributes = {
-  controls: [
-    {
-      fieldId: 'title',
-      widgetId: 'singleLine'
-    },
-    {
-      fieldId: 'body',
-      widgetId: 'markdown'
-    }
-  ]
-}
-blog_post_editor_interface = client.editor_interfaces.create(blog_space.id, blog_post_content_type.id, 'myCustomInterface', editor_interface_attributes)
-```
-
-As you can see, you can call the EditorInterface API from any level within the Content Model Hierarchy, take into account that you'll need to
+You can call the EditorInterface API from any level within the Content Model Hierarchy, take into account that you'll need to
 pass the ids of the levels below it.
 
 > Hierarchy is as follows:
 > `No Object -> Space -> ContentType -> EditorInterface`
-
-### Validations
-
-#### in
-
-Takes an array of values and validates that the field value is in this array.
-
-```ruby
-validation_in = Contentful::Management::Validation.new
-validation_in.in = ['foo', 'bar', 'baz']
-blog_post_content_type.fields.create(id: 'valid', name: 'Testing IN', type: 'Text', validations: [validation_in])
-```
-
-#### size
-
-Takes optional min and max parameters and validates the size of the array (number of objects in it).
-
-```ruby
-validation_size = Contentful::Management::Validation.new
-validation_size.size = { min: 10, max: 15 }
-blog_post_content_type.fields.create(id: 'valid', name: 'Test SIZE', type: 'Text', validations: [validation_size])
-```
-
-#### range
-
-Takes optional min and max parameters and validates the range of a value.
-
-```ruby
-validation_range = Contentful::Management::Validation.new
-validation_range.range = { min: 100, max: 150 }
-blog_post_content_type.fields.create(id: 'valid', name: 'Range', type: 'Text', validations: [validation_range])
-```
-
-#### regex
-
-Takes a string that reflects a JS regex and flags, validates against a string. See [JS Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.
-
-```ruby
-validation_regexp = Contentful::Management::Validation.new
-validation_regexp.regexp = {pattern: '^such', flags: 'im'}
-blog_post_content_type.fields.create(id: 'valid', name: 'Regex', type: 'Text', validations: [validation_regexp])
-```
-
-#### linkContentType
-
-Takes an array of content type ids and validates that the link points to an entry of that content type.
-
-```ruby
-validation_link_content_type = Contentful::Management::Validation.new
-validation_link_content_type.link_content_type =  ['post_content_type_id']
-blog_post_content_type.fields.create(id: 'entry', name: 'Test linkContentType', type: 'Entry', validations: [validation_link_content_type])
-```
-
-#### linkMimetypeGroup
-
-Takes a MimeType group name and validates that the link points to an asset of this group.
-
-```ruby
-validation_link_mimetype_group = Contentful::Management::Validation.new
-validation_link_mimetype_group.link_mimetype_group = 'image'
-content_type.fields.create(id: 'asset', validations: [validation_link_mimetype_group])
-```
-
-#### present
-
-Validates that a value is present.
-
-```ruby
-validation_present = Contentful::Management::Validation.new
-validation_present.present = true
-content_type.fields.create(id: 'number', validations: [validation_present])
-```
-
-#### linkField
-
-Validates that the property is a link (must not be a valid link, just that it looks like one).
-
-```ruby
-validation_link_field = Contentful::Management::Validation.new
-validation_link_field.link_field  = true
-content_type.fields.create(id: 'entry', validations: [validation_link_field])
-```
 
 ### Pagination
 

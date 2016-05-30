@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interfaces/default
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interface
     body:
       encoding: US-ASCII
       string: ''
@@ -39,9 +39,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Thu, 14 Apr 2016 15:35:02 GMT
+      - Mon, 30 May 2016 12:49:46 GMT
       Etag:
-      - '"52f19e75bd33ef5eaffa3f63dc8d0f6a"'
+      - '"7cfe711b58b47eb919f77437833ff1ee"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -49,7 +49,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:30vGFVYvwse2OwyKoC0u2w
+      - content-api:6J3jQohv32uEMoUEK0U2OM
       X-Powered-By:
       - Express
       Content-Length:
@@ -57,14 +57,14 @@ http_interactions:
       Connection:
       - Close
       Set-Cookie:
-      - incap_ses_298_673446=lo39Pz5xk0y96dcULbYiBKa4D1cAAAAAtAWA1ioiwDRIe6ceOqHGCw==;
+      - incap_ses_297_673446=Ol9bOiQkqzdbQn4eHigfBOo2TFcAAAAAgnysX8aQnP6pS/VlOl3VJw==;
         path=/; Domain=.contentful.com
-      - nlbi_673446=PA2CC3Y/a28eJsUnaoBaJgAAAAC+5wgGIdbqqGD6reH9YBgV; path=/; Domain=.contentful.com
-      - visid_incap_673446=tDmeA+fRTm2hABO/b+RX7aa4D1cAAAAAQUIPAAAAAABwm8S+XoAZl7VuOoI4aNwT;
-        expires=Fri, 14 Apr 2017 14:50:51 GMT; path=/; Domain=.contentful.com
+      - nlbi_673446=3JaYETNyuBkXZjcpaoBaJgAAAACxhxdXVrOn8lQllB4mG9gd; path=/; Domain=.contentful.com
+      - visid_incap_673446=36FO8Od1SXq28luLOfMaQek2TFcAAAAAQUIPAAAAAACE2WtAncA0+r2uNriSIWBc;
+        expires=Tue, 30 May 2017 06:05:53 GMT; path=/; Domain=.contentful.com
       X-Iinfo:
-      - 2-31202315-31202348 NNNN CT(138 130 0) RT(1460648101831 92) q(0 0 2 -1) r(4
-        4) U5
+      - 8-71290476-71290513 NNNN CT(154 292 0) RT(1464612584929 96) q(0 0 5 26) r(15
+        15) U5
       X-Cdn:
       - Incapsula
     body:
@@ -74,13 +74,13 @@ http_interactions:
           "controls": [
             {
               "fieldId": "symbol1",
-              "widgetId": "singleLine"
+              "widgetId": "singleline"
             }
           ],
           "sys": {
             "id": "default",
             "type": "EditorInterface",
-            "version": 7,
+            "version": 9,
             "createdAt": "2016-04-14T15:04:10.737Z",
             "createdBy": {
               "sys": {
@@ -103,7 +103,7 @@ http_interactions:
                 "id": "smallerType"
               }
             },
-            "updatedAt": "2016-04-14T15:33:56.683Z",
+            "updatedAt": "2016-05-30T12:26:01.918Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -114,10 +114,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Thu, 14 Apr 2016 15:35:02 GMT
+  recorded_at: Mon, 30 May 2016 12:49:43 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interfaces/default
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interface
     body:
       encoding: UTF-8
       string: '{"controls":[{"fieldId":"symbol1","widgetId":"urlEditor"}]}'
@@ -129,7 +129,7 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Version:
-      - '7'
+      - '9'
       Connection:
       - close
       Host:
@@ -154,9 +154,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Thu, 14 Apr 2016 15:35:05 GMT
+      - Mon, 30 May 2016 12:49:49 GMT
       Etag:
-      - '"90d82336d68525ae4bf4eed317ec4d04"'
+      - '"64724b994c4cb71fd0c29a67ea028a17"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -164,22 +164,22 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:7aEYmOUNEIOSaoImcQSio
+      - content-api:6nWsLKINqMeASC8GkguYUK
       X-Powered-By:
       - Express
       Content-Length:
-      - '814'
+      - '815'
       Connection:
       - Close
       Set-Cookie:
-      - incap_ses_298_673446=7Qh/C2Vp8ESg79cULbYiBKi4D1cAAAAAo19e62hPSI2Z/VqkiLRY4Q==;
+      - incap_ses_297_673446=lp85CI79YlpbQn4eHigfBO02TFcAAAAAf+rbf/GYnWNDeP/32ewKSQ==;
         path=/; Domain=.contentful.com
-      - nlbi_673446=AW/tSXvuSDlsPWFEaoBaJgAAAAD3DS1FNLVR1wlux1dXbH+C; path=/; Domain=.contentful.com
-      - visid_incap_673446=vbNsppFFTceuP+Sxa65BYKi4D1cAAAAAQUIPAAAAAADTVMEWbRu9LP/tJ+iTvOKY;
-        expires=Fri, 14 Apr 2017 14:50:51 GMT; path=/; Domain=.contentful.com
+      - nlbi_673446=ebTXDoeCZjGiMYyIaoBaJgAAAABxNghPAtQt9VwVyXs24chM; path=/; Domain=.contentful.com
+      - visid_incap_673446=36FO8Od1SXq28luLOfMaQek2TFcAAAAAQUIPAAAAAACE2WtAncA0+r2uNriSIWBc;
+        expires=Tue, 30 May 2017 06:05:59 GMT; path=/; Domain=.contentful.com
       X-Iinfo:
-      - 4-38778369-38778394 NNNN CT(135 137 0) RT(1460648102495 94) q(0 0 3 -1) r(22
-        22) U5
+      - 7-61364247-61364290 NNNN CT(234 468 0) RT(1464612586665 95) q(0 0 7 0) r(25
+        25) U5
       X-Cdn:
       - Incapsula
     body:
@@ -195,7 +195,7 @@ http_interactions:
           "sys": {
             "id": "default",
             "type": "EditorInterface",
-            "version": 8,
+            "version": 10,
             "createdAt": "2016-04-14T15:04:10.737Z",
             "createdBy": {
               "sys": {
@@ -218,7 +218,7 @@ http_interactions:
                 "id": "smallerType"
               }
             },
-            "updatedAt": "2016-04-14T15:35:04.637Z",
+            "updatedAt": "2016-05-30T12:49:49.127Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -229,10 +229,10 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Thu, 14 Apr 2016 15:35:05 GMT
+  recorded_at: Mon, 30 May 2016 12:49:46 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interfaces/default
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interface
     body:
       encoding: US-ASCII
       string: ''
@@ -269,9 +269,9 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Thu, 14 Apr 2016 15:35:05 GMT
+      - Mon, 30 May 2016 12:49:50 GMT
       Etag:
-      - '"90d82336d68525ae4bf4eed317ec4d04"'
+      - '"64724b994c4cb71fd0c29a67ea028a17"'
       Server:
       - nginx
       Strict-Transport-Security:
@@ -279,22 +279,22 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:5CxAzwEwGAqm0OE80U6a0M
+      - content-api:4fNhVDKfEkUQiqeWggqwKQ
       X-Powered-By:
       - Express
       Content-Length:
-      - '814'
+      - '815'
       Connection:
       - Close
       Set-Cookie:
-      - incap_ses_298_673446=gIRTaJRSBkVW8dcULbYiBKm4D1cAAAAAM0jctEMhDZWADQoFDXbj6w==;
+      - incap_ses_297_673446=VnO9B0cftWFbQn4eHigfBO42TFcAAAAAMLqV3MRKtn3lBLOleXy0dQ==;
         path=/; Domain=.contentful.com
-      - nlbi_673446=eYstRXfAYFYU3DuNaoBaJgAAAADcFsvsv3iyk1+lsfTKrdLW; path=/; Domain=.contentful.com
-      - visid_incap_673446=lN0DxrpZQi+CKMYLPUIMYam4D1cAAAAAQUIPAAAAAADvdjZhVbs6+2XpIxDzZTGi;
-        expires=Fri, 14 Apr 2017 14:50:51 GMT; path=/; Domain=.contentful.com
+      - nlbi_673446=XI1Ndm75yAsmcl62aoBaJgAAAABhNqEwkIMtNxyWXSDJD7D4; path=/; Domain=.contentful.com
+      - visid_incap_673446=36FO8Od1SXq28luLOfMaQek2TFcAAAAAQUIPAAAAAACE2WtAncA0+r2uNriSIWBc;
+        expires=Tue, 30 May 2017 06:05:53 GMT; path=/; Domain=.contentful.com
       X-Iinfo:
-      - 5-42052479-42052520 NNNN CT(132 132 0) RT(1460648104858 88) q(0 0 3 -1) r(4
-        4) U5
+      - 8-71291871-71291890 NNNN CT(175 177 0) RT(1464612589330 92) q(0 0 3 5) r(6
+        6) U5
       X-Cdn:
       - Incapsula
     body:
@@ -310,7 +310,7 @@ http_interactions:
           "sys": {
             "id": "default",
             "type": "EditorInterface",
-            "version": 8,
+            "version": 10,
             "createdAt": "2016-04-14T15:04:10.737Z",
             "createdBy": {
               "sys": {
@@ -333,7 +333,7 @@ http_interactions:
                 "id": "smallerType"
               }
             },
-            "updatedAt": "2016-04-14T15:35:04.637Z",
+            "updatedAt": "2016-05-30T12:49:49.127Z",
             "updatedBy": {
               "sys": {
                 "type": "Link",
@@ -344,5 +344,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Thu, 14 Apr 2016 15:35:05 GMT
+  recorded_at: Mon, 30 May 2016 12:49:47 GMT
 recorded_with: VCR 2.9.3

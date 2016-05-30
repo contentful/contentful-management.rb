@@ -17,14 +17,6 @@ module Contentful
       def default
         editor_interfaces_client.default(content_type.space.id, content_type.id)
       end
-
-      def find(id)
-        editor_interfaces_client.find(content_type.space.id, content_type.id, id)
-      end
-
-      def create(id, attributes)
-        editor_interfaces_client.create(content_type.space.id, content_type.id, id, attributes)
-      end
     end
   end
 end

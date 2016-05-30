@@ -149,7 +149,7 @@ module Contentful
       # @private
       #
       # @return [Contentful::Management::ContentTypeEditorInterfaceMethodsFactory]
-      def editor_interfaces
+      def editor_interface
         Contentful::Management::ContentTypeEditorInterfaceMethodsFactory.new(self)
       end
 

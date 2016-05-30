@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/testInterfaces/editor_interfaces/default
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/testInterfaces/editor_interface
     body:
       encoding: US-ASCII
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Thu, 14 Apr 2016 14:57:18 GMT
+      - Mon, 30 May 2016 12:25:17 GMT
       Etag:
       - '"bfcab40c7a2c8f00fa286c2d7b3f9600"'
       Server:
@@ -49,7 +49,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - content-api:r9yJ4CXmbQQO2aMmwAgSS
+      - content-api:3V7KLTRbVKwk4mOkWKQY2w
       X-Powered-By:
       - Express
       Content-Length:
@@ -57,14 +57,14 @@ http_interactions:
       Connection:
       - Close
       Set-Cookie:
-      - incap_ses_298_673446=HdCVAkhV4DtpQsIULbYiBM2vD1cAAAAA2lUafENW/28NOBD/C4+44w==;
+      - incap_ses_297_673446=vjcRbevWbwQgoXIeHigfBC0xTFcAAAAAebX9BmvKI1/rkjPj1L1ieA==;
         path=/; Domain=.contentful.com
-      - nlbi_673446=x73SO9s5TjqE57EQaoBaJgAAAAAd4mQ0C+iUzecSXSQ7KmNJ; path=/; Domain=.contentful.com
-      - visid_incap_673446=xWKcgGbATl6aUz/5Nu211MuvD1cAAAAAQUIPAAAAAAAqvEPrS9QiJYeA4QBC2IFe;
-        expires=Fri, 14 Apr 2017 14:50:51 GMT; path=/; Domain=.contentful.com
+      - nlbi_673446=cln6ZaMUEzbL9xtRaoBaJgAAAABo0MwlOP+QgBwV3M1IRCuC; path=/; Domain=.contentful.com
+      - visid_incap_673446=WiuwyQBHTG+N5Q/ZXu14+C0xTFcAAAAAQUIPAAAAAACqBiyb9oZQQl6Tgdhs79dA;
+        expires=Tue, 30 May 2017 06:05:59 GMT; path=/; Domain=.contentful.com
       X-Iinfo:
-      - 0-20938133-20938161 NNNN CT(132 287 0) RT(1460645835190 113) q(0 0 4 8) r(24
-        24) U5
+      - 7-60961151-60961178 NNNN CT(215 208 0) RT(1464611115474 91) q(0 0 4 -1) r(18
+        18) U5
       X-Cdn:
       - Incapsula
     body:
@@ -248,5 +248,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Thu, 14 Apr 2016 14:57:18 GMT
+  recorded_at: Mon, 30 May 2016 12:25:14 GMT
 recorded_with: VCR 2.9.3

@@ -22,28 +22,18 @@ module Contentful
         ClientEditorInterfaceMethodsFactory.new(client).default(space_id, content_type_id)
       end
 
-      # Gets a specific Editor Interface.
+      # Finds an EditorInterface.
       #
-      # @param [String] space_id
-      # @param [String] content_type_id
-      # @param [String] id
-      #
-      # @return [Contentful::Management::EditorInterface]
-      def self.find(client, space_id, content_type_id, id)
-        ClientEditorInterfaceMethodsFactory.new(client).find(space_id, content_type_id, id)
+      # Not Supported
+      def self.find(*)
+        fail 'Not supported'
       end
 
-      # Creates an Editor Interface
+      # Creates an EditorInterface.
       #
-      # @param [String] space_id
-      # @param [String] content_type_id
-      # @param [String] id
-      # @param [Hash] attributes
-      # @option attributes [Array<Hash>] controls
-      #
-      # @return [Contentful::Management::EditorInterface]
-      def self.create(client, space_id, content_type_id, id, attributes)
-        ClientEditorInterfaceMethodsFactory.new(client).create(space_id, content_type_id, id, attributes)
+      # Not Supported
+      def self.create(*)
+        fail 'Not supported'
       end
 
       # @private
@@ -55,13 +45,8 @@ module Contentful
       def self.build_endpoint(endpoint_options)
         space_id = endpoint_options.fetch(:space_id)
         content_type_id = endpoint_options.fetch(:content_type_id)
-        editor_id = endpoint_options[:editor_id]
 
-        base_endpoint = "/#{space_id}/content_types/#{content_type_id}/editor_interfaces"
-
-        return base_endpoint if editor_id.nil?
-
-        "#{base_endpoint}/#{editor_id}"
+        "/#{space_id}/content_types/#{content_type_id}/editor_interface"
       end
 
       # Updates an Editor Interface
@@ -89,7 +74,7 @@ module Contentful
       protected
 
       def refresh_find
-        self.class.find(client, space.id, content_type.id, id)
+        self.class.default(client, space.id, content_type.id)
       end
 
       def query_attributes(attributes)

@@ -34,26 +34,6 @@ module Contentful
         end
       end
 
-      describe '.find' do
-        it 'class method also works' do
-          vcr('editor_interfaces/find') { expect(Contentful::Management::EditorInterface.find(client, space_id, content_type_id, editor_interface_id)).to be_kind_of Contentful::Management::EditorInterface }
-        end
-        it 'returns a Contentful::Management::EditorInterface' do
-          vcr('editor_interfaces/find') { expect(subject.find(space_id, content_type_id, editor_interface_id)).to be_kind_of Contentful::Management::EditorInterface }
-        end
-      end
-
-      describe '.create' do
-        let(:content_type_id) { 'smallerType' }
-
-        it 'create editor_interface for space' do
-          vcr('editor_interfaces/create_for_space') do
-            editor_interface = subject.create(space_id, content_type_id, 'someId', editor_interface_attrs)
-
-            expect(editor_interface.controls.first).to eq('fieldId' => 'symbol1', 'widgetId' => 'urlEditor')
-          end
-        end
-      end
       describe '#update' do
         let(:content_type_id) { 'smallerType' }
 
@@ -61,7 +41,7 @@ module Contentful
           vcr('editor_interfaces/update') do
             editor_interface = subject.default(space_id, content_type_id)
 
-            expect(editor_interface.controls.first['widgetId']).to eq 'singleLine'
+            expect(editor_interface.controls.first['widgetId']).to eq 'singleline'
 
             editor_interface.controls.first['widgetId'] = 'urlEditor'
             editor_interface.update(controls: editor_interface.controls)
