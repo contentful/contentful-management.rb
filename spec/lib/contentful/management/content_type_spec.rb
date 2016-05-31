@@ -207,6 +207,42 @@ module Contentful
             end
           end
         end
+
+        it 'creates a content_type with an omitted field' do
+          vcr('content_type/omitted_field') {
+            space = client.spaces.find('ngtgiva4wofg')
+
+            omitted_field = Contentful::Management::Field.new
+            omitted_field.id = 'omitted_field'
+            omitted_field.name = 'omitted_field'
+            omitted_field.type = 'Symbol'
+            omitted_field.omitted = true
+
+            name_field = Contentful::Management::Field.new
+            name_field.id = 'name'
+            name_field.name = 'name'
+            name_field.type = 'Symbol'
+
+            content_type = space.content_types.new
+            content_type.id = 'omitted_ct'
+            content_type.name = 'Omitted CT'
+            content_type.fields = [omitted_field, name_field]
+            content_type.display_field = 'name'
+
+            content_type.save
+            content_type.activate
+
+            content_type.reload
+
+            field = content_type.fields.detect { |f| f.name == 'omitted_field' }
+
+            expect(field.omitted).to be_truthy
+
+            field = content_type.fields.detect { |f| f.name == 'name' }
+
+            expect(field.omitted).to be_falsey
+          }
+        end
       end
 
       describe '#update' do
