@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.1.0
 ### Added
 * Add Roles and Permissions Support
 * Add Headers, Topics and Webhook Name Support
