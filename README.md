@@ -1,4 +1,3 @@
-
 # Contentful::Management
 [![Gem Version](https://badge.fury.io/rb/contentful-management.svg)](http://badge.fury.io/rb/contentful-management) [![Build Status](https://travis-ci.org/contentful/contentful-management.rb.svg)](https://travis-ci.org/contentful/contentful-management.rb)
 
@@ -83,191 +82,6 @@ or
 ```ruby
 blog_space.name = 'New Blog Space'
 blog_space.save
-```
-
-### Content Types
-
-Retrieving all content types from a space:
-
-```ruby
-blog_post_content_types = blog_space.content_types.all
-```
-
-Retrieving all published content types from a space:
-
-```ruby
-blog_post_content_types = blog_space.content_types.all_published
-```
-
-Retrieving one content type by id from a space:
-
-```ruby
-blog_post_content_type = blog_space.content_types.find(id)
-```
-
-Creating a field for a content type:
-
-```ruby
-title_field = Contentful::Management::Field.new
-title_field.id = 'blog_post_title'
-title_field.name = 'Post Title'
-title_field.type = 'Text'
-blog_post_content_type.fields.add(field)
-```
-
-or
-
-```ruby
-blog_post_content_type.fields.create(id: 'title_field_id', name: 'Post Title', type: 'Text')
-```
-- if the field_id exists, the related field will be updated.
-
-or the field of link type:
-```ruby
-blog_post_content_type.fields.create(id: 'my_entry_link_field', name: 'My Entry Link Field', type: 'Link', link_type: 'Entry')
-```
-
-or the field of an array type:
-```ruby
-items = Contentful::Management::Field.new
-items.type = 'Link'
-items.link_type = 'Entry'
-blog_post_content_type.fields.create(id: 'my_array_field', name: 'My Array Field', type: 'Array', items: items)
-```
-
-Deleting a field from the content type:
-
-```ruby
-blog_post_content_type.fields.destroy(title_field_id)
-```
-
-Creating a content type:
-
-```ruby
-blog_space.content_types.create(name: 'Post', fields: [title_field, body_field])
-```
-
-or
-
-```ruby
-blog_post_content_type = blog_space.content_types.new
-blog_post_content_type.name = 'Post'
-blog_post_content_type.fields = [title_field, body_field]
-blog_post_content_type.save
-```
-
-Destroying a content type:
-
-```ruby
-blog_post_content_type.destroy
-```
-
-Activating or deactivating a content type:
-
-```ruby
-blog_post_content_type.activate
-blog_post_content_type.deactivate
-```
-
-Checking if a content type is active:
-
-```ruby
-blog_post_content_type.active?
-```
-
-Updating a content type:
-
-```ruby
-blog_post_content_type.update(name: 'Post', description: 'Post Description', fields: [title_field])
-```
-
-### Locales
-
-Retrieving all locales from the space:
-
-```ruby
-blog_post_locales = blog_space.locales.all
-```
-
-Retrieving one locale by the locale-id from the space:
-
-```ruby
-blog_post_locale = blog_space.locales.find(locale_id)
-```
-
-Creating a locale
-```ruby
-blog_space.locales.create(name: 'German', code: 'de-DE')
-```
-
-Updating a locale
-```ruby
-blog_post_locale.update(name: 'German', code: 'de-DE')
-```
-
-Destroying a locale
-```ruby
-blog_post_locale.destroy
-```
-
-### Roles
-
-Retrieving all roles from the space:
-
-```ruby
-blog_post_roles = blog_space.roles.all
-```
-
-Retrieving one role by the locale-id from the space:
-
-```ruby
-blog_post_role = blog_space.role.find(role_id)
-```
-
-Creating a role
-```ruby
-role_attributes = {
-  name: 'My Role',
-  description: 'foobar role',
-  permissions: {
-    'ContentDelivery': 'all',
-    'ContentModel': ['read'],
-    'Settings': []
-  },
-  policies: [
-    {
-      effect: 'allow',
-      actions: 'all',
-      constraint: {
-        and: [
-          {
-            equals: [
-              { doc: 'sys.type' },
-              'Entry'
-            ]
-          },
-          {
-            equals: [
-              { doc: 'sys.type' },
-              'Asset'
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-blog_space.roles.create(role_attributes)
-```
-
-Updating a role
-```ruby
-blog_post_role.update(name: 'Some Other Role') # Can change any attribute here
-```
-
-Destroying a role
-```ruby
-blog_post_role.destroy
 ```
 
 ### Assets
@@ -495,78 +309,103 @@ my_entry.published?
 >   * Enable [Content Type Cache](#content-type-cache) at Client Instantiation time
 >   * Query Entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
 
-### Webhooks
+### Content Types
 
-Retrieving all webhooks from the space:
-
-```ruby
-webhooks = blog_space.webhooks.all
-```
-Retrieving one webhook by the webhook-id from the space:
+Retrieving all content types from a space:
 
 ```ruby
-blog_post_webhook = blog_space.webhooks.find(webhook_id)
+blog_post_content_types = blog_space.content_types.all
 ```
 
-Creating a webhook
+Retrieving all published content types from a space:
 
 ```ruby
-blog_space.webhooks.create(
-  name: 'My Webhook',
-  url: 'https://www.example.com',
-  httpBasicUsername: 'username',
-  httpBasicPassword: 'password'
-)
+blog_post_content_types = blog_space.content_types.all_published
 ```
 
-Updating a webhook
+Retrieving one content type by id from a space:
 
 ```ruby
-blog_post_webhook.update(url: 'https://www.newlink.com')
+blog_post_content_type = blog_space.content_types.find(id)
 ```
 
-Destroying webhook:
+Creating a field for a content type:
 
 ```ruby
-blog_post_webhook.destroy
+title_field = Contentful::Management::Field.new
+title_field.id = 'blog_post_title'
+title_field.name = 'Post Title'
+title_field.type = 'Text'
+blog_post_content_type.fields.add(field)
 ```
 
-Creating a Webhook with Custom Headers and Custom Topics:
+or
 
 ```ruby
-blog_space.webhooks.create(
-  name: 'Entry Save Only',
-  url: 'https://www.example.com',
-  topics: [ 'Entry.save' ],
-  headers: [
-    {
-      key: 'X-My-Custom-Header',
-      value: 'Some Value'
-    }
-  ]
-)
+blog_post_content_type.fields.create(id: 'title_field_id', name: 'Post Title', type: 'Text')
+```
+- if the field_id exists, the related field will be updated.
+
+or the field of link type:
+```ruby
+blog_post_content_type.fields.create(id: 'my_entry_link_field', name: 'My Entry Link Field', type: 'Link', link_type: 'Entry')
 ```
 
-### Api Keys
+or the field of an array type:
+```ruby
+items = Contentful::Management::Field.new
+items.type = 'Link'
+items.link_type = 'Entry'
+blog_post_content_type.fields.create(id: 'my_array_field', name: 'My Array Field', type: 'Array', items: items)
+```
 
-Retrieving all api keys from the space:
+Deleting a field from the content type:
 
 ```ruby
-blog_post_api_keys = blog_space.api_keys.all
+blog_post_content_type.fields.destroy(title_field_id)
 ```
 
-Retrieving one api key by the api-key-id from the space:
+Creating a content type:
 
 ```ruby
-blog_post_api_key = blog_space.api_keys.find(api_key_id)
+blog_space.content_types.create(name: 'Post', fields: [title_field, body_field])
 ```
 
-Creating an api key
+or
+
 ```ruby
-blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
+blog_post_content_type = blog_space.content_types.new
+blog_post_content_type.name = 'Post'
+blog_post_content_type.fields = [title_field, body_field]
+blog_post_content_type.save
 ```
 
-## Validations
+Destroying a content type:
+
+```ruby
+blog_post_content_type.destroy
+```
+
+Activating or deactivating a content type:
+
+```ruby
+blog_post_content_type.activate
+blog_post_content_type.deactivate
+```
+
+Checking if a content type is active:
+
+```ruby
+blog_post_content_type.active?
+```
+
+Updating a content type:
+
+```ruby
+blog_post_content_type.update(name: 'Post', description: 'Post Description', fields: [title_field])
+```
+
+### Validations
 
 #### in
 
@@ -648,6 +487,180 @@ validation_link_field.link_field  = true
 content_type.fields.create(id: 'entry', validations: [validation_link_field])
 ```
 
+### Locales
+
+Retrieving all locales from the space:
+
+```ruby
+blog_post_locales = blog_space.locales.all
+```
+
+Retrieving one locale by the locale-id from the space:
+
+```ruby
+blog_post_locale = blog_space.locales.find(locale_id)
+```
+
+Creating a locale
+```ruby
+blog_space.locales.create(name: 'German', code: 'de-DE')
+```
+
+Updating a locale
+```ruby
+blog_post_locale.update(name: 'German', code: 'de-DE')
+```
+
+Destroying a locale
+```ruby
+blog_post_locale.destroy
+```
+
+### Roles
+
+Retrieving all roles from the space:
+
+```ruby
+blog_post_roles = blog_space.roles.all
+```
+
+Retrieving one role by the locale-id from the space:
+
+```ruby
+blog_post_role = blog_space.role.find(role_id)
+```
+
+Creating a role
+```ruby
+role_attributes = {
+  name: 'My Role',
+  description: 'foobar role',
+  permissions: {
+    'ContentDelivery': 'all',
+    'ContentModel': ['read'],
+    'Settings': []
+  },
+  policies: [
+    {
+      effect: 'allow',
+      actions: 'all',
+      constraint: {
+        and: [
+          {
+            equals: [
+              { doc: 'sys.type' },
+              'Entry'
+            ]
+          },
+          {
+            equals: [
+              { doc: 'sys.type' },
+              'Asset'
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+blog_space.roles.create(role_attributes)
+```
+
+Updating a role
+```ruby
+blog_post_role.update(name: 'Some Other Role') # Can change any attribute here
+```
+
+Destroying a role
+```ruby
+blog_post_role.destroy
+```
+
+### Webhooks
+
+Retrieving all webhooks from the space:
+
+```ruby
+webhooks = blog_space.webhooks.all
+```
+Retrieving one webhook by the webhook-id from the space:
+
+```ruby
+blog_post_webhook = blog_space.webhooks.find(webhook_id)
+```
+
+Creating a webhook
+
+```ruby
+blog_space.webhooks.create(
+  name: 'My Webhook',
+  url: 'https://www.example.com',
+  httpBasicUsername: 'username',
+  httpBasicPassword: 'password'
+)
+```
+
+Updating a webhook
+
+```ruby
+blog_post_webhook.update(url: 'https://www.newlink.com')
+```
+
+Destroying webhook:
+
+```ruby
+blog_post_webhook.destroy
+```
+
+Creating a Webhook with Custom Headers and Custom Topics:
+
+```ruby
+blog_space.webhooks.create(
+  name: 'Entry Save Only',
+  url: 'https://www.example.com',
+  topics: [ 'Entry.save' ],
+  headers: [
+    {
+      key: 'X-My-Custom-Header',
+      value: 'Some Value'
+    }
+  ]
+)
+```
+
+### Api Keys
+
+Retrieving all api keys from the space:
+
+```ruby
+blog_post_api_keys = blog_space.api_keys.all
+```
+
+Retrieving one api key by the api-key-id from the space:
+
+```ruby
+blog_post_api_key = blog_space.api_keys.find(api_key_id)
+```
+
+Creating an api key
+```ruby
+blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
+```
+
+### Editor Interface
+
+Retrieving editor interface for a content type:
+
+```ruby
+blog_post_editor_interface = blog_post_content_type.editor_interface.default
+```
+
+You can call the EditorInterface API from any level within the Content Model Hierarchy, take into account that you'll need to
+pass the ids of the levels below it.
+
+> Hierarchy is as follows:
+> `No Object -> Space -> ContentType -> EditorInterface`
+
 ### Pagination
 
 ```ruby
@@ -656,7 +669,7 @@ blog_space.assets.all(limit: 5).next_page
 blog_space.entries.all(limit: 5).next_page
 ```
 
-## Logging
+### Logging
 
 Logging is disabled by default, it can be enabled by setting a logger instance and a logging severity.
 
@@ -675,7 +688,7 @@ Logger.new('logfile.log')
 
 The default severity is set to INFO and logs only the request attributes (headers, parameters and url). Setting it to DEBUG will also log the raw JSON response.
 
-## Raise Errors
+### Raise Errors
 
 If `:raise_errors` is set to true, an Exception will be raised in case of an error. The default is false, in this case a ```Contentful::Management::Error``` object will be returned.
 
@@ -683,7 +696,7 @@ If `:raise_errors` is set to true, an Exception will be raised in case of an err
 client = Contentful::Management::Client.new('access_token', raise_errors: true)
 ```
 
-## Content Type Cache
+### Content Type Cache
 
 This allows for fetching Content Types for your Space at Client instantiation time, which prevents extra requests per Entry.
 To enable this, in your Client instantiation do:
@@ -694,7 +707,7 @@ client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_i
 
 You can enable the Cache for as many Spaces as you want.
 
-## Proxy Support
+### Proxy Support
 
 This allows for using the CMA SDK through a proxy, for this, your proxy must support HTTPS and your server must have a valid signed certificate.
 

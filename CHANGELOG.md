@@ -4,6 +4,7 @@
 ### Added
 * Add Roles and Permissions Support
 * Add Headers, Topics and Webhook Name Support
+* Add Editor Interfaces Support
 
 ### Changed
 * Added Deprecation warning for `assets.all_published` and `entries.all_published`. This methods will be completely removed soon.

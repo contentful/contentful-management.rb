@@ -2,6 +2,7 @@ require_relative 'resource'
 require_relative 'field'
 require_relative 'validation'
 require_relative 'content_type_entry_methods_factory'
+require_relative 'content_type_editor_interface_methods_factory'
 require_relative 'support'
 require_relative 'resource/all_published'
 require_relative 'resource/publisher'
@@ -139,6 +140,17 @@ module Contentful
       # @return [Contentful::Management::ContentTypeEntryMethodsFactory]
       def entries
         Contentful::Management::ContentTypeEntryMethodsFactory.new(self)
+      end
+
+      # Use this method only in the context of content type.
+      # Allows you to create an editor interface.
+      # @see _ README for details.
+      #
+      # @private
+      #
+      # @return [Contentful::Management::ContentTypeEditorInterfaceMethodsFactory]
+      def editor_interface
+        Contentful::Management::ContentTypeEditorInterfaceMethodsFactory.new(self)
       end
 
       # @private

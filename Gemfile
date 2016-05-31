@@ -5,6 +5,7 @@ gemspec
 
 group :development do
   gem 'guard'
+  gem 'listen', '3.0.0'
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'pry'

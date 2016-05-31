@@ -12,6 +12,7 @@ require 'contentful/management/client_content_type_methods_factory'
 require 'contentful/management/client_entry_methods_factory'
 require 'contentful/management/client_locale_methods_factory'
 require 'contentful/management/client_role_methods_factory'
+require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
 
 require_relative 'request'
@@ -130,6 +131,15 @@ module Contentful
       # @return [Contentful::Management::ClientRoleMethodsFactory]
       def roles
         ClientRoleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of editor interfaces in context of the current client
+      # Allows listing all editor interfaces for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientEditorInterfaceMethodsFactory]
+      def editor_interfaces
+        ClientEditorInterfaceMethodsFactory.new(self)
       end
 
       # Allows manipulation of webhooks in context of the current client
