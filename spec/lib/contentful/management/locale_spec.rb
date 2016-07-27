@@ -83,6 +83,25 @@ module Contentful
         end
       end
 
+      describe '#optional' do
+        let(:space_id) { 'n5kqlvx9cnp1' }
+        it 'is false for non optional' do
+          vcr('locale/find_not_optional') do
+            locale_id = '56eOu5hJwVNb4XfqsnQV97'
+            locale = subject.find(space_id, locale_id)
+            expect(locale.optional).to be_falsey
+          end
+        end
+
+        it 'is true for optional' do
+          vcr('locale/find_optional') do
+            locale_id = '7IHOkHoMY1PpFp1VSVlCpH'
+            locale = subject.find(space_id, locale_id)
+            expect(locale.optional).to be_truthy
+          end
+        end
+      end
+
       describe '#update' do
         let!(:space_id) { 'bjwq7b86vgmm' }
         let!(:locale_id) { '63274yOrU0s4XiJlAp1ZMQ' }

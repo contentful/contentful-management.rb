@@ -2,6 +2,9 @@
 
 ## Master
 
+### Added
+* Add `:optional` property to Locale
+
 ## 1.1.0
 ### Added
 * Add Roles and Permissions Support
