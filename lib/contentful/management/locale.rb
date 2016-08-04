@@ -14,12 +14,15 @@ module Contentful
       property :contentDeliveryApi, :boolean
       property :publish, :boolean
       property :default, :boolean
+      property :optional, :boolean
 
       # @private
       def self.create_attributes(_client, attributes)
         {
           'name' => attributes.fetch(:name),
-          'code' => attributes.fetch(:code)
+          'code' => attributes.fetch(:code),
+          'default' => attributes.fetch(:default, false),
+          'optional' => attributes.fetch(:default, false)
         }
       end
 

@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/n5kqlvx9cnp1/locales/7IHOkHoMY1PpFp1VSVlCpH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/1.1.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Wed, 27 Jul 2016 00:44:25 GMT
+      Etag:
+      - '"c304d29a9b8e3984be75c89e61d5c654"'
+      Server:
+      - Contentful
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 3f29b6d250357c0f2b9eeeb5f85a52e4
+      Content-Length:
+      - '746'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_297_673446=48KmHgDm8BoLWkjVMCgfBOkDmFcAAAAANI6+A4engIj7K8jRnSqZNg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=ALw4DCCNPVJRCy616lKYhQAAAABd2u9LFkVQA7vvkVGgFAmX; path=/; Domain=.contentful.com
+      - visid_incap_673446=RkLokwvtTyCCKH647SBEz+kDmFcAAAAAQUIPAAAAAACD5yltV/lSRTzg/RdChCMr;
+        expires=Wed, 26 Jul 2017 06:56:27 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 8-283382040-283382143 NNNN CT(143 135 0) RT(1469580264487 299) q(0 0 3 -1)
+        r(6 6) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: |+
+        {
+          "name":"Chinese",
+          "internal_code":"zh",
+          "code":"zh",
+          "fallbackCode":"en-US",
+          "default":false,
+          "contentManagementApi":true,
+          "contentDeliveryApi":true,
+          "optional":true,
+          "sys":{
+            "type":"Locale",
+            "id":"7IHOkHoMY1PpFp1VSVlCpH",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"n5kqlvx9cnp1"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2016-07-27T00:42:59Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2016-07-27T00:42:59Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 00:44:25 GMT
+recorded_with: VCR 3.0.3
