@@ -324,6 +324,45 @@ module Contentful
           end
         end
 
+        # Only here because we want to keep the contentful.rb-dependency out
+        class Contentful::Entry
+          attr_accessor :sys, :fields
+          def initialize(management_entry)
+            @sys = management_entry.sys
+            @fields = management_entry.fields
+          end
+
+          def id
+            @sys[:id]
+          end
+        end
+
+        class Contentful::BaseEntry < Contentful::Entry
+        end
+        #/ Only here because we want to keep the contentful.rb-dependency out
+
+        it 'with entry inherited from Contentful::Entry' do
+          vcr('entry/create_with_entry') do
+            entry_att = Contentful::BaseEntry.new(client.entries.find(space_id, '4o6ghKSmSko4i828YCYaEo'))
+            entry = subject.create(content_type, name: 'EntryWithEntry', age: 20, entry: entry_att)
+            expect(entry.name).to eq 'EntryWithEntry'
+            expect(entry.age).to eq 20
+            expect(entry.fields[:entry]['sys']['id']).to eq entry_att.id
+          end
+        end
+
+        it 'with entries inherited from Contentful::Entry' do
+          vcr('entry/create_with_entries') do
+            entry_att = Contentful::BaseEntry.new(subject.find(space_id, '1d1QDYzeiyWmgqQYysae8u'))
+            new_entry = subject.create(content_type,
+                                       name: 'EntryWithEntries',
+                                       age: 20,
+                                       entries: [entry_att, entry_att, entry_att])
+            expect(new_entry.name).to eq 'EntryWithEntries'
+            expect(new_entry.age).to eq 20
+          end
+        end
+
         it 'with asset' do
           vcr('entry/create_with_asset') do
             asset = client.assets.find(space_id, 'codequest_id_test_custom')
