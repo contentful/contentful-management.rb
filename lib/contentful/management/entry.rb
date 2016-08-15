@@ -194,14 +194,17 @@ module Contentful
 
       def self.parse_objects_array(attributes)
         attributes.each_with_object([]) do |attr, arr|
-          arr << case attr
-                 when Entry then
-                   hash_with_link_object('Entry', attr)
-                 when Asset then
-                   hash_with_link_object('Asset', attr)
-                 when Hash then
-                   attr
-                 end
+          if attr.is_a? Entry
+            arr << hash_with_link_object('Entry', attr)
+          elsif attr.is_a? Asset
+            arr << hash_with_link_object('Asset', attr)
+          elsif attr.is_a? Hash
+            arr << attr
+          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Entry')
+            arr << hash_with_link_object('Entry', attr)
+          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Asset')
+            arr << hash_with_link_object('Asset', attr)
+          end
         end
       end
 
