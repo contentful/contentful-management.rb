@@ -2,7 +2,9 @@
 
 ## Master
 
+## 1.2.0
 ### Added
+* Add support for `::Contentful::Entry` and `::Contentful::Asset` serialization when using the CDA SDK along side this client [#105](https://github.com/contentful/contentful-management.rb/pull/105)
 * Add `:optional` property to Locale
 
 ## 1.1.0
