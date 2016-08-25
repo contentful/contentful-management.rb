@@ -734,6 +734,22 @@ client = Contributing::Management::Client.new(
 )
 ```
 
+# Rate Limit Management
+
+With the following configuration options you can handle how rate limits are handled within your applications.
+
+## :max_rate_limit_retries
+
+To increase or decrease the retry attempts after a 429 Rate Limit error. Default value is 1. Using 0 will disable retry behaviour.
+Each retry will be attempted after the value (in seconds) of the `X-Contentful-RateLimit-Reset` header, which contains the amount of seconds until the next
+non rate limited request is available, has passed. This is blocking per execution thread.
+
+## :max_rate_limit_wait
+
+Maximum time to wait for next available request (in seconds). Default value is 60 seconds. Keep in mind that if you hit the houly rate limit maximum, you
+can have up to 60 minutes of blocked requests. It is set to a default of 60 seconds in order to avoid blocking processes for too long, as rate limit retry behaviour
+is blocking per execution thread.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/contentful-management/fork )
