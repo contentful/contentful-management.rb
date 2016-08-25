@@ -2,6 +2,19 @@ require 'spec_helper'
 require 'contentful/management/space'
 require 'contentful/management/client'
 
+class RetryLoggerMock < Logger
+  attr_reader :retry_attempts
+
+  def initialize(*)
+    super
+    @retry_attempts = 0
+  end
+
+  def info(message)
+    @retry_attempts += 1 if message.include?('Contentful Management API Rate Limit Hit! Retrying')
+  end
+end
+
 module Contentful
   module Management
     describe Entry do
@@ -253,9 +266,9 @@ module Contentful
         it 'create with all attributes' do
           vcr('entry/create') do
             content_type = client.content_types.find('ene4qtp2sh7u', '5BHZB1vi4ooq4wKcmA8e2c')
-            location = Location.new.tap do |location|
-              location.lat = 22.44
-              location.lon = 33.33
+            location = Location.new.tap do |loc|
+              loc.lat = 22.44
+              loc.lon = 33.33
             end
             file = client.assets.find('ene4qtp2sh7u', '2oNoT3vSAs82SOIQmKe0KG')
             entry_att = subject.find('ene4qtp2sh7u', '60zYC7nY9GcKGiCYwAs4wm')
@@ -408,6 +421,19 @@ module Contentful
             publish = entry.publish
             expect(publish).to be_a RateLimitExceeded
             expect(publish.error[:message]).to eq 'You have exceeded the rate limit of the Organization this Space belongs to by making too many API requests within a short timespan. Please wait a moment before trying the request again.'
+          end
+        end
+
+        it 'too many requests auto-retry' do
+          vcr('entry/too_many_requests_retry') do
+            logger = RetryLoggerMock.new(STDOUT)
+            space = Client.new(token, raise_errors: true, logger: logger).spaces.find('286arvy86ry9')
+            invalid_entry = space.entries.find('1YNepnMpXGiMWikaKC4GG0')
+            ct = space.content_types.find('5lIEiXrCIoKoIKaSW2C8aa')
+            entry = ct.entries.create(name: 'Create test', entry: invalid_entry)
+            entry.publish
+
+            expect(logger.retry_attempts).to eq 1
           end
         end
 
@@ -735,9 +761,9 @@ module Contentful
 
         it 'parses all kind of fields' do
 
-          location = Location.new.tap do |location|
-            location.lat = 22.44
-            location.lon = 33.33
+          location = Location.new.tap do |loc|
+            loc.lat = 22.44
+            loc.lon = 33.33
           end
 
           attributes = {

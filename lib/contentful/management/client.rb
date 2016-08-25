@@ -44,8 +44,12 @@ module Contentful
         proxy_host: nil,
         proxy_port: nil,
         proxy_username: nil,
-        proxy_password: nil
+        proxy_password: nil,
+        max_rate_limit_retries: 1,
+        max_rate_limit_wait: 60
       }
+      # Rate Limit Reset Header Key
+      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'
 
       # @param [String] access_token
       # @param [Hash] configuration
@@ -208,15 +212,38 @@ module Contentful
 
       # @private
       def execute_request(request)
+        retries_left = configuration[:max_rate_limit_retries]
         request_url = request.url
         url = request.absolute? ? request_url : base_url + request_url
-        logger.info(request: { url: url, query: request.query, header: request_headers }) if logger
-        raw_response = yield(url)
-        logger.debug(response: raw_response) if logger
-        clear_headers
-        result = Response.new(raw_response, request)
-        fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
+
+        begin
+          logger.info(request: { url: url, query: request.query, header: request_headers }) if logger
+          raw_response = yield(url)
+          logger.debug(response: raw_response) if logger
+          clear_headers
+          result = Response.new(raw_response, request)
+          fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
+        rescue Contentful::Management::RateLimitExceeded => rate_limit_error
+          reset_time = rate_limit_error.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
+          if should_retry(retries_left, reset_time, configuration[:max_rate_limit_wait])
+            retries_left -= 1
+            retry_message = 'Contentful Management API Rate Limit Hit! '
+            retry_message += "Retrying - Retries left: #{retries_left}"
+            retry_message += "- Time until reset (seconds): #{reset_time}"
+            logger.info(retry_message) if logger
+            sleep(reset_time * Random.new.rand(1.0..1.2))
+            retry
+          end
+
+          raise
+        end
+
         result
+      end
+
+      # @private
+      def should_retry(retries_left, reset_time, max_wait)
+        retries_left > 0 && max_wait > reset_time
       end
 
       # @private
