@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.3.0
 ### Added
 * Added Rate Limit automatic handling
 
