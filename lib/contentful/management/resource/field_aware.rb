@@ -24,7 +24,7 @@ module Contentful
             end
 
             send(FieldAware.define(method), "#{accessor_name}_with_locales") do
-              fields_for_query[field.id.to_sym]
+              fields_for_query(false)[field.id.to_sym]
             end
           end
         end
