@@ -810,6 +810,26 @@ module Contentful
         end
       end
 
+      describe 'fallback locales' do
+        let(:space) { client.spaces.find('wqjq16zu9s8b') }
+        it "if a property is nil, it's removed from the request to undefine it in the API" do
+          vcr('entry/fallback_undefined') {
+            entry = space.entries.find('6HSlhD1o3eqkyEWWuMQYyU')
+
+            expect(entry.name).to eq 'Foo'
+            expect(entry.fields('es')[:name]).to eq 'Bar'
+            expect(entry.fields('zh')[:name]).to eq 'Baz'
+
+            entry.locale ='zh'
+            entry.name = nil
+
+            expect(entry.fields_for_query[:name].keys).not_to include 'zh'
+
+            entry.save
+          }
+        end
+      end
+
       describe 'issues' do
         describe 'handles multiple locales even when they are not all defined for the default locale - #70' do
           it 'merges all present locales' do

@@ -107,13 +107,16 @@ module Contentful
       # Parser for entry attributes from query.
       # Returns a hash of existing fields.
       #
+      # @param [Boolean] remove_undefined Returns only defined (non-nil) fields if true. This replicates
+      # the WebApp logic for empty fields, so that we stay consistent across all our software
       # @private
-      def fields_for_query
+      def fields_for_query(remove_undefined = true)
         raw_fields = instance_variable_get(:@fields)
         fields_names = flatten_field_names(raw_fields)
         fields_names.each_with_object({}) do |field_name, results|
           results[field_name] = raw_fields.each_with_object({}) do |(locale, fields), field_results|
-            field_results[locale] = parse_update_attribute(fields[field_name])
+            attribute_value = parse_update_attribute(fields[field_name])
+            field_results[locale] = attribute_value unless attribute_value.nil? && remove_undefined
           end
         end
       end
