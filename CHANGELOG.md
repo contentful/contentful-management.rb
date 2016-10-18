@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.4.0
 ### Added
 * Added support for Fallback Locales (`nil` values get now removed from the requests on `#update` and `#create`)
 
