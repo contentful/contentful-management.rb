@@ -25,6 +25,11 @@ module Contentful
       end
 
       # @private
+      def self.pre_process_params(parameters)
+        Support.normalize_select!(parameters)
+      end
+
+      # @private
       def self.create_attributes(client, attributes)
         asset = new
         asset.instance_variable_set(:@fields, attributes[:fields] || {})

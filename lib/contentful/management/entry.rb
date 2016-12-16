@@ -25,6 +25,11 @@ module Contentful
       attr_accessor :content_type
 
       # @private
+      def self.pre_process_params(parameters)
+        Support.normalize_select!(parameters)
+      end
+
+      # @private
       def self.endpoint
         'entries'
       end
