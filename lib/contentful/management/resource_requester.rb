@@ -11,6 +11,7 @@ module Contentful
       end
 
       def all(endpoint_options = {}, query = {})
+        query = resource_class.pre_process_params(query)
         get(endpoint_options, query)
       end
 

@@ -53,6 +53,12 @@ module Contentful
             entries.next_page
           end
         end
+        it 'supports select operator' do
+          vcr('entry/select_operator') do
+            nyancat = subject.all('cfexampleapi', 'sys.id' => 'nyancat', content_type: 'cat', select: 'fields.lives').first
+            expect(nyancat.fields).to eq({lives: 1337})
+          end
+        end
       end
 
       describe '.all_published' do

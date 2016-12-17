@@ -208,6 +208,11 @@ module Contentful
         end
 
         # @private
+        def pre_process_params(parameters)
+          parameters
+        end
+
+        # @private
         def create_attributes(_client, _attributes)
           {}
         end

@@ -34,6 +34,12 @@ module Contentful
             assets.next_page
           end
         end
+        it 'supports select operator' do
+          vcr('asset/select_operator') do
+            nyancat = subject.all('cfexampleapi', 'sys.id' => 'nyancat', select: 'fields.title').first
+            expect(nyancat.fields).to eq({ title: 'Nyan Cat' })
+          end
+        end
       end
 
       describe '.all_published' do

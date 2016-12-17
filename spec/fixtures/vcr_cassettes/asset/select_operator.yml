@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/cfexampleapi/assets?select=fields.title,sys&sys.id=nyancat
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - RubyContentfulManagementGem/1.4.0
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - cfexampleapi
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 16 Dec 2016 17:57:18 GMT
+      Etag:
+      - '"b1e04275d327bd92a0b7708469e61e54"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '18000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '17860'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - fccc4fc0c16dcbc89993ba46ef11722a
+      Content-Length:
+      - '1220'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_472_673446=0RSRWi7W0hlhIMcXnuGMBv0qVFgAAAAArAVpzrhH2sNu9g8/gS4xGQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=p9epGdYA1RrEr+hV6lKYhQAAAAAZNLPwoIBxQLcTIy81I+Jj; path=/; Domain=.contentful.com
+      - visid_incap_673446=TKmNQo+PRJamIXAbX/aRVv0qVFgAAAAAQUIPAAAAAABwhsCdHN7togOQgjwxEmlG;
+        expires=Sat, 16 Dec 2017 11:10:55 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 8-39954889-39954903 NNNN CT(101 101 0) RT(1481911034611 70) q(0 0 2 -1) r(30
+        30) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 1,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "fields": {
+                "title": {
+                  "en-US": "Nyan Cat"
+                }
+              },
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "cfexampleapi"
+                  }
+                },
+                "id": "nyancat",
+                "type": "Asset",
+                "createdAt": "2013-09-02T14:54:17.868Z",
+                "updatedAt": "2013-09-02T14:56:34.264Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7BslKh9TdKGOK41VmLDjFZ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7BslKh9TdKGOK41VmLDjFZ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 2,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7BslKh9TdKGOK41VmLDjFZ"
+                  }
+                },
+                "publishedVersion": 1,
+                "firstPublishedAt": "2013-09-02T14:56:34.240Z",
+                "publishedAt": "2013-09-02T14:56:34.240Z"
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Fri, 16 Dec 2016 17:57:18 GMT
+recorded_with: VCR 3.0.3
