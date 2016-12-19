@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.5.0
 ### Added
 * Added support for Select Operator in Entries and Assets
 
