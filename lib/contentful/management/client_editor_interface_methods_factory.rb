@@ -17,7 +17,6 @@ module Contentful
       #
       # @param [String] space_id
       # @param [String] content_type_id
-      # @param [Hash] params
       # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
       #
       # @return [Contentful::Management::EditorInterface]
