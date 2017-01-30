@@ -18,6 +18,10 @@ module Contentful
           end
         end
 
+        # If the query contains the :select operator, we enforce :sys properties.
+        # The SDK requires sys.type to function properly, but as other of our SDKs
+        # require more parts of the :sys properties, we decided that every SDK should
+        # include the complete :sys block to provide consistency accross our SDKs.
         def normalize_select!(parameters)
           return parameters unless parameters.key?(:select)
 
