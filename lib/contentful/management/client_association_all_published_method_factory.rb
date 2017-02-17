@@ -7,7 +7,7 @@ module Contentful
       #
       # @param [String] space_id
       # @param [Hash] params
-      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+      # @see _ For complete option list: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
       # @deprecated This call will be soon removed from the API except for Content Types
       #
       # @return [Contentful::Management::Array<Contentful::Management::Resource>]
