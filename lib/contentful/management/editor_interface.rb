@@ -12,9 +12,9 @@ module Contentful
 
       # Gets the Default Editor Interface
       #
+      # @param [Contentful::Management::Client] client
       # @param [String] space_id
       # @param [String] content_type_id
-      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
       #
       # @return [Contentful::Management::EditorInterface]
       def self.default(client, space_id, content_type_id)

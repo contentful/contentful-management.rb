@@ -1,6 +1,7 @@
 require_relative 'resource'
 require_relative 'resource_requester'
 require_relative 'client_entry_methods_factory'
+require_relative 'entry_snapshot_methods_factory'
 require_relative 'resource/entry_fields'
 require_relative 'resource/fields'
 require_relative 'resource/field_aware'
@@ -139,6 +140,15 @@ module Contentful
         end
       end
 
+      # Allows manipulation of snapshots in context of the current entry
+      # Allows listing all snapshots belonging to this entry and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::EntrySnapshotMethodsFactory]
+      def snapshots
+        EntrySnapshotMethodsFactory.new(self)
+      end
+
       protected
 
       def query_attributes(attributes)
@@ -188,7 +198,13 @@ module Contentful
       end
 
       def fetch_content_type
-        @content_type ||= ::Contentful::Management::ContentType.find(client, space.id, sys[:contentType].id)
+        content_type_id = if sys[:contentType].is_a?(::Contentful::Management::Resource)
+                            sys[:contentType].id
+                          else
+                            sys[:contentType]['sys']['id']
+                          end
+        space_id = space.is_a?(::Contentful::Management::Resource) ? space.id : space['sys']['id']
+        @content_type ||= ::Contentful::Management::ContentType.find(client, space_id, content_type_id)
       end
 
       def self.hash_with_link_object(type, attribute)

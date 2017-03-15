@@ -14,6 +14,7 @@ require 'contentful/management/client_locale_methods_factory'
 require 'contentful/management/client_role_methods_factory'
 require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
+require 'contentful/management/client_snapshot_methods_factory'
 
 require_relative 'request'
 require 'http'
@@ -153,6 +154,15 @@ module Contentful
       # @return [Contentful::Management::ClientWebhookMethodsFactory]
       def webhooks
         ClientWebhookMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of snapshots in context of the current client
+      # Allows listing all webhooks for client, creating new and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientSnapshotMethodsFactory]
+      def snapshots
+        ClientSnapshotMethodsFactory.new(self)
       end
 
       # @private
