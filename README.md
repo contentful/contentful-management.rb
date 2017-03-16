@@ -661,6 +661,20 @@ pass the ids of the levels below it.
 > Hierarchy is as follows:
 > `No Object -> Space -> ContentType -> EditorInterface`
 
+### Snapshots
+
+Retrieving all Snapshot for a given Entry:
+
+```ruby
+snapshots = entry.snapshots.all
+```
+
+Retrieving a Snapshot for a given Entry:
+
+```ruby
+snapshot = entry.snapshots.find('some_snapshot_id')
+```
+
 ### Pagination
 
 ```ruby

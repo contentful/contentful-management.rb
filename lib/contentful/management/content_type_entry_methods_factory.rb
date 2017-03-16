@@ -15,7 +15,7 @@ module Contentful
       # Gets all entries for a specific ContentType
       #
       # @param [Hash] params
-      # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+      # @see _ For complete option list: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
       # @option params [String] 'sys.id'
       # @option params [String] :limit
       # @option params [String] :skip

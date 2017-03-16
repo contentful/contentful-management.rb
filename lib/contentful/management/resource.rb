@@ -172,7 +172,7 @@ module Contentful
         # @param [Contentful::Management::Client] client
         # @param [String] space_id
         # @param [Hash] parameters Search Options
-        # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+        # @see _ For complete option list: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
         #
         # @return [Contentful::Management::Array<Contentful::Management::Resource>]
         def all(client, space_id, parameters = {})

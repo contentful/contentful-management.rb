@@ -8,7 +8,7 @@ module Contentful
         # @param [Contentful::Management::Client] client
         # @param [String] space_id
         # @param [Hash] parameters
-        # @see _ For complete option list: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+        # @see _ For complete option list: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
         # @option parameters [String] 'sys.id' Entry ID
         # @option parameters [String] :content_type
         # @option parameters [Integer] :limit

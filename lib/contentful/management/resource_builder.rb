@@ -12,6 +12,7 @@ require_relative 'api_key'
 require_relative 'locale'
 require_relative 'role'
 require_relative 'editor_interface'
+require_relative 'snapshot'
 
 module Contentful
   module Management
@@ -31,7 +32,8 @@ module Contentful
         'ApiKey' => Contentful::Management::ApiKey,
         'Locale' => Contentful::Management::Locale,
         'Role' => Contentful::Management::Role,
-        'EditorInterface' => Contentful::Management::EditorInterface
+        'EditorInterface' => Contentful::Management::EditorInterface,
+        'Snapshot' => Contentful::Management::Snapshot
       }
       # Default Entry Mapping
       # @see _ README for more information on Entry Mapping
