@@ -21,7 +21,13 @@ module Contentful
       #
       # @return [HTTP::Response]
       def post_http(url, params, headers = {}, proxy = {})
-        http_send(:post, url, { json: params }, headers, proxy)
+        if url.include?(Client::DEFAULT_CONFIGURATION[:uploads_url])
+          data = { body: params }
+        else
+          data = { json: params }
+        end
+
+        http_send(:post, url, data, headers, proxy)
       end
 
       # Delete Request
