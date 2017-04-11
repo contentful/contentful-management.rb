@@ -2,6 +2,8 @@
 
 ## Master
 
+## 1.6.0
+
 ### Added
 * Added support for Snapshot API
 
