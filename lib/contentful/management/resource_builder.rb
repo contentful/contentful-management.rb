@@ -13,6 +13,7 @@ require_relative 'locale'
 require_relative 'role'
 require_relative 'editor_interface'
 require_relative 'snapshot'
+require_relative 'upload'
 
 module Contentful
   module Management
@@ -33,7 +34,8 @@ module Contentful
         'Locale' => Contentful::Management::Locale,
         'Role' => Contentful::Management::Role,
         'EditorInterface' => Contentful::Management::EditorInterface,
-        'Snapshot' => Contentful::Management::Snapshot
+        'Snapshot' => Contentful::Management::Snapshot,
+        'Upload' => Contentful::Management::Upload
       }
       # Default Entry Mapping
       # @see _ README for more information on Entry Mapping

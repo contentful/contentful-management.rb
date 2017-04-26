@@ -4,19 +4,24 @@ module Contentful
     # with domain specific logic. The client later uses the Request's #url and #query methods
     # to execute the HTTP request.
     class Request
-      attr_reader :client, :type, :query, :id, :endpoint
+      attr_reader :client, :type, :query, :id, :endpoint, :headers
 
-      def initialize(client, endpoint, query = {}, id = nil, header = {})
-        @header = header
+      def initialize(client, endpoint, query = {}, id = nil, headers = {})
+        @headers = headers
         @initial_id = id
         @client = client
-        @client.version = header[:version]
-        @client.organization_id = header[:organization_id]
-        @client.content_type_id = header[:content_type_id]
-        @client.zero_length = query.empty?
+        @client.version = headers[:version]
+        @client.organization_id = headers[:organization_id]
+        @client.content_type_id = headers[:content_type_id]
         @endpoint = endpoint
 
-        @query = normalize_query(query) if query && !query.empty?
+        case query
+        when Hash
+          @client.zero_length = query.empty?
+          @query = normalize_query(query) if query && !query.empty?
+        else
+          @query = query
+        end
 
         if id
           @type = :single
@@ -60,7 +65,7 @@ module Contentful
 
       # Returns a new Request object with the same data
       def copy
-        self.class.new(@client, @endpoint, @query, @initial_id, @header)
+        self.class.new(@client, @endpoint, @query, @initial_id, @headers)
       end
 
       private

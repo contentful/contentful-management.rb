@@ -2,6 +2,9 @@
 
 ## Master
 
+### Added
+* Added support for Upload API
+
 ## 1.6.0
 
 ### Added

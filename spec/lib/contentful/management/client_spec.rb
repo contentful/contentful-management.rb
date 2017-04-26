@@ -46,6 +46,31 @@ module Contentful
         end
       end
 
+      describe '#host_url', focus: true do
+        describe 'uploads' do
+          it 'returns uploads url when its a properly formed upload url' do
+            expect(subject.host_url(RequestDouble.new('/some_space_id/uploads'))).to eq subject.uploads_url
+            expect(subject.host_url(RequestDouble.new('/some_space_id/uploads/upload_id'))).to eq subject.uploads_url
+            expect(subject.host_url(RequestDouble.new('/uploads/uploads/uploads'))).to eq subject.uploads_url
+          end
+
+          it 'returns base url for non uploads url' do
+            uploads_as_space_id = '/uploads/entries/upload_id'
+            expect(subject.host_url(RequestDouble.new(uploads_as_space_id))).to eq subject.base_url
+
+            uploads_as_entry_id = '/some_space_id/entries/uploads'
+            expect(subject.host_url(RequestDouble.new(uploads_as_entry_id))).to eq subject.base_url
+
+            uploads_as_only_thing = '/uploads'
+            expect(subject.host_url(RequestDouble.new(uploads_as_only_thing))).to eq subject.base_url
+          end
+        end
+
+        it 'returns base url otherwise' do
+          expect(subject.host_url(RequestDouble.new('/some_space_id'))).to eq subject.base_url
+        end
+      end
+
       describe '#protocol' do
         its(:protocol) { should eql 'https' }
 

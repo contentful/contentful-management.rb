@@ -196,6 +196,51 @@ Checking if an asset is published:
 my_image_asset.published?
 ```
 
+### File Uploads
+
+Creating an upload from a file path:
+
+```ruby
+upload = client.uploads.create('space_id', '/path/to/file.md')
+```
+
+Alternatively, create it from an `::IO` object:
+
+```ruby
+File.open('/path/to/file.md', 'rb') do |file|
+  upload = client.uploads.create('space_id', file)
+end
+```
+
+Finding an upload:
+
+```ruby
+upload = client.uploads.find('space_id', 'upload_id')
+```
+
+Deleting an upload
+
+```ruby
+upload.destroy
+```
+
+Associating an upload with an asset:
+
+```ruby
+# We find or create an upload:
+upload = client.uploads.find('space_id', 'upload_id')
+
+# We create a File object with the associated upload:
+file = Contentful::Management::File.new
+file.properties[:contentType] = 'text/plain'
+file.properties[:fileName] = 'file.md'
+file.properties[:uploadFrom] = upload.to_link_json  # We create the Link from the upload.
+
+# We create an asset with the associated file:
+asset = client.assets.create('space_id', title: 'My Upload', file: file)
+asset.process_file  # We process the file, to generate an URL for our upload.
+```
+
 ### Entries
 
 Retrieving all entries from the space:

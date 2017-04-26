@@ -14,6 +14,7 @@ require 'contentful/management/client_locale_methods_factory'
 require 'contentful/management/client_role_methods_factory'
 require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
+require 'contentful/management/client_upload_methods_factory'
 require 'contentful/management/client_snapshot_methods_factory'
 
 require_relative 'request'
@@ -34,6 +35,7 @@ module Contentful
       # Default configuration for Contentful::Management::Client
       DEFAULT_CONFIGURATION = {
         api_url: 'api.contentful.com',
+        uploads_url: 'upload.contentful.com',
         api_version: '1',
         secure: true,
         default_locale: 'en-US',
@@ -156,6 +158,15 @@ module Contentful
         ClientWebhookMethodsFactory.new(self)
       end
 
+      # Allows manipulation of uploads in context of the current client
+      # Allows creating new and finding uploads by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientUploadMethodsFactory]
+      def uploads
+        ClientUploadMethodsFactory.new(self)
+      end
+
       # Allows manipulation of snapshots in context of the current client
       # Allows listing all webhooks for client, creating new and finding one by id.
       # @see _ README for details.
@@ -223,11 +234,11 @@ module Contentful
       # @private
       def execute_request(request)
         retries_left = configuration[:max_rate_limit_retries]
-        request_url = request.url
-        url = request.absolute? ? request_url : base_url + request_url
+        host = host_url(request)
+        url = request.absolute? ? request.url : host + request.url
 
         begin
-          logger.info(request: { url: url, query: request.query, header: request_headers }) if logger
+          logger.info(request: { url: url, query: request.query, header: request_headers(request) }) if logger
           raw_response = yield(url)
           logger.debug(response: raw_response) if logger
           clear_headers
@@ -237,10 +248,7 @@ module Contentful
           reset_time = rate_limit_error.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
           if should_retry(retries_left, reset_time, configuration[:max_rate_limit_wait])
             retries_left -= 1
-            retry_message = 'Contentful Management API Rate Limit Hit! '
-            retry_message += "Retrying - Retries left: #{retries_left}"
-            retry_message += "- Time until reset (seconds): #{reset_time}"
-            logger.info(retry_message) if logger
+            logger.info(retry_message(retries_left, reset_time)) if logger
             sleep(reset_time * Random.new.rand(1.0..1.2))
             retry
           end
@@ -249,6 +257,20 @@ module Contentful
         end
 
         result
+      end
+
+      # @private
+      def host_url(request)
+        request.url.match('^/[\w|_|-]+/uploads(?:/[\w|_|-]*)?$') ? uploads_url : base_url
+      end
+
+      # @private
+      def retry_message(retries_left, reset_time)
+        retry_message = 'Contentful Management API Rate Limit Hit! '
+        retry_message += "Retrying - Retries left: #{retries_left}"
+        retry_message += "- Time until reset (seconds): #{reset_time}"
+
+        retry_message
       end
 
       # @private
@@ -266,34 +288,39 @@ module Contentful
       # @private
       def delete(request)
         execute_request(request) do |url|
-          self.class.delete_http(url, {}, request_headers, proxy_parameters)
+          self.class.delete_http(url, {}, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def get(request)
         execute_request(request) do |url|
-          self.class.get_http(url, request.query, request_headers, proxy_parameters)
+          self.class.get_http(url, request.query, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def post(request)
         execute_request(request) do |url|
-          self.class.post_http(url, request.query, request_headers, proxy_parameters)
+          self.class.post_http(url, request.query, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def put(request)
         execute_request(request) do |url|
-          self.class.put_http(url, request.query, request_headers, proxy_parameters)
+          self.class.put_http(url, request.query, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def base_url
         "#{protocol}://#{configuration[:api_url]}/spaces"
+      end
+
+      # @private
+      def uploads_url
+        "#{protocol}://#{configuration[:uploads_url]}/spaces"
       end
 
       # @private
@@ -348,7 +375,7 @@ module Contentful
 
       # @todo headers should be supplied differently, maybe through the request object.
       # @private
-      def request_headers
+      def request_headers(request = nil)
         headers = {}
         headers.merge! user_agent
         headers.merge! authentication_header
@@ -358,6 +385,8 @@ module Contentful
         headers.merge! zero_length_header if zero_length
         headers.merge! content_type_header(content_type_id) if content_type_id
         headers.merge! accept_encoding_header('gzip') if gzip_encoded
+
+        headers.merge! request.headers unless request.nil?
         headers
       end
 

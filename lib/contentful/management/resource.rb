@@ -200,7 +200,7 @@ module Contentful
         # @return [Contentful::Management::Resource]
         def create(client, space_id, attributes)
           endpoint_options = { space_id: space_id }
-          endpoint_options[:resource_id] = attributes[:id] if attributes.key?(:id)
+          endpoint_options[:resource_id] = attributes[:id] if attributes.respond_to?(:key) && attributes.key?(:id)
           ResourceRequester.new(client, self).create(
             endpoint_options,
             attributes

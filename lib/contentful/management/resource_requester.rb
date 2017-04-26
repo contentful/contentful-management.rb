@@ -20,7 +20,7 @@ module Contentful
       end
 
       def create(endpoint_options = {}, attributes = {})
-        custom_id = attributes[:id]
+        custom_id = attributes.is_a?(Hash) ? attributes[:id] : nil
         request = Request.new(
           client,
           resource_class.build_endpoint(endpoint_options),
