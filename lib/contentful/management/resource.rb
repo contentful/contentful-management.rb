@@ -24,7 +24,7 @@ module Contentful
         float: ->(value) { value.to_f },
         boolean: ->(value) { !!value },
         date: ->(value) { !value.nil? ? DateTime.parse(value) : nil }
-      }
+      }.freeze
       # rubocop:enable Style/DoubleNegation
 
       attr_reader :properties, :request, :default_locale, :raw_object
@@ -44,6 +44,11 @@ module Contentful
         @request = request
         @client = client
         @raw_object = object
+      end
+
+      # @private
+      def self.included(base)
+        base.extend(ClassMethods)
       end
 
       # @private
@@ -272,11 +277,6 @@ module Contentful
 
           @coercions_updated = true
         end
-      end
-
-      # @private
-      def self.included(base)
-        base.extend(ClassMethods)
       end
     end
   end

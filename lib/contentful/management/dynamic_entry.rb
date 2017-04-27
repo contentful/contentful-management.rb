@@ -16,7 +16,7 @@ module Contentful
         'Boolean' => :boolean,
         'Date' => :date,
         'Location' => Location
-      }
+      }.freeze
 
       # @private
       def self.define_singleton_properties(entry_class, content_type, client)

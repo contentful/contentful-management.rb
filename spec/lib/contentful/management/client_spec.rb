@@ -46,7 +46,7 @@ module Contentful
         end
       end
 
-      describe '#host_url', focus: true do
+      describe '#host_url' do
         describe 'uploads' do
           it 'returns uploads url when its a properly formed upload url' do
             expect(subject.host_url(RequestDouble.new('/some_space_id/uploads'))).to eq subject.uploads_url

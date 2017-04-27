@@ -15,7 +15,8 @@ module Contentful
           createdAt: :date,
           updatedAt: :date,
           locale: :string
-        }
+        }.freeze
+
         attr_reader :sys
 
         # @private

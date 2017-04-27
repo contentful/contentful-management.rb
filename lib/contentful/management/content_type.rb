@@ -14,17 +14,17 @@ module Contentful
     class ContentType
       # Shortcuts for Contentful Field Types
       FIELD_TYPES = [
-        SYMBOL = 'Symbol',
-        TEXT = 'Text',
-        INTEGER = 'Integer',
-        FLOAT = 'Number',
-        DATE = 'Date',
-        BOOLEAN = 'Boolean',
-        LINK = 'Link',
-        ARRAY = 'Array',
-        OBJECT = 'Object',
-        LOCATION = 'Location'
-      ]
+        SYMBOL = 'Symbol'.freeze,
+        TEXT = 'Text'.freeze,
+        INTEGER = 'Integer'.freeze,
+        FLOAT = 'Number'.freeze,
+        DATE = 'Date'.freeze,
+        BOOLEAN = 'Boolean'.freeze,
+        LINK = 'Link'.freeze,
+        ARRAY = 'Array'.freeze,
+        OBJECT = 'Object'.freeze,
+        LOCATION = 'Location'.freeze
+      ].freeze
 
       include Contentful::Management::Resource
       include Contentful::Management::Resource::SystemProperties
@@ -42,9 +42,9 @@ module Contentful
         ClientContentTypeMethodsFactory
       end
 
-      alias_method :activate, :publish
-      alias_method :deactivate, :unpublish
-      alias_method :active?, :published?
+      alias activate publish
+      alias deactivate unpublish
+      alias active? published?
 
       # @private
       def self.create_attributes(_client, attributes)
@@ -97,7 +97,7 @@ module Contentful
       end
 
       # @private
-      alias_method :orig_fields, :fields
+      alias orig_fields fields
 
       # Use this method only in the context of content type.
       # Allows you to add and create a field with specified attributes or destroy by pass field id.
@@ -164,10 +164,10 @@ module Contentful
 
       def query_attributes(attributes)
         parameters = {}
-        parameters.merge!(displayField: display_field_value(attributes))
-        parameters.merge!(name: (attributes[:name] || name))
-        parameters.merge!(description: (attributes[:description] || description))
-        parameters.merge!(fields: self.class.fields_to_nested_properties_hash(attributes[:fields] || fields))
+        parameters[:displayField] = display_field_value(attributes)
+        parameters[:name] = attributes[:name] || name
+        parameters[:description] = attributes[:description] || description
+        parameters[:fields] = self.class.fields_to_nested_properties_hash(attributes[:fields] || fields)
 
         parameters.delete_if { |_, v| v.nil? }
       end

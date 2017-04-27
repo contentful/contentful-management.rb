@@ -24,6 +24,10 @@ module Contentful
         end
       end
 
+      # Gets [Contentful::Management::Link]-like representation of the upload
+      # This is used in particular for associating the upload with an asset
+      #
+      # @return [Hash] link-like representation of the upload
       def to_link_json
         {
           sys: {
