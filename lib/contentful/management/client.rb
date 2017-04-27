@@ -50,9 +50,10 @@ module Contentful
         proxy_password: nil,
         max_rate_limit_retries: 1,
         max_rate_limit_wait: 60
-      }
+      }.freeze
+
       # Rate Limit Reset Header Key
-      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'
+      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'.freeze
 
       # @param [String] access_token
       # @param [Hash] configuration
@@ -261,7 +262,7 @@ module Contentful
 
       # @private
       def host_url(request)
-        request.url.match('^/[\w|_|-]+/uploads(?:/[\w|_|-]*)?$') ? uploads_url : base_url
+        (%r{^/[\w|-]+/uploads(?:/[\w|-]*)?$} =~ request.url) ? uploads_url : base_url
       end
 
       # @private

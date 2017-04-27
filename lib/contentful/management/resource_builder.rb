@@ -36,10 +36,11 @@ module Contentful
         'EditorInterface' => Contentful::Management::EditorInterface,
         'Snapshot' => Contentful::Management::Snapshot,
         'Upload' => Contentful::Management::Upload
-      }
+      }.freeze
+
       # Default Entry Mapping
       # @see _ README for more information on Entry Mapping
-      DEFAULT_ENTRY_MAPPING = {}
+      DEFAULT_ENTRY_MAPPING = {}.freeze
 
       attr_reader :client, :response, :resource_mapping, :entry_mapping, :resource
 

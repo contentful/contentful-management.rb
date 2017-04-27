@@ -5,7 +5,7 @@ module Contentful
       class << self
         # Transforms CamelCase into snake_case (taken from zucker)
         def snakify(object)
-          snake = String(object).gsub(/(?<!^)[A-Z]/) { "_#$&" }
+          snake = String(object).gsub(/(?<!^)[A-Z]/) { "_#{$&}" }
           snake.downcase
         end
 

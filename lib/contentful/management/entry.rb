@@ -68,6 +68,63 @@ module Contentful
       end
 
       # @private
+      def self.parse_attribute_with_field(attribute, field)
+        case field.type
+        when ContentType::LINK then
+          { sys: { type: field.type, linkType: field.link_type, id: attribute.id } } if attribute
+        when ContentType::ARRAY then
+          parse_fields_array(attribute)
+        when ContentType::LOCATION then
+          { lat: attribute.properties[:lat], lon: attribute.properties[:lon] } if attribute
+        else
+          attribute
+        end
+      end
+
+      # @private
+      def self.hash_with_link_object(type, attribute)
+        { sys: { type: 'Link', linkType: type, id: attribute.id } }
+      end
+
+      # @private
+      def self.parse_fields_array(attributes)
+        type = attributes.first.class
+        type == String ? attributes : parse_objects_array(attributes)
+      end
+
+      # @private
+      def self.parse_objects_array(attributes)
+        attributes.each_with_object([]) do |attr, arr|
+          if attr.is_a? Entry
+            arr << hash_with_link_object('Entry', attr)
+          elsif attr.is_a? Asset
+            arr << hash_with_link_object('Asset', attr)
+          elsif attr.is_a? Hash
+            arr << attr
+          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Entry')
+            arr << hash_with_link_object('Entry', attr)
+          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Asset')
+            arr << hash_with_link_object('Asset', attr)
+          end
+        end
+      end
+
+      # Gets Hash of fields for all locales, with locales at a field level
+      #
+      # @return [Hash] fields by locale
+      def self.fields_with_locale(content_type, attributes)
+        locale = attributes[:locale] || content_type.sys[:space].default_locale
+        fields = content_type.properties[:fields]
+        field_names = fields.map { |field| field.id.to_sym }
+        attributes.keep_if { |key| field_names.include?(key) }
+
+        attributes.each do |id, value|
+          field = fields.detect { |f| f.id.to_sym == id.to_sym }
+          attributes[id] = { locale => parse_attribute_with_field(value, field) }
+        end
+      end
+
+      # @private
       def after_create(attributes)
         self.locale = attributes[:locale] || client.default_locale
       end
@@ -157,19 +214,6 @@ module Contentful
 
       private
 
-      def self.parse_attribute_with_field(attribute, field)
-        case field.type
-        when ContentType::LINK then
-          { sys: { type: field.type, linkType: field.link_type, id: attribute.id } } if attribute
-        when ContentType::ARRAY then
-          parse_fields_array(attribute)
-        when ContentType::LOCATION then
-          { lat: attribute.properties[:lat], lon: attribute.properties[:lon] } if attribute
-        else
-          attribute
-        end
-      end
-
       def parse_update_attribute(attribute)
         case attribute
         when Asset
@@ -205,43 +249,6 @@ module Contentful
                           end
         space_id = space.is_a?(::Contentful::Management::Resource) ? space.id : space['sys']['id']
         @content_type ||= ::Contentful::Management::ContentType.find(client, space_id, content_type_id)
-      end
-
-      def self.hash_with_link_object(type, attribute)
-        { sys: { type: 'Link', linkType: type, id: attribute.id } }
-      end
-
-      def self.parse_fields_array(attributes)
-        type = attributes.first.class
-        type == String ? attributes : parse_objects_array(attributes)
-      end
-
-      def self.parse_objects_array(attributes)
-        attributes.each_with_object([]) do |attr, arr|
-          if attr.is_a? Entry
-            arr << hash_with_link_object('Entry', attr)
-          elsif attr.is_a? Asset
-            arr << hash_with_link_object('Asset', attr)
-          elsif attr.is_a? Hash
-            arr << attr
-          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Entry')
-            arr << hash_with_link_object('Entry', attr)
-          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Asset')
-            arr << hash_with_link_object('Asset', attr)
-          end
-        end
-      end
-
-      def self.fields_with_locale(content_type, attributes)
-        locale = attributes[:locale] || content_type.sys[:space].default_locale
-        fields = content_type.properties[:fields]
-        field_names = fields.map { |field| field.id.to_sym }
-        attributes.keep_if { |key| field_names.include?(key) }
-
-        attributes.each do |id, value|
-          field = fields.detect { |f| f.id.to_sym == id.to_sym }
-          attributes[id] = { locale => parse_attribute_with_field(value, field) }
-        end
       end
     end
   end

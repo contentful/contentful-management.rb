@@ -45,12 +45,12 @@ module Contentful
       def archive(object, endpoint_options = {}, headers = {})
         update(object, endpoint_options, {}, headers)
       end
-      alias_method :publish, :archive
+      alias publish archive
 
       def unarchive(object, endpoint_options = {}, headers = {})
         object.refresh_data(delete(endpoint_options, {}, headers))
       end
-      alias_method :unpublish, :unarchive
+      alias unpublish unarchive
 
       private
 
