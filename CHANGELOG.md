@@ -2,6 +2,8 @@
 
 ## Master
 
+## 1.7.0
+
 ### Added
 * Added support for Upload API
 
