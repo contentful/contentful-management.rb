@@ -729,6 +729,19 @@ module Contentful
             end
           end
         end
+        context 'unique' do
+          let(:space) { client.spaces.find('iig6ari2cj2t') }
+          it 'adds `unique` validation to field' do
+            vcr('content_type/validation/unique') do
+              content_type = space.content_types.find('1JrDv4JJsYuY4KGEEgAsQU')
+              validation_unique = Contentful::Management::Validation.new
+              validation_unique.unique = true
+              content_type.fields.create(id: 'symbol', name: 'Slug', type: 'Symbol', validations: [validation_unique])
+              expect(content_type.fields.last.validations.first.properties[:unique]).to be_truthy
+              expect(content_type.fields.last.validations.first.type).to be :unique
+            end
+          end
+        end
 
         context 'add multiple validations' do
           it 'create field with multiple validations' do
