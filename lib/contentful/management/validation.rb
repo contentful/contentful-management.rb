@@ -14,6 +14,7 @@ module Contentful
       property :range, :hash
       property :linkMimetypeGroup, :string
       property :linkField, :boolean
+      property :assetFileSize, :hash
 
       # @private
       def properties_to_hash
