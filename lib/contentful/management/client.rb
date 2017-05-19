@@ -49,7 +49,11 @@ module Contentful
         proxy_username: nil,
         proxy_password: nil,
         max_rate_limit_retries: 1,
-        max_rate_limit_wait: 60
+        max_rate_limit_wait: 60,
+        application_name: nil,
+        application_version: nil,
+        integration_name: nil,
+        integration_version: nil
       }.freeze
 
       # Rate Limit Reset Header Key
@@ -69,6 +73,10 @@ module Contentful
       # @option configuration [Fixnum] :proxy_port
       # @option configuration [String] :proxy_username
       # @option configuration [String] :proxy_username
+      # @option configuration [String] :application_name
+      # @option configuration [String] :application_version
+      # @option configuration [String] :integration_name
+      # @option configuration [String] :integration_version
       def initialize(access_token = nil, configuration = {})
         @configuration = default_configuration.merge(configuration)
         setup_logger
@@ -344,9 +352,82 @@ module Contentful
         Hash['Content-Type', "application/vnd.contentful.management.v#{api_version}+json"]
       end
 
+      # Returns the formatted part of the X-Contentful-User-Agent header
+      # @private
+      def format_user_agent_header(key, values)
+        header = "#{key} #{values[:name]}"
+        header = "#{header}/#{values[:version]}" if values[:version]
+        "#{header};"
+      end
+
+      # Returns the X-Contentful-User-Agent sdk data
+      # @private
+      def sdk_info
+        {
+          name: 'contentful-management.rb',
+          version: ::Contentful::Management::VERSION
+        }
+      end
+
+      # Returns the X-Contentful-User-Agent app data
+      # @private
+      def app_info
+        {
+          name: configuration[:application_name],
+          version: configuration[:application_version]
+        }
+      end
+
+      # Returns the X-Contentful-User-Agent integration data
+      # @private
+      def integration_info
+        {
+          name: configuration[:integration_name],
+          version: configuration[:integration_version]
+        }
+      end
+
+      # Returns the X-Contentful-User-Agent platform data
+      # @private
+      def platform_info
+        {
+          name: 'ruby',
+          version: RUBY_VERSION
+        }
+      end
+
+      # Returns the X-Contentful-User-Agent os data
+      # @private
+      def os_info
+        {
+          name: Gem::Platform.local.os,
+          version: Gem::Platform.local.version
+        }
+      end
+
+      # Returns the X-Contentful-User-Agent
+      # @private
+      def contentful_user_agent
+        header = {
+          'sdk' => sdk_info,
+          'app' => app_info,
+          'integration' => integration_info,
+          'platform' => platform_info,
+          'os' => os_info
+        }
+
+        result = []
+        header.each do |key, values|
+          next unless values[:name]
+          result << format_user_agent_header(key, values)
+        end
+
+        result.join(' ')
+      end
+
       # @private
       def user_agent
-        Hash['User-Agent', "RubyContentfulManagementGem/#{Contentful::Management::VERSION}"]
+        Hash['X-Contentful-User-Agent', contentful_user_agent]
       end
 
       # @private

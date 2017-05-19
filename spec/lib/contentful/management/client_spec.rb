@@ -1,6 +1,12 @@
 require 'spec_helper'
 require 'contentful/management/client'
 
+def os_info
+  header = Gem::Platform.local.os
+  header = "#{header}/#{Gem::Platform.local.version}" if Gem::Platform.local.version
+  "#{header};"
+end
+
 module Contentful
   module Management
     describe Client do
@@ -31,7 +37,161 @@ module Contentful
 
         describe '#user_agent' do
           its(:user_agent) { should be_kind_of Hash }
-          its(:user_agent) { should eq 'User-Agent' => "RubyContentfulManagementGem/#{ Contentful::Management::VERSION }" }
+          its(:user_agent) { should eq 'X-Contentful-User-Agent' => client.contentful_user_agent }
+        end
+
+        describe 'X-Contentful-User-Agent header' do
+          it 'default values' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info
+            ]
+
+            client = Client.new(token)
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+
+            ['integration', 'app'].each do |h|
+              expect(client.contentful_user_agent).not_to include(h)
+            end
+          end
+
+          it 'with integration name only' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info,
+              "integration foobar;"
+            ]
+
+            client = Client.new(
+              token,
+              integration_name: 'foobar'
+            )
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+
+            ['app'].each do |h|
+              expect(client.contentful_user_agent).not_to include(h)
+            end
+          end
+
+          it 'with integration' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info,
+              "integration foobar/0.1.0;"
+            ]
+
+            client = Client.new(
+              token,
+              integration_name: 'foobar',
+              integration_version: '0.1.0'
+            )
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+
+            ['app'].each do |h|
+              expect(client.contentful_user_agent).not_to include(h)
+            end
+          end
+
+          it 'with application name only' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info,
+              "app fooapp;"
+            ]
+
+            client = Client.new(
+              token,
+              application_name: 'fooapp'
+            )
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+
+            ['integration'].each do |h|
+              expect(client.contentful_user_agent).not_to include(h)
+            end
+          end
+
+          it 'with application' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info,
+              "app fooapp/1.0.0;"
+            ]
+
+            client = Client.new(
+              token,
+              application_name: 'fooapp',
+              application_version: '1.0.0'
+            )
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+
+            ['integration'].each do |h|
+              expect(client.contentful_user_agent).not_to include(h)
+            end
+          end
+
+          it 'with all' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info,
+              "integration foobar/0.1.0;",
+              "app fooapp/1.0.0;"
+            ]
+
+            client = Client.new(
+              token,
+              integration_name: 'foobar',
+              integration_version: '0.1.0',
+              application_name: 'fooapp',
+              application_version: '1.0.0'
+            )
+
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+          end
+
+          it 'when only version numbers, skips header' do
+            expected = [
+              "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
+              "platform ruby/#{RUBY_VERSION};",
+              os_info
+            ]
+
+            client = Client.new(
+              token,
+              integration_version: '0.1.0',
+              application_version: '1.0.0'
+            )
+
+            expected.each do |h|
+              expect(client.contentful_user_agent).to include(h)
+            end
+
+            ['integration', 'app'].each do |h|
+              expect(client.contentful_user_agent).not_to include(h)
+            end
+          end
+
+          it 'headers include X-Contentful-User-Agent' do
+            client = Client.new(token)
+            expect(client.request_headers['X-Contentful-User-Agent']).to eq client.contentful_user_agent
+          end
         end
 
         describe '#organization_header' do
