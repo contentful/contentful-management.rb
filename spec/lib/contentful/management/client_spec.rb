@@ -1,12 +1,6 @@
 require 'spec_helper'
 require 'contentful/management/client'
 
-def os_info
-  header = Gem::Platform.local.os
-  header = "#{header}/#{Gem::Platform.local.version}" if Gem::Platform.local.version
-  "#{header};"
-end
-
 module Contentful
   module Management
     describe Client do
@@ -44,14 +38,15 @@ module Contentful
           it 'default values' do
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
-              "platform ruby/#{RUBY_VERSION};",
-              os_info
+              "platform ruby/#{RUBY_VERSION};"
             ]
 
             client = Client.new(token)
             expected.each do |h|
               expect(client.contentful_user_agent).to include(h)
             end
+
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
 
             ['integration', 'app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
@@ -62,7 +57,6 @@ module Contentful
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
               "platform ruby/#{RUBY_VERSION};",
-              os_info,
               "integration foobar;"
             ]
 
@@ -74,6 +68,8 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+
             ['app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
             end
@@ -83,7 +79,6 @@ module Contentful
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
               "platform ruby/#{RUBY_VERSION};",
-              os_info,
               "integration foobar/0.1.0;"
             ]
 
@@ -96,6 +91,8 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+
             ['app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
             end
@@ -105,7 +102,6 @@ module Contentful
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
               "platform ruby/#{RUBY_VERSION};",
-              os_info,
               "app fooapp;"
             ]
 
@@ -117,6 +113,8 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+
             ['integration'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
             end
@@ -126,7 +124,6 @@ module Contentful
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
               "platform ruby/#{RUBY_VERSION};",
-              os_info,
               "app fooapp/1.0.0;"
             ]
 
@@ -139,6 +136,8 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+
             ['integration'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
             end
@@ -148,9 +147,8 @@ module Contentful
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
               "platform ruby/#{RUBY_VERSION};",
-              os_info,
               "integration foobar/0.1.0;",
-              "app fooapp/1.0.0;"
+                "app fooapp/1.0.0;"
             ]
 
             client = Client.new(
@@ -164,13 +162,14 @@ module Contentful
             expected.each do |h|
               expect(client.contentful_user_agent).to include(h)
             end
+
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
           end
 
           it 'when only version numbers, skips header' do
             expected = [
               "sdk contentful-management.rb/#{Contentful::Management::VERSION};",
-              "platform ruby/#{RUBY_VERSION};",
-              os_info
+              "platform ruby/#{RUBY_VERSION};"
             ]
 
             client = Client.new(
@@ -182,6 +181,8 @@ module Contentful
             expected.each do |h|
               expect(client.contentful_user_agent).to include(h)
             end
+
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
 
             ['integration', 'app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
