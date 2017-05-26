@@ -46,7 +46,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
 
             ['integration', 'app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
@@ -68,7 +68,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
 
             ['app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
@@ -91,7 +91,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
 
             ['app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
@@ -113,7 +113,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
 
             ['integration'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
@@ -136,7 +136,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
 
             ['integration'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
@@ -163,7 +163,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
           end
 
           it 'when only version numbers, skips header' do
@@ -182,7 +182,7 @@ module Contentful
               expect(client.contentful_user_agent).to include(h)
             end
 
-            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux|Unknown)(\/.*)?;/i)
+            expect(client.contentful_user_agent).to match(/os (Windows|macOS|Linux)(\/.*)?;/i)
 
             ['integration', 'app'].each do |h|
               expect(client.contentful_user_agent).not_to include(h)
