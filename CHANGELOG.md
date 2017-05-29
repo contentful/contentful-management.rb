@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Added
+* Added `X-Contentful-User-Agent` header for more information.
 
 ## 1.7.0
 
