@@ -1,12 +1,8 @@
 language: ruby
 rvm:
-  - 2.2.3
-  - 2.3.1
   - 2.4.0
-  - 2.1.1
-  - 2.1
-  - 2.0.0
-  - jruby-head
+  - 2.3.1
+  - 2.2.1
 
 before_install: gem install bundler
 script: bundle exec rake rspec_rubocop
