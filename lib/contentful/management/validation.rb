@@ -16,6 +16,7 @@ module Contentful
       property :linkField, :boolean
       property :unique, :boolean
       property :assetFileSize, :hash
+      property :assetImageDimensions, :hash
 
       # @private
       def properties_to_hash
