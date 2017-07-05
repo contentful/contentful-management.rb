@@ -2,6 +2,10 @@
 
 ## Master
 
+## 1.8.1
+### Added
+* Added missing validation property for assets [#121](https://github.com/contentful/contentful-management.rb/pull/121)
+
 ## 1.8.0
 ### Added
 * Added `X-Contentful-User-Agent` header for more information.
