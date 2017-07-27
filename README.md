@@ -8,8 +8,9 @@ Contentful is a content management platform for web applications, mobile apps an
 ## Setup
 
 Add this line to your application's Gemfile:
-
-    gem 'contentful-management'
+```ruby
+gem 'contentful-management'
+```
 
 ## Usage
 
@@ -21,6 +22,8 @@ Some examples can be found in the ```examples/``` directory or you take a look a
 At the beginning the API client instance should be created for each thread that is going to be used in your application:
 
 ```ruby
+require 'contentful/management'
+
 client = Contentful::Management::Client.new('access_token')
 ```
 
