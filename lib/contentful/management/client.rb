@@ -31,7 +31,7 @@ module Contentful
       extend Contentful::Management::HTTPClient
 
       attr_reader :access_token, :configuration, :logger
-      attr_accessor :organization_id, :version, :zero_length, :content_type_id, :dynamic_entry_cache
+      attr_accessor :organization_id, :version, :content_type_id, :dynamic_entry_cache
 
       # Default configuration for Contentful::Management::Client
       DEFAULT_CONFIGURATION = {
@@ -437,11 +437,6 @@ module Contentful
       end
 
       # @private
-      def zero_length_header
-        Hash['Content-Length', 0]
-      end
-
-      # @private
       def accept_encoding_header(encoding)
         Hash['Accept-Encoding', encoding]
       end
@@ -455,7 +450,6 @@ module Contentful
         headers.merge! api_version_header
         headers.merge! organization_header(organization_id) if organization_id
         headers.merge! version_header(version) if version
-        headers.merge! zero_length_header if zero_length
         headers.merge! content_type_header(content_type_id) if content_type_id
         headers.merge! accept_encoding_header('gzip') if gzip_encoded
 

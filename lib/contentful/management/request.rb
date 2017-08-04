@@ -17,7 +17,6 @@ module Contentful
 
         case query
         when Hash
-          @client.zero_length = query.empty?
           @query = normalize_query(query) if query && !query.empty?
         else
           @query = query
