@@ -71,9 +71,10 @@ module Contentful
             vcr('space/find') do
               space = subject.find(space_id)
               expect(client.dynamic_entry_cache).not_to be_empty
+              expect(client.dynamic_entry_cache.key?('5DSpuKrl04eMAGQoQckeIq'.to_sym)).to be_truthy
             end
           end
-          it 'doesnt fetch content types when explicitly disabled' do
+          it 'does not fetch content types when explicitly disabled' do
             vcr('space/disabled_cache') do
               client = Client.new(token, disable_content_type_caching: true)
               subject = client.spaces

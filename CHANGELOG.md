@@ -2,7 +2,7 @@
 
 ## Master
 ### Added
-* Added option to disable completely Content Type caching.
+* Added option to disable Content Type caching completely.
 
 ## 1.8.1
 ### Added
