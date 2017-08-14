@@ -45,6 +45,7 @@ module Contentful
         log_level: Logger::INFO,
         raise_errors: false,
         dynamic_entries: [],
+        disable_content_type_caching: false,
         proxy_host: nil,
         proxy_port: nil,
         proxy_username: nil,
@@ -70,6 +71,7 @@ module Contentful
       # @option configuration [::Logger::DEBUG, ::Logger::INFO, ::Logger::WARN, ::Logger::ERROR] :log_level
       # @option configuration [Boolean] :raise_errors
       # @option configuration [::Array<String>] :dynamic_entries
+      # @option configuration [Boolean] :disable_content_type_caching
       # @option configuration [String] :proxy_host
       # @option configuration [Fixnum] :proxy_port
       # @option configuration [String] :proxy_username
@@ -194,7 +196,7 @@ module Contentful
 
       # @private
       def update_all_dynamic_entry_cache!
-        return if configuration[:dynamic_entries].empty?
+        return if configuration[:dynamic_entries].empty? || configuration[:disable_content_type_caching]
 
         spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(self, space_id) }
         update_dynamic_entry_cache_for_spaces!(spaces)
@@ -202,6 +204,8 @@ module Contentful
 
       # @private
       def update_dynamic_entry_cache_for_spaces!(spaces)
+        return if configuration[:disable_content_type_caching]
+
         spaces.each do |space|
           update_dynamic_entry_cache_for_space!(space)
         end
@@ -211,6 +215,8 @@ module Contentful
       # See README for details.
       # @private
       def update_dynamic_entry_cache_for_space!(space)
+        return if configuration[:disable_content_type_caching]
+
         update_dynamic_entry_cache!(space.content_types.all)
       end
 

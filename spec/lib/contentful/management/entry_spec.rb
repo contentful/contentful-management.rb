@@ -773,18 +773,18 @@ module Contentful
           end
 
           attributes = {
-              name: 'Test name',
-              number: 30,
-              float1: 1.1,
-              boolean: true, date: '2000-07-12T11:11:00+02:00',
-              time: '2000-07-12T11:11:00+02:00',
-              location: location,
-              image: Asset.new,
-              images: [Asset.new, Asset.new],
-              array: %w(PL USD XX),
-              entry: Entry.new,
-              entries: [Entry.new, Entry.new],
-              object_json: {'test' => {'@type' => 'Codequest'}}
+            name: 'Test name',
+            number: 30,
+            float1: 1.1,
+            boolean: true, date: '2000-07-12T11:11:00+02:00',
+            time: '2000-07-12T11:11:00+02:00',
+            location: location,
+            image: Asset.new,
+            images: [Asset.new, Asset.new],
+            array: %w(PL USD XX),
+            entry: Entry.new,
+            entries: [Entry.new, Entry.new],
+            object_json: {'test' => {'@type' => 'Codequest'}}
           }
 
           parsed_attributes = Entry.new.fields_from_attributes(attributes)
@@ -807,7 +807,7 @@ module Contentful
 
         it 'keepd hashes in attributes' do
           attributes = {
-              entries: [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}]
+            entries: [{sys: {type: 'Link', linkType: 'Entry', id: nil}}, {sys: {type: 'Link', linkType: 'Entry', id: nil}}]
           }
 
           parsed_attributes = Entry.new.fields_from_attributes(attributes)
@@ -1040,53 +1040,53 @@ module Contentful
             end
 
             describe 'without dynamic entries' do
-                it 'on an already populated field' do
-                  vcr('entry/issue_61.7') {
-                    begin
-                      client.configuration[:default_locale] = 'en-GB'
+              it 'on an already populated field' do
+                vcr('entry/issue_61.7') {
+                  begin
+                    client.configuration[:default_locale] = 'en-GB'
 
-                      expected_entry = subject.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
+                    expected_entry = subject.find('u2viwgfeal0o', 'fIpsfQSOd22IsqMQCiG0K')
 
-                      expect(expected_entry.value).to eq 'hello'
+                    expect(expected_entry.value).to eq 'hello'
 
-                      expected_entry.value = 'goodbye'
+                    expected_entry.value = 'goodbye'
 
-                      expected_entry.save
-                      expected_entry.publish
+                    expected_entry.save
+                    expected_entry.publish
 
-                      expect(expected_entry.value).to eq 'goodbye'
-                    ensure
-                      expected_entry.value = 'hello'
+                    expect(expected_entry.value).to eq 'goodbye'
+                  ensure
+                    expected_entry.value = 'hello'
 
-                      expected_entry.save
-                      expected_entry.publish
-                    end
-                  }
-                end
+                    expected_entry.save
+                    expected_entry.publish
+                  end
+                }
+              end
 
-                it 'on a previously empty field' do
-                  vcr('entry/issue_61.8') {
-                    begin
-                      client.configuration[:default_locale] = 'en-GB'
+              it 'on a previously empty field' do
+                vcr('entry/issue_61.8') {
+                  begin
+                    client.configuration[:default_locale] = 'en-GB'
 
-                      expected_entry = subject.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
+                    expected_entry = subject.find('u2viwgfeal0o', '2GmtCwDBcIu4giMgQGIIcq')
 
-                      expect(expected_entry.value).to eq nil
+                    expect(expected_entry.value).to eq nil
 
-                      expected_entry.value = 'goodbye'
+                    expected_entry.value = 'goodbye'
 
-                      expected_entry.save
-                      expected_entry.publish
+                    expected_entry.save
+                    expected_entry.publish
 
-                      expect(expected_entry.value).to eq 'goodbye'
-                    ensure
-                      expected_entry.value = nil
+                    expect(expected_entry.value).to eq 'goodbye'
+                  ensure
+                    expected_entry.value = nil
 
-                      expected_entry.save
-                      expected_entry.publish
-                    end
-                  }
-                end
+                    expected_entry.save
+                    expected_entry.publish
+                  end
+                }
+              end
             end
           end
         end

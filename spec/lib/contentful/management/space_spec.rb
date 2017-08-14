@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe Space do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'yr5m0jky5hsh' }
 
       let!(:client) { Client.new(token) }
@@ -21,6 +21,22 @@ module Contentful
         end
         it 'builds a Contentful::Management::Space object' do
           vcr('space/all') { expect(subject.all.first).to be_kind_of Contentful::Management::Space }
+        end
+        describe 'content type caching' do
+          it 'fetches all content types when finding a space' do
+            vcr('space/all') do
+              space = subject.all
+              expect(client.dynamic_entry_cache).not_to be_empty
+            end
+          end
+          it 'doesnt fetch content types when explicitly disabled' do
+            vcr('space/all_disabled_cache') do
+              client = Client.new(token, disable_content_type_caching: true)
+              subject = client.spaces
+              space = subject.all
+              expect(client.dynamic_entry_cache).to be_empty
+            end
+          end
         end
       end
 
@@ -48,6 +64,23 @@ module Contentful
             space = subject.find(space_id)
             expect(space.id).to eql space_id
             expect(space.default_locale).to eql 'en-US'
+          end
+        end
+        describe 'content type caching' do
+          it 'fetches all content types when finding a space' do
+            vcr('space/find') do
+              space = subject.find(space_id)
+              expect(client.dynamic_entry_cache).not_to be_empty
+            end
+          end
+          it 'doesnt fetch content types when explicitly disabled' do
+            vcr('space/disabled_cache') do
+              client = Client.new(token, disable_content_type_caching: true)
+              subject = client.spaces
+
+              space = subject.find('facgnwwgj5fe')
+              expect(client.dynamic_entry_cache).to be_empty
+            end
           end
         end
       end

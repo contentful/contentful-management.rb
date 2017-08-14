@@ -1,0 +1,428 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Mon, 14 Aug 2017 13:52:58 GMT
+      Etag:
+      - W/"6f2e86bcbac05f1100d77295d77984d8"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - d944d772bea82de9ba17a14681de391b
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '14007'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_685_673446=sbeZGfp1RkM+1c6Rt52BCTmrkVkAAAAAaJX2yuX1hrDiXhfLJouX5g==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=PBVIIB7I2mV5Djna6lKYhQAAAABAQpW+oPxU70WzVDNrvrHj; path=/; Domain=.contentful.com
+      - visid_incap_673446=hjWlI2qqQ2KRMkWEbcLOTTmrkVkAAAAAQUIPAAAAAABt8C2GXoSA0Y5vsyI40dyn;
+        expires=Tue, 14 Aug 2018 13:23:41 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 6-26601763-26601802 NNNN CT(136 274 0) RT(1502718776958 195) q(0 0 4 -1) r(7
+        7) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":103,
+          "limit":25,
+          "skip":0,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "name":"LocaleTestSpace",
+              "sys":{
+                "type":"Space",
+                "id":"9sh5dtmfyzhj",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-10-19T15:13:09Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-15T11:29:13Z"
+              }
+            },
+            {
+              "name":"database_exporter_issue_6",
+              "sys":{
+                "type":"Space",
+                "id":"q6tvmm7cjdv4",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-10-21T11:31:37Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-15T11:36:40Z"
+              }
+            },
+            {
+              "name":"contentful.rb - issue 69",
+              "sys":{
+                "type":"Space",
+                "id":"wio7th6i1n7o",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-10-23T10:09:59Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-15T11:44:57Z"
+              }
+            },
+            {
+              "name":"contentful_middleman_issue_39",
+              "sys":{
+                "type":"Space",
+                "id":"57saofu09q34",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-10-26T10:32:48Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-15T11:47:29Z"
+              }
+            },
+            {
+              "name":"management.rb - #70",
+              "sys":{
+                "type":"Space",
+                "id":"pzmofp93zw39",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-11-12T12:56:01Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-16T11:05:06Z"
+              }
+            },
+            {
+              "name":"management.rb - #73",
+              "sys":{
+                "type":"Space",
+                "id":"u2viwgfeal0o",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-12-07T13:29:36Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-16T15:07:08Z"
+              }
+            },
+            {
+              "name":"contentful.rb - #79",
+              "sys":{
+                "type":"Space",
+                "id":"g2b4ltw00meh",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-12-07T14:51:05Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-16T15:07:23Z"
+              }
+            },
+            {
+              "name":"breaking_changes_test",
+              "sys":{
+                "type":"Space",
+                "id":"jd2sv8fvhjxf",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-12-14T12:25:40Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-16T15:17:07Z"
+              }
+            },
+            {
+              "name":"Useful Link Example Space",
+              "sys":{
+                "type":"Space",
+                "id":"3fwy09k2gc9g",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-12-22T14:07:32Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-14T11:50:14Z"
+              }
+            },
+            {
+              "name":"my_catalogue",
+              "sys":{
+                "type":"Space",
+                "id":"ccbi775hv3p0",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2015-12-24T13:36:07Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-14T11:57:21Z"
+              }
+            },
+            {
+              "name":"VR Shop",
+              "sys":{
+                "type":"Space",
+                "id":"jialpjiftwxl",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "createdAt":"2015-12-29T09:25:43Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "updatedAt":"2016-03-14T11:57:56Z"
+              }
+            },
+            {
+              "name":"middleman_test_blog",
+              "sys":{
+                "type":"Space",
+                "id":"2yri4oy2f26b",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2016-01-15T22:56:40Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-14T12:29:39Z"
+              }
+            },
+            {
+              "name":"middleman - #77",
+              "sys":{
+                "type":"Space",
+                "id":"06iqaehcc4z6",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2016-01-18T12:10:35Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-14T12:33:00Z"
+              }
+            },
+            {
+              "name":"management.rb - #79",
+              "sys":{
+                "type":"Space",
+                "id":"ngtgiva4wofg",
+                "version":2,
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2016-01-21T15:22:59Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2016-03-16T15:25:04Z"
+              }
+            }
+          ]
+        }
+
+    http_version: 
+  recorded_at: Mon, 14 Aug 2017 13:52:58 GMT
+recorded_with: VCR 3.0.3
