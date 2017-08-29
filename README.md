@@ -767,13 +767,20 @@ To enable this, in your Client instantiation do:
 client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_id'])
 ```
 
-You can enable the Cache for as many Spaces as you want.
+You can enable the Cache for as many Spaces as you want. If no Space is added, Content Types will be fetched upon Space find.
+
+To completely disable this feature, upon Client instantiation do:
+
+```ruby
+client = Contentful::Management::Client.new(token, disable_content_type_caching: true)
+```
 
 ### Proxy Support
 
 This allows for using the CMA SDK through a proxy, for this, your proxy must support HTTPS and your server must have a valid signed certificate.
 
 To enable this, in your Client instantiation do:
+
 
 ```ruby
 PROXY_HOST = 'localhost'
