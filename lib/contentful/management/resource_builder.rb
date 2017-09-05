@@ -11,6 +11,7 @@ require_relative 'webhook'
 require_relative 'api_key'
 require_relative 'locale'
 require_relative 'role'
+require_relative 'ui_extension'
 require_relative 'editor_interface'
 require_relative 'snapshot'
 require_relative 'upload'
@@ -33,6 +34,7 @@ module Contentful
         'ApiKey' => Contentful::Management::ApiKey,
         'Locale' => Contentful::Management::Locale,
         'Role' => Contentful::Management::Role,
+        'Extension' => Contentful::Management::UIExtension,
         'EditorInterface' => Contentful::Management::EditorInterface,
         'Snapshot' => Contentful::Management::Snapshot,
         'Upload' => Contentful::Management::Upload

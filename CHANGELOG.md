@@ -3,6 +3,7 @@
 ## Master
 ### Added
 * Added option to disable Content Type caching completely.
+* Added UI Extension Endpoint.
 
 ## 1.8.1
 ### Added

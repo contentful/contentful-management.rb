@@ -12,6 +12,7 @@ require 'contentful/management/client_content_type_methods_factory'
 require 'contentful/management/client_entry_methods_factory'
 require 'contentful/management/client_locale_methods_factory'
 require 'contentful/management/client_role_methods_factory'
+require 'contentful/management/client_ui_extension_methods_factory'
 require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
 require 'contentful/management/client_upload_methods_factory'
@@ -90,7 +91,7 @@ module Contentful
       end
 
       # Allows manipulation of spaces in context of the current client
-      # Allows listing all spaces for client and finding one by id.
+      # Allows listing all spaces for client and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSpaceMethodsFactory]
@@ -99,7 +100,7 @@ module Contentful
       end
 
       # Allows manipulation of api keys in context of the current client
-      # Allows listing all api keys for client, creating new and finding one by id.
+      # Allows listing all api keys for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientApiKeyMethodsFactory]
@@ -108,7 +109,7 @@ module Contentful
       end
 
       # Allows manipulation of assets in context of the current client
-      # Allows listing all assets for client, creating new and finding one by id.
+      # Allows listing all assets for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientAssetMethodsFactory]
@@ -117,7 +118,7 @@ module Contentful
       end
 
       # Allows manipulation of content types in context of the current client
-      # Allows listing all content types for client, creating new and finding one by id.
+      # Allows listing all content types for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientContentTypeMethodsFactory]
@@ -126,7 +127,7 @@ module Contentful
       end
 
       # Allows manipulation of entries in context of the current client
-      # Allows listing all entries for client, creating new and finding one by id.
+      # Allows listing all entries for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientEntryMethodsFactory]
@@ -135,7 +136,7 @@ module Contentful
       end
 
       # Allows manipulation of locales in context of the current client
-      # Allows listing all locales for client, creating new and finding one by id.
+      # Allows listing all locales for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientLocaleMethodsFactory]
@@ -144,7 +145,7 @@ module Contentful
       end
 
       # Allows manipulation of roles in context of the current client
-      # Allows listing all roles for client, creating new and finding one by id.
+      # Allows listing all roles for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientRoleMethodsFactory]
@@ -152,8 +153,17 @@ module Contentful
         ClientRoleMethodsFactory.new(self)
       end
 
+      # Allows manipulation of UI extensions in context of the current client
+      # Allows listing all UI extensions for client, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientUIExtensionMethodsFactory]
+      def ui_extensions
+        ClientUIExtensionMethodsFactory.new(self)
+      end
+
       # Allows manipulation of editor interfaces in context of the current client
-      # Allows listing all editor interfaces for client, creating new and finding one by id.
+      # Allows listing all editor interfaces for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientEditorInterfaceMethodsFactory]
@@ -162,7 +172,7 @@ module Contentful
       end
 
       # Allows manipulation of webhooks in context of the current client
-      # Allows listing all webhooks for client, creating new and finding one by id.
+      # Allows listing all webhooks for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientWebhookMethodsFactory]
@@ -171,7 +181,7 @@ module Contentful
       end
 
       # Allows manipulation of uploads in context of the current client
-      # Allows creating new and finding uploads by id.
+      # Allows creating new and finding uploads by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientUploadMethodsFactory]
@@ -180,7 +190,7 @@ module Contentful
       end
 
       # Allows manipulation of snapshots in context of the current client
-      # Allows listing all webhooks for client, creating new and finding one by id.
+      # Allows listing all webhooks for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSnapshotMethodsFactory]

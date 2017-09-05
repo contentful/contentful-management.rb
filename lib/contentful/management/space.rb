@@ -11,6 +11,8 @@ require_relative 'webhook'
 require_relative 'space_webhook_methods_factory'
 require_relative 'role'
 require_relative 'space_role_methods_factory'
+require_relative 'ui_extension'
+require_relative 'space_ui_extension_methods_factory'
 require_relative 'editor_interface'
 require_relative 'space_editor_interface_methods_factory'
 require_relative 'api_key'
@@ -123,7 +125,7 @@ module Contentful
       end
 
       # Allows manipulation of content types in context of the current space
-      # Allows listing all content types of space, creating new and finding one by id.
+      # Allows listing all content types of space, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceContentTypeMethodsFactory]
@@ -132,7 +134,7 @@ module Contentful
       end
 
       # Allows manipulation of api keys in context of the current space
-      # Allows listing all api keys of space, creating new and finding one by id.
+      # Allows listing all api keys of space, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceApiKeyMethodsFactory]
@@ -141,7 +143,7 @@ module Contentful
       end
 
       # Allows manipulation of locales in context of the current space
-      # Allows listing all locales of space, creating new and finding one by id.
+      # Allows listing all locales of space, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceLocaleMethodsFactory]
@@ -150,7 +152,7 @@ module Contentful
       end
 
       # Allows manipulation of roles in context of the current space
-      # Allows listing all roles of space, creating new and finding one by id.
+      # Allows listing all roles of space, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceRoleMethodsFactory]
@@ -158,8 +160,17 @@ module Contentful
         SpaceRoleMethodsFactory.new(self)
       end
 
+      # Allows manipulation of UI extension in context of the current space
+      # Allows listing all UI extension of space, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceUIExtensionMethodsFactory]
+      def ui_extensions
+        SpaceUIExtensionMethodsFactory.new(self)
+      end
+
       # Allows manipulation of editor interfaces in context of the current space
-      # Allows listing all editor interfaces of space, creating new and finding one by id.
+      # Allows listing all editor interfaces of space, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceEditorInterfaceMethodsFactory]
@@ -168,7 +179,7 @@ module Contentful
       end
 
       # Allows manipulation of assets in context of the current space
-      # Allows listing all assets of space, creating new and finding one by id.
+      # Allows listing all assets of space, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceAssetMethodsFactory]
@@ -177,7 +188,7 @@ module Contentful
       end
 
       # Allows manipulation of entries in context of the current space
-      # Allows listing all entries for space and finding one by id.
+      # Allows listing all entries for space and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceEntryMethodsFactory]
@@ -186,7 +197,7 @@ module Contentful
       end
 
       # Allows manipulation of webhooks in context of the current space
-      # Allows listing all webhooks for space and finding one by id.
+      # Allows listing all webhooks for space and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::SpaceWebhookMethodsFactory]

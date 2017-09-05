@@ -1,0 +1,291 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions/2rf6QdckyoECCsQeE6gIOg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 05 Sep 2017 12:18:10 GMT
+      Etag:
+      - '"3c3f283a1b01a549c0467b23caddc121"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35990'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - d374897412b5c5a2b36c9c190102b103
+      Content-Length:
+      - '1426'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=NYHdRTneYUtIAAaB5luYAgGWrlkAAAAAsb1Y5tf8MghbKPDOcWhKeQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=yccEdsx3BxTCAB2n6lKYhQAAAABl4Fq5rzF7VcvFRTpOzaOf; path=/; Domain=.contentful.com
+      - visid_incap_673446=/jEuv0OaSICyEAX1WYBhzwGWrlkAAAAAQUIPAAAAAABfYhkDupEpPqKMMCYAzgAg;
+        expires=Wed, 05 Sep 2018 12:02:11 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-53465733-53465778 NNNN CT(78 78 0) RT(1504613888921 74) q(0 0 2 -1) r(5
+        5) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "extension": {
+            "name": "test extension",
+            "fieldTypes": [
+              {
+                "type": "Symbol"
+              },
+              {
+                "type": "Text"
+              }
+            ],
+            "srcdoc": "<!doctype html><html lang='en'><head><meta charset='UTF-8'/><title>Sample Editor Extension</title><link rel='stylesheet' href='https://contentful.github.io/ui-extensions-sdk/cf-extension.css'><script src='https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js'></script></head><body><div id='content'></div><script>window.contentfulExtension.init(function (extension) {window.alert(extension);var value = extension.field.getValue();extension.field.setValue('Hello world!');extension.field.onValueChanged(function(value) {if (value !== currentValue) {extension.field.setValue('Hello world!');}});});</script></body></html>",
+            "sidebar": false
+          },
+          "sys": {
+            "id": "2rf6QdckyoECCsQeE6gIOg",
+            "type": "Extension",
+            "version": 1,
+            "createdAt": "2017-09-05T12:06:18.463Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "facgnwwgj5fe"
+              }
+            },
+            "updatedAt": "2017-09-05T12:06:18.463Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 05 Sep 2017 12:18:10 GMT
+- request:
+    method: delete
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions/2rf6QdckyoECCsQeE6gIOg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 05 Sep 2017 12:18:10 GMT
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35989'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 0e8da9ab39fd05d69b650e8f3aa875e2
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=if7qbZi0OyUMBgaB5luYAgKWrlkAAAAAcGPB1zu4iaE9re80xcdBIQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=yhwJI6qucUvmt4OD6lKYhQAAAADDK3z2LVUxdzv5BErh1y7O; path=/; Domain=.contentful.com
+      - visid_incap_673446=6b26UlQNRWWoPJN1LMwhTQKWrlkAAAAAQUIPAAAAAADvQDyGFL4boRCfFgYVDs4/;
+        expires=Wed, 05 Sep 2018 12:02:11 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-53465940-53465951 NNNN CT(89 179 0) RT(1504613889476 83) q(0 0 3 -1) r(6
+        6) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Sep 2017 12:18:11 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions/2rf6QdckyoECCsQeE6gIOg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 05 Sep 2017 12:18:15 GMT
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35988'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - d603bc5d7e15bc36625bcad4796ab0ae
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=2Q9PRkvWnxcxKAaB5luYAgaWrlkAAAAA30O5kfoO5CnSxZgAlIQn/Q==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=tQjMHDC2snpHZKcT6lKYhQAAAABbIJQYqtBrIRlcNchqllWl; path=/; Domain=.contentful.com
+      - visid_incap_673446=d5Fgag7WRImUyQHaaFhuigaWrlkAAAAAQUIPAAAAAAD9fWFQHtChGdzEKMCad4lz;
+        expires=Wed, 05 Sep 2018 12:02:12 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 0-17229234-17229248 NNNN CT(93 77 0) RT(1504613890213 70) q(0 0 2 -1) r(43
+        43) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Error",
+            "id": "NotFound"
+          },
+          "message": "The resource could not be found.",
+          "details": {
+            "type": "Extension",
+            "space": "facgnwwgj5fe",
+            "id": "2rf6QdckyoECCsQeE6gIOg"
+          },
+          "requestId": "d603bc5d7e15bc36625bcad4796ab0ae"
+        }
+    http_version: 
+  recorded_at: Tue, 05 Sep 2017 12:18:15 GMT
+recorded_with: VCR 3.0.3
