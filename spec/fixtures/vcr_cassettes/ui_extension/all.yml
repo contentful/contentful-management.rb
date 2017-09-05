@@ -1,0 +1,1020 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/arqlnkt58eul/extensions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - arqlnkt58eul
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 05 Sep 2017 07:46:42 GMT
+      Etag:
+      - '"fa58f82b9b1e883c33946ed45dfa57b1"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35992'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - fb6da861989b07a0fda1634d7b3021d9
+      Content-Length:
+      - '22958'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=XTQMFbqMy3PgvHSA5luYAmJWrlkAAAAAVvZFx79Qnw90JV86/S2kIg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=OsPFRXCwOyAvNtdi6lKYhQAAAACJL0UiJpDGdHFpJFdjlFeS; path=/; Domain=.contentful.com
+      - visid_incap_673446=G2YdDJJ3SNa65gOIdK91uWJWrlkAAAAAQUIPAAAAAABXEBTg0SPoZ47xltzt0wgH;
+        expires=Tue, 04 Sep 2018 12:02:10 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 7-35862200-35862210 NNNN CT(97 79 0) RT(1504597597623 103) q(0 0 2 -1) r(44
+        45) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 23,
+          "skip": 0,
+          "limit": 0,
+          "items": [
+            {
+              "extension": {
+                "srcdoc": "<!doctype html><html lang='en'><head><meta charset='UTF-8'/><title>Sample Editor Extension</title><link rel='stylesheet' href='https://contentful.github.io/ui-extensions-sdk/cf-extension.css'><script src='https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js'></script></head><body><div id='content'></div><script>window.contentfulExtension.init(function (extension) {window.alert(extension);var value = extension.field.getValue();extension.field.setValue('Hello world!');extension.field.onValueChanged(function(value) {if (value !== currentValue) {extension.field.setValue('Hello world!');}});});</script></body></html>",
+                "name": "My awesome extension by srcDoc",
+                "fieldTypes": [
+                  {
+                    "type": "Symbol"
+                  },
+                  {
+                    "type": "Text"
+                  }
+                ],
+                "sidebar": false
+              },
+              "sys": {
+                "id": "2ZJduY1pKEma6G8Y2ImqYU",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-06-29T11:04:33.874Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-06-29T11:04:33.874Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "srcdoc": "<!doctype html> <html lang='en'> <head> <meta charset='UTF-8'/> <title>Sample Editor Extension<itle> <link rel='stylesheet' href='https://contentful.github.io/ui-extensions-sdk/cf-extension.css'> <script src='https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js'></script> </head> <body> <div id='content'></div> <script> window.contentfulExtension.init(function (extension) { var value = extension.field.getValue() extension.field.setValue('Hello world!')extension.field.onValueChanged(function(value) { if (value !== currentValue) { extension.field.setValue('Hello world!') } }) }) </script> </body> </html>",
+                "name": "My awesome extension by srcDoc",
+                "fieldTypes": [
+                  {
+                    "type": "Symbol"
+                  },
+                  {
+                    "type": "Text"
+                  }
+                ],
+                "sidebar": false
+              },
+              "sys": {
+                "id": "4dBWHpKhao8AuYAMcosSyw",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-06-29T10:07:47.689Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-06-29T10:07:47.690Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "foo",
+                "src": "https://example.com/foo/bar",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ]
+              },
+              "sys": {
+                "id": "asdf1",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-18T16:31:39.814Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-18T16:31:39.814Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "foo",
+                "src": "https://example.com/foo/bar",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ]
+              },
+              "sys": {
+                "id": "asdf2",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-18T16:31:47.336Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-18T16:31:47.336Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "MyExtension",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-18T16:25:54.837Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-18T16:25:54.837Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.09058147806872052",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-25T12:33:14.938Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-25T12:33:14.938Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.11158895615739506",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-08-25T12:34:22.503Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-08-25T12:34:22.503Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.2337521992350765",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-25T12:34:19.449Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-25T12:34:19.449Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.28266914986640845",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-25T12:31:35.245Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-25T12:31:35.245Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.31057052025357434",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-08-25T10:51:39.606Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-08-25T10:51:39.606Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.3804977901911889",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-21T09:44:57.509Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-21T09:44:57.509Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.427107413949659",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-25T12:33:49.644Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-25T12:33:49.644Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.44137780408661287",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-25T12:29:59.294Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-25T12:29:59.294Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.5469003597427643",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-19T11:30:13.654Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-19T11:30:13.654Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.5943340488250936",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-19T11:33:09.597Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-19T11:33:09.597Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.6078415126885682",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-08-25T10:50:22.667Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-08-25T10:50:22.667Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.6467758169364224",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-18T16:33:35.110Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-18T16:33:35.110Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.6773174148802604",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-08-23T13:46:35.093Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-08-23T13:46:35.093Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.729478427364257",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-07-19T11:42:03.575Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-07-19T11:42:03.575Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "Random foo!",
+                "fieldTypes": [
+                  {
+                    "type": "Integer"
+                  }
+                ],
+                "src": "https://example.com/foo/bar",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "foo_0.9467214246849242",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-08-25T12:38:23.336Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-08-25T12:38:23.337Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "name": "new named extension",
+                "fieldTypes": [
+                  {
+                    "type": "Text"
+                  }
+                ],
+                "src": "http://localhost:3000/",
+                "sidebar": false
+              },
+              "sys": {
+                "id": "hello-world",
+                "type": "Extension",
+                "version": 18,
+                "createdAt": "2017-06-29T09:35:33.707Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-08-25T12:38:24.365Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "src": "https://example.com/my",
+                "name": "My awesome extension",
+                "fieldTypes": [
+                  {
+                    "type": "Symbol"
+                  },
+                  {
+                    "type": "Text"
+                  }
+                ],
+                "sidebar": false
+              },
+              "sys": {
+                "id": "n0KKahl78cWGay6cEAoeq",
+                "type": "Extension",
+                "version": 1,
+                "createdAt": "2017-06-29T10:05:52.592Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2017-06-29T10:05:52.592Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            },
+            {
+              "extension": {
+                "src": "https://mariobodemann.github.io/contentful-extensions-3d-model-viewer/index.html",
+                "name": "3D Model Viewer",
+                "fieldTypes": [
+                  {
+                    "type": "Link",
+                    "linkType": "Asset"
+                  }
+                ]
+              },
+              "sys": {
+                "id": "threed-model-viewer",
+                "type": "Extension",
+                "version": 5,
+                "createdAt": "2016-07-29T10:16:24.730Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "arqlnkt58eul"
+                  }
+                },
+                "updatedAt": "2016-07-29T10:19:38.653Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "7uJNojWP0gbuP7Pplz7Syo"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 05 Sep 2017 07:46:43 GMT
+recorded_with: VCR 3.0.3

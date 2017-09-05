@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/arqlnkt58eul/extensions/2ZJduY1pKEma6G8Y2ImqYU
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - arqlnkt58eul
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 05 Sep 2017 07:52:23 GMT
+      Etag:
+      - '"99ea76707e6a1fc674843e1499562353"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35991'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - c1ee2bfbd07b40eb4ca782c86b5db7fc
+      Content-Length:
+      - '1442'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=LEBleZ5cDypZrHWA5luYArZXrlkAAAAA/78AGFF04PjiRst9agH4Dg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=SdYUCCadkVTsjikY6lKYhQAAAAB0s0Vpgmvm1wWxmDQ1HerA; path=/; Domain=.contentful.com
+      - visid_incap_673446=NvnxbVuhTSyeHFPD+nYnHrZXrlkAAAAAQUIPAAAAAAAb6r98US0Cl2CTqNgeh4zz;
+        expires=Tue, 04 Sep 2018 12:02:11 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 0-15790052-15790054 NNNN CT(88 86 0) RT(1504597938029 66) q(0 0 2 -1) r(44
+        44) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "extension": {
+            "srcdoc": "<!doctype html><html lang='en'><head><meta charset='UTF-8'/><title>Sample Editor Extension</title><link rel='stylesheet' href='https://contentful.github.io/ui-extensions-sdk/cf-extension.css'><script src='https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js'></script></head><body><div id='content'></div><script>window.contentfulExtension.init(function (extension) {window.alert(extension);var value = extension.field.getValue();extension.field.setValue('Hello world!');extension.field.onValueChanged(function(value) {if (value !== currentValue) {extension.field.setValue('Hello world!');}});});</script></body></html>",
+            "name": "My awesome extension by srcDoc",
+            "fieldTypes": [
+              {
+                "type": "Symbol"
+              },
+              {
+                "type": "Text"
+              }
+            ],
+            "sidebar": false
+          },
+          "sys": {
+            "id": "2ZJduY1pKEma6G8Y2ImqYU",
+            "type": "Extension",
+            "version": 1,
+            "createdAt": "2017-06-29T11:04:33.874Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "7uJNojWP0gbuP7Pplz7Syo"
+              }
+            },
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "arqlnkt58eul"
+              }
+            },
+            "updatedAt": "2017-06-29T11:04:33.874Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "7uJNojWP0gbuP7Pplz7Syo"
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 05 Sep 2017 07:52:23 GMT
+recorded_with: VCR 3.0.3
