@@ -37,7 +37,7 @@ Retrieving all spaces:
 spaces = client.spaces.all
 ```
 
-Retrieving one space by id:
+Retrieving one space by ID:
 
 ```ruby
 blog_space = client.spaces.find('blog_space_id')
@@ -140,7 +140,7 @@ asset.file_with_locales= {'en-US' => en_file, 'pl' => pl_file}
 asset.save
 ```
 
-Process an Asset file after create:
+Process an asset file after create:
 ```ruby
 asset.process_file
 ```
@@ -221,7 +221,7 @@ Finding an upload:
 upload = client.uploads.find('space_id', 'upload_id')
 ```
 
-Deleting an upload
+Deleting an upload:
 
 ```ruby
 upload.destroy
@@ -270,7 +270,7 @@ or
 entries = content_type.entries.all
 ```
 
-Retrieving an entry by id:
+Retrieving an entry by ID:
 
 ```ruby
 entry = blog_space.entries.find('entry_id')
@@ -351,11 +351,11 @@ Checking if the entry is published:
 my_entry.published?
 ```
 
-> Entries created with *empty fields*, will not return those fields in the response. Therefore, Entries that don't have Cache enabled, will need to
-> make an extra request to fetch the Content Type and fill the missing fields.
-> To allow for Content Type Caching:
->   * Enable [Content Type Cache](#content-type-cache) at Client Instantiation time
->   * Query Entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
+> Entries created with *empty fields*, will not return those fields in the response. Therefore, entries that don't have cache enabled, will need to
+> make an extra request to fetch the content type and fill the missing fields.
+> To allow for content type caching:
+>   * Enable [content type cache](#content-type-cache) at client instantiation time
+>   * Query entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
 
 ### Content Types
 
@@ -371,7 +371,7 @@ Retrieving all published content types from a space:
 blog_post_content_types = blog_space.content_types.all_published
 ```
 
-Retrieving one content type by id from a space:
+Retrieving one content type by ID from a space:
 
 ```ruby
 blog_post_content_type = blog_space.content_types.find(id)
@@ -543,23 +543,26 @@ Retrieving all locales from the space:
 blog_post_locales = blog_space.locales.all
 ```
 
-Retrieving one locale by the locale-id from the space:
+Retrieving one locale by ID from the space:
 
 ```ruby
 blog_post_locale = blog_space.locales.find(locale_id)
 ```
 
-Creating a locale
+Creating a locale:
+
 ```ruby
 blog_space.locales.create(name: 'German', code: 'de-DE')
 ```
 
-Updating a locale
+Updating a locale:
+
 ```ruby
 blog_post_locale.update(name: 'German', code: 'de-DE')
 ```
 
-Destroying a locale
+Destroying a locale:
+
 ```ruby
 blog_post_locale.destroy
 ```
@@ -572,13 +575,14 @@ Retrieving all roles from the space:
 blog_post_roles = blog_space.roles.all
 ```
 
-Retrieving one role by the locale-id from the space:
+Retrieving one role by ID from the space:
 
 ```ruby
 blog_post_role = blog_space.role.find(role_id)
 ```
 
-Creating a role
+Creating a role:
+
 ```ruby
 role_attributes = {
   name: 'My Role',
@@ -614,12 +618,14 @@ role_attributes = {
 blog_space.roles.create(role_attributes)
 ```
 
-Updating a role
+Updating a role:
+
 ```ruby
 blog_post_role.update(name: 'Some Other Role') # Can change any attribute here
 ```
 
-Destroying a role
+Destroying a role:
+
 ```ruby
 blog_post_role.destroy
 ```
@@ -631,13 +637,13 @@ Retrieving all webhooks from the space:
 ```ruby
 webhooks = blog_space.webhooks.all
 ```
-Retrieving one webhook by the webhook-id from the space:
+Retrieving one webhook by ID from the space:
 
 ```ruby
 blog_post_webhook = blog_space.webhooks.find(webhook_id)
 ```
 
-Creating a webhook
+Creating a webhook:
 
 ```ruby
 blog_space.webhooks.create(
@@ -648,19 +654,19 @@ blog_space.webhooks.create(
 )
 ```
 
-Updating a webhook
+Updating a webhook:
 
 ```ruby
 blog_post_webhook.update(url: 'https://www.newlink.com')
 ```
 
-Destroying webhook:
+Destroying a webhook:
 
 ```ruby
 blog_post_webhook.destroy
 ```
 
-Creating a Webhook with Custom Headers and Custom Topics:
+Creating a webhook with custom headers and custom topics:
 
 ```ruby
 blog_space.webhooks.create(
@@ -676,21 +682,96 @@ blog_space.webhooks.create(
 )
 ```
 
-### Api Keys
+### Space Memberships
 
-Retrieving all api keys from the space:
+Retrieving all space memberships from the space:
+
+```ruby
+memberships = blog_space.space_memberships.all
+```
+Retrieving one space membership by ID from the space:
+
+```ruby
+blog_post_membership = blog_space.space_memberships.find(membership_id)
+```
+
+Creating a space membership:
+
+```ruby
+blog_space.space_memberships.create(
+  admin: false,
+  roles: [
+    {
+      'sys' => {
+        'type' => 'Link',
+        'linkType' => 'Role',
+        'id' => 'my_role_id'
+      }
+    }
+  ],
+  email: 'foobar@example.com'
+)
+```
+
+Updating a space membership:
+
+```ruby
+blog_post_membership.update(admin: true)
+```
+
+Destroying a space membership:
+
+```ruby
+blog_post_membership.destroy
+```
+
+### UI Extensions
+
+Retrieving all UI extensions from the space:
+
+```ruby
+extensions = blog_space.ui_extensions.all
+```
+Retrieving one UI extension by ID from the space:
+
+```ruby
+blog_post_extension = blog_space.ui_extensions.find(extension_id)
+```
+
+Creating a UI extension:
+
+```ruby
+blog_space.ui_extensions.create(
+  extension: {
+    'name' => 'My extension',
+    'src' => 'https://www.example.com',
+    'fieldTypes' => [{"type": "Symbol"}],
+    'sidebar' => false
+  }
+)
+```
+
+Destroying a UI extension:
+
+```ruby
+blog_post_extension.destroy
+```
+
+### API Keys
+
+Retrieving all API keys from the space:
 
 ```ruby
 blog_post_api_keys = blog_space.api_keys.all
 ```
 
-Retrieving one api key by the api-key-id from the space:
+Retrieving one API key by ID from the space:
 
 ```ruby
 blog_post_api_key = blog_space.api_keys.find(api_key_id)
 ```
 
-Creating an api key
+Creating an API key:
 ```ruby
 blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
 ```
@@ -703,21 +784,21 @@ Retrieving editor interface for a content type:
 blog_post_editor_interface = blog_post_content_type.editor_interface.default
 ```
 
-You can call the EditorInterface API from any level within the Content Model Hierarchy, take into account that you'll need to
-pass the ids of the levels below it.
+You can call the EditorInterface API from any level within the content model hierarchy, take into account that you'll need to
+pass the IDs of the levels below it.
 
 > Hierarchy is as follows:
 > `No Object -> Space -> ContentType -> EditorInterface`
 
 ### Snapshots
 
-Retrieving all Snapshot for a given Entry:
+Retrieving all snapshots for a given entry:
 
 ```ruby
 snapshots = entry.snapshots.all
 ```
 
-Retrieving a Snapshot for a given Entry:
+Retrieving a snapshot for a given entry:
 
 ```ruby
 snapshot = entry.snapshots.find('some_snapshot_id')
@@ -760,16 +841,16 @@ client = Contentful::Management::Client.new('access_token', raise_errors: true)
 
 ### Content Type Cache
 
-This allows for fetching Content Types for your Space at Client instantiation time, which prevents extra requests per Entry.
-To enable this, in your Client instantiation do:
+This allows for fetching content types for your space at client instantiation time, which prevents extra requests per entry.
+To enable this, in your client instantiation do:
 
 ```ruby
 client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_id'])
 ```
 
-You can enable the Cache for as many Spaces as you want. If no Space is added, Content Types will be fetched upon Space find.
+You can enable the cache for as many spaces as you want. If no space is added, content types will be fetched upon space find.
 
-To completely disable this feature, upon Client instantiation do:
+To completely disable this feature, upon client instantiation do:
 
 ```ruby
 client = Contentful::Management::Client.new(token, disable_content_type_caching: true)
@@ -779,21 +860,21 @@ client = Contentful::Management::Client.new(token, disable_content_type_caching:
 
 This allows for using the CMA SDK through a proxy, for this, your proxy must support HTTPS and your server must have a valid signed certificate.
 
-To enable this, in your Client instantiation do:
+To enable this, in your client instantiation do:
 
 
 ```ruby
 PROXY_HOST = 'localhost'
 PROXY_PORT = 8888
 
-# Just Host/Port
+# Just host/port
 client = Contributing::Management::Client.new(
   token,
   proxy_host: PROXY_HOST,
   proxy_port: PROXY_PORT
 )
 
-# With Username/Password
+# With username/password
 client = Contributing::Management::Client.new(
   token,
   proxy_host: PROXY_HOST,
@@ -803,7 +884,7 @@ client = Contributing::Management::Client.new(
 )
 ```
 
-# Rate Limit Management
+# Rate limit management
 
 With the following configuration options you can handle how rate limits are handled within your applications.
 

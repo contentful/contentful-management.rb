@@ -1,4 +1,6 @@
 require_relative 'resource'
+require_relative 'space_membership'
+require_relative 'space_space_membership_methods_factory'
 require_relative 'locale'
 require_relative 'space_locale_methods_factory'
 require_relative 'content_type'
@@ -149,6 +151,15 @@ module Contentful
       # @return [Contentful::Management::SpaceLocaleMethodsFactory]
       def locales
         SpaceLocaleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of space memberships in context of the current space
+      # Allows listing all space memberships of space, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceSpaceMembershipMethodsFactory]
+      def space_memberships
+        SpaceSpaceMembershipMethodsFactory.new(self)
       end
 
       # Allows manipulation of roles in context of the current space
