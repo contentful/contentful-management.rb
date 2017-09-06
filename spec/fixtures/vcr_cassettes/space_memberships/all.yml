@@ -1,0 +1,190 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/space_memberships
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Wed, 06 Sep 2017 12:01:52 GMT
+      Etag:
+      - W/"dda64bbb7b1d0b38bc504a6dcc255340"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 69db9a3879299f7f8b8d3878ac7e45a8
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1999'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=4zOLaLrFTEuIRXmC5luYArDjr1kAAAAAhUvDgYtrh/1MNo0LsNmm5Q==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=5MVfasB7cExZPX8F6lKYhQAAAABdSGQed/0yzv7eYnFdlbNj; path=/; Domain=.contentful.com
+      - visid_incap_673446=OpOlr3izQ7uMaLnM+l7MsbDjr1kAAAAAQUIPAAAAAADZ5QpB1W/vTPLNpqYRwzQP;
+        expires=Thu, 06 Sep 2018 12:01:52 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 4-44318685-44318692 NNNN CT(85 88 0) RT(1504699311750 75) q(0 0 2 -1) r(4
+        4) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":2,
+          "limit":25,
+          "skip":0,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "admin":true,
+              "sys":{
+                "type":"SpaceMembership",
+                "id":"1NI22o8oAxT9Jnu2J9wJSu",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"facgnwwgj5fe"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2017-03-02T18:30:27Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2017-03-02T18:30:27Z"
+              },
+              "user":{
+                "sys":{
+                  "type":"Link",
+                  "linkType":"User",
+                  "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                }
+              },
+              "roles":[]
+            },
+            {
+              "admin":false,
+              "sys":{
+                "type":"SpaceMembership",
+                "id":"6RdRdobdQzh8zKe1Hogiz4",
+                "version":0,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"facgnwwgj5fe"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "createdAt":"2017-07-06T14:18:17Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt":"2017-07-06T14:18:17Z"
+              },
+              "user":{
+                "sys":{
+                  "type":"Link",
+                  "linkType":"User",
+                  "id":"3xagQOg6z3bxOhPcTpgsaq"
+                }
+              },
+              "roles":[
+                {
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Role",
+                    "id":"1Nq88dKTNXNaxkbrRpEEw6"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 12:01:52 GMT
+recorded_with: VCR 3.0.3

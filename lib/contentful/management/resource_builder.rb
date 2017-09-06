@@ -5,6 +5,7 @@ require_relative 'dynamic_entry'
 require_relative 'array'
 require_relative 'link'
 require_relative 'space'
+require_relative 'space_membership'
 require_relative 'content_type'
 require_relative 'asset'
 require_relative 'webhook'
@@ -25,6 +26,7 @@ module Contentful
       # @see _ README for more information on Resource Mapping
       DEFAULT_RESOURCE_MAPPING = {
         'Space' => Contentful::Management::Space,
+        'SpaceMembership' => Contentful::Management::SpaceMembership,
         'ContentType' => Contentful::Management::ContentType,
         'Entry' => :find_entry_class,
         'Asset' => Contentful::Management::Asset,

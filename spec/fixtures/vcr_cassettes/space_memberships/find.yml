@@ -1,0 +1,141 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/space_memberships/6RdRdobdQzh8zKe1Hogiz4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Wed, 06 Sep 2017 12:05:20 GMT
+      Etag:
+      - W/"1c03388bd430f009038a9d28f6f73099"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35994'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 70412ea35e9af17b22260a78d4226c6b
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '844'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_187_673446=DWcXSWELMjyp9XmC5luYAn/kr1kAAAAAzheRbue2a10Jko37nwgAow==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=1pqId90INjs5+kBU6lKYhQAAAAAZjRUYxyu+1nKUg4rGDeRO; path=/; Domain=.contentful.com
+      - visid_incap_673446=Z26CygyORu2lm3oIcIeB0X/kr1kAAAAAQUIPAAAAAACcnCTOLkEhqgY+JizI8xbB;
+        expires=Thu, 06 Sep 2018 12:02:12 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 8-50222032-50222039 NNNN CT(77 78 0) RT(1504699519049 74) q(0 0 1 -1) r(3
+        3) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "admin":false,
+          "sys":{
+            "type":"SpaceMembership",
+            "id":"6RdRdobdQzh8zKe1Hogiz4",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2017-07-06T14:18:17Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2017-07-06T14:18:17Z"
+          },
+          "user":{
+            "sys":{
+              "type":"Link",
+              "linkType":"User",
+              "id":"3xagQOg6z3bxOhPcTpgsaq"
+            }
+          },
+          "roles":[
+            {
+              "sys":{
+                "type":"Link",
+                "linkType":"Role",
+                "id":"1Nq88dKTNXNaxkbrRpEEw6"
+              }
+            }
+          ]
+        }
+
+    http_version: 
+  recorded_at: Wed, 06 Sep 2017 12:05:20 GMT
+recorded_with: VCR 3.0.3
