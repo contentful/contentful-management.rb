@@ -12,7 +12,7 @@ module Contentful
 
       property :snapshot, DynamicEntry
 
-      # Gets all Snapshots for an Entry
+      # Gets all snapshots for an entry
       #
       # @param [Contentful::Management::Client] client
       # @param [String] space_id
@@ -23,7 +23,7 @@ module Contentful
         ClientSnapshotMethodsFactory.new(client).all(space_id, entry_id)
       end
 
-      # Gets a Snapshot by ID
+      # Gets a snapshot by ID
       #
       # @param [Contentful::Management::Client] client
       # @param [String] space_id
@@ -35,9 +35,7 @@ module Contentful
         ClientSnapshotMethodsFactory.new(client).find(space_id, entry_id, snapshot_id)
       end
 
-      # Creates a Snapshot
-      #
-      # Not Supported
+      # Not supported
       def self.create(*)
         fail 'Not supported'
       end
@@ -59,16 +57,12 @@ module Contentful
         endpoint
       end
 
-      # Deletes a Snapshot
-      #
-      # Not Supported
+      # Not supported
       def destroy
         fail 'Not supported'
       end
 
-      # Updates a Snapshot
-      #
-      # Not Supported
+      # Not supported
       def update(*)
         fail 'Not supported'
       end

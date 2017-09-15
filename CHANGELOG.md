@@ -5,6 +5,7 @@
 * Added option to disable Content Type caching completely.
 * Added UI Extension Endpoint.
 * Added Space Memberships Endpoint.
+* Added Webhook Calls Endpoint.
 
 ## 1.8.1
 ### Added

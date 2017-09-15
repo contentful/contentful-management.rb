@@ -9,6 +9,7 @@ require_relative 'space_membership'
 require_relative 'content_type'
 require_relative 'asset'
 require_relative 'webhook'
+require_relative 'webhook_call'
 require_relative 'api_key'
 require_relative 'locale'
 require_relative 'role'
@@ -33,6 +34,8 @@ module Contentful
         'Array' => :array_or_sync_page,
         'Link' => Contentful::Management::Link,
         'WebhookDefinition' => Contentful::Management::Webhook,
+        'WebhookCallOverview' => Contentful::Management::WebhookCall,
+        'WebhookCallDetails' => Contentful::Management::WebhookCall,
         'ApiKey' => Contentful::Management::ApiKey,
         'Locale' => Contentful::Management::Locale,
         'Role' => Contentful::Management::Role,
