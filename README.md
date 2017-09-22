@@ -682,6 +682,19 @@ blog_space.webhooks.create(
 )
 ```
 
+#### Webhook Calls
+
+Retrieving all webhook call details from a webhook:
+
+```ruby
+all_call_details = my_webhook.webhook_calls.all
+```
+Retrieving one webhook call detail by ID from a webhook:
+
+```ruby
+call_details = my_webhook.webhook_calls.find(call_id)
+```
+
 ### Space Memberships
 
 Retrieving all space memberships from the space:

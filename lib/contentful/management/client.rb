@@ -16,6 +16,7 @@ require 'contentful/management/client_role_methods_factory'
 require 'contentful/management/client_ui_extension_methods_factory'
 require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
+require 'contentful/management/client_webhook_call_methods_factory'
 require 'contentful/management/client_upload_methods_factory'
 require 'contentful/management/client_snapshot_methods_factory'
 
@@ -101,7 +102,7 @@ module Contentful
       end
 
       # Allows manipulation of space memberships in context of the current client
-      # Allows listing all space memberships for client and finding one by ID.
+      # Allows listing all space memberships for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSpaceMembershipMethodsFactory]
@@ -173,7 +174,7 @@ module Contentful
       end
 
       # Allows manipulation of editor interfaces in context of the current client
-      # Allows listing all editor interfaces for client, creating new and finding one by ID.
+      # Allows listing all editor interfaces for client and finding one by content type.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientEditorInterfaceMethodsFactory]
@@ -190,6 +191,15 @@ module Contentful
         ClientWebhookMethodsFactory.new(self)
       end
 
+      # Allows manipulation of webhook calls in context of the current client
+      # Allows listing all webhook call details for client and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientWebhookCallMethodsFactory]
+      def webhook_calls
+        ClientWebhookCallMethodsFactory.new(self)
+      end
+
       # Allows manipulation of uploads in context of the current client
       # Allows creating new and finding uploads by ID.
       # @see _ README for details.
@@ -200,7 +210,7 @@ module Contentful
       end
 
       # Allows manipulation of snapshots in context of the current client
-      # Allows listing all webhooks for client, creating new and finding one by ID.
+      # Allows listing all snapshots for client and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSnapshotMethodsFactory]

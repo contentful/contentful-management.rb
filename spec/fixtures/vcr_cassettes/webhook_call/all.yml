@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/orzkxlxlq59d/webhooks/16ypL3XjNK6oreLPPoVBxI/calls
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-cache
+      Cf-Space-Id:
+      - orzkxlxlq59d
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Thu, 21 Sep 2017 18:46:56 GMT
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      Vary:
+      - accept-encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35975'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 26a077964bde56562aa1ad5af6cf10f2
+      Content-Length:
+      - '1725'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_222_673446=wv23LaokPi051xq1QrQUAx8JxFkAAAAAIZiYRkvcxAHIkWF13Al0Tg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=iusQX+MNWR7I6szh6lKYhQAAAAAb9nBZUX8ZCp+kELx4liZZ; path=/; Domain=.contentful.com
+      - visid_incap_673446=oN0jwN5qRhSbEYze5c8csh8JxFkAAAAAQUIPAAAAAAAfLgSk+7eyCkLGWkbSiw+Z;
+        expires=Fri, 21 Sep 2018 11:21:53 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 5-95491926-95491983 NNNN CT(27 27 0) RT(1506019610793 344) q(0 0 0 -1) r(42
+        42) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "items": [
+            {
+              "sys": {
+                "id": "6r2EQ0iVBmYyyq0UMWKoge",
+                "type": "WebhookCallOverview",
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "orzkxlxlq59d"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "WebhookDefinition",
+                    "id": "16ypL3XjNK6oreLPPoVBxI"
+                  }
+                },
+                "createdAt": "2017-09-15T14:35:28.576Z"
+              },
+              "statusCode": 201,
+              "responseAt": "2017-09-15T14:35:28.755Z",
+              "errors": [],
+              "eventType": "publish",
+              "url": "https://circleci.com/api/v1/project/virgendeloreto/blog_source/tree/master?circle-token=foobar",
+              "requestAt": "2017-09-15T14:35:28.576Z"
+            },
+            {
+              "sys": {
+                "id": "6OZHbXOABU8uOyEuGmMwSW",
+                "type": "WebhookCallOverview",
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "orzkxlxlq59d"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "WebhookDefinition",
+                    "id": "16ypL3XjNK6oreLPPoVBxI"
+                  }
+                },
+                "createdAt": "2017-09-15T14:35:24.795Z"
+              },
+              "statusCode": 201,
+              "responseAt": "2017-09-15T14:35:25.233Z",
+              "errors": [],
+              "eventType": "publish",
+              "url": "https://circleci.com/api/v1/project/virgendeloreto/blog_source/tree/master?circle-token=20e4b04a4c4cd549f34e025a223e898c71a9ab13",
+              "requestAt": "2017-09-15T14:35:24.795Z"
+            }
+          ],
+          "skip": 0,
+          "limit": 20,
+          "total": 2
+        }
+    http_version: 
+  recorded_at: Thu, 21 Sep 2017 18:46:56 GMT
+recorded_with: VCR 3.0.3
