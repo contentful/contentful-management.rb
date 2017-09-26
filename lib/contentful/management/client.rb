@@ -17,6 +17,7 @@ require 'contentful/management/client_ui_extension_methods_factory'
 require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
 require 'contentful/management/client_webhook_call_methods_factory'
+require 'contentful/management/client_webhook_health_methods_factory'
 require 'contentful/management/client_upload_methods_factory'
 require 'contentful/management/client_snapshot_methods_factory'
 
@@ -198,6 +199,15 @@ module Contentful
       # @return [Contentful::Management::ClientWebhookCallMethodsFactory]
       def webhook_calls
         ClientWebhookCallMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of webhook health in context of the current client
+      # Allows listing all webhook health details for client and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientWebhookHealthMethodsFactory]
+      def webhook_health
+        ClientWebhookHealthMethodsFactory.new(self)
       end
 
       # Allows manipulation of uploads in context of the current client

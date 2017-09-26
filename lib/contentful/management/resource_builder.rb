@@ -10,6 +10,7 @@ require_relative 'content_type'
 require_relative 'asset'
 require_relative 'webhook'
 require_relative 'webhook_call'
+require_relative 'webhook_health'
 require_relative 'api_key'
 require_relative 'locale'
 require_relative 'role'
@@ -36,6 +37,7 @@ module Contentful
         'WebhookDefinition' => Contentful::Management::Webhook,
         'WebhookCallOverview' => Contentful::Management::WebhookCall,
         'WebhookCallDetails' => Contentful::Management::WebhookCall,
+        'Webhook' => Contentful::Management::WebhookHealth,
         'ApiKey' => Contentful::Management::ApiKey,
         'Locale' => Contentful::Management::Locale,
         'Role' => Contentful::Management::Role,
