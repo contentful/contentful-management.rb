@@ -6,6 +6,7 @@
 * Added UI Extension Endpoint.
 * Added Space Memberships Endpoint.
 * Added Webhook Calls Endpoint.
+* Added Webhook Health Endpoint.
 
 ## 1.8.1
 ### Added

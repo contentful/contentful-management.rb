@@ -695,6 +695,14 @@ Retrieving one webhook call detail by ID from a webhook:
 call_details = my_webhook.webhook_calls.find(call_id)
 ```
 
+#### Webhook Health
+
+Retrieving webhook health details from a webhook:
+
+```ruby
+health_details = my_webhook.webhook_health.find
+```
+
 ### Space Memberships
 
 Retrieving all space memberships from the space:

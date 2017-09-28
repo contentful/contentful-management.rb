@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/orzkxlxlq59d/webhooks/16ypL3XjNK6oreLPPoVBxI/health
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-cache
+      Cf-Space-Id:
+      - orzkxlxlq59d
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 26 Sep 2017 22:47:35 GMT
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      Vary:
+      - accept-encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 77866d951c84220392c5b35ca6a395a7
+      Content-Length:
+      - '407'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_788_673446=JHfaQgwIH20+Fskz2onvCgfZylkAAAAAmMXVsHuoFs442vy8AhABNA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=CM29R3DPT0IA3L7v6lKYhQAAAADEz8epntzqBrVO+ztbW93p; path=/; Domain=.contentful.com
+      - visid_incap_673446=DcgO6cn8QoGuDYTelwSZ7gDZylkAAAAAQUIPAAAAAABT4T+k/eP2eoMjpEPIfo0v;
+        expires=Wed, 26 Sep 2018 14:31:18 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 14-93413063-93413107 NNNN CT(135 275 0) RT(1506466048542 361) q(0 0 4 0) r(63
+        63) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "sys": {
+            "id": "16ypL3XjNK6oreLPPoVBxI",
+            "type": "Webhook",
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "orzkxlxlq59d"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "WebhookDefinition",
+                "id": "16ypL3XjNK6oreLPPoVBxI"
+              }
+            }
+          },
+          "calls": {
+            "total": 2,
+            "healthy": 2
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 26 Sep 2017 22:47:35 GMT
+recorded_with: VCR 3.0.3

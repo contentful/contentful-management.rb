@@ -1,5 +1,6 @@
 require_relative 'resource'
 require_relative 'webhook_webhook_call_methods_factory'
+require_relative 'webhook_webhook_health_methods_factory'
 
 module Contentful
   module Management
@@ -33,6 +34,15 @@ module Contentful
       # @return [Contentful::Management::WebhookWebhookCallMethodsFactory]
       def webhook_calls
         WebhookWebhookCallMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of webhook health details in context of the current webhook
+      # Allows listing webhook health details for the webhook.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::WebhookWebhookHealthMethodsFactory]
+      def webhook_health
+        WebhookWebhookHealthMethodsFactory.new(self)
       end
 
       protected
