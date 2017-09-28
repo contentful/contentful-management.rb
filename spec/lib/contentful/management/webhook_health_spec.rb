@@ -41,6 +41,8 @@ module Contentful
 
             expect(webhook_health.healthy).to eq 2
             expect(webhook_health.total).to eq 2
+            expect(webhook_health.errors?).to eq false
+            expect(webhook_health.healthy?).to eq true
           end
         end
       end
