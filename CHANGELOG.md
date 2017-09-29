@@ -7,6 +7,7 @@
 * Added Space Memberships Endpoint.
 * Added Webhook Calls Endpoint.
 * Added Webhook Health Endpoint.
+* Added Content Type Snapshots Endpoint.
 
 ## 1.8.1
 ### Added

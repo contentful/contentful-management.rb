@@ -224,8 +224,26 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSnapshotMethodsFactory]
-      def snapshots
-        ClientSnapshotMethodsFactory.new(self)
+      def snapshots(resource_type = 'entries')
+        ClientSnapshotMethodsFactory.new(self, resource_type)
+      end
+
+      # Allows manipulation of entry snapshots in context of the current client
+      # Allows listing all entry snapshots for client and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientSnapshotMethodsFactory]
+      def entry_snapshots
+        ClientSnapshotMethodsFactory.new(self, 'entries')
+      end
+
+      # Allows manipulation of content type snapshots in context of the current client
+      # Allows listing all content type snapshots for client and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientSnapshotMethodsFactory]
+      def content_type_snapshots
+        ClientSnapshotMethodsFactory.new(self, 'content_types')
       end
 
       # @private

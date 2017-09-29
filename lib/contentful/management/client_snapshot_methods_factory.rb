@@ -7,21 +7,31 @@ module Contentful
     class ClientSnapshotMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
 
+      def initialize(client, resource_type)
+        super(client)
+        @resource_type = resource_type
+      end
+
       def create(*)
         fail 'Not supported'
       end
 
-      def all(space_id, entry_id, _params = {})
-        @resource_requester.find(
-          space_id: space_id,
-          entry_id: entry_id
+      def all(space_id, resource_id, params = {})
+        @resource_requester.all(
+          {
+            resource_type: @resource_type,
+            space_id: space_id,
+            resource_id: resource_id
+          },
+          params
         )
       end
 
-      def find(space_id, entry_id, snapshot_id)
+      def find(space_id, resource_id, snapshot_id)
         @resource_requester.find(
+          resource_type: @resource_type,
           space_id: space_id,
-          entry_id: entry_id,
+          resource_id: resource_id,
           snapshot_id: snapshot_id
         )
       end

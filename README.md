@@ -811,7 +811,7 @@ pass the IDs of the levels below it.
 > Hierarchy is as follows:
 > `No Object -> Space -> ContentType -> EditorInterface`
 
-### Snapshots
+### Entry Snapshots
 
 Retrieving all snapshots for a given entry:
 
@@ -823,6 +823,20 @@ Retrieving a snapshot for a given entry:
 
 ```ruby
 snapshot = entry.snapshots.find('some_snapshot_id')
+```
+
+### Content Type Snapshots
+
+Retrieving all snapshots for a given content type:
+
+```ruby
+snapshots = content_type.snapshots.all
+```
+
+Retrieving a snapshot for a given content type:
+
+```ruby
+snapshot = content_type.snapshots.find('some_snapshot_id')
 ```
 
 ### Pagination

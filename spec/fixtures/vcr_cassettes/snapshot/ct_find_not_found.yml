@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/content_types/cat/snapshots/not_exist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 29 Sep 2017 00:15:21 GMT
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35972'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - dd25d047377732910325137fff9e7a86
+      Content-Length:
+      - '256'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_788_673446=wB2OJxlv4ThrpBqE3InvCpiQzVkAAAAAqDjJA+faIJeosvNZLPZksg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=zswxBA3ZrU+A0scH6lKYhQAAAACvMa4JS8N+1+pCe5qC3FV0; path=/; Domain=.contentful.com
+      - visid_incap_673446=/YrlSBg3TWqJlaP/RR9M+I6QzVkAAAAAQUIPAAAAAACmC98nN33+pTm+TX0/uLVX;
+        expires=Fri, 28 Sep 2018 08:00:23 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 14-17343875-17343924 NNNN CT(161 331 0) RT(1506644115358 354) q(0 0 5 1) r(48
+        48) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Error",
+            "id": "NotFound"
+          },
+          "message": "The resource could not be found.",
+          "details": {
+            "space": "facgnwwgj5fe",
+            "id": "not_exist",
+            "type": "Snapshot"
+          },
+          "requestId": "dd25d047377732910325137fff9e7a86"
+        }
+    http_version: 
+  recorded_at: Fri, 29 Sep 2017 00:15:21 GMT
+recorded_with: VCR 3.0.3

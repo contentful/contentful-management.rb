@@ -10,29 +10,45 @@ module Contentful
       include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
 
-      property :snapshot, DynamicEntry
+      # @private
+      def self.property_coercions
+        {
+          snapshot: lambda do |h|
+            case h.fetch('sys', {})['type']
+            when 'Entry'
+              DynamicEntry.new(h)
+            when 'ContentType'
+              ContentType.new(h)
+            end
+          end
+        }
+      end
 
-      # Gets all snapshots for an entry
+      property :snapshot
+
+      # Gets all snapshots for a resource
       #
       # @param [Contentful::Management::Client] client
       # @param [String] space_id
-      # @param [String] entry_id
+      # @param [String] resource_id
+      # @param [String] resource_type
       #
       # @return [Contentful::Management::Array<Contentful::Management::Snapshot>]
-      def self.all(client, space_id, entry_id)
-        ClientSnapshotMethodsFactory.new(client).all(space_id, entry_id)
+      def self.all(client, space_id, resource_id, resource_type = 'entries', params = {})
+        ClientSnapshotMethodsFactory.new(client, resource_type).all(space_id, resource_id, params)
       end
 
       # Gets a snapshot by ID
       #
       # @param [Contentful::Management::Client] client
       # @param [String] space_id
-      # @param [String] entry_id
+      # @param [String] resource_id
       # @param [String] snapshot_id
+      # @param [String] resource_type
       #
       # @return [Contentful::Management::Snapshot]
-      def self.find(client, space_id, entry_id, snapshot_id)
-        ClientSnapshotMethodsFactory.new(client).find(space_id, entry_id, snapshot_id)
+      def self.find(client, space_id, resource_id, snapshot_id, resource_type = 'entries')
+        ClientSnapshotMethodsFactory.new(client, resource_type).find(space_id, resource_id, snapshot_id)
       end
 
       # Not supported
@@ -47,11 +63,12 @@ module Contentful
 
       # @private
       def self.build_endpoint(endpoint_options)
+        resource_type = endpoint_options.fetch(:resource_type, 'entries')
         space_id = endpoint_options.fetch(:space_id)
-        entry_id = endpoint_options.fetch(:entry_id)
+        resource_id = endpoint_options.fetch(:resource_id)
         snapshot_id = endpoint_options.fetch(:snapshot_id, nil)
 
-        endpoint = "/#{space_id}/entries/#{entry_id}/snapshots"
+        endpoint = "/#{space_id}/#{resource_type}/#{resource_id}/snapshots"
         endpoint = "#{endpoint}/#{snapshot_id}" unless snapshot_id.nil?
 
         endpoint

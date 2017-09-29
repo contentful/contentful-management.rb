@@ -1,0 +1,207 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/content_types/cat/snapshots
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Thu, 28 Sep 2017 23:44:13 GMT
+      Etag:
+      - '"1fe63bc1700574e5b3d0711383c3189a"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35974'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 8c63055db8e628147c4e41760df62e02
+      Content-Length:
+      - '3087'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_788_673446=HEKFEx9CjEAZNxaE3InvCk2JzVkAAAAA5PwoZVCTBnUVxa5B5iK57w==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=zU4gC9pWmyCJCw1o6lKYhQAAAACUbBAOHxzwfmJzTy6Uln5y; path=/; Domain=.contentful.com
+      - visid_incap_673446=cLX+iWk2SZ6Ve+oxO8g7j02JzVkAAAAAQUIPAAAAAACgEuXLU8MYPzcA5mUcpoFl;
+        expires=Fri, 28 Sep 2018 08:00:23 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 10-5867232-5867293 NNNN CT(142 144 0) RT(1506642248820 363) q(0 0 3 -1) r(39
+        39) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "items": [
+            {
+              "sys": {
+                "type": "Snapshot",
+                "snapshotType": "publish",
+                "snapshotEntityType": "ContentType",
+                "id": "5bfy52PVk8HwBfXURLOsWJ",
+                "createdAt": "2017-06-26T17:09:50.255Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedAt": "2017-06-26T17:09:50.255Z",
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                }
+              },
+              "snapshot": {
+                "name": "Cat",
+                "fields": [
+                  {
+                    "name": "Name",
+                    "id": "name",
+                    "type": "Symbol",
+                    "validations": [],
+                    "localized": false,
+                    "required": false,
+                    "disabled": false,
+                    "omitted": false
+                  },
+                  {
+                    "name": "Lives",
+                    "id": "lives",
+                    "type": "Integer",
+                    "validations": [],
+                    "localized": false,
+                    "required": false,
+                    "disabled": false,
+                    "omitted": false
+                  },
+                  {
+                    "name": "Best Friend",
+                    "id": "bestFriend",
+                    "type": "Link",
+                    "linkType": "Entry",
+                    "localized": false,
+                    "required": false,
+                    "disabled": false,
+                    "omitted": false,
+                    "validations": []
+                  },
+                  {
+                    "name": "Likes",
+                    "id": "likes",
+                    "type": "Array",
+                    "items": {
+                      "type": "Symbol"
+                    }
+                  }
+                ],
+                "sys": {
+                  "id": "cat",
+                  "type": "ContentType",
+                  "createdAt": "2017-05-08T14:06:00.224Z",
+                  "createdBy": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "User",
+                      "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                    }
+                  },
+                  "space": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Space",
+                      "id": "facgnwwgj5fe"
+                    }
+                  },
+                  "version": 4,
+                  "updatedAt": "2017-06-26T17:09:50.074Z",
+                  "updatedBy": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "User",
+                      "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                    }
+                  },
+                  "firstPublishedAt": "2017-05-08T14:06:00.749Z",
+                  "publishedCounter": 2,
+                  "publishedAt": "2017-06-26T17:09:50.074Z",
+                  "publishedBy": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "User",
+                      "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                    }
+                  },
+                  "publishedVersion": 3
+                },
+                "displayField": "name"
+              }
+            }
+          ],
+          "skip": 0,
+          "limit": 100
+        }
+    http_version: 
+  recorded_at: Thu, 28 Sep 2017 23:44:13 GMT
+recorded_with: VCR 3.0.3
