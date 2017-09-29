@@ -55,12 +55,24 @@ module Contentful
         fail 'Not supported'
       end
 
+      # Returns the total calls made by the webhook.
       def total
         calls['total']
       end
 
+      # Returns the amount of healthy calls made by the webhook.
       def healthy
         calls['healthy']
+      end
+
+      # Returns wether or not there was an error on the webhook calls on the last 30 days.
+      def errors?
+        total != healthy
+      end
+
+      # Returns whether or not all the webhook calls on the last 30 days were successful.
+      def healthy?
+        total == healthy
       end
     end
   end
