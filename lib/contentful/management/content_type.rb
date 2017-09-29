@@ -3,6 +3,7 @@ require_relative 'field'
 require_relative 'validation'
 require_relative 'content_type_entry_methods_factory'
 require_relative 'content_type_editor_interface_methods_factory'
+require_relative 'content_type_snapshot_methods_factory'
 require_relative 'support'
 require_relative 'resource/all_published'
 require_relative 'resource/publisher'
@@ -151,6 +152,15 @@ module Contentful
       # @return [Contentful::Management::ContentTypeEditorInterfaceMethodsFactory]
       def editor_interface
         Contentful::Management::ContentTypeEditorInterfaceMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of snapshots in context of the current content type
+      # Allows listing all snapshots belonging to this entry and finding one by id.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ContentTypeSnapshotMethodsFactory]
+      def snapshots
+        ContentTypeSnapshotMethodsFactory.new(self)
       end
 
       # @private

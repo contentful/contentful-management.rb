@@ -152,6 +152,8 @@ module Contentful
           COERCIONS[what] ? COERCIONS[what][value] : value
         when Class
           what.new(value, client)
+        when Proc
+          what[value]
         else
           value
         end
