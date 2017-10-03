@@ -9,6 +9,9 @@
 * Added Webhook Health Endpoint.
 * Added Content Type Snapshots Endpoint.
 
+### Changed
+* Rewrote HTTP internals in order to allow base-level resources and simplified Client.
+
 ## 1.8.1
 ### Added
 * Added missing validation property for assets [#121](https://github.com/contentful/contentful-management.rb/pull/121)
