@@ -37,8 +37,8 @@ module Contentful
 
       # @private
       def self.build_endpoint(endpoint_options)
-        return "/#{endpoint_options[:space_id]}" if endpoint_options.key?(:space_id)
-        ''
+        return "spaces/#{endpoint_options[:space_id]}" if endpoint_options.key?(:space_id)
+        'spaces'
       end
 
       # Gets all Spaces

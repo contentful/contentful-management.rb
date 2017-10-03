@@ -332,7 +332,7 @@ module Contentful
 
       # @private
       def host_url(request)
-        (%r{^/[\w|-]+/uploads(?:/[\w|-]*)?$} =~ request.url) ? uploads_url : base_url
+        (%r{^spaces/[\w|-|_]+/uploads(?:/[\w|-|_]*)?$} =~ request.url) ? uploads_url : base_url
       end
 
       # @private
@@ -425,12 +425,12 @@ module Contentful
 
       # @private
       def base_url
-        "#{protocol}://#{configuration[:api_url]}/spaces"
+        "#{protocol}://#{configuration[:api_url]}/"
       end
 
       # @private
       def uploads_url
-        "#{protocol}://#{configuration[:uploads_url]}/spaces"
+        "#{protocol}://#{configuration[:uploads_url]}/"
       end
 
       # @private

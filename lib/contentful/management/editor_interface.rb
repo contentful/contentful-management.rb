@@ -45,7 +45,7 @@ module Contentful
         space_id = endpoint_options.fetch(:space_id)
         content_type_id = endpoint_options.fetch(:content_type_id)
 
-        "/#{space_id}/content_types/#{content_type_id}/editor_interface"
+        "spaces/#{space_id}/content_types/#{content_type_id}/editor_interface"
       end
 
       # Updates an Editor Interface

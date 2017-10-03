@@ -53,7 +53,7 @@ module Contentful
         instance_variable_get(:@fields).keys.each do |locale|
           request = Request.new(
             client,
-            "/#{space.id}/assets/#{id}/files/#{locale}/process",
+            "spaces/#{space.id}/assets/#{id}/files/#{locale}/process",
             {},
             nil,
             version: sys[:version]

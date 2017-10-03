@@ -168,8 +168,8 @@ module Contentful
 
         # @private
         def build_endpoint(endpoint_options)
-          return "/#{endpoint_options[:space_id]}/public/#{endpoint}" if endpoint_options.key?(:public)
-          base = "/#{endpoint_options[:space_id]}/#{endpoint}"
+          return "spaces/#{endpoint_options[:space_id]}/public/#{endpoint}" if endpoint_options.key?(:public)
+          base = "spaces/#{endpoint_options[:space_id]}/#{endpoint}"
           return "#{base}/#{endpoint_options[:resource_id]}#{endpoint_options[:suffix]}" if endpoint_options.key?(:resource_id)
           base
         end
