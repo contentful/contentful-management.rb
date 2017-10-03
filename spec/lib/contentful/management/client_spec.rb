@@ -253,31 +253,30 @@ module Contentful
         end
       end
 
-      describe '.get_http' do
-        subject { Client }
-        it 'does a GET request' do
-          vcr(:get_request) { subject.get_http('http://example.com', foo: 'bar') }
+      describe 'http methods' do
+        let(:request) { Request.new(client, 'http://example.com', foo: 'bar') }
+        describe '#get' do
+          it 'does a GET request' do
+            vcr(:get_request) { subject.get(Request.new(client, 'http://mockbin.org/bin/be499b1d-286a-4d22-8d26-00a014b83817', foo: 'bar')) }
+          end
         end
-      end
 
-      describe '.post_http' do
-        subject { Client }
-        it 'does a POST request' do
-          vcr(:post_request) { subject.post_http('http://example.com', foo: 'bar') }
+        describe '#post' do
+          it 'does a POST request' do
+            vcr(:post_request) { subject.post(request) }
+          end
         end
-      end
 
-      describe '.put_http' do
-        subject { Client }
-        it 'does a PUT request' do
-          vcr(:put_request) { subject.put_http('http://example.com', foo: 'bar') }
+        describe '#put' do
+          it 'does a PUT request' do
+            vcr(:put_request) { subject.put(request) }
+          end
         end
-      end
 
-      describe '.delete_http' do
-        subject { Client }
-        it 'does a DELETE request' do
-          vcr(:delete_request) { subject.delete_http('http://example.com', foo: 'bar') }
+        describe '#delete' do
+          it 'does a DELETE request' do
+            vcr(:delete_request) { subject.delete(request) }
+          end
         end
       end
 
@@ -292,7 +291,7 @@ module Contentful
 
         it 'effectively requests via proxy' do
           vcr(:proxy_request) {
-            expect(subject.class).to receive(:proxy_send).twice.and_call_original
+            expect(subject).to receive(:proxy_send).twice.and_call_original
             subject.spaces.find('zh42n1tmsaiq')
           }
         end
