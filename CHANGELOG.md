@@ -8,6 +8,7 @@
 * Added Webhook Calls Endpoint.
 * Added Webhook Health Endpoint.
 * Added Content Type Snapshots Endpoint.
+* Added Organizations Endpoint.
 
 ### Changed
 * Rewrote HTTP internals in order to allow base-level resources and simplified Client.

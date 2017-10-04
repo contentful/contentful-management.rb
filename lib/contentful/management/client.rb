@@ -6,6 +6,7 @@ require 'contentful/management/version'
 
 require 'contentful/management/client_space_methods_factory'
 require 'contentful/management/client_space_membership_methods_factory'
+require 'contentful/management/client_organization_methods_factory'
 require 'contentful/management/client_api_key_methods_factory'
 require 'contentful/management/client_asset_methods_factory'
 require 'contentful/management/client_content_type_methods_factory'
@@ -106,6 +107,15 @@ module Contentful
       # @return [Contentful::Management::ClientSpaceMembershipMethodsFactory]
       def space_memberships
         ClientSpaceMembershipMethodsFactory.new(self)
+      end
+
+      # Allows viewing of organizations in context of the current client
+      # Allows listing all organizations for client.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientOrganizationMethodsFactory]
+      def organizations
+        ClientOrganizationMethodsFactory.new(self)
       end
 
       # Allows manipulation of api keys in context of the current client

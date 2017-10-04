@@ -746,6 +746,14 @@ Destroying a space membership:
 blog_post_membership.destroy
 ```
 
+#### Organizations
+
+Retrieving all organization details:
+
+```ruby
+organizations = client.organizations.all
+```
+
 ### UI Extensions
 
 Retrieving all UI extensions from the space:
