@@ -42,7 +42,7 @@ module Contentful
         space_id = endpoint_options.fetch(:space_id)
         webhook_id = endpoint_options.fetch(:webhook_id)
 
-        "/#{space_id}/webhooks/#{webhook_id}/health"
+        "spaces/#{space_id}/webhooks/#{webhook_id}/health"
       end
 
       # Not supported

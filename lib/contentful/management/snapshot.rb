@@ -68,7 +68,7 @@ module Contentful
         resource_id = endpoint_options.fetch(:resource_id)
         snapshot_id = endpoint_options.fetch(:snapshot_id, nil)
 
-        endpoint = "/#{space_id}/#{resource_type}/#{resource_id}/snapshots"
+        endpoint = "spaces/#{space_id}/#{resource_type}/#{resource_id}/snapshots"
         endpoint = "#{endpoint}/#{snapshot_id}" unless snapshot_id.nil?
 
         endpoint

@@ -57,7 +57,7 @@ module Contentful
         webhook_id = endpoint_options.fetch(:webhook_id)
         call_id = endpoint_options.fetch(:call_id, nil)
 
-        endpoint = "/#{space_id}/webhooks/#{webhook_id}/calls"
+        endpoint = "spaces/#{space_id}/webhooks/#{webhook_id}/calls"
         endpoint = "#{endpoint}/#{call_id}" unless call_id.nil?
 
         endpoint

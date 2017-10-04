@@ -160,7 +160,7 @@ module Contentful
             expect(result).to be_kind_of Contentful::Management::BadRequest
             expect(result.message).to eq 'Not published'
             expect(result.error[:message]).to eq 'Not published'
-            expect(result.error[:url]).to eq '/yr5m0jky5hsh/entries/4Rouux8SoUCKwkyCq2I0E0/published'
+            expect(result.error[:url]).to eq 'spaces/yr5m0jky5hsh/entries/4Rouux8SoUCKwkyCq2I0E0/published'
             expect(result.error[:details]).to eq "{\n  \"sys\": {\n    \"type\": \"Error\",\n    \"id\": \"BadRequest\"\n  },\n  \"message\": \"Not published\"\n}\n"
           end
         end

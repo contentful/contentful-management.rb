@@ -3,7 +3,6 @@ require 'contentful/management/response'
 require 'contentful/management/resource_builder'
 
 require 'contentful/management/version'
-require 'contentful/management/http_client'
 
 require 'contentful/management/client_space_methods_factory'
 require 'contentful/management/client_space_membership_methods_factory'
@@ -32,8 +31,6 @@ module Contentful
     # Client for interacting with the Contentful Management API
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/
     class Client
-      extend Contentful::Management::HTTPClient
-
       attr_reader :access_token, :configuration, :logger
       attr_accessor :organization_id, :version, :content_type_id, :dynamic_entry_cache
 
@@ -335,7 +332,7 @@ module Contentful
 
       # @private
       def host_url(request)
-        (%r{^/[\w|-]+/uploads(?:/[\w|-]*)?$} =~ request.url) ? uploads_url : base_url
+        (%r{^spaces/[\w|-|_]+/uploads(?:/[\w|-|_]*)?$} =~ request.url) ? uploads_url : base_url
       end
 
       # @private
@@ -362,39 +359,78 @@ module Contentful
       # @private
       def delete(request)
         execute_request(request) do |url|
-          self.class.delete_http(url, {}, request_headers(request), proxy_parameters)
+          http_send(:delete, url, { params: request.query }, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def get(request)
         execute_request(request) do |url|
-          self.class.get_http(url, request.query, request_headers(request), proxy_parameters)
+          http_send(:get, url, { params: request.query }, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def post(request)
         execute_request(request) do |url|
-          self.class.post_http(url, request.query, request_headers(request), proxy_parameters)
+          data = if url.include?(Client::DEFAULT_CONFIGURATION[:uploads_url])
+                   { body: request.query }
+                 else
+                   { json: request.query }
+                 end
+
+          http_send(:post, url, data, request_headers(request), proxy_parameters)
         end
       end
 
       # @private
       def put(request)
         execute_request(request) do |url|
-          self.class.put_http(url, request.query, request_headers(request), proxy_parameters)
+          http_send(:put, url, { json: request.query }, request_headers(request), proxy_parameters)
         end
+      end
+
+      # Proxy Helper
+      #
+      # @param [Symbol] type
+      # @param [String] url
+      # @param [Hash] params
+      # @param [Hash] headers
+      # @param [Hash] proxy
+      #
+      # @return [HTTP::Response]
+      def proxy_send(type, url, params, headers, proxy)
+        HTTP[headers].via(
+          proxy[:host],
+          proxy[:port],
+          proxy[:username],
+          proxy[:password]
+        ).public_send(type, url, params)
+      end
+
+      # HTTP Helper
+      # Abtracts the Proxy/No-Proxy logic
+      #
+      # @param [Symbol] type
+      # @param [String] url
+      # @param [Hash] params
+      # @param [Hash] headers
+      # @param [Hash] proxy
+      #
+      # @return [HTTP::Response]
+      def http_send(type, url, params, headers, proxy)
+        return proxy_send(type, url, params, headers, proxy) unless proxy[:host].nil?
+        HTTP[headers].public_send(type, url, params)
       end
 
       # @private
       def base_url
-        "#{protocol}://#{configuration[:api_url]}/spaces"
+        "#{protocol}://#{configuration[:api_url]}/"
       end
 
       # @private
       def uploads_url
-        "#{protocol}://#{configuration[:uploads_url]}/spaces"
+        "#{protocol}://#{configuration[:uploads_url]}/"
       end
 
       # @private

@@ -210,19 +210,19 @@ module Contentful
       describe '#host_url' do
         describe 'uploads' do
           it 'returns uploads url when its a properly formed upload url' do
-            expect(subject.host_url(RequestDouble.new('/some_space_id/uploads'))).to eq subject.uploads_url
-            expect(subject.host_url(RequestDouble.new('/some_space_id/uploads/upload_id'))).to eq subject.uploads_url
-            expect(subject.host_url(RequestDouble.new('/uploads/uploads/uploads'))).to eq subject.uploads_url
+            expect(subject.host_url(RequestDouble.new('spaces/some_space_id/uploads'))).to eq subject.uploads_url
+            expect(subject.host_url(RequestDouble.new('spaces/some_space_id/uploads/upload_id'))).to eq subject.uploads_url
+            expect(subject.host_url(RequestDouble.new('spaces/uploads/uploads/uploads'))).to eq subject.uploads_url
           end
 
           it 'returns base url for non uploads url' do
-            uploads_as_space_id = '/uploads/entries/upload_id'
+            uploads_as_space_id = 'spaces/uploads/entries/upload_id'
             expect(subject.host_url(RequestDouble.new(uploads_as_space_id))).to eq subject.base_url
 
-            uploads_as_entry_id = '/some_space_id/entries/uploads'
+            uploads_as_entry_id = 'spaces/some_space_id/entries/uploads'
             expect(subject.host_url(RequestDouble.new(uploads_as_entry_id))).to eq subject.base_url
 
-            uploads_as_only_thing = '/uploads'
+            uploads_as_only_thing = 'spaces/uploads'
             expect(subject.host_url(RequestDouble.new(uploads_as_only_thing))).to eq subject.base_url
           end
         end
@@ -253,31 +253,30 @@ module Contentful
         end
       end
 
-      describe '.get_http' do
-        subject { Client }
-        it 'does a GET request' do
-          vcr(:get_request) { subject.get_http('http://example.com', foo: 'bar') }
+      describe 'http methods' do
+        let(:request) { Request.new(client, 'http://example.com', foo: 'bar') }
+        describe '#get' do
+          it 'does a GET request' do
+            vcr(:get_request) { subject.get(Request.new(client, 'http://mockbin.org/bin/be499b1d-286a-4d22-8d26-00a014b83817', foo: 'bar')) }
+          end
         end
-      end
 
-      describe '.post_http' do
-        subject { Client }
-        it 'does a POST request' do
-          vcr(:post_request) { subject.post_http('http://example.com', foo: 'bar') }
+        describe '#post' do
+          it 'does a POST request' do
+            vcr(:post_request) { subject.post(request) }
+          end
         end
-      end
 
-      describe '.put_http' do
-        subject { Client }
-        it 'does a PUT request' do
-          vcr(:put_request) { subject.put_http('http://example.com', foo: 'bar') }
+        describe '#put' do
+          it 'does a PUT request' do
+            vcr(:put_request) { subject.put(request) }
+          end
         end
-      end
 
-      describe '.delete_http' do
-        subject { Client }
-        it 'does a DELETE request' do
-          vcr(:delete_request) { subject.delete_http('http://example.com', foo: 'bar') }
+        describe '#delete' do
+          it 'does a DELETE request' do
+            vcr(:delete_request) { subject.delete(request) }
+          end
         end
       end
 
@@ -292,7 +291,7 @@ module Contentful
 
         it 'effectively requests via proxy' do
           vcr(:proxy_request) {
-            expect(subject.class).to receive(:proxy_send).twice.and_call_original
+            expect(subject).to receive(:proxy_send).twice.and_call_original
             subject.spaces.find('zh42n1tmsaiq')
           }
         end
