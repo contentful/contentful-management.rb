@@ -754,6 +754,14 @@ Retrieving all organization details:
 organizations = client.organizations.all
 ```
 
+#### Users
+
+Retrieving current user details:
+
+```ruby
+user = client.users.me
+```
+
 ### UI Extensions
 
 Retrieving all UI extensions from the space:

@@ -7,6 +7,7 @@ require_relative 'link'
 require_relative 'space'
 require_relative 'space_membership'
 require_relative 'organization'
+require_relative 'user'
 require_relative 'content_type'
 require_relative 'asset'
 require_relative 'webhook'
@@ -31,6 +32,7 @@ module Contentful
         'Space' => Contentful::Management::Space,
         'SpaceMembership' => Contentful::Management::SpaceMembership,
         'Organization' => Contentful::Management::Organization,
+        'User' => Contentful::Management::User,
         'ContentType' => Contentful::Management::ContentType,
         'Entry' => :find_entry_class,
         'Asset' => Contentful::Management::Asset,
