@@ -11,10 +11,13 @@ module Contentful
         fail 'Not supported'
       end
 
-      def find(*)
-        super(nil, nil)
+      def find(user_id)
+        super(nil, user_id)
       end
-      alias me find
+
+      def me
+        find('me')
+      end
 
       def all(*)
         fail 'Not supported'

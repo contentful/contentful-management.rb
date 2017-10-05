@@ -17,8 +17,11 @@ module Contentful
       property :signInCount, :integer
       property :confirmed, :boolean
 
-      def self.build_endpoint(_endpoint_options)
-        '/users/me'
+      # @private
+      def self.build_endpoint(endpoint_options)
+        endpoint = '/users'
+        endpoint = "#{endpoint}/#{endpoint_options[:resource_id]}" if endpoint_options[:resource_id]
+        endpoint
       end
     end
   end

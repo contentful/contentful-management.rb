@@ -11,6 +11,7 @@ module Contentful
 
       property :name
 
+      # @private
       def self.build_endpoint(_endpoint_options)
         '/organizations'
       end

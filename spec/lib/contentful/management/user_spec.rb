@@ -19,7 +19,7 @@ module Contentful
       describe '.find' do
         it 'fetches the current user' do
           vcr('user/find') {
-            user = subject.find
+            user = subject.find('me')
             expect(user).to be_a Contentful::Management::User
             expect(user.first_name).to eq 'David'
             expect(user.last_name).to eq 'Test'
@@ -33,7 +33,7 @@ module Contentful
       end
 
       describe '.me' do
-        it 'is an alias to .find' do
+        it 'is an alias to .find("me")' do
           vcr('user/find') {
             user = subject.me
             expect(user).to be_a Contentful::Management::User
