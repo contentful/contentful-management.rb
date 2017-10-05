@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com//users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Thu, 05 Oct 2017 21:48:07 GMT
+      Etag:
+      - W/"b77dab203d68f339bdd776884a425ba2"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 145f8fecdf422acdd764e19026040d22
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '392'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_222_673446=KvCIby2F70q+o74MRbQUA5ao1lkAAAAAws32dr4aJU/mBjyA+dg7JQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=khvkW6MViBHLNVIe6lKYhQAAAACWIbuD8pozEHYup2tMnALO; path=/; Domain=.contentful.com
+      - visid_incap_673446=xWJ6dSh0RuafLW3bxX98Kcin1lkAAAAAQUIPAAAAAACxLe9Bdph6CMi//qcHS+PJ;
+        expires=Fri, 05 Oct 2018 07:44:47 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 5-125243369-125243422 NNNN CT(26 26 0) RT(1507240086148 301) q(0 0 1 0) r(2
+        2) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "firstName":"David",
+          "lastName":"Test",
+          "avatarUrl":"https://avatars.githubusercontent.com/u/1032706?v=3",
+          "email":"david.test@testytest.com",
+          "activated":true,
+          "signInCount":26,
+          "confirmed":true,
+          "sys":{
+            "type":"User",
+            "id":"some_user_id",
+            "version":38,
+            "createdAt":"2015-09-17T23:13:27Z",
+            "updatedAt":"2017-09-18T16:36:57Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 21:48:07 GMT
+recorded_with: VCR 3.0.3
