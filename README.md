@@ -746,7 +746,7 @@ Destroying a space membership:
 blog_post_membership.destroy
 ```
 
-#### Organizations
+### Organizations
 
 Retrieving all organization details:
 
@@ -754,7 +754,7 @@ Retrieving all organization details:
 organizations = client.organizations.all
 ```
 
-#### Users
+### Users
 
 Retrieving current user details:
 
