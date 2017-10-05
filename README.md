@@ -813,6 +813,32 @@ Creating an API key:
 blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
 ```
 
+### Personal Access Tokens
+
+Retrieving all personal access tokens:
+
+```ruby
+tokens = client.personal_access_tokens.all
+```
+
+Retrieving one personal access token by ID:
+
+```ruby
+token = client.personal_access_tokens.find(token_id)
+```
+
+Creating a personal access token:
+
+```ruby
+client.personal_access_tokens.create(name: 'foobar key', scopes: ['content_management_manage'])
+```
+
+Revoking a personal access token:
+
+```ruby
+token.revoke
+```
+
 ### Editor Interface
 
 Retrieving editor interface for a content type:

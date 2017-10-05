@@ -9,6 +9,7 @@ require 'contentful/management/client_space_membership_methods_factory'
 require 'contentful/management/client_organization_methods_factory'
 require 'contentful/management/client_user_methods_factory'
 require 'contentful/management/client_api_key_methods_factory'
+require 'contentful/management/client_personal_access_tokens_methods_factory'
 require 'contentful/management/client_asset_methods_factory'
 require 'contentful/management/client_content_type_methods_factory'
 require 'contentful/management/client_entry_methods_factory'
@@ -135,6 +136,15 @@ module Contentful
       # @return [Contentful::Management::ClientApiKeyMethodsFactory]
       def api_keys
         ClientApiKeyMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of personal access tokens in context of the current client
+      # Allows listing all personal access tokens for client, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientPersonalAccessTokenMethodsFactory]
+      def personal_access_tokens
+        ClientPersonalAccessTokenMethodsFactory.new(self)
       end
 
       # Allows manipulation of assets in context of the current client
