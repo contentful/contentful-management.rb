@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/users/me/access_tokens/3XBnbqn5s7oJ5PxyZiTzIg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 06 Oct 2017 15:19:13 GMT
+      Etag:
+      - W/"a58719a01ac6ffe482534bf2f41b52ed"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 8074aa4c59a616d2b3365d29aa06d210
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '252'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_223_673446=DZTSUMexARKMxJpPyEEYA/Ce11kAAAAAzAtXw1jUJ1GJIeDncSoErQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=EXUpWKS15TiwnM+R6lKYhQAAAAD9JgSwip91yb7DmRrVuWGP; path=/; Domain=.contentful.com
+      - visid_incap_673446=Eew2bCYrTJimpHzOVB8b3jye11kAAAAAQUIPAAAAAAA7MoKvSlfp5c19tY43IVVj;
+        expires=Sat, 06 Oct 2018 07:14:23 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-80256826-80256908 NNNN CT(42 64 0) RT(1507303151736 348) q(0 0 2 10) r(2
+        2) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"Playground",
+          "revokedAt":null,
+          "sys":{
+            "type":"PersonalAccessToken",
+            "id":"3XBnbqn5s7oJ5PxyZiTzIg",
+            "createdAt":"2017-08-14T13:43:41Z",
+            "updatedAt":"2017-08-14T13:43:41Z"
+          },
+          "scopes":["content_management_manage"]
+        }
+
+    http_version: 
+  recorded_at: Fri, 06 Oct 2017 15:19:13 GMT
+recorded_with: VCR 3.0.3

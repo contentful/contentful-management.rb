@@ -20,7 +20,7 @@ Metrics/LineLength:
   Max: 135
 
 Metrics/ClassLength:
-  Max: 300
+  Max: 350
 
 Style/SignalException:
   EnforcedStyle: 'semantic'

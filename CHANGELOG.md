@@ -10,6 +10,7 @@
 * Added Content Type Snapshots Endpoint.
 * Added Organizations Endpoint.
 * Added User Endpoint.
+* Added Personal Access Tokens Endpoint.
 
 ### Changed
 * Rewrote HTTP internals in order to allow base-level resources and simplified Client.

@@ -1,0 +1,179 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/users/me/access_tokens/4us7wI40rNxTDzLuLl79dA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 06 Oct 2017 15:40:22 GMT
+      Etag:
+      - W/"b13714579e4675eed2816c27df182734"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - c5fd984859db4eef20c03d0cd00016ba
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '252'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_223_673446=HK/DK9g40XgczK9PyEEYA+Wj11kAAAAAIWHj/8jzFPAs2JEQa7XhLQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=9IF0QmK5+S+zbmKV6lKYhQAAAAAeJrGGgquua1eWHTaMCTI3; path=/; Domain=.contentful.com
+      - visid_incap_673446=rnUMiSidQTqL96869s2uwOWj11kAAAAAQUIPAAAAAACgOMjobg3EtgEahi7iBVuc;
+        expires=Sat, 06 Oct 2018 07:14:23 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-80675799-80675956 NNNN CT(0 0 0) RT(1507304420827 320) q(0 0 0 -1) r(1 1)
+        U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"Test Token",
+          "revokedAt":null,
+          "sys":{
+            "type":"PersonalAccessToken",
+            "id":"4us7wI40rNxTDzLuLl79dA",
+            "createdAt":"2017-10-06T15:25:58Z",
+            "updatedAt":"2017-10-06T15:25:58Z"
+          },
+          "scopes":["content_management_manage"]
+        }
+
+    http_version: 
+  recorded_at: Fri, 06 Oct 2017 15:40:22 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/users/me/access_tokens/4us7wI40rNxTDzLuLl79dA/revoked
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.8.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Experimental-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 06 Oct 2017 15:40:22 GMT
+      Etag:
+      - W/"f4de5eccc61c304cffbcf17ff63c8d51"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 4ee3d8017f1edd350cbf61d86202af81
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '270'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_223_673446=+/2BKhWSKU9Gzq9PyEEYA+aj11kAAAAAGsNZFVqMSAS9wNwp3MQ0nA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=i2Y5RpSt5yHaj+gj6lKYhQAAAAAm7iq0BFXO0YeAjy7pBB8Y; path=/; Domain=.contentful.com
+      - visid_incap_673446=pYvUvK5eQLqt9+WaOIfe9+aj11kAAAAAQUIPAAAAAADWBzNCJhIsdWWxbIS86I1G;
+        expires=Sat, 06 Oct 2018 07:14:58 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 1-28432508-28432598 NNNN CT(48 86 0) RT(1507304421530 312) q(0 0 1 -1) r(2
+        2) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"Test Token",
+          "revokedAt":"2017-10-06T15:40:22Z",
+          "sys":{
+            "type":"PersonalAccessToken",
+            "id":"4us7wI40rNxTDzLuLl79dA",
+            "createdAt":"2017-10-06T15:25:58Z",
+            "updatedAt":"2017-10-06T15:25:58Z"
+          },
+          "scopes":["content_management_manage"]
+        }
+
+    http_version: 
+  recorded_at: Fri, 06 Oct 2017 15:40:23 GMT
+recorded_with: VCR 3.0.3
