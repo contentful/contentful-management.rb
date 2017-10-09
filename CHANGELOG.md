@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.9.0
 ### Added
 * Added option to disable Content Type caching completely.
 * Added UI Extension Endpoint.
