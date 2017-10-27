@@ -76,7 +76,12 @@ module Contentful
           vcr('asset/find_not_found') do
             result = subject.find(space_id, 'not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
-            expect(result.message).to eq 'The resource could not be found.'
+            message = [
+              "HTTP status code: 404 Not Found",
+              "Message: The resource could not be found.",
+              "Details: The requested Asset could not be found. ID: not_exist."
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
       end
@@ -86,7 +91,11 @@ module Contentful
           vcr('asset/destroy_published') do
             result = subject.find(space_id, 'r7o2iuDeSc4UmioOuoKq6').destroy
             expect(result).to be_kind_of Contentful::Management::BadRequest
-            expect(result.message).to eq 'Cannot deleted published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Cannot delete published"
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
         it 'returns true when asset is not published' do
@@ -112,7 +121,11 @@ module Contentful
           vcr('asset/unpublish_already_unpublished') do
             result = subject.find(space_id, asset_id_2).unpublish
             expect(result).to be_kind_of Contentful::Management::BadRequest
-            expect(result.message).to eq 'Not published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Not published"
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
       end

@@ -122,7 +122,11 @@ module Contentful
           vcr('entry/service_unavailable') do
             result = subject.find(space_id, 'not_exist')
             expect(result).to be_kind_of Contentful::Management::ServiceUnavailable
-            expect(result.message).to eq 'Service Unavailable, contentful.com API seems to be down'
+            message = [
+              "HTTP status code: 503 Service Unavailable",
+              "Message: Service unavailable."
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
       end
@@ -132,7 +136,11 @@ module Contentful
           vcr('entry/destory_published') do
             result = subject.find(space_id, '3U7JqGuVzOWIimU40mKeem').destroy
             expect(result).to be_kind_of Contentful::Management::BadRequest
-            expect(result.message).to eq 'Cannot deleted published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Cannot deleted published"
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
         it 'returns true when entry is not published' do
@@ -158,7 +166,11 @@ module Contentful
           vcr('entry/unpublish_already_unpublished') do
             result = subject.find(space_id, entry_id).unpublish
             expect(result).to be_kind_of Contentful::Management::BadRequest
-            expect(result.message).to eq 'Not published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Not published"
+            ].join("\n")
+            expect(result.message).to eq message
             expect(result.error[:message]).to eq 'Not published'
             expect(result.error[:url]).to eq 'spaces/yr5m0jky5hsh/entries/4Rouux8SoUCKwkyCq2I0E0/published'
             expect(result.error[:details]).to eq "{\n  \"sys\": {\n    \"type\": \"Error\",\n    \"id\": \"BadRequest\"\n  },\n  \"message\": \"Not published\"\n}\n"
@@ -224,7 +236,11 @@ module Contentful
           vcr('entry/unarchive_already_unarchived') do
             result = subject.find(space_id, entry_id).unarchive
             expect(result).to be_kind_of Contentful::Management::BadRequest
-            expect(result.message).to eql 'Not archived'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Not archived"
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
       end
@@ -243,7 +259,11 @@ module Contentful
           vcr('entry/archive_published') do
             entry = subject.find(space_id, entry_id).archive
             expect(entry).to be_kind_of Contentful::Management::BadRequest
-            expect(entry.message).to eql 'Cannot archive published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Cannot archive published"
+            ].join("\n")
+            expect(entry.message).to eq message
           end
         end
       end

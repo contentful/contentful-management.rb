@@ -1,0 +1,22 @@
+{
+  "requestId": "044bb23356babe4f11a3f7f1e77c762a",
+  "message":"The resource you sent in the body is invalid.",
+  "details":{
+    "errors":[
+      {
+        "name":"taken",
+        "path":"display_code",
+        "value":"en-US"
+      },
+      {
+        "name":"fallback locale creates a loop",
+        "path":"fallback_code",
+        "value":"en-US"
+      }
+    ]
+  },
+  "sys":{
+    "type":"Error",
+    "id":"ValidationFailed"
+  }
+}

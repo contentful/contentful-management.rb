@@ -63,7 +63,11 @@ module Contentful
           vcr('content_type/destroy_activated') do
             result = subject.find(space_id, '66jvD8UhNKmWGk24KKq0EW').destroy
             expect(result).to be_kind_of Contentful::Management::BadRequest
-            expect(result.message).to eq 'Cannot deleted published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Cannot delete published"
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
 
@@ -129,7 +133,11 @@ module Contentful
             content_type = subject.find(space_id, deactivate_content)
             content_type.sys[:version] = -1
             result = content_type.deactivate
-            expect(result.message).to eq 'Not published'
+            message = [
+              "HTTP status code: 400 Bad Request",
+              "Message: Not published"
+            ].join("\n")
+            expect(result.message).to eq message
           end
         end
       end
