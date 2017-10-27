@@ -168,7 +168,7 @@ http_interactions:
             "type": "Error",
             "id": "BadRequest"
           },
-          "message": "Cannot deleted published"
+          "message": "Cannot delete published"
         }
     http_version: 
   recorded_at: Thu, 31 Jul 2014 07:28:33 GMT
