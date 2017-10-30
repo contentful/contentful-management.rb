@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.10.0
 ### Added
 * Added better error messages for all possible API errors [#95](https://github.com/contentful/contentful-management.rb/issues/95)
 
