@@ -6,7 +6,7 @@ require 'contentful/management/asset'
 module Contentful
   module Management
     describe Asset do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'yr5m0jky5hsh' }
       let(:asset_id) { '3PYa73pXXiAmKqm8eu4qOS' }
       let(:asset_id_2) { '5FDqplZoruAUGmiSa02asE' }
@@ -472,6 +472,17 @@ module Contentful
           asset = subject.new
           asset.file = double('file', url: 'http://assets.com/asset.jpg')
           expect(asset.image_url(w: 100, h: 100, fm: 'format', q: 1)).to eq 'http://assets.com/asset.jpg?w=100&h=100&fm=format&q=1'
+        end
+      end
+
+      describe 'issues' do
+        describe "Pagination on assets doesn't work without first calling limit - #143" do
+          it 'shouldnt break on next page without parameters on original query' do
+            vcr('asset/143_assets_next_page') do
+              assets = subject.all('facgnwwgj5fe')
+              assets.next_page
+            end
+          end
         end
       end
     end

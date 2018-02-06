@@ -1,0 +1,1500 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.0; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 06 Feb 2018 10:26:21 GMT
+      Etag:
+      - '"5dc7aaf659b657430a2035d6a72a7484"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35949'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 4951dcc151fcd2a3d8b8f9b9d698539d
+      Content-Length:
+      - '32259'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=wt0iS3doTFHOUMsT4IKpBcyCeVoAAAAAhJu5oBbFmDqZ5hZ1qsiw1A==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=wcqeKMpjWxLmYXAs6lKYhQAAAADStoipm/NRKjbMlUMKwE4U; path=/; Domain=.contentful.com
+      - visid_incap_673446=kBLqInM4SKm16tt3T62O+syCeVoAAAAAQUIPAAAAAAAoAX7mOuBOtyQh8WLzU2yI;
+        expires=Tue, 05 Feb 2019 16:43:45 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-89957449-89957455 NNNN CT(86 88 0) RT(1517912779840 57) q(0 0 2 -1) r(9
+        10) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 29,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "2N7PmLm2QoSI8MiI4kyeos",
+                "type": "Asset",
+                "createdAt": "2017-03-10T15:23:06.752Z",
+                "updatedAt": "2017-03-10T15:23:06.760Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1GupmisymIcWqO2GM6ugao",
+                "type": "Asset",
+                "createdAt": "2017-03-21T19:24:37.921Z",
+                "updatedAt": "2017-03-21T19:24:47.733Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/1GupmisymIcWqO2GM6ugao/495359091b5be197499dd7e976a5c3a5/README.md",
+                    "details": {
+                      "size": 26
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "3AyKXkNUc8aEOA4u0MyOyI",
+                "type": "Asset",
+                "createdAt": "2017-04-21T11:52:45.809Z",
+                "updatedAt": "2017-04-21T11:52:54.145Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/3AyKXkNUc8aEOA4u0MyOyI/3f165c51458aeed21d6ba59655aecbf5/README.md",
+                    "details": {
+                      "size": 18747
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "upload_test",
+                "type": "Asset",
+                "createdAt": "2017-03-07T10:11:11.971Z",
+                "updatedAt": "2017-03-07T10:11:11.991Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "fileName": "readme",
+                    "uploadFrom": {
+                      "sys": {
+                        "id": "3DFaxFZ7jFBHTa1g27cA7l",
+                        "linkType": "Upload"
+                      }
+                    },
+                    "contentType": "application/rst"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "foo",
+                "type": "Asset",
+                "createdAt": "2017-03-02T20:09:31.139Z",
+                "updatedAt": "2017-03-02T20:09:31.155Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "title": {
+                  "en-US": "foo"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "3d7PVhU4w8kEWSy0WMCwoC",
+                "type": "Asset",
+                "createdAt": "2017-04-25T14:01:02.079Z",
+                "updatedAt": "2017-04-25T14:01:03.198Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "pixel"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/3d7PVhU4w8kEWSy0WMCwoC/454a143d7c7ab596d0a0f2bccb8c2019/pixel",
+                    "details": {
+                      "size": 284,
+                      "image": {
+                        "width": 1,
+                        "height": 1
+                      }
+                    },
+                    "fileName": "pixel",
+                    "contentType": "image/jpeg"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1V0FEvBSGEGIWm2OIGssAM",
+                "type": "Asset",
+                "createdAt": "2017-04-21T11:46:25.151Z",
+                "updatedAt": "2017-04-21T11:46:52.635Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/1V0FEvBSGEGIWm2OIGssAM/554883e49d5cb558b0b95368a5aec26f/README.md",
+                    "details": {
+                      "size": 18747
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_asset_create_test",
+                "type": "Asset",
+                "createdAt": "2017-03-10T15:23:06.189Z",
+                "updatedAt": "2017-03-10T15:23:06.196Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "upload": "https://i.imgur.com/Zmum6k4.png",
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "file5",
+                "type": "Asset",
+                "createdAt": "2017-03-02T20:39:19.163Z",
+                "updatedAt": "2017-03-02T20:39:20.821Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "file5"
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/file5/2d2cecb189580ea58ab6eae17533c7cf/foo.png",
+                    "details": {
+                      "size": 73481,
+                      "image": {
+                        "width": 1227,
+                        "height": 1988
+                      }
+                    },
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5DfyNh7tN6goog0SyIcmi2",
+                "type": "Asset",
+                "createdAt": "2017-03-21T19:31:50.722Z",
+                "updatedAt": "2017-03-21T19:31:56.935Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/5DfyNh7tN6goog0SyIcmi2/482206c7ec49b023eaf756fdf842522e/README.md",
+                    "details": {
+                      "size": 18747
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "file",
+                "type": "Asset",
+                "createdAt": "2017-03-02T20:12:08.991Z",
+                "updatedAt": "2017-03-02T20:14:23.551Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "file"
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/file/f81bc12fbde8a16e800fa3dfd22b5a1a/foo.png",
+                    "details": {
+                      "size": 73481,
+                      "image": {
+                        "width": 1227,
+                        "height": 1988
+                      }
+                    },
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "4ckNqu4Y6AkaM2uEQSQ6ye",
+                "type": "Asset",
+                "createdAt": "2017-04-21T12:55:31.598Z",
+                "updatedAt": "2017-04-21T12:55:40.103Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/4ckNqu4Y6AkaM2uEQSQ6ye/ae24eb4d4a45cddbe22c47dce0d00b59/README.md",
+                    "details": {
+                      "size": 17972
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "file7",
+                "type": "Asset",
+                "createdAt": "2017-03-02T21:47:27.429Z",
+                "updatedAt": "2017-03-02T21:49:05.468Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 3,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 2,
+                "firstPublishedAt": "2017-03-02T21:49:05.458Z",
+                "publishedAt": "2017-03-02T21:49:05.458Z"
+              },
+              "fields": {
+                "title": {
+                  "en-US": "file7"
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/file7/4050a82b3ac85a59d56658e2dd6dfa58/foo.png",
+                    "details": {
+                      "size": 73481,
+                      "image": {
+                        "width": 1227,
+                        "height": 1988
+                      }
+                    },
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1u9iURs53uQWIOCqeUQYuO",
+                "type": "Asset",
+                "createdAt": "2017-03-10T15:23:09.069Z",
+                "updatedAt": "2017-03-10T15:23:09.083Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "fileName": "Asset Tests",
+                    "uploadFrom": {
+                      "sys": {
+                        "id": "2mFa9dp9ZfHFRQ9dOCGy6d",
+                        "type": "Link",
+                        "linkType": "Upload"
+                      }
+                    },
+                    "contentType": "application/x-python"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "4S4h0ozlZmICK6EqiIGgMk",
+                "type": "Asset",
+                "createdAt": "2017-04-21T19:28:04.860Z",
+                "updatedAt": "2017-04-21T19:28:04.867Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "fileName": "README.md",
+                    "uploadFrom": {
+                      "sys": {
+                        "id": "s8BDvSV9vpcLaOCaE4VSE",
+                        "type": "Link",
+                        "linkType": "Upload"
+                      }
+                    },
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "30UtYaNTjqmKU0q0iw4C6M",
+                "type": "Asset",
+                "createdAt": "2017-04-21T12:06:25.223Z",
+                "updatedAt": "2017-04-21T12:06:32.043Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/30UtYaNTjqmKU0q0iw4C6M/44a0e542a2ff2217fb218779e156135f/README.md",
+                    "details": {
+                      "size": 18747
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "55dmsSwKmAww6AoO8Su8u4",
+                "type": "Asset",
+                "createdAt": "2017-03-10T15:17:34.634Z",
+                "updatedAt": "2017-03-10T15:17:34.679Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "upload": "https://i.imgur.com/Zmum6k4.png",
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "file3",
+                "type": "Asset",
+                "createdAt": "2017-03-02T20:32:06.899Z",
+                "updatedAt": "2017-03-10T15:27:29.883Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 4,
+                "version": 17,
+                "firstPublishedAt": "2017-03-09T12:03:43.021Z"
+              },
+              "fields": {
+                "title": {
+                  "en-US": "file3"
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/file3/13dd37f4772a99f3380fd712824795ec/foo.png",
+                    "details": {
+                      "size": 73481,
+                      "image": {
+                        "width": 1227,
+                        "height": 1988
+                      }
+                    },
+                    "fileName": "demo app image",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "3bUvnHNBeMygiswOEy2wio",
+                "type": "Asset",
+                "createdAt": "2017-03-10T10:12:22.306Z",
+                "updatedAt": "2017-03-10T10:12:22.311Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "4oGuZRinn2oyGCKmwwCAgo",
+                "type": "Asset",
+                "createdAt": "2017-04-21T19:28:30.212Z",
+                "updatedAt": "2017-04-21T19:28:31.700Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/4oGuZRinn2oyGCKmwwCAgo/cf1f75c39d1e24aa94111d5eb04910ee/README.md",
+                    "details": {
+                      "size": 17972
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1bw1zhJnlWC80waUKYo6gy",
+                "type": "Asset",
+                "createdAt": "2017-03-09T12:28:50.351Z",
+                "updatedAt": "2017-03-09T12:28:50.362Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "fileName": "Asset Tests",
+                    "uploadFrom": {
+                      "sys": {
+                        "id": "1fe2z2e6pyV6GkAwVO0G1U",
+                        "type": "Link",
+                        "linkType": "Upload"
+                      }
+                    },
+                    "contentType": "application/x-python"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_test",
+                "type": "Asset",
+                "createdAt": "2017-03-09T12:31:06.377Z",
+                "updatedAt": "2017-03-09T12:31:06.386Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "upload": "https://i.imgur.com/Zmum6k4.png",
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "6RRhz6zOUgg2aaw0iE24Cg",
+                "type": "Asset",
+                "createdAt": "2017-03-17T16:11:43.386Z",
+                "updatedAt": "2017-03-17T16:11:44.205Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/6RRhz6zOUgg2aaw0iE24Cg/2a2e699996f7538e08106a2f788e6e4a/UPLOAD_ALL_THE_THINGS",
+                    "details": {
+                      "size": 23490,
+                      "image": {
+                        "width": 320,
+                        "height": 240
+                      }
+                    },
+                    "fileName": "UPLOAD ALL THE THINGS",
+                    "contentType": "image/jpeg"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5hmN9L3HpSeMcO6sceCoqO",
+                "type": "Asset",
+                "createdAt": "2017-03-02T20:07:04.879Z",
+                "updatedAt": "2017-03-02T20:07:04.895Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "title": {
+                  "en-US": "foobar"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5pRAvmOy5i4ICkASqwSiUK",
+                "type": "Asset",
+                "createdAt": "2017-03-21T20:06:07.775Z",
+                "updatedAt": "2017-03-21T20:06:11.974Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "readme"
+                },
+                "description": {
+                  "en-US": null
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/5pRAvmOy5i4ICkASqwSiUK/6cb026f4ba764a176a6c3d5e7d911de0/README.md",
+                    "details": {
+                      "size": 18747
+                    },
+                    "fileName": "README.md",
+                    "contentType": "text/plain"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "6xdU5bchry22wqQIewmmG6",
+                "type": "Asset",
+                "createdAt": "2017-03-10T15:21:52.389Z",
+                "updatedAt": "2017-03-10T15:21:52.396Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "upload": "https://i.imgur.com/Zmum6k4.png",
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "file2",
+                "type": "Asset",
+                "createdAt": "2017-03-02T20:28:31.512Z",
+                "updatedAt": "2017-03-02T20:31:02.279Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2
+              },
+              "fields": {
+                "title": {
+                  "en-US": "file"
+                },
+                "file": {
+                  "en-US": {
+                    "url": "//images.contentful.com/facgnwwgj5fe/file2/ab0d19f2ee623cb57e718b630b037fdc/foo.png",
+                    "details": {
+                      "size": 73481,
+                      "image": {
+                        "width": 1227,
+                        "height": 1988
+                      }
+                    },
+                    "fileName": "foo.png",
+                    "contentType": "image/png"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "13eDi35CSWqAuCQ2ysOA6G",
+                "type": "Asset",
+                "createdAt": "2017-03-10T15:17:33.874Z",
+                "updatedAt": "2017-03-10T15:17:33.902Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "fileName": "Asset Tests",
+                    "uploadFrom": {
+                      "sys": {
+                        "id": "2gbsOqVjUytkRYxFGfIV2J",
+                        "type": "Link",
+                        "linkType": "Upload"
+                      }
+                    },
+                    "contentType": "application/x-python"
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "upload_test2",
+                "type": "Asset",
+                "createdAt": "2017-03-07T10:13:17.950Z",
+                "updatedAt": "2017-03-07T10:13:37.142Z",
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 3,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 2,
+                "firstPublishedAt": "2017-03-07T10:13:37.128Z",
+                "publishedAt": "2017-03-07T10:13:37.128Z"
+              },
+              "fields": {
+                "file": {
+                  "en-US": {
+                    "url": "//assets.contentful.com/facgnwwgj5fe/upload_test2/028006bc6daace8c9f872c835762583d/readme",
+                    "details": {
+                      "size": 1631
+                    },
+                    "fileName": "readme",
+                    "uploadFrom": {
+                      "sys": {
+                        "id": "3DFaxFZ7jFBHTa1g27cA7l",
+                        "type": "Link",
+                        "linkType": "Upload"
+                      }
+                    },
+                    "contentType": "application/rst"
+                  }
+                }
+              }
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 06 Feb 2018 10:26:21 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets?skip=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.0; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 06 Feb 2018 10:26:22 GMT
+      Etag:
+      - '"fa4d447770a60483814c6a6d4eb4c0c0"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35948'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 6ee9aea84098bc48bf55f0696959600d
+      Content-Length:
+      - '99'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=q41Qdz4TRE+NUcsT4IKpBc2CeVoAAAAAMG7zMt5C6oNShZ/pw9NCng==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=p+TmRiCIdHHZuItu6lKYhQAAAACTDpGGrN7Nz5+6kmgPuCqc; path=/; Domain=.contentful.com
+      - visid_incap_673446=o+31IrqCTUeDr3gW2JseAM2CeVoAAAAAQUIPAAAAAAAUYW27NvR58YV+6jwZYv/d;
+        expires=Tue, 05 Feb 2019 16:43:45 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 5-56508689-56508692 NNNN CT(88 92 0) RT(1517912780953 34) q(0 0 2 -1) r(10
+        10) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 0,
+          "skip": 100,
+          "limit": 100,
+          "items": []
+        }
+    http_version: 
+  recorded_at: Tue, 06 Feb 2018 10:26:22 GMT
+recorded_with: VCR 3.0.3

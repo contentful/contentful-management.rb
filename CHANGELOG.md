@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Fixed
+* Fixed an error when calling next page on `Contentful::Array` that came from requests without query parameters. [#143](https://github.com/contentful/contentful-management.rb/issues/143)
 
 ## 1.10.0
 ### Added
