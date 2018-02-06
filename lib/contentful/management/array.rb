@@ -24,6 +24,7 @@ module Contentful
         if request
           new_skip = (skip || 0) + (limit || DEFAULT_LIMIT)
           new_request = request.copy
+          new_request.instance_variable_set(:@query, {}) if new_request.query.nil?
           new_request.query[:skip] = new_skip
           response = new_request.get
           ResourceBuilder.new(response, client).run
