@@ -21,8 +21,8 @@ module Contentful
         {
           'name' => attributes.fetch(:name),
           'code' => attributes.fetch(:code),
-          'default' => attributes.fetch(:default, false),
-          'optional' => attributes.fetch(:default, false)
+          'optional' => attributes.fetch(:optional, false),
+          'fallbackCode' => attributes.fetch(:fallback_code, nil)
         }
       end
 

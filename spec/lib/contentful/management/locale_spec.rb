@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe Locale do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'n6spjc167pc2' }
       let(:locale_id) { '0X5xcjckv6RMrd9Trae81p' }
 
@@ -156,6 +156,17 @@ module Contentful
 
               expect(error).to be_a Contentful::Management::NotFound
             end
+          end
+        end
+      end
+
+      describe 'issues' do
+        let!(:space_id) { 'facgnwwgj5fe' }
+        it 'should be able to create a locale with a fallback code' do
+          vcr('locale/fallback_code') do
+            locale = subject.create(space_id, name: 'Foo (BarBaz)', code: 'foo-BB', fallback_code: 'en-US')
+
+            expect(subject.find(space_id, locale.id).code).to eq 'foo-BB'
           end
         end
       end

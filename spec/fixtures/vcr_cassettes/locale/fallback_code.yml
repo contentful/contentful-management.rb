@@ -1,0 +1,263 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/locales
+    body:
+      encoding: UTF-8
+      string: '{"name":"Foo (BarBaz)","code":"foo-BB","optional":false,"fallbackCode":"en-US"}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.0; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 16 Feb 2018 13:31:37 GMT
+      Etag:
+      - W/"4d26ee0011d05dbd542384382c26de1a"
+      Location:
+      - https://api.contentful.com/spaces/facgnwwgj5fe/locales/4YnLeSNLymCAZ6eYwJmhzu
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35995'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 34855fb8025ebee7ed0cb6d03ef8ff4e
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '760'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=TzVtFvqmbwPurxUH54KpBTndhloAAAAAD+Zz8JoW2A76gviV7Wzz8g==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=O1dqFi5vQkxT40Qq6lKYhQAAAAAPRDdyy3Dz+i0aFRKI6mPd; path=/; Domain=.contentful.com
+      - visid_incap_673446=ZjS8ApmhSAGdZe+ytVgJ9jndhloAAAAAQUIPAAAAAABFbB8kAod5eoM3d0BWtWwa;
+        expires=Fri, 15 Feb 2019 14:29:34 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 6-10588518-10588523 NNNN CT(89 88 0) RT(1518787897101 43) q(0 0 2 -1) r(5
+        5) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"Foo (BarBaz)",
+          "internal_code":"foo-BB",
+          "code":"foo-BB",
+          "fallbackCode":"en-US",
+          "default":false,
+          "contentManagementApi":true,
+          "contentDeliveryApi":true,
+          "optional":false,
+          "sys":{
+            "type":"Locale",
+            "id":"4YnLeSNLymCAZ6eYwJmhzu",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2018-02-16T13:31:37Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2018-02-16T13:31:37Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Fri, 16 Feb 2018 13:31:37 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/locales/4YnLeSNLymCAZ6eYwJmhzu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.0; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 16 Feb 2018 13:31:38 GMT
+      Etag:
+      - W/"4d26ee0011d05dbd542384382c26de1a"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35994'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 2f68be92a153a1944ff1572bb6bcc486
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '760'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=1OBlJGeINDCGsBUH54KpBTrdhloAAAAA8oKemEaA5/YFuef5JPknUw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=ZSw/dbPBLn8DlBZN6lKYhQAAAAAvl00f0+ZMueBQurmrxnHy; path=/; Domain=.contentful.com
+      - visid_incap_673446=81TdzYTaTa+W8hVmrOv5bzrdhloAAAAAQUIPAAAAAAB8wsUxyXZU9QOWwsf1WNRK;
+        expires=Fri, 15 Feb 2019 14:29:34 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 6-10588599-10588609 NNNN CT(92 93 0) RT(1518787897665 75) q(0 0 2 -1) r(4
+        4) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"Foo (BarBaz)",
+          "internal_code":"foo-BB",
+          "code":"foo-BB",
+          "fallbackCode":"en-US",
+          "default":false,
+          "contentManagementApi":true,
+          "contentDeliveryApi":true,
+          "optional":false,
+          "sys":{
+            "type":"Locale",
+            "id":"4YnLeSNLymCAZ6eYwJmhzu",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2018-02-16T13:31:37Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2018-02-16T13:31:37Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Fri, 16 Feb 2018 13:31:37 GMT
+recorded_with: VCR 3.0.3
