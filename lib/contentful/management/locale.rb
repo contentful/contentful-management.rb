@@ -15,6 +15,7 @@ module Contentful
       property :publish, :boolean
       property :default, :boolean
       property :optional, :boolean
+      property :fallbackCode, :string
 
       # @private
       def self.create_attributes(_client, attributes)
