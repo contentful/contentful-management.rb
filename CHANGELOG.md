@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 1.10.1
 ### Fixed
 * Fixed an error when calling next page on `Contentful::Array` that came from requests without query parameters. [#143](https://github.com/contentful/contentful-management.rb/issues/143)
 * Fixed an issue with sending `default` on newly created locales.
