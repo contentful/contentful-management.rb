@@ -1,12 +1,13 @@
-require_relative 'resource'
 require_relative 'field'
-require_relative 'validation'
-require_relative 'content_type_entry_methods_factory'
-require_relative 'content_type_editor_interface_methods_factory'
-require_relative 'content_type_snapshot_methods_factory'
 require_relative 'support'
-require_relative 'resource/all_published'
+require_relative 'resource'
+require_relative 'validation'
 require_relative 'resource/publisher'
+require_relative 'resource/all_published'
+require_relative 'resource/environment_aware'
+require_relative 'content_type_entry_methods_factory'
+require_relative 'content_type_snapshot_methods_factory'
+require_relative 'content_type_editor_interface_methods_factory'
 
 module Contentful
   module Management
@@ -28,10 +29,11 @@ module Contentful
       ].freeze
 
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
       include Contentful::Management::Resource::Publisher
       extend Contentful::Management::Resource::AllPublished
+      include Contentful::Management::Resource::EnvironmentAware
+      include Contentful::Management::Resource::SystemProperties
 
       property :name, :string
       property :description, :string
@@ -79,7 +81,7 @@ module Contentful
         if id
           update(@properties)
         else
-          new_instance = self.class.create(client, space.id, @properties)
+          new_instance = self.class.create(client, space.id, environment_id, @properties)
           refresh_data(new_instance)
         end
       end

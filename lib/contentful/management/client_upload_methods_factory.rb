@@ -14,6 +14,14 @@ module Contentful
       def all(*)
         fail 'Not supported'
       end
+
+      def find(resource_id)
+        associated_class.find(client, @space_id, resource_id)
+      end
+
+      def create(attributes)
+        associated_class.create(client, @space_id, attributes)
+      end
     end
   end
 end

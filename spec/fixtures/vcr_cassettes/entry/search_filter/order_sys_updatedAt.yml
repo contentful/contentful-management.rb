@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Wed, 20 Aug 2014 08:35:09 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -339,7 +339,7 @@ http_interactions:
   recorded_at: Wed, 20 Aug 2014 08:35:10 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries?order=sys.updatedAt
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries?order=sys.updatedAt
     body:
       encoding: US-ASCII
       string: ''

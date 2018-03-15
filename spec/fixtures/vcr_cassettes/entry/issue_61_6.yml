@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/2GmtCwDBcIu4giMgQGIIcq
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/2GmtCwDBcIu4giMgQGIIcq
     body:
       encoding: US-ASCII
       string: ''
@@ -116,7 +116,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 14:21:23 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/2GmtCwDBcIu4giMgQGIIcq
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/2GmtCwDBcIu4giMgQGIIcq
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-GB":"Test With Previously Empty Field"},"value":{"en-GB":"goodbye"}}}'
@@ -233,7 +233,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 14:21:24 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/2GmtCwDBcIu4giMgQGIIcq/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/2GmtCwDBcIu4giMgQGIIcq/published
     body:
       encoding: US-ASCII
       string: ''
@@ -352,7 +352,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 14:21:25 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/2GmtCwDBcIu4giMgQGIIcq
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/2GmtCwDBcIu4giMgQGIIcq
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-GB":"Test With Previously Empty Field"},"value":{"en-GB":null}}}'
@@ -469,7 +469,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 14:21:26 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/2GmtCwDBcIu4giMgQGIIcq/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/2GmtCwDBcIu4giMgQGIIcq/published
     body:
       encoding: US-ASCII
       string: ''

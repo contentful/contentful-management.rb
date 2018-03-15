@@ -22,5 +22,8 @@ Metrics/LineLength:
 Metrics/ClassLength:
   Max: 350
 
+Metrics/ModuleLength:
+  Max: 350
+
 Style/SignalException:
   EnforcedStyle: 'semantic'

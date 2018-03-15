@@ -12,15 +12,15 @@ module Contentful
       end
 
       def all(params = {})
-        super(nil, params)
+        super(params)
       end
 
       def find(personal_access_token_id)
-        super(nil, personal_access_token_id)
+        super(personal_access_token_id)
       end
 
       def create(attributes)
-        super(nil, attributes)
+        super(attributes)
       end
     end
   end

@@ -7,17 +7,22 @@ module Contentful
     class ClientWebhookCallMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
 
-      def all(space_id, webhook_id, _params = {})
+      def initialize(client, space_id, webhook_id)
+        super(client, space_id)
+        @webhook_id = webhook_id
+      end
+
+      def all(_params = {})
         @resource_requester.find(
-          space_id: space_id,
-          webhook_id: webhook_id
+          space_id: @space_id,
+          webhook_id: @webhook_id
         )
       end
 
-      def find(space_id, webhook_id, call_id)
+      def find(call_id)
         @resource_requester.find(
-          space_id: space_id,
-          webhook_id: webhook_id,
+          space_id: @space_id,
+          webhook_id: @webhook_id,
           call_id: call_id
         )
       end

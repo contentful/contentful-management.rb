@@ -2,30 +2,30 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/fIpsfQSOd22IsqMQCiG0K
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/fIpsfQSOd22IsqMQCiG0K
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      User-Agent:
-      - RubyContentfulManagementGem/0.7.3
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
       Authorization:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
-      Content-Length:
-      - '0'
       Connection:
       - close
       Host:
       - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
   response:
     status:
       code: 200
       message: OK
     headers:
       Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
       Access-Control-Allow-Methods:
       - DELETE,GET,HEAD,POST,PUT,OPTIONS
       Access-Control-Allow-Origin:
@@ -39,38 +39,47 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Tue, 19 Jan 2016 14:15:51 GMT
+      - Thu, 15 Mar 2018 14:45:39 GMT
       Etag:
-      - '"4e1c0066d19c963ced7d05d0b41e4e0e"'
+      - '"6a30a8afac0d8a347c4fc909a3fae60e"'
       Server:
-      - nginx
+      - Contentful
       Strict-Transport-Security:
       - max-age=15768000
       X-Content-Type-Options:
       - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35988'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
       X-Contentful-Request-Id:
-      - content-api:4RDHYoSV9SIMeYkquwIQGM
-      X-Powered-By:
-      - Express
+      - 8cbe4441e924b0f92b22ad4b90e223be
       Content-Length:
       - '1156'
       Connection:
       - Close
+      Set-Cookie:
+      - incap_ses_765_673446=xHLgKCCMNkiwyAhBv9OdChKHqloAAAAAHYK6Ukvd1SBajehiaXm0vA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=p4WbcqqmWXCqO3946lKYhQAAAACPBKF7mncWinb+ybmSq4+r; path=/; Domain=.contentful.com
+      - visid_incap_673446=6I1oGvtfRESl/Du/OPwClxKHqloAAAAAQUIPAAAAAAATEQed2xa+UXxlkx3h6xj+;
+        expires=Fri, 15 Mar 2019 07:37:28 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 12-49814338-49814353 NNNN CT(101 99 0) RT(1521125137593 45) q(0 0 2 -1) r(9
+        9) U5
+      X-Cdn:
+      - Incapsula
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
           "sys": {
-            "id": "fIpsfQSOd22IsqMQCiG0K",
-            "type": "Entry",
-            "createdAt": "2016-01-19T13:51:58.820Z",
-            "createdBy": {
-              "sys": {
-                "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
-              }
-            },
             "space": {
               "sys": {
                 "type": "Link",
@@ -78,16 +87,26 @@ http_interactions:
                 "id": "u2viwgfeal0o"
               }
             },
-            "contentType": {
+            "id": "fIpsfQSOd22IsqMQCiG0K",
+            "type": "Entry",
+            "createdAt": "2016-01-19T13:51:58.820Z",
+            "updatedAt": "2016-01-20T13:08:55.068Z",
+            "createdBy": {
               "sys": {
                 "type": "Link",
-                "linkType": "ContentType",
-                "id": "someType"
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
-            "publishedCounter": 1,
-            "publishedAt": "2016-01-19T13:52:13.524Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedCounter": 6,
+            "version": 45,
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -95,14 +114,14 @@ http_interactions:
                 "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "publishedVersion": 34,
-            "version": 35,
-            "updatedAt": "2016-01-19T13:52:13.539Z",
-            "updatedBy": {
+            "publishedVersion": 44,
+            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
+            "publishedAt": "2016-01-20T13:08:55.061Z",
+            "contentType": {
               "sys": {
                 "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                "linkType": "ContentType",
+                "id": "someType"
               }
             }
           },
@@ -116,33 +135,37 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 19 Jan 2016 14:15:47 GMT
+  recorded_at: Thu, 15 Mar 2018 14:45:38 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/fIpsfQSOd22IsqMQCiG0K
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/fIpsfQSOd22IsqMQCiG0K
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-GB":"Test With Already Populated Field"},"value":{"en-GB":"goodbye"}}}'
     headers:
-      User-Agent:
-      - RubyContentfulManagementGem/0.7.3
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
       Authorization:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Version:
-      - '35'
+      - '45'
+      Version:
+      - '45'
       Connection:
       - close
       Host:
       - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
   response:
     status:
       code: 200
       message: OK
     headers:
       Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
       Access-Control-Allow-Methods:
       - DELETE,GET,HEAD,POST,PUT,OPTIONS
       Access-Control-Allow-Origin:
@@ -156,46 +179,47 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Tue, 19 Jan 2016 14:15:52 GMT
+      - Thu, 15 Mar 2018 14:45:39 GMT
       Etag:
-      - '"70a99177055547fd292104481d82a2c0"'
+      - '"e025e1e2b2269a2416f9511a65c42de0"'
       Server:
-      - nginx
+      - Contentful
       Strict-Transport-Security:
       - max-age=15768000
       X-Content-Type-Options:
       - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35987'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
       X-Contentful-Request-Id:
-      - content-api:2y8OaGog5Oc068e8cQEiGi
-      X-Powered-By:
-      - Express
+      - 75ade9a1b167447d7cc6c5358e6a9afa
       Content-Length:
       - '1158'
       Connection:
       - Close
+      Set-Cookie:
+      - incap_ses_765_673446=KrC9aFzzE0zMyQhBv9OdChOHqloAAAAAn9+F5G8ha4vGUcntjTjjww==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=6SLrdDhEEBprPrrj6lKYhQAAAAD2XnWshaavUxQZZV1nBxdD; path=/; Domain=.contentful.com
+      - visid_incap_673446=sWb4xG3aSFGvUnaSqd1QLxOHqloAAAAAQUIPAAAAAABC0nnEk6RJsMOLap1MLwwz;
+        expires=Fri, 15 Mar 2019 07:37:36 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-33287724-33287730 NNNN CT(93 95 0) RT(1521125138645 41) q(0 0 2 -1) r(5
+        5) U5
+      X-Cdn:
+      - Incapsula
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
-          "fields": {
-            "name": {
-              "en-GB": "Test With Already Populated Field"
-            },
-            "value": {
-              "en-GB": "goodbye"
-            }
-          },
           "sys": {
-            "id": "fIpsfQSOd22IsqMQCiG0K",
-            "type": "Entry",
-            "createdAt": "2016-01-19T13:51:58.820Z",
-            "createdBy": {
-              "sys": {
-                "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
-              }
-            },
             "space": {
               "sys": {
                 "type": "Link",
@@ -203,16 +227,26 @@ http_interactions:
                 "id": "u2viwgfeal0o"
               }
             },
-            "contentType": {
+            "id": "fIpsfQSOd22IsqMQCiG0K",
+            "type": "Entry",
+            "createdAt": "2016-01-19T13:51:58.820Z",
+            "updatedAt": "2018-03-15T14:45:39.605Z",
+            "createdBy": {
               "sys": {
                 "type": "Link",
-                "linkType": "ContentType",
-                "id": "someType"
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
-            "publishedCounter": 1,
-            "publishedAt": "2016-01-19T13:52:13.524Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedCounter": 6,
+            "version": 46,
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -220,48 +254,58 @@ http_interactions:
                 "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "publishedVersion": 34,
-            "version": 36,
-            "updatedAt": "2016-01-19T14:15:52.329Z",
-            "updatedBy": {
+            "publishedVersion": 44,
+            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
+            "publishedAt": "2016-01-20T13:08:55.061Z",
+            "contentType": {
               "sys": {
                 "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                "linkType": "ContentType",
+                "id": "someType"
               }
+            }
+          },
+          "fields": {
+            "name": {
+              "en-GB": "Test With Already Populated Field"
+            },
+            "value": {
+              "en-GB": "goodbye"
             }
           }
         }
     http_version: 
-  recorded_at: Tue, 19 Jan 2016 14:15:48 GMT
+  recorded_at: Thu, 15 Mar 2018 14:45:38 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/fIpsfQSOd22IsqMQCiG0K/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/fIpsfQSOd22IsqMQCiG0K/published
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      User-Agent:
-      - RubyContentfulManagementGem/0.7.3
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
       Authorization:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Version:
-      - '36'
-      Content-Length:
-      - '0'
+      - '46'
+      Version:
+      - '46'
       Connection:
       - close
       Host:
       - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
   response:
     status:
       code: 200
       message: OK
     headers:
       Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
       Access-Control-Allow-Methods:
       - DELETE,GET,HEAD,POST,PUT,OPTIONS
       Access-Control-Allow-Origin:
@@ -275,46 +319,47 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Tue, 19 Jan 2016 14:15:53 GMT
+      - Thu, 15 Mar 2018 14:45:40 GMT
       Etag:
-      - '"f460a8e2480eabe40a6dbf4c1cdc1082"'
+      - '"1c8610e5f9e69edc85251c5cac8b37b8"'
       Server:
-      - nginx
+      - Contentful
       Strict-Transport-Security:
       - max-age=15768000
       X-Content-Type-Options:
       - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35986'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
       X-Contentful-Request-Id:
-      - content-api:21AwenjeW86wcQGcQ8wcyO
-      X-Powered-By:
-      - Express
+      - b49620e53d4446109053dc983b019fd1
       Content-Length:
       - '1158'
       Connection:
       - Close
+      Set-Cookie:
+      - incap_ses_765_673446=XMNgF7zpyT3SywhBv9OdChSHqloAAAAAhpmWlrbDBOMxEIdRTBHAaQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=AmMXKUNc4hckxpGW6lKYhQAAAACBR2EMrxJ6czgHa2L9UHOb; path=/; Domain=.contentful.com
+      - visid_incap_673446=OQRomcuwQMW0Z7NlA2m0hxSHqloAAAAAQUIPAAAAAACTc/NkWrPJaQiKy8OCbauu;
+        expires=Fri, 15 Mar 2019 07:37:37 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 0-10079321-10079322 NNNN CT(87 87 0) RT(1521125139246 44) q(0 0 2 -1) r(12
+        12) U5
+      X-Cdn:
+      - Incapsula
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
-          "fields": {
-            "name": {
-              "en-GB": "Test With Already Populated Field"
-            },
-            "value": {
-              "en-GB": "goodbye"
-            }
-          },
           "sys": {
-            "id": "fIpsfQSOd22IsqMQCiG0K",
-            "type": "Entry",
-            "createdAt": "2016-01-19T13:51:58.820Z",
-            "createdBy": {
-              "sys": {
-                "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
-              }
-            },
             "space": {
               "sys": {
                 "type": "Link",
@@ -322,16 +367,26 @@ http_interactions:
                 "id": "u2viwgfeal0o"
               }
             },
-            "contentType": {
+            "id": "fIpsfQSOd22IsqMQCiG0K",
+            "type": "Entry",
+            "createdAt": "2016-01-19T13:51:58.820Z",
+            "updatedAt": "2018-03-15T14:45:40.711Z",
+            "createdBy": {
               "sys": {
                 "type": "Link",
-                "linkType": "ContentType",
-                "id": "someType"
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
-            "publishedCounter": 2,
-            "publishedAt": "2016-01-19T14:15:53.082Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedCounter": 7,
+            "version": 47,
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -339,46 +394,58 @@ http_interactions:
                 "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "publishedVersion": 36,
-            "version": 37,
-            "updatedAt": "2016-01-19T14:15:53.082Z",
-            "updatedBy": {
+            "publishedVersion": 46,
+            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
+            "publishedAt": "2018-03-15T14:45:40.711Z",
+            "contentType": {
               "sys": {
                 "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                "linkType": "ContentType",
+                "id": "someType"
               }
+            }
+          },
+          "fields": {
+            "name": {
+              "en-GB": "Test With Already Populated Field"
+            },
+            "value": {
+              "en-GB": "goodbye"
             }
           }
         }
     http_version: 
-  recorded_at: Tue, 19 Jan 2016 14:15:49 GMT
+  recorded_at: Thu, 15 Mar 2018 14:45:39 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/fIpsfQSOd22IsqMQCiG0K
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/fIpsfQSOd22IsqMQCiG0K
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-GB":"Test With Already Populated Field"},"value":{"en-GB":"hello"}}}'
     headers:
-      User-Agent:
-      - RubyContentfulManagementGem/0.7.3
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
       Authorization:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Version:
-      - '37'
+      - '47'
+      Version:
+      - '47'
       Connection:
       - close
       Host:
       - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
   response:
     status:
       code: 200
       message: OK
     headers:
       Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
       Access-Control-Allow-Methods:
       - DELETE,GET,HEAD,POST,PUT,OPTIONS
       Access-Control-Allow-Origin:
@@ -392,46 +459,47 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Tue, 19 Jan 2016 14:15:54 GMT
+      - Thu, 15 Mar 2018 14:45:41 GMT
       Etag:
-      - '"bb4787d70e09cb1c16c8ea94c8c94c01"'
+      - '"cc15010614196dc61d4e4f5316c4a688"'
       Server:
-      - nginx
+      - Contentful
       Strict-Transport-Security:
       - max-age=15768000
       X-Content-Type-Options:
       - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35985'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
       X-Contentful-Request-Id:
-      - content-api:3cXw6aXSVqko80aiqs6gGi
-      X-Powered-By:
-      - Express
+      - 24f22251137f34a33b215d86eec85f87
       Content-Length:
       - '1156'
       Connection:
       - Close
+      Set-Cookie:
+      - incap_ses_765_673446=bqTefLdgDyfzzAhBv9OdChWHqloAAAAA09DszDL5qV9ZjlpttjzJ2A==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=XNHIXB0TL0Gtl2dy6lKYhQAAAAA35c+6z1VvNeb/8HCjOz6K; path=/; Domain=.contentful.com
+      - visid_incap_673446=UEqVodPrTFOJ6c+Tj8FyfxWHqloAAAAAQUIPAAAAAAAjfXle9N/z6VG1AjYyrmyq;
+        expires=Fri, 15 Mar 2019 07:37:36 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 7-32106278-32106282 NNNN CT(105 106 0) RT(1521125140479 81) q(0 0 2 -1) r(5
+        5) U5
+      X-Cdn:
+      - Incapsula
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
-          "fields": {
-            "name": {
-              "en-GB": "Test With Already Populated Field"
-            },
-            "value": {
-              "en-GB": "hello"
-            }
-          },
           "sys": {
-            "id": "fIpsfQSOd22IsqMQCiG0K",
-            "type": "Entry",
-            "createdAt": "2016-01-19T13:51:58.820Z",
-            "createdBy": {
-              "sys": {
-                "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
-              }
-            },
             "space": {
               "sys": {
                 "type": "Link",
@@ -439,16 +507,26 @@ http_interactions:
                 "id": "u2viwgfeal0o"
               }
             },
-            "contentType": {
+            "id": "fIpsfQSOd22IsqMQCiG0K",
+            "type": "Entry",
+            "createdAt": "2016-01-19T13:51:58.820Z",
+            "updatedAt": "2018-03-15T14:45:41.495Z",
+            "createdBy": {
               "sys": {
                 "type": "Link",
-                "linkType": "ContentType",
-                "id": "someType"
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
-            "publishedCounter": 2,
-            "publishedAt": "2016-01-19T14:15:53.082Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedCounter": 7,
+            "version": 48,
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -456,48 +534,58 @@ http_interactions:
                 "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "publishedVersion": 36,
-            "version": 38,
-            "updatedAt": "2016-01-19T14:15:54.095Z",
-            "updatedBy": {
+            "publishedVersion": 46,
+            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
+            "publishedAt": "2018-03-15T14:45:40.711Z",
+            "contentType": {
               "sys": {
                 "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                "linkType": "ContentType",
+                "id": "someType"
               }
+            }
+          },
+          "fields": {
+            "name": {
+              "en-GB": "Test With Already Populated Field"
+            },
+            "value": {
+              "en-GB": "hello"
             }
           }
         }
     http_version: 
-  recorded_at: Tue, 19 Jan 2016 14:15:50 GMT
+  recorded_at: Thu, 15 Mar 2018 14:45:40 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/fIpsfQSOd22IsqMQCiG0K/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/fIpsfQSOd22IsqMQCiG0K/published
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      User-Agent:
-      - RubyContentfulManagementGem/0.7.3
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
       Authorization:
       - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Version:
-      - '38'
-      Content-Length:
-      - '0'
+      - '48'
+      Version:
+      - '48'
       Connection:
       - close
       Host:
       - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
   response:
     status:
       code: 200
       message: OK
     headers:
       Access-Control-Allow-Headers:
-      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
       Access-Control-Allow-Methods:
       - DELETE,GET,HEAD,POST,PUT,OPTIONS
       Access-Control-Allow-Origin:
@@ -511,46 +599,47 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Date:
-      - Tue, 19 Jan 2016 14:15:54 GMT
+      - Thu, 15 Mar 2018 14:45:42 GMT
       Etag:
-      - '"9ef690ebc05f2d03e6b911b0fa377ada"'
+      - '"7ffb1540a04c25c62533427c6b849e41"'
       Server:
-      - nginx
+      - Contentful
       Strict-Transport-Security:
       - max-age=15768000
       X-Content-Type-Options:
       - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35984'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
       X-Contentful-Request-Id:
-      - content-api:27oLCn8vMwmoCKYucwSAcc
-      X-Powered-By:
-      - Express
+      - 314593c5bb63c00e0f43e5aa308bb559
       Content-Length:
       - '1156'
       Connection:
       - Close
+      Set-Cookie:
+      - incap_ses_765_673446=fRGJWZ94q1aAzghBv9OdChWHqloAAAAAidY94uWd1XaPwqCVbhnJbA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=yKm4LkpM4FWbIbTB6lKYhQAAAACjaQ8gnFP9Qax4Wup5q0kK; path=/; Domain=.contentful.com
+      - visid_incap_673446=JEr0akPbSi6RuLyLs7IJdhWHqloAAAAAQUIPAAAAAABNK4s/IRS26G4y3PsYDdYJ;
+        expires=Fri, 15 Mar 2019 07:37:36 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 14-59028787-59028794 NNNN CT(92 93 0) RT(1521125141300 43) q(0 0 2 -1) r(6
+        6) U5
+      X-Cdn:
+      - Incapsula
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |
         {
-          "fields": {
-            "name": {
-              "en-GB": "Test With Already Populated Field"
-            },
-            "value": {
-              "en-GB": "hello"
-            }
-          },
           "sys": {
-            "id": "fIpsfQSOd22IsqMQCiG0K",
-            "type": "Entry",
-            "createdAt": "2016-01-19T13:51:58.820Z",
-            "createdBy": {
-              "sys": {
-                "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
-              }
-            },
             "space": {
               "sys": {
                 "type": "Link",
@@ -558,16 +647,26 @@ http_interactions:
                 "id": "u2viwgfeal0o"
               }
             },
-            "contentType": {
+            "id": "fIpsfQSOd22IsqMQCiG0K",
+            "type": "Entry",
+            "createdAt": "2016-01-19T13:51:58.820Z",
+            "updatedAt": "2018-03-15T14:45:42.338Z",
+            "createdBy": {
               "sys": {
                 "type": "Link",
-                "linkType": "ContentType",
-                "id": "someType"
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
-            "publishedCounter": 3,
-            "publishedAt": "2016-01-19T14:15:54.805Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedCounter": 8,
+            "version": 49,
             "publishedBy": {
               "sys": {
                 "type": "Link",
@@ -575,18 +674,26 @@ http_interactions:
                 "id": "4SejVrWT96dvL9IV4Nb7sQ"
               }
             },
-            "publishedVersion": 38,
-            "version": 39,
-            "updatedAt": "2016-01-19T14:15:54.805Z",
-            "updatedBy": {
+            "publishedVersion": 48,
+            "firstPublishedAt": "2016-01-19T13:52:13.524Z",
+            "publishedAt": "2018-03-15T14:45:42.338Z",
+            "contentType": {
               "sys": {
                 "type": "Link",
-                "linkType": "User",
-                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                "linkType": "ContentType",
+                "id": "someType"
               }
+            }
+          },
+          "fields": {
+            "name": {
+              "en-GB": "Test With Already Populated Field"
+            },
+            "value": {
+              "en-GB": "hello"
             }
           }
         }
     http_version: 
-  recorded_at: Tue, 19 Jan 2016 14:15:51 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Thu, 15 Mar 2018 14:45:41 GMT
+recorded_with: VCR 4.0.0

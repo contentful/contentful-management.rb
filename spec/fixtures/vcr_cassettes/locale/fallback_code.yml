@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/locales
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/locales
     body:
       encoding: UTF-8
       string: '{"name":"Foo (BarBaz)","code":"foo-BB","optional":false,"fallbackCode":"en-US"}'
@@ -49,7 +49,7 @@ http_interactions:
       Etag:
       - W/"4d26ee0011d05dbd542384382c26de1a"
       Location:
-      - https://api.contentful.com/spaces/facgnwwgj5fe/locales/4YnLeSNLymCAZ6eYwJmhzu
+      - https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/locales/4YnLeSNLymCAZ6eYwJmhzu
       Server:
       - Contentful
       Strict-Transport-Security:
@@ -133,7 +133,7 @@ http_interactions:
   recorded_at: Fri, 16 Feb 2018 13:31:37 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/locales/4YnLeSNLymCAZ6eYwJmhzu
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/locales/4YnLeSNLymCAZ6eYwJmhzu
     body:
       encoding: US-ASCII
       string: ''

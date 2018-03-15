@@ -11,18 +11,18 @@ module Contentful
       let(:webhook_call_id) { '6r2EQ0iVBmYyyq0UMWKoge' }
       let!(:client) { Client.new(token) }
 
-      subject { client.webhook_calls }
+      subject { client.webhook_calls(space_id, webhook_id) }
 
       describe '.all' do
         it 'class method also works' do
           vcr('webhook_call/all') { expect(Contentful::Management::WebhookCall.all(client, space_id, webhook_id)).to be_kind_of Contentful::Management::Array }
         end
         it 'returns a Contentful::Array' do
-          vcr('webhook_call/all') { expect(subject.all(space_id, webhook_id)).to be_kind_of Contentful::Management::Array }
+          vcr('webhook_call/all') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
         it 'builds a Contentful::Management::WebhookCall object' do
           vcr('webhook_call/all') {
-            webhook_call = subject.all(space_id, webhook_id).first
+            webhook_call = subject.all.first
 
             expect(webhook_call).to be_kind_of Contentful::Management::WebhookCall
             expect(webhook_call.id).to be_truthy
@@ -41,11 +41,11 @@ module Contentful
           vcr('webhook_call/find') { expect(Contentful::Management::WebhookCall.find(client, space_id, webhook_id, webhook_call_id)).to be_kind_of Contentful::Management::WebhookCall }
         end
         it 'returns a Contentful::Management::WebhookCall' do
-          vcr('webhook_call/find') { expect(subject.find(space_id, webhook_id, webhook_call_id)).to be_kind_of Contentful::Management::WebhookCall }
+          vcr('webhook_call/find') { expect(subject.find(webhook_call_id)).to be_kind_of Contentful::Management::WebhookCall }
         end
         it 'returns webhook for a given id' do
           vcr('webhook_call/find') do
-            webhook_call = subject.find(space_id, webhook_id, webhook_call_id)
+            webhook_call = subject.find(webhook_call_id)
             expect(webhook_call.id).to eq webhook_call_id
             expect(webhook_call.status_code).to eq 201
             expect(webhook_call.event_type).to eq "publish"
@@ -59,7 +59,7 @@ module Contentful
         end
         it 'returns an error when call does not exists' do
           vcr('webhook_call/find_not_found') do
-            result = subject.find(space_id, webhook_id, 'not_exist')
+            result = subject.find('not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/n6spjc167pc2/locales
+    uri: https://api.contentful.com/spaces/n6spjc167pc2/environments/master/locales
     body:
       encoding: UTF-8
       string: '{"name":"testLocalCreate","code":"bg"}'
@@ -35,7 +35,7 @@ http_interactions:
       X-Contentful-Request-Id:
       - 85f-1209864457
       Location:
-      - https://api.contentful.com/spaces/n6spjc167pc2/locales/3Gg9sXSSADt1aXzdDt4MD4
+      - https://api.contentful.com/spaces/n6spjc167pc2/environments/master/locales/3Gg9sXSSADt1aXzdDt4MD4
       Etag:
       - '"4449fa1febea2acf910f6b29e6ea1e4e"'
       Accept-Ranges:

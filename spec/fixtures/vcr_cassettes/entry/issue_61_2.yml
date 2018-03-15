@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/content_types/someType
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/content_types/someType
     body:
       encoding: US-ASCII
       string: ''
@@ -121,7 +121,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:52 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_2
     body:
       encoding: UTF-8
       string: '{"fields":{}}'
@@ -220,7 +220,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:53 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_2
     body:
       encoding: UTF-8
       string: '{"fields":{"value":{"en-GB":"goodbye"}}}'
@@ -323,7 +323,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:54 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_2/published
     body:
       encoding: US-ASCII
       string: ''
@@ -439,7 +439,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:55 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_2
     body:
       encoding: US-ASCII
       string: ''
@@ -553,7 +553,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:55 GMT
 - request:
     method: delete
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_2
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_2
     body:
       encoding: US-ASCII
       string: ''

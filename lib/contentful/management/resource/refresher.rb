@@ -12,7 +12,7 @@ module Contentful
 
         # @private
         def refresh_find
-          self.class.find(client, space.id, id)
+          self.class.find(client, space.id, environment_id, id)
         end
 
         # @private

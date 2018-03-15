@@ -16,9 +16,7 @@ module Contentful
       #
       # @return [Contentful::Management::Array<Contentful::Management::Space>]
       def all
-        spaces = @resource_requester.all
-        client.update_dynamic_entry_cache_for_spaces!(spaces)
-        spaces
+        @resource_requester.all
       end
 
       # Gets a specific space.
@@ -27,9 +25,7 @@ module Contentful
       #
       # @return [Contentful::Management::Space]
       def find(space_id)
-        space = @resource_requester.find(space_id: space_id)
-        client.update_dynamic_entry_cache_for_space!(space) if space.is_a? Space
-        space
+        @resource_requester.find(space_id: space_id)
       end
 
       # Create a space.

@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Wed, 15 Oct 2014 10:22:13 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -376,7 +376,7 @@ http_interactions:
   recorded_at: Wed, 15 Oct 2014 10:22:14 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types/category_content_type
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types/category_content_type
     body:
       encoding: US-ASCII
       string: ''
@@ -523,7 +523,7 @@ http_interactions:
   recorded_at: Wed, 15 Oct 2014 10:22:15 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types/category_content_type
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types/category_content_type
     body:
       encoding: UTF-8
       string: '{"name":"Category","description":"","fields":[{"id":"name","name":"Name","type":"Text","localized":true,"validations":[{"size":{"min":2,"max":222}},{"in":["dom","chatka"]}]},{"id":"description","name":"Description","type":"Text"},{"id":"valid","name":"Valid","type":"Text","validations":[{"in":["foo","bar"]},{"size":{"min":2,"max":10}}]},{"id":"asset_valid","name":"AssetValid","type":"Link","linkType":"Asset","validations":[{"linkMimetypeGroup":"pdfdocument"}]}]}'

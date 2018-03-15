@@ -1,33 +1,34 @@
-require 'contentful/management'
-require 'contentful/management/response'
-require 'contentful/management/resource_builder'
-
-require 'contentful/management/version'
-
-require 'contentful/management/client_space_methods_factory'
-require 'contentful/management/client_space_membership_methods_factory'
-require 'contentful/management/client_organization_methods_factory'
-require 'contentful/management/client_user_methods_factory'
-require 'contentful/management/client_api_key_methods_factory'
-require 'contentful/management/client_personal_access_tokens_methods_factory'
-require 'contentful/management/client_asset_methods_factory'
-require 'contentful/management/client_content_type_methods_factory'
-require 'contentful/management/client_entry_methods_factory'
-require 'contentful/management/client_locale_methods_factory'
-require 'contentful/management/client_role_methods_factory'
-require 'contentful/management/client_ui_extension_methods_factory'
-require 'contentful/management/client_editor_interface_methods_factory'
-require 'contentful/management/client_webhook_methods_factory'
-require 'contentful/management/client_webhook_call_methods_factory'
-require 'contentful/management/client_webhook_health_methods_factory'
-require 'contentful/management/client_upload_methods_factory'
-require 'contentful/management/client_snapshot_methods_factory'
-
-require_relative 'request'
 require 'http'
 require 'json'
 require 'logger'
 require 'rbconfig'
+
+require_relative 'request'
+
+require 'contentful/management'
+require 'contentful/management/version'
+require 'contentful/management/response'
+require 'contentful/management/resource_builder'
+
+require 'contentful/management/client_role_methods_factory'
+require 'contentful/management/client_user_methods_factory'
+require 'contentful/management/client_space_methods_factory'
+require 'contentful/management/client_asset_methods_factory'
+require 'contentful/management/client_entry_methods_factory'
+require 'contentful/management/client_locale_methods_factory'
+require 'contentful/management/client_upload_methods_factory'
+require 'contentful/management/client_api_key_methods_factory'
+require 'contentful/management/client_webhook_methods_factory'
+require 'contentful/management/client_snapshot_methods_factory'
+require 'contentful/management/client_environment_methods_factory'
+require 'contentful/management/client_organization_methods_factory'
+require 'contentful/management/client_content_type_methods_factory'
+require 'contentful/management/client_ui_extension_methods_factory'
+require 'contentful/management/client_webhook_call_methods_factory'
+require 'contentful/management/client_webhook_health_methods_factory'
+require 'contentful/management/client_space_membership_methods_factory'
+require 'contentful/management/client_editor_interface_methods_factory'
+require 'contentful/management/client_personal_access_tokens_methods_factory'
 
 module Contentful
   module Management
@@ -48,7 +49,7 @@ module Contentful
         logger: false,
         log_level: Logger::INFO,
         raise_errors: false,
-        dynamic_entries: [],
+        dynamic_entries: {},
         disable_content_type_caching: false,
         proxy_host: nil,
         proxy_port: nil,
@@ -94,7 +95,7 @@ module Contentful
       end
 
       # Allows manipulation of spaces in context of the current client
-      # Allows listing all spaces for client and finding one by ID.
+      # Allows listing all spaces for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSpaceMethodsFactory]
@@ -102,13 +103,22 @@ module Contentful
         ClientSpaceMethodsFactory.new(self)
       end
 
+      # Allows manipulation of environments in context of the current client
+      # Allows listing all environments for client, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientEnvironmentMethodsFactory]
+      def environments(space_id)
+        ClientEnvironmentMethodsFactory.new(self, space_id)
+      end
+
       # Allows manipulation of space memberships in context of the current client
       # Allows listing all space memberships for client, creating new and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSpaceMembershipMethodsFactory]
-      def space_memberships
-        ClientSpaceMembershipMethodsFactory.new(self)
+      def space_memberships(space_id)
+        ClientSpaceMembershipMethodsFactory.new(self, space_id)
       end
 
       # Allows viewing of organizations in context of the current client
@@ -134,8 +144,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientApiKeyMethodsFactory]
-      def api_keys
-        ClientApiKeyMethodsFactory.new(self)
+      def api_keys(space_id)
+        ClientApiKeyMethodsFactory.new(self, space_id)
       end
 
       # Allows manipulation of personal access tokens in context of the current client
@@ -152,8 +162,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientAssetMethodsFactory]
-      def assets
-        ClientAssetMethodsFactory.new(self)
+      def assets(space_id, environment_id)
+        ClientAssetMethodsFactory.new(self, space_id, environment_id)
       end
 
       # Allows manipulation of content types in context of the current client
@@ -161,8 +171,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientContentTypeMethodsFactory]
-      def content_types
-        ClientContentTypeMethodsFactory.new(self)
+      def content_types(space_id, environment_id)
+        ClientContentTypeMethodsFactory.new(self, space_id, environment_id)
       end
 
       # Allows manipulation of entries in context of the current client
@@ -170,8 +180,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientEntryMethodsFactory]
-      def entries
-        ClientEntryMethodsFactory.new(self)
+      def entries(space_id, environment_id)
+        ClientEntryMethodsFactory.new(self, space_id, environment_id)
       end
 
       # Allows manipulation of locales in context of the current client
@@ -179,8 +189,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientLocaleMethodsFactory]
-      def locales
-        ClientLocaleMethodsFactory.new(self)
+      def locales(space_id, environment_id)
+        ClientLocaleMethodsFactory.new(self, space_id, environment_id)
       end
 
       # Allows manipulation of roles in context of the current client
@@ -188,8 +198,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientRoleMethodsFactory]
-      def roles
-        ClientRoleMethodsFactory.new(self)
+      def roles(space_id)
+        ClientRoleMethodsFactory.new(self, space_id)
       end
 
       # Allows manipulation of UI extensions in context of the current client
@@ -197,8 +207,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientUIExtensionMethodsFactory]
-      def ui_extensions
-        ClientUIExtensionMethodsFactory.new(self)
+      def ui_extensions(space_id, environment_id)
+        ClientUIExtensionMethodsFactory.new(self, space_id, environment_id)
       end
 
       # Allows manipulation of editor interfaces in context of the current client
@@ -206,8 +216,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientEditorInterfaceMethodsFactory]
-      def editor_interfaces
-        ClientEditorInterfaceMethodsFactory.new(self)
+      def editor_interfaces(space_id, environment_id, content_type_id)
+        ClientEditorInterfaceMethodsFactory.new(self, space_id, environment_id, content_type_id)
       end
 
       # Allows manipulation of webhooks in context of the current client
@@ -215,8 +225,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientWebhookMethodsFactory]
-      def webhooks
-        ClientWebhookMethodsFactory.new(self)
+      def webhooks(space_id)
+        ClientWebhookMethodsFactory.new(self, space_id)
       end
 
       # Allows manipulation of webhook calls in context of the current client
@@ -224,8 +234,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientWebhookCallMethodsFactory]
-      def webhook_calls
-        ClientWebhookCallMethodsFactory.new(self)
+      def webhook_calls(space_id, webhook_id)
+        ClientWebhookCallMethodsFactory.new(self, space_id, webhook_id)
       end
 
       # Allows manipulation of webhook health in context of the current client
@@ -233,8 +243,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientWebhookHealthMethodsFactory]
-      def webhook_health
-        ClientWebhookHealthMethodsFactory.new(self)
+      def webhook_health(space_id)
+        ClientWebhookHealthMethodsFactory.new(self, space_id)
       end
 
       # Allows manipulation of uploads in context of the current client
@@ -242,8 +252,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientUploadMethodsFactory]
-      def uploads
-        ClientUploadMethodsFactory.new(self)
+      def uploads(space_id)
+        ClientUploadMethodsFactory.new(self, space_id)
       end
 
       # Allows manipulation of snapshots in context of the current client
@@ -251,8 +261,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSnapshotMethodsFactory]
-      def snapshots(resource_type = 'entries')
-        ClientSnapshotMethodsFactory.new(self, resource_type)
+      def snapshots(space_id, environment_id, resource_type = 'entries')
+        ClientSnapshotMethodsFactory.new(self, space_id, environment_id, resource_type)
       end
 
       # Allows manipulation of entry snapshots in context of the current client
@@ -260,8 +270,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSnapshotMethodsFactory]
-      def entry_snapshots
-        ClientSnapshotMethodsFactory.new(self, 'entries')
+      def entry_snapshots(space_id, environment_id)
+        ClientSnapshotMethodsFactory.new(self, space_id, environment_id, 'entries')
       end
 
       # Allows manipulation of content type snapshots in context of the current client
@@ -269,8 +279,8 @@ module Contentful
       # @see _ README for details.
       #
       # @return [Contentful::Management::ClientSnapshotMethodsFactory]
-      def content_type_snapshots
-        ClientSnapshotMethodsFactory.new(self, 'content_types')
+      def content_type_snapshots(space_id, environment_id)
+        ClientSnapshotMethodsFactory.new(self, space_id, environment_id, 'content_types')
       end
 
       # @private
@@ -283,26 +293,29 @@ module Contentful
       def update_all_dynamic_entry_cache!
         return if configuration[:dynamic_entries].empty? || configuration[:disable_content_type_caching]
 
-        spaces = configuration[:dynamic_entries].map { |space_id| ::Contentful::Management::Space.find(self, space_id) }
-        update_dynamic_entry_cache_for_spaces!(spaces)
+        environments = configuration[:dynamic_entries].map do |space_id, environment_id|
+          ::Contentful::Management::Environment.find(self, space_id, environment_id)
+        end
+
+        update_dynamic_entry_cache_for_environments!(environments)
       end
 
       # @private
-      def update_dynamic_entry_cache_for_spaces!(spaces)
+      def update_dynamic_entry_cache_for_environments!(environments)
         return if configuration[:disable_content_type_caching]
 
-        spaces.each do |space|
-          update_dynamic_entry_cache_for_space!(space)
+        environments.each do |environment|
+          update_dynamic_entry_cache_for_environment!(environment)
         end
       end
 
       # Use this method together with the client's :dynamic_entries configuration.
       # See README for details.
       # @private
-      def update_dynamic_entry_cache_for_space!(space)
+      def update_dynamic_entry_cache_for_environment!(environment)
         return if configuration[:disable_content_type_caching]
 
-        update_dynamic_entry_cache!(space.content_types.all)
+        update_dynamic_entry_cache!(environment.content_types.all)
       end
 
       # @private

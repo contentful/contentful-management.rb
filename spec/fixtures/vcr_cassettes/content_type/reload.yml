@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types/category_content_type
     body:
       encoding: US-ASCII
       string: ''
@@ -115,7 +115,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 12:15:22 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types/category_content_type
     body:
       encoding: UTF-8
       string: '{"name":"Updated content type name","description":"","fields":[{"id":"name","name":"Name","type":"Text","localized":true},{"id":"description","name":"Description","type":"Text","localized":true}]}'
@@ -170,7 +170,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 12:15:22 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types/category_content_type
     body:
       encoding: US-ASCII
       string: ''
@@ -283,7 +283,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 12:15:23 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types/category_content_type
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types/category_content_type
     body:
       encoding: UTF-8
       string: '{"name":"Updated content type name","description":"","fields":[{"id":"name","name":"Name","type":"Text","localized":true},{"id":"description","name":"Description","type":"Text","localized":true}]}'

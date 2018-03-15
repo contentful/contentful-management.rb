@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/content_types/someType
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/content_types/someType
     body:
       encoding: US-ASCII
       string: ''
@@ -121,7 +121,7 @@ http_interactions:
   recorded_at: Thu, 10 Dec 2015 15:31:36 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/hello-world
     body:
       encoding: UTF-8
       string: '{"fields":{}}'
@@ -220,7 +220,7 @@ http_interactions:
   recorded_at: Thu, 10 Dec 2015 15:31:37 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/hello-world
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-GB":"Hello World!","es-ES":null},"value":{"en-GB":"hello
@@ -329,7 +329,7 @@ http_interactions:
   recorded_at: Thu, 10 Dec 2015 15:31:38 GMT
 - request:
     method: delete
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/hello-world
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/hello-world
     body:
       encoding: US-ASCII
       string: ''

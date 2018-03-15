@@ -11,36 +11,36 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { client.locales }
+      subject { client.locales(space_id, 'master') }
 
       describe '.all' do
         it 'class method also works' do
-          vcr('locale/all_for_space') { expect(Contentful::Management::Locale.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('locale/all_for_space') { expect(Contentful::Management::Locale.all(client, space_id, 'master')).to be_kind_of Contentful::Management::Array }
         end
         it 'returns a Contentful::Array' do
-          vcr('locale/all_for_space') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('locale/all_for_space') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
         it 'builds a Contentful::Management::Locale object' do
-          vcr('locale/all_for_space') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Locale }
+          vcr('locale/all_for_space') { expect(subject.all.first).to be_kind_of Contentful::Management::Locale }
         end
       end
 
       describe '.find' do
         it 'class method also works' do
-          vcr('locale/find') { expect(Contentful::Management::Locale.find(client, space_id, locale_id)).to be_kind_of Contentful::Management::Locale }
+          vcr('locale/find') { expect(Contentful::Management::Locale.find(client, space_id, 'master', locale_id)).to be_kind_of Contentful::Management::Locale }
         end
         it 'returns a Contentful::Management::Locale' do
-          vcr('locale/find') { expect(subject.find(space_id, locale_id)).to be_kind_of Contentful::Management::Locale }
+          vcr('locale/find') { expect(subject.find(locale_id)).to be_kind_of Contentful::Management::Locale }
         end
         it 'returns the locale for a given key' do
           vcr('locale/find') do
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             expect(locale.id).to eql locale_id
           end
         end
         it 'returns an error when content_type does not exists' do
           vcr('locale/find_for_space_not_found') do
-            result = subject.find(space_id, 'not_exist')
+            result = subject.find('not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end
@@ -48,7 +48,7 @@ module Contentful
       describe '.create' do
         it 'create locales for space' do
           vcr('locale/create_for_space') do
-            locale = subject.create(space_id, name: 'testLocalCreate', code: 'bg')
+            locale = subject.create(name: 'testLocalCreate', code: 'bg')
             expect(locale.name).to eql 'testLocalCreate'
           end
         end
@@ -58,7 +58,7 @@ module Contentful
         let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('locale/reload') do
-            locale = subject.find(space_id, '0ywTmGkjR0YhmbYaSmV1CS')
+            locale = subject.find('0ywTmGkjR0YhmbYaSmV1CS')
             locale.sys[:version] = 99
             locale.reload
             update_locale = locale.update(name: 'Polish PL')
@@ -71,13 +71,13 @@ module Contentful
       describe '#default' do
         it 'is false for non default' do
           vcr('locale/find_not_default') do
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             expect(locale.default).to be_falsey
           end
         end
         it 'is true for default' do
           vcr('locale/find_default') do
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             expect(locale.default).to be_truthy
           end
         end
@@ -88,7 +88,7 @@ module Contentful
         it 'is false for non optional' do
           vcr('locale/find_not_optional') do
             locale_id = '56eOu5hJwVNb4XfqsnQV97'
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             expect(locale.optional).to be_falsey
           end
         end
@@ -96,7 +96,7 @@ module Contentful
         it 'is true for optional' do
           vcr('locale/find_optional') do
             locale_id = '7IHOkHoMY1PpFp1VSVlCpH'
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             expect(locale.optional).to be_truthy
           end
         end
@@ -107,7 +107,7 @@ module Contentful
         let!(:locale_id) { '63274yOrU0s4XiJlAp1ZMQ' }
         it 'can update the locale name' do
           vcr('locale/update_name') do
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             locale.update(name: 'Something')
 
             locale.reload
@@ -119,7 +119,7 @@ module Contentful
 
         it 'can update the locale code' do
           vcr('locale/update_code') do
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             locale.update(code: 'es')
 
             locale.reload
@@ -131,7 +131,7 @@ module Contentful
 
         it 'can update both' do
           vcr('locale/update_both') do
-            locale = subject.find(space_id, locale_id)
+            locale = subject.find(locale_id)
             locale.update(name: 'Spanish', code: 'es')
 
             locale.reload
@@ -146,13 +146,13 @@ module Contentful
           let!(:locale_id) { '63274yOrU0s4XiJlAp1ZMQ' }
           it 'can destroy locales' do
             vcr('locale/destroy') do
-              locale = subject.create(space_id, name: 'Spanish (Argentina)', code: 'es-AR')
+              locale = subject.create(name: 'Spanish (Argentina)', code: 'es-AR')
 
-              expect(subject.find(space_id, locale.id).code).to eq 'es-AR'
+              expect(subject.find(locale.id).code).to eq 'es-AR'
 
               locale.destroy
 
-              error = subject.find(space_id, locale.id)
+              error = subject.find(locale.id)
 
               expect(error).to be_a Contentful::Management::NotFound
             end
@@ -164,9 +164,9 @@ module Contentful
         let!(:space_id) { 'facgnwwgj5fe' }
         it 'should be able to create a locale with a fallback code' do
           vcr('locale/fallback_code') do
-            locale = subject.create(space_id, name: 'Foo (BarBaz)', code: 'foo-BB', fallback_code: 'en-US')
+            locale = subject.create(name: 'Foo (BarBaz)', code: 'foo-BB', fallback_code: 'en-US')
 
-            expect(subject.find(space_id, locale.id).code).to eq 'foo-BB'
+            expect(subject.find(locale.id).code).to eq 'foo-BB'
           end
         end
       end

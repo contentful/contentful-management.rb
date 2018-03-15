@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interface
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/smallerType/editor_interface
     body:
       encoding: US-ASCII
       string: ''
@@ -117,7 +117,7 @@ http_interactions:
   recorded_at: Mon, 30 May 2016 12:49:43 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interface
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/smallerType/editor_interface
     body:
       encoding: UTF-8
       string: '{"controls":[{"fieldId":"symbol1","widgetId":"urlEditor"}]}'
@@ -232,7 +232,7 @@ http_interactions:
   recorded_at: Mon, 30 May 2016 12:49:46 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/smallerType/editor_interface
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/smallerType/editor_interface
     body:
       encoding: US-ASCII
       string: ''

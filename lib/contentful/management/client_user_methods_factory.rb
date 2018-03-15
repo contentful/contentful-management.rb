@@ -12,7 +12,7 @@ module Contentful
       end
 
       def find(user_id)
-        super(nil, user_id)
+        super(user_id)
       end
 
       def me

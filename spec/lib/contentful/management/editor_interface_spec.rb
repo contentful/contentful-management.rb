@@ -23,14 +23,14 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { client.editor_interfaces }
+      subject { client.editor_interfaces(space_id, 'master', content_type_id) }
 
       describe '.default' do
         it 'class method also works' do
-          vcr('editor_interfaces/default_for_space') { expect(Contentful::Management::EditorInterface.default(client, space_id, content_type_id)).to be_kind_of Contentful::Management::EditorInterface }
+          vcr('editor_interfaces/default_for_space') { expect(Contentful::Management::EditorInterface.default(client, space_id, 'master', content_type_id)).to be_kind_of Contentful::Management::EditorInterface }
         end
         it 'builds a Contentful::Management::Locale object' do
-          vcr('editor_interfaces/default_for_space') { expect(subject.default(space_id, content_type_id)).to be_kind_of Contentful::Management::EditorInterface }
+          vcr('editor_interfaces/default_for_space') { expect(subject.default).to be_kind_of Contentful::Management::EditorInterface }
         end
       end
 
@@ -39,7 +39,7 @@ module Contentful
 
         it 'can update the editor_interface' do
           vcr('editor_interfaces/update') do
-            editor_interface = subject.default(space_id, content_type_id)
+            editor_interface = described_class.default(client, space_id, 'master', content_type_id)
 
             expect(editor_interface.controls.first['widgetId']).to eq 'singleline'
 

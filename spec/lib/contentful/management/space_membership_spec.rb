@@ -10,7 +10,7 @@ module Contentful
       let(:membership_id) { '6RdRdobdQzh8zKe1Hogiz4' }
       let(:client) { Client.new(token, raise_errors: true) }
 
-      subject { client.space_memberships }
+      subject { client.space_memberships(space_id) }
 
       describe 'class methods' do
         describe '::create_attributes' do
@@ -68,12 +68,12 @@ module Contentful
 
       describe '.all' do
         it 'returns a Contentful::Array' do
-          vcr('space_memberships/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('space_memberships/all') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
 
         it 'builds a Contentful::Management::SpaceMembership' do
           vcr('space_memberships/all') {
-            memberships = subject.all(space_id)
+            memberships = subject.all
 
             admin_membership, normal_membership = memberships.items
 
@@ -95,7 +95,7 @@ module Contentful
       describe '.find' do
         it 'returns a Contentful::Management::SpaceMembership' do
           vcr('space_memberships/find') {
-            membership = subject.find(space_id, membership_id)
+            membership = subject.find(membership_id)
 
             expect(membership).to be_a Contentful::Management::SpaceMembership
             expect(membership.admin).to eq false
@@ -108,7 +108,6 @@ module Contentful
         it 'creates a Contentful::Management::SpaceMembership' do
           vcr('space_memberships/create') {
             membership = subject.create(
-              space_id,
               admin: false,
               roles: [
                 {
@@ -132,13 +131,13 @@ module Contentful
       describe '#destroy' do
         it 'deletes the membership' do
           vcr('space_memberships/delete') {
-            membership = subject.find(space_id, '7pcydolqtgMaSLwmXMvGqW')
+            membership = subject.find('7pcydolqtgMaSLwmXMvGqW')
 
             expect(membership.id).to be_truthy
 
             membership.destroy
 
-            expect { subject.find(space_id, '7pcydolqtgMaSLwmXMvGqW') }.to raise_error Contentful::Management::NotFound
+            expect { subject.find('7pcydolqtgMaSLwmXMvGqW') }.to raise_error Contentful::Management::NotFound
           }
         end
       end

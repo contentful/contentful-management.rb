@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/custom_id
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/custom_id
     body:
       encoding: UTF-8
       string: '{"name":"Blog","description":null,"fields":[]}'

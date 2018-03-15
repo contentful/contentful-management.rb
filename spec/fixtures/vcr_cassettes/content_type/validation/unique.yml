@@ -111,7 +111,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2017 02:42:11 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/iig6ari2cj2t/content_types
+    uri: https://api.contentful.com/spaces/iig6ari2cj2t/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -251,7 +251,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2017 02:42:12 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/iig6ari2cj2t/content_types/1JrDv4JJsYuY4KGEEgAsQU
+    uri: https://api.contentful.com/spaces/iig6ari2cj2t/environments/master/content_types/1JrDv4JJsYuY4KGEEgAsQU
     body:
       encoding: US-ASCII
       string: ''
@@ -381,7 +381,7 @@ http_interactions:
   recorded_at: Thu, 11 May 2017 02:42:13 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/iig6ari2cj2t/content_types/1JrDv4JJsYuY4KGEEgAsQU
+    uri: https://api.contentful.com/spaces/iig6ari2cj2t/environments/master/content_types/1JrDv4JJsYuY4KGEEgAsQU
     body:
       encoding: UTF-8
       string: '{"displayField":"t","name":"test","description":"abcd","fields":[{"id":"t","name":"t","type":"Symbol","linkType":null,"items":null,"required":null,"localized":null,"validations":[],"disabled":null,"omitted":null},{"id":"symbol","name":"Slug","type":"Symbol","validations":[{"unique":true}]}]}'

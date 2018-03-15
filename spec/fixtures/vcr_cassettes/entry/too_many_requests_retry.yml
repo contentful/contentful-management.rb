@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:23 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/286arvy86ry9/content_types
+    uri: https://api.contentful.com/spaces/286arvy86ry9/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -334,7 +334,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:23 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/286arvy86ry9/entries/1YNepnMpXGiMWikaKC4GG0
+    uri: https://api.contentful.com/spaces/286arvy86ry9/environments/master/entries/1YNepnMpXGiMWikaKC4GG0
     body:
       encoding: US-ASCII
       string: ''
@@ -440,7 +440,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:24 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/286arvy86ry9/content_types/5lIEiXrCIoKoIKaSW2C8aa
+    uri: https://api.contentful.com/spaces/286arvy86ry9/environments/master/content_types/5lIEiXrCIoKoIKaSW2C8aa
     body:
       encoding: US-ASCII
       string: ''
@@ -562,7 +562,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:25 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/286arvy86ry9/entries
+    uri: https://api.contentful.com/spaces/286arvy86ry9/environments/master/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Create test"},"entry":{"en-US":{"sys":{"type":"Link","linkType":"Entry","id":"1YNepnMpXGiMWikaKC4GG0"}}}}}'
@@ -666,7 +666,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:26 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/286arvy86ry9/entries/7cMVEy1toAWaMKUYsSAmC4/published
+    uri: https://api.contentful.com/spaces/286arvy86ry9/environments/master/entries/7cMVEy1toAWaMKUYsSAmC4/published
     body:
       encoding: US-ASCII
       string: ''
@@ -731,7 +731,7 @@ http_interactions:
   recorded_at: Thu, 18 Dec 2014 12:21:27 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/286arvy86ry9/entries/7cMVEy1toAWaMKUYsSAmC4/published
+    uri: https://api.contentful.com/spaces/286arvy86ry9/environments/master/entries/7cMVEy1toAWaMKUYsSAmC4/published
     body:
       encoding: US-ASCII
       string: ''

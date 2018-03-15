@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/codequest_id_test_custom_id
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/codequest_id_test_custom_id
     body:
       encoding: US-ASCII
       string: ''
@@ -107,7 +107,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 14:58:11 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/3U7JqGuVzOWIimU40mKeem
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/3U7JqGuVzOWIimU40mKeem
     body:
       encoding: US-ASCII
       string: ''
@@ -218,7 +218,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 14:58:12 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/3U7JqGuVzOWIimU40mKeem
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/3U7JqGuVzOWIimU40mKeem
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"pl":"testName","en-US":"xus","pl-PL":"xpl"},"bool":{"pl":true,"en-US":null,"pl-PL":null}}}'

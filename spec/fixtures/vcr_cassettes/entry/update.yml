@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/codequest_id_test_custom_id
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/codequest_id_test_custom_id
     body:
       encoding: US-ASCII
       string: ''
@@ -107,7 +107,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 14:11:06 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/1d1QDYzeiyWmgqQYysae8u
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/1d1QDYzeiyWmgqQYysae8u
     body:
       encoding: US-ASCII
       string: ''
@@ -222,7 +222,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 14:11:07 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/4o6ghKSmSko4i828YCYaEo
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/4o6ghKSmSko4i828YCYaEo
     body:
       encoding: US-ASCII
       string: ''
@@ -419,7 +419,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 14:11:07 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/4o6ghKSmSko4i828YCYaEo
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/4o6ghKSmSko4i828YCYaEo
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Tom Handy","pl":"testName"},"age":{"en-US":20,"pl":null},"bool":{"en-US":false,"pl":null},"birthday":{"en-US":"2000-07-12T11:11:00+02:00","pl":null},"city":{"en-US":{"lat":22.44,"lon":33.33,"lat":22.44,"lon":33.33},"pl":null},"asset":{"en-US":{"sys":{"type":"Link","linkType":"Asset","id":"codequest_id_test_custom_id"},"sys":{"type":"Link","linkType":"Asset","id":"codequest_id_test_custom_id"}},"pl":null},"assets":{"en-US":[{"sys":{"type":"Link","linkType":"Asset","id":"codequest_id_test_custom_id"}},{"sys":{"type":"Link","linkType":"Asset","id":"codequest_id_test_custom_id"}},{"sys":{"type":"Link","linkType":"Asset","id":"codequest_id_test_custom_id"}}],"pl":null},"entry":{"en-US":{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"},"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}},"pl":null},"entries":{"en-US":[{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}},{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}},{"sys":{"type":"Link","linkType":"Entry","id":"1d1QDYzeiyWmgqQYysae8u"}}],"pl":null},"symbols":{"en-US":["PL","USD","XX"],"pl":null}}}'

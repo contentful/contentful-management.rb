@@ -6,8 +6,8 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/organizations
     class Organization
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
       property :name
 

@@ -12,7 +12,7 @@ module Contentful
       end
 
       def all(params = {})
-        associated_class.all(space.client, space.id, params)
+        associated_class.all(space.client, space.id, nil, params)
       end
 
       def find(id)

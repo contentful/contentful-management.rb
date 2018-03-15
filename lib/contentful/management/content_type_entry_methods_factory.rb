@@ -23,7 +23,7 @@ module Contentful
       #
       # @return [Contentful::Management::Array<Contentful::Management::Entry>]
       def all(params = {})
-        Entry.all(content_type.client, content_type.space.id, params.merge(content_type: content_type.id))
+        Entry.all(content_type.client, content_type.space.id, content_type.environment_id, params.merge(content_type: content_type.id))
       end
 
       # Creates an entry for a content type.
@@ -33,7 +33,7 @@ module Contentful
       # @return [Contentful::Management::Entry]
       def create(attributes)
         attributes[:content_type] = content_type
-        Entry.create(content_type.client, content_type.space.id, attributes)
+        Entry.create(content_type.client, content_type.space.id, content_type.environment_id, attributes)
       end
 
       # Instantiates an empty entry for a content type.

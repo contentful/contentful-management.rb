@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bjwq7b86vgmm/public/assets
+    uri: https://api.contentful.com/spaces/bjwq7b86vgmm/environments/master/public/assets
     body:
       encoding: US-ASCII
       string: ''

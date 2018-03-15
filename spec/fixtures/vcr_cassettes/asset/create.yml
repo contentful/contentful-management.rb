@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"titlebyCreateAPI"},"description":{"en-US":"descByAPI"},"file":{"en-US":{"contentType":"image/jpeg","fileName":"pic1.jpg","upload":"https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg"}}}}'
@@ -98,7 +98,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 07:37:20 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/JJrsd9jsYMMYeyiWgeKmC/files/en-US/process
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/JJrsd9jsYMMYeyiWgeKmC/files/en-US/process
     body:
       encoding: US-ASCII
       string: ''

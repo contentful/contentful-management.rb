@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/5DSpuKrl04eMAGQoQckeIq
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/5DSpuKrl04eMAGQoQckeIq
     body:
       encoding: US-ASCII
       string: ''
@@ -191,7 +191,7 @@ http_interactions:
   recorded_at: Wed, 06 Aug 2014 13:13:40 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/custom_id
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/custom_id
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Custom Id"}}}'

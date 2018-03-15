@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 10:19:48 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -433,7 +433,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 10:19:49 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -784,7 +784,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 10:19:50 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types
     body:
       encoding: UTF-8
       string: '{"name":"Post title","description":"","fields":[{"id":"my_text_field","name":"My

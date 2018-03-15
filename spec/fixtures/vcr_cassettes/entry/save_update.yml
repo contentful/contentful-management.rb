@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/664EPJ6zHqAeMO6O0mGggU
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/664EPJ6zHqAeMO6O0mGggU
     body:
       encoding: US-ASCII
       string: ''
@@ -106,7 +106,7 @@ http_interactions:
   recorded_at: Fri, 01 Aug 2014 12:04:45 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/664EPJ6zHqAeMO6O0mGggU
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/664EPJ6zHqAeMO6O0mGggU
     body:
       encoding: UTF-8
       string: '{"fields":{"carMark":{"en-US":"Merc","pl":"Mercedes"},"carCityPlate":{"en-US":"en","pl":"bia"},"carCapacity":{"en-US":2.5,"pl":2.5}}}'

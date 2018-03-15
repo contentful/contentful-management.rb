@@ -101,7 +101,7 @@ http_interactions:
   recorded_at: Tue, 31 May 2016 18:54:26 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -239,7 +239,7 @@ http_interactions:
   recorded_at: Tue, 31 May 2016 18:54:27 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types/omitted_ct
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types/omitted_ct
     body:
       encoding: UTF-8
       string: '{"displayField":"name","name":"Omitted CT","fields":[{"id":"omitted_field","name":"omitted_field","type":"Symbol","omitted":true},{"id":"name","name":"name","type":"Symbol"}]}'
@@ -363,7 +363,7 @@ http_interactions:
   recorded_at: Tue, 31 May 2016 18:54:28 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types/omitted_ct/published
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types/omitted_ct/published
     body:
       encoding: US-ASCII
       string: ''
@@ -502,7 +502,7 @@ http_interactions:
   recorded_at: Tue, 31 May 2016 18:54:29 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types/omitted_ct
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types/omitted_ct
     body:
       encoding: US-ASCII
       string: ''

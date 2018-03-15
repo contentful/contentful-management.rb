@@ -7,15 +7,15 @@ module Contentful
       include Contentful::Management::Resource
 
       property :id, :string
+      property :items, Field
       property :name, :string
       property :type, :string
+      property :omitted, :boolean
       property :linkType, :string
-      property :items, Field
       property :required, :boolean
+      property :disabled, :boolean
       property :localized, :boolean
       property :validations, Validation
-      property :disabled, :boolean
-      property :omitted, :boolean
 
       # Takes a field object of content type
       # Merges existing properties, items and validations of field with new one

@@ -90,7 +90,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 12:29:39 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/9sh5dtmfyzhj/content_types
+    uri: https://api.contentful.com/spaces/9sh5dtmfyzhj/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -221,7 +221,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 12:29:40 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/9sh5dtmfyzhj/entries/1PdCkb5maYgqsSUCOweseM
+    uri: https://api.contentful.com/spaces/9sh5dtmfyzhj/environments/master/entries/1PdCkb5maYgqsSUCOweseM
     body:
       encoding: US-ASCII
       string: ''
@@ -338,7 +338,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 12:29:42 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/9sh5dtmfyzhj/entries/1QKkNRf9AEW2wqwWowgscs
+    uri: https://api.contentful.com/spaces/9sh5dtmfyzhj/environments/master/entries/1QKkNRf9AEW2wqwWowgscs
     body:
       encoding: US-ASCII
       string: ''

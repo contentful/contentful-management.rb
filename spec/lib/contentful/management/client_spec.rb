@@ -291,7 +291,7 @@ module Contentful
 
         it 'effectively requests via proxy' do
           vcr(:proxy_request) {
-            expect(subject).to receive(:proxy_send).twice.and_call_original
+            expect(subject).to receive(:proxy_send).once.and_call_original
             subject.spaces.find('zh42n1tmsaiq')
           }
         end

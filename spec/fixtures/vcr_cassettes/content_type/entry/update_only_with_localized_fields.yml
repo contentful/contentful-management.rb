@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Tue, 02 Sep 2014 08:17:48 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -350,7 +350,7 @@ http_interactions:
   recorded_at: Tue, 02 Sep 2014 08:17:49 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/entries/2dEkgsQRnSW2QuW4AMaa86
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/entries/2dEkgsQRnSW2QuW4AMaa86
     body:
       encoding: US-ASCII
       string: ''
@@ -461,7 +461,7 @@ http_interactions:
   recorded_at: Tue, 02 Sep 2014 08:17:50 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/entries/2dEkgsQRnSW2QuW4AMaa86
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/entries/2dEkgsQRnSW2QuW4AMaa86
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Contentful EN up","de-DE":"Contentful DE

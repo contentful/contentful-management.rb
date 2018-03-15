@@ -1,5 +1,5 @@
-require_relative 'error'
 require 'multi_json'
+require_relative 'error'
 
 module Contentful
   module Management

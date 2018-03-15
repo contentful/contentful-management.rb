@@ -6,16 +6,16 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/users
     class User
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
-      property :firstName, :string
-      property :lastName, :string
-      property :avatarUrl, :string
       property :email, :string
+      property :lastName, :string
+      property :firstName, :string
+      property :avatarUrl, :string
       property :activated, :boolean
-      property :signInCount, :integer
       property :confirmed, :boolean
+      property :signInCount, :integer
 
       # @private
       def self.build_endpoint(endpoint_options)

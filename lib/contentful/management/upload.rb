@@ -6,12 +6,35 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/uploads
     class Upload
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
       # @private
       def self.create_headers(_client, _attributes)
         { 'Content-Type' => 'application/octet-stream' }
+      end
+
+      # Creates an upload.
+      #
+      # @param [Contentful::Management::Client] client
+      # @param [String] space_id
+      # @param [Hash] attributes
+      # @see _ README for full attribute list for each resource.
+      #
+      # @return [Contentful::Management::Upload]
+      def self.create(client, space_id, attributes = {})
+        super(client, space_id, nil, attributes)
+      end
+
+      # Finds an upload by ID.
+      #
+      # @param [Contentful::Management::Client] client
+      # @param [String] space_id
+      # @param [String] upload_id
+      #
+      # @return [Contentful::Management::Upload]
+      def self.find(client, space_id, upload_id)
+        super(client, space_id, nil, upload_id)
       end
 
       # @private

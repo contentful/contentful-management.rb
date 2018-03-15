@@ -1,13 +1,14 @@
 require_relative 'resource'
-require_relative 'resource_requester'
-require_relative 'client_entry_methods_factory'
-require_relative 'entry_snapshot_methods_factory'
-require_relative 'resource/entry_fields'
 require_relative 'resource/fields'
-require_relative 'resource/field_aware'
-require_relative 'resource/all_published'
 require_relative 'resource/archiver'
 require_relative 'resource/publisher'
+require_relative 'resource_requester'
+require_relative 'resource/field_aware'
+require_relative 'resource/entry_fields'
+require_relative 'resource/all_published'
+require_relative 'resource/environment_aware'
+require_relative 'client_entry_methods_factory'
+require_relative 'entry_snapshot_methods_factory'
 
 module Contentful
   module Management
@@ -15,13 +16,15 @@ module Contentful
     # @see _ https://www.contentful.com/developers/documentation/content-management-api/#resources-entries
     class Entry
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
-      include Contentful::Management::Resource::Refresher
       extend Contentful::Management::Resource::EntryFields
-      extend Contentful::Management::Resource::AllPublished
+      include Contentful::Management::Resource::SystemProperties
+
       include Contentful::Management::Resource::Fields
       include Contentful::Management::Resource::Archiver
       include Contentful::Management::Resource::Publisher
+      include Contentful::Management::Resource::Refresher
+      extend Contentful::Management::Resource::AllPublished
+      include Contentful::Management::Resource::EnvironmentAware
 
       attr_accessor :content_type
 
@@ -153,6 +156,7 @@ module Contentful
           new_instance = Contentful::Management::Entry.create(
             client,
             content_type.space.id,
+            environment_id,
             content_type: content_type,
             fields: instance_variable_get(:@fields)
           )
@@ -248,7 +252,7 @@ module Contentful
                             sys[:contentType]['sys']['id']
                           end
         space_id = space.is_a?(::Contentful::Management::Resource) ? space.id : space['sys']['id']
-        @content_type ||= ::Contentful::Management::ContentType.find(client, space_id, content_type_id)
+        @content_type ||= ::Contentful::Management::ContentType.find(client, space_id, environment_id, content_type_id)
       end
     end
   end

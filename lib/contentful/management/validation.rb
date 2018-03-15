@@ -8,14 +8,14 @@ module Contentful
 
       property :in, :array
       property :size, :hash
-      property :present, :boolean
-      property :regexp, :hash
-      property :linkContentType, :array
       property :range, :hash
-      property :linkMimetypeGroup, :string
-      property :linkField, :boolean
+      property :regexp, :hash
       property :unique, :boolean
+      property :present, :boolean
+      property :linkField, :boolean
       property :assetFileSize, :hash
+      property :linkContentType, :array
+      property :linkMimetypeGroup, :string
       property :assetImageDimensions, :hash
 
       # @private

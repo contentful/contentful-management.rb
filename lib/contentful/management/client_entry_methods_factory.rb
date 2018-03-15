@@ -10,7 +10,7 @@ module Contentful
       include Contentful::Management::ClientAssociationAllPublishedMethodsFactory
 
       def create(content_type, attributes)
-        associated_class.create(client, content_type.space.id, attributes.merge(content_type: content_type))
+        associated_class.create(client, @space_id, @environment_id, attributes.merge(content_type: content_type))
       end
 
       def new(*)

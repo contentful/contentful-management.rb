@@ -16,8 +16,8 @@ module Contentful
         # @deprecated This call will be soon removed from the API except for Content Types
         #
         # @return [Contentful::Management::Array<Contentful::Management::Resource>]
-        def all_published(client, space_id, parameters = {})
-          client_association_class.new(client).all_published(space_id, parameters)
+        def all_published(client, space_id, environment_id, parameters = {})
+          client_association_class.new(client, space_id, environment_id).all_published(parameters)
         end
       end
     end

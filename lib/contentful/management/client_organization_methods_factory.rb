@@ -16,7 +16,7 @@ module Contentful
       end
 
       def all(*)
-        super(nil)
+        super
       end
     end
   end

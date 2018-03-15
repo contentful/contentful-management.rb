@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/content_types/someType
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/content_types/someType
     body:
       encoding: US-ASCII
       string: ''
@@ -121,7 +121,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:47 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_1
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_1
     body:
       encoding: UTF-8
       string: '{"fields":{"value":{"en-GB":"hello"}}}'
@@ -224,7 +224,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:48 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_1
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_1
     body:
       encoding: UTF-8
       string: '{"fields":{"value":{"en-GB":"goodbye"}}}'
@@ -327,7 +327,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:49 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_1/published
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_1/published
     body:
       encoding: US-ASCII
       string: ''
@@ -443,7 +443,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:50 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_1
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_1
     body:
       encoding: US-ASCII
       string: ''
@@ -557,7 +557,7 @@ http_interactions:
   recorded_at: Tue, 19 Jan 2016 13:48:50 GMT
 - request:
     method: delete
-    uri: https://api.contentful.com/spaces/u2viwgfeal0o/entries/issue61_1
+    uri: https://api.contentful.com/spaces/u2viwgfeal0o/environments/master/entries/issue61_1
     body:
       encoding: US-ASCII
       string: ''
