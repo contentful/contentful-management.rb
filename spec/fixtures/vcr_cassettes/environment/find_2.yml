@@ -1,0 +1,155 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/delete_me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Fri, 16 Mar 2018 12:29:11 GMT
+      Etag:
+      - W/"c0b5930f0f9b468ad0bdaaa5cfe08759"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35996'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - dc9d83a9a5979f1a90e9fe05d28892f3
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1133'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_476_673446=eXRPV/+xBE/HtOVBuRebBpe4q1oAAAAAfz6b/o0eu1rCa9g2qg8JYA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=nF/VPc9TsyTFkZY16lKYhQAAAACxhaK212Q0q+4xLhdREsj3; path=/; Domain=.contentful.com
+      - visid_incap_673446=SlvpX40mQDGNvqKWW8n9z5e4q1oAAAAAQUIPAAAAAADjKCZ8TYn5LQh/WejAo5TG;
+        expires=Sat, 16 Mar 2019 10:06:37 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 7-14664080-14664084 NNNN CT(101 104 0) RT(1521203351055 66) q(0 0 2 -1) r(4
+        4) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"Delete Me",
+          "sys":{
+            "type":"Environment",
+            "id":"delete_me",
+            "version":6,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "status":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Status",
+                "id":"ready"
+              }
+            },
+            "locales":[
+              {
+                "sys":{
+                  "type":"Link",
+                  "linkType":"Locale",
+                  "id":"1NkEdf220AtNFVgJO9fFQ2"
+                }
+              },
+              {
+                "sys":{
+                  "type":"Link",
+                  "linkType":"Locale",
+                  "id":"2QKRtwD3DKOkYKXJJsYdHk"
+                }
+              },
+              {
+                "sys":{
+                  "type":"Link",
+                  "linkType":"Locale",
+                  "id":"4YnLeSNLymCAZ6eYwJmhzu"
+                }
+              }
+            ],
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2018-03-16T12:25:08Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2018-03-16T12:25:10Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Fri, 16 Mar 2018 12:29:10 GMT
+recorded_with: VCR 4.0.0
