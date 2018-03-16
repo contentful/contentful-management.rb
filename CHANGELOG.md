@@ -42,6 +42,7 @@ The proxies, apart from the parameter re-shuffling, have kept the same interface
 
 * Spaces do no longer have proxies for `entries`, `assets`, `content_types`, `ui_extensions`, `locales` and `editor_interfaces`. These can now be found under `environments`.
 * Space objects now have `environments` as a proxy accessor.
+* Content Type Caching is now done when requesting Content Types, or when a property is missing on an Entry. Also `dynamic_entries` has been updated to receive a hash of `space_id => environment_id` pairs.
 
 ## 1.10.1
 ### Fixed
