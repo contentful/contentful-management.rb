@@ -2,6 +2,8 @@ require_relative 'environment_asset_methods_factory'
 require_relative 'environment_entry_methods_factory'
 require_relative 'environment_locale_methods_factory'
 require_relative 'environment_content_type_methods_factory'
+require_relative 'environment_ui_extension_methods_factory'
+require_relative 'environment_editor_interface_methods_factory'
 
 module Contentful
   module Management
@@ -90,6 +92,24 @@ module Contentful
       # @return [Contentful::Management::EnvironmentLocaleMethodsFactory]
       def locales
         EnvironmentLocaleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of UI extensions in context of the current environment
+      # Allows listing all UI extensions for the current environment, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::EnvironmentUIExtensionMethodsFactory]
+      def ui_extensions
+        EnvironmentUIExtensionMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of editor interfaces in context of the current environment
+      # Allows listing of editor interfaces for the current environment.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::EnvironmentEditorInterfaceMethodsFactory]
+      def editor_interfaces
+        EnvironmentEditorInterfaceMethodsFactory.new(self)
       end
 
       # Gets the environment ID

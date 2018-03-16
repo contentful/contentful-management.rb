@@ -1,6 +1,47 @@
 # Change Log
 
 ## Master
+### Added
+* Added support for Environments
+
+### Changed
+
+**BREAKING CHANGES**:
+* In order to provide a better top-level client API, `space_id` and `environment_id`, are now sent on the resource proxy call, rather than on the call itself. This allows for better reusability of proxies, which in the end provide a better developer experience.
+Resources that are not environment-aware, still have the parameter arrangement changed, so proxies are also reusable, but do not include `environment_id`.
+The `spaces`, `users`, `organizations` and `personal_access_tokens` proxies still do not require any parameters as they are top level resources.
+
+Before (this code will assume that the old code was also environment aware, so that the impact is more visible):
+
+```ruby
+# Fetching all entries
+client.entries.all(space_id, environment_id)
+
+# Fetching a single entry
+client.entries.find(space_id, environment_id, entry_id)
+
+# If you wanted to find another entry, you'd have to repeat `space_id` and `environment_id`
+client.entries.find(space_id, environment_id, another_entry_id)
+```
+
+Now:
+
+```ruby
+# Fetching all entries
+client.entries(space_id, environment_id).all
+
+# Fetching a single entry
+entries_proxy = client.entries(space_id, environment_id)
+entries_proxy.find(entry_id)
+
+# If you wanted to find another entry, you just reuse the resource proxy
+entries_proxy.find(another_entry_id)
+```
+
+The proxies, apart from the parameter re-shuffling, have kept the same interface.
+
+* Spaces do no longer have proxies for `entries`, `assets`, `content_types`, `ui_extensions`, `locales` and `editor_interfaces`. These can now be found under `environments`.
+* Space objects now have `environments` as a proxy accessor.
 
 ## 1.10.1
 ### Fixed
