@@ -44,6 +44,10 @@ The proxies, apart from the parameter re-shuffling, have kept the same interface
 * Space objects now have `environments` as a proxy accessor.
 * Content Type Caching is now done when requesting Content Types, or when a property is missing on an Entry. Also `dynamic_entries` has been updated to receive a hash of `space_id => environment_id` pairs.
 
+### Removed
+
+* `all_published` methods for Entries and Assets have been removed.
+
 ## 1.10.1
 ### Fixed
 * Fixed an error when calling next page on `Contentful::Array` that came from requests without query parameters. [#143](https://github.com/contentful/contentful-management.rb/issues/143)

@@ -5,7 +5,6 @@ require_relative 'resource/publisher'
 require_relative 'resource_requester'
 require_relative 'resource/field_aware'
 require_relative 'resource/entry_fields'
-require_relative 'resource/all_published'
 require_relative 'resource/environment_aware'
 require_relative 'client_entry_methods_factory'
 require_relative 'entry_snapshot_methods_factory'
@@ -23,7 +22,6 @@ module Contentful
       include Contentful::Management::Resource::Archiver
       include Contentful::Management::Resource::Publisher
       include Contentful::Management::Resource::Refresher
-      extend Contentful::Management::Resource::AllPublished
       include Contentful::Management::Resource::EnvironmentAware
 
       attr_accessor :content_type

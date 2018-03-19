@@ -149,12 +149,6 @@ Retrieving all assets from the environment:
 blog_post_assets = environment.assets.all
 ```
 
-Retrieving all published assets from the environment: **DEPRECATED**
-
-```ruby
-blog_post_assets = environment.assets.all_published
-```
-
 Retrieving an asset by id:
 
 ```ruby
@@ -304,12 +298,6 @@ Retrieving all entries from the environment:
 
 ```ruby
 entries = environment.entries.all
-```
-
-Retrieving all published entries from the environment: **DEPRECATED**
-
-```ruby
-entries = environment.entries.all_published
 ```
 
 Retrieving all entries from the environment with given content type:

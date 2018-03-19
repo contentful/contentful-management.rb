@@ -61,24 +61,6 @@ module Contentful
         end
       end
 
-      describe '.all_published' do
-        let!(:space_id) { 'bjwq7b86vgmm' }
-
-        before :each do
-          expect_any_instance_of(Contentful::Management::Entry.client_association_class).to receive(:warn)
-        end
-
-        it 'class method also works' do
-          vcr('entry/all_public') { expect(Contentful::Management::Entry.all_published(client, space_id, 'master')).to be_kind_of Contentful::Management::Array }
-        end
-        it 'returns a Contentful::Array' do
-          vcr('entry/all_public') { expect(subject.all_published).to be_kind_of Contentful::Management::Array }
-        end
-        it 'builds a Contentful::Management::Entry object' do
-          vcr('entry/all_public') { expect(subject.all_published.first).to be_kind_of Contentful::Management::Entry }
-        end
-      end
-
       describe '.find' do
         it 'class method also works' do
           vcr('entry/find') { expect(Contentful::Management::Entry.find(client, space_id, 'master', entry_id)).to be_kind_of Contentful::Management::Entry }

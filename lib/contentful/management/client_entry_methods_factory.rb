@@ -1,5 +1,4 @@
 require_relative 'client_association_methods_factory'
-require_relative 'client_association_all_published_method_factory'
 
 module Contentful
   module Management
@@ -7,7 +6,6 @@ module Contentful
     # @private
     class ClientEntryMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
-      include Contentful::Management::ClientAssociationAllPublishedMethodsFactory
 
       def create(content_type, attributes)
         associated_class.create(client, @space_id, @environment_id, attributes.merge(content_type: content_type))

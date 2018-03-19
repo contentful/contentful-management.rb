@@ -42,24 +42,6 @@ module Contentful
         end
       end
 
-      describe '.all_published' do
-        let!(:space_id) { 'bjwq7b86vgmm' }
-        subject { client.assets(space_id, 'master') }
-        before :each do
-          expect_any_instance_of(Contentful::Management::Asset.client_association_class).to receive(:warn)
-        end
-
-        it 'class method also works' do
-          vcr('asset/all_public') { expect(Contentful::Management::Asset.all_published(client, space_id, 'master')).to be_kind_of Contentful::Management::Array }
-        end
-        it 'returns a Contentful::Array' do
-          vcr('asset/all_public') { expect(subject.all_published).to be_kind_of Contentful::Management::Array }
-        end
-        it 'builds a Contentful::Management::Asset object' do
-          vcr('asset/all_public') { expect(subject.all_published.first).to be_kind_of Contentful::Management::Asset }
-        end
-      end
-
       describe '.find' do
         it 'class method also works' do
           vcr('asset/find') { expect(Contentful::Management::Asset.find(client, space_id, 'master', asset_id)).to be_kind_of Contentful::Management::Asset }
