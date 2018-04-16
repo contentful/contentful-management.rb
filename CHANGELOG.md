@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.0.0
 ### Added
 * Added support for Environments
 
