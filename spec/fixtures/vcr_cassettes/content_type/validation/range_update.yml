@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Wed, 15 Oct 2014 11:34:58 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -454,7 +454,7 @@ http_interactions:
   recorded_at: Wed, 15 Oct 2014 11:34:58 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types/1JrDv4JJsYuY4KGEEgAsQU
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types/1JrDv4JJsYuY4KGEEgAsQU
     body:
       encoding: US-ASCII
       string: ''
@@ -575,7 +575,7 @@ http_interactions:
   recorded_at: Wed, 15 Oct 2014 11:34:59 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/v2umtz8ths9v/content_types/1JrDv4JJsYuY4KGEEgAsQU
+    uri: https://api.contentful.com/spaces/v2umtz8ths9v/environments/master/content_types/1JrDv4JJsYuY4KGEEgAsQU
     body:
       encoding: UTF-8
       string: '{"name":"Validation","description":"","fields":[{"id":"number","name":"Number","type":"Number","validations":[{"range":{"min":50,"max":200}}]},{"id":"entries","name":"entries","type":"Array"},{"id":"assets","name":"Assets","type":"Array"}]}'

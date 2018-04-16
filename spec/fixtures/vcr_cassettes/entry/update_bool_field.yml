@@ -86,7 +86,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 09:48:41 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/content_types
+    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -364,7 +364,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 09:48:41 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/content_types/1kUEViTN4EmGiEaaeC6ouY
+    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/environments/master/content_types/1kUEViTN4EmGiEaaeC6ouY
     body:
       encoding: US-ASCII
       string: ''
@@ -523,7 +523,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 09:48:42 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/entries
+    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/environments/master/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Hello World"},"yolo":{"en-US":false}}}'
@@ -625,7 +625,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 09:48:43 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/entries/6sLfyXNLtm0UgSicMcqy8A
+    uri: https://api.contentful.com/spaces/fujuvqn6zcl1/environments/master/entries/6sLfyXNLtm0UgSicMcqy8A
     body:
       encoding: US-ASCII
       string: ''

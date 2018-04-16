@@ -9,8 +9,14 @@ module Contentful
       include Contentful::Management::ClientAssociationMethodsFactory
       include Contentful::Management::ClientAssociationAllPublishedMethodsFactory
 
-      def all_published(space_id, params = {})
-        super(space_id, { suppress_warning: true }.merge(params))
+      def all(query = {})
+        content_types = super(query)
+        client.update_dynamic_entry_cache!(content_types)
+        content_types
+      end
+
+      def all_published(params = {})
+        super({ suppress_warning: true }.merge(params))
       end
     end
   end

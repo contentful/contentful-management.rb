@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/5DSpuKrl04eMAGQoQckeIq
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/5DSpuKrl04eMAGQoQckeIq
     body:
       encoding: US-ASCII
       string: ''
@@ -183,7 +183,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 10:23:16 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/5DSpuKrl04eMAGQoQckeIq
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/5DSpuKrl04eMAGQoQckeIq
     body:
       encoding: UTF-8
       string: '{"name":"Author","description":"Author content","fields":[{"id":"name","name":"name","type":"Text","localized":true},{"id":"age","name":"age","type":"Integer","localized":true},{"id":"city","name":"city","type":"Location"},{"id":"assets","name":"assets","type":"Array","items":{"type":"Link","linkType":"Asset"},"localized":true},{"id":"entries","name":"entries","type":"Array","items":{"type":"Link","linkType":"Entry"}},{"id":"entry","name":"entry","type":"Link","linkType":"Entry"},{"id":"asset","name":"asset","type":"Link","linkType":"Asset"},{"id":"bool","name":"bool","type":"Boolean","localized":true},{"id":"symbols","name":"symbols","type":"Array","items":{"type":"Symbol"}},{"id":"birthday","name":"birthday","type":"Date"}]}'

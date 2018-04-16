@@ -5,12 +5,12 @@ module Contentful
     # Resource class for Space Membership.
     class SpaceMembership
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
-      property :admin, :boolean
-      property :roles, :array
       property :user, Link
+      property :roles, :array
+      property :admin, :boolean
 
       # Returns the list of roles for this membership.
       def roles

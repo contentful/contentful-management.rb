@@ -1,4 +1,5 @@
 require_relative 'resource'
+require_relative 'resource/environment_aware'
 
 module Contentful
   module Management
@@ -6,8 +7,9 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/ui-extensions
     class UIExtension
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
+      include Contentful::Management::Resource::EnvironmentAware
 
       property :extension, :hash
 
@@ -43,7 +45,7 @@ module Contentful
         if id
           update(extension: extension)
         else
-          new_instance = self.class.create(client, sys[:space].id, extension: extension)
+          new_instance = self.class.create(client, sys[:space].id, environment_id, extension: extension)
           refresh_data(new_instance)
         end
       end

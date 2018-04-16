@@ -1,23 +1,24 @@
 require_relative 'resource'
-require_relative 'resource/asset_fields'
-require_relative 'resource/all_published'
 require_relative 'resource/fields'
 require_relative 'resource/archiver'
 require_relative 'resource/publisher'
+require_relative 'resource/asset_fields'
+require_relative 'resource/environment_aware'
 
 module Contentful
   module Management
     # Resource class for Asset.
     # @see _ https://www.contentful.com/developers/documentation/content-management-api/#resources-assets
     class Asset
-      include Contentful::Management::Resource
       extend Contentful::Management::Resource::AssetFields
-      extend Contentful::Management::Resource::AllPublished
+
+      include Contentful::Management::Resource
       include Contentful::Management::Resource::Fields
-      include Contentful::Management::Resource::SystemProperties
-      include Contentful::Management::Resource::Refresher
       include Contentful::Management::Resource::Archiver
+      include Contentful::Management::Resource::Refresher
       include Contentful::Management::Resource::Publisher
+      include Contentful::Management::Resource::SystemProperties
+      include Contentful::Management::Resource::EnvironmentAware
 
       # @private
       def self.client_association_class
@@ -53,7 +54,7 @@ module Contentful
         instance_variable_get(:@fields).keys.each do |locale|
           request = Request.new(
             client,
-            "spaces/#{space.id}/assets/#{id}/files/#{locale}/process",
+            process_url(locale),
             {},
             nil,
             version: sys[:version]
@@ -77,7 +78,7 @@ module Contentful
         end
       end
 
-      # Returns currently supported local or default locale.
+      # Returns currently supported locale or default locale.
       # @return [String] current_locale
       def locale
         sys && sys[:locale] ? sys[:locale] : default_locale
@@ -123,6 +124,10 @@ module Contentful
       end
 
       protected
+
+      def process_url(locale_code)
+        "spaces/#{space.id}/environments/#{environment_id}/assets/#{id}/files/#{locale_code}/process"
+      end
 
       def query_attributes(attributes)
         self.title = attributes[:title] if attributes[:title]

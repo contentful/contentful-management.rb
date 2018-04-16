@@ -12,11 +12,11 @@ module Contentful
       end
 
       def all(_params = {})
-        associated_class.all(entry.client, entry.sys[:space].id, entry.id)
+        associated_class.all(entry.client, entry.sys[:space].id, entry.environment_id, entry.id)
       end
 
       def find(id)
-        associated_class.find(entry.client, entry.sys[:space].id, entry.id, id)
+        associated_class.find(entry.client, entry.sys[:space].id, entry.environment_id, entry.id, id)
       end
 
       def associated_class

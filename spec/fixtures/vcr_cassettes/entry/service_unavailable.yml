@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries/not_exist
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries/not_exist
     body:
       encoding: US-ASCII
       string: ''

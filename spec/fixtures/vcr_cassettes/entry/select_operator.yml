@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/cfexampleapi/entries?content_type=cat&select=fields.lives,sys&sys.id=nyancat
+    uri: https://api.contentful.com/spaces/cfexampleapi/environments/master/entries?content_type=cat&select=fields.lives,sys&sys.id=nyancat
     body:
       encoding: US-ASCII
       string: ''

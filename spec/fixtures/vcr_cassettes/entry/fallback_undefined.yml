@@ -111,7 +111,7 @@ http_interactions:
   recorded_at: Fri, 14 Oct 2016 12:12:24 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/wqjq16zu9s8b/content_types
+    uri: https://api.contentful.com/spaces/wqjq16zu9s8b/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -257,7 +257,7 @@ http_interactions:
   recorded_at: Fri, 14 Oct 2016 12:12:27 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/wqjq16zu9s8b/entries/6HSlhD1o3eqkyEWWuMQYyU
+    uri: https://api.contentful.com/spaces/wqjq16zu9s8b/environments/master/entries/6HSlhD1o3eqkyEWWuMQYyU
     body:
       encoding: US-ASCII
       string: ''
@@ -392,7 +392,7 @@ http_interactions:
   recorded_at: Fri, 14 Oct 2016 12:12:28 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/wqjq16zu9s8b/entries/6HSlhD1o3eqkyEWWuMQYyU
+    uri: https://api.contentful.com/spaces/wqjq16zu9s8b/environments/master/entries/6HSlhD1o3eqkyEWWuMQYyU
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Foo","es":"Bar"}}}'

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/assets
     body:
       encoding: US-ASCII
       string: ''
@@ -1410,7 +1410,7 @@ http_interactions:
   recorded_at: Tue, 06 Feb 2018 10:26:21 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets?skip=100
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/assets?skip=100
     body:
       encoding: US-ASCII
       string: ''

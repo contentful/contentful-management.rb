@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/8R4vbQXKbCkcSu26Wy2U0
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/assets/8R4vbQXKbCkcSu26Wy2U0
     body:
       encoding: US-ASCII
       string: ''
@@ -118,7 +118,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 10:10:26 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/8R4vbQXKbCkcSu26Wy2U0
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/assets/8R4vbQXKbCkcSu26Wy2U0
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"Updated name"},"description":{"en-US":"testowy"},"file":{"en-US":{"fileName":"Mowing_your_Lawn_-_Advice_and_Tips","contentType":"image/jpeg","details":{"image":{"width":801,"height":1000},"size":105202},"url":"//images.contentful.com/bfsvtul0c41g/8R4vbQXKbCkcSu26Wy2U0/4ca4dabb0305045fa5c3c786bf5d7592/mow.jpg"}}}}'
@@ -173,7 +173,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 10:10:27 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/8R4vbQXKbCkcSu26Wy2U0
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/assets/8R4vbQXKbCkcSu26Wy2U0
     body:
       encoding: US-ASCII
       string: ''
@@ -289,7 +289,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 10:10:30 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/8R4vbQXKbCkcSu26Wy2U0
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/assets/8R4vbQXKbCkcSu26Wy2U0
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"Updated name"},"description":{"en-US":"testowy"},"file":{"en-US":{"fileName":"Mowing_your_Lawn_-_Advice_and_Tips","contentType":"image/jpeg","details":{"image":{"width":801,"height":1000},"size":105202},"url":"//images.contentful.com/bfsvtul0c41g/8R4vbQXKbCkcSu26Wy2U0/4ca4dabb0305045fa5c3c786bf5d7592/mow.jpg"}}}}'

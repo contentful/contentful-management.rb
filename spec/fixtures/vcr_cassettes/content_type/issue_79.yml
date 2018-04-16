@@ -90,7 +90,7 @@ http_interactions:
   recorded_at: Thu, 21 Jan 2016 15:38:00 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -160,7 +160,7 @@ http_interactions:
   recorded_at: Thu, 21 Jan 2016 15:38:01 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types/isssue_79_ct
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types/isssue_79_ct
     body:
       encoding: UTF-8
       string: '{"displayField":"name","name":"Issue 79 CT","description":"","fields":[{"id":"name","name":"name","type":"Symbol"}]}'
@@ -261,7 +261,7 @@ http_interactions:
   recorded_at: Thu, 21 Jan 2016 15:38:02 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/ngtgiva4wofg/content_types/isssue_79_ct/published
+    uri: https://api.contentful.com/spaces/ngtgiva4wofg/environments/master/content_types/isssue_79_ct/published
     body:
       encoding: US-ASCII
       string: ''

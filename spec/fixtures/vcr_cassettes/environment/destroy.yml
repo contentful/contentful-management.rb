@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/delete_me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/1.10.1; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/octet-stream
+      Date:
+      - Fri, 16 Mar 2018 12:29:12 GMT
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35995'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 27a0d66f1a11c4ca3a819288408a0466
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_476_673446=vSK9MiZ+WWkutuVBuRebBpi4q1oAAAAAkUns+0ivF2ZWthhH6iyibQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=8MirEN8eD2CnY+Xf6lKYhQAAAABsVHdxPCTs6RmmuKhoPYt8; path=/; Domain=.contentful.com
+      - visid_incap_673446=YAWRcv14QqCuLn+xBxrGjpi4q1oAAAAAQUIPAAAAAAD8jOZ8jBUMvGwUQQzQktGl;
+        expires=Sat, 16 Mar 2019 10:06:37 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 7-14664134-14664138 NNNN CT(107 109 0) RT(1521203351677 65) q(0 0 2 -1) r(9
+        9) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Fri, 16 Mar 2018 12:29:11 GMT
+recorded_with: VCR 4.0.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/codequest_id_test_custom_id
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/codequest_id_test_custom_id
     body:
       encoding: US-ASCII
       string: ''
@@ -108,7 +108,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 07:42:28 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/codequest_id_test_custom_id
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/codequest_id_test_custom_id
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"3242","pl-PL":"swerwer","pl":"updateTitlePl"},"description":{"en-US":null,"pl-PL":null,"pl":"updateDescPl"},"file":{"en-US":{},"pl-PL":null,"pl":{"contentType":"image/jpeg","fileName":"codequest.jpg","upload":"http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg"}}}}'

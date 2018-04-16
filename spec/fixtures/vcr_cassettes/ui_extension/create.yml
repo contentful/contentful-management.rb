@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/extensions
     body:
       encoding: UTF-8
       string: '{"extension":{"name":"test extension","fieldTypes":[{"type":"Symbol"},{"type":"Text"}],"srcdoc":"<!doctype

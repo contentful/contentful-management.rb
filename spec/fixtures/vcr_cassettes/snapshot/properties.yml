@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/entries/5gQdVmPHKwIk2MumquYwOu/snapshots/6DglRQMMHWUnzi2F3RjFFo
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/entries/5gQdVmPHKwIk2MumquYwOu/snapshots/6DglRQMMHWUnzi2F3RjFFo
     body:
       encoding: US-ASCII
       string: ''
@@ -164,7 +164,7 @@ http_interactions:
   recorded_at: Wed, 15 Mar 2017 14:15:11 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/content_types/test
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/content_types/test
     body:
       encoding: US-ASCII
       string: ''

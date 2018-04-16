@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/locales/0ywTmGkjR0YhmbYaSmV1CS
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/locales/0ywTmGkjR0YhmbYaSmV1CS
     body:
       encoding: US-ASCII
       string: ''
@@ -94,7 +94,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 13:10:10 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/locales/0ywTmGkjR0YhmbYaSmV1CS
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/locales/0ywTmGkjR0YhmbYaSmV1CS
     body:
       encoding: US-ASCII
       string: ''
@@ -186,7 +186,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 13:10:11 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/locales/0ywTmGkjR0YhmbYaSmV1CS
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/locales/0ywTmGkjR0YhmbYaSmV1CS
     body:
       encoding: UTF-8
       string: '{"name":"Polish PL"}'

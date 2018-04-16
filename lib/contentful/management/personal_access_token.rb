@@ -6,13 +6,13 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/personal-access-tokens
     class PersonalAccessToken
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
       property :name, :string
-      property :revokedAt, :date
       property :scopes, :array
       property :token, :string
+      property :revokedAt, :date
 
       # @private
       def self.build_endpoint(endpoint_options)

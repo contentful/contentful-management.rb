@@ -1,6 +1,6 @@
-require_relative 'resource/system_properties'
-require_relative 'resource/refresher'
 require 'date'
+require_relative 'resource/refresher'
+require_relative 'resource/system_properties'
 
 module Contentful
   module Management
@@ -65,7 +65,11 @@ module Contentful
       def update(attributes)
         ResourceRequester.new(client, self.class).update(
           self,
-          { space_id: space.id, resource_id: id },
+          {
+            space_id: space.id,
+            environment_id: environment_id,
+            resource_id: id
+          },
           query_attributes(attributes),
           version: sys[:version]
         )
@@ -75,7 +79,11 @@ module Contentful
       #
       # @return [true, Contentful::Management::Error] success
       def destroy
-        ResourceRequester.new(client, self.class).destroy(space_id: space.id, resource_id: id)
+        ResourceRequester.new(client, self.class).destroy(
+          space_id: space.id,
+          environment_id: environment_id,
+          resource_id: id
+        )
       end
 
       # @private
@@ -114,6 +122,11 @@ module Contentful
       # @return [true]
       def resource?
         true
+      end
+
+      # Returns the Environment ID
+      def environment_id
+        nil
       end
 
       protected
@@ -168,9 +181,16 @@ module Contentful
 
         # @private
         def build_endpoint(endpoint_options)
-          return "spaces/#{endpoint_options[:space_id]}/public/#{endpoint}" if endpoint_options.key?(:public)
-          base = "spaces/#{endpoint_options[:space_id]}/#{endpoint}"
-          return "#{base}/#{endpoint_options[:resource_id]}#{endpoint_options[:suffix]}" if endpoint_options.key?(:resource_id)
+          if endpoint_options.key?(:public)
+            base = "spaces/#{endpoint_options[:space_id]}"
+            base = "#{base}/environments/#{endpoint_options[:environment_id]}" if endpoint_options[:environment_id]
+            return "#{base}/public/#{endpoint}"
+          end
+
+          base = "spaces/#{endpoint_options[:space_id]}"
+          base = "#{base}/environments/#{endpoint_options[:environment_id]}" if endpoint_options[:environment_id]
+          base = "#{base}/#{endpoint}"
+          return "#{base}/#{endpoint_options[:resource_id]}#{endpoint_options[:suffix]}" if endpoint_options[:resource_id]
           base
         end
 
@@ -182,8 +202,8 @@ module Contentful
         # @see _ For complete option list: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
         #
         # @return [Contentful::Management::Array<Contentful::Management::Resource>]
-        def all(client, space_id, parameters = {})
-          ResourceRequester.new(client, self).all({ space_id: space_id }, parameters)
+        def all(client, space_id, environment_id = nil, parameters = {})
+          ResourceRequester.new(client, self).all({ space_id: space_id, environment_id: environment_id }, parameters)
         end
 
         # Gets a specific resource.
@@ -193,20 +213,21 @@ module Contentful
         # @param [String] resource_id
         #
         # @return [Contentful::Management::Resource]
-        def find(client, space_id, resource_id)
-          ResourceRequester.new(client, self).find(space_id: space_id, resource_id: resource_id)
+        def find(client, space_id, environment_id = nil, resource_id = nil)
+          ResourceRequester.new(client, self).find(space_id: space_id, environment_id: environment_id, resource_id: resource_id)
         end
 
         # Creates a resource.
         #
         # @param [Contentful::Management::Client] client
         # @param [String] space_id
+        # @param [String] environment_id
         # @param [Hash] attributes
         # @see _ README for full attribute list for each resource.
         #
         # @return [Contentful::Management::Resource]
-        def create(client, space_id, attributes)
-          endpoint_options = { space_id: space_id }
+        def create(client, space_id, environment_id = nil, attributes = {})
+          endpoint_options = { space_id: space_id, environment_id: environment_id }
           endpoint_options[:resource_id] = attributes[:id] if attributes.respond_to?(:key) && attributes.key?(:id)
           ResourceRequester.new(client, self).create(
             endpoint_options,

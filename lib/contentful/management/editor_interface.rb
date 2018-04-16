@@ -1,12 +1,14 @@
 require_relative 'resource'
+require_relative 'resource/environment_aware'
 
 module Contentful
   module Management
     # Resource class for Editor Interface.
     class EditorInterface
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
+      include Contentful::Management::Resource::EnvironmentAware
 
       property :controls, :array
 
@@ -17,8 +19,8 @@ module Contentful
       # @param [String] content_type_id
       #
       # @return [Contentful::Management::EditorInterface]
-      def self.default(client, space_id, content_type_id)
-        ClientEditorInterfaceMethodsFactory.new(client).default(space_id, content_type_id)
+      def self.default(client, space_id, environment_id, content_type_id)
+        ClientEditorInterfaceMethodsFactory.new(client, space_id, environment_id, content_type_id).default
       end
 
       # Finds an EditorInterface.
@@ -43,9 +45,10 @@ module Contentful
       # @private
       def self.build_endpoint(endpoint_options)
         space_id = endpoint_options.fetch(:space_id)
+        environment_id = endpoint_options.fetch(:environment_id)
         content_type_id = endpoint_options.fetch(:content_type_id)
 
-        "spaces/#{space_id}/content_types/#{content_type_id}/editor_interface"
+        "spaces/#{space_id}/environments/#{environment_id}/content_types/#{content_type_id}/editor_interface"
       end
 
       # Updates an Editor Interface
@@ -57,7 +60,12 @@ module Contentful
       def update(attributes)
         ResourceRequester.new(client, self.class).update(
           self,
-          { space_id: space.id, content_type_id: content_type.id, editor_id: id },
+          {
+            space_id: space.id,
+            environment_id: environment_id,
+            content_type_id: content_type.id,
+            editor_id: id
+          },
           { 'controls' => attributes.fetch(:controls) },
           version: sys[:version]
         )
@@ -73,7 +81,7 @@ module Contentful
       protected
 
       def refresh_find
-        self.class.default(client, space.id, content_type.id)
+        self.class.default(client, space.id, environment_id, content_type.id)
       end
 
       def query_attributes(attributes)

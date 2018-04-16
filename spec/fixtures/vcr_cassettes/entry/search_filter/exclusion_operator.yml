@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Wed, 20 Aug 2014 10:17:18 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -346,7 +346,7 @@ http_interactions:
   recorded_at: Wed, 20 Aug 2014 10:17:19 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries?content_type=category_content_type&sys.id%5Bnin%5D=2Hs5BaU56oUmUIySMQQMUS,2X3X7RHVzqsKGAgIEewgaS
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries?content_type=category_content_type&sys.id%5Bnin%5D=2Hs5BaU56oUmUIySMQQMUS,2X3X7RHVzqsKGAgIEewgaS
     body:
       encoding: US-ASCII
       string: ''

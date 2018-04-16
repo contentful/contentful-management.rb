@@ -6,10 +6,10 @@ module Contentful
     class File
       include Contentful::Management::Resource
 
-      property :fileName, :string
-      property :contentType, :string
       property :details
       property :url, :string
+      property :fileName, :string
+      property :contentType, :string
     end
   end
 end

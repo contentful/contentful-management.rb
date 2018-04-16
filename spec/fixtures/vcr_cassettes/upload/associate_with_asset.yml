@@ -84,7 +84,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 14:00:57 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"pixel"},"description":{"en-US":null},"file":{"en-US":{"contentType":"image/jpeg","fileName":"pixel","uploadFrom":{"sys":{"type":"Link","linkType":"Upload","id":"3oMzfmxT3R1OKI3KMSIN5D"}}}}}}'
@@ -213,7 +213,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 14:01:02 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets/3d7PVhU4w8kEWSy0WMCwoC/files/en-US/process
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/assets/3d7PVhU4w8kEWSy0WMCwoC/files/en-US/process
     body:
       encoding: US-ASCII
       string: ''
@@ -293,7 +293,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 14:01:03 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/assets/3d7PVhU4w8kEWSy0WMCwoC
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/assets/3d7PVhU4w8kEWSy0WMCwoC
     body:
       encoding: US-ASCII
       string: ''

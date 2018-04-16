@@ -10,12 +10,16 @@ module Contentful
 
       # @private
       def initialize(content_type)
-        @content_type = content_type
-        @editor_interfaces_client = ClientEditorInterfaceMethodsFactory.new(content_type.client)
+        @editor_interfaces_client = ClientEditorInterfaceMethodsFactory.new(
+          content_type.client,
+          content_type.space.id,
+          content_type.environment_id,
+          content_type.id
+        )
       end
 
       def default
-        editor_interfaces_client.default(content_type.space.id, content_type.id)
+        editor_interfaces_client.default
       end
     end
   end

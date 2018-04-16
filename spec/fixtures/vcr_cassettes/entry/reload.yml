@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 11:22:33 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -333,7 +333,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 11:22:34 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries/2arjcjtY7ucC4AGeIOIkok
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries/2arjcjtY7ucC4AGeIOIkok
     body:
       encoding: US-ASCII
       string: ''
@@ -486,7 +486,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 11:22:34 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries/2arjcjtY7ucC4AGeIOIkok
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries/2arjcjtY7ucC4AGeIOIkok
     body:
       encoding: UTF-8
       string: '{"fields":{"post_title":{"en-US":"Updated title","de-DE":null,"pl-PL":null},"post_author":{"en-US":"Tom
@@ -549,7 +549,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 11:22:35 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries/2arjcjtY7ucC4AGeIOIkok
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries/2arjcjtY7ucC4AGeIOIkok
     body:
       encoding: US-ASCII
       string: ''
@@ -702,7 +702,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 11:22:36 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries/2arjcjtY7ucC4AGeIOIkok
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries/2arjcjtY7ucC4AGeIOIkok
     body:
       encoding: US-ASCII
       string: ''
@@ -855,7 +855,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 11:22:37 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries/2arjcjtY7ucC4AGeIOIkok
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries/2arjcjtY7ucC4AGeIOIkok
     body:
       encoding: UTF-8
       string: '{"fields":{"post_title":{"en-US":"Updated title","de-DE":null,"pl-PL":null},"post_author":{"en-US":"Tom

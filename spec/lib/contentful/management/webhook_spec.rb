@@ -10,17 +10,17 @@ module Contentful
       let(:webhook_id) { '0rK8ZNEOWLgYnO5gaah2pp' }
       let!(:client) { Client.new(token) }
 
-      subject { client.webhooks }
+      subject { client.webhooks(space_id) }
 
       describe '.all' do
         it 'class method also works' do
           vcr('webhook/all') { expect(Contentful::Management::Webhook.all(client, space_id)).to be_kind_of Contentful::Management::Array }
         end
         it 'returns a Contentful::Array' do
-          vcr('webhook/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('webhook/all') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
         it 'builds a Contentful::Management::Webhook object' do
-          vcr('webhook/all') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Webhook }
+          vcr('webhook/all') { expect(subject.all.first).to be_kind_of Contentful::Management::Webhook }
         end
       end
 
@@ -29,17 +29,17 @@ module Contentful
           vcr('webhook/find') { expect(Contentful::Management::Webhook.find(client, space_id, webhook_id)).to be_kind_of Contentful::Management::Webhook }
         end
         it 'returns a Contentful::Management::Webhook' do
-          vcr('webhook/find') { expect(subject.find(space_id, webhook_id)).to be_kind_of Contentful::Management::Webhook }
+          vcr('webhook/find') { expect(subject.find(webhook_id)).to be_kind_of Contentful::Management::Webhook }
         end
         it 'returns webhook for a given key' do
           vcr('webhook/find') do
-            webhook = subject.find(space_id, webhook_id)
+            webhook = subject.find(webhook_id)
             expect(webhook.id).to eql webhook_id
           end
         end
         it 'returns an error when content_type does not exists' do
           vcr('webhook/find_not_found') do
-            result = subject.find(space_id, 'not_exist')
+            result = subject.find('not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end
@@ -48,20 +48,21 @@ module Contentful
       describe '.create' do
         it 'builds Contentful::Management::Webhook object' do
           vcr('webhook/create') do
-            webhook = subject.create(space_id, id: 'test_webhook', url: 'https://www.example3.com')
+            webhook = subject.create(id: 'test_webhook', url: 'https://www.example3.com')
             expect(webhook).to be_kind_of Contentful::Management::Webhook
             expect(webhook.url).to eq 'https://www.example3.com'
           end
         end
         it 'return error if url is already taken' do
           vcr('webhook/create_with_taken_url') do
-            webhook = subject.create(space_id, id: 'taken_webhook', url: 'https://www.example3.com')
+            webhook = subject.create(id: 'taken_webhook', url: 'https://www.example3.com')
             expect(webhook).to be_kind_of Contentful::Management::Error
           end
         end
         it 'can create webhooks with name and custom headers' do
           vcr('webhook/create_with_name_and_headers') do
-            webhook = subject.create(
+            webhook = described_class.create(
+              client,
               'zjvxmotjud5s',
               name: 'some_webhook',
               id: 'some_id',
@@ -81,7 +82,8 @@ module Contentful
         end
         it 'can create webhooks with specific topics' do
           vcr('webhook/topics') do
-            webhook = subject.create(
+            webhook = described_class.create(
+              client,
               'zjvxmotjud5s',
               name: 'test_topics',
               url: 'https://www.example3.com',
@@ -101,7 +103,7 @@ module Contentful
       describe '#update' do
         it 'all parameters' do
           vcr('webhook/update') do
-            webhook = subject.find(space_id, 'test_webhook')
+            webhook = subject.find('test_webhook')
             updated_webhook = webhook.update(url: 'https://www.example5.com',
                                              httpBasicUsername: 'test_username',
                                              httpBasicPassword: 'test_password')
@@ -115,7 +117,7 @@ module Contentful
       describe '#destroy' do
         it 'returns true' do
           vcr('webhook/destroy') do
-            webhook = subject.find(space_id, 'test_webhook')
+            webhook = subject.find('test_webhook')
             result = webhook.destroy
             expect(result).to eq true
           end

@@ -1,26 +1,27 @@
-require_relative 'error'
-require_relative 'resource'
-require_relative 'entry'
-require_relative 'dynamic_entry'
-require_relative 'array'
 require_relative 'link'
-require_relative 'space'
-require_relative 'space_membership'
-require_relative 'organization'
 require_relative 'user'
-require_relative 'content_type'
-require_relative 'asset'
-require_relative 'webhook'
-require_relative 'webhook_call'
-require_relative 'webhook_health'
-require_relative 'api_key'
-require_relative 'personal_access_token'
-require_relative 'locale'
 require_relative 'role'
-require_relative 'ui_extension'
-require_relative 'editor_interface'
-require_relative 'snapshot'
+require_relative 'error'
+require_relative 'entry'
+require_relative 'array'
+require_relative 'space'
+require_relative 'asset'
+require_relative 'locale'
 require_relative 'upload'
+require_relative 'webhook'
+require_relative 'api_key'
+require_relative 'resource'
+require_relative 'snapshot'
+require_relative 'environment'
+require_relative 'organization'
+require_relative 'content_type'
+require_relative 'webhook_call'
+require_relative 'ui_extension'
+require_relative 'dynamic_entry'
+require_relative 'webhook_health'
+require_relative 'space_membership'
+require_relative 'editor_interface'
+require_relative 'personal_access_token'
 
 module Contentful
   module Management
@@ -34,6 +35,7 @@ module Contentful
         'SpaceMembership' => Contentful::Management::SpaceMembership,
         'Organization' => Contentful::Management::Organization,
         'User' => Contentful::Management::User,
+        'Environment' => Contentful::Management::Environment,
         'ContentType' => Contentful::Management::ContentType,
         'Entry' => :find_entry_class,
         'Asset' => Contentful::Management::Asset,

@@ -6,8 +6,8 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/webhook-calls/webhook-health
     class WebhookHealth
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
       property :calls, :hash
 
@@ -19,7 +19,7 @@ module Contentful
       #
       # @return [Contentful::Management::WebhookHealth]
       def self.find(client, space_id, webhook_id)
-        ClientWebhookHealthMethodsFactory.new(client).find(space_id, webhook_id)
+        ClientWebhookHealthMethodsFactory.new(client, space_id).find(webhook_id)
       end
 
       # Not supported

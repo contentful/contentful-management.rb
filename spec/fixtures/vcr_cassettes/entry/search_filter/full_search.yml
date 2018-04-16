@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Wed, 20 Aug 2014 10:22:52 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/content_types
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -346,7 +346,7 @@ http_interactions:
   recorded_at: Wed, 20 Aug 2014 10:22:53 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/entries?query=find%20me
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/entries?query=find%20me
     body:
       encoding: US-ASCII
       string: ''

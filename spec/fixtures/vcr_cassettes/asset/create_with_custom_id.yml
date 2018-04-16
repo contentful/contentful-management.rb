@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/codequest_id_test_custom
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/codequest_id_test_custom
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"titlebyCreateAPI_custom_id"},"description":{"en-US":"descByAPI_custom_id"},"file":{"en-US":{"contentType":"image/jpeg","fileName":"codequest.jpg","upload":"http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg"}}}}'
@@ -98,7 +98,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 07:38:09 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/codequest_id_test_custom/files/en-US/process
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/codequest_id_test_custom/files/en-US/process
     body:
       encoding: US-ASCII
       string: ''

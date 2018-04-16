@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/iv4sic0eru9h/entries/5GrMLWzfyMs0eKoi4sg2ug
+    uri: https://api.contentful.com/spaces/iv4sic0eru9h/environments/master/entries/5GrMLWzfyMs0eKoi4sg2ug
     body:
       encoding: US-ASCII
       string: ''
@@ -128,7 +128,7 @@ http_interactions:
   recorded_at: Tue, 29 Mar 2016 14:44:50 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/iv4sic0eru9h/content_types/localeTest
+    uri: https://api.contentful.com/spaces/iv4sic0eru9h/environments/master/content_types/localeTest
     body:
       encoding: US-ASCII
       string: ''

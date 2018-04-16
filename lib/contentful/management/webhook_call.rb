@@ -6,17 +6,17 @@ module Contentful
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/webhook-calls
     class WebhookCall
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::SystemProperties
 
-      property :statusCode, :integer
-      property :errors, :array
-      property :eventType, :string
       property :url, :array
+      property :errors, :array
+      property :request, :hash
+      property :response, :hash
       property :requestAt, :date
       property :responseAt, :date
-      property :response, :hash
-      property :request, :hash
+      property :eventType, :string
+      property :statusCode, :integer
 
       # Gets all webhook call details for a webhook.
       #
@@ -26,7 +26,7 @@ module Contentful
       #
       # @return [Contentful::Management::Array<Contentful::Management::WebhookCall>]
       def self.all(client, space_id, webhook_id)
-        ClientWebhookCallMethodsFactory.new(client).all(space_id, webhook_id)
+        ClientWebhookCallMethodsFactory.new(client, space_id, webhook_id).all
       end
 
       # Gets a webhook's call details by ID
@@ -38,7 +38,7 @@ module Contentful
       #
       # @return [Contentful::Management::WebhookCall]
       def self.find(client, space_id, webhook_id, call_id)
-        ClientWebhookCallMethodsFactory.new(client).find(space_id, webhook_id, call_id)
+        ClientWebhookCallMethodsFactory.new(client, space_id, webhook_id).find(call_id)
       end
 
       # Not supported

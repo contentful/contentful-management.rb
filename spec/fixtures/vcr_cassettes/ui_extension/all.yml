@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/arqlnkt58eul/extensions
+    uri: https://api.contentful.com/spaces/arqlnkt58eul/environments/master/extensions
     body:
       encoding: US-ASCII
       string: ''

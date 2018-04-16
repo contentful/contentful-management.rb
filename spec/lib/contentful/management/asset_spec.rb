@@ -13,21 +13,21 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { client.assets }
+      subject { client.assets(space_id, 'master') }
 
       describe '.all' do
         it 'class method also works' do
-          vcr('asset/all') { expect(Contentful::Management::Asset.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('asset/all') { expect(Contentful::Management::Asset.all(client, space_id, 'master')).to be_kind_of Contentful::Management::Array }
         end
         it 'returns a Contentful::Array' do
-          vcr('asset/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('asset/all') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
         it 'builds a Contentful::Management::Asset object' do
-          vcr('asset/all') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Asset }
+          vcr('asset/all') { expect(subject.all.first).to be_kind_of Contentful::Management::Asset }
         end
         it 'return limited number of assets with next_page' do
           vcr('asset/limited_assets_next_page') do
-            assets = subject.all('bfsvtul0c41g', limit: 20, skip: 2)
+            assets = described_class.all(client, 'bfsvtul0c41g', 'master', limit: 20, skip: 2)
             expect(assets).to be_kind_of Contentful::Management::Array
             expect(assets.limit).to eq 20
             expect(assets.skip).to eq 2
@@ -36,45 +36,28 @@ module Contentful
         end
         it 'supports select operator' do
           vcr('asset/select_operator') do
-            nyancat = subject.all('cfexampleapi', 'sys.id' => 'nyancat', select: 'fields.title').first
+            nyancat = described_class.all(client, 'cfexampleapi', 'master', 'sys.id' => 'nyancat', select: 'fields.title').first
             expect(nyancat.fields).to eq({ title: 'Nyan Cat' })
           end
         end
       end
 
-      describe '.all_published' do
-        let!(:space_id) { 'bjwq7b86vgmm' }
-        before :each do
-          expect_any_instance_of(Contentful::Management::Asset.client_association_class).to receive(:warn)
-        end
-
-        it 'class method also works' do
-          vcr('asset/all_public') { expect(Contentful::Management::Asset.all_published(client, space_id)).to be_kind_of Contentful::Management::Array }
-        end
-        it 'returns a Contentful::Array' do
-          vcr('asset/all_public') { expect(subject.all_published(space_id)).to be_kind_of Contentful::Management::Array }
-        end
-        it 'builds a Contentful::Management::Asset object' do
-          vcr('asset/all_public') { expect(subject.all_published(space_id).first).to be_kind_of Contentful::Management::Asset }
-        end
-      end
-
       describe '.find' do
         it 'class method also works' do
-          vcr('asset/find') { expect(Contentful::Management::Asset.find(client, space_id, asset_id)).to be_kind_of Contentful::Management::Asset }
+          vcr('asset/find') { expect(Contentful::Management::Asset.find(client, space_id, 'master', asset_id)).to be_kind_of Contentful::Management::Asset }
         end
         it 'returns a Contentful::Management::Asset' do
-          vcr('asset/find') { expect(subject.find(space_id, asset_id)).to be_kind_of Contentful::Management::Asset }
+          vcr('asset/find') { expect(subject.find(asset_id)).to be_kind_of Contentful::Management::Asset }
         end
         it 'returns the asset for a given key' do
           vcr('asset/find') do
-            asset = subject.find(space_id, asset_id)
+            asset = subject.find(asset_id)
             expect(asset.id).to eql asset_id
           end
         end
         it 'returns an error when content_type does not exists' do
           vcr('asset/find_not_found') do
-            result = subject.find(space_id, 'not_exist')
+            result = subject.find('not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
             message = [
               "HTTP status code: 404 Not Found",
@@ -89,7 +72,7 @@ module Contentful
       describe '#destroy' do
         it 'returns Contentful::BadRequest error when content type is published' do
           vcr('asset/destroy_published') do
-            result = subject.find(space_id, 'r7o2iuDeSc4UmioOuoKq6').destroy
+            result = subject.find('r7o2iuDeSc4UmioOuoKq6').destroy
             expect(result).to be_kind_of Contentful::Management::BadRequest
             message = [
               "HTTP status code: 400 Bad Request",
@@ -100,7 +83,7 @@ module Contentful
         end
         it 'returns true when asset is not published' do
           vcr('asset/destroy') do
-            result = subject.find(space_id, 'r7o2iuDeSc4UmioOuoKq6').destroy
+            result = subject.find('r7o2iuDeSc4UmioOuoKq6').destroy
             expect(result).to eq true
           end
         end
@@ -109,7 +92,7 @@ module Contentful
       describe '#unpublish' do
         it 'unpublish' do
           vcr('asset/unpublish') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             initial_version = asset.sys[:version]
             asset.unpublish
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -119,7 +102,7 @@ module Contentful
 
         it 'returns BadRequest error when already unpublished' do
           vcr('asset/unpublish_already_unpublished') do
-            result = subject.find(space_id, asset_id_2).unpublish
+            result = subject.find(asset_id_2).unpublish
             expect(result).to be_kind_of Contentful::Management::BadRequest
             message = [
               "HTTP status code: 400 Bad Request",
@@ -139,7 +122,6 @@ module Contentful
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
             asset = subject.create(
-              space_id,
               title: 'titlebyCreateAPI',
               description: 'descByAPI',
               file: file
@@ -152,7 +134,7 @@ module Contentful
 
         it 'returns Contentful::Management::Asset' do
           vcr('asset/publish') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             initial_version = asset.sys[:version]
             asset.publish
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -161,7 +143,7 @@ module Contentful
         end
         it 'returns BadRequest error when already published' do
           vcr('asset/publish_already_published') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             asset.sys[:version] = -1
             result = asset.publish
             expect(result).to be_kind_of Contentful::Management::Conflict
@@ -172,14 +154,14 @@ module Contentful
       describe '#published?' do
         it 'returns true if asset is published' do
           vcr('asset/published_true') do
-            asset = subject.find(space_id, asset_id)
+            asset = subject.find(asset_id)
             asset.publish
             expect(asset.published?).to be_truthy
           end
         end
         it 'returns false if asset is not published' do
           vcr('asset/published_false') do
-            asset = subject.find(space_id, asset_id)
+            asset = subject.find(asset_id)
             asset.unpublish
             expect(asset.published?).to be_falsey
           end
@@ -189,7 +171,7 @@ module Contentful
       describe '#unarchive' do
         it 'unarchive the asset' do
           vcr('asset/unarchive') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             initial_version = asset.sys[:version]
             asset.unarchive
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -199,7 +181,7 @@ module Contentful
 
         it 'returns BadRequest error when already unpublished' do
           vcr('asset/unarchive_already_unarchived') do
-            result = subject.find(space_id, asset_id_2).unarchive
+            result = subject.find(asset_id_2).unarchive
             expect(result).to be_kind_of Contentful::Management::BadRequest
           end
         end
@@ -208,14 +190,14 @@ module Contentful
       describe '#archive' do
         it 'returns error when archive published asset' do
           vcr('asset/archive_published') do
-            asset = subject.find(space_id, asset_id_2).archive
+            asset = subject.find(asset_id_2).archive
             expect(asset).to be_kind_of Contentful::Management::BadRequest
           end
         end
 
         it ' archive unpublished asset' do
           vcr('asset/archive') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             initial_version = asset.sys[:version]
             asset.archive
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -225,7 +207,7 @@ module Contentful
 
         it 'returns BadRequest error when already unpublished' do
           vcr('asset/unarchive_already_unarchive') do
-            result = subject.find(space_id, asset_id_2).unarchive
+            result = subject.find(asset_id_2).unarchive
             expect(result).to be_kind_of Contentful::Management::BadRequest
           end
         end
@@ -234,14 +216,14 @@ module Contentful
       describe '#archived?' do
         it 'returns true if asset is archive' do
           vcr('asset/archived_true') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             asset.archive
             expect(asset.archived?).to be_truthy
           end
         end
         it 'returns false if asset is not archive' do
           vcr('asset/archived_false') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             asset.unarchive
             expect(asset.archived?).to be_falsey
           end
@@ -251,7 +233,7 @@ module Contentful
       describe '#locale' do
         it 'returns default locale' do
           vcr('asset/locale') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             expect(asset.locale).to eq asset.default_locale
             expect(asset.title).to eq 'titlebyCreateAPI'
             expect(asset.description).to eq 'descByAPI'
@@ -260,7 +242,7 @@ module Contentful
 
         it 'set locale to given asset' do
           vcr('asset/set_locale') do
-            asset = subject.find(space_id, asset_id_2)
+            asset = subject.find(asset_id_2)
             asset.locale = 'pl-Pl'
             expect(asset.sys[:locale]).to eq 'pl-Pl'
           end
@@ -276,7 +258,6 @@ module Contentful
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
             asset = subject.create(
-              space_id,
               title: 'titlebyCreateAPI',
               description: 'descByAPI',
               file: file
@@ -294,8 +275,10 @@ module Contentful
             file.properties[:fileName] = 'pic1.jpg'
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
-            asset = subject.create(
+            asset = described_class.create(
+              client,
               'bfsvtul0c41g',
+              'master',
               title: 'Title PL',
               description: 'Description PL',
               file: file,
@@ -315,7 +298,6 @@ module Contentful
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
             asset = subject.create(
-              space_id,
               id: 'codequest_id_test_custom',
               title: 'titlebyCreateAPI_custom_id',
               description: 'descByAPI_custom_id',
@@ -336,7 +318,6 @@ module Contentful
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
             asset = subject.create(
-              space_id,
               id: 'codequest_id_test_custom_id',
               title: 'titlebyCreateAPI_custom_id',
               description: 'descByAPI_custom_id',
@@ -350,7 +331,7 @@ module Contentful
       describe '#update' do
         it 'updates asset with default locale without file' do
           vcr('asset/update_with_default_locale_without_file') do
-            asset = subject.find(space_id, '4DmT2j54pWY8ocimkEU6qS')
+            asset = subject.find('4DmT2j54pWY8ocimkEU6qS')
             asset.update(title: 'Title new', description: 'Description new')
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'Title new'
@@ -366,7 +347,7 @@ module Contentful
             file.properties[:fileName] = 'codequest.jpg'
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
-            asset = subject.find(space_id, '4DmT2j54pWY8ocimkEU6qS')
+            asset = subject.find('4DmT2j54pWY8ocimkEU6qS')
             asset.update(file: file)
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.file.properties[:fileName]).to eq 'codequest.jpg'
@@ -380,7 +361,7 @@ module Contentful
             file.properties[:fileName] = 'codequest.jpg'
             file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
 
-            asset = subject.find(space_id, 'codequest_id_test_custom_id')
+            asset = subject.find('codequest_id_test_custom_id')
             asset.locale = 'pl'
             asset.update(title: 'updateTitlePl', description: 'updateDescPl', file: file)
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -393,7 +374,7 @@ module Contentful
       describe '#save' do
         it 'updated' do
           vcr('asset/save_update') do
-            asset = subject.find(space_id, '35Kt2tInIsoauo8sC82q04')
+            asset = subject.find('35Kt2tInIsoauo8sC82q04')
             asset.fields[:description] = 'Firmowe logo.'
             asset.save
             expect(asset).to be_kind_of Contentful::Management::Asset
@@ -406,7 +387,7 @@ module Contentful
         let(:space_id) { 'bfsvtul0c41g' }
         it 'update the current version of the object to the version on the system' do
           vcr('asset/reload') do
-            asset = subject.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
+            asset = subject.find('8R4vbQXKbCkcSu26Wy2U0')
             asset.sys[:version] = 999
             update_asset = asset.update(title: 'Updated name')
             expect(update_asset).to be_kind_of Contentful::Management::Conflict
@@ -420,7 +401,7 @@ module Contentful
 
         it 'updates fields collection when reloaded' do
           vcr('asset/reload_with_fields') do
-            asset = subject.find(space_id, '8R4vbQXKbCkcSu26Wy2U0')
+            asset = subject.find('8R4vbQXKbCkcSu26Wy2U0')
             valid_fields = asset.instance_variable_get(:@fields)
             asset.instance_variable_set(:@fields, 'changed')
             asset.reload
@@ -454,7 +435,7 @@ module Contentful
             file.properties[:fileName] = 'pic1.jpg'
             file.properties[:upload] = 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gasometer_Berlin_Sch%C3%B6neberg_2011.jpg'
 
-            asset = subject.create(space_id, title: 'Asset title', description: 'Description', file: file)
+            asset = subject.create(title: 'Asset title', description: 'Description', file: file)
             asset.process_file
             expect(asset).to be_kind_of Contentful::Management::Asset
             expect(asset.title).to eq 'Asset title'
@@ -479,7 +460,7 @@ module Contentful
         describe "Pagination on assets doesn't work without first calling limit - #143" do
           it 'shouldnt break on next page without parameters on original query' do
             vcr('asset/143_assets_next_page') do
-              assets = subject.all('facgnwwgj5fe')
+              assets = described_class.all(client, 'facgnwwgj5fe', 'master')
               assets.next_page
             end
           end

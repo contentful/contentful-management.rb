@@ -9,7 +9,12 @@ module Contentful
         def archive
           ResourceRequester.new(client, self.class).archive(
             self,
-            { space_id: space.id, resource_id: id, suffix: '/archived' },
+            {
+              space_id: space.id,
+              environment_id: environment_id,
+              resource_id: id,
+              suffix: '/archived'
+            },
             version: sys[:version]
           )
         end
@@ -20,7 +25,12 @@ module Contentful
         def unarchive
           ResourceRequester.new(client, self.class).unarchive(
             self,
-            { space_id: space.id, resource_id: id, suffix: '/archived' },
+            {
+              space_id: space.id,
+              environment_id: environment_id,
+              resource_id: id,
+              suffix: '/archived'
+            },
             version: sys[:version]
           )
         end

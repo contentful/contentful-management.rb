@@ -11,7 +11,7 @@ module Contentful
       let(:extension_id) { '2ZJduY1pKEma6G8Y2ImqYU' }
       let(:client) { Client.new(token, raise_errors: true) }
 
-      subject { client.ui_extensions }
+      subject { client.ui_extensions(space_id, 'master') }
 
       describe 'class methods' do
         describe '::valid_extension' do
@@ -202,12 +202,12 @@ module Contentful
 
       describe '.all' do
         it 'returns a Contentful::Array' do
-          vcr('ui_extension/all') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('ui_extension/all') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
 
         it 'builds a Contentful::Management::UIExtension' do
           vcr('ui_extension/all') {
-            extension = subject.all(space_id).first
+            extension = subject.all.first
 
             expect(extension).to be_kind_of Contentful::Management::UIExtension
             expect(extension.name).to eq 'My awesome extension by srcDoc'
@@ -219,14 +219,14 @@ module Contentful
         end
 
         it 'class method also works' do
-          vcr('ui_extension/all') { expect(Contentful::Management::UIExtension.all(client, space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('ui_extension/all') { expect(Contentful::Management::UIExtension.all(client, space_id, 'master')).to be_kind_of Contentful::Management::Array }
         end
       end
 
       describe '.find' do
         it 'returns a Contentful::Management::UIExtension' do
           vcr('ui_extension/find') {
-            extension = subject.find(space_id, extension_id)
+            extension = subject.find(extension_id)
 
             expect(extension).to be_kind_of Contentful::Management::UIExtension
             expect(extension.name).to eq 'My awesome extension by srcDoc'
@@ -241,7 +241,7 @@ module Contentful
       describe '.create' do
         it 'creates a Contentful::Management::UIExtension' do
           vcr('ui_extension/create') {
-            extension = subject.create(playground_space_id, extension: {
+            extension = client.ui_extensions(playground_space_id, 'master').create(extension: {
               'name' => 'test extension',
               'fieldTypes' => [{"type"=>"Symbol"}, {"type"=>"Text"}],
               'srcdoc' => "<!doctype html><html lang='en'><head><meta charset='UTF-8'/><title>Sample Editor Extension</title><link rel='stylesheet' href='https://contentful.github.io/ui-extensions-sdk/cf-extension.css'><script src='https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js'></script></head><body><div id='content'></div><script>window.contentfulExtension.init(function (extension) {window.alert(extension);var value = extension.field.getValue();extension.field.setValue('Hello world!');extension.field.onValueChanged(function(value) {if (value !== currentValue) {extension.field.setValue('Hello world!');}});});</script></body></html>",
@@ -261,13 +261,13 @@ module Contentful
       describe '#destroy' do
         it 'deletes the extension' do
           vcr('ui_extension/delete') {
-            extension = subject.find(playground_space_id, '2rf6QdckyoECCsQeE6gIOg')
+            extension = client.ui_extensions(playground_space_id, 'master').find('2rf6QdckyoECCsQeE6gIOg')
 
             expect(extension.id).to be_truthy
 
             extension.destroy
 
-            expect { subject.find(playground_space_id, '2rf6QdckyoECCsQeE6gIOg') }.to raise_error Contentful::Management::NotFound
+            expect { client.ui_extensions(playground_space_id, 'master').find('2rf6QdckyoECCsQeE6gIOg') }.to raise_error Contentful::Management::NotFound
           }
         end
       end

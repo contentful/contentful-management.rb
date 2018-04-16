@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/5DSpuKrl04eMAGQoQckeIq
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/5DSpuKrl04eMAGQoQckeIq
     body:
       encoding: US-ASCII
       string: ''
@@ -169,7 +169,7 @@ http_interactions:
   recorded_at: Wed, 30 Jul 2014 13:34:25 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/entries
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"SymbolTest"},"symbols":{"en-US":["USD","PL","XX"]}}}'

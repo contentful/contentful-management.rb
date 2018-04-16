@@ -45,17 +45,17 @@ module Contentful
 
       let!(:client) { Client.new(token) }
 
-      subject { client.roles }
+      subject { client.roles(space_id) }
 
       describe '.all' do
         it 'class method also works' do
           vcr('roles/all_for_space') { expect(Contentful::Management::Role.all(client, space_id)).to be_kind_of Contentful::Management::Array }
         end
         it 'returns a Contentful::Array' do
-          vcr('roles/all_for_space') { expect(subject.all(space_id)).to be_kind_of Contentful::Management::Array }
+          vcr('roles/all_for_space') { expect(subject.all).to be_kind_of Contentful::Management::Array }
         end
         it 'builds a Contentful::Management::Locale object' do
-          vcr('roles/all_for_space') { expect(subject.all(space_id).first).to be_kind_of Contentful::Management::Role }
+          vcr('roles/all_for_space') { expect(subject.all.first).to be_kind_of Contentful::Management::Role }
         end
       end
 
@@ -64,17 +64,17 @@ module Contentful
           vcr('roles/find') { expect(Contentful::Management::Role.find(client, space_id, role_id)).to be_kind_of Contentful::Management::Role }
         end
         it 'returns a Contentful::Management::Role' do
-          vcr('roles/find') { expect(subject.find(space_id, role_id)).to be_kind_of Contentful::Management::Role }
+          vcr('roles/find') { expect(subject.find(role_id)).to be_kind_of Contentful::Management::Role }
         end
         it 'returns the locale for a given key' do
           vcr('roles/find') do
-            role = subject.find(space_id, role_id)
+            role = subject.find(role_id)
             expect(role.id).to eq role_id
           end
         end
         it 'returns an error when content_type does not exists' do
           vcr('roles/find_for_space_not_found') do
-            result = subject.find(space_id, 'not_exist')
+            result = subject.find('not_exist')
             expect(result).to be_kind_of Contentful::Management::NotFound
           end
         end
@@ -82,7 +82,7 @@ module Contentful
       describe '.create' do
         it 'create role for space' do
           vcr('roles/create_for_space') do
-            role = subject.create(space_id, role_attrs)
+            role = subject.create(role_attrs)
 
             expect(role.name).to eq 'testRoleCreate'
             expect(role.description).to eq 'test role'
@@ -94,7 +94,7 @@ module Contentful
       describe '#update' do
         it 'can update the role' do
           vcr('roles/update') do
-            role = subject.find(space_id, role_id)
+            role = subject.find(role_id)
             role.update(name: 'Something')
 
             role.reload
@@ -108,13 +108,13 @@ module Contentful
         it 'can destroy roles' do
           vcr('roles/destroy') do
             role_attrs[:name] = 'ToDelete'
-            role = subject.create(space_id, role_attrs)
+            role = subject.create(role_attrs)
 
-            expect(subject.find(space_id, role.id).name).to eq 'ToDelete'
+            expect(subject.find(role.id).name).to eq 'ToDelete'
 
             role.destroy
 
-            error = subject.find(space_id, role.id)
+            error = subject.find(role.id)
 
             expect(error).to be_a Contentful::Management::NotFound
           end

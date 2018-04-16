@@ -11,13 +11,13 @@ module Contentful
       DEFAULT_LIMIT = 100
 
       include Contentful::Management::Resource
-      include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::ArrayLike
+      include Contentful::Management::Resource::SystemProperties
 
+      property :items
+      property :skip, :integer
       property :total, :integer
       property :limit, :integer
-      property :skip, :integer
-      property :items
 
       # Simplifies pagination
       def next_page

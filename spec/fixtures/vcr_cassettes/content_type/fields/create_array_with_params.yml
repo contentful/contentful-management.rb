@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/6xzrdCr33OMAeIYUgs6UKi
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/6xzrdCr33OMAeIYUgs6UKi
     body:
       encoding: US-ASCII
       string: ''
@@ -114,7 +114,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 10:36:46 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/content_types/6xzrdCr33OMAeIYUgs6UKi
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/content_types/6xzrdCr33OMAeIYUgs6UKi
     body:
       encoding: UTF-8
       string: '{"name":"Blog","description":"Blog''s content type","fields":[{"id":"blog_name","name":"blog_name","type":"Text"},{"id":"blog_entries","name":"Entries","type":"Array","items":{"type":"Link","linkType":"Entry"},"localized":true}]}'

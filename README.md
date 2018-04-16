@@ -87,24 +87,72 @@ blog_space.name = 'New Blog Space'
 blog_space.save
 ```
 
-### Assets
+### Environments
 
-Retrieving all assets from the space:
+Retrieving all environments:
 
 ```ruby
-blog_post_assets = blog_space.assets.all
+environments = client.environments('space_id').all
 ```
 
-Retrieving all published assets from the space: **DEPRECATED**
+Or if you already have a fetched space:
 
 ```ruby
-blog_post_assets = blog_space.assets.all_published
+environments = space.environments.all
+```
+
+Retrieving one environment by ID:
+
+```ruby
+environment = client.environments('space_id').find('master')
+```
+
+Destroying a environment:
+
+```ruby
+environment.destroy
+```
+
+Creating a environment:
+
+```ruby
+environment = client.environments('space_id').new
+environment.id = 'dev'
+environment.name = 'Development'
+environment.save
+```
+
+or
+
+```ruby
+environment = client.environments(space_id).create(id: 'dev', name: 'Development')
+```
+
+Updating a environment:
+
+```ruby
+environment.update(name: 'New Blog environment')
+```
+
+or
+
+```ruby
+environment.name = 'Dev'
+environment.save
+```
+
+### Assets
+
+Retrieving all assets from the environment:
+
+```ruby
+blog_post_assets = environment.assets.all
 ```
 
 Retrieving an asset by id:
 
 ```ruby
-blog_post_asset = blog_space.assets.find('asset_id')
+blog_post_asset = environment.assets.find('asset_id')
 ```
 
 Creating a file:
@@ -119,13 +167,13 @@ image_file.properties[:upload] = 'http://www.example.com/example.jpg'
 Creating an asset:
 
 ```ruby
-my_image_asset = blog_space.assets.create(title: 'My Image', description: 'My Image Description', file: image_file)
+my_image_asset = environment.assets.create(title: 'My Image', description: 'My Image Description', file: image_file)
 ```
 
 or an asset with multiple locales
 
 ```ruby
-my_image_localized_asset = space.assets.new
+my_image_localized_asset = environment.assets.new
 my_image_localized_asset.title_with_locales= {'en-US' => 'title', 'pl' => 'pl title'}
 my_image_localized_asset.description_with_locales= {'en-US' => 'description', 'pl' => 'pl description'}
 en_file = Contentful::Management::File.new
@@ -204,21 +252,21 @@ my_image_asset.published?
 Creating an upload from a file path:
 
 ```ruby
-upload = client.uploads.create('space_id', '/path/to/file.md')
+upload = client.uploads('space_id').create('/path/to/file.md')
 ```
 
 Alternatively, create it from an `::IO` object:
 
 ```ruby
 File.open('/path/to/file.md', 'rb') do |file|
-  upload = client.uploads.create('space_id', file)
+  upload = client.uploads('space_id').create(file)
 end
 ```
 
 Finding an upload:
 
 ```ruby
-upload = client.uploads.find('space_id', 'upload_id')
+upload = client.uploads('space_id').find('upload_id')
 ```
 
 Deleting an upload:
@@ -231,7 +279,7 @@ Associating an upload with an asset:
 
 ```ruby
 # We find or create an upload:
-upload = client.uploads.find('space_id', 'upload_id')
+upload = client.uploads('space_id').find('upload_id')
 
 # We create a File object with the associated upload:
 file = Contentful::Management::File.new
@@ -240,28 +288,22 @@ file.properties[:fileName] = 'file.md'
 file.properties[:uploadFrom] = upload.to_link_json  # We create the Link from the upload.
 
 # We create an asset with the associated file:
-asset = client.assets.create('space_id', title: 'My Upload', file: file)
+asset = client.assets('space_id', 'environment_id').create(title: 'My Upload', file: file)
 asset.process_file  # We process the file, to generate an URL for our upload.
 ```
 
 ### Entries
 
-Retrieving all entries from the space:
+Retrieving all entries from the environment:
 
 ```ruby
-entries = blog_space.entries.all
+entries = environment.entries.all
 ```
 
-Retrieving all published entries from the space: **DEPRECATED**
+Retrieving all entries from the environment with given content type:
 
 ```ruby
-entries = blog_space.entries.all_published
-```
-
-Retrieving all entries from the space with given content type:
-
-```ruby
-entries = blog_space.entries.all(content_type: content_type.id)
+entries = environment.entries.all(content_type: content_type.id)
 ```
 
 or
@@ -273,7 +315,7 @@ entries = content_type.entries.all
 Retrieving an entry by ID:
 
 ```ruby
-entry = blog_space.entries.find('entry_id')
+entry = environment.entries.find('entry_id')
 ```
 
 Creating a location:
@@ -355,26 +397,26 @@ my_entry.published?
 > make an extra request to fetch the content type and fill the missing fields.
 > To allow for content type caching:
 >   * Enable [content type cache](#content-type-cache) at client instantiation time
->   * Query entries through `space.entries.find` instead of `Entry.find(space_id, entry_id)`
+>   * Query entries through `environment.entries.find` instead of `Entry.find(environment_id, entry_id)`
 
 ### Content Types
 
-Retrieving all content types from a space:
+Retrieving all content types from a environment:
 
 ```ruby
-blog_post_content_types = blog_space.content_types.all
+blog_post_content_types = environment.content_types.all
 ```
 
-Retrieving all published content types from a space:
+Retrieving all published content types from a environment:
 
 ```ruby
-blog_post_content_types = blog_space.content_types.all_published
+blog_post_content_types = environment.content_types.all_published
 ```
 
-Retrieving one content type by ID from a space:
+Retrieving one content type by ID from a environment:
 
 ```ruby
-blog_post_content_type = blog_space.content_types.find(id)
+blog_post_content_type = environment.content_types.find(id)
 ```
 
 Creating a field for a content type:
@@ -416,13 +458,13 @@ blog_post_content_type.fields.destroy(title_field_id)
 Creating a content type:
 
 ```ruby
-blog_space.content_types.create(name: 'Post', fields: [title_field, body_field])
+environment.content_types.create(name: 'Post', fields: [title_field, body_field])
 ```
 
 or
 
 ```ruby
-blog_post_content_type = blog_space.content_types.new
+blog_post_content_type = environment.content_types.new
 blog_post_content_type.name = 'Post'
 blog_post_content_type.fields = [title_field, body_field]
 blog_post_content_type.save
@@ -537,22 +579,22 @@ content_type.fields.create(id: 'entry', validations: [validation_link_field])
 
 ### Locales
 
-Retrieving all locales from the space:
+Retrieving all locales from the environment:
 
 ```ruby
-blog_post_locales = blog_space.locales.all
+blog_post_locales = environment.locales.all
 ```
 
-Retrieving one locale by ID from the space:
+Retrieving one locale by ID from the environment:
 
 ```ruby
-blog_post_locale = blog_space.locales.find(locale_id)
+blog_post_locale = environment.locales.find(locale_id)
 ```
 
 Creating a locale:
 
 ```ruby
-blog_space.locales.create(name: 'German', code: 'de-DE')
+environment.locales.create(name: 'German', code: 'de-DE')
 ```
 
 Updating a locale:
@@ -764,21 +806,21 @@ user = client.users.me
 
 ### UI Extensions
 
-Retrieving all UI extensions from the space:
+Retrieving all UI extensions from the environment:
 
 ```ruby
-extensions = blog_space.ui_extensions.all
+extensions = environment.ui_extensions.all
 ```
-Retrieving one UI extension by ID from the space:
+Retrieving one UI extension by ID from the environment:
 
 ```ruby
-blog_post_extension = blog_space.ui_extensions.find(extension_id)
+blog_post_extension = environment.ui_extensions.find(extension_id)
 ```
 
 Creating a UI extension:
 
 ```ruby
-blog_space.ui_extensions.create(
+environment.ui_extensions.create(
   extension: {
     'name' => 'My extension',
     'src' => 'https://www.example.com',
@@ -851,7 +893,7 @@ You can call the EditorInterface API from any level within the content model hie
 pass the IDs of the levels below it.
 
 > Hierarchy is as follows:
-> `No Object -> Space -> ContentType -> EditorInterface`
+> `No Object -> Environment -> ContentType -> EditorInterface`
 
 ### Entry Snapshots
 
@@ -884,9 +926,9 @@ snapshot = content_type.snapshots.find('some_snapshot_id')
 ### Pagination
 
 ```ruby
-blog_space.entries.all(limit: 5).next_page
-blog_space.assets.all(limit: 5).next_page
-blog_space.entries.all(limit: 5).next_page
+environment.entries.all(limit: 5).next_page
+environment.assets.all(limit: 5).next_page
+environment.entries.all(limit: 5).next_page
 ```
 
 ### Logging
@@ -918,14 +960,14 @@ client = Contentful::Management::Client.new('access_token', raise_errors: true)
 
 ### Content Type Cache
 
-This allows for fetching content types for your space at client instantiation time, which prevents extra requests per entry.
+This allows for fetching content types for your environment at client instantiation time, which prevents extra requests per entry.
 To enable this, in your client instantiation do:
 
 ```ruby
-client = Contentful::Management::Client.new(token, dynamic_entries: ['my_space_id'])
+client = Contentful::Management::Client.new(token, dynamic_entries: {'my_space_id' => 'my_environment_id'})
 ```
 
-You can enable the cache for as many spaces as you want. If no space is added, content types will be fetched upon space find.
+You can enable the cache for as many environments as you want. If no environment is added, content types will be fetched upon environment find.
 
 To completely disable this feature, upon client instantiation do:
 

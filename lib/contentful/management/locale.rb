@@ -1,4 +1,5 @@
 require_relative 'resource'
+require_relative 'resource/environment_aware'
 
 module Contentful
   module Management
@@ -7,15 +8,16 @@ module Contentful
       include Contentful::Management::Resource
       include Contentful::Management::Resource::SystemProperties
       include Contentful::Management::Resource::Refresher
+      include Contentful::Management::Resource::EnvironmentAware
 
       property :code, :string
       property :name, :string
-      property :contentManagementApi, :boolean
-      property :contentDeliveryApi, :boolean
       property :publish, :boolean
       property :default, :boolean
       property :optional, :boolean
       property :fallbackCode, :string
+      property :contentDeliveryApi, :boolean
+      property :contentManagementApi, :boolean
 
       # @private
       def self.create_attributes(_client, attributes)

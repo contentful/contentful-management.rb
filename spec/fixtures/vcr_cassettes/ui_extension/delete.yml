@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions/2rf6QdckyoECCsQeE6gIOg
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/extensions/2rf6QdckyoECCsQeE6gIOg
     body:
       encoding: US-ASCII
       string: ''
@@ -125,7 +125,7 @@ http_interactions:
   recorded_at: Tue, 05 Sep 2017 12:18:10 GMT
 - request:
     method: delete
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions/2rf6QdckyoECCsQeE6gIOg
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/extensions/2rf6QdckyoECCsQeE6gIOg
     body:
       encoding: US-ASCII
       string: ''
@@ -201,7 +201,7 @@ http_interactions:
   recorded_at: Tue, 05 Sep 2017 12:18:11 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/facgnwwgj5fe/extensions/2rf6QdckyoECCsQeE6gIOg
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/extensions/2rf6QdckyoECCsQeE6gIOg
     body:
       encoding: US-ASCII
       string: ''

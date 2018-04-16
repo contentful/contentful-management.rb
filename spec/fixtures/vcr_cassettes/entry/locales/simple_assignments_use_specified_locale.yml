@@ -86,7 +86,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 08:52:35 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/0agypmo1waov/content_types
+    uri: https://api.contentful.com/spaces/0agypmo1waov/environments/master/content_types
     body:
       encoding: US-ASCII
       string: ''
@@ -210,7 +210,7 @@ http_interactions:
   recorded_at: Wed, 03 Jun 2015 08:52:36 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/0agypmo1waov/entries/4epXENbO8wsaOukgqquYcI
+    uri: https://api.contentful.com/spaces/0agypmo1waov/environments/master/entries/4epXENbO8wsaOukgqquYcI
     body:
       encoding: US-ASCII
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/oe3b689om6k5/content_types/testInterfaces/editor_interface
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/testInterfaces/editor_interface
     body:
       encoding: US-ASCII
       string: ''

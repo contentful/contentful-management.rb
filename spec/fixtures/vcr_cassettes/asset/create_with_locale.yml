@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/assets
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"pl-PL":"Title PL"},"description":{"pl-PL":"Description
@@ -99,7 +99,7 @@ http_interactions:
   recorded_at: Tue, 19 Aug 2014 09:33:15 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/bfsvtul0c41g/assets/6HW6OmvN3UMgysEIicCmCC/files/pl-PL/process
+    uri: https://api.contentful.com/spaces/bfsvtul0c41g/environments/master/assets/6HW6OmvN3UMgysEIicCmCC/files/pl-PL/process
     body:
       encoding: US-ASCII
       string: ''

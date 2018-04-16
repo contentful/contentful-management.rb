@@ -22,22 +22,6 @@ module Contentful
         it 'builds a Contentful::Management::Space object' do
           vcr('space/all') { expect(subject.all.first).to be_kind_of Contentful::Management::Space }
         end
-        describe 'content type caching' do
-          it 'fetches all content types when finding a space' do
-            vcr('space/all') do
-              space = subject.all
-              expect(client.dynamic_entry_cache).not_to be_empty
-            end
-          end
-          it 'doesnt fetch content types when explicitly disabled' do
-            vcr('space/all_disabled_cache') do
-              client = Client.new(token, disable_content_type_caching: true)
-              subject = client.spaces
-              space = subject.all
-              expect(client.dynamic_entry_cache).to be_empty
-            end
-          end
-        end
       end
 
       describe '.find' do
@@ -64,24 +48,6 @@ module Contentful
             space = subject.find(space_id)
             expect(space.id).to eql space_id
             expect(space.default_locale).to eql 'en-US'
-          end
-        end
-        describe 'content type caching' do
-          it 'fetches all content types when finding a space' do
-            vcr('space/find') do
-              space = subject.find(space_id)
-              expect(client.dynamic_entry_cache).not_to be_empty
-              expect(client.dynamic_entry_cache.key?('5DSpuKrl04eMAGQoQckeIq'.to_sym)).to be_truthy
-            end
-          end
-          it 'does not fetch content types when explicitly disabled' do
-            vcr('space/disabled_cache') do
-              client = Client.new(token, disable_content_type_caching: true)
-              subject = client.spaces
-
-              space = subject.find('facgnwwgj5fe')
-              expect(client.dynamic_entry_cache).to be_empty
-            end
           end
         end
       end
@@ -131,7 +97,6 @@ module Contentful
               space = subject.create(name: 'pl space', organization_id: '1EQPR5IHrPx94UY4AViTYO', default_locale: 'pl-pl')
               expect(space).to be_kind_of Contentful::Management::Space
               expect(space.name).to eq 'pl space'
-              expect(space.locales.all.first.code).to eql 'pl-pl'
             end
           end
           it 'creates a space within a client default locale' do
@@ -140,7 +105,6 @@ module Contentful
               space = client.spaces.create(name: 'new space', organization_id: '4SsuxQCaMaemfIms52Jr8s')
               expect(space).to be_kind_of Contentful::Management::Space
               expect(space.name).to eq 'new space'
-              expect(space.locales.all.first.code).to eql 'pl-PL'
               expect(space.default_locale).to eql 'pl-PL'
             end
           end
@@ -162,40 +126,6 @@ module Contentful
             initial_version = space.sys[:version]
             space.update(name: 'NewNameSpace')
             expect(space.sys[:version]).to eql initial_version
-          end
-        end
-      end
-
-      describe '#content_types' do
-        let(:content_type_id) { '5DSpuKrl04eMAGQoQckeIq' }
-        let(:content_type_name) { 'ContentTypeForSpace' }
-
-        it 'creates content type' do
-          vcr('space/content_type/create') do
-            content_type = subject.find(space_id).content_types.create(name: content_type_name)
-            expect(content_type).to be_kind_of Contentful::Management::ContentType
-            expect(content_type.name).to eq content_type_name
-          end
-        end
-        it '#content_types.find' do
-          vcr('space/content_type/find') do
-            content_type = subject.find(space_id).content_types.find('1AZQOWKr2I8W2ugY0KiGEU')
-            expect(content_type).to be_kind_of Contentful::Management::ContentType
-            expect(content_type.name).to eq content_type_name
-          end
-        end
-        it '.content_types.all' do
-          vcr('space/content_type/all') do
-            content_types = subject.find(space_id).content_types.all
-            expect(content_types).to be_kind_of Contentful::Management::Array
-          end
-        end
-
-        it '.content_types.all_published' do
-          space_id = 'bjwq7b86vgmm'
-          vcr('space/content_type/all_public') do
-            content_types = subject.find(space_id).content_types.all_published
-            expect(content_types).to be_kind_of Contentful::Management::Array
           end
         end
       end
@@ -228,79 +158,6 @@ module Contentful
         end
       end
 
-      describe '#default_locale' do
-        it 'can set default locales from space locales on already existing spaces' do
-          vcr('space/locale/find_other_locale') do
-            space = subject.find(space_id)
-            expect(space.default_locale).to eql 'de-DE'
-          end
-        end
-      end
-
-      describe '#locales' do
-        let(:locale_id) { '42irhRZ5uMrRc9SZ1PyDRk' }
-
-        it '#locales.all' do
-          vcr('space/locale/all') do
-            locales = subject.find(space_id).locales.all
-            expect(locales).to be_kind_of Contentful::Management::Array
-          end
-        end
-        it 'builds a Contentful::Management::Local object' do
-          vcr('space/locale/all') { expect(subject.find(space_id).locales.all.first).to be_kind_of Contentful::Management::Locale }
-        end
-        it '#locales.find' do
-          vcr('space/locale/find') do
-            locales = subject.find(space_id).locales.find(locale_id)
-            expect(locales).to be_kind_of Contentful::Management::Locale
-            expect(locales.code).to eql 'en-US'
-          end
-        end
-
-        it 'when locale not found' do
-          vcr('space/locale/find_not_found') do
-            locale = subject.find(space_id).locales.find('invalid_id')
-            expect(locale).to be_kind_of Contentful::Management::NotFound
-          end
-        end
-
-        it 'creates locales to space' do
-          vcr('space/locale/create') do
-            locale = subject.find(space_id).locales.create(name: 'ru-RU',
-                                                           contentManagementApi: true,
-                                                           publish: true,
-                                                           contentDeliveryApi: true,
-                                                           code: 'ru-RU')
-            expect(locale).to be_kind_of Contentful::Management::Locale
-            expect(locale.name).to eql 'ru-RU'
-          end
-        end
-
-        it 'returns error when locale already exists' do
-          vcr('space/locale/create_with_the_same_code') do
-            space = subject.find(space_id)
-            locale = space.locales.create(name: 'ru-RU',
-                                          contentManagementApi: true,
-                                          publish: true,
-                                          contentDeliveryApi: true,
-                                          code: 'ru-RU')
-            expect(locale).to be_kind_of Contentful::Management::UnprocessableEntity
-            expect(locale.response.error_message).to eql 'The resource you sent in the body is invalid.'
-          end
-        end
-
-        it '#update when all params are given' do
-          vcr('space/locale/update') do
-            locale = subject.find(space_id).locales.find('6vn9hLab7q0D44XgRUwpoO')
-            initial_version = locale.sys[:version]
-            locale.update(name: 'Russia', contentManagementApi: true, publish: true, contentDeliveryApi: true)
-            expect(locale).to be_kind_of Contentful::Management::Locale
-            expect(locale.name).to eql 'Russia'
-            expect(locale.sys[:version]).to eql initial_version + 1
-          end
-        end
-      end
-
       describe '#save' do
         let(:new_name) { 'SaveNewName' }
         it ' new space' do
@@ -319,122 +176,6 @@ module Contentful
             space.save
             expect(space).to be_kind_of Contentful::Management::Space
             expect(space.name).to eq new_name
-          end
-        end
-      end
-
-      describe '#assets' do
-        it '#assets.all' do
-          vcr('space/asset/all') do
-            assets = subject.find(space_id).assets.all
-            expect(assets).to be_kind_of Contentful::Management::Array
-          end
-        end
-        it 'builds a Contentful::Management::Asset object' do
-          vcr('space/asset/all') { expect(subject.find(space_id).assets.all.first).to be_kind_of Contentful::Management::Asset }
-        end
-
-        it 'return asset for a given key' do
-          vcr('space/asset/find') do
-            result = subject.find(space_id).assets.find('6zEogZjpO8cq6YOOQigiAw')
-            expect(result).to be_kind_of Contentful::Management::Asset
-            expect(result.id).to eql '6zEogZjpO8cq6YOOQigiAw'
-          end
-        end
-        it '#assets.all(skip: 3, limit: 5)' do
-          vcr('space/asset/all_with_skip_and_limit') do
-            assets = subject.find('bfsvtul0c41g').assets.all(limit: 5, skip: 3)
-            expect(assets).to be_kind_of Contentful::Management::Array
-            expect(assets.limit).to eq 5
-          end
-        end
-
-        it '#assets.all_published' do
-          space_id = 'bjwq7b86vgmm'
-          vcr('space/asset/all_public') do
-            assets = subject.find(space_id).assets.all_published
-            expect(assets).to be_kind_of Contentful::Management::Array
-          end
-        end
-
-        it 'create asset for space' do
-          vcr('space/asset/create') do
-            file = Contentful::Management::File.new
-            file.properties[:contentType] = 'image/jpeg'
-            file.properties[:fileName] = 'codequest.jpg'
-            file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
-
-            space_assets = subject.find(space_id).assets
-            asset = space_assets.create(title: 'CodeQuest', description: 'Logo of Codequest', file: file)
-            expect(asset).to be_kind_of Contentful::Management::Asset
-            expect(asset.title).to eql 'CodeQuest'
-            expect(asset.description).to eql 'Logo of Codequest'
-          end
-        end
-
-        it 'creates asset with  multiple locales ' do
-          vcr('space/asset/create_with_multiple_locales') do
-            file = Contentful::Management::File.new
-            file.properties[:contentType] = 'image/jpeg'
-            file.properties[:fileName] = 'codequest.jpg'
-            file.properties[:upload] = 'http://static.goldenline.pl/firm_logo/082/firm_225106_22f37f_small.jpg'
-            space = subject.find(space_id)
-            asset = space.assets.new
-            asset.title_with_locales = {'en-US' => 'Company logo', 'pl' => 'Firmowe logo'}
-            asset.title = 'Logo of Codequest comapny'
-            asset.description_with_locales = {'en-US' => 'Company logo codequest', 'pl' => 'Logo firmy Codequest'}
-            asset.file_with_locales = {'en-US' => file, 'pl' => file}
-            asset.save
-
-            expect(asset).to be_kind_of Contentful::Management::Asset
-            expect(asset.title).to eq 'Logo of Codequest comapny'
-            expect(asset.description).to eq 'Company logo codequest'
-            asset.locale = 'pl'
-            expect(asset.title).to eq 'Firmowe logo'
-            expect(asset.description).to eq 'Logo firmy Codequest'
-          end
-        end
-      end
-      describe '#assets.all(limit: 2, skip: 1).next_page' do
-        it 'returns assets to limited number of assets' do
-          vcr('space/asset/with_skipped_and_limited_assets_next_page') do
-            space = subject.find('bfsvtul0c41g')
-            assets = space.assets.all(limit: 2, skip: 1).next_page
-            expect(assets).to be_kind_of Contentful::Management::Array
-            expect(assets.first).to be_kind_of Contentful::Management::Asset
-            expect(assets.limit).to eq 2
-            expect(assets.skip).to eq 3
-          end
-        end
-      end
-
-      describe '#entries' do
-        it '#entries.all' do
-          vcr('space/entry/all') do
-            entries = subject.find(space_id).entries.all
-            expect(entries).to be_kind_of Contentful::Management::Array
-          end
-        end
-        it 'builds a Contentful::Management::Entry object' do
-          vcr('space/entry/all') { expect(subject.find(space_id).entries.all.first).to be_kind_of Contentful::Management::Entry }
-        end
-
-        it '#entries.all_published' do
-          space_id = 'bjwq7b86vgmm'
-          vcr('space/entry/all_public') do
-            entries = subject.find(space_id).entries.all_published
-            expect(entries).to be_kind_of Contentful::Management::Array
-          end
-        end
-
-        it 'return entry for a given key' do
-          vcr('space/entry/find') do
-            result = subject.find(space_id).entries.find('4Rouux8SoUCKwkyCq2I0E0')
-            expect(result).to be_kind_of Contentful::Management::Entry
-            expect(result.id).to eql '4Rouux8SoUCKwkyCq2I0E0'
-            expect(result.name_with_locales['en-US']).to eq 'Tom Handy'
-            expect(result.class.to_s).to eq "Contentful::Management::DynamicEntry[#{ result.class.content_type.id }]"
-            expect(result.class.inspect).to eq "Contentful::Management::DynamicEntry[#{ result.class.content_type.id }]"
           end
         end
       end
@@ -464,29 +205,6 @@ module Contentful
             expect(webhook).to be_kind_of Contentful::Management::Webhook
             expect(webhook.url).to eql 'https://www.example2.com'
             expect(webhook.http_basic_username).to eql 'username'
-          end
-        end
-      end
-      describe '#entries.all(content_type: content_type_id)' do
-        it 'returns entries to specified content type' do
-          vcr('space/entry/content_type_entires') do
-            space = subject.find('9lxkhjnp8gyx')
-            entries = space.entries.all(content_type: 'category_content_type')
-            expect(entries).to be_kind_of Contentful::Management::Array
-            expect(entries.first).to be_kind_of Contentful::Management::Entry
-            expect(entries.first.sys[:contentType].id).to eq 'category_content_type'
-          end
-        end
-      end
-      describe '#entries.all(limit: 2, skip: 1).next_page' do
-        it 'returns entries to limited number of entries' do
-          vcr('space/entry/with_skipped_and_limited_entires_next_page') do
-            space = subject.find('sueu9bzev6qn')
-            entries = space.entries.all(limit: 2, skip: 1).next_page
-            expect(entries).to be_kind_of Contentful::Management::Array
-            expect(entries.first).to be_kind_of Contentful::Management::Entry
-            expect(entries.limit).to eq 2
-            expect(entries.skip).to eq 3
           end
         end
       end

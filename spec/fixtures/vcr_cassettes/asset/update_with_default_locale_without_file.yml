@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/4DmT2j54pWY8ocimkEU6qS
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/4DmT2j54pWY8ocimkEU6qS
     body:
       encoding: US-ASCII
       string: ''
@@ -107,7 +107,7 @@ http_interactions:
   recorded_at: Thu, 31 Jul 2014 07:40:28 GMT
 - request:
     method: put
-    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/assets/4DmT2j54pWY8ocimkEU6qS
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/4DmT2j54pWY8ocimkEU6qS
     body:
       encoding: UTF-8
       string: '{"fields":{"title":{"en-US":"Title new"},"description":{"en-US":"Description

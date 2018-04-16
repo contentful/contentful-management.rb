@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/content_types/5BHZB1vi4ooq4wKcmA8e2c
+    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/environments/master/content_types/5BHZB1vi4ooq4wKcmA8e2c
     body:
       encoding: US-ASCII
       string: ''
@@ -188,7 +188,7 @@ http_interactions:
   recorded_at: Mon, 15 Sep 2014 09:10:54 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/assets/2oNoT3vSAs82SOIQmKe0KG
+    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/environments/master/assets/2oNoT3vSAs82SOIQmKe0KG
     body:
       encoding: US-ASCII
       string: ''
@@ -290,7 +290,7 @@ http_interactions:
   recorded_at: Mon, 15 Sep 2014 09:10:54 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/entries/60zYC7nY9GcKGiCYwAs4wm
+    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/environments/master/entries/60zYC7nY9GcKGiCYwAs4wm
     body:
       encoding: US-ASCII
       string: ''
@@ -396,7 +396,7 @@ http_interactions:
   recorded_at: Mon, 15 Sep 2014 09:10:55 GMT
 - request:
     method: post
-    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/entries
+    uri: https://api.contentful.com/spaces/ene4qtp2sh7u/environments/master/entries
     body:
       encoding: UTF-8
       string: '{"fields":{"name":{"en-US":"Test name"},"number":{"en-US":30},"float1":{"en-US":1.1},"boolean":{"en-US":true},"date":{"en-US":"2000-07-12T11:11:00+02:00"},"time":{"en-US":"2000-07-12T11:11:00+02:00"},"location":{"en-US":{"lat":22.44,"lon":33.33}},"file":{"en-US":{"sys":{"type":"Link","linkType":"Asset","id":"2oNoT3vSAs82SOIQmKe0KG"}}},"image":{"en-US":{"sys":{"type":"Link","linkType":"Asset","id":"2oNoT3vSAs82SOIQmKe0KG"}}},"array":{"en-US":["PL","USD","XX"]},"entry":{"en-US":{"sys":{"type":"Link","linkType":"Entry","id":"60zYC7nY9GcKGiCYwAs4wm"}}},"entries":{"en-US":[{"sys":{"type":"Link","linkType":"Entry","id":"60zYC7nY9GcKGiCYwAs4wm"}},{"sys":{"type":"Link","linkType":"Entry","id":"60zYC7nY9GcKGiCYwAs4wm"}}]},"object_json":{"en-US":{"test":{"@type":"Codequest"}}}}}'

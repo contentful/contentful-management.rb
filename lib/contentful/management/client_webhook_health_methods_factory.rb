@@ -12,9 +12,9 @@ module Contentful
         fail 'Not supported'
       end
 
-      def find(space_id, webhook_id)
+      def find(webhook_id)
         @resource_requester.find(
-          space_id: space_id,
+          space_id: @space_id,
           webhook_id: webhook_id
         )
       end
