@@ -84,4 +84,18 @@ describe Contentful::Management::Environment do
       }
     end
   end
+
+  describe 'proxies' do
+    it 'entries proxy works' do
+      vcr('environment/entry_proxy') {
+        environment = subject.find(master)
+
+        entries = environment.entries.all
+        expect(entries).to be_a ::Contentful::Management::Array
+
+        entry = environment.entries.find(entries.first.id)
+        expect(entry).to be_a ::Contentful::Management::Entry
+      }
+    end
+  end
 end

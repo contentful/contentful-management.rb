@@ -1,0 +1,1507 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.0.0; platform ruby/2.5.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 17 Apr 2018 14:54:30 GMT
+      Etag:
+      - W/"22a25eea35acc74ea3d1b641479654a1"
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35997'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 686bf829b3ccd8c3040a1a0507ffdbfb
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '688'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=6A4DeZXcmFEBVU2r+YKpBaYK1loAAAAA4qzSQO7i1BuIXNxc7af4aA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=dd0RF1IPtGG6yLxw6lKYhQAAAAAYiNUwAkKAC+YF77MEsA7Z; path=/; Domain=.contentful.com
+      - visid_incap_673446=cm/nmIVgSnC8VEzbKpxlraYK1loAAAAAQUIPAAAAAABLCiDRnpr3BO2OrLFYMjVb;
+        expires=Wed, 17 Apr 2019 06:07:08 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-75538089-75538098 NNNN CT(86 87 0) RT(1523976869923 37) q(0 0 2 -1) r(4
+        4) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"master",
+          "sys":{
+            "type":"Environment",
+            "id":"master",
+            "version":1,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "status":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Status",
+                "id":"ready"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2017-12-07T10:54:10Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2017-12-07T10:54:10Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 14:54:30 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/entries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.0.0; platform ruby/2.5.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 17 Apr 2018 14:54:31 GMT
+      Etag:
+      - '"88d9b71775fc915c572b08e9c4c9f935"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35996'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '8'
+      X-Contentful-Request-Id:
+      - 66a15200952d73741243b99e8793ad2f
+      Content-Length:
+      - '27256'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=GgFYAA3M+zzdVU2r+YKpBacK1loAAAAAqKhHmVMFtv2mcHeDqBONzA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=w4QsMioFXSlJU/CH6lKYhQAAAABPMPhvnEN/nlxAhNpuJ33Y; path=/; Domain=.contentful.com
+      - visid_incap_673446=PS8sH1xMQSWvd+ZcI5CtB6cK1loAAAAAQUIPAAAAAADDcF9DcZS+2A7uTuKQJyg3;
+        expires=Wed, 17 Apr 2019 06:07:06 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 5-76597513-76597521 NNNN CT(88 88 0) RT(1523976870385 51) q(0 0 2 -1) r(9
+        10) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 22,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1dYTHwMZlU2wm88SA8I2Q0",
+                "type": "Entry",
+                "createdAt": "2017-03-10T15:22:12.924Z",
+                "updatedAt": "2017-03-10T15:56:21.723Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 2,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "something else"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_entry_test",
+                "type": "Entry",
+                "createdAt": "2017-03-10T15:47:32.138Z",
+                "updatedAt": "2017-03-10T15:47:32.144Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "foobar"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5gQdVmPHKwIk2MumquYwOu",
+                "type": "Entry",
+                "createdAt": "2017-03-02T18:47:44.195Z",
+                "updatedAt": "2017-03-10T15:58:29.870Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 4,
+                "firstPublishedAt": "2017-03-10T15:58:05.418Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "test"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "something else"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_ct_proxy_test",
+                "type": "Entry",
+                "createdAt": "2017-03-10T09:45:41.878Z",
+                "updatedAt": "2017-03-10T09:45:41.886Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "test"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "cq0MrAkH8A0Q8QsYquwMq",
+                "type": "Entry",
+                "createdAt": "2017-05-08T14:06:31.797Z",
+                "updatedAt": "2017-05-08T14:06:44.003Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 10,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 9,
+                "firstPublishedAt": "2017-05-08T14:06:43.975Z",
+                "publishedAt": "2017-05-08T14:06:43.975Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "cat"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "Happy Cat"
+                },
+                "lives": {
+                  "en-US": 9
+                },
+                "bestFriend": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "IJLRrADsqq2AmwcugoYeK"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "4dI1y4PKdWWCSC0CwQakOa",
+                "type": "Entry",
+                "createdAt": "2017-03-02T18:49:22.569Z",
+                "updatedAt": "2017-03-10T13:38:59.457Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 2,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 1,
+                "firstPublishedAt": "2017-03-10T13:38:59.406Z",
+                "publishedAt": "2017-03-10T13:38:59.406Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "test"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "foobar"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_test",
+                "type": "Entry",
+                "createdAt": "2017-03-10T13:54:19.698Z",
+                "updatedAt": "2017-03-10T13:54:19.710Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "foobar"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "foo",
+                "type": "Entry",
+                "createdAt": "2017-03-02T21:50:42.413Z",
+                "updatedAt": "2017-03-02T21:50:47.966Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 2,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 1,
+                "firstPublishedAt": "2017-03-02T21:50:47.936Z",
+                "publishedAt": "2017-03-02T21:50:47.936Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "test"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "foobar"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_content_type_proxy_test",
+                "type": "Entry",
+                "createdAt": "2017-03-10T15:31:07.025Z",
+                "updatedAt": "2017-03-10T15:31:07.031Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "test"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "3fTNzlQsDmge6YQEikEuME",
+                "type": "Entry",
+                "createdAt": "2017-06-15T14:23:07.028Z",
+                "updatedAt": "2017-06-15T14:28:46.345Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 1,
+                "version": 12,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 10,
+                "firstPublishedAt": "2017-06-15T14:23:17.640Z",
+                "publishedAt": "2017-06-15T14:23:17.641Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "missingFields"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "A Name"
+                },
+                "other": {
+                  "en-US": "Other Stuff"
+                },
+                "different": {
+                  "en-US": "A Different Field"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "33uj74Wln2Oc02CAyEY8CK",
+                "type": "Entry",
+                "createdAt": "2017-04-25T16:01:56.936Z",
+                "updatedAt": "2017-04-25T16:35:55.545Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 2,
+                "version": 7,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 5,
+                "firstPublishedAt": "2017-04-25T16:02:06.147Z",
+                "publishedAt": "2017-04-25T16:02:10.000Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "foo"
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5blobvyETYu2iGiCMi4WAW",
+                "type": "Entry",
+                "createdAt": "2017-11-17T12:54:42.336Z",
+                "updatedAt": "2017-11-17T12:54:42.336Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "somethingWithLinks"
+                  }
+                }
+              },
+              "fields": {
+                "link": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "IJLRrADsqq2AmwcugoYeK"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1HDKL0ldPuaKKiquq0IGam",
+                "type": "Entry",
+                "createdAt": "2017-11-17T12:25:37.976Z",
+                "updatedAt": "2017-11-17T12:25:37.976Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "somethingWithLinks"
+                  }
+                }
+              },
+              "fields": {
+                "link": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "IJLRrADsqq2AmwcugoYeK"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "IJLRrADsqq2AmwcugoYeK",
+                "type": "Entry",
+                "createdAt": "2017-05-08T14:06:14.367Z",
+                "updatedAt": "2017-05-09T13:39:59.063Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedCounter": 16,
+                "version": 57,
+                "publishedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "publishedVersion": 56,
+                "firstPublishedAt": "2017-05-08T14:06:25.154Z",
+                "publishedAt": "2017-05-09T13:39:59.032Z",
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "cat"
+                  }
+                }
+              },
+              "fields": {
+                "name": {
+                  "en-US": "Fat Cat"
+                },
+                "lives": {
+                  "en-US": 1337
+                },
+                "bestFriend": {
+                  "en-US": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "cq0MrAkH8A0Q8QsYquwMq"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "57MJtMRZYsoekQwQgiKWKg",
+                "type": "Entry",
+                "createdAt": "2017-11-17T12:40:26.506Z",
+                "updatedAt": "2017-11-17T12:40:26.506Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "somethingWithLinks"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5SPxEdJIcMuiWW2omkOgw2",
+                "type": "Entry",
+                "createdAt": "2017-11-17T12:44:00.211Z",
+                "updatedAt": "2017-11-17T12:44:00.211Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "somethingWithLinks"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "2wuR16DhVuKKoem80OmUMQ",
+                "type": "Entry",
+                "createdAt": "2017-03-10T15:22:13.514Z",
+                "updatedAt": "2017-03-10T15:22:13.522Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "5MMfDdT3a0CUC6oGQGySaI",
+                "type": "Entry",
+                "createdAt": "2017-03-10T13:54:15.563Z",
+                "updatedAt": "2017-03-10T13:54:15.576Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "1p3oeI7fO8imkaiMyWiCuc",
+                "type": "Entry",
+                "createdAt": "2017-03-10T15:31:12.531Z",
+                "updatedAt": "2017-03-10T15:31:12.549Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_content_type_empty",
+                "type": "Entry",
+                "createdAt": "2017-03-10T15:44:46.785Z",
+                "updatedAt": "2017-03-10T15:44:46.791Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "3YW3PokqqkgSg8EoOAAk0o",
+                "type": "Entry",
+                "createdAt": "2017-11-17T12:51:01.188Z",
+                "updatedAt": "2017-11-17T12:51:01.188Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "somethingWithLinks"
+                  }
+                }
+              },
+              "fields": {}
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "id_create_ct_empty",
+                "type": "Entry",
+                "createdAt": "2017-03-10T11:40:05.280Z",
+                "updatedAt": "2017-03-10T11:40:05.288Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "4SejVrWT96dvL9IV4Nb7sQ"
+                  }
+                },
+                "version": 1,
+                "contentType": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "ContentType",
+                    "id": "foo"
+                  }
+                }
+              },
+              "fields": {}
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 14:54:31 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/entries/1dYTHwMZlU2wm88SA8I2Q0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.0.0; platform ruby/2.5.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 17 Apr 2018 14:54:32 GMT
+      Etag:
+      - '"15aacbfad6c2196743c232df2cbb863f"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35995'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 87c28d8a501e9de983a3dc6f7a6466d0
+      Content-Length:
+      - '924'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_408_673446=ub2tTdM60DyQVk2r+YKpBagK1loAAAAAVtLkjmo++YPWrFOITMvtDQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=moMyHLr3rQXpfqYv6lKYhQAAAABoi7nti+T7OBKfPuJhA8eD; path=/; Domain=.contentful.com
+      - visid_incap_673446=an0FeWm4QWiqYmEQO6j9p6gK1loAAAAAQUIPAAAAAAA99fjvKR8myU+WptrGEUqp;
+        expires=Wed, 17 Apr 2019 06:07:08 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 9-75538388-75538392 NNNN CT(86 89 0) RT(1523976871529 32) q(0 0 2 -1) r(8
+        8) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "facgnwwgj5fe"
+              }
+            },
+            "id": "1dYTHwMZlU2wm88SA8I2Q0",
+            "type": "Entry",
+            "createdAt": "2017-03-10T15:22:12.924Z",
+            "updatedAt": "2017-03-10T15:56:21.723Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "version": 2,
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "foo"
+              }
+            }
+          },
+          "fields": {
+            "name": {
+              "en-US": "something else"
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 17 Apr 2018 14:54:32 GMT
+recorded_with: VCR 4.0.0
