@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.0.1
 ### Fixed
 * Fixed environment proxy `find` method.
 
