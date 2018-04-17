@@ -16,7 +16,7 @@ module Contentful
       end
 
       def find(id)
-        associated_class.all(environment.client, environment.sys[:space].id, environment.id, id)
+        associated_class.find(environment.client, environment.sys[:space].id, environment.id, id)
       end
 
       def create(attributes = {})
