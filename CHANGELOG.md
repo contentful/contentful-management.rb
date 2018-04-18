@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Fixed
+* Fixed environment ID fetching for environment aware resources.
 
 ## 2.0.1
 ### Fixed

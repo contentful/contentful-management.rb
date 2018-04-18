@@ -5,7 +5,15 @@ module Contentful
       module EnvironmentAware
         # Gets the environment ID for the resource.
         def environment_id
-          sys.fetch(:environment, {}).fetch(:id, 'master')
+          env = sys.fetch(:environment, {})
+          case env
+          when ::Hash
+            env.fetch(:id, 'master')
+          when ::Contentful::Management::Link
+            env.id
+          else
+            'master'
+          end
         end
       end
     end
