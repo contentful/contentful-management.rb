@@ -231,6 +231,7 @@ module Contentful
         end
       end
 
+      # rubocop:disable Style/MethodMissing
       def method_missing(name, *args, &block)
         if content_type.nil?
           fetch_content_type
@@ -242,6 +243,7 @@ module Contentful
 
         fail NameError.new("undefined local variable or method `#{name}' for #{self.class}:#{sys[:id]}", name)
       end
+      # rubocop:enable Style/MethodMissing
 
       def fetch_content_type
         content_type_id = if sys[:contentType].is_a?(::Contentful::Management::Resource)

@@ -236,7 +236,7 @@ module Contentful
       def replace_links_with_known_resources(res, seen_resource_ids = [])
         seen_resource_ids << res.id
 
-        property_containers = [:properties, :sys, :fields].map do |property_container_name|
+        property_containers = %i[properties sys fields].map do |property_container_name|
           res.public_send(property_container_name)
         end.compact
 

@@ -24,7 +24,7 @@ module Contentful
 
       # @private
       def self.create_attributes(_client, attributes)
-        attributes.select { |key, _value| [:httpBasicUsername, :httpBasicPassword, :url, :name, :headers, :topics].include? key }
+        attributes.select { |key, _value| %i[httpBasicUsername httpBasicPassword url name headers topics].include? key }
       end
 
       # Creates a webhook.

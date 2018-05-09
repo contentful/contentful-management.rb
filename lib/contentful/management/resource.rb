@@ -52,8 +52,7 @@ module Contentful
       end
 
       # @private
-      def after_create(_attributes)
-      end
+      def after_create(_attributes); end
 
       # Updates a resource.
       #
