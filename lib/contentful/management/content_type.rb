@@ -126,7 +126,7 @@ module Contentful
           end
 
           fields.define_singleton_method(:destroy) do |id|
-            fields = content_type.fields.select { |field| field.id != id }
+            fields = content_type.fields.reject { |field| field.id == id }
             content_type.update(fields: fields)
           end
         end

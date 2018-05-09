@@ -49,10 +49,11 @@ module Contentful
         # @private
         def self.create_setter_field(entry, field, value, locale, default_locale)
           fields = entry.instance_variable_get(:@fields)
-          if localized_or_default_locale(field, default_locale, locale)
-            fields[locale] ||= {}
-            fields[locale][field.id.to_sym] = value
-          end
+
+          return unless localized_or_default_locale(field, default_locale, locale)
+
+          fields[locale] ||= {}
+          fields[locale][field.id.to_sym] = value
         end
 
         # Verifies if field is localized or default locale matches current locale
