@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.1.0
 ### Added
 * Added environment selection option for Api Keys.
 * Added a way to obtain Preview Api Keys.
