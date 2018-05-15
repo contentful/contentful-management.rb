@@ -841,6 +841,21 @@ describe Contentful::Management::Entry do
   end
 
   describe 'issues' do
+    describe 'can send query parameters when requesting through environment proxy - #160' do
+      it 'can filter by content type and set a limit different than 100' do
+        vcr('entry/issue_160') {
+          space = client.spaces.find('facgnwwgj5fe')
+          environment = space.environments.find('master')
+
+          entries = environment.entries.all(content_type: 'foo', limit: 2)
+
+          expect(entries.total).to eq 11
+          expect(entries.size).to eq 2
+          expect(entries.all? { |e| e.sys[:contentType].id == 'foo' }).to be_truthy
+        }
+      end
+    end
+
     describe 'handles multiple locales even when they are not all defined for the default locale - #70' do
       it 'merges all present locales' do
         vcr('entry/issue_70') {
