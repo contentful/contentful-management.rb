@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.1.1
 ### Fixed
 * Fixed query parameter forwarding when querying from an environment proxy. [#160](https://github.com/contentful/contentful-management.rb/issues/160)
 
