@@ -1,6 +1,12 @@
 # Change Log
 
 ## Master
+### Added
+* Added environment selection option for Api Keys.
+* Added a way to obtain Preview Api Keys.
+
+### Fixed
+* Fixed `Link#resolve` not working for all resource types.
 
 ## 2.0.2
 ### Fixed
@@ -12,7 +18,7 @@
 
 ## 2.0.0
 ### Added
-* Added support for Environments
+* Added support for Environments.
 
 ### Changed
 

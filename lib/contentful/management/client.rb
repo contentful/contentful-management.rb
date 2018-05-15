@@ -26,6 +26,7 @@ require 'contentful/management/client_content_type_methods_factory'
 require 'contentful/management/client_ui_extension_methods_factory'
 require 'contentful/management/client_webhook_call_methods_factory'
 require 'contentful/management/client_webhook_health_methods_factory'
+require 'contentful/management/client_preview_api_key_methods_factory'
 require 'contentful/management/client_space_membership_methods_factory'
 require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_personal_access_tokens_methods_factory'
@@ -146,6 +147,15 @@ module Contentful
       # @return [Contentful::Management::ClientApiKeyMethodsFactory]
       def api_keys(space_id)
         ClientApiKeyMethodsFactory.new(self, space_id)
+      end
+
+      # Allows manipulation of api keys in context of the current client
+      # Allows listing all preview api keys for client and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientPreviewApiKeyMethodsFactory]
+      def preview_api_keys(space_id)
+        ClientPreviewApiKeyMethodsFactory.new(self, space_id)
       end
 
       # Allows manipulation of personal access tokens in context of the current client
