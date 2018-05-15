@@ -1,0 +1,158 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/api_keys
+    body:
+      encoding: UTF-8
+      string: '{"name":"test with env","description":null,"environments":[{"sys":{"type":"Link","linkType":"Environment","id":"master"}},{"sys":{"type":"Link","linkType":"Environment","id":"testing"}}]}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.0.2; platform ruby/2.5.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Date:
+      - Tue, 15 May 2018 11:08:53 GMT
+      Etag:
+      - W/"63c2d753533d795321f09e08ecca0c17"
+      Location:
+      - https://api.contentful.com/spaces/facgnwwgj5fe/api_keys/29BbI2yvRgqGrKqA0Jfs2C
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - ae22d7e31e07ae03cfa004a4aab0218c
+      X-Frame-Options:
+      - ALLOWALL
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1161'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_467_673446=JGyMEWxMIx1qE/oViR97BsS/+loAAAAAOLofxJ7nizcrbzabZLY1tA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=CUHfeN0h7Rb9Sfr56lKYhQAAAADFhdA19R6fEVqqErPX2ZrC; path=/; Domain=.contentful.com
+      - visid_incap_673446=YaUkVgKbSwminuB6lMpCQ8S/+loAAAAAQUIPAAAAAAAZXdhM77WCeecx0WlfwwE9;
+        expires=Wed, 15 May 2019 07:47:46 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 3-701776-701780 NNNN CT(112 112 0) RT(1526382531872 61) q(0 0 2 -1) r(6 6)
+        U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"test with env",
+          "description":null,
+          "accessToken":"348518f9a8a4bde30eb9672d45de5e612010ee5271b05255ea986ab961661762",
+          "policies":[
+            {
+              "effect":"allow",
+              "actions":"all"
+            }
+          ],
+          "sys":{
+            "type":"ApiKey",
+            "id":"29BbI2yvRgqGrKqA0Jfs2C",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2018-05-15T11:08:53Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2018-05-15T11:08:53Z"
+          },
+          "environments":[
+            {
+              "sys":{
+                "id":"master",
+                "type":"Link",
+                "linkType":"Environment"
+              }
+            },
+            {
+              "sys":{
+                "id":"testing",
+                "type":"Link",
+                "linkType":"Environment"
+              }
+            }
+          ],
+          "preview_api_key":{
+            "sys":{
+              "type":"Link",
+              "linkType":"PreviewApiKey",
+              "id":"29BPiYGUSf61b93lTZWbKW"
+            }
+          }
+        }
+
+    http_version: 
+  recorded_at: Tue, 15 May 2018 11:08:52 GMT
+recorded_with: VCR 4.0.0

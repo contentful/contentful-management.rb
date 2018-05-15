@@ -9,6 +9,7 @@ require_relative 'space_role_methods_factory'
 require_relative 'space_webhook_methods_factory'
 require_relative 'space_api_key_methods_factory'
 require_relative 'space_environment_methods_factory'
+require_relative 'space_preview_api_key_methods_factory'
 require_relative 'space_space_membership_methods_factory'
 
 module Contentful
@@ -125,6 +126,15 @@ module Contentful
       # @return [Contentful::Management::SpaceApiKeyMethodsFactory]
       def api_keys
         SpaceApiKeyMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of preview api keys in context of the current space
+      # Allows listing all api keys of space and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpacePreviewApiKeyMethodsFactory]
+      def preview_api_keys
+        SpacePreviewApiKeyMethodsFactory.new(self)
       end
 
       # Allows manipulation of space memberships in context of the current space

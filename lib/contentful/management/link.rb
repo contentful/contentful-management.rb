@@ -14,7 +14,7 @@ module Contentful
       def resolve(space_id = nil, environment_id = nil)
         return client.spaces.find(id) if link_type == 'Space'
 
-        method = Contentful::Management::Support.snakify(link_type).to_sym
+        method = Contentful::Management::Support.base_path_for(link_type).to_sym
 
         if space_id && environment_id.nil?
           return client.public_send(

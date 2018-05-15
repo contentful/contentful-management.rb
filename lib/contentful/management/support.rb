@@ -32,6 +32,24 @@ module Contentful
 
           parameters
         end
+
+        # Returns the path for a specified resource name.
+        def base_path_for(resource_name)
+          {
+            'Role' => 'roles',
+            'Space' => 'spaces',
+            'Asset' => 'assets',
+            'Entry' => 'entries',
+            'Locale' => 'locales',
+            'Upload' => 'uploads',
+            'ApiKey' => 'api_keys',
+            'UIExtension' => 'extensions',
+            'Environment' => 'environments',
+            'ContentType' => 'content_types',
+            'PreviewApiKey' => 'preview_api_keys',
+            'SpaceMembership' => 'space_memberships'
+          }[resource_name]
+        end
       end
     end
   end

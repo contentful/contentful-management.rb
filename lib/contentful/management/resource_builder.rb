@@ -19,6 +19,7 @@ require_relative 'webhook_call'
 require_relative 'ui_extension'
 require_relative 'dynamic_entry'
 require_relative 'webhook_health'
+require_relative 'preview_api_key'
 require_relative 'space_membership'
 require_relative 'editor_interface'
 require_relative 'personal_access_token'
@@ -46,6 +47,7 @@ module Contentful
         'WebhookCallDetails' => Contentful::Management::WebhookCall,
         'Webhook' => Contentful::Management::WebhookHealth,
         'ApiKey' => Contentful::Management::ApiKey,
+        'PreviewApiKey' => Contentful::Management::PreviewApiKey,
         'PersonalAccessToken' => Contentful::Management::PersonalAccessToken,
         'Locale' => Contentful::Management::Locale,
         'Role' => Contentful::Management::Role,

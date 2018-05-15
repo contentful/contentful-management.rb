@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe ApiKey do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'bjwq7b86vgmm' }
       let(:api_key_id) { '6vbW35TjBTc8FyRTAuXZZe' }
 
@@ -53,6 +53,53 @@ module Contentful
             api_key = subject.create(name: 'testLocalCreate', description: 'bg')
             expect(api_key.name).to eql 'testLocalCreate'
           end
+        end
+      end
+
+      describe 'environments' do
+        let(:space_id) { 'facgnwwgj5fe' }
+        subject { client.api_keys(space_id) }
+
+        it 'can create an api key with environments' do
+          vcr('api_key/create_with_environments') {
+            api_key = subject.create(name: 'test with env', environments: [
+              {
+                sys: {
+                  type: 'Link',
+                  linkType: 'Environment',
+                  id: 'master'
+                }
+              },
+              {
+                sys: {
+                  type: 'Link',
+                  linkType: 'Environment',
+                  id: 'testing'
+                }
+              }
+            ])
+            expect(api_key.environments.size).to eq 2
+            expect(api_key.environments.first.id).to eq 'master'
+            expect(api_key.environments.last.id).to eq 'testing'
+          }
+        end
+      end
+
+      describe 'preview api tokens' do
+        let(:space_id) { 'facgnwwgj5fe' }
+        let(:api_key_id) { '5mxNhKOZYOp1wzafOR9qPw' }
+        subject { client.api_keys(space_id) }
+
+        it 'can fetch preview api keys' do
+          vcr('api_key/preview') {
+            api_key = subject.find(api_key_id)
+
+            expect(api_key.properties[:preview_api_key]).to be_a Contentful::Management::Link
+
+            preview_api_key = api_key.preview_api_key
+            expect(preview_api_key).to be_a Contentful::Management::PreviewApiKey
+            expect(preview_api_key.access_token).to eq 'PREVIEW_TOKEN'
+          }
         end
       end
     end

@@ -851,8 +851,54 @@ blog_post_api_key = blog_space.api_keys.find(api_key_id)
 ```
 
 Creating an API key:
+
 ```ruby
 blog_space.api_keys.create(name: 'foobar key', description: 'key for foobar mobile app')
+```
+
+Creating an API key with multiple environments:
+
+```ruby
+blog_space.api_keys.create(
+  name: 'foobar key - multiple environments',
+  description: 'key for foobar app',
+  environments: [
+    {
+      sys: {
+        type: 'Link',
+        linkType: 'Environment',
+        id: 'master'
+      }
+    },
+    {
+      sys: {
+        type: 'Link',
+        linkType: 'Environment',
+        id: 'staging'
+      }
+    }
+  ]
+)
+```
+
+### Preview API Keys
+
+Retrieving all Preview API keys from the space:
+
+```ruby
+blog_post_preview_api_keys = blog_space.preview_api_keys.all
+```
+
+Retrieving one Preview API key by ID from the space:
+
+```ruby
+blog_post_preview_api_key = blog_space.preview_api_keys.find(api_key_id)
+```
+
+If you already have an API key fetched, you can retrieve the Preview API key from it:
+
+```ruby
+blog_post_preview_api_key = blog_post_api_key.preview_api_key
 ```
 
 ### Personal Access Tokens
