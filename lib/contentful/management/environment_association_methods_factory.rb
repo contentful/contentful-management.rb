@@ -11,8 +11,8 @@ module Contentful
         @environment = environment
       end
 
-      def all(_params = {})
-        associated_class.all(environment.client, environment.sys[:space].id, environment.id)
+      def all(params = {})
+        associated_class.all(environment.client, environment.sys[:space].id, environment.id, params)
       end
 
       def find(id)
