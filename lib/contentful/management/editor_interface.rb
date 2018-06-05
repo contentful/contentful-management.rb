@@ -71,6 +71,14 @@ module Contentful
         )
       end
 
+      # Saves the current editor interface.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::EditorInterface]
+      def save
+        update(controls: controls) if id
+      end
+
       # Destroys an EditorInterface.
       #
       # Not Supported

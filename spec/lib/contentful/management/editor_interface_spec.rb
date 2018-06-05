@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe EditorInterface do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'oe3b689om6k5' }
       let(:content_type_id) { 'testInterfaces' }
       let(:editor_interface_id) { 'default' }
@@ -45,6 +45,25 @@ module Contentful
 
             editor_interface.controls.first['widgetId'] = 'urlEditor'
             editor_interface.update(controls: editor_interface.controls)
+
+            editor_interface.reload
+
+            expect(editor_interface.controls.first['widgetId']).to eq 'urlEditor'
+          end
+        end
+      end
+
+      describe '#save' do
+        let(:content_type_id) { 'smallerType' }
+
+        it 'can update the editor_interface - a shortcut to #update(controls: editor_interface.controls)' do
+          vcr('editor_interfaces/update') do
+            editor_interface = described_class.default(client, space_id, 'master', content_type_id)
+
+            expect(editor_interface.controls.first['widgetId']).to eq 'singleline'
+
+            editor_interface.controls.first['widgetId'] = 'urlEditor'
+            editor_interface.save
 
             editor_interface.reload
 

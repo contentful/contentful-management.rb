@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Added
+* Added `#save` as a shortcut for `editor_interface.update(controls: editor_interface.controls)`. [#155](https://github.com/contentful/contentful-management.rb/issues/155)
 
 ## 2.1.1
 ### Fixed
