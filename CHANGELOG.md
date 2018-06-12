@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.2.1
 ### Fixed
 * Fixed side-effect that was causing entries created using `content_type.entries.new` to fail to save.
 
