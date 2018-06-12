@@ -920,6 +920,22 @@ describe Contentful::Management::Entry do
       end
     end
 
+    describe 'it can properly create entries from a content type using #new' do
+      let(:space_id) { 'facgnwwgj5fe' }
+      let(:environment_id) { 'master' }
+      let(:content_type_id) { 'test' }
+
+      it 'creates an entry' do
+        vcr('entry/create_with_ct_entries_new') {
+          new_entry = client.content_types(space_id, environment_id).find(content_type_id).entries.new
+          new_entry.name_with_locales = { 'en-US' => 'foobar' }
+
+          expect { new_entry.save }.not_to raise_error
+          expect(new_entry.name).to eq 'foobar'
+        }
+      end
+    end
+
     describe 'it can properly assign, save and publish - #61' do
       describe 'on an entry created through the api' do
         describe 'before refetch' do

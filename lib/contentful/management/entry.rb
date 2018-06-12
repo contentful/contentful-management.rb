@@ -43,7 +43,7 @@ module Contentful
 
       # @private
       def self.create_attributes(client, attributes)
-        content_type = attributes[:content_type]
+        content_type = attributes.delete(:content_type)
         fields_for_create = if attributes[:fields] # create from initialized dynamic entry via save
                               tmp_entry = new
                               tmp_entry.instance_variable_set(:@fields, attributes.delete(:fields) || {})
@@ -117,11 +117,11 @@ module Contentful
         locale = attributes[:locale] || content_type.sys[:space].default_locale
         fields = content_type.properties[:fields]
         field_names = fields.map { |field| field.id.to_sym }
-        attributes.keep_if { |key| field_names.include?(key) }
+        attributes = attributes.keep_if { |key| field_names.include?(key) }
 
-        attributes.each do |id, value|
+        attributes.each_with_object({}) do |(id, value), result|
           field = fields.detect { |f| f.id.to_sym == id.to_sym }
-          attributes[id] = { locale => parse_attribute_with_field(value, field) }
+          result[id] = { locale => parse_attribute_with_field(value, field) }
         end
       end
 
