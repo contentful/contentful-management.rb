@@ -24,7 +24,7 @@ module Contentful
         request = Request.new(
           client,
           resource_class.build_endpoint(endpoint_options),
-          resource_class.create_attributes(client, attributes),
+          resource_class.create_attributes(client, attributes.clone),
           nil,
           resource_class.create_headers(client, attributes)
         )
