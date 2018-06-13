@@ -130,19 +130,6 @@ module Contentful
         self.locale = attributes[:locale] || client.default_locale
       end
 
-      # Gets Hash of fields for the current locale
-      #
-      # @param [String] wanted_locale
-      #
-      # @return [Hash] localized fields
-      def fields(wanted_locale = locale)
-        requested_locale = wanted_locale || default_locale
-        @fields[requested_locale] = {} unless @fields[requested_locale]
-
-        default_fields = @fields[default_locale] || {}
-        default_fields.merge(@fields[requested_locale])
-      end
-
       # If an entry is a new object gets created in the Contentful, otherwise the existing entry gets updated.
       # @see _ README for details.
       #
