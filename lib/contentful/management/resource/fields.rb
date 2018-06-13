@@ -10,10 +10,9 @@ module Contentful
         # @param [String] wanted_locale
         #
         # @return [Hash] localized fields
-        def fields(wanted_locale = default_locale)
-          requested_locale = locale || wanted_locale
-          @fields[requested_locale] = {} unless @fields[requested_locale]
-          @fields[requested_locale]
+        def fields(wanted_locale = nil)
+          wanted_locale = internal_resource_locale if wanted_locale.nil?
+          @fields.fetch(wanted_locale.to_s, {})
         end
 
         # @private

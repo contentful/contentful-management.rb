@@ -1,6 +1,9 @@
 # Change Log
 
 ## Master
+### Changed
+**BREAKING CHANGES**:
+* `nil` values on localized entries now no longer fallback to the default locale value when reading them. [#164](https://github.com/contentful/contentful-management.rb/issues/164)
 
 ## 2.2.1
 ### Fixed

@@ -136,6 +136,10 @@ module Contentful
 
       private
 
+      def internal_resource_locale
+        sys.fetch(:locale, nil) || default_locale
+      end
+
       def extract_from_object(object, namespace, keys = nil)
         if object
           keys ||= object.keys

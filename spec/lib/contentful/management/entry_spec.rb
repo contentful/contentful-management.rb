@@ -730,14 +730,14 @@ describe Contentful::Management::Entry do
       end
     end
 
-    it 'retrieves value of default locale if it has not been localized' do
+    it 'does not retrieve value of default locale if it has not been localized' do
       vcr('entry/locales/fallback_to_default_locale') do
         space = client.spaces.find('0agypmo1waov')
         entry = client.entries(space.id, 'master').find('4epXENbO8wsaOukgqquYcI')
         entry.locale = 'de-DE'
 
-        expect(entry.fields.count).to eq 2
-        expect(entry.fields[:yolo]).to eq 'YOLO'
+        expect(entry.fields.count).to eq 0
+        expect(entry.fields).to eq({})
       end
     end
 
@@ -764,7 +764,7 @@ describe Contentful::Management::Entry do
         entry.yolo_with_locales = {'de-DE' => 'changed'}
         entry.locale = 'de-DE'
 
-        expect(entry.fields).to match({:name => 'test2', :yolo => 'changed'})
+        expect(entry.fields).to match(:yolo => 'changed')
       end
     end
   end
