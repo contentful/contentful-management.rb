@@ -133,6 +133,11 @@ module Contentful
         return locale.code unless locale.nil?
         @default_locale
       end
+
+      # @private
+      def refresh_find
+        self.class.find(client, space.id, id)
+      end
     end
   end
 end

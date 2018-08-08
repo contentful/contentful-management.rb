@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Fixed
+* `#reload` now works with `Environment` objects.
 
 ## 2.2.2
 ### Fixed
