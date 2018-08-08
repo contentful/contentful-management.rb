@@ -13,7 +13,7 @@ module Contentful
 
       # @private
       def self.build_endpoint(_endpoint_options)
-        '/organizations'
+        'organizations'
       end
     end
   end

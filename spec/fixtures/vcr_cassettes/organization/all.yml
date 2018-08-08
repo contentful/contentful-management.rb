@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.contentful.com//organizations
+    uri: https://api.contentful.com/organizations
     body:
       encoding: US-ASCII
       string: ''
