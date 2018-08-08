@@ -19,7 +19,7 @@ module Contentful
 
       # @private
       def self.build_endpoint(endpoint_options)
-        endpoint = '/users'
+        endpoint = 'users'
         endpoint = "#{endpoint}/#{endpoint_options[:resource_id]}" if endpoint_options[:resource_id]
         endpoint
       end

@@ -3,6 +3,7 @@
 ## Master
 ### Fixed
 * `#reload` now works with `Environment` objects.
+* Fixed URL generation for `/users` endpoint.
 
 ## 2.2.2
 ### Fixed
