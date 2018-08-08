@@ -1,6 +1,9 @@
 # Change Log
 
 ## Master
+### Fixed
+* Fixed URL generation for `/organizations` endpoint.
+
 ### Changed
 **BREAKING CHANGES**:
 * `nil` values on localized entries now no longer fallback to the default locale value when reading them. [#164](https://github.com/contentful/contentful-management.rb/issues/164)
