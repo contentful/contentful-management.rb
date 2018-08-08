@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.2.2
 ### Fixed
 * Fixed URL generation for `/organizations` endpoint.
 
