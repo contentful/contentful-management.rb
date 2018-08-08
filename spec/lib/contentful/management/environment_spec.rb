@@ -98,4 +98,16 @@ describe Contentful::Management::Environment do
       }
     end
   end
+
+  describe '#reload' do
+    it 'can reload' do
+      vcr('environment/find') {
+        environment = subject.find(testing)
+
+        vcr('environment/find_3') {
+          expect { environment.reload }.not_to raise_exception
+        }
+      }
+    end
+  end
 end
