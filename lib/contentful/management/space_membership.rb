@@ -31,6 +31,29 @@ module Contentful
         }
       end
 
+      # Creates an Space Membership
+      #
+      # @param [Contentful::Management::Client] client
+      # @param [String] space_id
+      # @param [Hash] attributes
+      # @see _ README for full attribute list for each resource.
+      #
+      # @return [Contentful::Management::SpaceMembership]
+      def self.create(client, space_id, attributes = {})
+        super(client, space_id, nil, attributes)
+      end
+
+      # Finds an Space Membership by ID.
+      #
+      # @param [Contentful::Management::Client] client
+      # @param [String] space_id
+      # @param [String] space_membership_id
+      #
+      # @return [Contentful::Management::SpaceMembership]
+      def self.find(client, space_id, space_membership_id)
+        super(client, space_id, nil, space_membership_id)
+      end
+
       # @private
       def query_attributes(attributes)
         {

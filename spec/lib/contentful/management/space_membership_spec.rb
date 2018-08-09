@@ -128,6 +128,15 @@ module Contentful
         end
       end
 
+      describe '.find' do
+        it 'finds a Contentful::Management::SpaceMembership' do
+          vcr('space_memberships/find_2') {
+            membership = subject.find(subject.all.first.id)
+            expect(membership).to be_a Contentful::Management::SpaceMembership
+          }
+        end
+      end
+
       describe '#destroy' do
         it 'deletes the membership' do
           vcr('space_memberships/delete') {

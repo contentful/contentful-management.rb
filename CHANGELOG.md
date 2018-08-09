@@ -4,6 +4,7 @@
 ### Fixed
 * `#reload` now works with `Environment` objects.
 * Fixed URL generation for `/users` endpoint.
+* Fixed Space Memberships now properly forward all attributes.
 
 ## 2.2.2
 ### Fixed
