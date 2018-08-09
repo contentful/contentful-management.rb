@@ -6,6 +6,9 @@
 * Fixed URL generation for `/users` endpoint.
 * Fixed Space Memberships now properly forward all attributes.
 
+### Changed
+* Simplified asset creation process - this change doesn't affect functionality, but removes a couple of steps and provides equivalent functionality.
+
 ## 2.2.2
 ### Fixed
 * Fixed URL generation for `/organizations` endpoint.

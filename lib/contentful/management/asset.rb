@@ -32,14 +32,13 @@ module Contentful
 
       # @private
       def self.create_attributes(client, attributes)
-        asset = new
-        asset.instance_variable_set(:@fields, attributes[:fields] || {})
-        asset.locale = attributes[:locale] || client.default_locale
-        asset.title = attributes[:title] if attributes[:title]
-        asset.description = attributes[:description] if attributes[:description]
-        asset.file = attributes[:file] if attributes[:file]
+        fields = attributes[:fields] || {}
+        locale = attributes[:locale] || client.default_locale
+        fields[:title] = { locale => attributes[:title] } if attributes[:title]
+        fields[:description] = { locale => attributes[:description] } if attributes[:description]
+        fields[:file] = { locale => attributes[:file].properties } if attributes[:file]
 
-        { fields: asset.fields_for_query }
+        { fields: fields }
       end
 
       # @private
