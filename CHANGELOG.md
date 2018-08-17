@@ -1,6 +1,9 @@
 # Change Log
 
 ## Master
+### Added
+* Added `transformation` and `filters` to `Webhook`.
+
 ### Fixed
 * `#reload` now works with `Environment` objects.
 * Fixed URL generation for `/users` endpoint.

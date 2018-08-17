@@ -1,0 +1,152 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/webhook_definitions
+    body:
+      encoding: UTF-8
+      string: '{"name":"test_ruby_filters","url":"https://www.example.com","topics":["Entry.*"],"transformation":{"method":"POST","contentType":"application/vnd.contentful.management.v1+json;
+        charset=utf-8","body":{"entryId":"{ /payload/sys/id }","fields":"{ /payload/fields
+        }"}}}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.2.2; platform ruby/2.5.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 4SsuxQCaMaemfIms52Jr8s
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Fri, 17 Aug 2018 12:02:52 GMT
+      Etag:
+      - W/"3819b0b5e3b5cfefc55b5b7fec5a7187"
+      Location:
+      - https://api.contentful.com/spaces/facgnwwgj5fe/webhook_definitions/33F1N7VxctE4H4h6Up0Wew
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35998'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 65a012856e595d7c7a29dcfe5ce5731c
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - ALLOWALL
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '957'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_876_673446=qzEMexENd2paCiD0zS0oDGu5dlsAAAAAHOSO+88uhyOSXU3VHqp5Jg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=FqO6Qo18MS80tfnC6lKYhQAAAAADFG3Ks1cKdaCENdnf/jRd; path=/; Domain=.contentful.com
+      - visid_incap_673446=QYsLVoeuQ+q+fpyH/JHBImu5dlsAAAAAQUIPAAAAAACjNIwAxOA0ifYtATmtlI3P;
+        expires=Sat, 17 Aug 2019 09:00:05 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 14-114999611-114999621 NNNN CT(90 90 0) RT(1534507371289 41) q(0 0 2 -1) r(4
+        4) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"test_ruby_filters",
+          "url":"https://www.example.com",
+          "httpBasicUsername":null,
+          "headers":[],
+          "topics":[
+            "Entry.*"
+          ],
+          "filters":null,
+          "transformation":{
+            "method":"POST",
+            "contentType":"application/vnd.contentful.management.v1+json; charset=utf-8",
+            "body":{
+              "entryId":"{ /payload/sys/id }",
+              "fields":"{ /payload/fields }"
+            }
+          },
+          "sys":{
+            "type":"WebhookDefinition",
+            "id":"33F1N7VxctE4H4h6Up0Wew",
+            "version":0,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "createdAt":"2018-08-17T12:02:52Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedAt":"2018-08-17T12:02:52Z"
+          }
+        }
+
+    http_version: 
+  recorded_at: Fri, 17 Aug 2018 12:02:49 GMT
+recorded_with: VCR 4.0.0

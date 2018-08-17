@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe Webhook do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'bfsvtul0c41g' }
       let(:webhook_id) { '0rK8ZNEOWLgYnO5gaah2pp' }
       let!(:client) { Client.new(token) }
@@ -96,6 +96,52 @@ module Contentful
 
             expect(webhook.topics.size).to eq 3
             expect(webhook.topics).to eq ['Entry.save', 'Entry.publish', 'ContentType.*']
+          end
+        end
+
+        it 'can create webhooks with specific filters' do
+          vcr('webhook/filters') do
+            webhook = described_class.create(
+              client,
+              'facgnwwgj5fe',
+              name: 'test_ruby_filters',
+              url: 'https://www.example.com',
+              topics: ['Entry.*'],
+              filters: [{
+                equals: [{ doc: "sys.environment.sys.id" }, "some-env-id"]
+              }]
+            )
+
+            expect(webhook.filters[0]).to eq('equals' => [{ 'doc' => "sys.environment.sys.id"}, "some-env-id"])
+          end
+        end
+
+        it 'can create webhooks with specific transformations' do
+          vcr('webhook/transformation') do
+            webhook = described_class.create(
+              client,
+              'facgnwwgj5fe',
+              name: 'test_ruby_filters',
+              url: 'https://www.example.com',
+              topics: ['Entry.*'],
+              transformation: {
+                method: 'POST',
+                contentType: 'application/vnd.contentful.management.v1+json; charset=utf-8',
+                body: {
+                  entryId: "{ /payload/sys/id }",
+                  fields: "{ /payload/fields }"
+                }
+              }
+            )
+
+            expect(webhook.transformation).to eq(
+              'method' => 'POST',
+              'contentType' => 'application/vnd.contentful.management.v1+json; charset=utf-8',
+              'body' => {
+                'entryId' => "{ /payload/sys/id }",
+                'fields' => "{ /payload/fields }"
+              }
+            )
           end
         end
       end
