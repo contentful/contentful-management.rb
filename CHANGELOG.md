@@ -1,7 +1,9 @@
 # Change Log
 
 ## Master
-### Added
+
+## Master
+### 2.3.0
 * Added `transformation` and `filters` to `Webhook`.
 * Added `parameters` to `UIExtension.extension`.
 
