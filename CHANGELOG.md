@@ -3,6 +3,7 @@
 ## Master
 ### Added
 * Added `transformation` and `filters` to `Webhook`.
+* Added `parameters` to `UIExtension.extension`.
 
 ### Fixed
 * `#reload` now works with `Environment` objects.

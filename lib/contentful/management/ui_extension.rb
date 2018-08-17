@@ -103,6 +103,18 @@ module Contentful
       def sidebar=(value)
         extension['sidebar'] = value
       end
+
+      # Returns extensions parameters
+      # @return [Hash] parameters
+      def parameters
+        extension['parameters']
+      end
+
+      # Sets extension parameters
+      # @param [Hash] value
+      def parameters=(value)
+        extension['parameters'] = value
+      end
     end
   end
 end

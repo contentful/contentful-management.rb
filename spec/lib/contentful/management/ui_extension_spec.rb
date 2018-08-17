@@ -256,6 +256,82 @@ module Contentful
             expect(extension.id).to be_truthy
           }
         end
+
+        it 'can customize ui extension parameters' do
+          vcr('ui_extension/create_parameters') {
+            extension = client.ui_extensions(playground_space_id, 'master').create(extension: {
+              'name' => 'test extension with parameters',
+              'fieldTypes' => [{"type"=>"Symbol"}, {"type"=>"Text"}],
+              'srcdoc' => "<!doctype html><html lang='en'><head><meta charset='UTF-8'/><title>Sample Editor Extension</title><link rel='stylesheet' href='https://contentful.github.io/ui-extensions-sdk/cf-extension.css'><script src='https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js'></script></head><body><div id='content'></div><script>window.contentfulExtension.init(function (extension) {window.alert(extension);var value = extension.field.getValue();extension.field.setValue('Hello world!');extension.field.onValueChanged(function(value) {if (value !== currentValue) {extension.field.setValue('Hello world!');}});});</script></body></html>",
+              'sidebar' => false,
+              'parameters' => {
+                'installation' => [
+                  {
+                    'id' => 'devMode',
+                    'type' => 'Boolean',
+                    'name' => 'Run in development mode'
+                  },
+                  {
+                    'id' => 'retries',
+                    'type' => 'Number',
+                    'name' => 'Number of retries for API calls',
+                    'required' => true,
+                    'default' => 3
+                  }
+                ],
+                'instance' => [
+                  {
+                    'id' => 'helpText',
+                    'type' => 'Symbol',
+                    'name' => 'Help text',
+                    'description' => 'Help text for a user to help them understand the editor'
+                  },
+                  {
+                    'id' => 'theme',
+                    'type' => 'Enum',
+                    'name' => 'Theme',
+                    'options' => [{'light' => 'Solarized light'}, {'dark' => 'Solarized dark'}],
+                    'default' => 'light',
+                    'required' => true
+                  }
+                ]
+              }
+            })
+
+            expect(extension.parameters).to eq(
+              'installation' => [
+                {
+                  'id' => 'devMode',
+                  'type' => 'Boolean',
+                  'name' => 'Run in development mode'
+                },
+                {
+                  'id' => 'retries',
+                  'type' => 'Number',
+                  'name' => 'Number of retries for API calls',
+                  'required' => true,
+                  'default' => 3
+                }
+              ],
+              'instance' => [
+                {
+                  'id' => 'helpText',
+                  'type' => 'Symbol',
+                  'name' => 'Help text',
+                  'description' => 'Help text for a user to help them understand the editor'
+                },
+                {
+                  'id' => 'theme',
+                  'type' => 'Enum',
+                  'name' => 'Theme',
+                  'options' => [{'light' => 'Solarized light'}, {'dark' => 'Solarized dark'}],
+                  'default' => 'light',
+                  'required' => true
+                }
+              ]
+            )
+          }
+        end
       end
 
       describe '#destroy' do
