@@ -25,7 +25,8 @@ module Contentful
         LINK = 'Link'.freeze,
         ARRAY = 'Array'.freeze,
         OBJECT = 'Object'.freeze,
-        LOCATION = 'Location'.freeze
+        LOCATION = 'Location'.freeze,
+        STRUCTURED_TEXT = 'StructuredText'.freeze
       ].freeze
 
       include Contentful::Management::Resource
