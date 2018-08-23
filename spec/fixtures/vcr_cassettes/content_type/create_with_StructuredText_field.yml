@@ -1,0 +1,139 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.contentful.com/spaces/ctgv7kwgsghk/environments/master/content_types
+    body:
+      encoding: UTF-8
+      string: '{"name":"StructuredText","description":"Content type with StructuredText
+        field","fields":[{"id":"my_StructuredText_field","name":"My StructuredText
+        Field","type":"StructuredText"}]}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.3.0; platform ruby/2.5.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - ctgv7kwgsghk
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Thu, 23 Aug 2018 11:49:17 GMT
+      Etag:
+      - '"8ae7e958cb3056725cf056ab4fcb7b3b"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '180000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '179999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '50'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '49'
+      X-Contentful-Request-Id:
+      - '08f4f61a5181bce2ed5e4413e37415fe'
+      Content-Length:
+      - '1107'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_992_673446=Yn1UdTm3XQ76R5/0JEvEDTyfflsAAAAAKp3BifSPVkXD2N86rFjbBQ==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=TP4vba6X90H5mvqP6lKYhQAAAABDuuY8YD5YG7IxG4AEOTWe; path=/; Domain=.contentful.com
+      - visid_incap_673446=ZKd3uRQnRpKY0R8dRawgGTyfflsAAAAAQUIPAAAAAADyBJmo5L40YXKtx/m1R+iD;
+        expires=Fri, 23 Aug 2019 08:14:38 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 14-25993165-25993178 NNNN CT(28 25 0) RT(1535024955748 29) q(0 0 1 -1) r(8
+        8) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "ctgv7kwgsghk"
+              }
+            },
+            "id": "4JTk4UIel2CycSWE0awqie",
+            "type": "ContentType",
+            "createdAt": "2018-08-23T11:49:17.292Z",
+            "updatedAt": "2018-08-23T11:49:17.292Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "version": 1
+          },
+          "displayField": null,
+          "name": "StructuredText",
+          "description": "Content type with StructuredText field",
+          "fields": [
+            {
+              "id": "my_StructuredText_field",
+              "name": "My StructuredText Field",
+              "type": "StructuredText",
+              "localized": false,
+              "required": false,
+              "validations": [],
+              "disabled": false,
+              "omitted": false
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Thu, 23 Aug 2018 11:49:17 GMT
+recorded_with: VCR 4.0.0

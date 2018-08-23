@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe ContentType do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { 'yr5m0jky5hsh' }
       let!(:client) { Client.new(token) }
       let(:content_type_id) { '5DSpuKrl04eMAGQoQckeIq' }
@@ -188,7 +188,7 @@ module Contentful
           end
         end
 
-        Contentful::Management::ContentType::FIELD_TYPES.each do |field_type|
+        Contentful::Management::ContentType::FIELD_TYPES.reject { |f| f == 'StructuredText' }.each do |field_type|
           it "creates within a space with #{ field_type } field" do
             vcr("content_type/create_with_#{ field_type }_field") do
               field = Contentful::Management::Field.new
@@ -210,6 +210,30 @@ module Contentful
               expect(result_field.name).to eq field.name
               expect(result_field.type).to eq field.type
             end
+          end
+        end
+
+        it "creates within a space with StructuredText field" do
+          vcr("content_type/create_with_StructuredText_field") do
+            subject = client.content_types('ctgv7kwgsghk', 'master')
+
+            field = Contentful::Management::Field.new
+            field.id = "my_StructuredText_field"
+            field.name = "My StructuredText Field"
+            field.type = 'StructuredText'
+            content_type = subject.create(
+              name: "StructuredText",
+              description: "Content type with StructuredText field",
+              fields: [field]
+            )
+            expect(content_type).to be_kind_of Contentful::Management::ContentType
+            expect(content_type.name).to eq "StructuredText"
+            expect(content_type.description).to eq "Content type with StructuredText field"
+            expect(content_type.fields.size).to eq 1
+            result_field = content_type.fields.first
+            expect(result_field.id).to eq field.id
+            expect(result_field.name).to eq field.name
+            expect(result_field.type).to eq field.type
           end
         end
 
