@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.4.0
 ### Added
 * Added support for StructuredText field type.
 
