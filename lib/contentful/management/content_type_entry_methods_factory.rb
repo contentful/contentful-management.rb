@@ -45,6 +45,7 @@ module Contentful
           DynamicEntry.create(content_type, content_type.client)
         )
         dynamic_entry = dynamic_entry_class.new
+        dynamic_entry.space = content_type.space
         dynamic_entry.content_type = content_type
         dynamic_entry
       end

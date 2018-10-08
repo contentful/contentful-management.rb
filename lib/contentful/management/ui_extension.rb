@@ -22,13 +22,13 @@ module Contentful
       def self.create_attributes(_client, attributes)
         extension = attributes['extension'] || attributes[:extension]
 
-        fail 'Invalid UI Extension attributes' unless valid_extension(extension)
+        fail 'Invalid UI Extension attributes' unless valid_extension?(extension)
 
         { 'extension' => extension }
       end
 
       # @private
-      def self.valid_extension(extension)
+      def self.valid_extension?(extension)
         return false unless extension.key?('name')
         return false unless extension.key?('fieldTypes') && extension['fieldTypes'].is_a?(::Array)
         return false unless extension.key?('src') || extension.key?('srcdoc')
@@ -41,13 +41,8 @@ module Contentful
       #
       # @return [Contentful::Management::UIExtension]
       def save
-        self.class.valid_extension(extension)
-        if id
-          update(extension: extension)
-        else
-          new_instance = self.class.create(client, sys[:space].id, environment_id, extension: extension)
-          refresh_data(new_instance)
-        end
+        fail 'Invalid UI extension attributes' unless self.class.valid_extension?(extension)
+        update(extension: extension)
       end
 
       # Returns extension name

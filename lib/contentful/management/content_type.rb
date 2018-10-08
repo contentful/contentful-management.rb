@@ -74,19 +74,6 @@ module Contentful
         end
       end
 
-      # If a content type is a new object gets created in the Contentful, otherwise the existing entry gets updated.
-      # @see _ README for details.
-      #
-      # @return [Contentful::Management::ContentType]
-      def save
-        if id
-          update(@properties)
-        else
-          new_instance = self.class.create(client, space.id, environment_id, @properties)
-          refresh_data(new_instance)
-        end
-      end
-
       # This method merges existing fields with new one, when adding, creating or updating new fields.
       # @private
       def merged_fields(new_field)

@@ -62,16 +62,22 @@ module Contentful
       #
       # @return [Contentful::Management::Resource]
       def update(attributes)
+        headers = self.class.create_headers(client, attributes, self)
+        headers = headers.merge(update_headers)
+
         ResourceRequester.new(client, self.class).update(
           self,
-          {
-            space_id: space.id,
-            environment_id: environment_id,
-            resource_id: id
-          },
+          update_url_attributes,
           query_attributes(attributes),
-          version: sys[:version]
+          headers
         )
+      end
+
+      # Creates or updates a resource.
+      #
+      # @return [Contentful::Management::Resource]
+      def save
+        update({})
       end
 
       # Destroys a resource.
@@ -129,6 +135,18 @@ module Contentful
       end
 
       protected
+
+      def update_headers
+        { version: sys[:version] }
+      end
+
+      def update_url_attributes
+        {
+          space_id: space.id,
+          environment_id: environment_id,
+          resource_id: id
+        }
+      end
 
       def query_attributes(attributes)
         attributes
@@ -249,7 +267,7 @@ module Contentful
         end
 
         # @private
-        def create_headers(_client, _attributes)
+        def create_headers(_client, _attributes, _instance = nil)
           {}
         end
 

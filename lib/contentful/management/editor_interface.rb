@@ -66,17 +66,9 @@ module Contentful
             content_type_id: content_type.id,
             editor_id: id
           },
-          { 'controls' => attributes.fetch(:controls) },
+          { 'controls' => attributes[:controls] || controls },
           version: sys[:version]
         )
-      end
-
-      # Saves the current editor interface.
-      # @see _ README for details.
-      #
-      # @return [Contentful::Management::EditorInterface]
-      def save
-        update(controls: controls) if id
       end
 
       # Destroys an EditorInterface.

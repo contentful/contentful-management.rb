@@ -14,11 +14,11 @@ module Contentful
       subject { client.ui_extensions(space_id, 'master') }
 
       describe 'class methods' do
-        describe '::valid_extension' do
+        describe '::valid_extension?' do
           it 'false when name is missing' do
             extension = {}
 
-            expect(described_class.valid_extension(extension)).to be_falsey
+            expect(described_class.valid_extension?(extension)).to be_falsey
           end
 
           it 'false when fieldTypes is missing' do
@@ -26,7 +26,7 @@ module Contentful
               'name' => 'foobar'
             }
 
-            expect(described_class.valid_extension(extension)).to be_falsey
+            expect(described_class.valid_extension?(extension)).to be_falsey
           end
 
           it 'false when fieldTypes is present but not an array' do
@@ -35,7 +35,7 @@ module Contentful
               'fieldTypes' => 'baz'
             }
 
-            expect(described_class.valid_extension(extension)).to be_falsey
+            expect(described_class.valid_extension?(extension)).to be_falsey
           end
 
           it 'false when both src and srcdoc missing' do
@@ -44,7 +44,7 @@ module Contentful
               'fieldTypes' => ['Symbol']
             }
 
-            expect(described_class.valid_extension(extension)).to be_falsey
+            expect(described_class.valid_extension?(extension)).to be_falsey
           end
 
           it 'true when all of the above are passed' do
@@ -54,7 +54,7 @@ module Contentful
               'src' => 'foo'
             }
 
-            expect(described_class.valid_extension(extension)).to be_truthy
+            expect(described_class.valid_extension?(extension)).to be_truthy
 
             extension = {
               'name' => 'foobar',
@@ -62,7 +62,7 @@ module Contentful
               'srcdoc' => 'foo'
             }
 
-            expect(described_class.valid_extension(extension)).to be_truthy
+            expect(described_class.valid_extension?(extension)).to be_truthy
           end
 
           it 'false if sidebar is present but not boolean' do
@@ -73,7 +73,7 @@ module Contentful
               'sidebar' => true
             }
 
-            expect(described_class.valid_extension(extension)).to be_truthy
+            expect(described_class.valid_extension?(extension)).to be_truthy
 
             extension = {
               'name' => 'foobar',
@@ -82,7 +82,7 @@ module Contentful
               'sidebar' => false
             }
 
-            expect(described_class.valid_extension(extension)).to be_truthy
+            expect(described_class.valid_extension?(extension)).to be_truthy
 
             extension = {
               'name' => 'foobar',
@@ -91,7 +91,7 @@ module Contentful
               'sidebar' => 'foobar'
             }
 
-            expect(described_class.valid_extension(extension)).to be_falsey
+            expect(described_class.valid_extension?(extension)).to be_falsey
           end
         end
 
