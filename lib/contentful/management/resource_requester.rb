@@ -35,7 +35,7 @@ module Contentful
       end
 
       def update(object, endpoint_options = {}, attributes = {}, headers = {})
-        object.refresh_data(put(endpoint_options, attributes, headers))
+        object.refresh_data(put(endpoint_options, attributes, headers, object))
       end
 
       def destroy(endpoint_options = {})
@@ -69,7 +69,8 @@ module Contentful
         ResourceBuilder.new(request.get, client).run
       end
 
-      def put(endpoint_options = {}, attributes = {}, headers = {})
+      def put(endpoint_options = {}, attributes = {}, headers = {}, object = nil)
+        is_update = !object.nil? && object.id
         request = Request.new(
           client,
           resource_class.build_endpoint(endpoint_options),
@@ -77,7 +78,7 @@ module Contentful
           nil,
           headers
         )
-        ResourceBuilder.new(request.put, client).run
+        ResourceBuilder.new(is_update ? request.put : request.post, client).run
       end
 
       def delete(endpoint_options = {}, attributes = {}, headers = {})

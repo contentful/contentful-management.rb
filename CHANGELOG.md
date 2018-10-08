@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Added
+* Added `#save` method to resources, generalizing how to create/update them.
 
 ## 2.4.0
 ### Added

@@ -64,19 +64,6 @@ module Contentful
         self
       end
 
-      # If an asset is a new object gets created in the Contentful, otherwise the existing asset gets updated.
-      # @see _ https://github.com/contentful/contentful-management.rb for details.
-      #
-      # @return [Contentful::Management::Asset]
-      def save
-        if id
-          update(title: title, description: description, file: file)
-        else
-          new_instance = self.class.create(client, sys[:space].id, fields: instance_variable_get(:@fields))
-          refresh_data(new_instance)
-        end
-      end
-
       # Returns currently supported locale or default locale.
       # @return [String] current_locale
       def locale

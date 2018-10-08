@@ -61,8 +61,8 @@ module Contentful
       end
 
       # @private
-      def self.create_headers(_client, attributes)
-        content_type = attributes[:content_type]
+      def self.create_headers(_client, attributes, instance = nil)
+        content_type = instance.nil? ? attributes[:content_type] : (instance.content_type || instance.sys[:contentType])
         content_type_id = content_type.respond_to?(:id) ? content_type.id : content_type[:id]
 
         { content_type_id: content_type_id }
@@ -128,25 +128,6 @@ module Contentful
       # @private
       def after_create(attributes)
         self.locale = attributes[:locale] || client.default_locale
-      end
-
-      # If an entry is a new object gets created in the Contentful, otherwise the existing entry gets updated.
-      # @see _ README for details.
-      #
-      # @return [Contentful::Management::Entry]
-      def save
-        if id
-          update({})
-        else
-          new_instance = Contentful::Management::Entry.create(
-            client,
-            content_type.space.id,
-            environment_id,
-            content_type: content_type,
-            fields: instance_variable_get(:@fields)
-          )
-          refresh_data(new_instance)
-        end
       end
 
       # Returns the currently supported local.
