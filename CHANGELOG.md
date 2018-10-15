@@ -1,6 +1,11 @@
 # Change Log
 
 ## Master
+
+## 2.5.0
+
+As `RichText` moves from `alpha` to `beta`, we're treating this as a feature release.
+
 ### Added
 * Added `#save` method to resources, generalizing how to create/update them.
 
