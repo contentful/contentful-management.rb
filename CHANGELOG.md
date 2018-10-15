@@ -4,6 +4,9 @@
 ### Added
 * Added `#save` method to resources, generalizing how to create/update them.
 
+### Changed
+* Renamed `StructuredText` to `RichText`.
+
 ## 2.4.0
 ### Added
 * Added support for StructuredText field type.
