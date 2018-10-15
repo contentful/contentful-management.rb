@@ -5,9 +5,9 @@ http_interactions:
     uri: https://api.contentful.com/spaces/ctgv7kwgsghk/environments/master/content_types
     body:
       encoding: UTF-8
-      string: '{"name":"StructuredText","description":"Content type with StructuredText
-        field","fields":[{"id":"my_StructuredText_field","name":"My StructuredText
-        Field","type":"StructuredText"}]}'
+      string: '{"name":"RichText","description":"Content type with RichText
+        field","fields":[{"id":"my_RichText_field","name":"My RichText
+        Field","type":"RichText"}]}'
     headers:
       X-Contentful-User-Agent:
       - sdk contentful-management.rb/2.3.0; platform ruby/2.5.1; os macOS/16;
@@ -119,13 +119,13 @@ http_interactions:
             "version": 1
           },
           "displayField": null,
-          "name": "StructuredText",
-          "description": "Content type with StructuredText field",
+          "name": "RichText",
+          "description": "Content type with RichText field",
           "fields": [
             {
-              "id": "my_StructuredText_field",
-              "name": "My StructuredText Field",
-              "type": "StructuredText",
+              "id": "my_RichText_field",
+              "name": "My RichText Field",
+              "type": "RichText",
               "localized": false,
               "required": false,
               "validations": [],

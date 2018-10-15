@@ -188,7 +188,7 @@ module Contentful
           end
         end
 
-        Contentful::Management::ContentType::FIELD_TYPES.reject { |f| f == 'StructuredText' }.each do |field_type|
+        Contentful::Management::ContentType::FIELD_TYPES.reject { |f| f == 'RichText' }.each do |field_type|
           it "creates within a space with #{ field_type } field" do
             vcr("content_type/create_with_#{ field_type }_field") do
               field = Contentful::Management::Field.new
@@ -213,22 +213,22 @@ module Contentful
           end
         end
 
-        it "creates within a space with StructuredText field" do
-          vcr("content_type/create_with_StructuredText_field") do
+        it "creates within a space with RichText field" do
+          vcr("content_type/create_with_RichText_field") do
             subject = client.content_types('ctgv7kwgsghk', 'master')
 
             field = Contentful::Management::Field.new
-            field.id = "my_StructuredText_field"
-            field.name = "My StructuredText Field"
-            field.type = 'StructuredText'
+            field.id = "my_RichText_field"
+            field.name = "My RichText Field"
+            field.type = 'RichText'
             content_type = subject.create(
-              name: "StructuredText",
-              description: "Content type with StructuredText field",
+              name: "RichText",
+              description: "Content type with RichText field",
               fields: [field]
             )
             expect(content_type).to be_kind_of Contentful::Management::ContentType
-            expect(content_type.name).to eq "StructuredText"
-            expect(content_type.description).to eq "Content type with StructuredText field"
+            expect(content_type.name).to eq "RichText"
+            expect(content_type.description).to eq "Content type with RichText field"
             expect(content_type.fields.size).to eq 1
             result_field = content_type.fields.first
             expect(result_field.id).to eq field.id
