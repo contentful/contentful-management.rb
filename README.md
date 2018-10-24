@@ -597,10 +597,22 @@ Creating a locale:
 environment.locales.create(name: 'German', code: 'de-DE')
 ```
 
+Creating a locale with fallback:
+
+```ruby
+environment.locales.create(name: 'German', code: 'de-DE', fallback_code: 'en-US')
+```
+
 Updating a locale:
 
 ```ruby
 blog_post_locale.update(name: 'German', code: 'de-DE')
+```
+
+Updating a locale with fallback:
+
+```ruby
+blog_post_locale.update(name: 'German', code: 'de-DE', fallback_code: 'en-US')
 ```
 
 Destroying a locale:
