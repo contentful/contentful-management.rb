@@ -1,6 +1,9 @@
 # Change Log
 
 ## Master
+### Added
+* Added Usage Periods API.
+* Added API Usages API.
 
 ## 2.5.0
 

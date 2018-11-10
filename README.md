@@ -8,6 +8,7 @@ Ruby client for the Contentful Content Management API.
 ## Setup
 
 Add this line to your application's Gemfile:
+
 ```ruby
 gem 'contentful-management'
 ```
@@ -15,7 +16,7 @@ gem 'contentful-management'
 ## Usage
 
 ### Examples
-Some examples can be found in the ```examples/``` directory or you take a look at this [extended example script](https://github.com/contentful/cma_import_script).
+Some examples can be found in the `examples/` directory or you take a look at this [extended example script](https://github.com/contentful/cma_import_script).
 
 ### Client
 
@@ -806,6 +807,42 @@ Retrieving all organization details:
 
 ```ruby
 organizations = client.organizations.all
+```
+
+### Usage Periods (ALPHA)
+
+*Note*: This feature is available only to Commited v2 customers.
+
+Retrieving all Usage Periods for an Organizations you belong to:
+
+```ruby
+usage_periods = client.usage_periods('organization_id').all
+```
+
+Alternatively, if you have an already fetched organization:
+
+```ruby
+usage_periods = organization.usage_periods().all()
+```
+
+### API Usage (ALPHA)
+
+*Note*: This feature is available only to Commited v2 customers.
+
+Retrieving all API Usage statistics for an Organizations during a given usage period, broken down by organization for all APIs:
+
+```ruby
+# Valid usage types are by 'organization' and by 'space'.
+# Usage period IDs are numerical and can be fetched from the Usage Periods API.
+# Valid API breakdowns are: 'cda', 'cpa', 'cma' or 'all_apis'.
+usage = client.api_usage('organization_id').all('organization', usage_period_id, 'all_apis')
+```
+
+Alternatively, if you have an already fetched organization:
+
+```ruby
+# Breaking down CMA usage by space, for a given period.
+usage = organization.api_usage().all('space', usage_period_id, 'cma')
 ```
 
 ### Users

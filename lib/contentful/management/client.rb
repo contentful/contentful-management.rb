@@ -20,7 +20,9 @@ require 'contentful/management/client_upload_methods_factory'
 require 'contentful/management/client_api_key_methods_factory'
 require 'contentful/management/client_webhook_methods_factory'
 require 'contentful/management/client_snapshot_methods_factory'
+require 'contentful/management/client_api_usage_methods_factory'
 require 'contentful/management/client_environment_methods_factory'
+require 'contentful/management/client_usage_period_methods_factory'
 require 'contentful/management/client_organization_methods_factory'
 require 'contentful/management/client_content_type_methods_factory'
 require 'contentful/management/client_ui_extension_methods_factory'
@@ -129,6 +131,24 @@ module Contentful
       # @return [Contentful::Management::ClientOrganizationMethodsFactory]
       def organizations
         ClientOrganizationMethodsFactory.new(self)
+      end
+
+      # Allows viewing of usage periods in context of the current client
+      # Allows listing all usage periods for client.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientUsagePeriodMethodsFactory]
+      def usage_periods(organization_id)
+        ClientUsagePeriodMethodsFactory.new(self, organization_id)
+      end
+
+      # Allows viewing of api usage in context of the current client
+      # Allows listing all api usage for client.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientApiUsageMethodsFactory]
+      def api_usage(organization_id)
+        ClientApiUsageMethodsFactory.new(self, organization_id)
       end
 
       # Allows viewing of users in context of the current client
