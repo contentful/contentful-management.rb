@@ -10,9 +10,9 @@ module Contentful
         @resource_class = resource_class
       end
 
-      def all(endpoint_options = {}, query = {})
+      def all(endpoint_options = {}, query = {}, headers = {})
         query = resource_class.pre_process_params(query)
-        get(endpoint_options, query)
+        get(endpoint_options, query, headers)
       end
 
       def find(endpoint_options = {})
@@ -60,11 +60,13 @@ module Contentful
         false
       end
 
-      def get(endpoint_options = {}, query = {})
+      def get(endpoint_options = {}, query = {}, headers = {})
         request = Request.new(
           client,
           resource_class.build_endpoint(endpoint_options),
-          query
+          query,
+          nil,
+          headers
         )
         ResourceBuilder.new(request.get, client).run
       end

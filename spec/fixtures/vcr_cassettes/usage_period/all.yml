@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/org_id/usage_periods
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.5.0; platform ruby/2.4.1; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Enable-Alpha-Feature:
+      - usage-insights
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Sat, 10 Nov 2018 10:59:12 GMT
+      Etag:
+      - W/"0e32a37f3690af7bd68571521823b4c3"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 9e2af1c902719cf6251824eb8bad9a5b
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - ALLOWALL
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '347'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_728_673446=emwoQG4P7gsAZ9COzmAaCv+55lsAAAAA12p7HXlIfXdD2z8IqJzDPw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=JuK/CqPU8mAD0NE+6lKYhQAAAAAeh+9STttZdZDE0eCH49c3; path=/; Domain=.contentful.com
+      - visid_incap_673446=3rYhv3e6Tf2l54SFmGsgOP+55lsAAAAAQUIPAAAAAAA6Tug0qWXjQ5TjaPxx4YJR;
+        expires=Sat, 09 Nov 2019 14:12:09 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 6-10352937-10352945 NNNN CT(90 182 0) RT(1541847550884 85) q(0 0 3 -1) r(5
+        5) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":2,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "startDate":"2018-11-01",
+              "endDate":null,
+              "sys":{
+                "type":"UsagePeriod",
+                "id":"2"
+              }
+            },
+            {
+              "startDate":"2018-10-01",
+              "endDate":"2018-10-31",
+              "sys":{
+                "type":"UsagePeriod",
+                "id":"1"
+              }
+            }
+          ]
+        }
+
+    http_version: 
+  recorded_at: Sat, 10 Nov 2018 10:59:12 GMT
+recorded_with: VCR 4.0.0

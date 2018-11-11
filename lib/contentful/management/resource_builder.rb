@@ -12,7 +12,9 @@ require_relative 'webhook'
 require_relative 'api_key'
 require_relative 'resource'
 require_relative 'snapshot'
+require_relative 'api_usage'
 require_relative 'environment'
+require_relative 'usage_period'
 require_relative 'organization'
 require_relative 'content_type'
 require_relative 'webhook_call'
@@ -35,6 +37,8 @@ module Contentful
         'Space' => Contentful::Management::Space,
         'SpaceMembership' => Contentful::Management::SpaceMembership,
         'Organization' => Contentful::Management::Organization,
+        'ApiUsage' => Contentful::Management::ApiUsage,
+        'UsagePeriod' => Contentful::Management::UsagePeriod,
         'User' => Contentful::Management::User,
         'Environment' => Contentful::Management::Environment,
         'ContentType' => Contentful::Management::ContentType,
