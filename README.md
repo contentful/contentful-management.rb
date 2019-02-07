@@ -248,6 +248,12 @@ Checking if an asset is published:
 my_image_asset.published?
 ```
 
+Checking if has been updated from last published version:
+
+```ruby
+my_image_asset.updated?
+```
+
 ### File Uploads
 
 Creating an upload from a file path:
@@ -392,6 +398,12 @@ Checking if the entry is published:
 
 ```ruby
 my_entry.published?
+```
+
+Checking if the entry has been updated from last publish:
+
+```ruby
+my_entry.updated?
 ```
 
 > Entries created with *empty fields*, will not return those fields in the response. Therefore, entries that don't have cache enabled, will need to

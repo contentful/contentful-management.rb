@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Added
+* Added `updated?` to publishable resources. [#178](https://github.com/contentful/contentful-management.rb/issues/178)
 
 ## 2.6.0
 ### Added

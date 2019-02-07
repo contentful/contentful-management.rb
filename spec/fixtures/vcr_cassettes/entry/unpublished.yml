@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/entries/1HDKL0ldPuaKKiquq0IGam
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.6.0; platform ruby/2.5.3; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Thu, 07 Feb 2019 13:43:11 GMT
+      Etag:
+      - '"de2fab668b40865a1907669454f0323a"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 5171baee8de74c2da51bfd56a402365a
+      Content-Length:
+      - '1056'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_1079_673446=md7fZZq+mXYsGoVm+WD5Du41XFwAAAAAcKc1+MPk7k840LBiEDqS1w==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=Jsj/e1ULRELZ4DWa6lKYhQAAAACln2iE36BIIM9uIw1QTqet; path=/; Domain=.contentful.com
+      - visid_incap_673446=MebT3nL8R9GwS9xxwIyJj+41XFwAAAAAQUIPAAAAAAB1d6jc8KTYah5klQcybBcM;
+        expires=Fri, 07 Feb 2020 10:49:31 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 10-2645274-2645275 NNNN CT(0 0 0) RT(1549546989814 58) q(0 0 0 -1) r(10 10)
+        U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "facgnwwgj5fe"
+              }
+            },
+            "id": "1HDKL0ldPuaKKiquq0IGam",
+            "type": "Entry",
+            "createdAt": "2017-11-17T12:25:37.976Z",
+            "updatedAt": "2017-11-17T12:25:37.976Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "version": 1,
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "somethingWithLinks"
+              }
+            }
+          },
+          "fields": {
+            "link": {
+              "en-US": {
+                "sys": {
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "id": "IJLRrADsqq2AmwcugoYeK"
+                }
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 07 Feb 2019 13:43:11 GMT
+recorded_with: VCR 4.0.0
