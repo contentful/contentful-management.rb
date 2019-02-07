@@ -14,6 +14,7 @@ module Contentful
           revision: :integer,
           createdAt: :date,
           updatedAt: :date,
+          publishedAt: :date,
           locale: :string
         }.freeze
 

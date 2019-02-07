@@ -195,6 +195,31 @@ describe Contentful::Management::Entry do
     end
   end
 
+  describe '#updated?' do
+    let(:space_id) { 'facgnwwgj5fe' }
+
+    it 'returns true if entry has been updated since last publish' do
+      vcr('entry/updated_true') do
+        entry = subject.find('3fTNzlQsDmge6YQEikEuME')
+        expect(entry.updated?).to be_truthy
+      end
+    end
+
+    it 'returns false if entry has not been published' do
+      vcr('entry/unpublished') do
+        entry = subject.find('1HDKL0ldPuaKKiquq0IGam')
+        expect(entry.updated?).to be_falsey
+      end
+    end
+
+    it 'returns false if publish date is equal or greater than update date' do
+      vcr('entry/updated_false') do
+        entry = subject.find('IJLRrADsqq2AmwcugoYeK')
+        expect(entry.updated?).to be_falsey
+      end
+    end
+  end
+
   describe '#unarchive' do
     it 'unarchive the entry' do
       vcr('entry/unarchive') do

@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/entries/IJLRrADsqq2AmwcugoYeK
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.6.0; platform ruby/2.5.3; os macOS/16;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/2.2.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Thu, 07 Feb 2019 13:43:13 GMT
+      Etag:
+      - '"eda08a4d4a8f6ee99538957dea88de55"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - cfd19dcbe35fabdf0e9985005d22adb8
+      Content-Length:
+      - '1432'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_1079_673446=PkUXGTn3fWZvGoVm+WD5DvA1XFwAAAAA0gnlsr803OVgbXIVoRXPww==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=MUMVeUOCF3U/ehDf6lKYhQAAAADnjGKRTs+/43rKAL+n67Hg; path=/; Domain=.contentful.com
+      - visid_incap_673446=vQqFkFUITDKx8gk8lEs62PA1XFwAAAAAQUIPAAAAAACzfAsh5dGFKSfK4iQt58n9;
+        expires=Fri, 07 Feb 2020 10:49:28 GMT; path=/; Domain=.contentful.com
+      X-Iinfo:
+      - 1-4413458-4413459 NNNN CT(0 0 0) RT(1549546992125 59) q(0 0 0 -1) r(2 2) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "facgnwwgj5fe"
+              }
+            },
+            "id": "IJLRrADsqq2AmwcugoYeK",
+            "type": "Entry",
+            "createdAt": "2017-05-08T14:06:14.367Z",
+            "updatedAt": "2017-05-09T13:39:59.063Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedCounter": 16,
+            "version": 57,
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "4SejVrWT96dvL9IV4Nb7sQ"
+              }
+            },
+            "publishedVersion": 56,
+            "firstPublishedAt": "2017-05-08T14:06:25.154Z",
+            "publishedAt": "2017-05-09T13:39:59.032Z",
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "cat"
+              }
+            }
+          },
+          "fields": {
+            "name": {
+              "en-US": "Fat Cat"
+            },
+            "lives": {
+              "en-US": 1337
+            },
+            "bestFriend": {
+              "en-US": {
+                "sys": {
+                  "type": "Link",
+                  "linkType": "Entry",
+                  "id": "cq0MrAkH8A0Q8QsYquwMq"
+                }
+              }
+            }
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 07 Feb 2019 13:43:13 GMT
+recorded_with: VCR 4.0.0
