@@ -54,7 +54,16 @@ module Contentful
         return {} if attributes.nil? || attributes.empty?
 
         {
-          'name' => attributes.fetch(:name, attributes.fetch('name', nil))
+          'name' => attributes[:name] || attributes['name']
+        }
+      end
+
+      # @private
+      def self.create_headers(_client, attributes, _instance = nil)
+        return {} unless attributes[:source_environment_id] || attributes['source_environment_id']
+
+        {
+          'X-Contentful-Source-Environment' => attributes[:source_environment_id] || attributes['source_environment_id']
         }
       end
 

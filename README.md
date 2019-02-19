@@ -114,7 +114,7 @@ Destroying a environment:
 environment.destroy
 ```
 
-Creating a environment:
+Creating an environment:
 
 ```ruby
 environment = client.environments('space_id').new
@@ -127,6 +127,12 @@ or
 
 ```ruby
 environment = client.environments(space_id).create(id: 'dev', name: 'Development')
+```
+
+Creating an evironment with a different source:
+
+```ruby
+environment = client.environments(space_id).create(id: 'dev', name: 'Development', source_environment_id: 'other_environment')
 ```
 
 Updating a environment:
