@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Added
+* Added environment branching.
 
 ## 2.7.0
 ### Added

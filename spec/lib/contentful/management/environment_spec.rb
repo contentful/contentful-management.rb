@@ -67,6 +67,18 @@ describe Contentful::Management::Environment do
         expect(environment.name).to eq 'Delete Me'
       }
     end
+
+    it 'create with different source environment' do
+      vcr('environment/create_with_different_source') {
+        master = described_class.find(client, space_id, 'master')
+        expect(master.entries.all.count).not_to eq 0
+
+        non_master_source = described_class.create(client, space_id, id: 'non-master-rb', source_environment_id: 'source', name: 'Non Master - Ruby')
+        sleep(5) # Need to sleep to ensure environment is ready
+        non_master_source.reload
+        expect(non_master_source.entries.all.count).to eq 0
+      }
+    end
   end
 
   describe '#destroy' do
