@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.8.0
 ### Added
 * Added environment branching.
 
