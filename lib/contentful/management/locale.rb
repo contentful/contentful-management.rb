@@ -32,7 +32,14 @@ module Contentful
       protected
 
       def query_attributes(attributes)
-        attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
+        {
+          name: name,
+          code: code,
+          optional: optional,
+          fallbackCode: fallback_code
+        }.merge(
+          attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
+        )
       end
     end
   end

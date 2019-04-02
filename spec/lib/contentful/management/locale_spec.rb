@@ -161,12 +161,27 @@ module Contentful
       end
 
       describe 'issues' do
-        let!(:space_id) { 'facgnwwgj5fe' }
+        let(:space_id) { 'facgnwwgj5fe' }
         it 'should be able to create a locale with a fallback code' do
           vcr('locale/fallback_code') do
             locale = subject.create(name: 'Foo (BarBaz)', code: 'foo-BB', fallback_code: 'en-US')
 
             expect(subject.find(locale.id).code).to eq 'foo-BB'
+          end
+        end
+
+        it 'can save a locale - #189' do
+          vcr('locale/issue_189') do
+            locale = subject.find('4brXbuf0CeMWo4vlIfWe0q')
+
+            expect(locale.code).to eq 'bar'
+
+            locale.code = 'bar2'
+            locale.save
+
+            locale.reload
+
+            expect(locale.code).to eq 'bar2'
           end
         end
       end

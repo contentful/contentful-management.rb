@@ -59,6 +59,19 @@ module Contentful
       def preview_api_key
         client.preview_api_keys(space.id).find(properties[:preview_api_key].id)
       end
+
+      protected
+
+      def query_attributes(attributes)
+        self.class.create_attributes(
+          nil,
+          {
+            name: name,
+            description: description,
+            environments: environments
+          }.merge(attributes)
+        )
+      end
     end
   end
 end

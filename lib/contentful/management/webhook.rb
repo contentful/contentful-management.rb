@@ -74,7 +74,18 @@ module Contentful
       protected
 
       def query_attributes(attributes)
-        self.class.create_attributes(nil, attributes)
+        self.class.create_attributes(
+          nil,
+          {
+            url: url,
+            name: name,
+            topics: topics,
+            headers: headers,
+            httpBasicUsername: http_basic_username,
+            filters: filters,
+            transformation: transformation
+          }.merge(attributes)
+        )
       end
     end
   end

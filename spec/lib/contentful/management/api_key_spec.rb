@@ -58,7 +58,6 @@ module Contentful
 
       describe 'environments' do
         let(:space_id) { 'facgnwwgj5fe' }
-        subject { client.api_keys(space_id) }
 
         it 'can create an api key with environments' do
           vcr('api_key/create_with_environments') {
@@ -88,7 +87,6 @@ module Contentful
       describe 'preview api tokens' do
         let(:space_id) { 'facgnwwgj5fe' }
         let(:api_key_id) { '5mxNhKOZYOp1wzafOR9qPw' }
-        subject { client.api_keys(space_id) }
 
         it 'can fetch preview api keys' do
           vcr('api_key/preview') {
@@ -99,6 +97,24 @@ module Contentful
             preview_api_key = api_key.preview_api_key
             expect(preview_api_key).to be_a Contentful::Management::PreviewApiKey
             expect(preview_api_key.access_token).to eq 'PREVIEW_TOKEN'
+          }
+        end
+      end
+
+      describe 'issues' do
+        let(:space_id) { 'facgnwwgj5fe' }
+        it 'can save an api key - #189' do
+          vcr('api_key/issue_189') {
+            api_key = subject.find('5rjsSfZUvHJnWBDkbcCsem')
+
+            expect(api_key.name).to eq 'test - updated'
+
+            api_key.name = 'test - updated 2'
+            api_key.save
+
+            api_key.reload
+
+            expect(api_key.name).to eq 'test - updated 2'
           }
         end
       end

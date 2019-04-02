@@ -147,6 +147,14 @@ module Contentful
       def refresh_find
         self.class.find(client, space.id, id)
       end
+
+      protected
+
+      def query_attributes(attributes)
+        {
+          name: name
+        }.merge(attributes)
+      end
     end
   end
 end

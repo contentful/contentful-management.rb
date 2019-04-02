@@ -85,7 +85,11 @@ module Contentful
       end
 
       def query_attributes(attributes)
-        attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
+        {
+          controls: controls
+        }.merge(
+          attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
+        )
       end
     end
   end
