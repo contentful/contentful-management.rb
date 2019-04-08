@@ -2,6 +2,10 @@
 
 ## Master
 
+## 2.8.1
+### Fixed
+* Fixed `#save` method for multiple resources. [#190](https://github.com/contentful/contentful-management.rb/pull/190)
+
 ## 2.8.0
 ### Added
 * Added environment branching.
