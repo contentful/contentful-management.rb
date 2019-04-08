@@ -5,7 +5,7 @@ require 'contentful/management/client'
 module Contentful
   module Management
     describe Role do
-      let(:token) { '<ACCESS_TOKEN>' }
+      let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
       let(:space_id) { '03vrieuz7eun' }
       let(:role_id) { '0rQMQMd6ZTgeF7hxjz7JDi' }
 
@@ -118,6 +118,25 @@ module Contentful
 
             expect(error).to be_a Contentful::Management::NotFound
           end
+        end
+      end
+
+      describe 'issues' do
+        let(:space_id) { 'facgnwwgj5fe' }
+
+        it 'can save a role - #189' do
+          vcr('roles/issue_189') {
+            role = subject.find('1NzxmNIjPtzpJae5OL1m4u')
+
+            expect(role.name).to eq 'Translator 1'
+
+            role.name = 'Translator - Updated'
+            role.save
+
+            role.reload
+
+            expect(role.name).to eq 'Translator - Updated'
+          }
         end
       end
     end

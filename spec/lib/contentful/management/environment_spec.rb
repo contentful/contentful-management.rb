@@ -122,4 +122,21 @@ describe Contentful::Management::Environment do
       }
     end
   end
+
+  describe 'issues' do
+    it 'can save an environment - #189' do
+      vcr('environment/issue_189') {
+        environment = subject.find('testing')
+
+        expect(environment.name).to eq 'testing'
+
+        environment.name = 'testing 2'
+        environment.save
+
+        environment.reload
+
+        expect(environment.name).to eq 'testing 2'
+      }
+    end
+  end
 end

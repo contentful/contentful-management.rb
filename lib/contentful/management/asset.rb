@@ -116,9 +116,9 @@ module Contentful
       end
 
       def query_attributes(attributes)
-        self.title = attributes[:title] if attributes[:title]
-        self.description = attributes[:description] if attributes[:description]
-        self.file = attributes[:file] if attributes[:file]
+        self.title = attributes[:title] || title
+        self.description = attributes[:description] || description
+        self.file = attributes[:file] || file
 
         { fields: fields_for_query }
       end

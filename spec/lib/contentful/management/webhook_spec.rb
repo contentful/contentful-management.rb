@@ -169,6 +169,25 @@ module Contentful
           end
         end
       end
+
+      describe 'issues' do
+        let(:space_id) { 'facgnwwgj5fe' }
+
+        it 'can properly update attributes - #189' do
+          vcr('webhook/issue_189') do
+            webhook = subject.find('0Kgjs0DQizupIbmSHcyaFM')
+
+            expect(webhook.url).to eq 'https://www.example.com'
+
+            webhook.url = 'https://www.example2.com'
+            webhook.save
+
+            webhook.reload
+
+            expect(webhook.url).to eq 'https://www.example2.com'
+          end
+        end
+      end
     end
   end
 end

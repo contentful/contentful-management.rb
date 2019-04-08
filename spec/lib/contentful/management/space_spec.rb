@@ -221,6 +221,25 @@ module Contentful
           end
         end
       end
+
+      describe 'issues' do
+        let(:space_id) { 'no8f22w4syte' }
+
+        it 'can save a space - #189' do
+          vcr('space/issue_189') {
+            space = subject.find(space_id)
+
+            expect(space.name).to eq 'foo'
+
+            space.name = 'bar'
+            space.save
+
+            space.reload
+
+            expect(space.name).to eq 'bar'
+          }
+        end
+      end
     end
   end
 end
