@@ -30,7 +30,8 @@ module Contentful
       # @private
       def properties_to_hash
         properties.each_with_object({}) do |(key, value), results|
-          results[key] = parse_value(key, value)
+          value = parse_value(key, value)
+          results[key] = value if Field.value_exists?(value)
         end
       end
 
