@@ -2,6 +2,10 @@
 
 ## Master
 
+## 2.8.2
+### Fixed
+* Fixed the ability to clone content types by reusing other content type's fields. [#192](https://github.com/contentful/contentful-management.rb/pull/192)
+
 ## 2.8.1
 ### Fixed
 * Fixed `#save` method for multiple resources. [#190](https://github.com/contentful/contentful-management.rb/pull/190)
