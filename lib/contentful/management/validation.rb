@@ -17,6 +17,8 @@ module Contentful
       property :linkContentType, :array
       property :linkMimetypeGroup, :string
       property :assetImageDimensions, :hash
+      property :enabledNodeTypes, :array
+      property :enabledMarks, :array
 
       # @private
       def properties_to_hash
