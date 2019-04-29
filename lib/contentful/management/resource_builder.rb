@@ -73,7 +73,6 @@ module Contentful
         @included_resources = {}
         @known_resources = Hash.new { |hash, key| hash[key] = {} }
         @nested_locales = true
-        @default_locale = (client.configuration || Contentful::Management::Client::DEFAULT_CONFIGURATION)[:default_locale]
         @resource_mapping = default_resource_mapping.merge(resource_mapping)
         @entry_mapping = default_entry_mapping.merge(entry_mapping)
       end
@@ -113,7 +112,7 @@ module Contentful
       def create_resource(object)
         res_class = detect_resource_class(object)
         @nested_locales ||= res_class.nested_locale_fields?
-        res = res_class.new(object, response.request, client, @nested_locales, @default_locale)
+        res = res_class.new(object, response.request, client, @nested_locales)
 
         add_to_known_resources res
         replace_children res, object
