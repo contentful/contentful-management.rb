@@ -2,6 +2,10 @@
 
 ## Master
 
+## 2.9.0
+### Added
+* Added validations for Rich Text. [#193](https://github.com/contentful/contentful-management.rb/pull/193)
+
 ## 2.8.2
 ### Fixed
 * Fixed the ability to clone content types by reusing other content type's fields. [#192](https://github.com/contentful/contentful-management.rb/pull/192)
