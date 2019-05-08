@@ -139,8 +139,9 @@ module Contentful
       # @return [String]
       def find_locale
         locale = locales.all.detect(&:default)
-        return locale.code unless locale.nil?
-        @default_locale
+        return locale.code if locale
+
+        default_locale
       end
 
       # @private

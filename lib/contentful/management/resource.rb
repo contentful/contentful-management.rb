@@ -27,18 +27,16 @@ module Contentful
       }.freeze
       # rubocop:enable Style/DoubleNegation
 
-      attr_reader :properties, :request, :default_locale, :raw_object
+      attr_reader :properties, :request, :raw_object
       attr_accessor :client
 
       # @private
       def initialize(object = nil,
                      request = nil,
                      client = nil,
-                     nested_locale_fields = false,
-                     default_locale = Contentful::Management::Client::DEFAULT_CONFIGURATION[:default_locale])
+                     nested_locale_fields = false)
         self.class.update_coercions!
         @nested_locale_fields = nested_locale_fields
-        @default_locale = default_locale
 
         @properties = extract_from_object object, :property, self.class.property_coercions.keys
         @request = request
@@ -132,6 +130,11 @@ module Contentful
       # Returns the Environment ID
       def environment_id
         nil
+      end
+
+      # Get default_locale from client
+      def default_locale
+        client.default_locale
       end
 
       protected
