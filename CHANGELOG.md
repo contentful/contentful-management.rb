@@ -2,6 +2,10 @@
 
 ## Master
 
+## 2.9.1
+### Fixed
+* Default locale is now fetched from the client instead of passed around. [#194](https://github.com/contentful/contentful-management.rb/pull/194)
+
 ## 2.9.0
 ### Added
 * Added validations for Rich Text. [#193](https://github.com/contentful/contentful-management.rb/pull/193)
