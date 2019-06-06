@@ -35,8 +35,8 @@ module Contentful
       # @param [Contentful::Management::Client] client
       #
       # @return [Contentful::Management::Array<Contentful::Management::Space>]
-      def self.all(client)
-        ClientSpaceMethodsFactory.new(client).all
+      def self.all(client, query = {})
+        ClientSpaceMethodsFactory.new(client).all(query)
       end
 
       # Gets a specific space.
