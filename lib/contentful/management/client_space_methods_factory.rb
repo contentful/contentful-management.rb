@@ -15,8 +15,8 @@ module Contentful
       # Gets a collection of spaces.
       #
       # @return [Contentful::Management::Array<Contentful::Management::Space>]
-      def all
-        @resource_requester.all
+      def all(query = {})
+        @resource_requester.all({}, query)
       end
 
       # Gets a specific space.
