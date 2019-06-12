@@ -465,6 +465,14 @@ module Contentful
             end
           end
         end
+        describe 'Assets created through environment retain environment identity - #196' do
+          it 'should return proper environment id' do
+            vcr('asset/196_environment_id') do
+              environment = client.environments('facgnwwgj5fe').find('testing')
+              expect(environment.assets.new.environment_id).to eq 'testing'
+            end
+          end
+        end
       end
     end
   end

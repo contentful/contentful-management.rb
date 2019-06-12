@@ -849,6 +849,12 @@ module Contentful
             expect(content_type.sys[:version] > 0).to be_truthy
           }
         end
+        it 'entries created through a content type retain environment id - #196' do
+          vcr('content_type/196_retain_environment_id') {
+            content_type = described_class.find(client, 'facgnwwgj5fe', 'testing', 'foo')
+            expect(content_type.entries.new.environment_id).to eq 'testing'
+          }
+        end
       end
     end
   end

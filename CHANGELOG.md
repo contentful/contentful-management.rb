@@ -2,6 +2,16 @@
 
 ## Master
 
+## 2.10.0
+### Added
+* Added support for query parameters on the Space endpoints. [#197](https://github.com/contentful/contentful-management.rb/pull/197)
+
+### Fixed
+* Fixed environment aware resources that were not having the `environment_id` properly calculated. [#195](https://github.com/contentful/contentful-management.rb/pull/195)
+
+### Changed
+* Relaxed maximum allowed version of the `json` gem. [#196](https://github.com/contentful/contentful-management.rb/pull/196)
+
 ## 2.9.1
 ### Fixed
 * Default locale is now fetched from the client instead of passed around. [#194](https://github.com/contentful/contentful-management.rb/pull/194)
