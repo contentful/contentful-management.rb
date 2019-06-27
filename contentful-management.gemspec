@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'http', '> 1.0', '< 3.0'
   spec.add_dependency 'multi_json', '~> 1'
-  spec.add_dependency 'json', '~> 1.8'
+  spec.add_dependency 'json', '>= 1.8', '< 3'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '< 11.0'
