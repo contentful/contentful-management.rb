@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 2.11.0
 ### Added
 * Added support for Rich Text specific validations. [#200](https://github.com/contentful/contentful-management.rb/pull/200)
 
