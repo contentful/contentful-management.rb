@@ -4,6 +4,7 @@ module Contentful
   module Management
     # A ContentType's validations schema
     class Validation
+      # Properties not specific to a field type validation
       NON_TYPE_PROPERTIES = %i[validations message].freeze
 
       include Contentful::Management::Resource

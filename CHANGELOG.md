@@ -4,6 +4,9 @@
 ### Added
 * Added support for Rich Text specific validations. [#200](https://github.com/contentful/contentful-management.rb/pull/200)
 
+### Changed
+* Updated maximum allowed version of the `http` gem. [#205](https://github.com/contentful/contentful-management.rb/issues/205)
+
 ## 2.10.0
 ### Added
 * Added support for query parameters on the Space endpoints. [#197](https://github.com/contentful/contentful-management.rb/pull/197)
