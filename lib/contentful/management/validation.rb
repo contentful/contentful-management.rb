@@ -4,6 +4,8 @@ module Contentful
   module Management
     # A ContentType's validations schema
     class Validation
+      NON_TYPE_PROPERTIES = %i[validations message].freeze
+
       include Contentful::Management::Resource
 
       property :in, :array
@@ -19,6 +21,8 @@ module Contentful
       property :assetImageDimensions, :hash
       property :enabledNodeTypes, :array
       property :enabledMarks, :array
+      property :nodes, :hash
+      property :message, :string
 
       # @private
       def properties_to_hash
@@ -30,7 +34,7 @@ module Contentful
       # Returns type of validation
       # @return [Symbol]
       def type
-        properties.keys.reject { |key| key == :validations }.each do |type|
+        properties.keys.reject { |key| NON_TYPE_PROPERTIES.include?(key) }.each do |type|
           value = send(Support.snakify(type))
           return type if !value.nil? && value
         end
