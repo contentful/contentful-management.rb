@@ -1,6 +1,12 @@
 # Change Log
 
 ## Master
+### Added
+* Add `OrganizationPeriodicUsage`, `Client#organization_periodic_usages` and `Organization#periodic_usages`.
+* Add `SpacePeriodicUsage`, `Client#space_periodic_usages` and `Organization#space_periodic_usages`.
+
+### Removed
+* Removed now deprecated Alpha Usage APIs, which have been superseeded by the new APIs added.
 
 ## 2.11.0
 ### Added

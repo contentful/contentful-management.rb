@@ -2,32 +2,34 @@ require_relative 'resource'
 
 module Contentful
   module Management
-    # Resource class for UsagePeriod.
-    # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-usages
-    class UsagePeriod
+    # Resource class for SpacePeriodicUsage.
+    # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/usage/space-usage/get-space-usage/console/curl
+    class SpacePeriodicUsage
       include Contentful::Management::Resource
       include Contentful::Management::Resource::Refresher
       include Contentful::Management::Resource::SystemProperties
 
-      property :startDate, :date
-      property :endDate, :date
+      property :metric, :string
+      property :usage, :integer
+      property :usagePerDay, :object
+      property :unitOfMeasure, :string
 
       # @private
       def self.build_endpoint(endpoint_options)
         organization_id = endpoint_options[:organization_id]
 
-        "organizations/#{organization_id}/usage_periods"
+        "organizations/#{organization_id}/space_periodic_usages"
       end
 
-      # Gets all usage periods for a given organization.
+      # Gets all space periodic usages for a given organization.
       #
       # @param [Contentful::Management::Client] client
       # @param [String] organization_id
       # @param [Hash] params
       #
-      # @return [Contentful::Management::Array<Contentful::Management::UsagePeriod>]
+      # @return [Contentful::Management::Array<Contentful::Management::SpacePeriodicUsage>]
       def self.all(client, organization_id, params = {})
-        ClientUsagePeriodMethodsFactory.new(client, organization_id).all(params)
+        ClientSpacePeriodicUsageMethodsFactory.new(client, organization_id).all(params)
       end
 
       # Not supported

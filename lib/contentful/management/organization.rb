@@ -16,20 +16,20 @@ module Contentful
         'organizations'
       end
 
-      # Allows listing all usage periods for organization.
+      # Allows listing all usage periods for organization grouped by organization or space.
       # @see _ README for details.
       #
-      # @return [Contentful::Management::ClientApiUsageMethodsFactory]
-      def usage_periods
-        ClientApiUsageMethodsFactory.new(client, id)
+      # @return [Contentful::Management::ClientOrganizationPeriodicUsageMethodsFactory]
+      def periodic_usages
+        ClientOrganizationPeriodicUsageMethodsFactory.new(client, id)
       end
 
-      # Allows listing all api usage for organization.
+      # Allows listing all usage periods for organization grouped by organization or space.
       # @see _ README for details.
       #
-      # @return [Contentful::Management::ClientApiUsageMethodsFactory]
-      def api_usage
-        ClientApiUsageMethodsFactory.new(client, id)
+      # @return [Contentful::Management::ClientSpacePeriodicUsageMethodsFactory]
+      def space_periodic_usages
+        ClientSpacePeriodicUsageMethodsFactory.new(client, id)
       end
     end
   end
