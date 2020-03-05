@@ -13,6 +13,7 @@ module Contentful
       property :usage, :integer
       property :usagePerDay, :object
       property :unitOfMeasure, :string
+      property :dateRange, :object
 
       # @private
       def self.build_endpoint(endpoint_options)
