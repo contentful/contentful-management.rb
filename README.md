@@ -833,7 +833,7 @@ organizations = client.organizations.all
 
 #### Organization Periodic Usage
 
-Retrieving all API Usage statistics for an Organizations during a given usage period, broken down by organization for all APIs:
+Retrieving all API Usage statistics for an Organization during a given usage period, broken down by organization for all APIs:
 
 ```ruby
 # Optionally, you can pass the metric, start and end date filters
