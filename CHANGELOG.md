@@ -1,6 +1,11 @@
 # Change Log
 
 ## Master
+
+## 2.12.0
+
+*Note*: Only a minor change because the removed feature was *Alpha*.
+
 ### Added
 * Add `OrganizationPeriodicUsage`, `Client#organization_periodic_usages` and `Organization#periodic_usages`.
 * Add `SpacePeriodicUsage`, `Client#space_periodic_usages` and `Organization#space_periodic_usages`.
