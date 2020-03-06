@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/org_id/organization_periodic_usages?metric%5Bin%5D=cda
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.11.0; platform ruby/2.6.3; os macOS/18;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Marketplace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - org_id
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Fri, 28 Feb 2020 14:43:40 GMT
+      Etag:
+      - W/"cd9282eb71e221f415ae9025f7f9f118"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 1947e342e8f3266012b951a32d377445
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - ALLOWALL
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1709'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_876_673446=UM/bajl3kWOxJ5RHZS4oDBsnWV4AAAAAl0pEff/Ge1a9gunfczUgdw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=f1gSfflB8A8DKoDNYMlkBAAAAACQKtjpXtWjdqq1W4HP+qlq; path=/; Domain=.contentful.com
+      - visid_incap_673446=LQklok20S/GMRr5UPZJ0zxsnWV4AAAAAQUIPAAAAAAACceMWg4BP/mv5a8tEbXbv;
+        expires=Fri, 26 Feb 2021 18:55:11 GMT; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 12-42383868-42383874 NNNY CT(0 0 0) RT(1582901019713 53) q(0 0 0 -1) r(1 1)
+        U5
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":1,
+          "limit":100,
+          "skip":0,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "metric":"cda",
+              "usage":961,
+              "usagePerDay":{
+                "2020-01-15":0,
+                "2020-01-16":0,
+                "2020-01-17":9,
+                "2020-01-18":0,
+                "2020-01-19":0,
+                "2020-01-20":21,
+                "2020-01-21":1,
+                "2020-01-22":0,
+                "2020-01-23":7,
+                "2020-01-24":0,
+                "2020-01-25":0,
+                "2020-01-26":0,
+                "2020-01-27":0,
+                "2020-01-28":0,
+                "2020-01-29":0,
+                "2020-01-30":0,
+                "2020-01-31":6,
+                "2020-02-01":0,
+                "2020-02-02":0,
+                "2020-02-03":521,
+                "2020-02-04":180,
+                "2020-02-05":157,
+                "2020-02-06":0,
+                "2020-02-07":9,
+                "2020-02-08":0,
+                "2020-02-09":0,
+                "2020-02-10":0,
+                "2020-02-11":0,
+                "2020-02-12":0,
+                "2020-02-13":0,
+                "2020-02-14":0,
+                "2020-02-15":10,
+                "2020-02-16":0,
+                "2020-02-17":0,
+                "2020-02-18":0,
+                "2020-02-19":0,
+                "2020-02-20":0,
+                "2020-02-21":0,
+                "2020-02-22":0,
+                "2020-02-23":0,
+                "2020-02-24":0,
+                "2020-02-25":1,
+                "2020-02-26":39,
+                "2020-02-27":0,
+                "2020-02-28":0
+              },
+              "unitOfMeasure":"apiRequestsCount",
+              "sys":{
+                "type":"OrganizationPeriodicUsage",
+                "id":"usage-cda-org_id-2020-01-15-2020-02-28",
+                "organization":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Organization",
+                    "id":"org_id"
+                  }
+                }
+              },
+              "dateRange":{
+                "startAt":"2020-01-15",
+                "endAt":"2020-02-28"
+              }
+            }
+          ]
+        }
+
+    http_version: 
+  recorded_at: Fri, 28 Feb 2020 14:43:40 GMT
+recorded_with: VCR 4.0.0

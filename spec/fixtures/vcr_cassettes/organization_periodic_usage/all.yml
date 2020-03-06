@@ -1,0 +1,368 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/org_id/organization_periodic_usages
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.11.0; platform ruby/2.6.3; os macOS/18;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Marketplace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - org_id
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Fri, 28 Feb 2020 14:42:27 GMT
+      Etag:
+      - W/"d2185e97c2daf1cd0f0be72a79f7b315"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - 36e77549021b20853a9535e89d0bdd4e
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - ALLOWALL
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '6586'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_876_673446=yp+VcZuKci5d35NHZS4oDNImWV4AAAAAqAbS4TY59bq7c7UoUQsrmA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=9x0YNII5ygys9olsYMlkBAAAAAAYBop9w7vJ9Qre8KLQ27zB; path=/; Domain=.contentful.com
+      - visid_incap_673446=C/6W96tTQ8qknLo2jzjsgNImWV4AAAAAQUIPAAAAAABjOhaX4s1ZCfVNuGwkxVaw;
+        expires=Fri, 26 Feb 2021 18:55:11 GMT; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 10-14741526-14741528 NNNY CT(0 0 0) RT(1582900946537 55) q(0 0 0 -1) r(2 2)
+        U5
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":4,
+          "limit":100,
+          "skip":0,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "metric":"cma",
+              "usage":22951,
+              "usagePerDay":{
+                "2020-01-15":2629,
+                "2020-01-16":12,
+                "2020-01-17":874,
+                "2020-01-18":0,
+                "2020-01-19":0,
+                "2020-01-20":797,
+                "2020-01-21":483,
+                "2020-01-22":169,
+                "2020-01-23":185,
+                "2020-01-24":251,
+                "2020-01-25":0,
+                "2020-01-26":0,
+                "2020-01-27":1502,
+                "2020-01-28":161,
+                "2020-01-29":33,
+                "2020-01-30":49,
+                "2020-01-31":305,
+                "2020-02-01":0,
+                "2020-02-02":0,
+                "2020-02-03":541,
+                "2020-02-04":6083,
+                "2020-02-05":4185,
+                "2020-02-06":38,
+                "2020-02-07":87,
+                "2020-02-08":0,
+                "2020-02-09":28,
+                "2020-02-10":81,
+                "2020-02-11":433,
+                "2020-02-12":558,
+                "2020-02-13":82,
+                "2020-02-14":0,
+                "2020-02-15":126,
+                "2020-02-16":0,
+                "2020-02-17":1165,
+                "2020-02-18":656,
+                "2020-02-19":178,
+                "2020-02-20":133,
+                "2020-02-21":645,
+                "2020-02-22":0,
+                "2020-02-23":0,
+                "2020-02-24":0,
+                "2020-02-25":0,
+                "2020-02-26":324,
+                "2020-02-27":132,
+                "2020-02-28":26
+              },
+              "unitOfMeasure":"apiRequestsCount",
+              "sys":{
+                "type":"OrganizationPeriodicUsage",
+                "id":"usage-cma-org_id-2020-01-15-2020-02-28",
+                "organization":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Organization",
+                    "id":"org_id"
+                  }
+                }
+              },
+              "dateRange":{
+                "startAt":"2020-01-15",
+                "endAt":"2020-02-28"
+              }
+            },
+            {
+              "metric":"cda",
+              "usage":961,
+              "usagePerDay":{
+                "2020-01-15":0,
+                "2020-01-16":0,
+                "2020-01-17":9,
+                "2020-01-18":0,
+                "2020-01-19":0,
+                "2020-01-20":21,
+                "2020-01-21":1,
+                "2020-01-22":0,
+                "2020-01-23":7,
+                "2020-01-24":0,
+                "2020-01-25":0,
+                "2020-01-26":0,
+                "2020-01-27":0,
+                "2020-01-28":0,
+                "2020-01-29":0,
+                "2020-01-30":0,
+                "2020-01-31":6,
+                "2020-02-01":0,
+                "2020-02-02":0,
+                "2020-02-03":521,
+                "2020-02-04":180,
+                "2020-02-05":157,
+                "2020-02-06":0,
+                "2020-02-07":9,
+                "2020-02-08":0,
+                "2020-02-09":0,
+                "2020-02-10":0,
+                "2020-02-11":0,
+                "2020-02-12":0,
+                "2020-02-13":0,
+                "2020-02-14":0,
+                "2020-02-15":10,
+                "2020-02-16":0,
+                "2020-02-17":0,
+                "2020-02-18":0,
+                "2020-02-19":0,
+                "2020-02-20":0,
+                "2020-02-21":0,
+                "2020-02-22":0,
+                "2020-02-23":0,
+                "2020-02-24":0,
+                "2020-02-25":1,
+                "2020-02-26":39,
+                "2020-02-27":0,
+                "2020-02-28":0
+              },
+              "unitOfMeasure":"apiRequestsCount",
+              "sys":{
+                "type":"OrganizationPeriodicUsage",
+                "id":"usage-cda-org_id-2020-01-15-2020-02-28",
+                "organization":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Organization",
+                    "id":"org_id"
+                  }
+                }
+              },
+              "dateRange":{
+                "startAt":"2020-01-15",
+                "endAt":"2020-02-28"
+              }
+            },
+            {
+              "metric":"gql",
+              "usage":51,
+              "usagePerDay":{
+                "2020-01-15":1,
+                "2020-01-16":1,
+                "2020-01-17":1,
+                "2020-01-18":1,
+                "2020-01-19":1,
+                "2020-01-20":1,
+                "2020-01-21":1,
+                "2020-01-22":1,
+                "2020-01-23":1,
+                "2020-01-24":1,
+                "2020-01-25":1,
+                "2020-01-26":1,
+                "2020-01-27":1,
+                "2020-01-28":2,
+                "2020-01-29":6,
+                "2020-01-30":1,
+                "2020-01-31":1,
+                "2020-02-01":1,
+                "2020-02-02":1,
+                "2020-02-03":1,
+                "2020-02-04":1,
+                "2020-02-05":1,
+                "2020-02-06":1,
+                "2020-02-07":1,
+                "2020-02-08":1,
+                "2020-02-09":1,
+                "2020-02-10":1,
+                "2020-02-11":1,
+                "2020-02-12":1,
+                "2020-02-13":1,
+                "2020-02-14":1,
+                "2020-02-15":2,
+                "2020-02-16":1,
+                "2020-02-17":1,
+                "2020-02-18":1,
+                "2020-02-19":1,
+                "2020-02-20":1,
+                "2020-02-21":1,
+                "2020-02-22":1,
+                "2020-02-23":1,
+                "2020-02-24":1,
+                "2020-02-25":1,
+                "2020-02-26":0,
+                "2020-02-27":1,
+                "2020-02-28":1
+              },
+              "unitOfMeasure":"apiRequestsCount",
+              "sys":{
+                "type":"OrganizationPeriodicUsage",
+                "id":"usage-gql-org_id-2020-01-15-2020-02-28",
+                "organization":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Organization",
+                    "id":"org_id"
+                  }
+                }
+              },
+              "dateRange":{
+                "startAt":"2020-01-15",
+                "endAt":"2020-02-28"
+              }
+            },
+            {
+              "metric":"cpa",
+              "usage":1,
+              "usagePerDay":{
+                "2020-01-15":0,
+                "2020-01-16":0,
+                "2020-01-17":0,
+                "2020-01-18":0,
+                "2020-01-19":0,
+                "2020-01-20":0,
+                "2020-01-21":0,
+                "2020-01-22":0,
+                "2020-01-23":0,
+                "2020-01-24":0,
+                "2020-01-25":0,
+                "2020-01-26":0,
+                "2020-01-27":0,
+                "2020-01-28":0,
+                "2020-01-29":0,
+                "2020-01-30":0,
+                "2020-01-31":0,
+                "2020-02-01":0,
+                "2020-02-02":0,
+                "2020-02-03":1,
+                "2020-02-04":0,
+                "2020-02-05":0,
+                "2020-02-06":0,
+                "2020-02-07":0,
+                "2020-02-08":0,
+                "2020-02-09":0,
+                "2020-02-10":0,
+                "2020-02-11":0,
+                "2020-02-12":0,
+                "2020-02-13":0,
+                "2020-02-14":0,
+                "2020-02-15":0,
+                "2020-02-16":0,
+                "2020-02-17":0,
+                "2020-02-18":0,
+                "2020-02-19":0,
+                "2020-02-20":0,
+                "2020-02-21":0,
+                "2020-02-22":0,
+                "2020-02-23":0,
+                "2020-02-24":0,
+                "2020-02-25":0,
+                "2020-02-26":0,
+                "2020-02-27":0,
+                "2020-02-28":0
+              },
+              "unitOfMeasure":"apiRequestsCount",
+              "sys":{
+                "type":"OrganizationPeriodicUsage",
+                "id":"usage-cpa-org_id-2020-01-15-2020-02-28",
+                "organization":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Organization",
+                    "id":"org_id"
+                  }
+                }
+              },
+              "dateRange":{
+                "startAt":"2020-01-15",
+                "endAt":"2020-02-28"
+              }
+            }
+          ]
+        }
+
+    http_version: 
+  recorded_at: Fri, 28 Feb 2020 14:42:27 GMT
+recorded_with: VCR 4.0.0

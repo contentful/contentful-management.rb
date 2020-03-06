@@ -827,40 +827,46 @@ Retrieving all organization details:
 organizations = client.organizations.all
 ```
 
-### Usage Periods (ALPHA)
+### Usage
 
 *Note*: This feature is available only to Commited v2 customers.
 
-Retrieving all Usage Periods for an Organizations you belong to:
+#### Organization Periodic Usage
+
+Retrieving all API Usage statistics for an Organization during a given usage period, broken down by organization for all APIs:
 
 ```ruby
-usage_periods = client.usage_periods('organization_id').all
-```
+# Optionally, you can pass the metric, start and end date filters
+usage = client.organization_periodic_usages('organization_id').all
 
-Alternatively, if you have an already fetched organization:
-
-```ruby
-usage_periods = organization.usage_periods().all()
-```
-
-### API Usage (ALPHA)
-
-*Note*: This feature is available only to Commited v2 customers.
-
-Retrieving all API Usage statistics for an Organizations during a given usage period, broken down by organization for all APIs:
-
-```ruby
-# Valid usage types are by 'organization' and by 'space'.
-# Usage period IDs are numerical and can be fetched from the Usage Periods API.
-# Valid API breakdowns are: 'cda', 'cpa', 'cma' or 'all_apis'.
-usage = client.api_usage('organization_id').all('organization', usage_period_id, 'all_apis')
+# For example only CDA and CMA metrics from yesterday onwards
+usage = client.organization_periodic_usages('organization_id').all('metric[in]': ['cda', 'cma'], startDate: (Date.today - 1).iso8601)
 ```
 
 Alternatively, if you have an already fetched organization:
 
 ```ruby
 # Breaking down CMA usage by space, for a given period.
-usage = organization.api_usage().all('space', usage_period_id, 'cma')
+usage = organization.periodic_usages.all
+```
+
+#### Space Periodic Usage
+
+Retrieving all API Usage statistics for an Organization during a given usage period, broken down by space for all APIs:
+
+```ruby
+# Optionally, you can pass the metric, start and end date filters
+usage = client.space_periodic_usages('organization_id').all
+
+# For example only CDA and CMA metrics from yesterday onwards
+usage = client.space_periodic_usages('organization_id').all('metric[in]': ['cda', 'cma'], startDate: (Date.today - 1).iso8601)
+```
+
+Alternatively, if you have an already fetched organization:
+
+```ruby
+# Breaking down CMA usage by space, for a given period.
+usage = organization.space_periodic_usages.all
 ```
 
 ### Users

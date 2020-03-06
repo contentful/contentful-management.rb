@@ -2,9 +2,9 @@ require_relative 'client_association_methods_factory'
 
 module Contentful
   module Management
-    # Wrapper for Usage Period for usage from within Client
+    # Wrapper for Space Periodic Usages for usage from within Client
     # @private
-    class ClientUsagePeriodMethodsFactory
+    class ClientSpacePeriodicUsageMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
 
       def initialize(client, organization_id)
@@ -17,8 +17,7 @@ module Contentful
           {
             organization_id: @organization_id
           },
-          params,
-          'x-contentful-enable-alpha-feature' => 'usage-insights'
+          params
         )
       end
 
