@@ -829,7 +829,7 @@ organizations = client.organizations.all
 
 ### Usage
 
-*Note*: This feature is available only to Commited v2 customers.
+*Note*: This feature is available only to v2 customers.
 
 #### Organization Periodic Usage
 
