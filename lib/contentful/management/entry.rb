@@ -95,18 +95,20 @@ module Contentful
 
       # @private
       def self.parse_objects_array(attributes)
-        attributes.each_with_object([]) do |attr, arr|
-          if attr.is_a? Entry
-            arr << hash_with_link_object('Entry', attr)
-          elsif attr.is_a? Asset
-            arr << hash_with_link_object('Asset', attr)
-          elsif attr.is_a? Hash
-            arr << attr
-          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Entry')
-            arr << hash_with_link_object('Entry', attr)
-          elsif attr.class.ancestors.map(&:to_s).include?('Contentful::Asset')
-            arr << hash_with_link_object('Asset', attr)
-          end
+        attributes.each_with_object([]) do |attribute, result|
+          result << if attribute.is_a? Entry
+                      hash_with_link_object('Entry', attribute)
+                    elsif attribute.is_a? Asset
+                      hash_with_link_object('Asset', attribute)
+                    elsif attribute.is_a? Hash
+                      attribute
+                    elsif attribute.class.ancestors.map(&:to_s).include?('Contentful::Entry')
+                      hash_with_link_object('Entry', attribute)
+                    elsif attribute.class.ancestors.map(&:to_s).include?('Contentful::Asset')
+                      hash_with_link_object('Asset', attribute)
+                    else
+                      attribute
+                    end
         end
       end
 

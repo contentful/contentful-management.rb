@@ -866,6 +866,54 @@ describe Contentful::Management::Entry do
   end
 
   describe 'issues' do
+    let(:space_id) { 'vuo79u060fmw' }
+    let(:space) { client.spaces.find(space_id) }
+    let(:environment) { space.environments.find('master') }
+
+    describe 'json fields do not get reset on save - #215' do
+      it 'can load a json array, modify it, save it, and retrieve it' do
+        vcr('entry/issue_215_1') {
+          entry = environment.entries.find('30QNJFxJQwLpdqZn8CHsHf')
+          expect(entry.json).to eq([1, 2, 3])
+
+          entry.json = entry.json.map { |e| e + 1 }
+          entry.save
+
+          entry.reload
+
+          expect(entry.json).to eq([2, 3, 4])
+        }
+      end
+
+      it 'can load a json object, modify it, save it, and retrieve it' do
+        vcr('entry/issue_215_2') {
+          entry = environment.entries.find('6kcaBzW7xgjVr825PmGCvP')
+          expect(entry.json).to eq({ "a" => 1 })
+
+          entry.json["a"] = 2
+          entry.save
+
+          entry.reload
+
+          expect(entry.json).to eq({ "a" => 2 })
+        }
+      end
+
+      it 'can load an empty json object, set it, save it, and retrieve it' do
+        vcr('entry/issue_215_3') {
+          entry = environment.entries.find('4aVBlJajh2rZb7ybW2tY2X')
+          expect(entry.json).to be_nil
+
+          entry.json = { "a" => 1 }
+          entry.save
+
+          entry.reload
+
+          expect(entry.json).to eq({ "a" => 1 })
+        }
+      end
+    end
+
     describe 'can send query parameters when requesting through environment proxy - #160' do
       it 'can filter by content type and set a limit different than 100' do
         vcr('entry/issue_160') {

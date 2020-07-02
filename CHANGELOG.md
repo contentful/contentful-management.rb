@@ -2,6 +2,9 @@
 
 ## Master
 
+### Fixed
+* Fixed an issue where JSON fields with top-level arrays were not properly parsed. [#215](https://github.com/contentful/contentful-management.rb/issues/215)
+
 ## 2.12.0
 
 *Note*: Only a minor change because the removed feature was *Alpha*.
