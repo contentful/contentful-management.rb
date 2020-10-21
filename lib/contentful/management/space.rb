@@ -6,6 +6,7 @@ require_relative 'resource'
 require_relative 'environment'
 require_relative 'space_membership'
 require_relative 'space_role_methods_factory'
+require_relative 'space_user_methods_factory'
 require_relative 'space_webhook_methods_factory'
 require_relative 'space_api_key_methods_factory'
 require_relative 'space_environment_methods_factory'
@@ -153,6 +154,15 @@ module Contentful
       # @return [Contentful::Management::SpaceRoleMethodsFactory]
       def roles
         SpaceRoleMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of users in context of the current space
+      # Allows listing all users of space, and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::SpaceUserMethodsFactory]
+      def users
+        SpaceUserMethodsFactory.new(self)
       end
 
       # Allows manipulation of webhooks in context of the current space
