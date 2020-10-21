@@ -87,7 +87,9 @@ module Contentful
 
       def validations_to_hash(validations)
         validations.each_with_object([]) do |validation, results|
-          results << validation.properties_to_hash
+          validation_hash = validation.properties_to_hash
+
+          results << validation.properties_to_hash if Field.value_exists?(validation_hash)
         end
       end
     end
