@@ -43,7 +43,7 @@ http_interactions:
       Contentful-Api:
       - cma
       Date:
-      - Thu, 05 Nov 2020 20:04:50 GMT
+      - Mon, 09 Nov 2020 08:55:01 GMT
       Etag:
       - W/"3efddc0538e5b54bf75cbf90ccb1c729"
       Referrer-Policy:
@@ -55,7 +55,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - c914c8c80e6c4a9ccded3bc36a24612b
+      - 74376d8fd8a19e2d2db176416bc4b0d6
       X-Contentful-Route:
       - "/organizations"
       X-Download-Options:
@@ -71,16 +71,16 @@ http_interactions:
       Connection:
       - Close
       Set-Cookie:
-      - incap_ses_712_673446=eeXLDmZLCy1F4dzeYYjhCeFapF8AAAAA3sc/yLoXzrlJZGEER6wYWg==;
+      - incap_ses_712_673446=Qg/RRTvhu2x/pHrfYYjhCeQDqV8AAAAAkz1vmGLh8kSvCA+1Wn/EYg==;
         path=/; Domain=.contentful.com
-      - nlbi_673446=lr0JRs7BKmRROXRHKsJtVwAAAADm5aaV1pok3e6tTemDId15; path=/; Domain=.contentful.com
-      - visid_incap_673446=TtRmSAwBSM+p9dgDILnwmOFapF8AAAAAQUIPAAAAAADILgllMQzu+zuVwFL3qnQC;
-        expires=Fri, 05 Nov 2021 08:50:48 GMT; HttpOnly; path=/; Domain=.contentful.com
+      - nlbi_673446=MDI4fQlS4HQPna29KsJtVwAAAABOMh2vBc0GSdqHe8VZzfhn; path=/; Domain=.contentful.com
+      - visid_incap_673446=pQNC+HAGQ3iDT4Z4jTRuieQDqV8AAAAAQUIPAAAAAACegQNE7BUwsu+uBLEiHbhf;
+        expires=Tue, 09 Nov 2021 08:50:58 GMT; HttpOnly; path=/; Domain=.contentful.com
       X-Cdn:
       - Incapsula
       X-Iinfo:
-      - 13-21145846-21145851 NNNY CT(0 0 0) RT(1604606689187 38) q(0 0 0 -1) r(2 2)
-        U5
+      - 1-8672802-8672803 NNNN CT(196 398 0) RT(1604912099784 21) q(0 0 5 -1) r(8
+        8) U5
     body:
       encoding: ASCII-8BIT
       string: |+
@@ -116,7 +116,7 @@ http_interactions:
               "name":"SDK Freelancers ",
               "sys":{
                 "type":"Organization",
-                "id":"org_id",
+                "id":"organization_id",
                 "version":0,
                 "createdAt":"2020-10-28T15:02:44Z",
                 "updatedAt":"2020-10-28T15:02:44Z"
@@ -126,10 +126,10 @@ http_interactions:
         }
 
     http_version:
-  recorded_at: Thu, 05 Nov 2020 20:04:54 GMT
+  recorded_at: Mon, 09 Nov 2020 08:55:10 GMT
 - request:
     method: get
-    uri: https://api.contentful.com/organizations/org_id/users/user_id
+    uri: https://api.contentful.com/organizations/organization_id/users/user_id
     body:
       encoding: UTF-8
       string: ''
@@ -137,7 +137,7 @@ http_interactions:
       X-Contentful-User-Agent:
       - sdk contentful-management.rb/2.12.1; platform ruby/2.7.1; os macOS/19;
       Authorization:
-      - Bearer CFPAT-gnvO-khKDgp1FCj9TL_hPfmy543XBXmFo-uYaSJJUmc
+      - Bearer <ACCESS_TOKEN>
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Connection:
@@ -166,15 +166,15 @@ http_interactions:
       Cache-Control:
       - no-store
       Cf-Organization-Id:
-      - org_id
+      - organization_id
       Content-Type:
       - application/vnd.contentful.management.v1+json
       Contentful-Api:
       - cma
       Date:
-      - Thu, 05 Nov 2020 20:04:50 GMT
+      - Mon, 09 Nov 2020 08:55:01 GMT
       Etag:
-      - W/"bb2a007a42ccfccca2d42f80ea6532ea"
+      - W/"c38e46e076152b3a920bd6a62203e744"
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Server:
@@ -184,7 +184,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Contentful-Request-Id:
-      - e3e14fe827ec6473cd6feaa93e2e8048
+      - 4cd94d80aba46c1e6d0cd339faf9ce02
       X-Contentful-Route:
       - "/organizations/:organization_id/users/:id"
       X-Download-Options:
@@ -196,24 +196,43 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '1281'
+      - '515'
       Connection:
       - Close
       Set-Cookie:
-      - incap_ses_712_673446=QOjwceJlIGd74dzeYYjhCeJapF8AAAAAGfZp8yd/CYy2wq7AGz6zHw==;
+      - incap_ses_712_673446=wRcGKIb6jmaHpHrfYYjhCeQDqV8AAAAAUtA5S+ueJ5nA2hxlR20Acw==;
         path=/; Domain=.contentful.com
-      - nlbi_673446=1pkkDqgBcSxY7UmhKsJtVwAAAAALDRYGvxW3sROZJzIZcbSY; path=/; Domain=.contentful.com
-      - visid_incap_673446=Yl64juSLQ/uXZ28vJp2oKuJapF8AAAAAQUIPAAAAAAClPMqOsywqOH7JfxGiG3eB;
-        expires=Fri, 05 Nov 2021 08:50:50 GMT; HttpOnly; path=/; Domain=.contentful.com
+      - nlbi_673446=KqQLWK0Wb30lgiCBKsJtVwAAAABHOcr7Z3WOlKfjRnnwvvRM; path=/; Domain=.contentful.com
+      - visid_incap_673446=2jFEZXv3TJmC5NjmH1mj7+QDqV8AAAAAQUIPAAAAAABU4GWNeQFEzD3ONi8cdA2C;
+        expires=Tue, 09 Nov 2021 08:50:50 GMT; HttpOnly; path=/; Domain=.contentful.com
       X-Cdn:
       - Incapsula
       X-Iinfo:
-      - 12-16694907-16694908 NNNN CT(190 190 0) RT(1604606689494 36) q(0 0 4 -1) r(6
-        6) U5
+      - 4-31177296-31177297 NNNY CT(0 0 0) RT(1604912100654 17) q(0 0 0 -1) r(2 2)
+        U5
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        ewogICJmaXJzdE5hbWUiOiJJdmV0dCIsCiAgImxhc3ROYW1lIjoiw5ZyZMO2ZyIsCiAgImF2YXRhclVybCI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvMzc5NGJkYjI3ZTUwNjQ1ZDE3ZWQ1MjMxZGVmOGVkMmQ/cz01MCZkPWh0dHBzJTNBJTJGJTJGYXZhdGFycy5jb250ZW50ZnVsLmNvbSUyRmluaXRpYWxzJTJGdjElMkZJJUMzJTk2JTJGNTAiLAogICJlbWFpbCI6Iml2ZXR0Lm9yZG9nQGNvbnRlbnRmdWwuY29tIiwKICAiY29va2llQ29uc2VudERhdGEiOiJ7XCJ1c2VySW50ZXJmYWNlXCI6e1wicmF3Q29uc2VudFJlY29yZFwiOlwicXpsTGxFU1hrZzk4MDZpLTAydm1OallkWG4zV040VWNVMDFuaWV6WlRwNnpQOWp2YjFYMGFodFd0Wlk5azJPVnhHWWFIeXFtak40b2ZscGkzeW5lR3lZTkRhTlpwLU1yeEltamJOb2NlU2ttTzJHZmdYUEhDMk5Ea1NhSUFuUkR6YVN4c2RmVXJkb0NaMUxpTzk2bjdaOXMxVncwMVNnYnp6WTIteHV0RFhCMGRLVlhFekw0c2lpV2JtMHBGTmU5RGZyTGdYSjNodEZlZTlkQUVyVC1zWVZGRWQ4LUJwOVdNOUVkTlRHME91OGtDU1JlQlhRS2dPNU1uNjVPTFVwamJaWlRtV1EycVZsMDFLM1ZGWWF3S1ZBcDNHTFBsQllDU3pCOE5ldW4xaUZ4bzVmNWFnSFhFSUdhMlIyM1RYNmRyaGhyTE11MkxFbWs0RlUtUmhiSUhrVkdDeDM5Rkkzb0NMTVhKR0hqWXRad2p5TXBtRW5Zc3RETk9NR2JLTHg0RmZBX2lBUTNCVTh2LW1nd25SQ0FJdTBTM09RWXdHd0NRTWVyVGhJSjZtNjNiZExqWkd4Q0FUclRmdm9WVVlpNGtsTTFTT3pDUWdJPVwiLFwiZXhwaXJhdGlvbkRhdGVcIjoxNjM3MTUyMDgyNTU2LFwidXVpZFwiOlwiMDE1MmUxZmMtZTM4ZS00MDZmLWFkZDQtZjA4M2EzOTFiMmI5XCIsXCJjb25zZW50UmVjb3JkXCI6e1wiRVNTRU5USUFMXCI6XCJBQ0NFUFRcIixcIlNUT1JBR0VcIjpcIkFDQ0VQVFwiLFwiTUFSS0VUSU5HXCI6XCJBQ0NFUFRcIixcIlBFUlNPTkFMSVpBVElPTlwiOlwiQUNDRVBUXCIsXCJBTkFMWVRJQ1NcIjpcIkFDQ0VQVFwiLFwiT1BUX09VVFwiOlwiREVOWVwifX19IiwKICAiYWN0aXZhdGVkIjp0cnVlLAogICJzaWduSW5Db3VudCI6NCwKICAiY29uZmlybWVkIjp0cnVlLAogICIyZmFFbmFibGVkIjpmYWxzZSwKICAic3lzIjp7CiAgICAidHlwZSI6IlVzZXIiLAogICAgImlkIjoiNUh2anFyYmRYUnVwRDhqbVRzc2t2RSIsCiAgICAidmVyc2lvbiI6MTYsCiAgICAiY3JlYXRlZEF0IjoiMjAyMC0wOS0xNVQxOToyOTo0NFoiLAogICAgInVwZGF0ZWRBdCI6IjIwMjAtMTEtMDJUMDk6MTE6MDlaIgogIH0KfQoK
+      string: |+
+        {
+          "firstName":"Bhushan",
+          "lastName":"Lodha",
+          "avatarUrl":"https://lh4.googleusercontent.com/-5GT5yRkXB68/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn0wIhq43Vhn1LdJM7PXm-iWqMhJg/s96-c/photo.jpg",
+          "email":"bhushanlodha@gmail.com",
+          "cookieConsentData":null,
+          "activated":true,
+          "signInCount":42,
+          "confirmed":true,
+          "2faEnabled":false,
+          "sys":{
+            "type":"User",
+            "id":"user_id",
+            "version":7,
+            "createdAt":"2020-10-21T09:49:40Z",
+            "updatedAt":"2020-11-09T07:19:33Z"
+          }
+        }
+
     http_version:
-  recorded_at: Thu, 05 Nov 2020 20:04:55 GMT
+  recorded_at: Mon, 09 Nov 2020 08:55:10 GMT
 recorded_with: VCR 4.0.0
+...

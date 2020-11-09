@@ -39,12 +39,12 @@ module Contentful
               user = org.users.find('user_id')
 
               expect(user).to be_a Contentful::Management::User
-              expect(user.first_name).to eq 'Ivett'
-              expect(user.last_name).to eq 'Ördög'
-              expect(user.email).to eq 'ivett.ordog@contentful.com'
+              expect(user.first_name).to eq 'Bhushan'
+              expect(user.last_name).to eq 'Lodha'
+              expect(user.email).to eq 'bhushanlodha@gmail.com'
               expect(user.activated).to eq true
               expect(user.confirmed).to eq true
-              expect(user.sign_in_count).to eq 4
+              expect(user.sign_in_count).to eq 42
               expect(user.avatar_url).to be_truthy
             }
           end
