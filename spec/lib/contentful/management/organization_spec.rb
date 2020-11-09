@@ -33,8 +33,8 @@ module Contentful
         describe '.find' do
           it "should fetch the user if under the organizaton id" do
             vcr('organization/user') {
-              org = client.organizations.all.to_a.last
-              user = org.users.find('user_id')
+              organization = subject.all.first
+              user = organization.users.find('user_id')
 
               expect(user).to be_a Contentful::Management::User
               expect(user.first_name).to eq 'Bhushan'
