@@ -237,8 +237,9 @@ module Contentful
         # @param [String] resource_id
         #
         # @return [Contentful::Management::Resource]
-        def find(client, space_id, environment_id = nil, resource_id = nil)
-          ResourceRequester.new(client, self).find(space_id: space_id, environment_id: environment_id, resource_id: resource_id)
+        def find(client, space_id, environment_id = nil, resource_id = nil, organization_id = nil)
+          ResourceRequester.new(client, self).find(space_id: space_id, environment_id: environment_id,
+                                                   resource_id: resource_id, organization_id: organization_id)
         end
 
         # Creates a resource.

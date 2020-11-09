@@ -1,4 +1,5 @@
 require_relative 'resource'
+require 'contentful/management/organization_user_methods_factory'
 
 module Contentful
   module Management
@@ -30,6 +31,15 @@ module Contentful
       # @return [Contentful::Management::ClientSpacePeriodicUsageMethodsFactory]
       def space_periodic_usages
         ClientSpacePeriodicUsageMethodsFactory.new(client, id)
+      end
+
+      # Allows viewing of users in context of an organization
+      # Allows listing all users for an organization.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::OrganizationUserMethodsFactory]
+      def users
+        OrganizationUserMethodsFactory.new(client, id)
       end
     end
   end

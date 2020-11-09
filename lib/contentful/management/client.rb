@@ -32,7 +32,6 @@ require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_space_periodic_usage_methods_factory'
 require 'contentful/management/client_personal_access_tokens_methods_factory'
 require 'contentful/management/client_organization_periodic_usage_methods_factory'
-require 'contentful/management/client_organization_user_methods_factory'
 
 module Contentful
   module Management
@@ -157,15 +156,6 @@ module Contentful
       # @return [Contentful::Management::ClientUserMethodsFactory]
       def users
         ClientUserMethodsFactory.new(self)
-      end
-
-      # Allows viewing of users in context of an organization
-      # Allows listing all users for an organization.
-      # @see _ README for details.
-      #
-      # @return [Contentful::Management::ClientOrganizationUserMethodsFactory]
-      def organization_users(organization_id)
-        ClientOrganizationUserMethodsFactory.new(self, organization_id)
       end
 
       # Allows manipulation of api keys in context of the current client

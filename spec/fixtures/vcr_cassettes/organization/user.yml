@@ -1,0 +1,219 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.12.1; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Thu, 05 Nov 2020 20:04:50 GMT
+      Etag:
+      - W/"3efddc0538e5b54bf75cbf90ccb1c729"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - c914c8c80e6c4a9ccded3bc36a24612b
+      X-Contentful-Route:
+      - "/organizations"
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - ALLOWALL
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '823'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_712_673446=eeXLDmZLCy1F4dzeYYjhCeFapF8AAAAA3sc/yLoXzrlJZGEER6wYWg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=lr0JRs7BKmRROXRHKsJtVwAAAADm5aaV1pok3e6tTemDId15; path=/; Domain=.contentful.com
+      - visid_incap_673446=TtRmSAwBSM+p9dgDILnwmOFapF8AAAAAQUIPAAAAAADILgllMQzu+zuVwFL3qnQC;
+        expires=Fri, 05 Nov 2021 08:50:48 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 13-21145846-21145851 NNNY CT(0 0 0) RT(1604606689187 38) q(0 0 0 -1) r(2 2)
+        U5
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":3,
+          "limit":25,
+          "skip":0,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "name":"Contenful",
+              "sys":{
+                "type":"Organization",
+                "id":"59FPZVgxkP8nNontUf5ngp",
+                "version":0,
+                "createdAt":"2020-10-21T09:49:40Z",
+                "updatedAt":"2020-10-21T09:49:40Z"
+              }
+            },
+            {
+              "name":"Contentful Test",
+              "sys":{
+                "type":"Organization",
+                "id":"3JZ2sQfqkxc8XBR82Qu9pF",
+                "version":0,
+                "createdAt":"2020-10-21T10:09:50Z",
+                "updatedAt":"2020-10-21T10:09:50Z"
+              }
+            },
+            {
+              "name":"SDK Freelancers ",
+              "sys":{
+                "type":"Organization",
+                "id":"org_id",
+                "version":0,
+                "createdAt":"2020-10-28T15:02:44Z",
+                "updatedAt":"2020-10-28T15:02:44Z"
+              }
+            }
+          ]
+        }
+
+    http_version:
+  recorded_at: Thu, 05 Nov 2020 20:04:54 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/org_id/users/user_id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/2.12.1; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer CFPAT-gnvO-khKDgp1FCj9TL_hPfmy543XBXmFo-uYaSJJUmc
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Cf-Organization-Id:
+      - org_id
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Date:
+      - Thu, 05 Nov 2020 20:04:50 GMT
+      Etag:
+      - W/"bb2a007a42ccfccca2d42f80ea6532ea"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - e3e14fe827ec6473cd6feaa93e2e8048
+      X-Contentful-Route:
+      - "/organizations/:organization_id/users/:id"
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - ALLOWALL
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1281'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_712_673446=QOjwceJlIGd74dzeYYjhCeJapF8AAAAAGfZp8yd/CYy2wq7AGz6zHw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=1pkkDqgBcSxY7UmhKsJtVwAAAAALDRYGvxW3sROZJzIZcbSY; path=/; Domain=.contentful.com
+      - visid_incap_673446=Yl64juSLQ/uXZ28vJp2oKuJapF8AAAAAQUIPAAAAAAClPMqOsywqOH7JfxGiG3eB;
+        expires=Fri, 05 Nov 2021 08:50:50 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Incapsula
+      X-Iinfo:
+      - 12-16694907-16694908 NNNN CT(190 190 0) RT(1604606689494 36) q(0 0 4 -1) r(6
+        6) U5
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJmaXJzdE5hbWUiOiJJdmV0dCIsCiAgImxhc3ROYW1lIjoiw5ZyZMO2ZyIsCiAgImF2YXRhclVybCI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvMzc5NGJkYjI3ZTUwNjQ1ZDE3ZWQ1MjMxZGVmOGVkMmQ/cz01MCZkPWh0dHBzJTNBJTJGJTJGYXZhdGFycy5jb250ZW50ZnVsLmNvbSUyRmluaXRpYWxzJTJGdjElMkZJJUMzJTk2JTJGNTAiLAogICJlbWFpbCI6Iml2ZXR0Lm9yZG9nQGNvbnRlbnRmdWwuY29tIiwKICAiY29va2llQ29uc2VudERhdGEiOiJ7XCJ1c2VySW50ZXJmYWNlXCI6e1wicmF3Q29uc2VudFJlY29yZFwiOlwicXpsTGxFU1hrZzk4MDZpLTAydm1OallkWG4zV040VWNVMDFuaWV6WlRwNnpQOWp2YjFYMGFodFd0Wlk5azJPVnhHWWFIeXFtak40b2ZscGkzeW5lR3lZTkRhTlpwLU1yeEltamJOb2NlU2ttTzJHZmdYUEhDMk5Ea1NhSUFuUkR6YVN4c2RmVXJkb0NaMUxpTzk2bjdaOXMxVncwMVNnYnp6WTIteHV0RFhCMGRLVlhFekw0c2lpV2JtMHBGTmU5RGZyTGdYSjNodEZlZTlkQUVyVC1zWVZGRWQ4LUJwOVdNOUVkTlRHME91OGtDU1JlQlhRS2dPNU1uNjVPTFVwamJaWlRtV1EycVZsMDFLM1ZGWWF3S1ZBcDNHTFBsQllDU3pCOE5ldW4xaUZ4bzVmNWFnSFhFSUdhMlIyM1RYNmRyaGhyTE11MkxFbWs0RlUtUmhiSUhrVkdDeDM5Rkkzb0NMTVhKR0hqWXRad2p5TXBtRW5Zc3RETk9NR2JLTHg0RmZBX2lBUTNCVTh2LW1nd25SQ0FJdTBTM09RWXdHd0NRTWVyVGhJSjZtNjNiZExqWkd4Q0FUclRmdm9WVVlpNGtsTTFTT3pDUWdJPVwiLFwiZXhwaXJhdGlvbkRhdGVcIjoxNjM3MTUyMDgyNTU2LFwidXVpZFwiOlwiMDE1MmUxZmMtZTM4ZS00MDZmLWFkZDQtZjA4M2EzOTFiMmI5XCIsXCJjb25zZW50UmVjb3JkXCI6e1wiRVNTRU5USUFMXCI6XCJBQ0NFUFRcIixcIlNUT1JBR0VcIjpcIkFDQ0VQVFwiLFwiTUFSS0VUSU5HXCI6XCJBQ0NFUFRcIixcIlBFUlNPTkFMSVpBVElPTlwiOlwiQUNDRVBUXCIsXCJBTkFMWVRJQ1NcIjpcIkFDQ0VQVFwiLFwiT1BUX09VVFwiOlwiREVOWVwifX19IiwKICAiYWN0aXZhdGVkIjp0cnVlLAogICJzaWduSW5Db3VudCI6NCwKICAiY29uZmlybWVkIjp0cnVlLAogICIyZmFFbmFibGVkIjpmYWxzZSwKICAic3lzIjp7CiAgICAidHlwZSI6IlVzZXIiLAogICAgImlkIjoiNUh2anFyYmRYUnVwRDhqbVRzc2t2RSIsCiAgICAidmVyc2lvbiI6MTYsCiAgICAiY3JlYXRlZEF0IjoiMjAyMC0wOS0xNVQxOToyOTo0NFoiLAogICAgInVwZGF0ZWRBdCI6IjIwMjAtMTEtMDJUMDk6MTE6MDlaIgogIH0KfQoK
+    http_version:
+  recorded_at: Thu, 05 Nov 2020 20:04:55 GMT
+recorded_with: VCR 4.0.0

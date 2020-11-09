@@ -21,6 +21,8 @@ module Contentful
       def self.build_endpoint(endpoint_options)
         endpoint = if endpoint_options[:space_id]
                      "spaces/#{endpoint_options[:space_id]}/users"
+                   elsif endpoint_options[:organization_id]
+                     "organizations/#{endpoint_options[:organization_id]}/users"
                    else
                      'users'
                    end

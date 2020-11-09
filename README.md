@@ -886,7 +886,7 @@ user = blog_space.users.find(user_id)
 Retrieving one user by ID from an organization:
 
 ```ruby
-user = client.organization_users('organization_id').find('user_id')
+user = organization.users.find('user_id')
 ```
 ### UI Extensions
 
