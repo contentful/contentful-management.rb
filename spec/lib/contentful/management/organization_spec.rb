@@ -30,8 +30,6 @@ module Contentful
       end
 
       describe "users" do
-        let(:organization_id) { 'org_id' }
-
         let!(:client) { Client.new(token) }
 
         describe '.find' do

@@ -1,6 +1,6 @@
 module Contentful
   module Management
-    # Wrapper for Organization Users for usage from within Client
+    # Wrapper for Organization Users for usage from within Organization
     # @private
     class OrganizationUserMethodsFactory
       def initialize(client, organization_id)
