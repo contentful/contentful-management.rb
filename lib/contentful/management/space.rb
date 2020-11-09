@@ -156,7 +156,7 @@ module Contentful
         SpaceRoleMethodsFactory.new(self)
       end
 
-      # Allows manipulation of users in context of the current space
+      # Allows viewing of users in context of the current space
       # Allows listing all users of space, and finding one by ID.
       # @see _ README for details.
       #
