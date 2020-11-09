@@ -34,7 +34,7 @@ module Contentful
       end
 
       # Allows viewing of users in context of an organization
-      # Allows listing all users for an organization.
+      # Allows listing all users for an organization, and finding one by ID.
       # @see _ README for details.
       #
       # @return [Contentful::Management::OrganizationUserMethodsFactory]
