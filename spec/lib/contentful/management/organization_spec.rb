@@ -30,8 +30,6 @@ module Contentful
       end
 
       describe "users" do
-        let!(:client) { Client.new(token) }
-
         describe '.find' do
           it "should fetch the user if under the organizaton id" do
             vcr('organization/user') {
