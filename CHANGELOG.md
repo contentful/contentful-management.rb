@@ -2,6 +2,13 @@
 
 ## Master
 
+## 2.13.0
+### Fixed
+* Fixed a possible validation error when submitting a content type. [#218](https://github.com/contentful/contentful-management.rb/pull/218)
+
+### Added
+* Added support for Users API. [#217](https://github.com/contentful/contentful-management.rb/pull/217)
+
 ## 2.12.1
 
 ### Fixed
