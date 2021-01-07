@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+### Fixed
+* Fixed an issue when loading entries or assets that included tags. [#219](https://github.com/contentful/contentful-management.rb/issues/219)
 
 ## 2.13.0
 ### Fixed

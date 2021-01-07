@@ -457,6 +457,37 @@ module Contentful
       end
 
       describe 'issues' do
+        describe 'metadata and tags do not break entry fetching - #219' do
+          let(:space_id) { '2l3j7k267g9k' }
+          let(:space) { client.spaces.find(space_id) }
+          let(:environment) { space.environments.find('master') }
+          let(:asset_id) { '2lxYoWv3LWHe0yhO3w2Yid' }
+
+          it 'can load an entry with tags' do
+            vcr('asset/issue_219') {
+              expect {
+                entry = environment.assets.find(asset_id)
+              }.not_to raise_error
+            }
+          end
+
+          it 'hydrates tags' do
+            vcr('asset/issue_219') {
+              asset = environment.assets.find(asset_id)
+              expect(asset.metadata[:tags].first).to be_a Contentful::Management::Link
+            }
+          end
+
+          it 'loads tag links with their proper attributes' do
+            vcr('asset/issue_219') {
+              asset = environment.assets.find(asset_id)
+              tag = asset.metadata[:tags].first
+              expect(tag.id).to eq 'mobQa'
+              expect(tag.link_type).to eq 'Tag'
+            }
+          end
+        end
+
         describe "Pagination on assets doesn't work without first calling limit - #143" do
           it 'shouldnt break on next page without parameters on original query' do
             vcr('asset/143_assets_next_page') do

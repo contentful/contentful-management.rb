@@ -1,6 +1,7 @@
 require_relative 'resource'
 require_relative 'resource/fields'
 require_relative 'resource/archiver'
+require_relative 'resource/metadata'
 require_relative 'resource/publisher'
 require_relative 'resource/asset_fields'
 require_relative 'resource/environment_aware'
@@ -15,6 +16,7 @@ module Contentful
       include Contentful::Management::Resource
       include Contentful::Management::Resource::Fields
       include Contentful::Management::Resource::Archiver
+      include Contentful::Management::Resource::Metadata
       include Contentful::Management::Resource::Refresher
       include Contentful::Management::Resource::Publisher
       include Contentful::Management::Resource::SystemProperties
