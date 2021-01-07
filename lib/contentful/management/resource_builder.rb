@@ -1,3 +1,4 @@
+require_relative 'tag'
 require_relative 'link'
 require_relative 'user'
 require_relative 'role'
@@ -58,7 +59,8 @@ module Contentful
         'Extension' => Contentful::Management::UIExtension,
         'EditorInterface' => Contentful::Management::EditorInterface,
         'Snapshot' => Contentful::Management::Snapshot,
-        'Upload' => Contentful::Management::Upload
+        'Upload' => Contentful::Management::Upload,
+        'Tag' => Contentful::Management::Tag
       }.freeze
 
       # Default Entry Mapping
@@ -214,7 +216,7 @@ module Contentful
           detect_child_objects(potential_objects).each do |child_name, child_object|
             res.public_send(name)[child_name.to_sym] = create_resource(child_object)
           end
-          next if name == 'includes'
+          next if %w[includes metadata].include?(name)
           detect_child_arrays(potential_objects).each do |child_name, _child_array|
             replace_child_array res.public_send(name)[child_name.to_sym]
           end

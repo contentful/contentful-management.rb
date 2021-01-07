@@ -870,6 +870,35 @@ describe Contentful::Management::Entry do
     let(:space) { client.spaces.find(space_id) }
     let(:environment) { space.environments.find('master') }
 
+    describe 'metadata and tags do not break entry fetching - #219' do
+      let(:space_id) { '2l3j7k267g9k' }
+      let(:entry_id) { '2AtqG09C50s7kE66POudAV' }
+
+      it 'can load an entry with tags' do
+        vcr('entry/issue_219') {
+          expect {
+            entry = environment.entries.find(entry_id)
+          }.not_to raise_error
+        }
+      end
+
+      it 'hydrates tags' do
+        vcr('entry/issue_219') {
+          entry = environment.entries.find(entry_id)
+          expect(entry.metadata[:tags].first).to be_a Contentful::Management::Link
+        }
+      end
+
+      it 'loads tag links with their proper attributes' do
+        vcr('entry/issue_219') {
+          entry = environment.entries.find(entry_id)
+          tag = entry.metadata[:tags].first
+          expect(tag.id).to eq 'mobQa'
+          expect(tag.link_type).to eq 'Tag'
+        }
+      end
+    end
+
     describe 'json fields do not get reset on save - #215' do
       it 'can load a json array, modify it, save it, and retrieve it' do
         vcr('entry/issue_215_1') {

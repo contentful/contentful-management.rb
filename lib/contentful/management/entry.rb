@@ -1,6 +1,7 @@
 require_relative 'resource'
 require_relative 'resource/fields'
 require_relative 'resource/archiver'
+require_relative 'resource/metadata'
 require_relative 'resource/publisher'
 require_relative 'resource_requester'
 require_relative 'resource/field_aware'
@@ -15,6 +16,7 @@ module Contentful
     # @see _ https://www.contentful.com/developers/documentation/content-management-api/#resources-entries
     class Entry
       include Contentful::Management::Resource
+      include Contentful::Management::Resource::Metadata
       extend Contentful::Management::Resource::EntryFields
       include Contentful::Management::Resource::SystemProperties
 
