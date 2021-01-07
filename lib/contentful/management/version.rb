@@ -3,6 +3,6 @@ module Contentful
   # Management Namespace
   module Management
     # Gem Version
-    VERSION = '2.13.0'.freeze
+    VERSION = '2.13.1'.freeze
   end
 end
