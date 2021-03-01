@@ -1,6 +1,7 @@
 # Change Log
 
 ## Master
+* Added support for Tags metadata
 
 ## 2.13.1
 ### Fixed
