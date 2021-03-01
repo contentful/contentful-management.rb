@@ -28,10 +28,10 @@ module Contentful
           return unless object.key?('metadata')
           object['metadata'].each do |key, value|
             @_metadata[key.to_sym] = if key == 'tags'
-                                      coerce_tags(value)
-                                    else
-                                      value
-                                    end
+                                       coerce_tags(value)
+                                     else
+                                       value
+                                     end
           end
         end
 
