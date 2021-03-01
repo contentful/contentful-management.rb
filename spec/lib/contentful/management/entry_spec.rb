@@ -885,14 +885,14 @@ describe Contentful::Management::Entry do
       it 'hydrates tags' do
         vcr('entry/issue_219') {
           entry = environment.entries.find(entry_id)
-          expect(entry.metadata[:tags].first).to be_a Contentful::Management::Link
+          expect(entry._metadata[:tags].first).to be_a Contentful::Management::Link
         }
       end
 
       it 'loads tag links with their proper attributes' do
         vcr('entry/issue_219') {
           entry = environment.entries.find(entry_id)
-          tag = entry.metadata[:tags].first
+          tag = entry._metadata[:tags].first
           expect(tag.id).to eq 'mobQa'
           expect(tag.link_type).to eq 'Tag'
         }
