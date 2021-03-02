@@ -4,25 +4,21 @@ module Contentful
       # Adds metadata logic for [Resource] classes
       module Metadata
         # Returns the metadata hash
-        #
-        # @return [Hash] Metadata
-        def metadata
-          @metadata
-        end
+        attr_reader :_metadata
 
         # @private
         def initialize(object = nil, *)
           super
-          @metadata = {}
+          @_metadata = {}
           extract_metadata_from_object! object if object
         end
 
         # @private
         def inspect(info = nil)
-          if metadata.empty?
+          if _metadata.empty?
             super(info)
           else
-            super("#{info} @metadata=#{metadata.inspect}")
+            super("#{info} @_metadata=#{_metadata.inspect}")
           end
         end
 
@@ -31,11 +27,11 @@ module Contentful
         def extract_metadata_from_object!(object)
           return unless object.key?('metadata')
           object['metadata'].each do |key, value|
-            @metadata[key.to_sym] = if key == 'tags'
-                                      coerce_tags(value)
-                                    else
-                                      value
-                                    end
+            @_metadata[key.to_sym] = if key == 'tags'
+                                       coerce_tags(value)
+                                     else
+                                       value
+                                     end
           end
         end
 

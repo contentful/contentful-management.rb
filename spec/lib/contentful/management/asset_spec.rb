@@ -474,14 +474,14 @@ module Contentful
           it 'hydrates tags' do
             vcr('asset/issue_219') {
               asset = environment.assets.find(asset_id)
-              expect(asset.metadata[:tags].first).to be_a Contentful::Management::Link
+              expect(asset._metadata[:tags].first).to be_a Contentful::Management::Link
             }
           end
 
           it 'loads tag links with their proper attributes' do
             vcr('asset/issue_219') {
               asset = environment.assets.find(asset_id)
-              tag = asset.metadata[:tags].first
+              tag = asset._metadata[:tags].first
               expect(tag.id).to eq 'mobQa'
               expect(tag.link_type).to eq 'Tag'
             }

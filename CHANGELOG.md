@@ -2,6 +2,15 @@
 
 ## Master
 
+## 3.0.0
+### Fixed
+* Added support for Tags metadata
+
+### Changed
+
+**BREAKING CHANGES**:
+* Introduction of new top-level tags `metadata` property in api response.
+
 ## 2.13.1
 ### Fixed
 * Fixed an issue when loading entries or assets that included tags. [#219](https://github.com/contentful/contentful-management.rb/issues/219)
