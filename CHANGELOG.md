@@ -1,7 +1,15 @@
 # Change Log
 
 ## Master
+
+## 3.0.0
+### Fixed
 * Added support for Tags metadata
+
+### Changed
+
+**BREAKING CHANGES**:
+* Introduction of new top-level tags `metadata` property in api response.
 
 ## 2.13.1
 ### Fixed
