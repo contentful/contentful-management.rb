@@ -2,6 +2,10 @@
 
 ## Master
 
+## 3.0.1
+### Added
+* Added support for `users` in User Management API. [#224](https://github.com/contentful/contentful-management.rb/issues/224)
+
 ## 3.0.0
 ### Fixed
 * Added support for Tags metadata
