@@ -13,6 +13,10 @@ module Contentful
       def find(id)
         User.find(client, nil, nil, id, @organization_id)
       end
+
+      def all
+        User.all(client, nil, nil, {}, @organization_id)
+      end
     end
   end
 end
