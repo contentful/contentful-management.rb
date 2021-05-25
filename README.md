@@ -877,10 +877,10 @@ Retrieving current user details:
 user = client.users.me
 ```
 
-Retrieving one user by ID from the space:
+Retrieving all users in organization:
 
 ```ruby
-user = blog_space.users.find(user_id)
+user = organization.users
 ```
 
 Retrieving one user by ID from an organization:
@@ -888,6 +888,19 @@ Retrieving one user by ID from an organization:
 ```ruby
 user = organization.users.find('user_id')
 ```
+
+Retrieving all users in a space:
+
+```ruby
+user = blog_space.users
+```
+
+Retrieving one user by ID from the space:
+
+```ruby
+user = blog_space.users.find('user_id')
+```
+
 ### UI Extensions
 
 Retrieving all UI extensions from the environment:

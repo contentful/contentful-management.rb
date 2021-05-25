@@ -46,6 +46,16 @@ module Contentful
               expect(user.avatar_url).to be_truthy
             }
           end
+
+          describe "all" do
+            it 'returns a Contentful::Array' do
+              vcr('organization/users') { expect(subject.all.first.users.all).to be_kind_of Contentful::Management::Array }
+            end
+
+            it 'builds a Contentful::Management::Space object' do
+              vcr('organization/users') { expect(subject.all.first.users.all.first).to be_kind_of Contentful::Management::User }
+            end
+          end
         end
       end
     end
