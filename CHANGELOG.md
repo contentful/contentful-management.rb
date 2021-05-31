@@ -2,6 +2,10 @@
 
 ## Master
 
+## 3.1.0
+### Added
+* Added read support for Users API.
+
 ## 3.0.0
 ### Fixed
 * Added support for Tags metadata
