@@ -226,8 +226,10 @@ module Contentful
         # @see _ For complete option list: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
         #
         # @return [Contentful::Management::Array<Contentful::Management::Resource>]
-        def all(client, space_id, environment_id = nil, parameters = {})
-          ResourceRequester.new(client, self).all({ space_id: space_id, environment_id: environment_id }, parameters)
+        def all(client, space_id, environment_id = nil, parameters = {}, organization_id = nil)
+          ResourceRequester.new(client, self).all(
+            { space_id: space_id, environment_id: environment_id, organization_id: organization_id }, parameters
+          )
         end
 
         # Gets a specific resource.

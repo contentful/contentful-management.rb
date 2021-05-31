@@ -1,0 +1,233 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.0.0; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Contentful-Origin-Time:
+      - '0.042'
+      Contentful-Upstream:
+      - gatekeeper
+      Date:
+      - Tue, 25 May 2021 14:54:47 GMT
+      Etag:
+      - W/"f1a18798544561755c26ca40c5299b9d"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - b86c15f8053def60d6ae0224868ce3a8
+      X-Contentful-Route:
+      - "/organizations"
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1091'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_534_673446=34nCDjyr9VTahl2HjSZpB7cPrWAAAAAARcs7llOvnJKwZjNzQ7xP6Q==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=qbCHYsxoDldx4GycKsJtVwAAAAAuVFJeCzCqrgr5XUiGQ5ej; path=/; Domain=.contentful.com
+      - visid_incap_673446=goz0FdmjToKesHzSvSse/LcPrWAAAAAAQUIPAAAAAAC9I3V9SGI32ZnXY6/TE4GN;
+        expires=Wed, 25 May 2022 05:57:35 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 9-52084825-52084832 NNNY CT(88 87 0) RT(1621954486952 51) q(0 0 0 -1) r(1
+        1) U5
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":4,
+          "limit":25,
+          "skip":0,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "name":"SDKs Test Organization - v2 Enterprise",
+              "sys":{
+                "type":"Organization",
+                "id":"1VcAE6naLx3WZBNNUIMMZE",
+                "version":3,
+                "createdAt":"2018-10-08T13:23:19Z",
+                "updatedAt":"2021-03-16T15:14:23Z"
+              }
+            },
+            {
+              "name":"Contenful",
+              "sys":{
+                "type":"Organization",
+                "id":"59FPZVgxkP8nNontUf5ngp",
+                "version":0,
+                "createdAt":"2020-10-21T09:49:40Z",
+                "updatedAt":"2020-10-21T09:49:40Z"
+              }
+            },
+            {
+              "name":"Contentful Test",
+              "sys":{
+                "type":"Organization",
+                "id":"3JZ2sQfqkxc8XBR82Qu9pF",
+                "version":0,
+                "createdAt":"2020-10-21T10:09:50Z",
+                "updatedAt":"2020-10-21T10:09:50Z"
+              }
+            },
+            {
+              "name":"SDK Freelancers ",
+              "sys":{
+                "type":"Organization",
+                "id":"4kQeJmhUWIKtNNmMkketza",
+                "version":0,
+                "createdAt":"2020-10-28T15:02:44Z",
+                "updatedAt":"2020-10-28T15:02:44Z"
+              }
+            }
+          ]
+        }
+
+    http_version:
+  recorded_at: Tue, 25 May 2021 14:54:49 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/1VcAE6naLx3WZBNNUIMMZE/users
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.0.0; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Cf-Organization-Id:
+      - 1VcAE6naLx3WZBNNUIMMZE
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Contentful-Origin-Time:
+      - '0.491'
+      Contentful-Upstream:
+      - gatekeeper
+      Date:
+      - Tue, 25 May 2021 14:54:48 GMT
+      Etag:
+      - W/"c9ef95f3b8788630d1f0f60ff757ce8f"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Request-Id:
+      - c742992fe8e7ee6dad8a3973d0d9ec01
+      X-Contentful-Route:
+      - "/organizations/:organization_id/users"
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '6890'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_534_673446=/dKISOLPeHhqh12HjSZpB7cPrWAAAAAA6BrBhmnUVHJ2hiLKBvjSPg==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=HXB6IJoHZWrfZs+OKsJtVwAAAAC4DI/9YNLvfh9y8KkdMjDY; path=/; Domain=.contentful.com
+      - visid_incap_673446=/XX84US0R4efRmii4+/Wx7cPrWAAAAAAQUIPAAAAAAAVphGUsSFaC+eJRUoQH8C0;
+        expires=Wed, 25 May 2022 05:57:34 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 4-83566599-83566606 NNNY CT(91 91 0) RT(1621954487184 37) q(0 0 0 -1) r(6
+        6) U5
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJ0b3RhbCI6NiwKICAibGltaXQiOjI1LAogICJza2lwIjowLAogICJzeXMiOnsKICAgICJ0eXBlIjoiQXJyYXkiCiAgfSwKICAiaXRlbXMiOlsKICAgIHsKICAgICAgImZpcnN0TmFtZSI6Ikl2ZXR0IiwKICAgICAgImxhc3ROYW1lIjoiw5ZyZMO2ZyIsCiAgICAgICJhdmF0YXJVcmwiOiJodHRwczovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzM3OTRiZGIyN2U1MDY0NWQxN2VkNTIzMWRlZjhlZDJkP3M9NTAmZD1odHRwcyUzQSUyRiUyRmF2YXRhcnMuY29udGVudGZ1bC5jb20lMkZpbml0aWFscyUyRnYxJTJGSSVDMyU5NiUyRjUwIiwKICAgICAgImVtYWlsIjoiaXZldHQub3Jkb2dAY29udGVudGZ1bC5jb20iLAogICAgICAiY29va2llQ29uc2VudERhdGEiOiJ7XCJ1c2VySW50ZXJmYWNlXCI6e1wicmF3Q29uc2VudFJlY29yZFwiOlwicXpsTGxFU1hrZzk4MDZpLTAydm1OallkWG4zV040VWNVMDFuaWV6WlRwNnpQOWp2YjFYMGFodFd0Wlk5azJPVnhHWWFIeXFtak40b2ZscGkzeW5lR3lZTkRhTlpwLU1yeEltamJOb2NlU2ttTzJHZmdYUEhDMk5Ea1NhSUFuUkR6YVN4c2RmVXJkb0NaMUxpTzk2bjdaOXMxVncwMVNnYnp6WTIteHV0RFhCMGRLVlhFekw0c2lpV2JtMHBGTmU5RGZyTGdYSjNodEZlZTlkQUVyVC1zWVZGRWQ4LUJwOVdNOUVkTlRHME91OGtDU1JlQlhRS2dPNU1uNjVPTFVwamJaWlRtV1EycVZsMDFLM1ZGWWF3S1ZBcDNHTFBsQllDU3pCOE5ldW4xaUZ4bzVmNWFnSFhFSUdhMlIyM1RYNmRyaGhyTE11MkxFbWs0RlUtUmhiSUhrVkdDeDM5Rkkzb0NMTVhKR0hqWXRad2p5TXBtRW5Zc3RETk9NR2JLTHg0RmZBX2lBUTNCVTh2LW1nd25SQ0FJdTBTM09RWXdHd0NRTWVyVGhJSjZtNjNiZExqWkd4Q0FUclRmdm9WVVlpNGtsTTFTT3pDUWdJPVwiLFwiZXhwaXJhdGlvbkRhdGVcIjoxNjM3MTUyMDgyNTU2LFwidXVpZFwiOlwiMDE1MmUxZmMtZTM4ZS00MDZmLWFkZDQtZjA4M2EzOTFiMmI5XCIsXCJjb25zZW50UmVjb3JkXCI6e1wiRVNTRU5USUFMXCI6XCJBQ0NFUFRcIixcIlNUT1JBR0VcIjpcIkFDQ0VQVFwiLFwiTUFSS0VUSU5HXCI6XCJBQ0NFUFRcIixcIlBFUlNPTkFMSVpBVElPTlwiOlwiQUNDRVBUXCIsXCJBTkFMWVRJQ1NcIjpcIkFDQ0VQVFwiLFwiT1BUX09VVFwiOlwiREVOWVwifX19IiwKICAgICAgImFjdGl2YXRlZCI6dHJ1ZSwKICAgICAgInNpZ25JbkNvdW50Ijo1LAogICAgICAiY29uZmlybWVkIjp0cnVlLAogICAgICAiMmZhRW5hYmxlZCI6ZmFsc2UsCiAgICAgICJzeXMiOnsKICAgICAgICAidHlwZSI6IlVzZXIiLAogICAgICAgICJpZCI6IjVIdmpxcmJkWFJ1cEQ4am1Uc3NrdkUiLAogICAgICAgICJ2ZXJzaW9uIjoyMSwKICAgICAgICAiY3JlYXRlZEF0IjoiMjAyMC0wOS0xNVQxOToyOTo0NFoiLAogICAgICAgICJ1cGRhdGVkQXQiOiIyMDIxLTAzLTI0VDEwOjAwOjM1WiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImZpcnN0TmFtZSI6IkJodXNoYW4iLAogICAgICAibGFzdE5hbWUiOiJMb2RoYSIsCiAgICAgICJhdmF0YXJVcmwiOiJodHRwczovL2xoNC5nb29nbGV1c2VyY29udGVudC5jb20vLTVHVDV5UmtYQjY4L0FBQUFBQUFBQUFJL0FBQUFBQUFBQUFBL0FNWnV1Y24wd0locTQzVmhuMUxkSk03UFhtLWlXcU1oSmcvczk2LWMvcGhvdG8uanBnIiwKICAgICAgImVtYWlsIjoiYmh1c2hhbi5sb2RoYUBleHRlcm5hbC5jb250ZW50ZnVsLmNvbSIsCiAgICAgICJjb29raWVDb25zZW50RGF0YSI6IntcInVzZXJJbnRlcmZhY2VcIjp7XCJyYXdDb25zZW50UmVjb3JkXCI6XCJVWGp6YW85aFlIU2hxeDQyZlNpeHB0NUt2ajJOQ2NMaXppdS1EN09zYnpNNmhtVFFLOTRobzJKSzhLZXpYOG94THlyNGVfclJtS0EtR3dGLVQzaGRTWWs3aVl2dlAyanRMaTgwaE1hcjh6Y0RCYk1HcHVieW5yR1BvLWpnd3Y3dFZ0QnRlUzUyaTBEYnI4U1JNc1VlZ0lYMjRNTUVuN1JEdGFnaTl2T2VZb0JRclBhaElPS3BfNk8xZzhVdU9WeWwzdFBwSWtxdzg1M2FUWHB4aFpUU3FUM2hsckdBemkxX09DMUpiaGdNb25nZWxzVDA1cEpsRlpDX0xMRHZJb1RvR3diMHpZeFViUVZYLVliNVY2dWFxWUNNRk53MkhvMnljU2NxY255OEN6azJrckI1bjVXcEMwMk9fVm0zMTVYZG9md1lpUT09XCIsXCJleHBpcmF0aW9uRGF0ZVwiOjE2NDA2MDUxMDcyNTAsXCJ1dWlkXCI6XCJjZTJlNzIwMi1lOTA4LTQ5NzItODFiZi1iZGQ1YmMwNDYwODhcIixcImNvbnNlbnRSZWNvcmRcIjp7XCJFU1NFTlRJQUxcIjpcIkFDQ0VQVFwiLFwiU1RPUkFHRVwiOlwiQUNDRVBUXCIsXCJNQVJLRVRJTkdcIjpcIkFDQ0VQVFwiLFwiUEVSU09OQUxJWkFUSU9OXCI6XCJBQ0NFUFRcIixcIkFOQUxZVElDU1wiOlwiQUNDRVBUXCIsXCJPUFRfT1VUXCI6XCJERU5ZXCJ9fX0iLAogICAgICAiYWN0aXZhdGVkIjp0cnVlLAogICAgICAic2lnbkluQ291bnQiOjI3LAogICAgICAiY29uZmlybWVkIjp0cnVlLAogICAgICAiMmZhRW5hYmxlZCI6ZmFsc2UsCiAgICAgICJzeXMiOnsKICAgICAgICAidHlwZSI6IlVzZXIiLAogICAgICAgICJpZCI6IjU5RXJtOEQxSnV1RDI3M2FYTmI2NVQiLAogICAgICAgICJ2ZXJzaW9uIjozNiwKICAgICAgICAiY3JlYXRlZEF0IjoiMjAyMC0xMC0yMVQwOTo0OTo0MFoiLAogICAgICAgICJ1cGRhdGVkQXQiOiIyMDIxLTA1LTI1VDE0OjIxOjEwWiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImZpcnN0TmFtZSI6Ik1hcml1cyIsCiAgICAgICJsYXN0TmFtZSI6Ikt1cmdvbmFzIiwKICAgICAgImF2YXRhclVybCI6Imh0dHBzOi8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvNzEyMWFmMTM1OTc4ZjYxOWFmMDFjYTRlNTFmY2RhNzY/cz01MCZkPWh0dHBzJTNBJTJGJTJGYXZhdGFycy5jb250ZW50ZnVsLmNvbSUyRmluaXRpYWxzJTJGdjElMkZNSyUyRjUwIiwKICAgICAgImVtYWlsIjoibWFyaXVzLmt1cmdvbmFzQGV4dGVybmFsLmNvbnRlbnRmdWwuY29tIiwKICAgICAgImNvb2tpZUNvbnNlbnREYXRhIjoie1widXNlckludGVyZmFjZVwiOntcInJhd0NvbnNlbnRSZWNvcmRcIjpcImFqWWtjTWFBajd1RUZWU0ZHWjhxSTZyVkowR2xzTlpMaXNNWHJpWGZNTWltbTIzYnpqU0s4SnFBY2dsUlNUNGhEWWJRWXJwV2VuS1FPckdHSDhXZ1VybmwybWRaMzlHVkpIMTgxMEdmbHlONW9qdDBSSlA3OHlWLUp5SEtYQk1TRHc0SVY2TXUyUlV0TkVPeXdiOGlzVGw4TWZ6TDU3RG5FeVFlNGkxQjhLek5kSXNrcEcxeXd3YUxxSGNSbWtIaHE0bjJJcC1PRTNJeTU4UkltUkJITFd2Nm9TTXk2WEY3Z1VlbTlYMzRtekFreHlfQVQ5dGR0NnNxWDZVLUtZZU00MDVvN2NwMlNTbW9RSnpvOUQwOExaUnBaa0lranR3NXVoMTQtQkNDS1ZNbTZpbmNRZHh1TVAxZUxlU2k3dlA4VnlwNmxwNjJRTGhocEtQSTdndXlhblF4X0pzU0tGTHJWeHhrSlZVVHdPaWFVVy0yVHFHNUx5Wjhod015alRCS3EtRVRlN0RnQnNyanVKQ3ZFYWEwNmhmcnNNX0ZnMkVmT1dBTzZ0cGZIM3Y0ZUdGZ0E5U3l1N1Z4M3Mza0p6c1VGMVlwV1FrMHFVcz1cIixcImV4cGlyYXRpb25EYXRlXCI6MTY0MjQzNDQ1NzUyOSxcInV1aWRcIjpcIjZkNzY1OGZkLTdmZDEtNDExMS05YjgxLWJlYmQxMDA2YmNjZlwiLFwiY29uc2VudFJlY29yZFwiOntcIkVTU0VOVElBTFwiOlwiQUNDRVBUXCIsXCJTVE9SQUdFXCI6XCJBQ0NFUFRcIixcIk1BUktFVElOR1wiOlwiQUNDRVBUXCIsXCJQRVJTT05BTElaQVRJT05cIjpcIkFDQ0VQVFwiLFwiQU5BTFlUSUNTXCI6XCJBQ0NFUFRcIixcIk9QVF9PVVRcIjpcIkRFTllcIn19fSIsCiAgICAgICJhY3RpdmF0ZWQiOnRydWUsCiAgICAgICJzaWduSW5Db3VudCI6MjMsCiAgICAgICJjb25maXJtZWQiOnRydWUsCiAgICAgICIyZmFFbmFibGVkIjpmYWxzZSwKICAgICAgInN5cyI6ewogICAgICAgICJ0eXBlIjoiVXNlciIsCiAgICAgICAgImlkIjoiNVpTTnVWc3c3V3dBVXE3Z0Z4UnpkZCIsCiAgICAgICAgInZlcnNpb24iOjMzLAogICAgICAgICJjcmVhdGVkQXQiOiIyMDIwLTEyLTI0VDEzOjA2OjMzWiIsCiAgICAgICAgInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTBUMDg6NDY6MzhaIgogICAgICB9CiAgICB9LAogICAgewogICAgICAiZmlyc3ROYW1lIjpudWxsLAogICAgICAibGFzdE5hbWUiOm51bGwsCiAgICAgICJhdmF0YXJVcmwiOiJodHRwczovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzg0MTZmNzMxYTgwYzkxMjE2YWZhZmQxNjY0YzcwZWM2P3M9NTAmZD1odHRwcyUzQSUyRiUyRmF2YXRhcnMuY29udGVudGZ1bC5jb20lMkZpbml0aWFscyUyRnYxJTJGUkElMkY1MCIsCiAgICAgICJlbWFpbCI6InJhZmFsLm5pc2tpQGV4dGVybmFsLmNvbnRlbnRmdWwuY29tIiwKICAgICAgImNvb2tpZUNvbnNlbnREYXRhIjpudWxsLAogICAgICAiYWN0aXZhdGVkIjpmYWxzZSwKICAgICAgInNpZ25JbkNvdW50IjowLAogICAgICAiY29uZmlybWVkIjp0cnVlLAogICAgICAiMmZhRW5hYmxlZCI6ZmFsc2UsCiAgICAgICJzeXMiOnsKICAgICAgICAidHlwZSI6IlVzZXIiLAogICAgICAgICJpZCI6IjFGbUp4OWlJNkp5UXdsOERBaERxMUwiLAogICAgICAgICJ2ZXJzaW9uIjowLAogICAgICAgICJvcmdhbml6YXRpb24iOnsKICAgICAgICAgICJzeXMiOnsKICAgICAgICAgICAgInR5cGUiOiJMaW5rIiwKICAgICAgICAgICAgImxpbmtUeXBlIjoiT3JnYW5pemF0aW9uIiwKICAgICAgICAgICAgImlkIjoiMVZjQUU2bmFMeDNXWkJOTlVJTU1aRSIKICAgICAgICAgIH0KICAgICAgICB9LAogICAgICAgICJjcmVhdGVkQXQiOiIyMDIxLTAyLTExVDExOjQyOjU5WiIsCiAgICAgICAgInVwZGF0ZWRBdCI6IjIwMjEtMDItMTFUMTE6NDI6NTlaIgogICAgICB9CiAgICB9LAogICAgewogICAgICAiZmlyc3ROYW1lIjpudWxsLAogICAgICAibGFzdE5hbWUiOm51bGwsCiAgICAgICJhdmF0YXJVcmwiOiJodHRwczovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyL2M3MzAxZDcxY2I0YjE1NDhhOTFmMGFhMjcxMDU5NDA2P3M9NTAmZD1odHRwcyUzQSUyRiUyRmF2YXRhcnMuY29udGVudGZ1bC5jb20lMkZpbml0aWFscyUyRnYxJTJGUk8lMkY1MCIsCiAgICAgICJlbWFpbCI6InJvYmVydEBleHRlcm5hbC5jb250ZW50ZnVsLmNvbSIsCiAgICAgICJjb29raWVDb25zZW50RGF0YSI6bnVsbCwKICAgICAgImFjdGl2YXRlZCI6ZmFsc2UsCiAgICAgICJzaWduSW5Db3VudCI6MCwKICAgICAgImNvbmZpcm1lZCI6dHJ1ZSwKICAgICAgIjJmYUVuYWJsZWQiOmZhbHNlLAogICAgICAic3lzIjp7CiAgICAgICAgInR5cGUiOiJVc2VyIiwKICAgICAgICAiaWQiOiIxRm1VVndzSnNtRVRnSzQwOEJXOWxQIiwKICAgICAgICAidmVyc2lvbiI6MCwKICAgICAgICAib3JnYW5pemF0aW9uIjp7CiAgICAgICAgICAic3lzIjp7CiAgICAgICAgICAgICJ0eXBlIjoiTGluayIsCiAgICAgICAgICAgICJsaW5rVHlwZSI6Ik9yZ2FuaXphdGlvbiIsCiAgICAgICAgICAgICJpZCI6IjFWY0FFNm5hTHgzV1pCTk5VSU1NWkUiCiAgICAgICAgICB9CiAgICAgICAgfSwKICAgICAgICAiY3JlYXRlZEF0IjoiMjAyMS0wMi0xMVQxMTo0Mjo1OVoiLAogICAgICAgICJ1cGRhdGVkQXQiOiIyMDIxLTAyLTExVDExOjQyOjU5WiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImZpcnN0TmFtZSI6IlNlYmFzdGlhbiIsCiAgICAgICJsYXN0TmFtZSI6IkthaW0iLAogICAgICAiYXZhdGFyVXJsIjoiaHR0cHM6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8wNDI3N2FjNWE5MzY4NDI3OWViYjc0Y2JlNGM2ZjM4YT9zPTUwJmQ9aHR0cHMlM0ElMkYlMkZhdmF0YXJzLmNvbnRlbnRmdWwuY29tJTJGaW5pdGlhbHMlMkZ2MSUyRlNLJTJGNTAiLAogICAgICAiZW1haWwiOiJzZWJhc3RpYW4ua2FpbUBleHRlcm5hbC5jb250ZW50ZnVsLmNvbSIsCiAgICAgICJjb29raWVDb25zZW50RGF0YSI6IntcInVzZXJJbnRlcmZhY2VcIjp7XCJyYXdDb25zZW50UmVjb3JkXCI6XCI1RmRaWE5QVnhLQ2x6LWs0TVBsa1dlVmwzZ1YyVTc0aTRLeXdHRHdYc3dWLU56cTZnQURxVVpCNTZVeVZ1THYwTnE3YmJsdE1iR1V0c1c2THVoZU01elEwQVZhX3Q0U0lOeGUtcVRmWUMzam5MM3hvbmpSZ1Q4a0dpTDI0cXJZeGdfZ0ZkbU5YWVB6QnBkMEpiWXBqU2pya29ZMkRHa2Fna2QwcFEzUkdwUS1WYkc3Y1R4dTlTVGtOZGVURWdESkFxLUUxd3l0eGZSX25BTllmU2paUng1TS10WmY1cFEwV1BVeDdQOVd0VHEyX2xIM3Zza21Na2stZjJKc0k1LUUtYVI2ZDN5eXIxZmRRZjF6aW9YcjVFV3Npcl9DUlZjQWFFSlYwZk84MFdSc3dYdWtQdFVZeER5V1RDemhndGFITXNkUzhaN1czSXp3djZROXJkMU84WVVUWmEySDhPYlhBU2FfWXdBRnB1Mm9WZmlWdm9ibmxBekQ2RnRISjFRUkY0emhNWllWVUs4ME4yb25fZUdzMFFQQWx1WWdCNF9JX3ZiajllaDh0SDZZSXNHcnNjb2dkd1Bta3NkckxiREtwXCIsXCJleHBpcmF0aW9uRGF0ZVwiOjE2NTI2MTc0NDc4OTcsXCJ1dWlkXCI6XCJlNDBlOTlmOC1mM2I0LTRiNjMtYTMyMy1hOGI2NTVhODhhYTlcIixcImNvbnNlbnRSZWNvcmRcIjp7XCJFU1NFTlRJQUxcIjpcIkFDQ0VQVFwiLFwiU1RPUkFHRVwiOlwiREVOWVwiLFwiTUFSS0VUSU5HXCI6XCJERU5ZXCIsXCJQRVJTT05BTElaQVRJT05cIjpcIkRFTllcIixcIkFOQUxZVElDU1wiOlwiREVOWVwiLFwiT1BUX09VVFwiOlwiREVOWVwifX19IiwKICAgICAgImFjdGl2YXRlZCI6dHJ1ZSwKICAgICAgInNpZ25JbkNvdW50Ijo0LAogICAgICAiY29uZmlybWVkIjp0cnVlLAogICAgICAiMmZhRW5hYmxlZCI6ZmFsc2UsCiAgICAgICJzeXMiOnsKICAgICAgICAidHlwZSI6IlVzZXIiLAogICAgICAgICJpZCI6IjRmZXJqVWVBd1R4TmlQYmZUamh0aUEiLAogICAgICAgICJ2ZXJzaW9uIjo5LAogICAgICAgICJjcmVhdGVkQXQiOiIyMDIxLTAyLTE3VDE0OjU4OjQwWiIsCiAgICAgICAgInVwZGF0ZWRBdCI6IjIwMjEtMDUtMjJUMTQ6NDI6MTBaIgogICAgICB9CiAgICB9CiAgXQp9Cgo=
+    http_version:
+  recorded_at: Tue, 25 May 2021 14:54:49 GMT
+recorded_with: VCR 4.0.0

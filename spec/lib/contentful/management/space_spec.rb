@@ -259,6 +259,16 @@ module Contentful
             }
           end
         end
+
+        describe "all" do
+          it 'returns a Contentful::Array' do
+            vcr('space/users') { expect(subject.find('space_id').users.all).to be_kind_of Contentful::Management::Array }
+          end
+
+          it 'builds a Contentful::Management::Space object' do
+            vcr('space/users') { expect(subject.find('space_id').users.all.first).to be_kind_of Contentful::Management::User }
+          end
+        end
       end
     end
   end
