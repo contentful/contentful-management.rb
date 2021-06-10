@@ -14,8 +14,8 @@ module Contentful
         User.find(client, nil, nil, id, @organization_id)
       end
 
-      def all
-        User.all(client, nil, nil, {}, @organization_id)
+      def all(params = {})
+        User.all(client, nil, nil, params, @organization_id)
       end
     end
   end
