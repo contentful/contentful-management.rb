@@ -2,6 +2,9 @@
 
 ## Master
 
+## 3.2.0
+* Added support for parameters on Users API. [#227](https://github.com/contentful/contentful-management.rb/pull/227)
+
 ## 3.1.0
 ### Added
 * Added read support for Users API.
