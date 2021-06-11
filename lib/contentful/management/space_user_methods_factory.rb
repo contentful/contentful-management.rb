@@ -15,8 +15,8 @@ module Contentful
         User.find(space.client, space.id, nil, id)
       end
 
-      def all
-        User.all(space.client, space.id)
+      def all(params = {})
+        User.all(space.client, space.id, nil, params, nil)
       end
     end
   end
