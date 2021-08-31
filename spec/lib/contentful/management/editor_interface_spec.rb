@@ -51,6 +51,21 @@ module Contentful
             expect(editor_interface.controls.first['widgetId']).to eq 'urlEditor'
           end
         end
+
+        it 'can update the sidebar' do
+          vcr('editor_interfaces/update_sidebar') do
+            editor_interface = described_class.default(client, space_id, 'master', content_type_id)
+
+            expect(editor_interface.sidebar.first['widgetId']).to eq 'flow-editor'
+
+            editor_interface.sidebar.first['widgetId'] = 'date-range-editor'
+            editor_interface.update(sidebar: editor_interface.sidebar)
+
+            editor_interface.reload
+
+            expect(editor_interface.sidebar.first['widgetId']).to eq 'date-range-editor'
+          end
+        end
       end
 
       describe '#save' do
@@ -68,6 +83,21 @@ module Contentful
             editor_interface.reload
 
             expect(editor_interface.controls.first['widgetId']).to eq 'urlEditor'
+          end
+        end
+
+        it 'can save sidebar' do
+          vcr('editor_interfaces/update_sidebar') do
+            editor_interface = described_class.default(client, space_id, 'master', content_type_id)
+
+            expect(editor_interface.sidebar.first['widgetId']).to eq 'flow-editor'
+
+            editor_interface.sidebar.first['widgetId'] = 'date-range-editor'
+            editor_interface.save
+
+            editor_interface.reload
+
+            expect(editor_interface.sidebar.first['widgetId']).to eq 'date-range-editor'
           end
         end
       end
