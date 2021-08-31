@@ -11,6 +11,7 @@ module Contentful
       include Contentful::Management::Resource::EnvironmentAware
 
       property :controls, :array
+      property :sidebar, :array
 
       # Gets the Default Editor Interface
       #
@@ -39,7 +40,10 @@ module Contentful
 
       # @private
       def self.create_attributes(_client, attributes)
-        { 'controls' => attributes.fetch(:controls) }
+        {
+          'controls' => attributes.fetch(:controls),
+          'sidebar' => attributes.fetch(:sidebar)
+        }
       end
 
       # @private
@@ -54,7 +58,7 @@ module Contentful
       # Updates an Editor Interface
       #
       # @param [Hash] attributes
-      # @option attributes [Array<Hash>] :controls
+      # @option attributes [Array<Hash>] :controls, :sidebar
       #
       # @return [Contentful::Management::EditorInterface]
       def update(attributes)
@@ -66,7 +70,10 @@ module Contentful
             content_type_id: content_type.id,
             editor_id: id
           },
-          { 'controls' => attributes[:controls] || controls },
+          {
+            'controls' => attributes[:controls] || controls,
+            'sidebar' => attributes[:sidebar] || sidebar
+          },
           version: sys[:version]
         )
       end
@@ -86,7 +93,8 @@ module Contentful
 
       def query_attributes(attributes)
         {
-          controls: controls
+          controls: controls,
+          sidebar: sidebar
         }.merge(
           attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
         )

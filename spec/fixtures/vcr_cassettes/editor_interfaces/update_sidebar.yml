@@ -1,0 +1,553 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/smallerType/editor_interface
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.2.0; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - oe3b689om6k5
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Contentful-Origin-Time:
+      - '0.131'
+      Contentful-Upstream:
+      - content-api
+      Date:
+      - Tue, 31 Aug 2021 10:20:18 GMT
+      Etag:
+      - '"15587330661490795785"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 909dfebd4dbdddf6f747ab30c0b4f592
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/content_types/:content_type/editor_interface"
+      Content-Length:
+      - '1841'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_1515_673446=vyF6JNujfST81/F8glwGFWICLmEAAAAAL/egJdWqfHY5oKS/0Xvt1A==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=l8iIfOdwUwEhh490swL+7AAAAABYRaSf2NJeodzLLO5jxPnD; path=/; Domain=.contentful.com
+      - visid_incap_673446=YNRw1nHSQbm8j6L4BDrhJ2ICLmEAAAAAQUIPAAAAAADihgw1AWdXcwJhU2G6pIu+;
+        expires=Wed, 31 Aug 2022 09:15:16 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 12-108821744-108821763 NNNY CT(97 96 0) RT(1630405218206 59) q(0 0 0 -1) r(2
+        2) U5
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "id": "default",
+            "type": "EditorInterface",
+            "space": {
+              "sys": {
+                "id": "oe3b689om6k5",
+                "type": "Link",
+                "linkType": "Space"
+              }
+            },
+            "version": 30,
+            "createdAt": "2021-08-26T09:56:09.043Z",
+            "createdBy": {
+              "sys": {
+                "id": "59Erm8D1JuuD273aXNb65T",
+                "type": "Link",
+                "linkType": "User"
+              }
+            },
+            "updatedAt": "2021-08-31T10:19:33.152Z",
+            "updatedBy": {
+              "sys": {
+                "id": "59Erm8D1JuuD273aXNb65T",
+                "type": "Link",
+                "linkType": "User"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "id": "smallerType",
+                "type": "Link",
+                "linkType": "ContentType"
+              }
+            },
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            }
+          },
+          "sidebar": [
+            {
+              "settings": {},
+              "widgetId": "flow-editor",
+              "widgetNamespace": "extension"
+            },
+            {
+              "settings": {},
+              "widgetId": "publication-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "content-workflows-tasks-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "content-preview-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "incoming-links-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "translation-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "versions-widget",
+              "widgetNamespace": "sidebar-builtin"
+            }
+          ],
+          "controls": [
+            {
+              "fieldId": "number",
+              "widgetId": "numberEditor",
+              "widgetNamespace": "builtin"
+            }
+          ]
+        }
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 10:20:18 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/smallerType/editor_interface
+    body:
+      encoding: UTF-8
+      string: '{"controls":[{"fieldId":"number","widgetId":"numberEditor","widgetNamespace":"builtin"}],"sidebar":[{"settings":{},"widgetId":"date-range-editor","widgetNamespace":"extension"},{"settings":{},"widgetId":"publication-widget","widgetNamespace":"sidebar-builtin"},{"settings":{},"widgetId":"content-workflows-tasks-widget","widgetNamespace":"sidebar-builtin"},{"settings":{},"widgetId":"content-preview-widget","widgetNamespace":"sidebar-builtin"},{"settings":{},"widgetId":"incoming-links-widget","widgetNamespace":"sidebar-builtin"},{"settings":{},"widgetId":"translation-widget","widgetNamespace":"sidebar-builtin"},{"settings":{},"widgetId":"versions-widget","widgetNamespace":"sidebar-builtin"}]}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.2.0; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '30'
+      Version:
+      - '30'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - oe3b689om6k5
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Contentful-Origin-Time:
+      - '0.106'
+      Contentful-Upstream:
+      - content-api
+      Date:
+      - Tue, 31 Aug 2021 10:20:18 GMT
+      Etag:
+      - '"16854008209802380657"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35998'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '8'
+      X-Contentful-Request-Id:
+      - 6afaeff64b98fe67bf0383dc0b15b2a1
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/content_types/:content_type/editor_interface"
+      Content-Length:
+      - '1840'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_1515_673446=ZprePJmr8U8o2PF8glwGFWICLmEAAAAAWFRwxxnguDRExm4+p7HjTA==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=hmodGzv1U0O/86DFswL+7AAAAADOsaNMuMYnNwQq4Y+8/ihw; path=/; Domain=.contentful.com
+      - visid_incap_673446=Pf58drgyRLaipS+XicrkrmICLmEAAAAAQUIPAAAAAAD6uBvCoIA8z3dbW2aFi83c;
+        expires=Wed, 31 Aug 2022 09:15:16 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 12-108821825-108821843 NNNY CT(91 92 0) RT(1630405218569 86) q(0 0 0 -1) r(2
+        2) U5
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "controls": [
+            {
+              "fieldId": "number",
+              "widgetId": "numberEditor",
+              "widgetNamespace": "builtin"
+            }
+          ],
+          "sidebar": [
+            {
+              "settings": {},
+              "widgetId": "date-range-editor",
+              "widgetNamespace": "extension"
+            },
+            {
+              "settings": {},
+              "widgetId": "publication-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "content-workflows-tasks-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "content-preview-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "incoming-links-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "translation-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "versions-widget",
+              "widgetNamespace": "sidebar-builtin"
+            }
+          ],
+          "sys": {
+            "id": "default",
+            "type": "EditorInterface",
+            "space": {
+              "sys": {
+                "id": "oe3b689om6k5",
+                "type": "Link",
+                "linkType": "Space"
+              }
+            },
+            "version": 31,
+            "createdAt": "2021-08-26T09:56:09.043Z",
+            "createdBy": {
+              "sys": {
+                "id": "59Erm8D1JuuD273aXNb65T",
+                "type": "Link",
+                "linkType": "User"
+              }
+            },
+            "updatedAt": "2021-08-31T10:20:18.813Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "id": "smallerType",
+                "type": "Link",
+                "linkType": "ContentType"
+              }
+            },
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            }
+          }
+        }
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 10:20:18 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/content_types/smallerType/editor_interface
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.2.0; platform ruby/2.7.1; os macOS/19;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - oe3b689om6k5
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Contentful-Api:
+      - cma
+      Contentful-Origin-Time:
+      - '0.090'
+      Contentful-Upstream:
+      - content-api
+      Date:
+      - Tue, 31 Aug 2021 10:20:19 GMT
+      Etag:
+      - '"1520404690701152005"'
+      Server:
+      - Contentful
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Request-Id:
+      - 768aefbd1bf920c59cb9219bd8503a1e
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/content_types/:content_type/editor_interface"
+      Content-Length:
+      - '1840'
+      Connection:
+      - Close
+      Set-Cookie:
+      - incap_ses_1515_673446=sIrAAatDWjJM2PF8glwGFWMCLmEAAAAAU60Unkt3cCzyaJSs9NLddw==;
+        path=/; Domain=.contentful.com
+      - nlbi_673446=CDYjLr3981KAf82TswL+7AAAAABuWgoj4uumDJKCPTYjt8ae; path=/; Domain=.contentful.com
+      - visid_incap_673446=5N5gnlJFTi2KEfSfLYA7WGMCLmEAAAAAQUIPAAAAAABs1rzsXdvwPOA6NmaFNZuU;
+        expires=Wed, 31 Aug 2022 09:15:15 GMT; HttpOnly; path=/; Domain=.contentful.com
+      X-Cdn:
+      - Imperva
+      X-Iinfo:
+      - 13-163708873-163708881 NNNY CT(101 200 0) RT(1630405218957 58) q(0 0 0 -1)
+        r(2 2) U5
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "id": "default",
+            "type": "EditorInterface",
+            "space": {
+              "sys": {
+                "id": "oe3b689om6k5",
+                "type": "Link",
+                "linkType": "Space"
+              }
+            },
+            "version": 31,
+            "createdAt": "2021-08-26T09:56:09.043Z",
+            "createdBy": {
+              "sys": {
+                "id": "59Erm8D1JuuD273aXNb65T",
+                "type": "Link",
+                "linkType": "User"
+              }
+            },
+            "updatedAt": "2021-08-31T10:20:18.813Z",
+            "updatedBy": {
+              "sys": {
+                "id": "59Erm8D1JuuD273aXNb65T",
+                "type": "Link",
+                "linkType": "User"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "id": "smallerType",
+                "type": "Link",
+                "linkType": "ContentType"
+              }
+            },
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            }
+          },
+          "sidebar": [
+            {
+              "settings": {},
+              "widgetId": "date-range-editor",
+              "widgetNamespace": "extension"
+            },
+            {
+              "settings": {},
+              "widgetId": "publication-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "content-workflows-tasks-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "content-preview-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "incoming-links-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "translation-widget",
+              "widgetNamespace": "sidebar-builtin"
+            },
+            {
+              "settings": {},
+              "widgetId": "versions-widget",
+              "widgetNamespace": "sidebar-builtin"
+            }
+          ],
+          "controls": [
+            {
+              "fieldId": "number",
+              "widgetId": "numberEditor",
+              "widgetNamespace": "builtin"
+            }
+          ]
+        }
+    http_version:
+  recorded_at: Tue, 31 Aug 2021 10:20:19 GMT
+recorded_with: VCR 4.0.0
