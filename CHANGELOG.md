@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 3.3.0
 * Added getter/setter for EditorInterface#sidebar
 
 ## 3.2.0
