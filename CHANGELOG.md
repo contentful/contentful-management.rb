@@ -1,6 +1,7 @@
 # Change Log
 
 ## Master
+* Changed CI/CD vendor
 
 ## 3.3.0
 * Added getter/setter for EditorInterface#sidebar
