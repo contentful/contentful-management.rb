@@ -2,6 +2,7 @@
 
 ## Master
 * Changed CI/CD vendor
+* Added support for Tags API
 
 ## 3.3.0
 * Added getter/setter for EditorInterface#sidebar

@@ -4,6 +4,7 @@ require_relative 'environment_locale_methods_factory'
 require_relative 'environment_content_type_methods_factory'
 require_relative 'environment_ui_extension_methods_factory'
 require_relative 'environment_editor_interface_methods_factory'
+require_relative 'environment_tag_methods_factory'
 
 module Contentful
   module Management
@@ -119,6 +120,15 @@ module Contentful
       # @return [Contentful::Management::EnvironmentEditorInterfaceMethodsFactory]
       def editor_interfaces
         EnvironmentEditorInterfaceMethodsFactory.new(self)
+      end
+
+      # Allows manipulation of tags in context of the current environment
+      # Allows listing all tags for the current environment, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::EnvironmentTagMethodsFactory]
+      def tags
+        EnvironmentTagMethodsFactory.new(self)
       end
 
       # Gets the environment ID

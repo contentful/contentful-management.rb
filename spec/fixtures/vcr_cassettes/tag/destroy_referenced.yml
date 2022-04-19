@@ -1,0 +1,226 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/o4h6g9w3pooi/environments/master/tags/icon
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '749'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - o4h6g9w3pooi
+      Etag:
+      - '"4525717000654800747"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/tags/:id"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 15:14:31 GMT
+      X-Contentful-Request-Id:
+      - 2b95374f-6ae8-4184-a0f3-5a7a360a1066
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Tag",
+            "id": "icon",
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "o4h6g9w3pooi"
+              }
+            },
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "createdAt": "2022-01-19T18:50:31.193Z",
+            "updatedAt": "2022-01-19T18:50:31.193Z",
+            "version": 1,
+            "visibility": "public"
+          },
+          "name": "icon"
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 15:14:31 GMT
+- request:
+    method: delete
+    uri: https://api.contentful.com/spaces/o4h6g9w3pooi/environments/master/tags/icon
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '1'
+      Version:
+      - '1'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '310'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - o4h6g9w3pooi
+      Etag:
+      - '"3340999475138518114"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/tags/:id"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 15:14:32 GMT
+      X-Contentful-Request-Id:
+      - 727a53d1-e679-4654-8bec-f955da1334e9
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Error",
+            "id": "ActionPreconditionsFailed"
+          },
+          "message": "Validation error",
+          "details": {
+            "errors": [
+              {
+                "name": "reference",
+                "details": "Tag is referenced by another entity"
+              }
+            ]
+          },
+          "requestId": "727a53d1-e679-4654-8bec-f955da1334e9"
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 15:14:32 GMT
+recorded_with: VCR 4.0.0
