@@ -1,6 +1,8 @@
 # Change Log
 
 ## Master
+
+## 3.4.0
 * Changed CI/CD vendor
 * Added support for Tags API
 
