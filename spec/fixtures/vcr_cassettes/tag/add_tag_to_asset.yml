@@ -1,0 +1,456 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/o4h6g9w3pooi/environments/master
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '688'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      Accept-Ranges:
+      - bytes
+      Cf-Organization-Id:
+      - 4kQeJmhUWIKtNNmMkketza
+      Cf-Space-Id:
+      - o4h6g9w3pooi
+      Etag:
+      - W/"1306585c8e58f0da92149c1d8c2ab520"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Route:
+      - "/spaces/:space_id/environments/:id"
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=15768000
+      Server:
+      - Contentful
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - gatekeeper
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Date:
+      - Tue, 19 Apr 2022 15:26:35 GMT
+      X-Contentful-Request-Id:
+      - 6e1d2f68-6d9f-4171-b5ce-abd480571161
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"master",
+          "sys":{
+            "type":"Environment",
+            "id":"master",
+            "version":1,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"o4h6g9w3pooi"
+              }
+            },
+            "status":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Status",
+                "id":"ready"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"5HvjqrbdXRupD8jmTsskvE"
+              }
+            },
+            "createdAt":"2020-11-02T09:11:49Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"5HvjqrbdXRupD8jmTsskvE"
+              }
+            },
+            "updatedAt":"2020-11-02T09:11:49Z"
+          }
+        }
+
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 15:26:35 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/o4h6g9w3pooi/environments/master/assets/686aLBcjj1f47uFWxrepj6
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1619'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - o4h6g9w3pooi
+      Etag:
+      - '"2102620886533987886"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/assets/:id"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 15:26:36 GMT
+      X-Contentful-Request-Id:
+      - 78386731-cffe-46fc-af59-bcdef6ceb984
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "metadata": {
+            "tags": []
+          },
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "o4h6g9w3pooi"
+              }
+            },
+            "id": "686aLBcjj1f47uFWxrepj6",
+            "type": "Asset",
+            "createdAt": "2021-02-06T05:58:29.133Z",
+            "updatedAt": "2022-04-19T15:25:27.361Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "publishedVersion": 14,
+            "publishedAt": "2022-04-13T03:57:58.082Z",
+            "firstPublishedAt": "2021-02-06T05:59:37.794Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "publishedCounter": 4,
+            "version": 19,
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            }
+          },
+          "fields": {
+            "title": {
+              "en-US": "Avatar"
+            },
+            "description": {
+              "en-US": "my photo"
+            },
+            "file": {
+              "en-US": {
+                "url": "//images.ctfassets.net/o4h6g9w3pooi/686aLBcjj1f47uFWxrepj6/3bd27e35028b8210ca732eb037f4b567/WhatsApp_Image_2019-06-25_at_12.17.04.jpeg",
+                "details": {
+                  "size": 108963,
+                  "image": {
+                    "width": 868,
+                    "height": 1000
+                  }
+                },
+                "fileName": "WhatsApp Image 2019-06-25 at 12.17.04.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 15:26:36 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/o4h6g9w3pooi/environments/master/assets/686aLBcjj1f47uFWxrepj6
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"title":{"en-US":"Avatar"},"description":{"en-US":"my photo"},"file":{"en-US":{"details":{"size":108963,"image":{"width":868,"height":1000}},"url":"//images.ctfassets.net/o4h6g9w3pooi/686aLBcjj1f47uFWxrepj6/3bd27e35028b8210ca732eb037f4b567/WhatsApp_Image_2019-06-25_at_12.17.04.jpeg","fileName":"WhatsApp
+        Image 2019-06-25 at 12.17.04.jpeg","contentType":"image/jpeg"}}},"metadata":{"tags":[{"sys":{"type":"Link","linkType":"Tag","id":"icon"}}]}}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '19'
+      Version:
+      - '19'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1745'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35998'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '8'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - o4h6g9w3pooi
+      Etag:
+      - '"2380613190790968201"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/assets/:id"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 15:26:37 GMT
+      X-Contentful-Request-Id:
+      - 6523a88f-e3ce-4e6f-841d-14893cb0ac0b
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "metadata": {
+            "tags": [
+              {
+                "sys": {
+                  "type": "Link",
+                  "linkType": "Tag",
+                  "id": "icon"
+                }
+              }
+            ]
+          },
+          "sys": {
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "o4h6g9w3pooi"
+              }
+            },
+            "id": "686aLBcjj1f47uFWxrepj6",
+            "type": "Asset",
+            "createdAt": "2021-02-06T05:58:29.133Z",
+            "updatedAt": "2022-04-19T15:26:36.984Z",
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "publishedVersion": 14,
+            "publishedAt": "2022-04-13T03:57:58.082Z",
+            "firstPublishedAt": "2021-02-06T05:59:37.794Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "publishedCounter": 4,
+            "version": 20,
+            "publishedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            }
+          },
+          "fields": {
+            "title": {
+              "en-US": "Avatar"
+            },
+            "description": {
+              "en-US": "my photo"
+            },
+            "file": {
+              "en-US": {
+                "url": "//images.ctfassets.net/o4h6g9w3pooi/686aLBcjj1f47uFWxrepj6/3bd27e35028b8210ca732eb037f4b567/WhatsApp_Image_2019-06-25_at_12.17.04.jpeg",
+                "details": {
+                  "size": 108963,
+                  "image": {
+                    "width": 868,
+                    "height": 1000
+                  }
+                },
+                "fileName": "WhatsApp Image 2019-06-25 at 12.17.04.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 15:26:37 GMT
+recorded_with: VCR 4.0.0

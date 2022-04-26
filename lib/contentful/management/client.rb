@@ -10,6 +10,7 @@ require 'contentful/management/version'
 require 'contentful/management/response'
 require 'contentful/management/resource_builder'
 
+require 'contentful/management/client_tag_methods_factory'
 require 'contentful/management/client_role_methods_factory'
 require 'contentful/management/client_user_methods_factory'
 require 'contentful/management/client_space_methods_factory'
@@ -192,6 +193,15 @@ module Contentful
       # @return [Contentful::Management::ClientAssetMethodsFactory]
       def assets(space_id, environment_id)
         ClientAssetMethodsFactory.new(self, space_id, environment_id)
+      end
+
+      # Allows manipulation of tags in context of the current client
+      # Allows listing all tags for client, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientTagMethodsFactory]
+      def tags(space_id, environment_id)
+        ClientTagMethodsFactory.new(self, space_id, environment_id)
       end
 
       # Allows manipulation of content types in context of the current client

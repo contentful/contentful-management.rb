@@ -58,8 +58,7 @@ module Contentful
                             end
 
         client.register_dynamic_entry(content_type.id, DynamicEntry.create(content_type, client))
-
-        { fields: fields_for_create }
+        { fields: fields_for_create, metadata: attributes[:_metadata] }
       end
 
       # @private
@@ -183,7 +182,8 @@ module Contentful
       protected
 
       def query_attributes(attributes)
-        { fields: Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes)) }
+        { metadata: attributes.delete(:_metadata),
+          fields: Contentful::Management::Support.deep_hash_merge(fields_for_query, fields_from_attributes(attributes)) }
       end
 
       private

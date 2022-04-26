@@ -40,7 +40,7 @@ module Contentful
         fields[:description] = { locale => attributes[:description] } if attributes[:description]
         fields[:file] = { locale => attributes[:file].properties } if attributes[:file]
 
-        { fields: fields }
+        { fields: fields, metadata: attributes[:_metadata] }
       end
 
       # @private
@@ -122,7 +122,7 @@ module Contentful
         self.description = attributes[:description] || description
         self.file = attributes[:file] || file
 
-        { fields: fields_for_query }
+        { fields: fields_for_query, metadata: attributes[:_metadata] }
       end
     end
   end

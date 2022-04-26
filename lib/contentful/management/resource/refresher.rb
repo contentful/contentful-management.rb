@@ -24,6 +24,7 @@ module Contentful
             @properties = resource.instance_variable_get(:@properties)
             @fields = resource.instance_variable_get(:@fields)
             @sys = resource.instance_variable_get(:@sys).merge(locale: locale)
+            @_metadata = resource.instance_variable_get(:@_metadata)
             self
           end
         end

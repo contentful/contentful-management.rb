@@ -38,8 +38,8 @@ module Contentful
         object.refresh_data(put(endpoint_options, attributes, headers, object))
       end
 
-      def destroy(endpoint_options = {})
-        delete(endpoint_options)
+      def destroy(endpoint_options = {}, attributes = {}, headers = {})
+        delete(endpoint_options, attributes, headers)
       end
 
       def archive(object, endpoint_options = {}, headers = {})

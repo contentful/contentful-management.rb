@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/o4h6g9w3pooi/environments/master/tags/testPrivate
+    body:
+      encoding: UTF-8
+      string: '{"name":"test private","sys":{"visibility":"private","id":"testPrivate","type":"Tag"}}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '765'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - o4h6g9w3pooi
+      Etag:
+      - '"14718553105474549183"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/tags/:id"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 15:12:49 GMT
+      X-Contentful-Request-Id:
+      - 35913cd7-7d77-46bc-828f-679b386d0d40
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "name": "test private",
+          "sys": {
+            "visibility": "private",
+            "id": "testPrivate",
+            "type": "Tag",
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "o4h6g9w3pooi"
+              }
+            },
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "version": 1,
+            "createdAt": "2022-04-19T15:12:49.603Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "updatedAt": "2022-04-19T15:12:49.603Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            }
+          }
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 15:12:49 GMT
+recorded_with: VCR 4.0.0

@@ -109,6 +109,18 @@ describe Contentful::Management::Environment do
         expect(entry).to be_a ::Contentful::Management::Entry
       }
     end
+
+    it 'tags proxy works' do
+      vcr('environment/tag_proxy') {
+        environment = subject.find(master)
+
+        tags = environment.tags.all
+        expect(tags).to be_a ::Contentful::Management::Array
+
+        tag = environment.tags.find(tags.first.id)
+        expect(tag).to be_a ::Contentful::Management::Tag
+      }
+    end
   end
 
   describe '#reload' do

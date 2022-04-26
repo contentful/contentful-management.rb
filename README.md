@@ -640,6 +640,50 @@ Destroying a locale:
 blog_post_locale.destroy
 ```
 
+### Tags
+
+Retrieving all tags from the environment:
+
+```ruby
+tags = environment.tags.all
+```
+
+Retrieving one tag by ID from the environment:
+
+```ruby
+tag = environment.tags.find(tag_id)
+```
+
+Creating a tag:
+
+```ruby
+environment.tags.create(name: 'tag name', id: 'tagID')
+```
+
+Updating a tag:
+
+```ruby
+tag.update(name: 'new name')
+```
+
+Destroying a tag:
+
+```ruby
+tag.destroy
+```
+
+Tagging an entry:
+
+```ruby
+entry.update(_metadata: {"tags": [{ "sys": { "type": "Link", "linkType": "Tag", "id": "fooTag" } }]})
+```
+
+Tagging an asset:
+
+```ruby
+asset.update(_metadata: {"tags": [{ "sys": { "type": "Link", "linkType": "Tag", "id": "fooTag" } }]})
+```
+
 ### Roles
 
 Retrieving all roles from the space:

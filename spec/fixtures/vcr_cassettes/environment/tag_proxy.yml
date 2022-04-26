@@ -1,0 +1,658 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '688'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      Accept-Ranges:
+      - bytes
+      Cf-Organization-Id:
+      - 4kQeJmhUWIKtNNmMkketza
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Etag:
+      - W/"1306585c8e58f0da92149c1d8c2ab520"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Route:
+      - "/spaces/:space_id/environments/:id"
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=15768000
+      Server:
+      - Contentful
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - gatekeeper
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Date:
+      - Tue, 19 Apr 2022 14:43:25 GMT
+      X-Contentful-Request-Id:
+      - f929256b-3f7a-4c99-93a2-166eb9a8f642
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "name":"master",
+          "sys":{
+            "type":"Environment",
+            "id":"master",
+            "version":1,
+            "space":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Space",
+                "id":"facgnwwgj5fe"
+              }
+            },
+            "status":{
+              "sys":{
+                "type":"Link",
+                "linkType":"Status",
+                "id":"ready"
+              }
+            },
+            "createdBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"5HvjqrbdXRupD8jmTsskvE"
+              }
+            },
+            "createdAt":"2020-11-02T09:11:49Z",
+            "updatedBy":{
+              "sys":{
+                "type":"Link",
+                "linkType":"User",
+                "id":"5HvjqrbdXRupD8jmTsskvE"
+              }
+            },
+            "updatedAt":"2020-11-02T09:11:49Z"
+          }
+        }
+
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 14:43:25 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/tags
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '7403'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Etag:
+      - '"1849572400339835979"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/tags"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 14:43:26 GMT
+      X-Contentful-Request-Id:
+      - b7beb7be-9829-4dbc-ac22-a0ca7243f2ef
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "total": 8,
+          "skip": 0,
+          "limit": 100,
+          "items": [
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "tagID",
+                "type": "Tag",
+                "createdAt": "2022-04-19T14:22:38.164Z",
+                "updatedAt": "2022-04-19T14:22:38.164Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "private"
+              },
+              "name": "tag name"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "testPublic",
+                "type": "Tag",
+                "createdAt": "2022-03-19T07:28:19.542Z",
+                "updatedAt": "2022-04-18T16:44:46.784Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 5,
+                "visibility": "public"
+              },
+              "name": "newTagName"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "fooTag",
+                "type": "Tag",
+                "createdAt": "2022-04-12T05:09:33.997Z",
+                "updatedAt": "2022-04-12T05:09:33.997Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "private"
+              },
+              "name": "fooTag"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "usedTag",
+                "type": "Tag",
+                "createdAt": "2022-03-28T21:46:28.147Z",
+                "updatedAt": "2022-03-28T21:46:28.147Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "private"
+              },
+              "name": "usedTag"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "newTag",
+                "type": "Tag",
+                "createdAt": "2022-03-24T04:51:10.234Z",
+                "updatedAt": "2022-03-24T04:51:10.234Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "private"
+              },
+              "name": "new tag"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "icon",
+                "type": "Tag",
+                "createdAt": "2022-01-19T18:50:31.193Z",
+                "updatedAt": "2022-01-19T18:50:31.193Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "public"
+              },
+              "name": "icon"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "publicTag",
+                "type": "Tag",
+                "createdAt": "2021-03-29T08:25:01.542Z",
+                "updatedAt": "2021-03-29T08:25:01.542Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "public"
+              },
+              "name": "publicTag"
+            },
+            {
+              "sys": {
+                "space": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "Space",
+                    "id": "facgnwwgj5fe"
+                  }
+                },
+                "id": "firstTag",
+                "type": "Tag",
+                "createdAt": "2021-02-08T17:17:12.384Z",
+                "updatedAt": "2021-02-08T17:17:12.384Z",
+                "environment": {
+                  "sys": {
+                    "id": "master",
+                    "type": "Link",
+                    "linkType": "Environment"
+                  }
+                },
+                "createdBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "updatedBy": {
+                  "sys": {
+                    "type": "Link",
+                    "linkType": "User",
+                    "id": "59Erm8D1JuuD273aXNb65T"
+                  }
+                },
+                "version": 1,
+                "visibility": "private"
+              },
+              "name": "first tag"
+            }
+          ]
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 14:43:26 GMT
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments/master/tags/tagID
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.3.0; platform ruby/2.7.2; os macOS/21;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '755'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35998'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '8'
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Etag:
+      - '"16355192737941051714"'
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/tags/:id"
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Contentful-Api:
+      - cma
+      Server:
+      - Contentful
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - no-store
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Apr 2022 14:43:27 GMT
+      X-Contentful-Request-Id:
+      - d7b8a247-ed66-4587-8a64-2b774418e367
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "sys": {
+            "type": "Tag",
+            "id": "tagID",
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "facgnwwgj5fe"
+              }
+            },
+            "environment": {
+              "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+              }
+            },
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "59Erm8D1JuuD273aXNb65T"
+              }
+            },
+            "createdAt": "2022-04-19T14:22:38.164Z",
+            "updatedAt": "2022-04-19T14:22:38.164Z",
+            "version": 1,
+            "visibility": "private"
+          },
+          "name": "tag name"
+        }
+    http_version:
+  recorded_at: Tue, 19 Apr 2022 14:43:27 GMT
+recorded_with: VCR 4.0.0
