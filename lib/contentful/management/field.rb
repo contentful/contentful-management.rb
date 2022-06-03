@@ -17,6 +17,7 @@ module Contentful
       property :required, :boolean
       property :disabled, :boolean
       property :localized, :boolean
+      property :defaultValue, :hash
       property :validations, Validation
       property :allowedResources
 
