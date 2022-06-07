@@ -180,7 +180,7 @@ module Contentful
       end
 
       def references(query = {}, headers = {})
-        resp = ResourceRequester.new(client, self.class).all(
+        ResourceRequester.new(client, self.class).all(
           {
             space_id: space.id,
             environment_id: environment_id,
