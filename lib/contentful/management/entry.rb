@@ -179,6 +179,19 @@ module Contentful
         EntrySnapshotMethodsFactory.new(self)
       end
 
+      def references(query = {}, headers = {})
+        resp = ResourceRequester.new(client, self.class).all(
+          {
+            space_id: space.id,
+            environment_id: environment_id,
+            resource_id: id,
+            suffix: '/references'
+          },
+          query,
+          headers
+        )
+      end
+
       protected
 
       def query_attributes(attributes)
