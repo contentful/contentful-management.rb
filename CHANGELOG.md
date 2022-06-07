@@ -1,6 +1,7 @@
 # Change Log
 
 ## Master
+* Added support for Entry References API
 
 ## 3.4.0
 * Changed CI/CD vendor
