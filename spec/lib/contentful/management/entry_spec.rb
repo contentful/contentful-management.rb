@@ -1239,4 +1239,15 @@ describe Contentful::Management::Entry do
       end
     end
   end
+
+  describe '#references' do
+    it 'can fetch references' do
+      vcr('entry/references') do
+        result = subject.find(entry_id).references(include: 1)
+
+        expect(result).to be_kind_of Contentful::Management::Array
+        expect(result)
+      end
+    end
+  end
 end
