@@ -456,7 +456,12 @@ describe Contentful::Management::Entry do
     end
 
     it 'too many requests auto-retry' do
-      vcr('entry/too_many_requests_retry') do
+      # Testing that the header versions are not cleared between retries
+      header_matcher = lambda do |request_1, request_2|
+        request_1.headers["X-Contentful-Version"] == request_2.headers["X-Contentful-Version"]
+      end
+
+      VCR.use_cassette('entry/too_many_requests_retry', match_requests_on: [:method, :uri, header_matcher]) do
         logger = RetryLoggerMock.new(STDOUT)
         space = Contentful::Management::Client.new(token, raise_errors: true, logger: logger).spaces.find('286arvy86ry9')
         invalid_entry = client.entries(space.id, 'master').find('1YNepnMpXGiMWikaKC4GG0')

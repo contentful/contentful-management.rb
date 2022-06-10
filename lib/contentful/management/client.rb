@@ -393,7 +393,6 @@ module Contentful
           logger.info(request: { url: url, query: request.query, header: request_headers(request) }) if logger
           raw_response = yield(url)
           logger.debug(response: raw_response) if logger
-          clear_headers
           result = Response.new(raw_response, request)
           fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
         rescue Contentful::Management::RateLimitExceeded => rate_limit_error
@@ -406,6 +405,8 @@ module Contentful
           end
 
           raise
+        ensure
+          clear_headers
         end
 
         result

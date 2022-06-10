@@ -743,7 +743,7 @@ http_interactions:
       Content-Type:
       - application/vnd.contentful.management.v1+json
       X-Contentful-Version:
-      - '30'
+      - '1'
       Content-Length:
       - '0'
       Host:
