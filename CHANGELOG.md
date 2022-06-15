@@ -1,6 +1,7 @@
 # Change Log
 
 ## Master
+* Updated readme for Entry References
 
 ## 3.5.0
 * Added support for Entry References API

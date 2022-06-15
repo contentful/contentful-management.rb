@@ -1096,6 +1096,14 @@ Retrieving a snapshot for a given entry:
 snapshot = entry.snapshots.find('some_snapshot_id')
 ```
 
+### Entry references
+
+Retrieving entry references:
+
+```ruby
+references = entry.references(include: 1)
+```
+
 ### Content Type Snapshots
 
 Retrieving all snapshots for a given content type:
