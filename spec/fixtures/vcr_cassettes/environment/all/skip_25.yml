@@ -1,0 +1,159 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/facgnwwgj5fe/environments?skip=25
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.5.0; platform ruby/3.0.4; os macOS/21;
+      Authorization:
+      - Bearer [REDACTED]
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1019'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '107998'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '28'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '108000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '30'
+      Accept-Ranges:
+      - bytes
+      Cache-Control:
+      - max-age=0
+      Cf-Organization-Id:
+      - 29HCJPTi0Xu2SgCK47kBVA
+      Cf-Space-Id:
+      - facgnwwgj5fe
+      Content-Security-Policy:
+      - 'default-src ''self'' static.contentful.com; font-src ''self'' data: static.contentful.com
+        https://www.contentful.com fonts.googleapis.com static.contentful.com www.ctfstatic.com
+        fonts.gstatic.com https://use.typekit.net https://storage.googleapis.com;
+        img-src ''self'' data: static.contentful.com https://www.contentful.com www.ctfstatic.com
+        https://segments.company-target.com https://match.prod.bidr.io https://scripts.demandbase.com/
+        https://www.gstatic.com https://www.google-analytics.com; object-src ''none'';
+        script-src ''self'' ''unsafe-eval'' static.contentful.com https://tag.demandbase.com
+        https://autocomplete.demandbase.com https://www.gstatic.com https://static.zuora.com
+        https://www.recaptcha.net https://www.google-analytics.com ''nonce-dlZXCxmBHILq4nskbDhIMA=='';
+        style-src ''self'' ''unsafe-inline'' static.contentful.com https://www.contentful.com
+        fonts.googleapis.com www.ctfstatic.com https://scripts.demandbase.com; connect-src
+        ''self'' static.contentful.com https://api.company-target.com https://segments.company-target.com
+        https://www.google-analytics.com https://sentry.io; frame-src https://*.zuora.com
+        https://www.google.com https://www.recaptcha.net; frame-ancestors ''self''
+        https://app.contentful.com; report-uri https://51772a31e6668243854408567273914e.report-uri.com/r/t/csp/enforce'
+      Etag:
+      - W/"650244a91cb16f1f1c398f693c867d4a"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Contentful-Route:
+      - "/spaces/:space_id/environments"
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=15768000
+      Server:
+      - Contentful
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - gatekeeper
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace
+      Access-Control-Expose-Headers:
+      - Etag
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Date:
+      - Wed, 14 Sep 2022 11:46:56 GMT
+      X-Contentful-Request-Id:
+      - 8f8d0960-b090-4c02-a453-b8a851a93ad2
+    body:
+      encoding: ASCII-8BIT
+      string: |+
+        {
+          "total":26,
+          "limit":25,
+          "skip":25,
+          "sys":{
+            "type":"Array"
+          },
+          "items":[
+            {
+              "name":"environment-26",
+              "sys":{
+                "type":"Environment",
+                "id":"environment-26",
+                "version":3,
+                "space":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Space",
+                    "id":"facgnwwgj5fe"
+                  }
+                },
+                "status":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"Status",
+                    "id":"ready"
+                  }
+                },
+                "createdBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"2wIKFiIBdEWuI2fnBzOJnw"
+                  }
+                },
+                "createdAt":"2022-09-14T11:43:20Z",
+                "updatedBy":{
+                  "sys":{
+                    "type":"Link",
+                    "linkType":"User",
+                    "id":"2wIKFiIBdEWuI2fnBzOJnw"
+                  }
+                },
+                "updatedAt":"2022-09-14T11:43:21Z",
+                "aliases":[]
+              }
+            }
+          ]
+        }
+
+    http_version:
+  recorded_at: Wed, 14 Sep 2022 11:46:56 GMT
+recorded_with: VCR 4.0.0
+...
