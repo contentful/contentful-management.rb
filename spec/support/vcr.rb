@@ -8,9 +8,10 @@ VCR.configure do |c|
 
   # Redact Contentful Management API tokens from VCR recordings
   c.filter_sensitive_data('<ACCESS_TOKEN>') do |interaction|
-    auths = interaction.request.headers['Authorization'].first
-    if (match = auths.match(/^Bearer\s+([^,\s]+)/))
-      match.captures.first
+    if (auths = interaction.request.headers['Authorization']&.first)
+      if (match = auths.match(/^Bearer\s+([^,\s]+)/))
+        match.captures.first
+      end
     end
   end
 end
