@@ -10,22 +10,62 @@ describe Contentful::Management::Environment do
   subject { client.environments(space_id) }
 
   describe '.all' do
-    it 'fetches all environments for a space' do
-      vcr('environment/all') {
-        environments = subject.all
+    context 'given no params' do
+      it 'fetches the first 25 environments for a space' do
+        vcr('environment/all') {
+          environments = subject.all
 
-        expect(environments.size).to eq 2
-        expect(environments.first).to be_a ::Contentful::Management::Environment
-      }
+          expect(environments.size).to eq 25
+          expect(environments.total).to eq 26
+          expect(environments.first).to be_a ::Contentful::Management::Environment
+        }
+      end
+
+      it 'class method also works' do
+        vcr('environment/all') {
+          environments = described_class.all(client, space_id)
+
+          expect(environments.size).to eq 25
+          expect(environments.total).to eq 26
+          expect(environments.first).to be_a ::Contentful::Management::Environment
+        }
+      end
     end
 
-    it 'class method also works' do
-      vcr('environment/all') {
-        environments = described_class.all(client, space_id)
+    context 'given params for limit' do
+      let(:params) do
+        {
+          limit: 100,
+        }
+      end
 
-        expect(environments.size).to eq 2
-        expect(environments.first).to be_a ::Contentful::Management::Environment
-      }
+      it 'fetches all environments' do
+        vcr('environment/all/limit_100') {
+          environments = subject.all(params)
+
+          expect(environments.total).to eq 26
+          expect(environments.size).to eq 26
+          expect(environments.first).to be_a ::Contentful::Management::Environment
+        }
+      end
+    end
+
+    context 'given params for pagination offset' do
+      let(:params) do
+        {
+          skip: 25,
+        }
+      end
+
+      it 'fetches the second page of environments' do
+        vcr('environment/all/skip_25') {
+          environments = subject.all(params)
+
+          expect(environments.size).to eq 1
+          expect(environments.total).to eq 26
+          expect(environments.first).to be_a ::Contentful::Management::Environment
+        }
+      end
     end
   end
 
