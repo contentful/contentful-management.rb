@@ -3,6 +3,7 @@
 ## Master
 * Updated readme for Entry References
 * Added examples of fetching entries by field values in readme
+* Added pagination support for enviornments
 
 ## 3.5.0
 * Added support for Entry References API
