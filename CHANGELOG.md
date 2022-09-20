@@ -3,6 +3,7 @@
 ## Master
 * Updated readme for Entry References
 * Added examples of fetching entries by field values in readme
+* Configured VCR to redact sensitive data
 
 ## 3.5.0
 * Added support for Entry References API
