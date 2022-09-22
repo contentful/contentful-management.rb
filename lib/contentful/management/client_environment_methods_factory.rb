@@ -17,9 +17,12 @@ module Contentful
       # Gets a collection of environments.
       #
       # @return [Contentful::Management::Array<Contentful::Management::Environment>]
-      def all
+      def all(params = {})
         @resource_requester.all(
-          space_id: @space_id
+          {
+            space_id: @space_id
+          },
+          params
         )
       end
 
