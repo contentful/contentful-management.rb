@@ -1,6 +1,7 @@
 # Change Log
 
 ## Master
+* Configured VCR to redact sensitive data
 
 ## 3.6.0
 * Updated readme for Entry References
