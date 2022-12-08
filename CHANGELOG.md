@@ -1,6 +1,7 @@
 # Change Log
 
 ## Master
+* Replaces deprecated `URI.escape` with `URI.encode_www_form_component` in Contentful::Management::Request#id
 * Configured VCR to redact sensitive data
 
 ## 3.6.0
