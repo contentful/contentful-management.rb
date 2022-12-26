@@ -440,6 +440,34 @@ module Contentful
             expect(content_type.fields[11].type).to eq field_type
           end
         end
+        it 'creates a new ResourceLink field with additional parameters' do
+          vcr('content_type/fields/resource_link_with_params') do
+            content_type = subject.find('8KSpuKrl04eMAGQoQckweq')
+            content_type.fields.create(
+              id: 'myResourceLink',
+              name: 'My Resource Link',
+              type: 'ResourceLink',
+              localized: true,
+              disabled: false,
+              omitted: false,
+              allowed_resources: [
+                {
+                  type: 'Contentful:Entry',
+                  source: 'crn:contentful:::content:spaces/yb41ceqgyiw5',
+                  contentTypes: ["foo", "bar"]
+                }
+              ]
+            )
+            expect(content_type.fields.size).to eq 2
+            field = content_type.fields.last
+            expect(field.name).to eq 'My Resource Link'
+            expect(field.type).to eq 'ResourceLink'
+            expect(field.allowed_resources.size).to eq 1
+            expect(field.allowed_resources.first['type']).to eq 'Contentful:Entry'
+            expect(field.allowed_resources.first['source']).to eq 'crn:contentful:::content:spaces/yb41ceqgyiw5'
+            expect(field.allowed_resources.first['contentTypes']).to eq ["foo", "bar"]
+          end
+        end
       end
 
       describe '#fields.add' do
