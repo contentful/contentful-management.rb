@@ -2,6 +2,7 @@
 
 ## Master
 * Updated readme for Entry References
+* Added support for cross-space references
 
 ## 3.5.0
 * Added support for Entry References API
