@@ -1,8 +1,16 @@
 # Change Log
 
 ## Master
+* Added support for cross-space references 
+
+## 3.7.0
+* Replaces deprecated `URI.escape` with `URI.encode_www_form_component` in Contentful::Management::Request#id
+* Configured VCR to redact sensitive data
+
+## 3.6.0
 * Updated readme for Entry References
-* Added support for cross-space references
+* Added examples of fetching entries by field values in readme
+* Added pagination support for environments
 
 ## 3.5.0
 * Added support for Entry References API

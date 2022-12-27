@@ -331,6 +331,14 @@ Retrieving an entry by ID:
 entry = environment.entries.find('entry_id')
 ```
 
+Retrieving entries by any other field value:
+
+```ruby
+entries = environment.entries.all(content_type: content_type.id, 'fields.fieldName' => 'value')
+```
+
+Note: all [search parameters](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/search-parameters) are supported.
+
 Creating a location:
 
 ```ruby
