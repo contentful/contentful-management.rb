@@ -1,5 +1,8 @@
 # Change Log
 
+## Master
+* Added support for cross-space references 
+
 ## 3.7.0
 * Replaces deprecated `URI.escape` with `URI.encode_www_form_component` in Contentful::Management::Request#id
 * Configured VCR to redact sensitive data

@@ -468,6 +468,25 @@ or the field of link type:
 blog_post_content_type.fields.create(id: 'my_entry_link_field', name: 'My Entry Link Field', type: 'Link', link_type: 'Entry')
 ```
 
+or the field of ResourceLink type:
+```ruby
+blog_post_content_type.fields.create(
+  id: 'my_resource_link_id',
+  name: 'My Resource Link',
+  type: 'ResourceLink',
+  localized: true,
+  disabled: false,
+  omitted: false,
+  allowed_resources: [
+    {
+      type: 'Contentful:Entry',
+      source: 'crn:contentful:::content:spaces/space_id',
+      contentTypes: ["foo", "bar"]
+    }
+  ]
+)
+```
+
 or the field of an array type:
 ```ruby
 items = Contentful::Management::Field.new

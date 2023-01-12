@@ -16,6 +16,7 @@ module Contentful
       property :disabled, :boolean
       property :localized, :boolean
       property :validations, Validation
+      property :allowedResources
 
       # Takes a field object of content type
       # Merges existing properties, items and validations of field with new one
