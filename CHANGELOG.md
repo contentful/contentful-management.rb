@@ -1,6 +1,6 @@
 # Change Log
 
-## Master
+## 3.8.0
 * Added support for cross-space references 
 
 ## 3.7.0
