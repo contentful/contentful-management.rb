@@ -46,13 +46,7 @@ Style/HashTransformKeys:
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 
-Style/RescueStandardError:
-  Enabled: false
-
 Style/SafeNavigation:
-  Enabled: false
-
-Layout/EmptyLines:
   Enabled: false
 
 Lint/RedundantCopDisableDirective:

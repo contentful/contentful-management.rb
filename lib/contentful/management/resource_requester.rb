@@ -56,7 +56,7 @@ module Contentful
 
       def resource_class?(object)
         object.resource?
-      rescue
+      rescue StandardError
         false
       end
 

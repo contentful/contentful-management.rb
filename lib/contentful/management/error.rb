@@ -66,7 +66,7 @@ module Contentful
           error_message << "Message: #{message}"
           error_message << "Details: #{handle_details(details)}" if details
           error_message << "Request ID: #{request_id}" if request_id
-        rescue
+        rescue StandardError
           error_message << "Message: #{default_error_message}"
         end
 
