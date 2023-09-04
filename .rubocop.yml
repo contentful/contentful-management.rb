@@ -64,9 +64,6 @@ Lint/MissingCopEnableDirective:
 Metrics/ParameterLists:
   Enabled: false
 
-Style/HashEachMethods:
-  Enabled: false
-
 Lint/DuplicateMethods:
   Enabled: false
 

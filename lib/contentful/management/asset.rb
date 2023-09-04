@@ -52,7 +52,7 @@ module Contentful
       #
       # @return [Contentful::Management::Asset]
       def process_file
-        instance_variable_get(:@fields).keys.each do |locale|
+        instance_variable_get(:@fields).each_key do |locale|
           request = Request.new(
             client,
             process_url(locale),

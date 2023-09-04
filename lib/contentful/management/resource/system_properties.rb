@@ -48,7 +48,7 @@ module Contentful
         def self.included(base)
           base.extend(ClassMethods)
 
-          base.sys_coercions.keys.each do |name|
+          base.sys_coercions.each_key do |name|
             accessor_name = Contentful::Management::Support.snakify(name)
             base.send :define_method, accessor_name do
               sys[name.to_sym]
