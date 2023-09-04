@@ -34,9 +34,6 @@ Style/FrozenStringLiteralComment:
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
-Style/ClassEqualityComparison:
-  Enabled: false
-
 Style/SafeNavigation:
   Enabled: false
 

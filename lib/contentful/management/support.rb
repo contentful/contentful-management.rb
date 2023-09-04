@@ -14,7 +14,7 @@ module Contentful
           query_hash.merge(attribute_hash) do |_key, oldval, newval|
             oldval = oldval.to_hash if oldval.respond_to?(:to_hash)
             newval = newval.to_hash if newval.respond_to?(:to_hash)
-            oldval.class.to_s == 'Hash' && newval.class.to_s == 'Hash' ? deep_hash_merge(oldval, newval) : newval
+            oldval.instance_of?(::Hash) && newval.instance_of?(::Hash) ? deep_hash_merge(oldval, newval) : newval
           end
         end
 
