@@ -40,9 +40,6 @@ Style/ClassEqualityComparison:
 Style/PerlBackrefs:
   Enabled: false
 
-Style/HashTransformKeys:
-  Enabled: false
-
 Style/SafeNavigation:
   Enabled: false
 

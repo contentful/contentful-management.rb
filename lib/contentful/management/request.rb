@@ -70,14 +70,7 @@ module Contentful
       private
 
       def normalize_query(query)
-        Hash[
-          query.map do |key, value|
-            [
-              key.to_sym,
-              value
-            ]
-          end
-        ]
+        query.transform_keys(&:to_sym)
       end
     end
   end
