@@ -67,9 +67,6 @@ Metrics/ParameterLists:
 Style/HashEachMethods:
   Enabled: false
 
-Style/IfUnlessModifier:
-  Enabled: false
-
 Lint/DuplicateMethods:
   Enabled: false
 

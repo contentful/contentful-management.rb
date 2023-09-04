@@ -317,9 +317,7 @@ module Contentful
             @property_coercions = superclass.property_coercions.dup.merge(@property_coercions || {})
           end
 
-          if superclass.respond_to? :sys_coercions
-            @sys_coercions = superclass.sys_coercions.dup.merge(@sys_coercions || {})
-          end
+          @sys_coercions = superclass.sys_coercions.dup.merge(@sys_coercions || {}) if superclass.respond_to? :sys_coercions
 
           if superclass.respond_to? :fields_coercions
             @fields_coercions = superclass.fields_coercions.dup.merge(@fields_coercions || {})

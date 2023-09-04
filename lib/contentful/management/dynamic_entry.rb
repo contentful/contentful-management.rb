@@ -49,9 +49,7 @@ module Contentful
 
       # @private
       def self.create(content_type, client)
-        unless content_type.is_a? ContentType
-          content_type = ContentType.new(content_type)
-        end
+        content_type = ContentType.new(content_type) unless content_type.is_a? ContentType
 
         Class.new DynamicEntry do
           DynamicEntry.define_singleton_properties(self, content_type, client)
