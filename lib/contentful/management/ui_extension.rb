@@ -33,6 +33,7 @@ module Contentful
         return false unless extension.key?('fieldTypes') && extension['fieldTypes'].is_a?(::Array)
         return false unless extension.key?('src') || extension.key?('srcdoc')
         return false if extension.key?('sidebar') && ![false, true].include?(extension['sidebar'])
+
         true
       end
 
@@ -42,6 +43,7 @@ module Contentful
       # @return [Contentful::Management::UIExtension]
       def save
         fail 'Invalid UI extension attributes' unless self.class.valid_extension?(extension)
+
         update(extension: extension)
       end
 

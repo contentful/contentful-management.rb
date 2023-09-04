@@ -217,6 +217,7 @@ module Contentful
             res.public_send(name)[child_name.to_sym] = create_resource(child_object)
           end
           next if %w[includes metadata].include?(name)
+
           detect_child_arrays(potential_objects).each do |child_name, _child_array|
             replace_child_array res.public_send(name)[child_name.to_sym]
           end

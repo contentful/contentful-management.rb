@@ -26,6 +26,7 @@ module Contentful
 
         def extract_metadata_from_object!(object)
           return unless object.key?('metadata')
+
           object['metadata'].each do |key, value|
             @_metadata[key.to_sym] = if key == 'tags'
                                        coerce_tags(value)

@@ -89,6 +89,7 @@ module Contentful
 
         handle_detail = proc do |detail|
           return detail if detail.is_a?(String)
+
           detail.fetch('details', nil)
         end
 

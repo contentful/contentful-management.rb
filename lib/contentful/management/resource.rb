@@ -215,6 +215,7 @@ module Contentful
           base = "#{base}/environments/#{endpoint_options[:environment_id]}" if endpoint_options[:environment_id]
           base = "#{base}/#{endpoint}"
           return "#{base}/#{endpoint_options[:resource_id]}#{endpoint_options[:suffix]}" if endpoint_options[:resource_id]
+
           base
         end
 

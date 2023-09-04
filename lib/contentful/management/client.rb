@@ -502,6 +502,7 @@ module Contentful
       # @return [HTTP::Response]
       def http_send(type, url, params, headers, proxy)
         return proxy_send(type, url, params, headers, proxy) unless proxy[:host].nil?
+
         HTTP[headers].public_send(type, url, params)
       end
 
@@ -592,6 +593,7 @@ module Contentful
         result = []
         header.each do |key, values|
           next unless values[:name]
+
           result << format_user_agent_header(key, values)
         end
 

@@ -93,6 +93,7 @@ module Contentful
         )
         response = request.delete
         return true if response.status == :no_content
+
         ResourceBuilder.new(response, client).run
       end
     end
