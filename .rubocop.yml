@@ -87,6 +87,3 @@ Style/MultilineWhenThen:
 
 Lint/UselessMethodDefinition:
   Enabled: false
-
-Style/HashTransformValues:
-  Enabled: false

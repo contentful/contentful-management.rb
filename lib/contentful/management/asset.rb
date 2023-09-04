@@ -75,8 +75,8 @@ module Contentful
       # Parser for assets attributes, creates appropriate form of request.
       def fields_for_query
         self.class.fields_coercions.keys.each_with_object({}) do |field_name, results|
-          results[field_name] = @fields.each_with_object({}) do |(locale, fields), field_results|
-            field_results[locale] = get_value_from(fields, field_name)
+          results[field_name] = @fields.transform_values do |fields|
+            get_value_from(fields, field_name)
           end
         end
       end
