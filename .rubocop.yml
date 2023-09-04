@@ -82,8 +82,5 @@ Name/MemoizedInstanceVariableName:
 Style/MissingRespondToMissing:
   Enabled: false
 
-Style/MultilineWhenThen:
-  Enabled: false
-
 Lint/UselessMethodDefinition:
   Enabled: false
