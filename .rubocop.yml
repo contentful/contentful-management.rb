@@ -90,6 +90,3 @@ Lint/UselessMethodDefinition:
 
 Style/HashTransformValues:
   Enabled: false
-
-Style/NumericPredicate:
-  Enabled: false

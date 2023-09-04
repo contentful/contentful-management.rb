@@ -428,7 +428,7 @@ module Contentful
 
       # @private
       def should_retry(retries_left, reset_time, max_wait)
-        retries_left > 0 && max_wait > reset_time
+        retries_left.positive? && max_wait > reset_time
       end
 
       # @private
