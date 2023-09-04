@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # This object represents a request that is to be made. It gets initialized by the client

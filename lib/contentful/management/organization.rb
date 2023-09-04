@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'resource'
 require 'contentful/management/organization_user_methods_factory'
 

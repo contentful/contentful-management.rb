@@ -28,9 +28,6 @@ Metrics/ModuleLength:
 Style/SignalException:
   EnforcedStyle: 'semantic'
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Style/SafeNavigation:
   Enabled: false
 

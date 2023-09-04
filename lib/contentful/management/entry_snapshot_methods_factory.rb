@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'entry_association_methods_factory'
 
 module Contentful

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'role'
 require_relative 'locale'
 require_relative 'api_key'

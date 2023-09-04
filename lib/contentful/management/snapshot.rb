@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'resource'
 require_relative 'resource/environment_aware'
 require_relative 'client_snapshot_methods_factory'

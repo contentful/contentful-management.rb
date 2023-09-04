@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # All errors raised by the contentful gem are either instances of Contentful::Management::Error
@@ -178,7 +180,7 @@ module Contentful
     # 429
     class RateLimitExceeded < Error
       # Rate Limit Reset Header Key
-      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'.freeze
+      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'
 
       def reset_time?
         # rubocop:disable Style/DoubleNegation

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'http'
 require 'json'
 require 'logger'
@@ -68,7 +70,7 @@ module Contentful
       }.freeze
 
       # Rate Limit Reset Header Key
-      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'.freeze
+      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'
 
       # @param [String] access_token
       # @param [Hash] configuration
