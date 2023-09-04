@@ -87,8 +87,8 @@ module Contentful
 
       def parse_json!
         @object = load_json
-      rescue MultiJson::LoadError => error
-        @error_message = error.message
+      rescue MultiJson::LoadError => e
+        @error_message = e.message
         UnparsableJson.new(self)
       end
 

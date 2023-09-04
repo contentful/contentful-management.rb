@@ -106,8 +106,8 @@ module Contentful
         end
 
         @resource
-      rescue UnparsableResource => error
-        error
+      rescue UnparsableResource => e
+        e
       end
 
       # Creates a single resource from the response object

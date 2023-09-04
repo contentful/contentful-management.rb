@@ -395,8 +395,8 @@ module Contentful
           logger.debug(response: raw_response) if logger
           result = Response.new(raw_response, request)
           fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
-        rescue Contentful::Management::RateLimitExceeded => rate_limit_error
-          reset_time = rate_limit_error.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
+        rescue Contentful::Management::RateLimitExceeded => e
+          reset_time = e.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
           if should_retry(retries_left, reset_time, configuration[:max_rate_limit_wait])
             retries_left -= 1
             logger.info(retry_message(retries_left, reset_time)) if logger

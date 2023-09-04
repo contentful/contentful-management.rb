@@ -43,9 +43,6 @@ Style/PerlBackrefs:
 Style/HashTransformKeys:
   Enabled: false
 
-Naming/RescuedExceptionsVariableName:
-  Enabled: false
-
 Style/SafeNavigation:
   Enabled: false
 
