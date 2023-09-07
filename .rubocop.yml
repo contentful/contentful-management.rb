@@ -27,30 +27,3 @@ Metrics/ModuleLength:
 
 Style/SignalException:
   EnforcedStyle: 'semantic'
-
-Style/SafeNavigation:
-  Enabled: false
-
-Lint/RedundantCopDisableDirective:
-  Enabled: false
-
-Lint/MissingCopEnableDirective:
-  Enabled: false
-
-Metrics/ParameterLists:
-  Enabled: false
-
-Lint/DuplicateMethods:
-  Enabled: false
-
-Style/OptionalBooleanParameter:
-  Enabled: false
-
-Name/MemoizedInstanceVariableName:
-  Enabled: false
-
-Style/MissingRespondToMissing:
-  Enabled: false
-
-Lint/UselessMethodDefinition:
-  Enabled: false
