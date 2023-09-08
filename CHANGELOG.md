@@ -1,7 +1,10 @@
 # Change Log
 
 ### Unlreleased
+
+## 3.9.0
 * Update ruby versions in CI/CD
+* Require ruby >= 3.0
 
 ## 3.8.0
 * Added support for cross-space references 
