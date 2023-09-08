@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'tag'
 require_relative 'link'
 require_relative 'user'
@@ -106,8 +108,8 @@ module Contentful
         end
 
         @resource
-      rescue UnparsableResource => error
-        error
+      rescue UnparsableResource => e
+        e
       end
 
       # Creates a single resource from the response object
@@ -217,6 +219,7 @@ module Contentful
             res.public_send(name)[child_name.to_sym] = create_resource(child_object)
           end
           next if %w[includes metadata].include?(name)
+
           detect_child_arrays(potential_objects).each do |child_name, _child_array|
             replace_child_array res.public_send(name)[child_name.to_sym]
           end

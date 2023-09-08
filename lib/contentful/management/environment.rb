@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'environment_asset_methods_factory'
 require_relative 'environment_entry_methods_factory'
 require_relative 'environment_locale_methods_factory'

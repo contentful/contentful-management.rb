@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # Wrapper for Users API for usage from within Organization

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'client_editor_interface_methods_factory'
 require_relative 'editor_interface'
 

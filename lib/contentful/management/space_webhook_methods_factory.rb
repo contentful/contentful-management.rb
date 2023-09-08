@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'space_association_methods_factory'
 
 module Contentful

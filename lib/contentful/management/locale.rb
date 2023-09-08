@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'resource'
 require_relative 'resource/environment_aware'
 
@@ -38,7 +40,7 @@ module Contentful
           optional: optional,
           fallbackCode: fallback_code
         }.merge(
-          attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
+          attributes.transform_keys(&:to_sym)
         )
       end
     end

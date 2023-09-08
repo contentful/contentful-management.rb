@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     module Resource
@@ -13,6 +15,7 @@ module Contentful
         # @private
         def refresh_find
           return self.class.find(client, space.id, environment_id, id) if environment_id
+
           self.class.find(client, space.id, id)
         end
 
