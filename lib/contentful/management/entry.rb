@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'resource'
 require_relative 'resource/fields'
 require_relative 'resource/archiver'
@@ -72,11 +74,11 @@ module Contentful
       # @private
       def self.parse_attribute_with_field(attribute, field)
         case field.type
-        when ContentType::LINK then
+        when ContentType::LINK
           { sys: { type: field.type, linkType: field.link_type, id: attribute.id } } if attribute
-        when ContentType::ARRAY then
+        when ContentType::ARRAY
           parse_fields_array(attribute)
-        when ContentType::LOCATION then
+        when ContentType::LOCATION
           { lat: attribute.properties[:lat], lon: attribute.properties[:lon] } if attribute
         else
           attribute

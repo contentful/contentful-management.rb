@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # Wrapper for /public API for usage from within Client Wrapper Classes

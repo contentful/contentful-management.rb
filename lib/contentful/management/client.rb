@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'http'
 require 'json'
 require 'logger'
@@ -68,7 +70,7 @@ module Contentful
       }.freeze
 
       # Rate Limit Reset Header Key
-      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'.freeze
+      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'
 
       # @param [String] access_token
       # @param [Hash] configuration
@@ -395,8 +397,8 @@ module Contentful
           logger.debug(response: raw_response) if logger
           result = Response.new(raw_response, request)
           fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
-        rescue Contentful::Management::RateLimitExceeded => rate_limit_error
-          reset_time = rate_limit_error.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
+        rescue Contentful::Management::RateLimitExceeded => e
+          reset_time = e.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
           if should_retry(retries_left, reset_time, configuration[:max_rate_limit_wait])
             retries_left -= 1
             logger.info(retry_message(retries_left, reset_time)) if logger
@@ -428,7 +430,7 @@ module Contentful
 
       # @private
       def should_retry(retries_left, reset_time, max_wait)
-        retries_left > 0 && max_wait > reset_time
+        retries_left.positive? && max_wait > reset_time
       end
 
       # @private
@@ -502,6 +504,7 @@ module Contentful
       # @return [HTTP::Response]
       def http_send(type, url, params, headers, proxy)
         return proxy_send(type, url, params, headers, proxy) unless proxy[:host].nil?
+
         HTTP[headers].public_send(type, url, params)
       end
 
@@ -592,6 +595,7 @@ module Contentful
         result = []
         header.each do |key, values|
           next unless values[:name]
+
           result << format_user_agent_header(key, values)
         end
 

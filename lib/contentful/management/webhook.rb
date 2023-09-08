@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'resource'
 require_relative 'webhook_webhook_call_methods_factory'
 require_relative 'webhook_webhook_health_methods_factory'

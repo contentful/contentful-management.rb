@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # This object represents a request that is to be made. It gets initialized by the client
@@ -70,14 +72,7 @@ module Contentful
       private
 
       def normalize_query(query)
-        Hash[
-          query.map do |key, value|
-            [
-              key.to_sym,
-              value
-            ]
-          end
-        ]
+        query.transform_keys(&:to_sym)
       end
     end
   end

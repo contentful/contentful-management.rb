@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'resource'
 
 module Contentful
@@ -54,7 +56,7 @@ module Contentful
           permissions: permissions,
           policies: policies
         }.merge(
-          attributes.each_with_object({}) { |(k, v), result| result[k.to_sym] = v }
+          attributes.transform_keys(&:to_sym)
         )
       end
 

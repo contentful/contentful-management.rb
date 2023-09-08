@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # All errors raised by the contentful gem are either instances of Contentful::Management::Error
@@ -66,7 +68,7 @@ module Contentful
           error_message << "Message: #{message}"
           error_message << "Details: #{handle_details(details)}" if details
           error_message << "Request ID: #{request_id}" if request_id
-        rescue
+        rescue StandardError
           error_message << "Message: #{default_error_message}"
         end
 
@@ -89,6 +91,7 @@ module Contentful
 
         handle_detail = proc do |detail|
           return detail if detail.is_a?(String)
+
           detail.fetch('details', nil)
         end
 
@@ -177,7 +180,7 @@ module Contentful
     # 429
     class RateLimitExceeded < Error
       # Rate Limit Reset Header Key
-      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'.freeze
+      RATE_LIMIT_RESET_HEADER_KEY = 'x-contentful-ratelimit-reset'
 
       def reset_time?
         # rubocop:disable Style/DoubleNegation

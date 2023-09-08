@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # Utility methods used by the contentful management gem
@@ -5,7 +7,7 @@ module Contentful
       class << self
         # Transforms CamelCase into snake_case (taken from zucker)
         def snakify(object)
-          snake = String(object).gsub(/(?<!^)[A-Z]/) { "_#{$&}" }
+          snake = String(object).gsub(/(?<!^)[A-Z]/) { "_#{::Regexp.last_match(0)}" }
           snake.downcase
         end
 
@@ -14,7 +16,7 @@ module Contentful
           query_hash.merge(attribute_hash) do |_key, oldval, newval|
             oldval = oldval.to_hash if oldval.respond_to?(:to_hash)
             newval = newval.to_hash if newval.respond_to?(:to_hash)
-            oldval.class.to_s == 'Hash' && newval.class.to_s == 'Hash' ? deep_hash_merge(oldval, newval) : newval
+            oldval.instance_of?(::Hash) && newval.instance_of?(::Hash) ? deep_hash_merge(oldval, newval) : newval
           end
         end
 

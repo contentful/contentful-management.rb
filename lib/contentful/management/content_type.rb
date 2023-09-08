@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'field'
 require_relative 'support'
 require_relative 'resource'
@@ -16,17 +18,17 @@ module Contentful
     class ContentType
       # Shortcuts for Contentful Field Types
       FIELD_TYPES = [
-        SYMBOL = 'Symbol'.freeze,
-        TEXT = 'Text'.freeze,
-        INTEGER = 'Integer'.freeze,
-        FLOAT = 'Number'.freeze,
-        DATE = 'Date'.freeze,
-        BOOLEAN = 'Boolean'.freeze,
-        LINK = 'Link'.freeze,
-        ARRAY = 'Array'.freeze,
-        OBJECT = 'Object'.freeze,
-        LOCATION = 'Location'.freeze,
-        STRUCTURED_TEXT = 'RichText'.freeze
+        SYMBOL = 'Symbol',
+        TEXT = 'Text',
+        INTEGER = 'Integer',
+        FLOAT = 'Number',
+        DATE = 'Date',
+        BOOLEAN = 'Boolean',
+        LINK = 'Link',
+        ARRAY = 'Array',
+        OBJECT = 'Object',
+        LOCATION = 'Location',
+        STRUCTURED_TEXT = 'RichText'
       ].freeze
 
       include Contentful::Management::Resource

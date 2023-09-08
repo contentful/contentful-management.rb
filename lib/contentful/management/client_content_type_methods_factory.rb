@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'client_association_methods_factory'
 require_relative 'client_association_all_published_method_factory'
 

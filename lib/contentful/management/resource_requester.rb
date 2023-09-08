@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Contentful
   module Management
     # Generic Resource Request Class
@@ -56,7 +58,7 @@ module Contentful
 
       def resource_class?(object)
         object.resource?
-      rescue
+      rescue StandardError
         false
       end
 
@@ -93,6 +95,7 @@ module Contentful
         )
         response = request.delete
         return true if response.status == :no_content
+
         ResourceBuilder.new(response, client).run
       end
     end

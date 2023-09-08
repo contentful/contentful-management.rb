@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../file'
 
 module Contentful
@@ -33,7 +35,7 @@ module Contentful
 
         # Create accessors for content type, asset, entry objects.
         def self.included(base)
-          base.fields_coercions.keys.each do |name|
+          base.fields_coercions.each_key do |name|
             accessor_name = Contentful::Management::Support.snakify(name)
             base.send :define_method, accessor_name do
               fields[name.to_sym]
