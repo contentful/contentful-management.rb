@@ -272,6 +272,30 @@ module Contentful
             expect(field.omitted).to be_falsey
           }
         end
+
+        it 'creates a content_type with a default value' do
+          vcr('content_type/default_value') {
+            space = client.spaces.find('32dbl893yf99')
+
+            default_value_field = Contentful::Management::Field.new
+            default_value_field.id = 'default_value_field'
+            default_value_field.name = 'default_value_field'
+            default_value_field.type = 'Text'
+            default_value_field.default_value = { 'en-US' => 'default content' }
+
+            content_type = client.content_types(space.id, 'master').create(
+              id: 'content_with_default_value',
+              name: 'Content With Default Value',
+              fields: [default_value_field]
+            )
+
+            content_type.activate
+            content_type.reload
+            entry = content_type.entries.new.save
+
+            expect(entry.default_value_field).to eq 'default content'
+          }
+        end
       end
 
       describe '#update' do
