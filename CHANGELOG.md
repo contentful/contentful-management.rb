@@ -2,6 +2,7 @@
 
 ### Unlreleased
 * Added defaultValue field property
+* Added delete field property
 
 ## 3.9.0
 * Update ruby versions in CI/CD
