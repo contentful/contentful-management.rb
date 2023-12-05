@@ -366,6 +366,32 @@ module Contentful
           end
         end
 
+        it 'deletes a field when updated with deleted set to true' do
+          vcr('content_type/update_with_deleted_true') {
+            space = client.spaces.find('32dbl893yf99')
+
+            field_to_delete = Contentful::Management::Field.new
+            field_to_delete.id = 'field_to_delete'
+            field_to_delete.name = 'field_to_delete'
+            field_to_delete.type = 'Text'
+            field_to_delete.omitted = true
+
+            content_type = client.content_types(space.id, 'master').create(
+              id: 'content_with_field_to_delete',
+              name: 'Content With Field To Delete',
+              fields: [field_to_delete]
+            )
+
+            content_type.activate
+            content_type.reload
+
+            field = content_type.fields.detect { _1.name == 'field_to_delete' }
+            field.deleted = true
+            content_type.update(fields: content_type.fields)
+
+            expect(content_type.fields).to be_empty
+          }
+        end
       end
 
       describe '#save' do

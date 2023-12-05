@@ -16,6 +16,7 @@ module Contentful
       property :linkType, :string
       property :required, :boolean
       property :disabled, :boolean
+      property :deleted, :boolean
       property :localized, :boolean
       property :defaultValue, :hash
       property :validations, Validation
