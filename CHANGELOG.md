@@ -3,6 +3,7 @@
 ### Unlreleased
 * Added defaultValue field property
 * Added delete field property
+* Fix an issue when updating editor interface
 
 ## 3.9.0
 * Update ruby versions in CI/CD
