@@ -74,8 +74,8 @@ module Contentful
           },
           {
             'controls' => attributes[:controls] || controls,
-            'sidebar' => attributes[:sidebar] || sidebar
-          },
+            'sidebar' => attributes.fetch(:sidebar, sidebar)
+          }.compact,
           version: sys[:version]
         )
       end
