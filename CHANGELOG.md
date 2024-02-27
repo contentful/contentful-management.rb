@@ -1,6 +1,8 @@
 # Change Log
 
-### Unlreleased
+### Unreleased
+
+## 3.10.0
 * Added defaultValue field property
 * Added delete field property
 * Fixed an issue when updating editor interface with sidebar
