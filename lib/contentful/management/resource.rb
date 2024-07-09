@@ -93,7 +93,7 @@ module Contentful
 
       # @private
       def inspect(info = nil)
-        properties_info = properties.empty? ? '' : " @properties=#{properties.inspect}"
+        properties_info = properties.nil? || properties.empty? ? '' : " @properties=#{properties.inspect}"
         "#<#{self.class}:#{properties_info}#{info}>"
       end
 
