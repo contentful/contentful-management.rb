@@ -3,9 +3,6 @@
 ### Unreleased
 * Updated Ruby version requirements in gemspec and CircleCI config
 * Added support for Ruby 3.4 in CI/CD pipeline
-* Added defaultValue field property
-* Added delete field property
-* Fixed an issue when updating editor interface with sidebar
 
 ## 3.10.0
 * Added defaultValue field property
