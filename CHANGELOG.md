@@ -1,6 +1,8 @@
 # Change Log
 
 ### Unreleased
+
+## 3.10.1
 * Updated Ruby version requirements in gemspec and CircleCI config
 * Added support for Ruby 3.4 in CI/CD pipeline
 
