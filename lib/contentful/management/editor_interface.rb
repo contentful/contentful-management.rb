@@ -52,9 +52,15 @@ module Contentful
       def self.build_endpoint(endpoint_options)
         space_id = endpoint_options.fetch(:space_id)
         environment_id = endpoint_options.fetch(:environment_id)
-        content_type_id = endpoint_options.fetch(:content_type_id)
 
-        "spaces/#{space_id}/environments/#{environment_id}/content_types/#{content_type_id}/editor_interface"
+        base_path = "spaces/#{space_id}/environments/#{environment_id}"
+
+        if endpoint_options.key?(:content_type_id)
+          content_type_id = endpoint_options.fetch(:content_type_id)
+          "#{base_path}/content_types/#{content_type_id}/editor_interface"
+        else
+          "#{base_path}/editor_interfaces"
+        end
       end
 
       # Updates an Editor Interface
