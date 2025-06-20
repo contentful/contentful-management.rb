@@ -1,6 +1,7 @@
 # Change Log
 
 ### Unreleased
+* Add support for general editor interfaces endpoint
 
 ## 3.10.1
 * Updated Ruby version requirements in gemspec and CircleCI config
