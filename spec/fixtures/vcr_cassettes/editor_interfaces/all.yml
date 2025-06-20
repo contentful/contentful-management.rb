@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/oe3b689om6k5/environments/master/editor_interfaces
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.10.0; platform ruby/3.4.3; os macOS/24;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/5.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '5583'
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      Cf-Space-Id:
+      - oe3b689om6k5
+      Cf-Environment-Id:
+      - master
+      Cf-Environment-Uuid:
+      - master
+      X-Contentful-Route:
+      - "/spaces/:space/environments/:environment/editor_interfaces"
+      Etag:
+      - '"1358933671436039259"'
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - Contentful
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,CF-Context,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace,X-Contentful-Comment-Body-Format,X-Contentful-Parent-Entity-Reference,X-Contentful-Include-Invocation-Metadata,X-Contentful-Async-Ai-Action
+      Access-Control-Expose-Headers:
+      - Etag,x-contentful-request-id,x-contentful-ai-actions-ratelimit-reset
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Fri, 20 Jun 2025 12:56:28 GMT
+      X-Contentful-Request-Id:
+      - fc76cc7a-be78-4e41-9ac2-604f55ad634f
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sys":{"type":"Array"},"total":8,"items":[{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":2,"createdAt":"2025-02-12T10:25:48.347Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2025-02-12T10:25:49.441Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"aaa","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"title","widgetId":"singleLine","widgetNamespace":"builtin"},{"fieldId":"bar","widgetId":"richTextEditor","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":2,"createdAt":"2024-05-24T17:30:14.460Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2024-05-24T17:30:15.365Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"author","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"name","widgetId":"singleLine","widgetNamespace":"builtin"},{"fieldId":"avatar","widgetId":"assetLinkEditor","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":4,"createdAt":"2025-03-21T05:51:01.897Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2025-03-21T06:40:13.391Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"blogPost","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"title","widgetId":"singleLine","widgetNamespace":"builtin"},{"fieldId":"body","widgetId":"singleLine","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":2,"createdAt":"2024-05-04T08:09:45.250Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2024-05-04T08:09:46.204Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"category","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"title","widgetId":"singleLine","widgetNamespace":"builtin"},{"fieldId":"photo","widgetId":"assetLinkEditor","widgetNamespace":"builtin"},{"fieldId":"subCategory","widgetId":"entryLinkEditor","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":2,"createdAt":"2022-12-25T18:51:16.158Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2022-12-25T18:51:16.936Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"crossSpace","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"title","widgetId":"singleLine","widgetNamespace":"builtin"},{"fieldId":"singleSpace","widgetId":"resourceLinkEditor","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":4,"createdAt":"2024-07-25T21:05:25.045Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2024-07-25T21:05:51.516Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"footer","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"id","widgetId":"numberEditor","widgetNamespace":"builtin"},{"fieldId":"dag","widgetId":"singleLine","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":2,"createdAt":"2024-07-25T21:13:26.095Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2024-07-25T21:13:26.814Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"oneWithDefaultValue","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"title","widgetId":"singleLine","widgetNamespace":"builtin"}]},{"sys":{"type":"EditorInterface","space":{"sys":{"id":"oe3b689om6k5","type":"Link","linkType":"Space"}},"version":8,"createdAt":"2024-05-24T17:26:07.699Z","createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedAt":"2024-05-24T17:29:32.411Z","updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"contentType":{"sys":{"id":"post","type":"Link","linkType":"ContentType"}},"environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}}},"controls":[{"fieldId":"fTitle","widgetId":"singleLine","widgetNamespace":"builtin"},{"fieldId":"same","widgetId":"entryLinkEditor","widgetNamespace":"builtin"},{"fieldId":"different","widgetId":"resourceLinkEditor","widgetNamespace":"builtin"}]}]}
+
+        '
+  recorded_at: Fri, 20 Jun 2025 12:56:28 GMT
+recorded_with: VCR 6.2.0

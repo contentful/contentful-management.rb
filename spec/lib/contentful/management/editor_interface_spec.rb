@@ -25,6 +25,15 @@ module Contentful
 
       subject { client.editor_interfaces(space_id, 'master', content_type_id) }
 
+      describe '.all' do
+        it 'class method also works' do
+          vcr('editor_interfaces/all') { expect(Contentful::Management::EditorInterface.all(client, space_id, 'master')).to be_kind_of Contentful::Management::Array }
+        end
+        it 'builds a Contentful::Management::Entry object' do
+          vcr('editor_interfaces/all') { expect(Contentful::Management::EditorInterface.all(client, space_id, 'master').first).to be_kind_of Contentful::Management::EditorInterface }
+        end
+      end
+
       describe '.default' do
         it 'class method also works' do
           vcr('editor_interfaces/default_for_space') { expect(Contentful::Management::EditorInterface.default(client, space_id, 'master', content_type_id)).to be_kind_of Contentful::Management::EditorInterface }
