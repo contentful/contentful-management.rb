@@ -1,6 +1,8 @@
 # Change Log
 
 ### Unreleased
+
+## 3.11.0
 * Add support for general editor interfaces endpoint
 
 ## 3.10.1
