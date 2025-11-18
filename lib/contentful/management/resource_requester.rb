@@ -54,6 +54,17 @@ module Contentful
       end
       alias unpublish unarchive
 
+      def patch(endpoint_options = {}, attributes = {}, headers = {})
+        request = Request.new(
+          client,
+          resource_class.build_endpoint(endpoint_options),
+          attributes,
+          nil,
+          headers
+        )
+        ResourceBuilder.new(client.patch(request), client).run
+      end
+
       private
 
       def resource_class?(object)

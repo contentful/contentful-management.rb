@@ -370,6 +370,26 @@ module Contentful
             expect(asset.file.properties[:fileName]).to eq 'codequest.jpg'
           end
         end
+
+        it 'updates asset with concepts' do
+          vcr('asset/update_with_concepts') do
+            asset = subject.find('56PfMcxCLyzuXP3k7k0yL5')
+            concepts = [
+              {
+                'sys' => {
+                  'type' => 'Link',
+                  'linkType' => 'TaxonomyConcept',
+                  'id' => 'livingRoom'
+                }
+              }
+            ]
+            asset.update(_metadata: { concepts: concepts, tags: [] })
+            expect(asset._metadata[:concepts]).to be_a(::Array)
+            expect(asset._metadata[:concepts].first).to be_a(Contentful::Management::Link)
+            expect(asset._metadata[:concepts].first.id).to eq('livingRoom')
+            expect(asset._metadata[:concepts].first.link_type).to eq('TaxonomyConcept')
+          end
+        end
       end
       describe '#save' do
         it 'updated' do

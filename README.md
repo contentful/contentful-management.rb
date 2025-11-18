@@ -711,6 +711,34 @@ Tagging an asset:
 asset.update(_metadata: {"tags": [{ "sys": { "type": "Link", "linkType": "Tag", "id": "fooTag" } }]})
 ```
 
+### Concepts
+
+Adding concepts to an entry:
+
+```ruby
+entry.update(_metadata: {"concepts": [{ "sys": { "type": "Link", "linkType": "TaxonomyConcept", "id": "concept_id" } }]})
+```
+
+Adding concepts to an asset:
+
+```ruby
+asset.update(_metadata: {"concepts": [{ "sys": { "type": "Link", "linkType": "TaxonomyConcept", "id": "concept_id" } }]})
+```
+
+Adding concepts to a content type:
+
+```ruby
+content_type.update(_metadata: {"concepts": [{ "sys": { "type": "Link", "linkType": "TaxonomyConcept", "id": "concept_id" } }]})
+```
+
+Removing concepts from an entry, asset, or content type:
+
+```ruby
+entry.update(_metadata: {"concepts": [], "tags": []})
+asset.update(_metadata: {"concepts": [], "tags": []})
+content_type.update(_metadata: {"concepts": []})
+```
+
 ### Roles
 
 Retrieving all roles from the space:
@@ -970,6 +998,104 @@ Retrieving one user by ID from the space:
 
 ```ruby
 user = blog_space.users.find('user_id')
+```
+
+### Taxonomy
+
+Retrieving all concepts from an organization:
+
+```ruby
+concepts = client.taxonomy_concepts('organization_id').all
+```
+
+Retrieving one concept by ID from an organization:
+
+```ruby
+concept = client.taxonomy_concepts('organization_id').find('concept_id')
+```
+
+Creating a concept:
+
+```ruby
+client.taxonomy_concepts('organization_id').create(prefLabel: { 'en-US' => 'Bicycles' })
+```
+
+Creating a concept with a user-defined ID:
+
+```ruby
+client.taxonomy_concepts('organization_id').create(id: 'my-custom-id', prefLabel: { 'en-US' => 'Bicycles' })
+```
+
+Updating a concept:
+
+```ruby
+concept.update([
+  { op: 'add', path: '/prefLabel/en-US', value: 'New Label' }
+])
+```
+
+Destroying a concept:
+
+```ruby
+concept.destroy
+```
+
+Fetching the ancestors of a concept:
+
+```ruby
+concept.ancestors
+```
+
+Fetching the descendants of a concept:
+
+```ruby
+concept.descendants
+```
+
+Fetching the total number of concepts:
+
+```ruby
+client.taxonomy_concepts('organization_id').total
+```
+
+### Concept Schemes
+
+Retrieving all concept schemes from an organization:
+
+```ruby
+concept_schemes = client.taxonomy_concept_schemes('organization_id').all
+```
+
+Retrieving one concept scheme by ID from an organization:
+
+```ruby
+concept_scheme = client.taxonomy_concept_schemes('organization_id').find('concept_scheme_id')
+```
+
+Updating a concept scheme:
+
+```ruby
+concept_scheme.update([
+  { op: 'add', path: '/prefLabel/en-US', value: 'New Scheme Name' }
+])
+```
+
+Destroying a concept scheme:
+
+```ruby
+concept_scheme.destroy
+```
+
+Creating a concept scheme:
+
+```ruby
+client.taxonomy_concept_schemes('organization_id').create(prefLabel: { 'en-US' => 'New Scheme' })
+```
+
+Fetching the total number of concept schemes:
+
+```ruby
+client.taxonomy_concept_schemes('organization_id').total
 ```
 
 ### UI Extensions

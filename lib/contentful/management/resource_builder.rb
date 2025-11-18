@@ -28,6 +28,8 @@ require_relative 'editor_interface'
 require_relative 'space_periodic_usage'
 require_relative 'personal_access_token'
 require_relative 'organization_periodic_usage'
+require_relative 'taxonomy_concept'
+require_relative 'taxonomy_concept_scheme'
 
 module Contentful
   module Management
@@ -62,7 +64,9 @@ module Contentful
         'EditorInterface' => Contentful::Management::EditorInterface,
         'Snapshot' => Contentful::Management::Snapshot,
         'Upload' => Contentful::Management::Upload,
-        'Tag' => Contentful::Management::Tag
+        'Tag' => Contentful::Management::Tag,
+        'TaxonomyConcept' => Contentful::Management::TaxonomyConcept,
+        'TaxonomyConceptScheme' => Contentful::Management::TaxonomyConceptScheme
       }.freeze
 
       # Default Entry Mapping

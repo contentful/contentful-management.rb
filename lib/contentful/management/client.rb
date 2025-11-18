@@ -35,6 +35,8 @@ require 'contentful/management/client_editor_interface_methods_factory'
 require 'contentful/management/client_space_periodic_usage_methods_factory'
 require 'contentful/management/client_personal_access_tokens_methods_factory'
 require 'contentful/management/client_organization_periodic_usage_methods_factory'
+require 'contentful/management/client_taxonomy_concept_methods_factory'
+require 'contentful/management/client_taxonomy_concept_scheme_methods_factory'
 
 module Contentful
   module Management
@@ -150,6 +152,24 @@ module Contentful
       # @return [Contentful::Management::ClientSpacePeriodicUsageMethodsFactory]
       def space_periodic_usages(organization_id)
         ClientSpacePeriodicUsageMethodsFactory.new(self, organization_id)
+      end
+
+      # Allows manipulation of taxonomy concepts in context of the current client
+      # Allows listing all taxonomy concepts for client, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientTaxonomyConceptMethodsFactory]
+      def taxonomy_concepts(organization_id)
+        ClientTaxonomyConceptMethodsFactory.new(self, organization_id)
+      end
+
+      # Allows manipulation of taxonomy concept schemes in context of the current client
+      # Allows listing all taxonomy concept schemes for client, creating new and finding one by ID.
+      # @see _ README for details.
+      #
+      # @return [Contentful::Management::ClientTaxonomyConceptSchemeMethodsFactory]
+      def taxonomy_concept_schemes(organization_id)
+        ClientTaxonomyConceptSchemeMethodsFactory.new(self, organization_id)
       end
 
       # Allows viewing of users in context of the current client
@@ -471,6 +491,13 @@ module Contentful
       def put(request)
         execute_request(request) do |url|
           http_send(:put, url, { json: request.query }, request_headers(request), proxy_parameters)
+        end
+      end
+
+      # @private
+      def patch(request)
+        execute_request(request) do |url|
+          http_send(:patch, url, { json: request.query }, request_headers(request), proxy_parameters)
         end
       end
 

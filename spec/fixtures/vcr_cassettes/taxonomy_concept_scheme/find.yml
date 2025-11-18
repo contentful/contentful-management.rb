@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/4kQeJmhUWIKtNNmMkketza/taxonomy/concept-schemes/2hNivoHTKM4MbTM4519T5E
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.11.0; platform ruby/3.4.3; os macOS/24;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/5.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '617'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Route:
+      - "/organizations/:organizationId/taxonomy/concept-schemes/:id"
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - Contentful
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - taxonomy-service
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,CF-Context,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace,X-Contentful-Comment-Body-Format,X-Contentful-Parent-Entity-Reference,X-Contentful-Include-Invocation-Metadata,X-Contentful-Async-Ai-Action,x-contentful-ai-actions-platform
+      Access-Control-Expose-Headers:
+      - Etag,x-contentful-request-id,x-contentful-ai-actions-ratelimit-reset
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Date:
+      - Wed, 22 Oct 2025 13:07:06 GMT
+      X-Contentful-Request-Id:
+      - ffe98bdc-198d-4b52-8d3f-e276895ba69a
+      Strict-Transport-Security:
+      - max-age=15768000
+    body:
+      encoding: UTF-8
+      string: '{"sys":{"id":"2hNivoHTKM4MbTM4519T5E","type":"TaxonomyConceptScheme","createdAt":"2025-09-14T06:37:32.431Z","updatedAt":"2025-09-15T12:42:23.839Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":3},"uri":null,"topConcepts":[],"concepts":[{"sys":{"id":"greenSofas","type":"Link","linkType":"TaxonomyConcept"}}],"totalConcepts":1,"prefLabel":{"en-US":"Home
+        Products"},"definition":{"en-US":""}}'
+  recorded_at: Wed, 22 Oct 2025 13:07:06 GMT
+recorded_with: VCR 6.2.0

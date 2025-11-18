@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/56PfMcxCLyzuXP3k7k0yL5
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.11.0; platform ruby/3.4.3; os macOS/24;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/5.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1440'
+      Date:
+      - Tue, 18 Nov 2025 04:29:14 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Server-Timing:
+      - miss, origin;dur=52
+      Access-Control-Max-Age:
+      - '1728000'
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - Contentful
+      X-Contentful-Request-Id:
+      - 518c617e-27ff-46c2-acb1-6e0c9f510e44
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Cf-Context,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace,X-Contentful-Comment-Body-Format,X-Contentful-Parent-Entity-Reference,X-Contentful-Personal-Intercept,X-Contentful-Include-Invocation-Metadata,X-Contentful-Async-Ai-Action,x-contentful-ai-actions-platform
+      Access-Control-Expose-Headers:
+      - Etag,x-contentful-request-id,x-contentful-ai-actions-ratelimit-reset
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      X-Served-By:
+      - cache-nyc-kteb1890020-NYC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"metadata":{"tags":[],"concepts":[]},"sys":{"space":{"sys":{"type":"Link","linkType":"Space","id":"yr5m0jky5hsh"}},"id":"56PfMcxCLyzuXP3k7k0yL5","type":"Asset","createdAt":"2025-09-20T09:30:12.704Z","updatedAt":"2025-11-18T04:29:03.406Z","environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}},"publishedVersion":16,"publishedAt":"2025-11-18T04:29:03.406Z","firstPublishedAt":"2025-09-20T09:32:24.031Z","createdBy":{"sys":{"type":"Link","linkType":"User","id":"59Erm8D1JuuD273aXNb65T"}},"updatedBy":{"sys":{"type":"Link","linkType":"User","id":"59Erm8D1JuuD273aXNb65T"}},"publishedCounter":2,"version":17,"publishedBy":{"sys":{"type":"Link","linkType":"User","id":"59Erm8D1JuuD273aXNb65T"}},"fieldStatus":{"*":{"en-US":"published"}},"urn":"crn:contentful:::content:spaces/yr5m0jky5hsh/environments/master/assets/56PfMcxCLyzuXP3k7k0yL5"},"fields":{"title":{"en-US":"Casa
+        Padrino Designer Sofa"},"description":{"en-US":null},"file":{"en-US":{"url":"https://images.secure.ctfassets.net/yr5m0jky5hsh/56PfMcxCLyzuXP3k7k0yL5/3f0dab93b4941ef001a2fbc1491f7237/Casa-Padrino-Designer-Sofa-Gruen-315-x-82-x-H--70-cm-Wohnzimmer-Sofa-Loft-Sofa-Hotel-Sofa-Lobby-Sofa-Luxus-Qualitaet-114738_.JPG","details":{"size":173982,"image":{"width":1200,"height":809}},"fileName":"Casa-Padrino-Designer-Sofa-Gruen-315-x-82-x-H--70-cm-Wohnzimmer-Sofa-Loft-Sofa-Hotel-Sofa-Lobby-Sofa-Luxus-Qualitaet-114738_1.JPG","contentType":"image/jpeg"}}}}
+
+        '
+  recorded_at: Tue, 18 Nov 2025 04:29:13 GMT
+- request:
+    method: put
+    uri: https://api.contentful.com/spaces/yr5m0jky5hsh/environments/master/assets/56PfMcxCLyzuXP3k7k0yL5
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"title":{"en-US":"Casa Padrino Designer Sofa"},"description":{"en-US":null},"file":{"en-US":{"details":{"size":173982,"image":{"width":1200,"height":809}},"url":"https://images.secure.ctfassets.net/yr5m0jky5hsh/56PfMcxCLyzuXP3k7k0yL5/3f0dab93b4941ef001a2fbc1491f7237/Casa-Padrino-Designer-Sofa-Gruen-315-x-82-x-H--70-cm-Wohnzimmer-Sofa-Loft-Sofa-Hotel-Sofa-Lobby-Sofa-Luxus-Qualitaet-114738_.JPG","fileName":"Casa-Padrino-Designer-Sofa-Gruen-315-x-82-x-H--70-cm-Wohnzimmer-Sofa-Loft-Sofa-Hotel-Sofa-Lobby-Sofa-Luxus-Qualitaet-114738_1.JPG","contentType":"image/jpeg"}}},"metadata":{"concepts":[{"sys":{"type":"Link","linkType":"TaxonomyConcept","id":"livingRoom"}}],"tags":[]}}'
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.11.0; platform ruby/3.4.3; os macOS/24;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      X-Contentful-Version:
+      - '17'
+      Version:
+      - '17'
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/5.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1508'
+      Date:
+      - Tue, 18 Nov 2025 04:29:15 GMT
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Server-Timing:
+      - miss, origin;dur=145
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Access-Control-Expose-Headers:
+      - Etag,x-contentful-request-id,x-contentful-ai-actions-ratelimit-reset
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - Contentful
+      X-Contentful-Request-Id:
+      - 1a34ef82-1cb5-43f5-b7ab-ab9d6e32e2a2
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - content-api
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,Cf-Context,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace,X-Contentful-Comment-Body-Format,X-Contentful-Parent-Entity-Reference,X-Contentful-Personal-Intercept,X-Contentful-Include-Invocation-Metadata,X-Contentful-Async-Ai-Action,x-contentful-ai-actions-platform
+      X-Served-By:
+      - cache-nyc-kteb1890024-NYC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"metadata":{"tags":[],"concepts":[{"sys":{"type":"Link","linkType":"TaxonomyConcept","id":"livingRoom"}}]},"sys":{"space":{"sys":{"type":"Link","linkType":"Space","id":"yr5m0jky5hsh"}},"id":"56PfMcxCLyzuXP3k7k0yL5","type":"Asset","createdAt":"2025-09-20T09:30:12.704Z","updatedAt":"2025-11-18T04:29:15.793Z","environment":{"sys":{"id":"master","type":"Link","linkType":"Environment"}},"publishedVersion":16,"publishedAt":"2025-11-18T04:29:03.406Z","firstPublishedAt":"2025-09-20T09:32:24.031Z","createdBy":{"sys":{"type":"Link","linkType":"User","id":"59Erm8D1JuuD273aXNb65T"}},"updatedBy":{"sys":{"type":"Link","linkType":"User","id":"59Erm8D1JuuD273aXNb65T"}},"publishedCounter":2,"version":18,"publishedBy":{"sys":{"type":"Link","linkType":"User","id":"59Erm8D1JuuD273aXNb65T"}},"fieldStatus":{"*":{"en-US":"changed"}},"urn":"crn:contentful:::content:spaces/yr5m0jky5hsh/environments/master/assets/56PfMcxCLyzuXP3k7k0yL5"},"fields":{"title":{"en-US":"Casa
+        Padrino Designer Sofa"},"description":{"en-US":null},"file":{"en-US":{"url":"https://images.secure.ctfassets.net/yr5m0jky5hsh/56PfMcxCLyzuXP3k7k0yL5/3f0dab93b4941ef001a2fbc1491f7237/Casa-Padrino-Designer-Sofa-Gruen-315-x-82-x-H--70-cm-Wohnzimmer-Sofa-Loft-Sofa-Hotel-Sofa-Lobby-Sofa-Luxus-Qualitaet-114738_.JPG","details":{"size":173982,"image":{"width":1200,"height":809}},"fileName":"Casa-Padrino-Designer-Sofa-Gruen-315-x-82-x-H--70-cm-Wohnzimmer-Sofa-Loft-Sofa-Hotel-Sofa-Lobby-Sofa-Luxus-Qualitaet-114738_1.JPG","contentType":"image/jpeg"}}}}
+
+        '
+  recorded_at: Tue, 18 Nov 2025 04:29:15 GMT
+recorded_with: VCR 6.2.0

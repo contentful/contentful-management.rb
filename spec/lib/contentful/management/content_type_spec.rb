@@ -6,6 +6,7 @@ module Contentful
   module Management
     describe ContentType do
       let(:token) { ENV.fetch('CF_TEST_CMA_TOKEN', '<ACCESS_TOKEN>') }
+
       let(:space_id) { 'yr5m0jky5hsh' }
       let!(:client) { Client.new(token) }
       let(:content_type_id) { '5DSpuKrl04eMAGQoQckeIq' }
@@ -350,6 +351,27 @@ module Contentful
             field = content_type.fields.first
             content_type.update(fields: [field])
             expect(content_type.fields.size).to eq 1
+          end
+        end
+
+        it 'updates content_type with metadata' do
+          vcr('content_type/update_with_metadata') do
+            content_type = subject.find('author')
+            metadata = {
+              taxonomy: [
+                {
+                  'sys' => {
+                    'type' => 'Link',
+                    'linkType' => 'TaxonomyConcept',
+                    'id' => 'newConcept'
+                  }
+                }
+              ]
+            }
+            content_type.update(_metadata: metadata)
+            expect(content_type._metadata[:taxonomy]).to be_truthy
+            expect(content_type._metadata[:taxonomy].first['sys']['id']).to eq 'newConcept'
+            expect(content_type._metadata[:taxonomy].first['sys']['linkType']).to eq 'TaxonomyConcept'
           end
         end
 

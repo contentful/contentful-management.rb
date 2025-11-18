@@ -30,8 +30,11 @@ module Contentful
           return unless object.key?('metadata')
 
           object['metadata'].each do |key, value|
-            @_metadata[key.to_sym] = if key == 'tags'
+            @_metadata[key.to_sym] = case key
+                                     when 'tags'
                                        coerce_tags(value)
+                                     when 'concepts'
+                                       coerce_concepts(value)
                                      else
                                        value
                                      end
@@ -40,6 +43,10 @@ module Contentful
 
         def coerce_tags(tags)
           tags.map { |tag| Contentful::Management::Link.new(tag) }
+        end
+
+        def coerce_concepts(concepts)
+          concepts.map { |concept| Contentful::Management::Link.new(concept) }
         end
       end
     end

@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.contentful.com/organizations/4kQeJmhUWIKtNNmMkketza/taxonomy/concepts
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      X-Contentful-User-Agent:
+      - sdk contentful-management.rb/3.11.0; platform ruby/3.4.3; os macOS/24;
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Content-Type:
+      - application/vnd.contentful.management.v1+json
+      Connection:
+      - close
+      Host:
+      - api.contentful.com
+      User-Agent:
+      - http.rb/5.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '6642'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Contentful-Ratelimit-Hour-Remaining:
+      - '35999'
+      X-Contentful-Ratelimit-Second-Remaining:
+      - '9'
+      X-Contentful-Ratelimit-Hour-Limit:
+      - '36000'
+      X-Contentful-Ratelimit-Second-Limit:
+      - '10'
+      X-Contentful-Ratelimit-Reset:
+      - '0'
+      X-Contentful-Route:
+      - "/organizations/:organizationId/taxonomy/concepts"
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - Contentful
+      Contentful-Api:
+      - cma
+      Contentful-Upstream:
+      - taxonomy-service
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept,Accept-Language,Authorization,Cache-Control,CF-Context,Content-Length,Content-Range,Content-Type,DNT,Destination,Expires,If-Match,If-Modified-Since,If-None-Match,Keep-Alive,Last-Modified,Origin,Pragma,Range,User-Agent,X-Http-Method-Override,X-Mx-ReqToken,X-Requested-With,X-Contentful-Version,X-Contentful-Content-Type,X-Contentful-Organization,X-Contentful-Skip-Transformation,X-Contentful-Tag-Visibility,X-Contentful-User-Agent,X-Contentful-Enable-Alpha-Feature,X-Contentful-Source-Environment,X-Contentful-Team,X-Contentful-Parent-Id,x-contentful-validate-only,X-Contentful-Skip-UI-Draft-Validation,X-Contentful-Marketplace,X-Contentful-UI-Content-Auto-Save,cf-trace,X-Contentful-Comment-Body-Format,X-Contentful-Parent-Entity-Reference,X-Contentful-Include-Invocation-Metadata,X-Contentful-Async-Ai-Action,x-contentful-ai-actions-platform
+      Access-Control-Expose-Headers:
+      - Etag,x-contentful-request-id,x-contentful-ai-actions-ratelimit-reset
+      Access-Control-Allow-Methods:
+      - DELETE,GET,HEAD,POST,PUT,PATCH,OPTIONS
+      Access-Control-Max-Age:
+      - '1728000'
+      Date:
+      - Wed, 22 Oct 2025 12:48:20 GMT
+      Vary:
+      - accept-encoding
+      X-Contentful-Request-Id:
+      - 536c654f-1bb5-42d9-bea5-f644ab742812
+      Strict-Transport-Security:
+      - max-age=15768000
+    body:
+      encoding: UTF-8
+      string: '{"sys":{"type":"Array"},"limit":100,"items":[{"sys":{"id":"newConcept","type":"TaxonomyConcept","createdAt":"2025-07-07T10:55:02.436Z","updatedAt":"2025-07-07T10:55:02.436Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"NewConcept"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":{"en-US":""},"changeNote":null,"definition":{"en-US":""},"editorialNote":{"en-US":""},"example":{"en-US":""},"historyNote":{"en-US":""},"scopeNote":{"en-US":""}},{"sys":{"id":"travels","type":"TaxonomyConcept","createdAt":"2025-07-09T10:51:38.536Z","updatedAt":"2025-07-09T10:51:38.536Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"travels"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":{"en-US":""},"changeNote":null,"definition":{"en-US":""},"editorialNote":{"en-US":""},"example":{"en-US":""},"historyNote":{"en-US":""},"scopeNote":{"en-US":""}},{"sys":{"id":"3VgXIOahV6RnBj9eNS27Ii","type":"TaxonomyConcept","createdAt":"2025-08-29T17:42:35.659Z","updatedAt":"2025-08-29T17:42:35.659Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"TestConcept"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":null,"changeNote":null,"definition":null,"editorialNote":null,"example":null,"historyNote":null,"scopeNote":null},{"sys":{"id":"livingRoom","type":"TaxonomyConcept","createdAt":"2025-09-14T05:44:44.737Z","updatedAt":"2025-09-14T05:44:44.737Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[{"sys":{"id":"3VgXIOahV6RnBj9eNS27Ii","type":"Link","linkType":"TaxonomyConcept"}}],"related":[],"prefLabel":{"en-US":"Living
+        Room"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":{"en-US":""},"changeNote":null,"definition":{"en-US":""},"editorialNote":{"en-US":""},"example":{"en-US":""},"historyNote":{"en-US":""},"scopeNote":{"en-US":""}},{"sys":{"id":"greenSofas","type":"TaxonomyConcept","createdAt":"2025-09-15T12:42:23.365Z","updatedAt":"2025-09-15T12:42:23.365Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[{"sys":{"id":"2hNivoHTKM4MbTM4519T5E","type":"Link","linkType":"TaxonomyConceptScheme"}}],"broader":[],"related":[],"prefLabel":{"en-US":"Green
+        Sofas"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":{"en-US":""},"changeNote":null,"definition":{"en-US":""},"editorialNote":{"en-US":""},"example":{"en-US":""},"historyNote":{"en-US":""},"scopeNote":{"en-US":""}},{"sys":{"id":"2XNycpseeXuwg7fLaz714K","type":"TaxonomyConcept","createdAt":"2025-10-20T20:24:39.921Z","updatedAt":"2025-10-20T20:24:39.921Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"New
+        Concept"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":null,"changeNote":null,"definition":null,"editorialNote":null,"example":null,"historyNote":null,"scopeNote":null},{"sys":{"id":"5ejvc1yS311jvoLouusoLx","type":"TaxonomyConcept","createdAt":"2025-10-21T14:05:47.263Z","updatedAt":"2025-10-21T14:05:47.263Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"Bicycles"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":null,"changeNote":null,"definition":null,"editorialNote":null,"example":null,"historyNote":null,"scopeNote":null},{"sys":{"id":"1l7DItL3OMCR7d5m8RRyNS","type":"TaxonomyConcept","createdAt":"2025-10-22T12:42:29.057Z","updatedAt":"2025-10-22T12:42:29.057Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"Bicycles"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":null,"changeNote":null,"definition":null,"editorialNote":null,"example":null,"historyNote":null,"scopeNote":null},{"sys":{"id":"my-custom-id","type":"TaxonomyConcept","createdAt":"2025-10-22T12:45:51.095Z","updatedAt":"2025-10-22T12:45:51.095Z","organization":{"sys":{"id":"4kQeJmhUWIKtNNmMkketza","type":"Link","linkType":"Organization"}},"createdBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"updatedBy":{"sys":{"id":"59Erm8D1JuuD273aXNb65T","type":"Link","linkType":"User"}},"version":1},"uri":null,"notations":[],"conceptSchemes":[],"broader":[],"related":[],"prefLabel":{"en-US":"Custom
+        Bicycles"},"altLabels":{"en-US":[]},"hiddenLabels":{"en-US":[]},"note":null,"changeNote":null,"definition":null,"editorialNote":null,"example":null,"historyNote":null,"scopeNote":null}],"pages":{}}'
+  recorded_at: Wed, 22 Oct 2025 12:48:19 GMT
+recorded_with: VCR 6.2.0

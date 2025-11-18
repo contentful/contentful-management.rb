@@ -7,6 +7,7 @@ require_relative 'validation'
 require_relative 'resource/publisher'
 require_relative 'resource/all_published'
 require_relative 'resource/environment_aware'
+require_relative 'resource/metadata'
 require_relative 'content_type_entry_methods_factory'
 require_relative 'content_type_snapshot_methods_factory'
 require_relative 'content_type_editor_interface_methods_factory'
@@ -37,6 +38,7 @@ module Contentful
       extend Contentful::Management::Resource::AllPublished
       include Contentful::Management::Resource::EnvironmentAware
       include Contentful::Management::Resource::SystemProperties
+      include Contentful::Management::Resource::Metadata
 
       property :name, :string
       property :description, :string
@@ -170,6 +172,7 @@ module Contentful
         parameters[:name] = attributes[:name] || name
         parameters[:description] = attributes[:description] || description
         parameters[:fields] = self.class.fields_to_nested_properties_hash(attributes[:fields] || fields)
+        parameters[:metadata] = attributes.delete(:_metadata) if attributes.key?(:_metadata)
 
         parameters.delete_if { |_, v| v.nil? }
       end
