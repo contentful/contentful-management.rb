@@ -2,6 +2,13 @@
 
 ### Unreleased
 
+## 3.11.0
+* Add support for general editor interfaces endpoint
+
+## 3.10.1
+* Updated Ruby version requirements in gemspec and CircleCI config
+* Added support for Ruby 3.4 in CI/CD pipeline
+
 ## 3.10.0
 * Added defaultValue field property
 * Added delete field property
@@ -258,7 +265,7 @@ The proxies, apart from the parameter re-shuffling, have kept the same interface
 * Added Personal Access Tokens Endpoint.
 
 ### Changed
-* Rewrote HTTP internals in order to allow base-level resources and simplified Client.
+* Rewritten HTTP internals in order to allow base-level resources and simplified Client.
 
 ## 1.8.1
 ### Added

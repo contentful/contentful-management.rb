@@ -314,7 +314,7 @@ describe Contentful::Management::Error do
       it 'returns the json parser\'s message' do
         uj = Contentful::Management::Response.new raw_fixture('unparsable'), MockRequest.new
         expect(Contentful::Management::UnparsableJson.new(uj).message).to \
-            include 'unexpected token'
+            include "expected ',' or '}' after object value"
       end
     end
   end
