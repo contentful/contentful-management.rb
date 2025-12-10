@@ -1,6 +1,7 @@
 # Change Log
 
 ### Unreleased
+* Add support for Taxonomy endpoints
 
 ## 3.11.0
 * Add support for general editor interfaces endpoint

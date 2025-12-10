@@ -555,6 +555,27 @@ describe Contentful::Management::Entry do
         expect(p.fields).to match(expected)
       end
     end
+
+    it 'can update entry with concepts' do
+      vcr('entry/update_with_concepts') do
+        entry = subject.find('2aJVtypYfQajNbNN9TvEfd')
+        concepts = [
+          {
+            'sys' => {
+              'type' => 'Link',
+              'linkType' => 'TaxonomyConcept',
+              'id' => 'livingRoom'
+            }
+          }
+        ]
+        entry.update(_metadata: { concepts: concepts, tags: [] })
+        expect(entry._metadata[:concepts]).to be_a(::Array)
+        expect(entry._metadata[:concepts].first).to be_a(Contentful::Management::Link)
+        expect(entry._metadata[:concepts].first.id).to eq('livingRoom')
+        expect(entry._metadata[:concepts].first.link_type).to eq('TaxonomyConcept')
+      end
+    end
+
   end
 
   describe '#save' do
