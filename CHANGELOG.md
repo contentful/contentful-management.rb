@@ -1,6 +1,8 @@
 # Change Log
 
 ### Unreleased
+
+## 3.12.1
 * Add support for creating concept schemes with user-defined ID
 
 ## 3.12.0
