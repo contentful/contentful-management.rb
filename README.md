@@ -1092,6 +1092,12 @@ Creating a concept scheme:
 client.taxonomy_concept_schemes('organization_id').create(prefLabel: { 'en-US' => 'New Scheme' })
 ```
 
+Creating a concept scheme with a user-defined ID:
+
+```ruby
+client.taxonomy_concept_schemes('organization_id').create(id: 'my-custom-scheme-id', prefLabel: { 'en-US' => 'New Scheme' })
+```
+
 Fetching the total number of concept schemes:
 
 ```ruby
