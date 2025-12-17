@@ -53,7 +53,10 @@ module Contentful
       def self.create(client, organization_id, attributes)
         requester = ResourceRequester.new(client, self)
         requester.create(
-          { organization_id: organization_id },
+          {
+            organization_id: organization_id,
+            id: attributes[:id]
+          }.compact,
           attributes
         )
       end

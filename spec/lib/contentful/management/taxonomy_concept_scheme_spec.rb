@@ -53,6 +53,18 @@ module Contentful
             expect(scheme.pref_label['en-US']).to eq('New Scheme')
           end
         end
+
+        it 'creates a taxonomy concept scheme with a user-defined id' do
+          vcr('taxonomy_concept_scheme/create_with_id') do
+            scheme = subject.create(
+              id: 'custom-scheme-id',
+              prefLabel: { 'en-US' => 'Custom Bike' }
+            )
+            expect(scheme).to be_a(Contentful::Management::TaxonomyConceptScheme)
+            expect(scheme.id).to eq('custom-scheme-id')
+            expect(scheme.pref_label['en-US']).to eq('Custom Bike')
+          end
+        end
       end
 
       describe '#update' do

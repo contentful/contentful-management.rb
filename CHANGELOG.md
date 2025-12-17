@@ -1,6 +1,7 @@
 # Change Log
 
 ### Unreleased
+* Add support for creating concept schemes with user-defined ID
 
 ## 3.12.0
 * Add support for Taxonomy endpoints
