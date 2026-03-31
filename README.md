@@ -4,7 +4,6 @@
 Ruby client for the Contentful Content Management API (CMA).
 
 [Contentful](https://www.contentful.com) provides a content infrastructure for digital teams to power content in websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship digital products faster.
-
 ## Setup
 
 Add this line to your application's Gemfile:
