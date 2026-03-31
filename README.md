@@ -1,5 +1,5 @@
 # Contentful::Management
-[![Gem Version](https://badge.fury.io/rb/contentful-management.svg)](http://badge.fury.io/rb/contentful-management) [![CircleCI](https://circleci.com/gh/contentful/contentful-management.rb/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/contentful/contentful-management.rb?branch=master)
+[![Gem Version](https://badge.fury.io/rb/contentful-management.svg)](http://badge.fury.io/rb/contentful-management) [![CI](https://github.com/contentful/contentful-management.rb/actions/workflows/ci.yml/badge.svg)](https://github.com/contentful/contentful-management.rb/actions/workflows/ci.yml)
 
 Ruby client for the Contentful Content Management API (CMA).
 
@@ -1375,7 +1375,17 @@ is blocking per execution thread.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/contentful-management/fork )
+For a reproducible local setup, open this repository in its included dev container. The container installs the project dependencies automatically when it is created.
+
+After the container is ready, run:
+
+```bash
+bundle exec rake rspec_rubocop
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contributor workflow.
+
+1. Fork it ( https://github.com/[my-github-username]/contentful-management.rb/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
