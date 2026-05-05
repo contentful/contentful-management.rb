@@ -1,0 +1,37 @@
+Critical invariants for the contentful-management.rb SDK:
+
+RAISE_ERRORS DEFAULT
+- The client defaults to raise_errors: false. Errors are returned as Contentful::Management::Error objects, not raised. Code that calls the SDK must check the response type — `response.is_a?(Contentful::Management::Error)` — unless raise_errors: true is explicitly set. Missing this check is the most common source of silent failures.
+
+VERSIONING
+- Every mutating operation (update, publish, unpublish, archive, unarchive, destroy) passes sys[:version] in the request. Stale versions result in HTTP 409 Conflict. Always re-fetch before retrying a mutating operation on a version conflict.
+
+FACTORY NAMING CONVENTION
+- The associated_class method in ClientAssociationMethodsFactory derives the resource class from the factory's class name by stripping "Client" and "MethodsFactory" from the name. ClientEntryMethodsFactory → Contentful::Management::Entry. This is convention magic — breaking it by renaming a factory without renaming the resource class will silently fail at runtime, not at load time.
+
+RESOURCE BUILDER COMPLETENESS
+- Every new resource type must be registered in ResourceBuilder::DEFAULT_RESOURCE_MAPPING. Missing entries cause UnparsableResource errors at runtime when the API returns that type.
+
+THREAD SAFETY
+- The client stores itself in Thread.current[:client] at initialization. Use one Client instance per thread. Sharing a client across threads produces undefined behavior.
+
+DYNAMIC ENTRY CACHE
+- If dynamic_entries is configured, the client fetches content type schemas at init and caches DynamicEntry subclasses. Schema changes after init are not automatically detected — refresh with client.update_dynamic_entry_cache_for_environment!(env) or reinitialize the client.
+
+SCOPE BOUNDARIES
+- Taxonomy resources (TaxonomyConcept, TaxonomyConceptScheme) are organization-scoped. Use organization_id, not space_id or environment_id.
+- Environment-scoped resources (entries, assets, content types, locales, tags, UI extensions) require both space_id and environment_id.
+- Space-scoped resources (webhooks, API keys, roles, uploads) take space_id only.
+
+TESTING
+- All tests use VCR cassettes for HTTP mocking. Never add tests that make live API calls. Never fabricate cassette YAML manually — always record against the real API with a valid management token.
+- Test files mirror source files: spec/lib/contentful/management/entry_spec.rb tests lib/contentful/management/entry.rb.
+
+DEFAULT BRANCH
+- The default branch is master, not main. PRs and releases target master.
+
+BUNDLER VERSION
+- Bundler is pinned at 2.3.26. Always invoke bundle commands as: bundle _2.3.26_ <command>.
+
+FROZEN STRING LITERALS
+- All lib/ source files must start with # frozen_string_literal: true.
