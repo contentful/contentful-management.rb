@@ -34,7 +34,7 @@ Read this file first. It tells you where to find context in this repo.
 - **Commit format:** Type-prefixed with optional ticket ID (`chore:`, `feat:`, `fix:`, `docs:`)
 - **Branch strategy:** `master` + feature branches; PRs target `master`
 - **Test location:** `spec/lib/contentful/management/<resource>_spec.rb` mirroring `lib/contentful/management/`
-- **HTTP mocking:** VCR cassettes in `spec/fixtures/` — no live API calls in tests
+- **HTTP mocking:** VCR cassettes in `spec/fixtures/vcr_cassettes/` — no live API calls in tests
 - **Frozen string literals:** All `lib/` files begin with `# frozen_string_literal: true`
 - **YARD docs:** All public methods documented; `@private` on internal methods
 

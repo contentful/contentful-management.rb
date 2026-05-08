@@ -49,10 +49,10 @@ graph TD
 | `lib/contentful/management/<resource>.rb` | One file per CMA resource type: `entry.rb`, `asset.rb`, `space.rb`, `environment.rb`, `content_type.rb`, etc. |
 | `lib/contentful/management/error.rb` | Error class hierarchy: `Error` → `BadRequest`, `Unauthorized`, `AccessDenied`, `NotFound`, `Conflict`, `UnprocessableEntity`, `RateLimitExceeded`, `ServerError`, etc. |
 | `lib/contentful/management/support.rb` | Utility helpers — URL helpers, camelCase/snake_case conversion. |
-| `spec/` | RSpec test suite, mirroring `lib/` structure. HTTP mocked with VCR cassettes in `spec/fixtures/`. |
+| `spec/` | RSpec test suite, mirroring `lib/` structure. HTTP mocked with VCR cassettes in `spec/fixtures/vcr_cassettes/`. |
 | `examples/` | Usage examples including custom class mapping and resource mapping. |
 | `lib/contentful/management/version.rb` | Contains `VERSION` constant — bump for every release |
-| `spec/fixtures/` | VCR cassette YAML files. Do not fabricate or hand-edit cassettes — re-record against the real API if API response shapes change |
+| `spec/fixtures/vcr_cassettes/` | VCR cassette YAML files. Do not fabricate or hand-edit cassettes — re-record against the real API if API response shapes change |
 | `.rubocop_todo.yml` | Auto-generated RuboCop todo list — regenerate with `bundle exec rubocop --auto-gen-config`, do not hand-edit |
 
 ## Data Flow

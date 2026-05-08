@@ -75,13 +75,13 @@ Guard watches for file changes and automatically re-runs the relevant specs and 
 ## Testing
 
 - **Framework:** RSpec (`rspec`, `rspec-its`)
-- **HTTP mocking:** VCR cassettes (`vcr ~> 6.2.0`) + WebMock — cassettes stored in `spec/fixtures/`
+- **HTTP mocking:** VCR cassettes (`vcr ~> 6.2.0`) + WebMock — cassettes stored in `spec/fixtures/vcr_cassettes/`
 - **Location:** `spec/lib/contentful/management/` — one `*_spec.rb` per source module
 - **Run all:** `bundle exec rake spec` — source: `Rakefile → task :spec`
 - **Order:** Random (configured in `.rspec`)
 - **Coverage:** `simplecov` — runs automatically with the test suite
 
-**Adding tests for a new resource:** Follow the existing pattern — create `spec/lib/contentful/management/<resource>_spec.rb`. Add VCR fixture cassettes to `spec/fixtures/`. **Do not make live API calls in tests** — record cassettes against the real CMA API once, then replay.
+**Adding tests for a new resource:** Follow the existing pattern — create `spec/lib/contentful/management/<resource>_spec.rb`. Add VCR fixture cassettes to `spec/fixtures/vcr_cassettes/`. **Do not make live API calls in tests** — record cassettes against the real CMA API once, then replay.
 
 **VCR token redaction:** The VCR config redacts CMA tokens from cassettes so cassettes are safe to commit. Do not manually add live tokens to cassette files.
 
