@@ -7,4 +7,4 @@
 | [001](./2015-01-01-factory-mixin-architecture.md) | 2015-01-01 | Accepted | Factory Mixin Architecture |
 | [002](./2015-01-01-vcr-cassettes-for-testing.md) | 2015-01-01 | Accepted | VCR Cassettes for Testing |
 | [003](./2018-01-01-dynamic-entry-cache.md) | 2018-01-01 | Accepted | DynamicEntry Cache for Typed Field Access |
-| [004](./2021-01-01-ci-migration-to-github-actions.md) | 2021-01-01 | Accepted | CI/CD Migration: Travis CI → CircleCI → GitHub Actions |
+| [004](./2021-01-01-ci-migration-to-github-actions.md) | 2021-01-01 | Accepted | CI/CD Migration: Travis CI → CircleCI → GitHub Actions + Devcontainers |

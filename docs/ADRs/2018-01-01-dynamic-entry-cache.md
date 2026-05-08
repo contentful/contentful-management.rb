@@ -18,7 +18,7 @@ Two approaches:
 
 Content type caching can be disabled with `disable_content_type_caching: true`. The cache can be refreshed at any time via `client.update_dynamic_entry_cache_for_environment!(env)`.
 
-Source: commit archaeology — `DynamicEntry` appears in early versions alongside the `disable_content_type_caching` configuration option (commit `92f0d4c`).
+Source: commit archaeology — `DynamicEntry` was introduced in 2014 (commit `0e71be1`); the `disable_content_type_caching` option was added later in 2017 (commit `92faf6c`).
 
 ## Consequences
 
