@@ -46,7 +46,6 @@ Read this file first. It tells you where to find context in this repo.
 
 **Downstream (consumes this repo):**
 - Any Ruby application or script doing programmatic Contentful management
-- `contentful-export` / `contentful-import` tooling
 
 ## Build & Quality
 

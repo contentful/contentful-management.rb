@@ -10,7 +10,7 @@ The repo has undergone two CI vendor migrations:
 
 1. **Travis CI → CircleCI** (commit `6b3b482`, ~2021): Travis CI moved toward a paid model for open-source projects. CircleCI was the Contentful team standard at the time.
 
-2. **CircleCI → GitHub Actions + devcontainers** (commit `8940acd`, DX-822, March 2026): CircleCI caused 401 errors for forked-repo PRs, preventing external contributors from running CI. The DX team (Ethan Ozelius, confirmed in Slack `#prd-alpine-chat`, 2026-03-31) migrated all SDK repos to GitHub Actions simultaneously. The devcontainer workflow was introduced to ensure local development and CI use identical environments.
+2. **CircleCI → GitHub Actions + devcontainers** (commit `8940acd`, DX-822, March 2026): CircleCI caused 401 errors for forked-repo PRs, preventing external contributors from running CI. The DX team migrated all SDK repos to GitHub Actions simultaneously. The devcontainer workflow was introduced to ensure local development and CI use identical environments.
 
 ## Decision
 
@@ -24,4 +24,4 @@ Bundler is pinned at `2.3.26` in the devcontainer Dockerfile (`gem install bundl
 - Local dev and CI use identical environments (same Dockerfile, same Bundler pin)
 - External contributors need Docker to use the devcontainer locally
 - CircleCI config was deleted with no rollback path
-- Source: DX-822, commit `8940acd`, Slack `#prd-alpine-chat` (2026-03-31)
+- Source: DX-822, commit `8940acd` (2026-03-31)

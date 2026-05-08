@@ -13,8 +13,6 @@ Thanks for helping improve `contentful-management.rb`.
 | Docker | Any recent | Required for the dev container workflow |
 | Dev Container CLI | Latest | `npm install -g @devcontainers/cli` — for terminal devcontainer |
 
-No `package.json`, Node, or `.nvmrc` — Node is only needed for the Dev Container CLI install.
-
 ## Getting Started
 
 The recommended path is the **dev container** — it pins the Ruby version and installs bundler/gems automatically.
@@ -99,24 +97,27 @@ Guard watches for file changes and automatically re-runs the relevant specs and 
 
 ## Commit Convention
 
-No enforced commit format, but recent commits follow this pattern:
+follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
-type: description [TICKET-ID] (#PR)
+type(scope): description [TICKET-ID]
 ```
+
+Valid types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`, `build`
 
 Examples:
 ```
-chore: add devcontainer contributor workflow [DX-822] (#278)
-feat: add taxonomy endpoints (#274)
-fix: update specs to match new JSON parse error messaging (#270)
+feat: add taxonomy concept endpoints
+fix: preserve fields default value on update
+chore: route CI alerts to sdk-bots channel
+docs: add agent section to README
+build(deps): update requests dependencies [DX-886]
 ```
 
 ## Branch Strategy
 
-- `master` — production branch; gem releases are cut from here
+- `master` — production branch
 - Feature/fix branches — create from `master`, e.g., `feat/taxonomy-endpoints`
-- Version branches (`2.13.2`, `3.10.0`, etc.) exist as release reference points
 
 ## Release Process
 
@@ -141,13 +142,3 @@ From `RELEASE.md`:
 | `Test and lint (Ruby 3.4)` | Push/PR to `master` | Same — default Ruby version in devcontainer |
 
 Source: `.github/workflows/ci.yml`
-
-## File-Level Guidance
-
-| Path | Notes |
-|---|---|
-| `lib/contentful/management/version.rb` | Contains `VERSION` constant — bump for every release |
-| `spec/fixtures/` | VCR cassette YAML files. Do not fabricate or hand-edit cassettes — re-record against the real API if API response shapes change |
-| `.rubocop_todo.yml` | Auto-generated RuboCop todo list — regenerate with `bundle exec rubocop --auto-gen-config`, do not hand-edit |
-| `catalog-info.yaml` | Backstage service registry — update `owner` if team ownership changes |
-| `examples/` | Usage examples for custom class mapping. Not part of the gem's test suite |

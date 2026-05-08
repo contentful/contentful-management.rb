@@ -24,12 +24,11 @@ graph TD
 ```
 
 **Upstream (consumes):**
-- Contentful Management API (`api.contentful.com`) — all read/write operations
-- Contentful Upload API (`upload.contentful.com`) — binary asset uploads
+- Contentful Management API (`api.(eu.)contentful.com`) — all read/write operations
+- Contentful Upload API (`upload.(eu.)contentful.com`) — binary asset uploads
 
 **Downstream (consumes this repo):**
 - Any Ruby script, app, or integration requiring programmatic Contentful content management
-- `contentful-export` / `contentful-import` tooling
 
 ## Internal Structure
 
@@ -52,6 +51,9 @@ graph TD
 | `lib/contentful/management/support.rb` | Utility helpers — URL helpers, camelCase/snake_case conversion. |
 | `spec/` | RSpec test suite, mirroring `lib/` structure. HTTP mocked with VCR cassettes in `spec/fixtures/`. |
 | `examples/` | Usage examples including custom class mapping and resource mapping. |
+| `lib/contentful/management/version.rb` | Contains `VERSION` constant — bump for every release |
+| `spec/fixtures/` | VCR cassette YAML files. Do not fabricate or hand-edit cassettes — re-record against the real API if API response shapes change |
+| `.rubocop_todo.yml` | Auto-generated RuboCop todo list — regenerate with `bundle exec rubocop --auto-gen-config`, do not hand-edit |
 
 ## Data Flow
 
@@ -148,16 +150,6 @@ All configuration is passed as a Hash to `Client.new('token', configuration)`. N
 
 ## Operational Knowledge
 
-### Deployment
-
-This is a RubyGems library, not a running service. Releases are published to RubyGems.org via `bundle exec rake release` (Bundler standard task).
-
-Release checklist (from `RELEASE.md`):
-1. Ensure tests are green
-2. Update `CHANGELOG.md`
-3. Bump version in `lib/contentful/management/version.rb`
-4. `bundle exec rake release` — builds gem and pushes to RubyGems
-
 ### Failure Modes
 
 | Failure | Symptom | Resolution |
@@ -169,15 +161,3 @@ Release checklist (from `RELEASE.md`):
 | `NotFound` (HTTP 404) | Wrong space/env/resource ID | Verify IDs |
 | Error objects returned silently | `raise_errors: false` (default) — errors returned, not raised | Set `raise_errors: true` or always check `response.is_a?(Contentful::Management::Error)` |
 | Stale DynamicEntry cache | Content type fields changed after client init | Call `client.update_dynamic_entry_cache_for_environment!(env)` or reinitialize the client |
-
-### Monitoring
-
-Client library — no server dashboards. Monitor via:
-- GitHub Actions CI: https://github.com/contentful/contentful-management.rb/actions
-- Backstage: Tier 4 library, owned by `group:team-developer-experience`
-- CI alerts: `#sdk-bots` Slack channel
-- External contributions coordinated in `#sdk-contractors`
-
-### Incident Playbook
-
-[NEEDS TEAM INPUT] — Tier 4 library. For issues affecting users, triage via GitHub Issues and route external contributions through `#sdk-contractors`.
