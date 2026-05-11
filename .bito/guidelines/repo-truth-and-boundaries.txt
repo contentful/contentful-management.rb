@@ -6,5 +6,5 @@ Use the repository's written documentation as review context and check whether t
 - If CI or another required check already enforces a merge rule, do not ask for duplicate PR template sections or manual checklists.
 - Ask for an ADR update when a change is architecture-significant: adding a new resource type, changing the HTTP client (`http` gem), modifying error handling behavior, changing how the DynamicEntry cache is populated or used, or adding a new scoping dimension (e.g., organization-scoped vs space/environment-scoped).
 - Distinguish the public API surface (Client methods, resource classes) from internal helpers. Public API changes require extra scrutiny and documentation updates.
-- VCR cassettes in `spec/fixtures/` are the source of truth for expected API response shapes. If a change modifies response parsing, check whether the relevant cassettes are updated or flagged for re-recording.
+ VCR cassettes in `spec/fixtures/vcr_cassettes/` are the source of truth for expected API response shapes. If a change modifies response parsing, check whether the relevant cassettes are updated or flagged for re-recording.
 - The `raise_errors` configuration defaults to `false`. If a PR changes error handling, verify the behavior is consistent for both `raise_errors: true` and `raise_errors: false` configurations.
