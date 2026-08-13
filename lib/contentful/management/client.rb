@@ -141,16 +141,28 @@ module Contentful
       # Allows listing all usage periods for organization grouped by organization.
       # @see _ README for details.
       #
+      # @deprecated The `GET /organizations/:organization_id/organization_periodic_usages`
+      #   endpoint is deprecated in favor of the new Usage API. It will be removed on
+      #   2027-02-28, after which requests will return 410 Gone.
       # @return [Contentful::Management::ClientOrganizationPeriodicUsageMethodsFactory]
       def organization_periodic_usages(organization_id)
+        warn '[DEPRECATION] `Client#organization_periodic_usages` calls the legacy ' \
+             'organization_periodic_usages endpoint, which is deprecated and will be ' \
+             'removed on 2027-02-28. Migrate to the new Usage API.'
         ClientOrganizationPeriodicUsageMethodsFactory.new(self, organization_id)
       end
 
       # Allows listing all usage periods for organization grouped by space.
       # @see _ README for details.
       #
+      # @deprecated The `GET /organizations/:organization_id/space_periodic_usages`
+      #   endpoint is deprecated in favor of the new Usage API. It will be removed on
+      #   2027-02-28, after which requests will return 410 Gone.
       # @return [Contentful::Management::ClientSpacePeriodicUsageMethodsFactory]
       def space_periodic_usages(organization_id)
+        warn '[DEPRECATION] `Client#space_periodic_usages` calls the legacy ' \
+             'space_periodic_usages endpoint, which is deprecated and will be ' \
+             'removed on 2027-02-28. Migrate to the new Usage API.'
         ClientSpacePeriodicUsageMethodsFactory.new(self, organization_id)
       end
 
