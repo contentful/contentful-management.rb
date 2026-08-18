@@ -2,6 +2,9 @@
 
 ### Unreleased
 
+## 3.13.0
+* deprecate legacy periodic-usage endpoints
+
 ## 3.12.1
 * Add support for creating concept schemes with user-defined ID
 

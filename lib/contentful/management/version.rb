@@ -5,6 +5,6 @@ module Contentful
   # Management Namespace
   module Management
     # Gem Version
-    VERSION = '3.12.1'
+    VERSION = '3.13.0'
   end
 end
