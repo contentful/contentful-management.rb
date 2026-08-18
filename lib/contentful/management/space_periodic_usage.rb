@@ -6,6 +6,8 @@ module Contentful
   module Management
     # Resource class for SpacePeriodicUsage.
     # @see _ https://www.contentful.com/developers/docs/references/content-management-api/#/reference/usage/space-usage/get-space-usage/console/curl
+    # @deprecated Backed by the legacy space_periodic_usages endpoint, which is
+    #   deprecated in favor of the new Usage API and will be removed on 2027-02-28.
     class SpacePeriodicUsage
       include Contentful::Management::Resource
       include Contentful::Management::Resource::Refresher
@@ -30,8 +32,13 @@ module Contentful
       # @param [String] organization_id
       # @param [Hash] params
       #
+      # @deprecated The legacy space_periodic_usages endpoint is deprecated in favor
+      #   of the new Usage API and will be removed on 2027-02-28.
       # @return [Contentful::Management::Array<Contentful::Management::SpacePeriodicUsage>]
       def self.all(client, organization_id, params = {})
+        warn '[DEPRECATION] `SpacePeriodicUsage.all` calls the legacy ' \
+             'space_periodic_usages endpoint, which is deprecated and will be ' \
+             'removed on 2027-02-28. Migrate to the new Usage API.'
         ClientSpacePeriodicUsageMethodsFactory.new(client, organization_id).all(params)
       end
 

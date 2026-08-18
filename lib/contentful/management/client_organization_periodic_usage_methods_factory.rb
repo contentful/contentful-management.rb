@@ -6,6 +6,8 @@ module Contentful
   module Management
     # Wrapper for Organization Periodic Usages for usage from within Client
     # @private
+    # @deprecated Wraps the legacy organization_periodic_usages endpoint, which is
+    #   deprecated in favor of the new Usage API and will be removed on 2027-02-28.
     class ClientOrganizationPeriodicUsageMethodsFactory
       include Contentful::Management::ClientAssociationMethodsFactory
 
@@ -14,6 +16,8 @@ module Contentful
         @organization_id = organization_id
       end
 
+      # @deprecated Calls the legacy organization_periodic_usages endpoint, which is
+      #   deprecated in favor of the new Usage API and will be removed on 2027-02-28.
       def all(params = {})
         @resource_requester.all(
           {
