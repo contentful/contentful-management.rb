@@ -18,13 +18,12 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'http', '~> 5.0'
+  spec.add_dependency 'http', '>= 5.0'
   spec.add_dependency 'multi_json', '~> 1.15'
   spec.add_dependency 'json', '>= 1.8', '< 3.0'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '>= 12.3.3'
-  spec.add_development_dependency 'public_suffix', '< 1.5'
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'rspec-its'
   spec.add_development_dependency 'guard'
@@ -33,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'guard-yard'
   spec.add_development_dependency 'rubocop', '~> 1.56.2'
   spec.add_development_dependency 'listen', '~> 3.0'
-  spec.add_development_dependency 'vcr', '~> 6.2.0'
+  spec.add_development_dependency 'vcr', '~> 6.4'
   spec.add_development_dependency 'webmock'
   spec.add_development_dependency 'tins', '~> 1.6.0'
   spec.add_development_dependency 'simplecov'
