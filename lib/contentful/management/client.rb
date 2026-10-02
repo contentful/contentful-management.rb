@@ -430,7 +430,11 @@ module Contentful
           result = Response.new(raw_response, request)
           fail result.object if result.object.is_a?(Error) && configuration[:raise_errors]
         rescue Contentful::Management::RateLimitExceeded => e
-          reset_time = e.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
+          reset_time = if HTTP::VERSION < "6"
+            e.response.raw[RATE_LIMIT_RESET_HEADER_KEY].to_i
+          else
+            e.response.raw.headers[RATE_LIMIT_RESET_HEADER_KEY].to_i
+          end
           if should_retry(retries_left, reset_time, configuration[:max_rate_limit_wait])
             retries_left -= 1
             logger.info(retry_message(retries_left, reset_time)) if logger
@@ -528,7 +532,7 @@ module Contentful
           proxy[:port],
           proxy[:username],
           proxy[:password]
-        ).public_send(type, url, params)
+        ).public_send(type, url, **params)
       end
 
       # HTTP Helper
@@ -544,7 +548,7 @@ module Contentful
       def http_send(type, url, params, headers, proxy)
         return proxy_send(type, url, params, headers, proxy) unless proxy[:host].nil?
 
-        HTTP[headers].public_send(type, url, params)
+        HTTP[headers].public_send(type, url, **params)
       end
 
       # @private

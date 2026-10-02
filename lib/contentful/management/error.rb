@@ -20,6 +20,8 @@ module Contentful
       # Shortcut for creating specialized error classes
       # USAGE rescue Contentful::Management::Error[404]
       def self.[](error_status_code)
+        error_status_code = error_status_code&.code unless error_status_code.is_a?(Integer)
+
         errors = {
           400 => BadRequest,
           401 => Unauthorized,
@@ -193,8 +195,14 @@ module Contentful
       end
 
       # Time until next available request, in seconds.
-      def reset_time
-        @reset_time ||= @response.raw[RATE_LIMIT_RESET_HEADER_KEY]
+      if HTTP::VERSION < "6"
+        def reset_time
+          @reset_time ||= @response.raw[RATE_LIMIT_RESET_HEADER_KEY]
+        end
+      else
+        def reset_time
+          @reset_time ||= @response.raw.headers[RATE_LIMIT_RESET_HEADER_KEY]
+        end
       end
 
       protected
