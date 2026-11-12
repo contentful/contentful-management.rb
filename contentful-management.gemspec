@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'guard-yard'
   spec.add_development_dependency 'rubocop', '~> 1.92.0'
   spec.add_development_dependency 'listen', '~> 3.0'
-  spec.add_development_dependency 'vcr', '~> 6.2.0'
+  spec.add_development_dependency 'vcr', '~> 6.4.0'
   spec.add_development_dependency 'webmock'
   spec.add_development_dependency 'tins', '~> 1.62.0'
   spec.add_development_dependency 'simplecov'
