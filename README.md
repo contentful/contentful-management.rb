@@ -30,6 +30,18 @@ client = Contentful::Management::Client.new('access_token')
 
 The access token can easily be created through the [management api documentation](https://www.contentful.com/developers/documentation/content-management-api/#getting-started).
 
+#### Note about locales
+
+By default, the API client assumes you want to work in the `en-US` locale. To use a different default locale, pass it when instantiating the client, e.g.
+
+```ruby
+require 'contentful/management'
+
+client = Contentful::Management::Client.new('access_token', default_locale: 'en-GB')
+```
+
+This ensures that any getter and setter methods on entries (and other locale-aware objects) work as expected.
+
 ### Spaces
 
 Retrieving all spaces:
