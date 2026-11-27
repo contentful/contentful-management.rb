@@ -8,7 +8,7 @@ Thanks for helping improve `contentful-management.rb`.
 
 | Tool | Version | Notes |
 |---|---|---|
-| Ruby | 3.0+ (3.2–3.4 tested in CI) | See `.devcontainer/Dockerfile` — default is 3.4 |
+| Ruby | 3.3+ (3.3–3.4 tested in CI) | See `.devcontainer/Dockerfile` — default is 3.4 |
 | Bundler | 2.3.26 | Pinned version; install with `gem install bundler:2.3.26` |
 | Docker | Any recent | Required for the dev container workflow |
 | Dev Container CLI | Latest | `npm install -g @devcontainers/cli` — for terminal devcontainer |
@@ -137,7 +137,6 @@ From `RELEASE.md`:
 
 | Job | Trigger | What it does |
 |---|---|---|
-| `Test and lint (Ruby 3.2)` | Push/PR to `master` | `bundle exec rake rspec_rubocop` inside devcontainer |
 | `Test and lint (Ruby 3.3)` | Push/PR to `master` | Same |
 | `Test and lint (Ruby 3.4)` | Push/PR to `master` | Same — default Ruby version in devcontainer |
 
